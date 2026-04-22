@@ -1,7 +1,25 @@
+# =============================================================================
+# Asset Versioning Convention
+# =============================================================================
+# Each asset entry includes two versioning fields:
+#
+#   version:     Semantic version string (MAJOR.MINOR.PATCH)
+#   updated_at:  ISO date of last change (YYYY-MM-DD)
+#
+# Versioning rules:
+#   MAJOR — structural schema change (breaking; consumers must update)
+#   MINOR — meaningful content update (new sections, rewritten guidance)
+#   PATCH — copy fixes, typos, minor clarifications
+#
+# Skills use these fields to determine whether a locally cached asset is
+# current. On `refresh`, only assets where remote version > cached version
+# are re-downloaded.
+# =============================================================================
 # Registry Manifest
 manifest:
-  version: "0.1.0"
-  last_updated: ""
+  version: "0.2.0"
+  last_updated: "2026-04-22"
+  versioning: "per-asset"
 
 sources:
   brand: []
@@ -21,57 +39,93 @@ personas:
       - id: anti-fraud-director-fraud-operations
         path: anti-fraud/anti-fraud-director-fraud-operations.yaml
         display_name: Anti-Fraud / Director of Fraud Operations
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-dispute-chargeback-analyst
         path: anti-fraud/anti-fraud-dispute-chargeback-analyst.yaml
         display_name: Anti-Fraud / Dispute & Chargeback Analyst
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-disputes-chargebacks-manager
         path: anti-fraud/anti-fraud-disputes-chargebacks-manager.yaml
         display_name: Anti-Fraud / Disputes & Chargebacks Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-financial-crime-aml-compliance-lead
         path: anti-fraud/anti-fraud-financial-crime-aml-compliance-lead.yaml
         display_name: Anti-Fraud / Financial Crime & AML Compliance Lead
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-fintech-money-movement-fraud-manager
         path: anti-fraud/anti-fraud-fintech-money-movement-fraud-manager.yaml
         display_name: Anti-Fraud / Fintech Money Movement Fraud Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-fraud-analytics-manager
         path: anti-fraud/anti-fraud-fraud-analytics-manager.yaml
         display_name: Anti-Fraud / Fraud Analytics Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-fraud-data-scientist-ml-risk-modeler
         path: anti-fraud/anti-fraud-fraud-data-scientist-ml-risk-modeler.yaml
         display_name: Anti-Fraud / Fraud Data Scientist & ML Risk Modeler
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-fraud-investigation-lead
         path: anti-fraud/anti-fraud-fraud-investigation-lead.yaml
         display_name: Anti-Fraud / Fraud Investigation Lead
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-fraud-platform-integration-engineer
         path: anti-fraud/anti-fraud-fraud-platform-integration-engineer.yaml
         display_name: Anti-Fraud / Fraud Platform Integration Engineer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-fraud-risk-analyst
         path: anti-fraud/anti-fraud-fraud-risk-analyst.yaml
         display_name: Anti-Fraud / Fraud & Risk Analyst
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-fraud-strategy-controls-manager
         path: anti-fraud/anti-fraud-fraud-strategy-controls-manager.yaml
         display_name: Anti-Fraud / Fraud Strategy & Controls Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-head-of-fraud-risk
         path: anti-fraud/anti-fraud-head-of-fraud-risk.yaml
         display_name: Anti-Fraud / Head of Fraud & Risk
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-iam-ciam-architect-security-engineer
         path: anti-fraud/anti-fraud-iam-ciam-architect-security-engineer.yaml
         display_name: Anti-Fraud / IAM-CIAM Architect & Security Engineer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-identity-authentication-product-owner
         path: anti-fraud/anti-fraud-identity-authentication-product-owner.yaml
         display_name: Anti-Fraud / Identity & Authentication Product Owner
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-payments-compliance-regulation-lead
         path: anti-fraud/anti-fraud-payments-compliance-regulation-lead.yaml
         display_name: Anti-Fraud / Payments Compliance & Regulation Lead
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-payments-risk-fraud-manager
         path: anti-fraud/anti-fraud-payments-risk-fraud-manager.yaml
         display_name: Anti-Fraud / Payments Risk & Fraud Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-trust-safety-operations-leader
         path: anti-fraud/anti-fraud-trust-safety-operations-leader.yaml
         display_name: Anti-Fraud / Trust & Safety Operations Leader
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: anti-fraud-trust-safety-policy-lead
         path: anti-fraud/anti-fraud-trust-safety-policy-lead.yaml
         display_name: Anti-Fraud / Trust & Safety Policy Lead
+        version: "1.0.0"
+        updated_at: "2026-04-22"
   b2b_tech:
     scope: system
     category: personas
@@ -83,135 +137,223 @@ personas:
       - id: b2b-saas
         path: b2b-tech/b2b-saas.yaml
         display_name: B2B SaaS
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-application-security-engineer
         path: b2b-tech/cybersecurity-application-security-engineer.yaml
         display_name: Application Security Engineer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-ciso
         path: b2b-tech/cybersecurity-ciso.yaml
         display_name: Cybersecurity / CISO
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-cloud-security
         path: b2b-tech/cybersecurity-cloud-security.yaml
         display_name: Cybersecurity / Cloud Security
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-data-security
         path: b2b-tech/cybersecurity-data-security.yaml
         display_name: Cybersecurity / Data Security
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-devsecops
         path: b2b-tech/cybersecurity-devsecops.yaml
         display_name: DevSecOps / Security Automation Engineer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-endpoint-security
         path: b2b-tech/cybersecurity-endpoint-security.yaml
         display_name: Cybersecurity / Endpoint Security
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-grc-lead
         path: b2b-tech/cybersecurity-grc-lead.yaml
         display_name: Cybersecurity / GRC Lead
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-iam-pam
         path: b2b-tech/cybersecurity-iam-pam.yaml
         display_name: Cybersecurity / IAM-PAM
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-incident-response-dfir
         path: b2b-tech/cybersecurity-incident-response-dfir.yaml
         display_name: Incident Response / DFIR Lead
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-network-security
         path: b2b-tech/cybersecurity-network-security.yaml
         display_name: Cybersecurity / Network Security
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-penetration-tester
         path: b2b-tech/cybersecurity-penetration-tester.yaml
         display_name: Penetration Tester / Red Teamer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-security-architect
         path: b2b-tech/cybersecurity-security-architect.yaml
         display_name: Cybersecurity / Security Architect
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-security-awareness
         path: b2b-tech/cybersecurity-security-awareness.yaml
         display_name: Security Awareness & Human Risk
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-security-control-assessor
         path: b2b-tech/cybersecurity-security-control-assessor.yaml
         display_name: Security Control Assessor / Audit
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-security-program-manager
         path: b2b-tech/cybersecurity-security-program-manager.yaml
         display_name: Cybersecurity / Security Program Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-soc-analyst
         path: b2b-tech/cybersecurity-soc-analyst.yaml
         display_name: Cybersecurity / SOC Analyst & SecOps
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-third-party-risk
         path: b2b-tech/cybersecurity-third-party-risk.yaml
         display_name: Third-Party Risk / Supply Chain
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-threat-hunter
         path: b2b-tech/cybersecurity-threat-hunter.yaml
         display_name: Cybersecurity / Threat Hunter
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-threat-intelligence-analyst
         path: b2b-tech/cybersecurity-threat-intelligence-analyst.yaml
         display_name: Threat Intelligence Analyst
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: cybersecurity-vulnerability-management
         path: b2b-tech/cybersecurity-vulnerability-management.yaml
         display_name: Vulnerability Management
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: enterprise-sales
         path: b2b-tech/enterprise-sales.yaml
         display_name: Enterprise Sales Leader (VP Sales / CRO)
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: fintech-compliance
         path: b2b-tech/fintech-compliance.yaml
         display_name: Fintech Compliance & Risk (Compliance Officer / Risk Lead)
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-ai-architect
         path: b2b-tech/it-ai-architect.yaml
         display_name: AI Architect / AI Systems Architect
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-ai-ml-engineer
         path: b2b-tech/it-ai-ml-engineer.yaml
         display_name: AI/ML Engineer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-bi-analyst
         path: b2b-tech/it-bi-analyst.yaml
         display_name: BI Analyst
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-cdo
         path: b2b-tech/it-cdo.yaml
         display_name: Chief Data Officer (CDO)
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-cio
         path: b2b-tech/it-cio.yaml
         display_name: IT / CIO
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-cloud-architect
         path: b2b-tech/it-cloud-architect.yaml
         display_name: Cloud Architect
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-cto
         path: b2b-tech/it-cto.yaml
         display_name: Chief Technology Officer (IT)
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-cybersecurity-analyst
         path: b2b-tech/it-cybersecurity-analyst.yaml
         display_name: Cybersecurity Analyst
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-data-engineer
         path: b2b-tech/it-data-engineer.yaml
         display_name: Data Engineer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-devops-engineer
         path: b2b-tech/it-devops-engineer.yaml
         display_name: DevOps Engineer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-enterprise-architect
         path: b2b-tech/it-enterprise-architect.yaml
         display_name: Enterprise Architect
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-grc-specialist
         path: b2b-tech/it-grc-specialist.yaml
         display_name: GRC Specialist
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-gtm-architect
         path: b2b-tech/it-gtm-architect.yaml
         display_name: GTM Architect / GTM Engineer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-iam-specialist
         path: b2b-tech/it-iam-specialist.yaml
         display_name: IAM Specialist
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-it-director
         path: b2b-tech/it-it-director.yaml
         display_name: IT Director
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-itsm-service-manager
         path: b2b-tech/it-itsm-service-manager.yaml
         display_name: ITSM / IT Service Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-platform-engineer
         path: b2b-tech/it-platform-engineer.yaml
         display_name: Platform Engineer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-pmo-project-manager
         path: b2b-tech/it-pmo-project-manager.yaml
         display_name: PMO / IT Project Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-procurement-finops
         path: b2b-tech/it-procurement-finops.yaml
         display_name: IT Procurement / FinOps
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-sre
         path: b2b-tech/it-sre.yaml
         display_name: Site Reliability Engineer (SRE)
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: it-vp-infrastructure
         path: b2b-tech/it-vp-infrastructure.yaml
         display_name: VP of Infrastructure
+        version: "1.0.0"
+        updated_at: "2026-04-22"
   b2c_consumer:
     scope: system
     category: personas
@@ -223,93 +365,153 @@ personas:
       - id: archetype-brand-loyal-premium
         path: b2c-consumer/archetype-brand-loyal-premium.yaml
         display_name: Brand-Loyal Premium Buyer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: archetype-convenience-first-subscriber
         path: b2c-consumer/archetype-convenience-first-subscriber.yaml
         display_name: Convenience-First Subscriber
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: archetype-freemium-app-evaluator
         path: b2c-consumer/archetype-freemium-app-evaluator.yaml
         display_name: Freemium App Evaluator
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: archetype-gen-z-digital-native
         path: b2c-consumer/archetype-gen-z-digital-native.yaml
         display_name: Gen Z Digital Native
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: archetype-health-wellness-conscious
         path: b2c-consumer/archetype-health-wellness-conscious.yaml
         display_name: Health & Wellness Conscious Consumer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: archetype-impulse-trend-driven
         path: b2c-consumer/archetype-impulse-trend-driven.yaml
         display_name: Impulse / Trend-Driven Buyer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: archetype-marketplace-power-buyer
         path: b2c-consumer/archetype-marketplace-power-buyer.yaml
         display_name: Marketplace Power Buyer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: archetype-parent-family-decision-maker
         path: b2c-consumer/archetype-parent-family-decision-maker.yaml
         display_name: Parent / Family Decision-Maker
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: archetype-price-sensitive-shopper
         path: b2c-consumer/archetype-price-sensitive-shopper.yaml
         display_name: Price-Sensitive Comparison Shopper
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: archetype-privacy-conscious
         path: b2c-consumer/archetype-privacy-conscious.yaml
         display_name: Privacy-Conscious Digital Consumer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: archetype-social-proof-driven
         path: b2c-consumer/archetype-social-proof-driven.yaml
         display_name: Social-Proof-Driven Buyer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: archetype-subscription-fatigued
         path: b2c-consumer/archetype-subscription-fatigued.yaml
         display_name: Subscription-Fatigued Consumer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ecommerce-dtc
         path: b2c-consumer/ecommerce-dtc.yaml
         display_name: eCommerce / Direct-to-Consumer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-cmo-vp-marketing
         path: b2c-consumer/ops-cmo-vp-marketing.yaml
         display_name: B2C CMO / VP Marketing
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-consumer-analytics-manager
         path: b2c-consumer/ops-consumer-analytics-manager.yaml
         display_name: Consumer Analytics & Insights Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-consumer-product-manager
         path: b2c-consumer/ops-consumer-product-manager.yaml
         display_name: Consumer Product Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-crm-email-sms-manager
         path: b2c-consumer/ops-crm-email-sms-manager.yaml
         display_name: CRM / Email & SMS Marketing Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-head-of-brand
         path: b2c-consumer/ops-head-of-brand.yaml
         display_name: Head of Brand Marketing
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-head-of-growth
         path: b2c-consumer/ops-head-of-growth.yaml
         display_name: Head of Growth
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-head-of-loyalty
         path: b2c-consumer/ops-head-of-loyalty.yaml
         display_name: Head of Customer Success / Loyalty
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-head-of-performance
         path: b2c-consumer/ops-head-of-performance.yaml
         display_name: Head of Performance Marketing
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-influencer-creator-manager
         path: b2c-consumer/ops-influencer-creator-manager.yaml
         display_name: Influencer & Creator Marketing Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-marketplace-operator
         path: b2c-consumer/ops-marketplace-operator.yaml
         display_name: Marketplace / Platform Operator
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-mobile-app-growth-manager
         path: b2c-consumer/ops-mobile-app-growth-manager.yaml
         display_name: Mobile App Growth Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-paid-media-manager
         path: b2c-consumer/ops-paid-media-manager.yaml
         display_name: Paid Media Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-partnerships-affiliate-manager
         path: b2c-consumer/ops-partnerships-affiliate-manager.yaml
         display_name: Partnerships / Affiliate Marketing Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-pr-comms-manager
         path: b2c-consumer/ops-pr-comms-manager.yaml
         display_name: PR & Communications Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-retail-omnichannel-manager
         path: b2c-consumer/ops-retail-omnichannel-manager.yaml
         display_name: Retail & Omnichannel Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-seo-content-manager
         path: b2c-consumer/ops-seo-content-manager.yaml
         display_name: SEO / Content Marketing Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: ops-social-community-manager
         path: b2c-consumer/ops-social-community-manager.yaml
         display_name: Social Media / Community Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
   governance_audit:
     scope: system
     category: personas
@@ -320,30 +522,48 @@ personas:
       - id: audit-ai-ethics-specialist
         path: governance-audit/audit-ai-ethics-specialist.yaml
         display_name: AI Ethics Officer / Algorithmic Auditor
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: audit-board-audit-chair
         path: governance-audit/audit-board-audit-chair.yaml
         display_name: Board Audit Committee Chair
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: audit-board-risk-chair
         path: governance-audit/audit-board-risk-chair.yaml
         display_name: Board Risk Committee Chair
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: audit-external-big4
         path: governance-audit/audit-external-big4.yaml
         display_name: Big 4 AI Assurance Partner / AI Audit Director
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: audit-internal-ai-auditor
         path: governance-audit/audit-internal-ai-auditor.yaml
         display_name: Internal AI Audit Manager / Senior AI Auditor
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: audit-internal-cae
         path: governance-audit/audit-internal-cae.yaml
         display_name: Chief Audit Executive (CAE) / Chief Internal Auditor
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: audit-iso42001-lead-auditor
         path: governance-audit/audit-iso42001-lead-auditor.yaml
         display_name: ISO/IEC 42001 Lead Auditor — AI Management System
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: audit-procurement-cpo
         path: governance-audit/audit-procurement-cpo.yaml
         display_name: Chief Procurement Officer (CPO) — AI Governance Gatekeeper
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: audit-vendor-risk-manager
         path: governance-audit/audit-vendor-risk-manager.yaml
         display_name: Vendor / Third-Party Risk Manager — AI Systems
+        version: "1.0.0"
+        updated_at: "2026-04-22"
   governance_legal:
     scope: system
     category: personas
@@ -354,30 +574,48 @@ personas:
       - id: governance-caio
         path: governance-legal/governance-caio.yaml
         display_name: Chief AI Officer (CAIO)
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: governance-cco-customer
         path: governance-legal/governance-cco-customer.yaml
         display_name: Chief Customer Officer / Chief Experience Officer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: governance-cco
         path: governance-legal/governance-cco.yaml
         display_name: Chief Compliance Officer (CCO)
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: governance-ceo-enterprise
         path: governance-legal/governance-ceo-enterprise.yaml
         display_name: CEO — Mid-Market & Enterprise (Regulated Industry)
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: governance-clo
         path: governance-legal/governance-clo.yaml
         display_name: Chief Legal Officer / General Counsel
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: governance-cpo-privacy
         path: governance-legal/governance-cpo-privacy.yaml
         display_name: Chief Privacy Officer / Data Protection Officer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: governance-cro-enterprise
         path: governance-legal/governance-cro-enterprise.yaml
         display_name: Chief Risk Officer — Enterprise (Risk Management, Not Revenue)
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: governance-dir-compliance
         path: governance-legal/governance-dir-compliance.yaml
         display_name: Director of Marketing Compliance / Regulatory Affairs
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: governance-privacy-manager
         path: governance-legal/governance-privacy-manager.yaml
         display_name: Privacy Manager / Privacy Counsel
+        version: "1.0.0"
+        updated_at: "2026-04-22"
   marketing_agency:
     scope: system
     category: personas
@@ -390,27 +628,43 @@ personas:
       - id: marketing-agency-account-director
         path: marketing-agency/marketing-agency-account-director.yaml
         display_name: "Account Director"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-agency-content-director
         path: marketing-agency/marketing-agency-content-director.yaml
         display_name: "Director of Content Services"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-agency-creative-director
         path: marketing-agency/marketing-agency-creative-director.yaml
         display_name: "Creative Director"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-agency-martech-consultant
         path: marketing-agency/marketing-agency-martech-consultant.yaml
         display_name: "Marketing Technology Consultant"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-agency-media-director
         path: marketing-agency/marketing-agency-media-director.yaml
         display_name: "Media Director"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-agency-ops-director
         path: marketing-agency/marketing-agency-ops-director.yaml
         display_name: "Director of Agency Operations"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-agency-principal
         path: marketing-agency/marketing-agency-principal.yaml
         display_name: "Agency Founder/Principal/CEO"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-agency-strategy-director
         path: marketing-agency/marketing-agency-strategy-director.yaml
         display_name: "Strategy Director"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
   marketing_b2b:
     scope: system
     category: personas
@@ -423,69 +677,113 @@ personas:
       - id: marketing-b2b-campaign-manager
         path: marketing-b2b/marketing-b2b-campaign-manager.yaml
         display_name: "Campaign Manager"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-cmo
         path: marketing-b2b/marketing-b2b-cmo.yaml
         display_name: "Chief Marketing Officer (B2B)"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-content-strategist
         path: marketing-b2b/marketing-b2b-content-strategist.yaml
         display_name: "Content Strategist"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-dir-analyst-relations
         path: marketing-b2b/marketing-b2b-dir-analyst-relations.yaml
         display_name: "Director of Analyst & Media Relations"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-dir-brand
         path: marketing-b2b/marketing-b2b-dir-brand.yaml
         display_name: "Director of Brand"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-dir-content
         path: marketing-b2b/marketing-b2b-dir-content.yaml
         display_name: "Director of Content Marketing"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-dir-customer-marketing
         path: marketing-b2b/marketing-b2b-dir-customer-marketing.yaml
         display_name: "Director of Customer Marketing & Advocacy"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-dir-demand-gen
         path: marketing-b2b/marketing-b2b-dir-demand-gen.yaml
         display_name: "Director of Demand Generation"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-dir-field-marketing
         path: marketing-b2b/marketing-b2b-dir-field-marketing.yaml
         display_name: "Director of Field & Event Marketing"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-dir-marketing-ops
         path: marketing-b2b/marketing-b2b-dir-marketing-ops.yaml
         display_name: "Director of Marketing Operations"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-dir-partner-marketing
         path: marketing-b2b/marketing-b2b-dir-partner-marketing.yaml
         display_name: "Director of Partner & Channel Marketing"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-dir-product-marketing
         path: marketing-b2b/marketing-b2b-dir-product-marketing.yaml
         display_name: "Director of Product Marketing"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-marketing-analyst
         path: marketing-b2b/marketing-b2b-marketing-analyst.yaml
         display_name: "Marketing Data Analyst"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-marketing-ops-manager
         path: marketing-b2b/marketing-b2b-marketing-ops-manager.yaml
         display_name: "Marketing Operations Manager"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-martech-manager
         path: marketing-b2b/marketing-b2b-martech-manager.yaml
         display_name: "Marketing Technology Manager"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-paid-media-manager
         path: marketing-b2b/marketing-b2b-paid-media-manager.yaml
         display_name: "Paid Media Manager"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-seo-manager
         path: marketing-b2b/marketing-b2b-seo-manager.yaml
         display_name: "SEO & Organic Growth Manager"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-vp-brand
         path: marketing-b2b/marketing-b2b-vp-brand.yaml
         display_name: "VP Brand & Communications"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-vp-demand-gen
         path: marketing-b2b/marketing-b2b-vp-demand-gen.yaml
         display_name: "VP Demand Generation"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-vp-marketing-ops
         path: marketing-b2b/marketing-b2b-vp-marketing-ops.yaml
         display_name: "VP Marketing Operations"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-vp-marketing
         path: marketing-b2b/marketing-b2b-vp-marketing.yaml
         display_name: "VP Marketing"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2b-vp-product-marketing
         path: marketing-b2b/marketing-b2b-vp-product-marketing.yaml
         display_name: "VP Product Marketing"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
   marketing_b2c:
     scope: system
     category: personas
@@ -498,39 +796,63 @@ personas:
       - id: marketing-b2c-cmo
         path: marketing-b2c/marketing-b2c-cmo.yaml
         display_name: "Chief Marketing Officer (B2C)"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2c-dir-consumer-insights
         path: marketing-b2c/marketing-b2c-dir-consumer-insights.yaml
         display_name: "Director of Consumer Insights"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2c-dir-dtc
         path: marketing-b2c/marketing-b2c-dir-dtc.yaml
         display_name: "Director of DTC Marketing"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2c-dir-influencer
         path: marketing-b2c/marketing-b2c-dir-influencer.yaml
         display_name: "Director of Influencer & Creator Partnerships"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2c-dir-lifecycle
         path: marketing-b2c/marketing-b2c-dir-lifecycle.yaml
         display_name: "Director of Lifecycle & Retention"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2c-dir-social-community
         path: marketing-b2c/marketing-b2c-dir-social-community.yaml
         display_name: "Director of Social Media & Community"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2c-email-crm-manager
         path: marketing-b2c/marketing-b2c-email-crm-manager.yaml
         display_name: "Email & CRM Marketing Manager"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2c-growth-manager
         path: marketing-b2c/marketing-b2c-growth-manager.yaml
         display_name: "Growth Marketing Manager"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2c-social-media-manager
         path: marketing-b2c/marketing-b2c-social-media-manager.yaml
         display_name: "Social Media Manager"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2c-vp-brand
         path: marketing-b2c/marketing-b2c-vp-brand.yaml
         display_name: "VP Brand (Consumer)"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2c-vp-consumer-marketing
         path: marketing-b2c/marketing-b2c-vp-consumer-marketing.yaml
         display_name: "VP Consumer Marketing"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: marketing-b2c-vp-growth
         path: marketing-b2c/marketing-b2c-vp-growth.yaml
         display_name: "VP Growth Marketing (DTC)"
+        version: "1.0.0"
+        updated_at: "2026-04-22"
   regulated_industries:
     scope: system
     category: personas
@@ -541,33 +863,53 @@ personas:
       - id: regindustry-cannabis-compliance
         path: regulated-industries/regindustry-cannabis-compliance.yaml
         display_name: Cannabis Marketing Compliance Officer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: regindustry-finra-principal
         path: regulated-industries/regindustry-finra-principal.yaml
         display_name: FINRA Registered Principal (Series 24)
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: regindustry-healthcare-hipaa-marketing
         path: regulated-industries/regindustry-healthcare-hipaa-marketing.yaml
         display_name: Healthcare Marketing Compliance Manager / HIPAA Privacy Officer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: regindustry-insurance-market-conduct
         path: regulated-industries/regindustry-insurance-market-conduct.yaml
         display_name: Insurance Market Conduct Compliance Officer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: regindustry-insurance-medicare
         path: regulated-industries/regindustry-insurance-medicare.yaml
         display_name: Medicare/Medicaid Marketing Compliance Specialist
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: regindustry-mortgage-compliance
         path: regulated-industries/regindustry-mortgage-compliance.yaml
         display_name: Mortgage Advertising Compliance Officer
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: regindustry-pharma-claims-manager
         path: regulated-industries/regindustry-pharma-claims-manager.yaml
         display_name: Clinical Claims Specialist / Claims Library Manager
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: regindustry-pharma-medical-director
         path: regulated-industries/regindustry-pharma-medical-director.yaml
         display_name: Pharma Medical Reviewer / Medical Director (MLR)
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: regindustry-pharma-regulatory-reviewer
         path: regulated-industries/regindustry-pharma-regulatory-reviewer.yaml
         display_name: Pharmaceutical Regulatory Affairs Reviewer (MLR)
+        version: "1.0.0"
+        updated_at: "2026-04-22"
       - id: regindustry-sec-marketing-cco
         path: regulated-industries/regindustry-sec-marketing-cco.yaml
         display_name: SEC Marketing Rule Compliance Officer (RIA CCO)
+        version: "1.0.0"
+        updated_at: "2026-04-22"
 frameworks:
   system:
     - id: account-based-marketing-system-framework
@@ -575,256 +917,358 @@ frameworks:
       description: Designs a coordinated Marketing + Sales system focused on high-value target accounts. Integrates account selection logic, persona mapping, personalized engagement, content orchestration, and revenue measurement discipline. Built for B2B SaaS and enterprise GTM motions.
       category: enterprise-revenue-systems
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: multi-threaded-enterprise-outreach-framework
       path: frameworks/system/enterprise-revenue-systems/multi-threaded-enterprise-outreach-framework.yaml
       description: Designs structured engagement across enterprise buying committees to reduce single-thread risk, accelerate deal velocity, and increase win probability. Integrates persona mapping, influence sequencing, message differentiation, and internal alignment signaling.
       category: enterprise-revenue-systems
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: outbound-prospecting-architecture-framework
       path: frameworks/system/enterprise-revenue-systems/outbound-prospecting-architecture-framework.yaml
       description: Designs structured outbound prospecting campaigns using signal-based targeting, persona-specific value hypotheses, insight-led messaging, and sequenced multi-channel cadences. Built for B2B SaaS and enterprise GTM motions.
       category: enterprise-revenue-systems
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: sales-cadence-architecture-framework
       path: frameworks/system/enterprise-revenue-systems/sales-cadence-architecture-framework.yaml
       description: Designs structured outbound and expansion cadences across email, phone, social, and content touches. Optimizes timing, channel mix, and response branching to maximize meeting creation and opportunity conversion while minimizing fatigue and brand damage.
       category: enterprise-revenue-systems
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: sales-methodology-lens
       path: frameworks/system/enterprise-revenue-systems/sales-methodology-lens.yaml
       description: Applies structured sales methodologies (MEDDICC and Challenger) to evaluate deal qualification rigor, forecast reliability, and enablement effectiveness. Adapted for AI-native and enterprise revenue motions.
       category: enterprise-revenue-systems
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: gartner-brand-marketing-framework
       path: frameworks/system/gartner-frameworks/gartner-brand-marketing-framework.yaml
       description: "A six-dimension framework for evaluating and improving brand marketing effectiveness. It links brand strategy and awareness to engagement, customer experience, and measurable business outcomes in order to strengthen brand health and long-term growth.\n"
       category: gartner-frameworks
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: gartner-customer-journey-framework
       path: frameworks/system/gartner-frameworks/gartner-customer-journey-framework.yaml
       description: "A framework for understanding how B2B buyers progress through complex, non-linear purchase decisions. It identifies the core buying jobs buyers must complete-from problem identification to internal consensus-and helps marketing, sales, and product teams align engagement strategies with buyer needs at each stage.\n"
       category: gartner-frameworks
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: gartner-customer-proof-framework
       path: frameworks/system/gartner-frameworks/gartner-customer-proof-framework.yaml
       description: "A structured methodology for developing customer proof assets (case studies, success stories, and reference narratives) that demonstrate measurable business outcomes.\n"
       category: gartner-frameworks
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: gartner-go-to-market-strategy-framework
       path: frameworks/system/gartner-frameworks/gartner-go-to-market-strategy-framework.yaml
       description: "Aligns growth strategy with revenue execution by designing the go-to-market operating model across target market focus, buyer entry points, sales incentives, investment allocation, and voice-of-customer feedback loops.\n"
       category: gartner-frameworks
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: gartner-marketing-strategic-planning-framework
       path: frameworks/system/gartner-frameworks/gartner-marketing-strategic-planning-framework.yaml
       description: "A structured process for aligning marketing strategy with enterprise business objectives. The framework helps marketing leaders verify the business context, define marketing goals aligned to enterprise strategy, allocate resources, establish performance metrics, and document a strategic marketing plan for execution and stakeholder communication.\n"
       category: gartner-frameworks
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: gartner-positioning-messaging-framework
       path: frameworks/system/gartner-frameworks/gartner-positioning-messaging-framework.yaml
       description: "Defines differentiated product positioning and messaging that motivates buyers to act and enables revenue teams to consistently communicate product value.\n"
       category: gartner-frameworks
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: gartner-product-marketing-framework
       path: frameworks/system/gartner-frameworks/gartner-product-marketing-framework.yaml
       description: "A structured approach for product marketing teams to define market understanding, differentiation, messaging, and revenue enablement that drives buyer engagement and supports sales growth.\n"
       category: gartner-frameworks
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: gartner-product-positioning-framework
       path: frameworks/system/gartner-frameworks/gartner-product-positioning-framework.yaml
       description: "A structured methodology for defining a product's differentiated value relative to alternatives in the market. The framework aligns product, marketing, and sales teams around a clear positioning statement that motivates buyers and enables revenue teams to consistently communicate the product story.\n"
       category: gartner-frameworks
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: attribution-lenses
       path: frameworks/system/governance-performance-capital-allocation/attribution-lenses.yaml
       description: Evaluates marketing attribution models (first-touch, last-touch, multi-touch, incrementality) and recommends a measurement strategy aligned to decision-making needs. Adapted for AI-native, multi-channel environments.
       category: governance-performance-capital-allocation
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: investor-narrative-framework
       path: frameworks/system/governance-performance-capital-allocation/investor-narrative-framework.yaml
       description: Structures a board- and investor-ready narrative linking market opportunity, structural advantage, growth mechanics, and financial trajectory. Designed for venture, growth equity, and public market contexts.
       category: governance-performance-capital-allocation
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: mckinsey-7s-org-alignment
       path: frameworks/system/governance-performance-capital-allocation/mckinsey-7s-org-alignment.yaml
       description: Uses the McKinsey 7S model—Strategy, Structure, Systems, Skills, Staff, Style, and Shared Values—to assess how well an organization is aligned to its growth and GTM objectives.
       category: governance-performance-capital-allocation
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: north-star-metric-driver-tree
       path: frameworks/system/governance-performance-capital-allocation/north-star-metric-driver-tree.yaml
       description: Defines a single unifying North Star Metric (NSM) and decomposes it into a causal driver tree. Aligns marketing, product, and revenue teams around measurable growth mechanics in AI-native environments.
       category: governance-performance-capital-allocation
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: okrs
       path: frameworks/system/governance-performance-capital-allocation/okrs.yaml
       description: Translates strategic priorities into measurable Objectives and Key Results with ownership, cadence, and cross-functional alignment. Adapted for AI-native, fast-scaling organizations.
       category: governance-performance-capital-allocation
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: pricing-strategy-framework
       path: frameworks/system/governance-performance-capital-allocation/pricing-strategy-framework.yaml
       description: Designs pricing architecture aligned to value creation, competitive positioning, margin targets, and expansion mechanics. Built for SaaS, usage-based, hybrid, and AI-native business models.
       category: governance-performance-capital-allocation
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: prioritization-rice-ice-moscow
       path: frameworks/system/governance-performance-capital-allocation/prioritization-rice-ice-moscow.yaml
       description: Applies structured prioritization models (RICE, ICE, MoSCoW) to allocate capital and execution capacity across marketing, product, and revenue initiatives. Enforces measurable impact, confidence weighting, and trade-off transparency.
       category: governance-performance-capital-allocation
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: revenue-operations-operating-model
       path: frameworks/system/governance-performance-capital-allocation/revenue-operations-operating-model.yaml
       description: Designs an integrated revenue operating system aligning Marketing, Sales, Customer Success, Finance, and Product around shared data, metrics, process discipline, and forecasting integrity. Built for SaaS and AI-native revenue models.
       category: governance-performance-capital-allocation
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: scenario-planning-risk-matrix
       path: frameworks/system/governance-performance-capital-allocation/scenario-planning-risk-matrix.yaml
       description: Identifies critical uncertainties, models plausible future scenarios, and defines pre-emptive strategic responses. Designed for board-level resilience planning in volatile AI-native markets.
       category: governance-performance-capital-allocation
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: aarrr-pirate-metrics
       path: frameworks/system/gtm-growth/aarrr-pirate-metrics.yaml
       description: Diagnoses growth performance across Acquisition, Activation, Retention, Revenue, and Referral. Adapted for AI-native, product-led, and hybrid GTM models with experimentation rigor and instrumentation focus.
       category: gtm-growth
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: growth-loops-framework
       path: frameworks/system/gtm-growth/growth-loops-framework.yaml
       description: Designs and optimizes self-reinforcing growth loops that compound over time, replacing linear funnel thinking with system-level acquisition, engagement, and expansion mechanics. Built for SaaS and AI-native platforms.
       category: gtm-growth
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: gtm-motions-framework
       path: frameworks/system/gtm-growth/gtm-motions-framework.yaml
       description: Defines the six primary B2B SaaS GTM motions and the rules for sequencing, combining, and orchestrating hybrid revenue models. Establishes architectural discipline before scaling headcount or channels.
       category: gtm-growth
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: icp-buying-committee
       path: frameworks/system/gtm-growth/icp-buying-committee.yaml
       description: Defines the Ideal Customer Profile (ICP) and maps buying committee roles, decision dynamics, and objections. Aligns marketing, sales, and product around revenue-efficient account selection.
       category: gtm-growth
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: land-and-expand-expansion-architecture-framework
       path: frameworks/system/gtm-growth/land-and-expand-expansion-architecture-framework.yaml
       description: Designs structured land-and-expand strategies to increase revenue density within existing accounts. Integrates initial land strategy, usage expansion triggers, cross-sell pathways, stakeholder penetration, and retention defense mechanisms. Built for B2B SaaS and AI-native recurring revenue models.
       category: gtm-growth
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: marketing-revenue-funnel-model
       path: frameworks/system/gtm-growth/marketing-revenue-funnel-model.yaml
       description: Defines and diagnoses the full marketing-to-revenue funnel, identifying stage leakage, conversion bottlenecks, and SLA misalignment. Adapted for AI-native, hybrid GTM, and enterprise sales models.
       category: gtm-growth
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: plg-hybrid-plg-framework
       path: frameworks/system/gtm-growth/plg-hybrid-plg-framework.yaml
       description: Designs and operationalizes Product-Led Growth (PLG) and Hybrid PLG motions, including PQL/PQA definitions, activation triggers, expansion mechanics, and sales assist orchestration. Built for SaaS and AI-native usage-based businesses.
       category: gtm-growth
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: product-market-fit-diagnostic
       path: frameworks/system/gtm-growth/product-market-fit-diagnostic.yaml
       description: Diagnoses the strength of product–market fit using quantitative retention signals, qualitative pull indicators, and growth efficiency metrics. Determines readiness to scale GTM investment.
       category: gtm-growth
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: startup-gtm-stage-model
       path: frameworks/system/gtm-growth/startup-gtm-stage-model.yaml
       description: Aligns GTM motion, ICP focus, channel selection, hiring pace, and capital deployment to company stage (Seed through Series B). Prevents premature scaling and enforces stage-appropriate revenue architecture.
       category: gtm-growth
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: swot
       path: frameworks/system/gtm-growth/swot.yaml
       description: Structured assessment of strengths, weaknesses, opportunities, and threats with enforced prioritization and strategic synthesis. Modernized for fast-moving, AI-accelerated markets.
       category: gtm-growth
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: win-loss-analysis-b2b-saas
       path: frameworks/system/gtm-growth/win-loss-analysis-b2b-saas.yaml
       description: Provides a structured approach to understand why deals are won, lost, or end in no decision, and to translate patterns into improvements across targeting, messaging, product, and sales execution.
       category: gtm-growth
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: ai-native-data-advantage-framework
       path: frameworks/system/market-category-strategy/ai-native-data-advantage-framework.yaml
       description: Designs and evaluates structural data advantages in AI-native companies, focusing on proprietary data accumulation, model improvement flywheels, distribution reinforcement, and defensibility against commoditized models.
       category: market-category-strategy
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: category-design-framework
       path: frameworks/system/market-category-strategy/category-design-framework.yaml
       description: Defines, frames, and operationalizes a new market category to shape buyer perception, competitive positioning, and long-term value capture. Adapted for AI-native, rapidly evolving technology sectors.
       category: market-category-strategy
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: competitive-strategy-deep-dive
       path: frameworks/system/market-category-strategy/competitive-strategy-deep-dive.yaml
       description: Performs a rigorous competitive analysis to identify structural advantage, relative positioning, economic durability, and likely competitor countermoves. Designed for board-facing strategic decisions in AI-native and rapidly evolving markets.
       category: market-category-strategy
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: crossing-the-chasm-framework
       path: frameworks/system/market-category-strategy/crossing-the-chasm-framework.yaml
       description: Operationalizes Geoffrey Moore’s technology adoption lifecycle model to transition from early adopters to the early majority. Emphasizes beachhead focus, whole product strategy, and category credibility. Adapted for SaaS and AI-native companies.
       category: market-category-strategy
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: launching-to-leading-breakthrough-marketing
       path: frameworks/system/market-category-strategy/launching-to-leading-breakthrough-marketing.yaml
       description: Ken Rutsky's market leadership methodology that guides B2B companies from launch through breakthrough to market leadership by combining Viewpoint context, Unique Value articulation, and experiential delivery to create flashmobs, marshal parades, and ignite movements.
       category: market-category-strategy
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: pestle-macro-environment
       path: frameworks/system/market-category-strategy/pestle-macro-environment.yaml
       description: Structures macro-environment analysis across Political, Economic, Social, Technological, Legal, and Environmental dimensions to understand external forces shaping a company's market context and strategy.
       category: market-category-strategy
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: porter-five-forces
       path: frameworks/system/market-category-strategy/porter-five-forces.yaml
       description: Analyzes industry structure and structural profit potential, modernized for AI-native, data-driven, and platform-centric markets. Produces strategic implications and defensible positioning choices.
       category: market-category-strategy
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: steep-steeple-analysis
       path: frameworks/system/market-category-strategy/steeple.yaml
       description: "Performs structured macro-environmental scanning across Social, Technological, Economic, Environmental, and Political factors (STEEP), with optional Legal and Ethical expansion (STEEPLE). Produces a structured external opportunities and threats assessment for strategic planning.\n"
       category: market-category-strategy
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: stp-segmentation-targeting-positioning
       path: frameworks/system/market-category-strategy/stp-segmentation-targeting-positioning.yaml
       description: Defines market segments, prioritizes target segments, and clarifies positioning choices. Modernized for AI-native categories with data-driven segmentation and dynamic positioning logic.
       category: market-category-strategy
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: tam-sam-som
       path: frameworks/system/market-category-strategy/tam-sam-som.yaml
       description: Board-ready market sizing framework adapted for AI-native and rapidly evolving categories. Produces transparent assumptions, sensitivity analysis, and strategic implications.
       category: market-category-strategy
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: april-dunford-5-step-positioning
       path: frameworks/system/positioning-narrative-systems/april-dunford-5-step-positioning.yaml
       description: Implements April Dunford’s 5-step positioning methodology to deliberately select competitive context, articulate differentiated value, and define optimal category framing. Adapted for AI-native markets and board-level rigor.
       category: positioning-narrative-systems
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: brand-architecture-model
       path: frameworks/system/positioning-narrative-systems/brand-architecture-model.yaml
       description: Defines optimal brand structure (branded house, house of brands, hybrid, endorsed) and aligns portfolio strategy with market positioning, M&A plans, and AI-native category dynamics.
       category: positioning-narrative-systems
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: corporate-narrative-master-story
       path: frameworks/system/positioning-narrative-systems/corporate-narrative-master-story.yaml
       description: Defines the overarching corporate narrative that aligns category framing, positioning, product strategy, investor thesis, and culture into a single coherent story. Designed for executive and board-level clarity.
       category: positioning-narrative-systems
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: jobs-to-be-done
       path: frameworks/system/positioning-narrative-systems/jobs-to-be-done.yaml
       description: Identifies the core functional, emotional, and social jobs customers hire a product to perform. Modernized for AI-native markets with emphasis on automation shifts, switching triggers, and forces of progress.
       category: positioning-narrative-systems
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: messaging-architecture
       path: frameworks/system/positioning-narrative-systems/messaging-architecture.yaml
       description: Structures core messaging pillars, supporting proof, and persona adaptations to ensure consistency across marketing, sales, and product communications. Adapted for AI-native, fast-moving categories.
       category: positioning-narrative-systems
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: positioning-statement
       path: frameworks/system/positioning-narrative-systems/positioning-statement.yaml
       description: Standardized framework for crafting a differentiated, defensible positioning statement with reasons-to-believe and guardrails. Adapted for AI-native and fast-evolving categories.
       category: positioning-narrative-systems
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: value-proposition-canvas
       path: frameworks/system/positioning-narrative-systems/value-proposition-canvas.yaml
       description: Maps customer jobs, pains, and gains to product pain relievers and gain creators. Modernized for AI-native categories with emphasis on automation displacement, proof strength, and differentiation clarity.
       category: positioning-narrative-systems
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: voc-thematic-analysis
       path: frameworks/system/positioning-narrative-systems/voc-thematic-analysis.yaml
       description: Provides a structured approach to analyze Voice of Customer data, identify themes and sentiment, and translate insights into prioritized actions for product, CX, and GTM.
       category: positioning-narrative-systems
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
   approved: []
   quarantine: []
 
@@ -834,110 +1278,164 @@ templates:
       path: templates/system/blog-post.yaml
       description: "Long-form blog post template following your brand voice and messaging pillars. Structured to lead with a point of view, support it with proof points, and close with a clear next step.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: board-deck
       path: templates/system/board-deck.yaml
       description: "A slide-outline for a board or investor marketing update. Structured for sophisticated, time-constrained readers who need strategic context, business performance, and clear asks — not operational detail. Covers narrative, metrics, strategic positioning, and decisions required.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: brand-guidelines-brief
       path: templates/system/brand-guidelines-brief.yaml
       description: "Brand voice, tone, and identity guidelines document for internal teams and agency partners. Covers brand purpose, personality, messaging hierarchy, voice and tone in practice, visual direction, and platform-specific adaptations.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: campaign-brief
       path: templates/system/campaign-brief.yaml
       description: "Structured creative and media campaign brief for internal alignment and agency or creator handoff. Covers campaign objective, target consumer, creative strategy, channel plan, content requirements, and measurement framework.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: case-study
       path: templates/system/case-study.yaml
       description: "A customer success case study documenting a company's challenge, the solution deployed, and the measurable results achieved. Designed for use in sales cycles, website proof, and analyst submissions. Structured for skim-readability — the key facts are accessible in under 60 seconds.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: channel-strategy
       path: templates/system/channel-strategy.yaml
       description: "Multi-channel marketing strategy document covering channel audit, recommendations, allocation, channel-specific tactics, attribution approach, and 90-day roadmap. Used when deciding or redesigning how to reach, acquire, and retain consumers across channels.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: competitive-scorecard
       path: templates/system/competitive-scorecard.yaml
       description: "A structured comparison matrix scoring competitors across defined criteria. Produces a table-based competitive landscape snapshot that supports positioning decisions, sales enablement, and strategic planning.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: competitive-teardown-b2c
       path: templates/system/competitive-teardown-b2c.yaml
       description: "Structured competitive analysis document for B2C consumer brands — covering positioning, messaging, channel strategy, pricing, customer experience, and identified strategic gaps. Produces actionable competitive intelligence for positioning, campaign, and product decisions. Designed for DTC brands, consumer apps, subscription businesses, and CPG companies.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: consumer-persona-profile
       path: templates/system/consumer-persona-profile.yaml
       description: "Structured consumer persona document capturing behavioral profile, purchase psychology, media consumption, messaging guidance, and success metrics for a target consumer archetype. Used for internal alignment, agency briefing, and messaging calibration.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: exec-memo
       path: templates/system/exec-memo.yaml
       description: "A concise, structured memo for communicating strategic findings, recommendations, or decisions to a VP or C-level executive. Designed for async reading — complete picture in under 5 minutes.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: gtm-one-pager
       path: templates/system/gtm-one-pager.yaml
       description: "A concise, single-page go-to-market summary synthesizing the company's market opportunity, target customer, differentiated value, GTM motion, and immediate priorities. Used for investor conversations, partnership discussions, sales onboarding, and internal alignment. Designed to convey the entire GTM thesis in 60 seconds.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: gtm-plan
       path: templates/system/gtm-plan.yaml
       description: "A comprehensive go-to-market plan covering market opportunity, ideal customer profile, positioning, channel strategy, pricing, sales motion, launch milestones, and success metrics. The flagship strategy deliverable — used for new product launches, market expansions, or annual GTM planning.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: icp-profile
       path: templates/system/icp-profile.yaml
       description: "A structured Ideal Customer Profile definition that captures the target company attributes, buying committee roles, pain points, value drivers, and qualification criteria. Designed to align sales, marketing, and product teams on who to target and why.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: influencer-creator-brief
       path: templates/system/influencer-creator-brief.yaml
       description: "Campaign brief for influencer and creator partnerships — covering campaign context, brand guidelines, creative direction, deliverable specifications, posting requirements, FTC disclosure instructions, and success metrics. Designed to give creators the direction they need while preserving creative freedom. Applicable to paid partnerships, gifting programs, and ambassador arrangements.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: launch-plan-outline
       path: templates/system/launch-plan-outline.yaml
       description: "A structured launch plan document covering pre-launch, launch, and post-launch phases for a product, feature, or campaign. Defines goals, audiences, channels, activities, owners, and success metrics across a defined launch window.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: linkedin-post
       path: templates/system/linkedin-post.yaml
       description: "200-400 word LinkedIn post with a specific hook, a bulleted middle, and a conversation-opening close. Calibrated to the brand voice — no \"excited to announce\" openings.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: messaging-framework
       path: templates/system/messaging-framework.yaml
       description: "A hierarchical messaging house that organizes a company's core narrative, messaging pillars, value propositions, and proof points into a single reference document. Designed to ensure consistent messaging across sales, marketing, product marketing, and content teams.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: messaging-positioning-workbook
       path: templates/system/messaging-positioning-workbook.yaml
       description: "A multi-sheet Excel workbook that operationalizes messaging and positioning strategy into working documents. Covers pillar-based messaging, viewpoint story, company copy blocks, positioning statements (classic and Moore formats), and value filtering with competitive scoring. Based on Ken Rutsky's Launching to Leading methodology (KJR Associates, CC BY-NC-SA 4.0).\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: one-pager
       path: templates/system/one-pager.yaml
       description: "Single-page sales asset. Problem → solution → proof → CTA. Dense enough for a deal-stage handoff; light enough for a cold prospect.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: outbound-email
       path: templates/system/outbound-email.yaml
       description: "Short, high-specificity outbound email aimed at a single named persona. Avoids generic openers. Anchors on one pain point and one proof point.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: product-launch-plan-b2c
       path: templates/system/product-launch-plan-b2c.yaml
       description: "Structured go-to-market launch plan for a new B2C product, collection, or feature — covering launch objectives, target consumer, channel strategy, creative approach, timing and phasing, measurement framework, and risk mitigation. Designed for consumer product launches across DTC, retail, subscription, and app contexts.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: quarterly-strategy
       path: templates/system/quarterly-strategy.yaml
       description: "A slide-outline for a quarterly marketing strategy presentation. Covers prior quarter performance, current quarter priorities, key initiatives, resource plan, and the asks or decisions required from leadership. Suitable for QBR presentations and quarterly planning reviews.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: retention-lifecycle-plan
       path: templates/system/retention-lifecycle-plan.yaml
       description: "Structured retention and customer lifecycle marketing plan — covering lifecycle stage mapping, activation, engagement, retention, and win-back programs with messaging strategy, channel mix, trigger logic, and measurement framework. Designed for subscription businesses, DTC repeat-purchase brands, and consumer apps.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: sales-battlecard
       path: templates/system/sales-battlecard.yaml
       description: "A 1–2 page competitive quick-reference designed for sales reps to use during live deals. Covers positioning, differentiation, objection handling, landmine questions, and competitive traps. Designed for fast scanning mid-call — not deep reading.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: sales-playbook
       path: templates/system/sales-playbook.yaml
       description: "A comprehensive sales guide covering the target buyer, qualification criteria, discovery framework, sales process stages, objection handling, competitive positioning, and deal execution tactics. Designed to onboard new reps and standardize how the team sells.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: solution-brief
       path: templates/system/solution-brief.yaml
       description: "A 2-page buyer-facing product positioning document for a specific use case, vertical, or buyer persona. Designed to be handed to a prospect during a sales cycle — explains the problem, the solution, the differentiation, and the proof in a format optimized for executive skim-reading.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: win-loss-report
       path: templates/system/win-loss-report.yaml
       description: "A structured post-deal analysis documenting why a specific deal was won or lost. Captures the decision factors, competitive dynamics, sales execution assessment, and actionable recommendations. Designed for sales leadership and product marketing to improve win rates.\n"
       scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-22"
   custom: []
 
 skills:
@@ -1396,69 +1894,97 @@ writer_profiles_system:
       display_name: "Minimalist"
       tags: [literary, sparse, direct]
       best_for: "Technical writing, product copy, executive statements"
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: style-essayist
       path: writer-profiles/system/style-essayist.yaml
       display_name: "Essayist"
       tags: [political, clear, direct]
       best_for: "Institutional critique, plain-English argument, policy content"
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: style-satirist
       path: writer-profiles/system/style-satirist.yaml
       display_name: "Satirist"
       tags: [satirical, humorous, anecdote]
       best_for: "Thought leadership with humor, social commentary"
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: style-contrarian-provocateur
       path: writer-profiles/system/style-contrarian-provocateur.yaml
       display_name: "Contrarian Provocateur"
       tags: [data-driven, provocative, analytical]
       best_for: "Investor content, LinkedIn POV, strategic memos"
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: style-data-storyteller
       path: writer-profiles/system/style-data-storyteller.yaml
       display_name: "Data Storyteller"
       tags: [data, narrative, analytical]
       best_for: "Research reports, data-driven blog posts, analyst content"
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: style-technical-precise
       path: writer-profiles/system/style-technical-precise.yaml
       display_name: "Technical Precise"
       tags: [technical, precise, documentation]
       best_for: "Technical docs, security advisories, API guides"
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: style-warm-conversational
       path: writer-profiles/system/style-warm-conversational.yaml
       display_name: "Warm Conversational"
       tags: [warm, conversational, educational]
       best_for: "Customer content, onboarding, email nurture"
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: style-executive-direct
       path: writer-profiles/system/style-executive-direct.yaml
       display_name: "Executive Direct"
       tags: [executive, direct, brief]
       best_for: "Board memos, CEO updates, strategic recommendations"
+      version: "1.0.0"
+      updated_at: "2026-04-22"
   use_cases:
     - id: use-case-investor-relations
       path: writer-profiles/system/use-case-investor-relations.yaml
       display_name: "Investor Relations"
       content_contexts: [investor-relations, thought-leadership, press-release]
       best_for: "Investor updates, earnings, fundraising, analyst briefings"
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: use-case-internal-memo
       path: writer-profiles/system/use-case-internal-memo.yaml
       display_name: "Internal Memo"
       content_contexts: [internal-memo]
       best_for: "Team updates, decision memos, project status"
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: use-case-social-media-b2b
       path: writer-profiles/system/use-case-social-media-b2b.yaml
       display_name: "B2B Social Media"
       content_contexts: [social-media, thought-leadership]
       best_for: "LinkedIn posts, X/Twitter threads"
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: use-case-events-promotion
       path: writer-profiles/system/use-case-events-promotion.yaml
       display_name: "Events Promotion"
       content_contexts: [events-promotion, social-media, email-nurture]
       best_for: "Webinar, conference, product launch promotion"
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: use-case-press-release
       path: writer-profiles/system/use-case-press-release.yaml
       display_name: "Press Release"
       content_contexts: [press-release, product-announcement]
       best_for: "Press releases, media advisories"
+      version: "1.0.0"
+      updated_at: "2026-04-22"
     - id: use-case-thought-leadership
       path: writer-profiles/system/use-case-thought-leadership.yaml
       display_name: "Thought Leadership"
       content_contexts: [thought-leadership, blog-post, social-media]
       best_for: "Executive bylines, industry blog posts, speaking abstracts"
+      version: "1.0.0"
+      updated_at: "2026-04-22"
