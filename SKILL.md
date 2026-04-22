@@ -11,7 +11,7 @@ description: >
   sales motion design, category creation, pricing strategy, content creation, or any
   other B2B marketing strategy topic — even if they don't explicitly mention a framework.
   If the user describes a business challenge or strategic decision in a B2B context,
-  use this skill. Do not wait for the user to ask by name.
+  use this skill. Do not wait for the user to ask by name.  
 ---
 
 # B2B GTM Strategist
