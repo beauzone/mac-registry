@@ -39,10 +39,12 @@ jobs:
         run: |
           CURR=$(grep 'SKILL_VERSION:' skills/user/b2b-gtm-strategist/SKILL.md \
             | sed 's/.*SKILL_VERSION: //' \
-            | tr -d ' -->')
+            | sed 's/[[:space:]]*-->[[:space:]]*//' \
+            | xargs)
           DATE=$(grep 'SKILL_UPDATED:' skills/user/b2b-gtm-strategist/SKILL.md \
             | sed 's/.*SKILL_UPDATED: //' \
-            | tr -d ' -->') || DATE=$(date +%Y-%m-%d)
+            | sed 's/[[:space:]]*-->[[:space:]]*//' \
+            | xargs) || DATE=$(date +%Y-%m-%d)
           echo "version=$CURR" >> $GITHUB_OUTPUT
           echo "date=$DATE" >> $GITHUB_OUTPUT
           echo "Current version: $CURR"
