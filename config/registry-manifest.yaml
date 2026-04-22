@@ -21,6 +21,17 @@ manifest:
   last_updated: "2026-04-22"
   versioning: "per-asset"
 
+skill:
+  id: b2b-gtm-strategist
+  path: skills/user/b2b-gtm-strategist/SKILL.md
+  version: "1.0.0"
+  updated_at: "2026-04-22"
+  raw_url: https://raw.githubusercontent.com/beauzone/mac-registry/main/skills/user/b2b-gtm-strategist/SKILL.md
+  changelog:
+    - version: "1.0.0"
+      date: "2026-04-22"
+      notes: "Initial versioned release. Added §17 offline sync and self-update support."
+
 sources:
   brand: []
   messaging: []
