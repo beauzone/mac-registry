@@ -1,37 +1,119 @@
-name: Sync skill version to manifest
+name: Sync and auto-bump skill version
 
 on:
   push:
     paths:
       - 'skills/user/b2b-gtm-strategist/SKILL.md'
+    branches:
+      - main
 
 jobs:
-  sync-version:
+  sync-skill-version:
     runs-on: ubuntu-latest
+
+    # Prevent loop: skip if this is an auto-bump commit from the Action itself
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # Need previous commit to compare versions
 
-      - name: Extract SKILL_VERSION from SKILL.md
-        id: extract
+      - name: Get previous SKILL_VERSION
+        id: prev
         run: |
-          VERSION=$(grep 'SKILL_VERSION:' skills/user/b2b-gtm-strategist/SKILL.md \
-            | sed 's/.*SKILL_VERSION: //' | tr -d ' -->')
-          DATE=$(date +%Y-%m-%d)
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "date=$DATE" >> $GITHUB_OUTPUT
+          PREV=$(git show HEAD~1:skills/user/b2b-gtm-strategist/SKILL.md \
+            | grep 'SKILL_VERSION:' \
+            | sed 's/.*SKILL_VERSION: //' \
+            | tr -d ' -->') || PREV="0.0.0"
+          echo "version=$PREV" >> $GITHUB_OUTPUT
+          echo "Previous version: $PREV"
 
-      - name: Update skill.version in manifest
+      - name: Get current SKILL_VERSION
+        id: current
+        run: |
+          CURR=$(grep 'SKILL_VERSION:' skills/user/b2b-gtm-strategist/SKILL.md \
+            | sed 's/.*SKILL_VERSION: //' \
+            | tr -d ' -->')
+          DATE=$(grep 'SKILL_UPDATED:' skills/user/b2b-gtm-strategist/SKILL.md \
+            | sed 's/.*SKILL_UPDATED: //' \
+            | tr -d ' -->') || DATE=$(date +%Y-%m-%d)
+          echo "version=$CURR" >> $GITHUB_OUTPUT
+          echo "date=$DATE" >> $GITHUB_OUTPUT
+          echo "Current version: $CURR"
+
+      - name: Auto-bump patch if version unchanged
+        id: resolved
+        run: |
+          python3 - <<EOF
+          import re, subprocess
+          from pathlib import Path
+
+          prev = "${{ steps.prev.outputs.version }}"
+          curr = "${{ steps.current.outputs.version }}"
+          today = "$(date +%Y-%m-%d)"
+
+          if prev == curr:
+              # Version was not bumped — auto-increment patch
+              parts = curr.split('.')
+              parts[2] = str(int(parts[2]) + 1)
+              new_version = '.'.join(parts)
+
+              skill_path = Path('skills/user/b2b-gtm-strategist/SKILL.md')
+              content = skill_path.read_text()
+
+              content = content.replace(
+                  f'SKILL_VERSION: {curr}',
+                  f'SKILL_VERSION: {new_version}'
+              )
+              content = content.replace(
+                  f'SKILL_UPDATED: ${{ steps.current.outputs.date }}',
+                  f'SKILL_UPDATED: {today}'
+              )
+              # Handle case where SKILL_UPDATED wasn't changed either
+              import re as _re
+              content = _re.sub(
+                  r'SKILL_UPDATED: \d{4}-\d{2}-\d{2}',
+                  f'SKILL_UPDATED: {today}',
+                  content
+              )
+
+              skill_path.write_text(content)
+              print(f"AUTO-BUMP: {curr} → {new_version}")
+
+              with open("$GITHUB_OUTPUT", "a") as f:
+                  f.write(f"version={new_version}\n")
+                  f.write(f"date={today}\n")
+                  f.write("bumped=true\n")
+          else:
+              print(f"Version already bumped: {prev} → {curr}. No auto-bump needed.")
+              with open("$GITHUB_OUTPUT", "a") as f:
+                  f.write(f"version={curr}\n")
+                  f.write(f"date=${{ steps.current.outputs.date }}\n")
+                  f.write("bumped=false\n")
+          EOF
+
+      - name: Commit auto-bump if applied
+        if: steps.resolved.outputs.bumped == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add skills/user/b2b-gtm-strategist/SKILL.md
+          git commit -m "chore: auto-bump SKILL_VERSION to ${{ steps.resolved.outputs.version }} [skip ci]"
+          git push
+
+      - name: Update manifest skill version
         run: |
           python3 scripts/update-skill-version.py \
-            --version "${{ steps.extract.outputs.version }}" \
-            --date "${{ steps.extract.outputs.date }}"
+            --version "${{ steps.resolved.outputs.version }}" \
+            --date "${{ steps.resolved.outputs.date }}"
 
-      - name: Commit updated manifest
+      - name: Commit manifest update
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add config/registry-manifest.yaml
           git diff --staged --quiet || git commit -m \
-            "chore: sync skill version to ${{ steps.extract.outputs.version }}"
+            "chore: sync skill version to ${{ steps.resolved.outputs.version }} [skip ci]"
           git push
