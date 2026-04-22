@@ -15,7 +15,7 @@ description: >
 ---
 
 <!--
-SKILL_VERSION: 1.0.0
+SKILL_VERSION: 1.1.0
 SKILL_UPDATED: 2026-04-22
 -->
 
@@ -101,8 +101,14 @@ Check for existing brand packs at:
 > Reply A or B."
 
 ### Step 4 — Remote Asset Sync
-After Steps 1–4, check whether the local manifest cache is current (see §1). Announce:
-> "Asset catalog ready — [N] frameworks, [N] personas, [N] templates available."
+After Steps 1–3, check whether the local manifest cache is current (see §1).
+
+Count assets from the five sanctioned families only (see §1 for the definitive
+list). Do not count or report skills, workflows, prompts, mcp_definitions,
+schemas, or any other manifest family. Announce:
+
+> "Asset catalog ready — [N] frameworks, [N] personas, [N] templates,
+> [N] writer profiles, [N] rubrics available."
 
 ---
 
@@ -126,10 +132,17 @@ CACHE_TTL       : 24 hours
 2. When an asset is needed: check `LOCAL_CACHE/{family}/{id}.yaml` first.
    - If not cached: construct URL as `REMOTE_BASE_URL/{path}` using the `path` field
      from the manifest entry, fetch, and save to cache.
-3. Asset families in the manifest:
-   - Frameworks → entries under `frameworks.system`
-   - Personas (SMEs) → entries under `personas.*` blocks
-   - Templates → entries under `templates.system`
+3. Sanctioned asset families for this skill — load, cache, and reference
+   ONLY these five families. Ignore all other manifest families entirely:
+   - `frameworks.system` — analytical frameworks
+   - `personas.*` — SME buyer personas by domain family
+   - `templates.system` — document templates
+   - `writer_profiles_system` — system-level archetype and use-case profiles
+   - `rubrics` — structured scoring rubrics for output evaluation
+
+**Out of scope — do not load, report, or reference:**
+`skills`, `workflows`, `prompts`, `mcp_definitions`, `schemas`, `sources`
+These belong to the MaC platform and are not part of this skill's operation.
 
 ---
 
@@ -586,12 +599,16 @@ When the user issues `sync`:
 
 2. Fetch `REMOTE_MANIFEST` and save to `LOCAL_CACHE/manifest.yaml`
 
-3. For each asset entry in the following families:
+3. For each asset entry in the following sanctioned families only:
    - `frameworks.system[]`
    - `personas.{family}.files[]` (all persona families)
    - `templates.system[]`
    - `writer_profiles_system.archetypes[]`
    - `writer_profiles_system.use_cases[]`
+   - `rubrics[]`
+
+   Do NOT sync `skills`, `workflows`, `prompts`, `mcp_definitions`,
+   `schemas`, or any other manifest family.
 
    For each entry:
    - Construct the full URL: `REMOTE_BASE_URL/{asset.path}`
@@ -627,6 +644,8 @@ When the user issues `refresh`:
    to the user as:
    > "The following assets are in your local cache but no longer in the
    > registry: [list]. You can delete them manually from LOCAL_CACHE."
+   Only check for removed assets within the five sanctioned families.
+   Do not flag removals in out-of-scope families.
 
 5. On completion, announce:
    > "Refresh complete — [N] assets updated, [N] new assets added,
@@ -675,6 +694,12 @@ assets:
   - id: style-minimalist
     path: writer-profiles/system/style-minimalist.yaml
     family: writer_profiles_system
+    version: "1.0.0"
+    updated_at: "2026-04-22"
+    cached_at: "2026-04-22T10:00:00Z"
+  - id: writer-voice-fidelity
+    path: rubrics/writer-voice-fidelity.yaml
+    family: rubrics
     version: "1.0.0"
     updated_at: "2026-04-22"
     cached_at: "2026-04-22T10:00:00Z"
