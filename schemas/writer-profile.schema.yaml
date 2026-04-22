@@ -1,0 +1,51 @@
+# Writer Profile Schema -- Marketing as Code
+# Version: 1.0.0
+# Distributed via mac-registry. Authoritative copy in beauzone/marketing-as-code.
+
+metadata:
+  id: writer-profile-schema
+  version: "1.0.0"
+  display_name: "Writer Profile Schema"
+  schema_version: "1.0"
+  description: >
+    Schema for writer profile source assets. Captures voice, syntax, diction,
+    and anti-patterns for individuals, archetypes, or content use cases.
+
+required_fields:
+  metadata: [id, version, display_name, schema_version, profile_type, scope]
+  identity: [profile_purpose]
+  voice: [persona, register, stance]
+  syntax: [sentence_length, punctuation_habits]
+  anti_patterns: [prohibited_words, stylistic_aversions]
+
+optional_fields:
+  metadata: [description, tags, category]
+  identity: [full_name, title, organization, authorship_model]
+  archetype_config: [inspiration_source, public_figure_ref]
+  use_case_config: [content_contexts, audience_context]
+  voice: [emotional_range, humor]
+  syntax: [paragraph_structure, rhetorical_devices, structural_patterns]
+  diction: [complexity, jargon_tolerance, formality_markers, signature_phrases, preferred_vocabulary, metaphor_sources]
+  anti_patterns: [prohibited_constructions]
+  context_modulations: []
+  sample_provenance: [samples_analyzed, total_samples, total_word_count, content_type_coverage, extraction_method]
+  calibration_history: [entries]
+  _source_meta: [source, last_verified, confidence, review_status, notes]
+
+field_definitions:
+  metadata.profile_type:
+    enum: [individual, archetype, use_case]
+    notes: "individual = real person (always private). archetype = style tradition. use_case = content context."
+  metadata.scope:
+    enum: [system, company, user]
+    notes: "system = mac-registry (read-only). company = private repo. user = local brand pack."
+  use_case_config.content_contexts:
+    enum: [social-media, internal-memo, investor-relations, events-promotion, press-release,
+           thought-leadership, product-announcement, blog-post, email-nurture, sales-collateral, customer-success]
+
+validation_rules:
+  - "profile_type = individual requires scope = company or user (never system)"
+  - "archetype_config only valid when profile_type = archetype"
+  - "use_case_config only valid when profile_type = use_case"
+  - "public_figure_ref.deceased must be true for named historical figures in system archetypes"
+  - "system scope profiles are read-only -- require PR to mac-registry to modify"

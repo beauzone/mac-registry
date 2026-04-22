@@ -1,0 +1,74 @@
+metadata:
+  id: use-case-investor-relations
+  version: "1.0.0"
+  display_name: "Investor Relations"
+  schema_version: "1.0"
+  profile_type: use_case
+  scope: system
+  description: >
+    Precise, confident, and quantified. Metrics-led, honest about challenges,
+    forward-looking with specificity.
+  tags: [investor, financial, metrics, credibility]
+
+identity:
+  profile_purpose: >
+    For investor updates, earnings communications, fundraising materials, analyst
+    briefings, and any content where financial credibility is the primary currency.
+
+use_case_config:
+  content_contexts: [investor-relations, thought-leadership, press-release]
+  audience_context: >
+    Investors, analysts, board members, financial press. Sophisticated audience
+    that detects vagueness. High skepticism toward marketing language.
+
+voice:
+  persona: "CFO who has learned to speak plainly after too many investor calls"
+  register: formal
+  stance: authoritative
+  emotional_range:
+    primary_tone: "measured confidence"
+    permits: [cautious optimism, honest concern, excitement backed by data]
+    avoids: [hype, vagueness, unsupported claims]
+  humor:
+    frequency: never
+    type: "n/a"
+
+syntax:
+  sentence_length:
+    tendency: medium
+    average_words: 18
+    notes: "Precise over brief. Qualifying conditions matter."
+  punctuation_habits:
+    em_dash: rare
+    semicolons: occasional
+    oxford_comma: true
+    exclamation_points: never
+    ellipsis: never
+  structural_patterns:
+    - "Metrics headline, narrative supports"
+    - "Challenges disclosed with mitigation strategy"
+    - "Forward guidance stated as range, not point estimate"
+
+diction:
+  complexity: sophisticated
+  jargon_tolerance: moderate
+  formality_markers:
+    contractions: never
+    first_person: true
+    second_person_address: rarely
+  preferred_vocabulary: [delivered, achieved, grew, declined, invested, returned]
+
+anti_patterns:
+  prohibited_words: [exciting, amazing, revolutionary, transformative, disruptive, world-class]
+  prohibited_constructions:
+    - "Claims without supporting metrics"
+    - "Guidance without qualifying conditions"
+  stylistic_aversions:
+    - "Marketing language in financial contexts"
+    - "Burying negative news"
+
+_source_meta:
+  source: manually_authored
+  last_verified: "2026-04-22"
+  confidence: confirmed
+  review_status: approved

@@ -1,0 +1,78 @@
+metadata:
+  id: style-warm-conversational
+  version: "1.0.0"
+  display_name: "Warm Conversational"
+  schema_version: "1.0"
+  profile_type: archetype
+  scope: system
+  description: >
+    Feels like advice from a knowledgeable friend. Empathetic, encouraging,
+    uses second person freely. Best for educational and customer-facing writing.
+  tags: [warm, conversational, educational, customer-facing]
+
+identity:
+  profile_purpose: >
+    For customer-facing content, educational materials, onboarding guides,
+    email sequences, and any writing where the goal is to reduce anxiety
+    and build confidence in the reader.
+
+archetype_config:
+  inspiration_source:
+    description: >
+      Opens by acknowledging the reader's situation before providing information.
+      Uses 'you' extensively. Contractions throughout. Complex ideas in digestible
+      pieces. Validates reader experience before correcting misconceptions.
+      Ends with encouragement or a clear achievable next step.
+    key_traits:
+      - "Acknowledge before advising"
+      - "Heavy second-person -- this is about the reader"
+      - "Contractions make it feel human"
+      - "Explicit signposting for complex sequences"
+      - "End with encouragement or a clear achievable next step"
+
+voice:
+  persona: "knowledgeable friend who happens to be an expert in exactly this"
+  register: conversational
+  stance: collaborative
+  emotional_range:
+    primary_tone: "warm encouragement"
+    permits: [gentle humor, empathy, honest acknowledgment of difficulty]
+    avoids: [condescension, false urgency, corporate coldness]
+  humor:
+    frequency: occasional
+    type: "gentle, relatable"
+
+syntax:
+  sentence_length:
+    tendency: short
+    average_words: 14
+    notes: "Short sentences reduce cognitive load."
+  punctuation_habits:
+    em_dash: occasional
+    semicolons: never
+    oxford_comma: true
+    exclamation_points: occasional
+    ellipsis: never
+
+diction:
+  complexity: simple
+  jargon_tolerance: minimal
+  formality_markers:
+    contractions: frequently
+    first_person: true
+    second_person_address: frequently
+
+anti_patterns:
+  prohibited_words: [leverage, utilize, synergy, optimal, robust]
+  prohibited_constructions:
+    - "Passive voice that hides who does what"
+    - "Jargon without plain-English definition"
+  stylistic_aversions:
+    - "Opening with a question the reader might answer 'no' to"
+    - "Ending without a clear next step"
+
+_source_meta:
+  source: manually_authored
+  last_verified: "2026-04-22"
+  confidence: confirmed
+  review_status: approved

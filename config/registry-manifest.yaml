@@ -1,0 +1,143 @@
+# mac-registry — Registry Manifest
+# Authoritative asset catalog consumed by skills at runtime.
+# Skills fetch this file at session start to discover available assets.
+#
+# Version: 1.0.0
+# Updated: 2026-04-22
+# Source: beauzone/marketing-as-code (synced via sync-to-registry workflow)
+
+version: "1.0.0"
+updated: "2026-04-22"
+
+# ─────────────────────────────────────────────
+# WRITER PROFILES
+# ─────────────────────────────────────────────
+
+writer_profiles:
+  system:
+    archetypes:
+      - id: style-minimalist
+        display_name: "Minimalist"
+        path: writer-profiles/system/style-minimalist.yaml
+        tags: [literary, sparse, direct]
+        best_for: "Technical writing, product copy, executive statements"
+
+      - id: style-essayist
+        display_name: "Essayist"
+        path: writer-profiles/system/style-essayist.yaml
+        tags: [political, clear, direct]
+        best_for: "Political argument, institutional critique, plain-English explanation"
+
+      - id: style-satirist
+        display_name: "Satirist"
+        path: writer-profiles/system/style-satirist.yaml
+        tags: [satirical, humorous, anecdote]
+        best_for: "Thought leadership with humor, social commentary"
+
+      - id: style-contrarian-provocateur
+        display_name: "Contrarian Provocateur"
+        path: writer-profiles/system/style-contrarian-provocateur.yaml
+        tags: [data-driven, provocative, analytical]
+        best_for: "Investor content, LinkedIn POV, strategic memos"
+
+      - id: style-data-storyteller
+        display_name: "Data Storyteller"
+        path: writer-profiles/system/style-data-storyteller.yaml
+        tags: [data, narrative, analytical]
+        best_for: "Research reports, data-driven blog posts, analyst content"
+
+      - id: style-technical-precise
+        display_name: "Technical Precise"
+        path: writer-profiles/system/style-technical-precise.yaml
+        tags: [technical, precise, documentation]
+        best_for: "Technical docs, security advisories, API guides"
+
+      - id: style-warm-conversational
+        display_name: "Warm Conversational"
+        path: writer-profiles/system/style-warm-conversational.yaml
+        tags: [warm, conversational, educational]
+        best_for: "Customer content, onboarding, email nurture"
+
+      - id: style-executive-direct
+        display_name: "Executive Direct"
+        path: writer-profiles/system/style-executive-direct.yaml
+        tags: [executive, direct, brief]
+        best_for: "Board memos, CEO updates, strategic recommendations"
+
+    use_cases:
+      - id: use-case-investor-relations
+        display_name: "Investor Relations"
+        path: writer-profiles/system/use-case-investor-relations.yaml
+        content_contexts: [investor-relations, thought-leadership, press-release]
+        best_for: "Investor updates, earnings, fundraising, analyst briefings"
+
+      - id: use-case-internal-memo
+        display_name: "Internal Memo"
+        path: writer-profiles/system/use-case-internal-memo.yaml
+        content_contexts: [internal-memo]
+        best_for: "Team updates, decision memos, project status"
+
+      - id: use-case-social-media-b2b
+        display_name: "B2B Social Media"
+        path: writer-profiles/system/use-case-social-media-b2b.yaml
+        content_contexts: [social-media, thought-leadership]
+        best_for: "LinkedIn posts, X/Twitter threads"
+
+      - id: use-case-events-promotion
+        display_name: "Events Promotion"
+        path: writer-profiles/system/use-case-events-promotion.yaml
+        content_contexts: [events-promotion, social-media, email-nurture]
+        best_for: "Webinar, conference, product launch promotion"
+
+      - id: use-case-press-release
+        display_name: "Press Release"
+        path: writer-profiles/system/use-case-press-release.yaml
+        content_contexts: [press-release, product-announcement]
+        best_for: "Press releases, media advisories"
+
+      - id: use-case-thought-leadership
+        display_name: "Thought Leadership"
+        path: writer-profiles/system/use-case-thought-leadership.yaml
+        content_contexts: [thought-leadership, blog-post, social-media]
+        best_for: "Executive bylines, industry blog posts, speaking abstracts"
+
+# ─────────────────────────────────────────────
+# SCHEMAS
+# ─────────────────────────────────────────────
+
+schemas:
+  - id: writer-profile-schema
+    path: schemas/writer-profile.schema.yaml
+  - id: persona-schema
+    path: schemas/persona.schema.yaml
+  - id: framework-schema
+    path: schemas/framework.schema.yaml
+  - id: product-schema
+    path: schemas/product.schema.yaml
+
+# ─────────────────────────────────────────────
+# FRAMEWORKS (populated by sync)
+# ─────────────────────────────────────────────
+
+frameworks:
+  system: []  # populated by sync-to-registry workflow
+
+# ─────────────────────────────────────────────
+# PERSONAS (populated by sync)
+# ─────────────────────────────────────────────
+
+personas:
+  b2b_tech: []     # populated by sync
+  cybersecurity: [] # populated by sync
+  anti_fraud: []    # populated by sync
+  governance: []    # populated by sync
+  marketing: []     # populated by sync
+  regulated: []     # populated by sync
+  agency: []        # populated by sync
+
+# ─────────────────────────────────────────────
+# TEMPLATES (populated by sync)
+# ─────────────────────────────────────────────
+
+templates:
+  system: []  # populated by sync-to-registry workflow

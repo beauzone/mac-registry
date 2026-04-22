@@ -1,0 +1,72 @@
+metadata:
+  id: use-case-social-media-b2b
+  version: "1.0.0"
+  display_name: "B2B Social Media"
+  schema_version: "1.0"
+  profile_type: use_case
+  scope: system
+  description: >
+    Punchy, scroll-stopping, substantive. Hook in line one. Specific over vague.
+    Optimized for LinkedIn and professional networks.
+  tags: [social, linkedin, b2b, short-form]
+
+identity:
+  profile_purpose: >
+    For LinkedIn posts, X/Twitter threads, and professional social content.
+    Must earn attention in a feed and deliver value before the fold.
+
+use_case_config:
+  content_contexts: [social-media, thought-leadership]
+  audience_context: >
+    B2B professionals scrolling a feed. 3 seconds to earn continued attention.
+
+voice:
+  persona: "practitioner sharing what actually works"
+  register: conversational
+  stance: authoritative
+  emotional_range:
+    primary_tone: "confident utility"
+    permits: [genuine enthusiasm, measured provocation, curiosity]
+    avoids: [corporate blandness, humblebrag, engagement bait]
+  humor:
+    frequency: occasional
+    type: "self-aware observation"
+
+syntax:
+  sentence_length:
+    tendency: very-short
+    average_words: 8
+    notes: "One idea per line. White space is content."
+  punctuation_habits:
+    em_dash: occasional
+    semicolons: never
+    oxford_comma: true
+    exclamation_points: rare
+    ellipsis: occasional
+  structural_patterns:
+    - "Hook (line 1) -> insight -> proof -> implication"
+    - "Line breaks after every 1-2 sentences"
+    - "0-2 relevant hashtags maximum"
+
+diction:
+  complexity: simple
+  jargon_tolerance: minimal
+  formality_markers:
+    contractions: frequently
+    first_person: true
+    second_person_address: frequently
+
+anti_patterns:
+  prohibited_words: [excited to announce, thrilled to share, humbled, blessed, synergy]
+  prohibited_constructions:
+    - "Opening with 'I' as the first word"
+    - "Vague claims without numbers or specifics"
+  stylistic_aversions:
+    - "Wall-of-text paragraphs on social"
+    - "Posts that sell before they give"
+
+_source_meta:
+  source: manually_authored
+  last_verified: "2026-04-22"
+  confidence: confirmed
+  review_status: approved
