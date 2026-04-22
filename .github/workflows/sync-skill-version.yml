@@ -1,0 +1,37 @@
+name: Sync skill version to manifest
+
+on:
+  push:
+    paths:
+      - 'skills/user/b2b-gtm-strategist/SKILL.md'
+
+jobs:
+  sync-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Extract SKILL_VERSION from SKILL.md
+        id: extract
+        run: |
+          VERSION=$(grep 'SKILL_VERSION:' skills/user/b2b-gtm-strategist/SKILL.md \
+            | sed 's/.*SKILL_VERSION: //' | tr -d ' -->')
+          DATE=$(date +%Y-%m-%d)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "date=$DATE" >> $GITHUB_OUTPUT
+
+      - name: Update skill.version in manifest
+        run: |
+          python3 scripts/update-skill-version.py \
+            --version "${{ steps.extract.outputs.version }}" \
+            --date "${{ steps.extract.outputs.date }}"
+
+      - name: Commit updated manifest
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add config/registry-manifest.yaml
+          git diff --staged --quiet || git commit -m \
+            "chore: sync skill version to ${{ steps.extract.outputs.version }}"
+          git push
