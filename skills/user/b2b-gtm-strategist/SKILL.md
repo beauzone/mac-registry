@@ -119,8 +119,8 @@ repository. The remote manifest is the authoritative catalog. Do not assume file
 local `smes/`, `frameworks/`, or `templates/` directories are complete or current.
 
 ```
-REMOTE_BASE_URL : https://raw.githubusercontent.com/beauzone/marketing-as-code/main
-REMOTE_MANIFEST : https://raw.githubusercontent.com/beauzone/marketing-as-code/main/config/registry-manifest.yaml
+REMOTE_BASE_URL : https://raw.githubusercontent.com/beauzone/mac-registry/main
+REMOTE_MANIFEST : https://raw.githubusercontent.com/beauzone/mac-registry/main/config/registry-manifest.yaml
 SKILL_RAW_URL   : https://raw.githubusercontent.com/beauzone/mac-registry/main/skills/user/b2b-gtm-strategist/SKILL.md
 LOCAL_CACHE     : ~/.claude/skills/b2b-gtm-strategist/.cache/
 CACHE_TTL       : 24 hours
