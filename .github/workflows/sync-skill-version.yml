@@ -7,6 +7,10 @@ on:
     branches:
       - main
 
+# Fix: grant write permission so the bot can commit back to the repo
+permissions:
+  contents: write
+
 jobs:
   sync-skill-version:
     runs-on: ubuntu-latest
@@ -16,7 +20,7 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4  # Fix: use latest v4 (Node.js 24 compatible)
         with:
           fetch-depth: 2  # Need previous commit to compare versions
 
@@ -55,7 +59,6 @@ jobs:
           today = "$(date +%Y-%m-%d)"
 
           if prev == curr:
-              # Version was not bumped — auto-increment patch
               parts = curr.split('.')
               parts[2] = str(int(parts[2]) + 1)
               new_version = '.'.join(parts)
@@ -67,11 +70,7 @@ jobs:
                   f'SKILL_VERSION: {curr}',
                   f'SKILL_VERSION: {new_version}'
               )
-              content = content.replace(
-                  f'SKILL_UPDATED: ${{ steps.current.outputs.date }}',
-                  f'SKILL_UPDATED: {today}'
-              )
-              # Handle case where SKILL_UPDATED wasn't changed either
+
               import re as _re
               content = _re.sub(
                   r'SKILL_UPDATED: \d{4}-\d{2}-\d{2}',
