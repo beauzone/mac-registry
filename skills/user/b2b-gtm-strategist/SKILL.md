@@ -15,7 +15,7 @@ description: >
 ---
 
 <!--
-SKILL_VERSION: 2.1.0
+SKILL_VERSION: 2.1.1
 SKILL_UPDATED: 2026-04-22
 -->
 
