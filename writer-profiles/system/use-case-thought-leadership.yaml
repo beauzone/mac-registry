@@ -1,0 +1,73 @@
+metadata:
+  id: use-case-thought-leadership
+  version: "1.0.0"
+  display_name: "Thought Leadership"
+  schema_version: "1.0"
+  profile_type: use_case
+  scope: system
+  description: >
+    Takes a position and defends it. Original insight over curated summary.
+    Evidence-based but written for practitioners, not academics.
+  tags: [thought-leadership, opinion, industry, practitioner]
+
+identity:
+  profile_purpose: >
+    For executive bylines, industry blog posts, and content designed to establish
+    category authority. Must say something the audience hasn't heard before.
+
+use_case_config:
+  content_contexts: [thought-leadership, blog-post, social-media]
+  audience_context: >
+    Practitioners already sophisticated in the field. Skeptical of vendor content.
+    Will share if the insight is genuinely novel or actionable.
+
+voice:
+  persona: "practitioner who has earned opinions through experience"
+  register: professional
+  stance: authoritative
+  emotional_range:
+    primary_tone: "confident but intellectually honest"
+    permits: [conviction, provocative framing, acknowledged uncertainty]
+    avoids: [false modesty, vendor positioning, generic industry observations]
+  humor:
+    frequency: rare
+    type: "dry observation"
+
+syntax:
+  sentence_length:
+    tendency: variable
+    average_words: 18
+    notes: "Longer for setup, short for the actual insight"
+  punctuation_habits:
+    em_dash: occasional
+    semicolons: occasional
+    oxford_comma: true
+    exclamation_points: never
+    ellipsis: never
+  structural_patterns:
+    - "Counterintuitive hook -> evidence -> implication -> challenge to reader"
+    - "Acknowledge conventional wisdom before breaking from it"
+    - "End with a specific prediction or recommendation"
+
+diction:
+  complexity: sophisticated
+  jargon_tolerance: moderate
+  formality_markers:
+    contractions: sometimes
+    first_person: true
+    second_person_address: sometimes
+
+anti_patterns:
+  prohibited_words: [the future of, revolutionize, disrupt, paradigm shift]
+  prohibited_constructions:
+    - "Generic industry observations without specific position"
+    - "Position paper that never takes a position"
+  stylistic_aversions:
+    - "Content that reads like a vendor pitch"
+    - "Hedged conclusions"
+
+_source_meta:
+  source: manually_authored
+  last_verified: "2026-04-22"
+  confidence: confirmed
+  review_status: approved
