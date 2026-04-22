@@ -1379,3 +1379,86 @@ writer_profiles:
   count: 0
   description: "Individual writer style profiles. Optional refinement layer on top of company brand voice spec. Each profile captures voice, syntax, diction, personal brand, and narrative identity for a specific person — enabling AI to produce authentically attributed content."
   files: []
+
+writer_profiles_system:
+  scope: system
+  category: writer-profiles-system
+  path: writer-profiles/system/
+  count: 14
+  description: >
+    System-level writer profiles distributed via mac-registry. Three types:
+    archetype (style inspired by a writing tradition), use_case (purpose-built
+    for a specific content context). Individual profiles are always private and
+    never appear here. Skills fetch these at session start via the manifest.
+  archetypes:
+    - id: style-minimalist
+      path: writer-profiles/system/style-minimalist.yaml
+      display_name: "Minimalist"
+      tags: [literary, sparse, direct]
+      best_for: "Technical writing, product copy, executive statements"
+    - id: style-essayist
+      path: writer-profiles/system/style-essayist.yaml
+      display_name: "Essayist"
+      tags: [political, clear, direct]
+      best_for: "Institutional critique, plain-English argument, policy content"
+    - id: style-satirist
+      path: writer-profiles/system/style-satirist.yaml
+      display_name: "Satirist"
+      tags: [satirical, humorous, anecdote]
+      best_for: "Thought leadership with humor, social commentary"
+    - id: style-contrarian-provocateur
+      path: writer-profiles/system/style-contrarian-provocateur.yaml
+      display_name: "Contrarian Provocateur"
+      tags: [data-driven, provocative, analytical]
+      best_for: "Investor content, LinkedIn POV, strategic memos"
+    - id: style-data-storyteller
+      path: writer-profiles/system/style-data-storyteller.yaml
+      display_name: "Data Storyteller"
+      tags: [data, narrative, analytical]
+      best_for: "Research reports, data-driven blog posts, analyst content"
+    - id: style-technical-precise
+      path: writer-profiles/system/style-technical-precise.yaml
+      display_name: "Technical Precise"
+      tags: [technical, precise, documentation]
+      best_for: "Technical docs, security advisories, API guides"
+    - id: style-warm-conversational
+      path: writer-profiles/system/style-warm-conversational.yaml
+      display_name: "Warm Conversational"
+      tags: [warm, conversational, educational]
+      best_for: "Customer content, onboarding, email nurture"
+    - id: style-executive-direct
+      path: writer-profiles/system/style-executive-direct.yaml
+      display_name: "Executive Direct"
+      tags: [executive, direct, brief]
+      best_for: "Board memos, CEO updates, strategic recommendations"
+  use_cases:
+    - id: use-case-investor-relations
+      path: writer-profiles/system/use-case-investor-relations.yaml
+      display_name: "Investor Relations"
+      content_contexts: [investor-relations, thought-leadership, press-release]
+      best_for: "Investor updates, earnings, fundraising, analyst briefings"
+    - id: use-case-internal-memo
+      path: writer-profiles/system/use-case-internal-memo.yaml
+      display_name: "Internal Memo"
+      content_contexts: [internal-memo]
+      best_for: "Team updates, decision memos, project status"
+    - id: use-case-social-media-b2b
+      path: writer-profiles/system/use-case-social-media-b2b.yaml
+      display_name: "B2B Social Media"
+      content_contexts: [social-media, thought-leadership]
+      best_for: "LinkedIn posts, X/Twitter threads"
+    - id: use-case-events-promotion
+      path: writer-profiles/system/use-case-events-promotion.yaml
+      display_name: "Events Promotion"
+      content_contexts: [events-promotion, social-media, email-nurture]
+      best_for: "Webinar, conference, product launch promotion"
+    - id: use-case-press-release
+      path: writer-profiles/system/use-case-press-release.yaml
+      display_name: "Press Release"
+      content_contexts: [press-release, product-announcement]
+      best_for: "Press releases, media advisories"
+    - id: use-case-thought-leadership
+      path: writer-profiles/system/use-case-thought-leadership.yaml
+      display_name: "Thought Leadership"
+      content_contexts: [thought-leadership, blog-post, social-media]
+      best_for: "Executive bylines, industry blog posts, speaking abstracts"
