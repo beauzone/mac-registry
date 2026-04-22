@@ -24,7 +24,7 @@ manifest:
 skill:
   id: b2b-gtm-strategist
   path: skills/user/b2b-gtm-strategist/SKILL.md
-  version: "2.1.1"
+  version: "2.1.2"
   updated_at: "2026-04-22"
   raw_url: https://raw.githubusercontent.com/beauzone/mac-registry/main/skills/user/b2b-gtm-strategist/SKILL.md
   changelog:
