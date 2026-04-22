@@ -1,0 +1,158 @@
+metadata:
+  id: retention-lifecycle-plan
+  version: "1.0.0"
+  display_name: "Retention & Lifecycle Plan"
+  category: planning
+  description: >
+    Structured retention and customer lifecycle marketing plan — covering lifecycle stage
+    mapping, activation, engagement, retention, and win-back programs with messaging strategy,
+    channel mix, trigger logic, and measurement framework. Designed for subscription businesses,
+    DTC repeat-purchase brands, and consumer apps.
+  output_format: markdown
+  typical_length: "1,200–1,600 words"
+  best_for:
+    agents:
+      - strategic-planning
+      - campaign-manager
+    stages:
+      - series-a
+      - series-b
+      - series-c
+      - scale
+    modes:
+      - fractional
+      - fte
+  tags:
+    - retention
+    - lifecycle-marketing
+    - email
+    - sms
+    - churn
+    - onboarding
+    - win-back
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: business_model
+      description: Business model type — subscription, DTC repeat purchase, freemium app, membership, etc.
+      source: user_input
+    - field: current_retention_metrics
+      description: Current retention numbers — churn rate, repeat purchase rate, D30/D90 retention, LTV
+      source: user_input
+    - field: available_channels
+      description: CRM and communication channels available — email, SMS, push notification, in-app, etc.
+      source: user_input
+  optional:
+    - field: current_lifecycle_programs
+      description: Existing lifecycle programs and their performance — what is already running
+      source: user_input
+    - field: customer_segmentation
+      description: How customers are currently segmented — RFM, behavioral, tier, etc.
+      source: user_input
+    - field: primary_churn_window
+      description: When most customers are lost — e.g., "60% of churn happens in first 90 days"
+      source: user_input
+    - field: tech_stack
+      description: CRM and marketing automation tools in use — Klaviyo, Braze, Iterable, etc.
+      source: user_input
+
+structure:
+  sections:
+    - id: retention_diagnosis
+      name: Retention Diagnosis
+      required: true
+      description: Assessment of current retention health — where customers are lost and why
+      guidance: >-
+        Open with a clear assessment of retention health based on the provided metrics. Diagnose:
+        (1) At which lifecycle stage is the highest churn? (new subscriber 0-30 days, 31-90 day
+        engagement window, or 90+ day long-term?); (2) What does the available data suggest about
+        the root cause — activation failure, value perception decline, or competitive switching?;
+        (3) What is the estimated revenue impact of a 1-point improvement in retention? Frame this
+        as the business case for the plan. Do not prescribe solutions yet.
+      word_count: 200-300
+
+    - id: lifecycle_stage_map
+      name: Customer Lifecycle Stage Map
+      required: true
+      description: Definition of lifecycle stages with entry/exit criteria and current performance at each stage
+      guidance: >-
+        Define 4-6 lifecycle stages appropriate for the business model. For subscriptions:
+        New (0-30 days), Activating (30-90 days), Engaged (90-180 days), Loyal (180+ days),
+        At-Risk, Churned. For DTC: Prospect, First Purchase, Second Purchase, Repeat Buyer, VIP,
+        Lapsed. For each stage: define entry criteria (behavioral or time-based), current metric
+        at this stage (conversion rate, churn rate, engagement rate), and the primary marketing
+        goal. This is the skeleton of the lifecycle plan.
+      word_count: 200-300
+
+    - id: activation_program
+      name: Activation Program (New Customer / Subscriber)
+      required: true
+      description: Program design for converting new customers from first touch to activated, habitual users
+      guidance: >-
+        Design the activation program for the first 30 days. Cover: (1) Activation metric — the
+        specific behavioral event that predicts long-term retention; (2) Trigger logic — what
+        actions by the customer trigger what communications?; (3) Message sequence — what does the
+        customer receive, in what order, across which channels, and with what goal at each step?;
+        (4) Exit criteria — how do you know activation succeeded or failed? Keep channel-specific
+        copy out of this section — describe the logic and goals, not the creative execution.
+      word_count: 200-300
+
+    - id: engagement_retention_programs
+      name: Engagement and Retention Programs
+      required: true
+      description: Ongoing programs for activated customers — driving repeat purchase, habit formation, and loyalty
+      guidance: >-
+        Describe programs for the mid-lifecycle customer who is activated but not yet habitual.
+        Include: (1) Regular engagement cadence — frequency, channel, and content type for ongoing
+        relationship; (2) Milestone programs — birthday, anniversary, usage milestone celebrations
+        that reinforce loyalty; (3) VIP identification and treatment — how top customers are
+        identified and given elevated experience; (4) Upsell and cross-sell trigger logic — when
+        and how expansion revenue is pursued. This section should describe programs, not campaigns.
+      word_count: 200-300
+
+    - id: at_risk_win_back
+      name: At-Risk Detection and Win-Back Programs
+      required: true
+      description: Proactive intervention for at-risk customers and reactive win-back for churned customers
+      guidance: >-
+        Cover two sub-programs: (1) At-risk detection — what behavioral signals indicate a customer
+        is at risk of churning (declining engagement, reduced purchase frequency, support contact,
+        missed billing)? What is the trigger threshold and what intervention fires? What is the
+        escalation if the first intervention doesn't work?; (2) Win-back — at what point after
+        lapse does a win-back sequence begin? What is the message arc (we miss you → here's value
+        → here's an incentive → final attempt)? What is the decision rule for when to stop
+        attempting win-back and accept the loss?
+      word_count: 200-300
+
+    - id: measurement_framework
+      name: Measurement Framework
+      required: true
+      description: KPIs, reporting cadence, and success thresholds for the lifecycle program
+      guidance: >-
+        Specify: (1) Primary retention KPI — churn rate, D90 retention, repeat purchase rate, or
+        LTV depending on business model; (2) Program-level KPIs — activation rate, email/SMS
+        engagement rates, at-risk intervention conversion rate, win-back success rate; (3) Reporting
+        cadence — weekly for churn rate and activation metrics, monthly for cohort LTV analysis;
+        (4) Success thresholds — what metric movement would indicate the program is working?
+        Specify a timeframe (e.g., "D30 retention should improve from 45% to 55% within 90 days
+        of activation program launch").
+      word_count: 150-200
+
+quality_criteria:
+  - criterion: Lifecycle stages are defined with behavioral entry/exit criteria, not just time
+  - criterion: Activation program includes a specific activation metric, not vague engagement goals
+  - criterion: At-risk detection has specific behavioral triggers, not just time-based flags
+  - criterion: Measurement framework includes success thresholds with timeframes
+  - criterion: All programs are described as logic and goals, not creative scripts
+
+variants:
+  - name: Subscription Business
+    description: For subscription boxes, consumer SaaS, or streaming services with recurring billing
+    modifications: Emphasize activation (trial-to-paid conversion) and involuntary churn management (dunning, card updater). Include churn-prevention pause mechanics as an at-risk intervention.
+  - name: DTC Repeat Purchase Brand
+    description: For DTC brands where repeat purchase is the retention metric (not subscription cancellation)
+    modifications: Structure lifecycle around purchase frequency milestones (1st, 2nd, 3rd purchase). Include replenishment reminder sequences timed to product consumption cycle. Win-back triggered by lapsed purchase window.
+  - name: Consumer App (Freemium or Paid)
+    description: For mobile apps or consumer SaaS with free and paid tiers
+    modifications: Lead with activation metric and D7/D30 retention. Include push notification and in-app message strategy alongside email. Separate freemium engagement from paid subscriber retention programs.

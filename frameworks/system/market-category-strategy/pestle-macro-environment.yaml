@@ -1,0 +1,236 @@
+metadata:
+  id: pestle-macro-environment
+  version: 1.0.0
+  display_name: PESTLE Macro-Environment Analysis
+  category: strategy
+  description: Structures macro-environment analysis across Political, Economic, Social, Technological, Legal, and Environmental
+    dimensions to understand external forces shaping a company's market context and strategy.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - late-stage-private
+    - public
+    - division
+    roles:
+    - cmo
+    - ceo
+    - vp-marketing
+    - vp-product
+    - marketing-director
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: company_overview
+    description: Company name, category, primary offerings, and high-level strategy.
+    source: skill
+  - field: target_markets
+    description: Key regions, industries, and customer segments the company serves or plans to serve.
+    source: user_input
+  - field: planning_horizon
+    description: Timeframe for the analysis (e.g., next 12-36 months) to set context for trend relevance.
+    source: user_input
+  optional:
+  - field: existing_strategic_plan
+    description: Current strategic priorities, growth targets, and major initiatives.
+    source: existing_deliverable
+  - field: key_external_trends
+    description: Any known macro trends already tracked by the company (e.g., regulatory shifts, AI adoption).
+    source: user_input
+analysis:
+  instructions: 'This framework evaluates the external environment across six dimensions--Political, Economic, Social, Technological,
+    Legal, and Environmental--to identify trends, risks, and opportunities that may impact strategy, GTM plans, and investment
+    priorities.
+
+
+    After assessing each PESTLE dimension, identify the 3-5 most material external forces for the planning horizon, explain
+    how they shape risk and opportunity for the business, and articulate implications for strategy, GTM, and product/roadmap.
+    Synthesis should elevate a small set of priority themes and recommended responses rather than exhaustively restating all
+    observations.'
+  dimensions:
+  - id: political
+    name: Political
+    description: Examines how government policies, political stability, and public-sector priorities influence the market
+      and company operations.
+    prompts:
+    - Which political or policy shifts in key markets could affect demand, procurement processes, or buying cycles?
+    - Are there upcoming elections, geopolitical tensions, or government programs that may create either tailwinds or headwinds?
+    - How do public-sector priorities (e.g., cybersecurity, privacy, accessibility, sustainability) align with the company's
+      current value proposition?
+  - id: economic
+    name: Economic
+    description: Assesses macroeconomic factors such as growth, inflation, capital availability, and budget cycles that shape
+      purchasing power and investment appetite.
+    prompts:
+    - What is the overall economic outlook in core markets (growth, inflation, interest rates), and how might it influence
+      budgets for this category?
+    - How are funding conditions, cost of capital, and IT/operational budget priorities changing for the ICP?
+    - In a more constrained budget environment, how does the company's value story help customers justify investment?
+  - id: social
+    name: Social
+    description: Evaluates demographic, workforce, cultural, and buyer-behavior trends that influence how customers perceive
+      problems and solutions.
+    prompts:
+    - What shifts in workforce composition, skills, and work patterns (e.g., remote, hybrid) affect how the ICP experiences
+      the problem the company solves?
+    - Are there emerging expectations around experience, accessibility, or trust that should shape messaging and product priorities?
+    - How are decision-making processes evolving within customer organizations (e.g., more stakeholders, new champions)?
+  - id: technological
+    name: Technological
+    description: Reviews technology trends, adjacent innovations, and ecosystem changes that can create both differentiation
+      opportunities and category disruption.
+    prompts:
+    - Which technology trends (e.g., AI, automation, cloud-native, security-by-design) are reshaping customer expectations
+      in this category?
+    - How do platform shifts (e.g., hyperscaler ecosystems, marketplaces) influence distribution, integration expectations,
+      and partnership strategy?
+    - Where can the company build on existing strengths to align with or lead these technology shifts?
+  - id: legal
+    name: Legal
+    description: Covers regulations, standards, and compliance obligations that influence how solutions are built, marketed,
+      sold, and implemented.
+    prompts:
+    - Which current or upcoming regulations (data privacy, cybersecurity, accessibility, industry-specific rules) are most
+      relevant to the ICP?
+    - How might new or evolving legal frameworks change buyer requirements, evaluation criteria, or procurement processes?
+    - Where can the company's capabilities or roadmap better support customers in meeting these requirements?
+  - id: environmental
+    name: Environmental
+    description: Considers environmental, sustainability, and ESG factors that may shape customer expectations, procurement
+      criteria, and operational constraints.
+    prompts:
+    - Are there environmental or sustainability commitments driving new requirements for vendors in target accounts?
+    - How might energy usage, data center strategy, or supply chain considerations influence buying decisions in this category?
+    - What opportunities exist to highlight or enhance the company's contribution to customers' ESG goals?
+output_templates:
+- id: primary
+  name: PESTLE Macro-Environment Analysis -- company_name -- date
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Political Factors
+
+    {political_factors}
+
+
+    ## Economic Factors
+
+    {economic_factors}
+
+
+    ## Social Factors
+
+    {social_factors}
+
+
+    ## Technological Factors
+
+    {technological_factors}
+
+
+    ## Legal Factors
+
+    {legal_factors}
+
+
+    ## Environmental Factors
+
+    {environmental_factors}
+
+
+    ## Strategic Implications and Next Phase
+
+    {strategic_implications_and_next_phase}
+
+    '
+- id: alternative
+  name: PESTLE Summary Table -- company_name
+  format: table
+  when_to_use: ''
+  template: '## PESTLE Factor Summary
+
+    {pestle_factor_summary}
+
+
+    ## Priority Themes
+
+    {priority_themes}
+
+    '
+rubric:
+  description: Evaluates whether the PESTLE analysis clearly identifies material external forces, links them to business impact,
+    and articulates practical implications for strategy and planning.
+  dimensions:
+  - name: Coverage and Relevance
+    weight: 0.3
+    scoring:
+      1: One or more PESTLE dimensions are missing or treated superficially; many trends are generic or disconnected from
+        the business.
+      3: All dimensions are covered with mostly relevant examples, though some may be high level or lightly tied to the company.
+      5: Each dimension includes specific, relevant trends clearly connected to the company's markets and planning horizon.
+    improvement_guidance: Refine examples to be specific to the company's markets and planning horizon, and ensure all six
+      dimensions are meaningfully addressed.
+  - name: Clarity of Business Impact
+    weight: 0.3
+    scoring:
+      1: Analysis lists trends without explaining how they might influence demand, risk, or strategic priorities.
+      3: Some links between trends and business impact are clear, but others remain implied or high level.
+      5: Each major trend includes a concise explanation of its likely impact on demand, risk, or strategic choices.
+    improvement_guidance: For each key trend, explicitly state the likely impact on customers, buying behavior, and the company's
+      options.
+  - name: Strategic Implications
+    weight: 0.25
+    scoring:
+      1: Few or no concrete implications or recommendations are derived from the analysis.
+      3: Implications are present but may be broad, numerous, or not clearly prioritized.
+      5: A concise set of prioritized implications is clearly derived from the analysis and framed as opportunities to strengthen
+        the next phase.
+    improvement_guidance: Limit implications to the handful that matter most and connect each to specific observations from
+      the PESTLE dimensions.
+  - name: Stakeholder-Friendly Framing
+    weight: 0.15
+    scoring:
+      1: Language implies past decisions were wrong or overemphasizes risk in ways that may feel defensive or critical.
+      3: Most language is constructive, though some phrasing may suggest missteps or over-focus on problems.
+      5: Opportunities and risks are framed constructively, emphasizing how the team can build on the current foundation.
+    improvement_guidance: Rephrase any judgmental or backward-looking language into opportunity-focused, forward-looking framing.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Laundry-List Trends
+  description: Treating PESTLE as a long list of generic macro trends with little connection to the company's real decisions.
+  mitigation: Focus on the few trends that materially affect the company's markets and explicitly link each to potential choices
+    or shifts.
+- pattern: Internal Blame
+  description: Using external trends to criticize past decisions or imply leadership missteps.
+  mitigation: Position trends as context for the next phase of growth, emphasizing how the company can adapt and build on
+    prior work.
+- pattern: Over-Indexing on One Dimension
+  description: Spending almost all attention on one factor (e.g., technology) while largely ignoring others.
+  mitigation: Balance coverage across dimensions and ensure at least one meaningful insight per PESTLE category.
+- pattern: Static View
+  description: Describing the environment as fixed rather than evolving over the planning horizon.
+  mitigation: Note how trends may strengthen, weaken, or interact over time, especially for the next 12-36 months.
+chaining:
+  after:
+  - framework_id: porter-five-forces
+    reason: ''
+  - framework_id: icp-buying-committee
+    reason: ''
+  - framework_id: b2b-saas-competitive-positioning
+    reason: ''
+  before:
+  - framework_id: none
+    reason: ''

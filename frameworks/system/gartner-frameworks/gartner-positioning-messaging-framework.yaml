@@ -1,0 +1,171 @@
+metadata:
+  id: gartner-positioning-messaging-framework
+  version: 1.0.0
+  display_name: Gartner Messaging & Positioning Framework
+  category: product
+  description: 'Defines differentiated product positioning and messaging that motivates buyers to act and enables revenue
+    teams to consistently communicate product value.
+
+    '
+  tags:
+  - positioning
+  - messaging
+  - differentiation
+  - narrative
+  source: Gartner Product Positioning Research
+  best_for: {}
+  schema_version: '1.0'
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+inputs:
+  required:
+  - field: product_or_solution
+    description: Offering being positioned
+    source: skill
+  - field: target_buyer
+    description: Primary persona or buyer role
+    source: skill
+  - field: competitive_context
+    description: Market alternatives and competitors
+    source: skill
+  optional: []
+analysis:
+  instructions: 'Develop positioning and messaging using the following steps.
+
+
+    Step 1: Audience Insight
+
+    Identify target buyers and their most critical problems.
+
+
+    Step 2: Value Definition
+
+    Clarify the value the product delivers.
+
+
+    Step 3: Differentiation
+
+    Identify what makes the offering uniquely valuable.
+
+
+    Step 4: Value Narrative
+
+    Create a story that explains why the product matters.
+
+
+    Step 5: Message Alignment
+
+    Ensure sales, marketing, and product communicate consistently.
+
+    '
+  dimensions:
+  - id: audience
+    name: Audience Understanding
+    description: Assessment area for Audience Understanding.
+    prompts:
+    - What evidence supports performance in Audience Understanding?
+  - id: value
+    name: Value Proposition
+    description: Assessment area for Value Proposition.
+    prompts:
+    - What evidence supports performance in Value Proposition?
+  - id: differentiation
+    name: Differentiation
+    description: Assessment area for Differentiation.
+    prompts:
+    - What evidence supports performance in Differentiation?
+  - id: narrative
+    name: Value Narrative
+    description: Assessment area for Value Narrative.
+    prompts:
+    - What evidence supports performance in Value Narrative?
+  - id: consistency
+    name: Messaging Consistency
+    description: Assessment area for Messaging Consistency.
+    prompts:
+    - What evidence supports performance in Messaging Consistency?
+output_templates:
+- id: positioning-statement
+  name: Positioning Statement
+  format: markdown
+  when_to_use: Use when delivering positioning statement output.
+  template: '# Positioning Statement\n\n{summary}\n'
+- id: messaging-architecture
+  name: Messaging Architecture
+  format: markdown
+  when_to_use: Use when delivering messaging architecture output.
+  template: '# Messaging Architecture\n\n{summary}\n'
+- id: sales-pitch-framework
+  name: Sales Pitch Framework
+  format: markdown
+  when_to_use: Use when delivering sales pitch framework output.
+  template: '# Sales Pitch Framework\n\n{summary}\n'
+rubric:
+  scoring_model: 1-5
+  dimensions:
+  - id: audience
+    name: Audience Understanding
+    description: Assessment area for Audience Understanding.
+    weight: 0.2
+    scores:
+      5: Strong audience understanding assessment with clear evidence.
+      3: Adequate audience understanding assessment with some gaps.
+      1: Weak audience understanding assessment lacking specificity.
+  - id: value
+    name: Value Proposition
+    description: Assessment area for Value Proposition.
+    weight: 0.2
+    scores:
+      5: Strong value proposition assessment with clear evidence.
+      3: Adequate value proposition assessment with some gaps.
+      1: Weak value proposition assessment lacking specificity.
+  - id: differentiation
+    name: Differentiation
+    description: Assessment area for Differentiation.
+    weight: 0.2
+    scores:
+      5: Strong differentiation assessment with clear evidence.
+      3: Adequate differentiation assessment with some gaps.
+      1: Weak differentiation assessment lacking specificity.
+  - id: narrative
+    name: Value Narrative
+    description: Assessment area for Value Narrative.
+    weight: 0.2
+    scores:
+      5: Strong value narrative assessment with clear evidence.
+      3: Adequate value narrative assessment with some gaps.
+      1: Weak value narrative assessment lacking specificity.
+  - id: consistency
+    name: Messaging Consistency
+    description: Assessment area for Messaging Consistency.
+    weight: 0.2
+    scores:
+      5: Strong messaging consistency assessment with clear evidence.
+      3: Adequate messaging consistency assessment with some gaps.
+      1: Weak messaging consistency assessment lacking specificity.
+  thresholds:
+    publish_ready: 4.0
+    revise: 3.0
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Framework-Only Conclusions
+  description: Treating the framework output as definitive without context or evidence.
+  mitigation: Ground conclusions in available evidence and document assumptions.
+- pattern: Generic Recommendations
+  description: Providing recommendations not tied to the company context.
+  mitigation: Translate findings into context-specific, actionable recommendations.
+stakeholder_guidance: Use constructive, evidence-based language. Highlight opportunities to improve and avoid framing prior
+  decisions as failures.
+chaining:
+  before:
+  - framework_id: gartner-product-positioning-framework
+    reason: Product positioning defines differentiated context before messaging is developed
+  - framework_id: icp-buying-committee
+    reason: ICP and persona insights shape message targeting and resonance
+  after:
+  - framework_id: gartner-product-marketing-framework
+    reason: Finalized messaging feeds the product marketing execution framework
+  - framework_id: messaging-architecture
+    reason: Positioning and messaging outputs structure the full messaging architecture

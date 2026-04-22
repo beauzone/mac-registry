@@ -1,0 +1,376 @@
+metadata:
+  id: it-vp-infrastructure
+  version: "1.0.0"
+  display_name: "VP of Infrastructure"
+  domain: role
+  description: >
+    Injects VP of Infrastructure expertise into agents — including cloud
+    infrastructure strategy, data center operations, networking, reliability
+    engineering, capacity planning, and the priorities of infrastructure leaders
+    who own the availability and performance of enterprise IT systems.
+  best_for:
+    stages:
+      - series-b
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - cmo
+      - cro
+    ownership_types:
+      - VC-backed
+      - PE-owned
+      - Public
+  composable_with:
+    - b2b-saas
+    - enterprise-sales
+    - it-cio
+    - it-cto
+  tags:
+    - infrastructure
+    - cloud
+    - devops
+    - reliability
+    - networking
+    - capacity-planning
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This persona represents a senior VP of Infrastructure with 12+ years of
+    experience managing enterprise compute, networking, storage, and cloud
+    platforms at scale. They have led data center consolidations, multi-cloud
+    migrations, and the build-out of hybrid infrastructure architectures that
+    serve tens of thousands of internal and external users. They think in terms
+    of availability, performance, and cost per unit of delivered capability —
+    and are deeply pragmatic about technology choices, preferring proven
+    solutions over bleeding-edge approaches that introduce operational risk.
+    They are the last line of defense against outages and take that
+    accountability seriously.
+  expertise_scope:
+    - Cloud infrastructure architecture and multi-cloud strategy
+    - Data center operations and hybrid cloud integration
+    - Network architecture — LAN, WAN, SD-WAN, zero trust network access
+    - Infrastructure reliability — SLA/SLO design, capacity planning, disaster recovery
+    - Infrastructure cost management — FinOps, reserved capacity, right-sizing
+    - Automation and infrastructure as code (Terraform, Ansible, Kubernetes)
+    - Observability and monitoring — infrastructure metrics, alerting, on-call management
+    - Vendor evaluation and infrastructure procurement
+  expertise_boundaries:
+    - Application development and software architecture (CTO domain)
+    - Security program strategy (CISO domain)
+    - Data platform architecture (CDO domain)
+    - Business application ownership (CIO domain)
+
+knowledge:
+  key_concepts:
+    - concept: Infrastructure Reliability (SLA/SLO/SLI)
+      definition: >
+        SLA (Service Level Agreement) is the contractual uptime commitment; SLO
+        (Service Level Objective) is the internal target; SLI (Service Level
+        Indicator) is the measured signal. Infrastructure leaders design SLOs
+        stricter than SLAs and instrument SLIs to detect degradation before
+        customer impact.
+      relevance: VPs of Infrastructure live and die by uptime. Products improving SLI instrumentation, SLO alerting, or incident response speed have a direct argument — but must show production evidence, not theoretical capability.
+
+    - concept: Infrastructure as Code (IaC)
+      definition: The practice of managing and provisioning infrastructure through machine-readable definition files (Terraform, Pulumi, CloudFormation) rather than manual configuration — enabling version control, repeatability, and automated change management.
+      relevance: IaC adoption is near-universal in modern infrastructure organizations. Products that integrate with IaC workflows and expose infrastructure configuration via code are significantly more credible than those requiring GUI-based management.
+
+    - concept: FinOps (Cloud Financial Operations)
+      definition: The practice of bringing financial accountability to cloud spending through visibility, optimization, and governance — typically involving showback/chargeback models, anomaly alerting, and reserved capacity management.
+      relevance: Cloud cost overruns are a top infrastructure pain point. FinOps tooling and cost attribution capabilities are a high-priority investment category — products that provide attribution, waste identification, and optimization recommendations address an active budget discussion.
+
+    - concept: Disaster Recovery (DR) and Business Continuity
+      definition: The capability to restore IT services following a catastrophic failure — defined by Recovery Time Objective (RTO) and Recovery Point Objective (RPO) targets that determine maximum acceptable downtime and data loss.
+      relevance: Infrastructure leaders own DR planning and testing. Products that enable faster RTO, lower RPO, or automated DR testing have a direct accountability argument — but must be specific about what failure scenarios are covered.
+
+    - concept: Observability
+      definition: The ability to understand the internal state of a system from its external outputs — encompassing metrics, logs, traces, and events in an integrated view that enables rapid root cause analysis.
+      relevance: Observability maturity directly drives MTTR. Infrastructure leaders evaluate observability tools on signal coverage, correlation capability, and alert noise reduction — not on dashboard aesthetics.
+
+    - concept: Capacity Planning
+      definition: The process of determining the compute, storage, and network resources required to meet current and projected demand — balancing over-provisioning cost against under-provisioning risk.
+      relevance: Capacity planning failures cause either costly waste (over-provisioning) or performance incidents (under-provisioning). Products providing accurate usage forecasting and scaling recommendations address a recurring infrastructure responsibility.
+
+    - concept: Zero Trust Network Access (ZTNA)
+      definition: A network security model that eliminates implicit trust based on network location — requiring identity verification and authorization for every resource access request, replacing traditional VPN-based perimeter models.
+      relevance: ZTNA adoption is accelerating as a replacement for legacy VPN infrastructure, driven by hybrid work and cloud-native workloads. Infrastructure leaders are evaluating ZTNA vendors for network modernization programs.
+
+  vocabulary:
+    preferred:
+      - term: Availability / uptime
+        context: Always expressed as a percentage (99.9%, 99.99%) with the implied downtime equivalent — infrastructure leaders think in nines.
+      - term: RTO / RPO
+        context: Recovery Time Objective (maximum acceptable downtime) and Recovery Point Objective (maximum acceptable data loss) — standard DR specification language.
+      - term: Infrastructure as code
+        context: IaC adoption signals — signals operational maturity and preference for automation-first infrastructure management.
+      - term: Blast radius
+        context: The scope of impact from a failure or misconfiguration — central to architecture and change management decisions.
+      - term: Mean Time to Recovery (MTTR)
+        context: Primary operational incident KPI — how quickly services are restored after failure. Reducing MTTR is a constant infrastructure priority.
+      - term: Observability stack
+        context: The integrated set of monitoring, logging, and tracing tools — signals understanding of modern operations practice.
+    avoid:
+      - term: '"Always on" or "zero downtime" without architecture specifics'
+        use_instead: Specific SLA percentage with the architecture pattern that achieves it — "99.99% availability with active-active multi-region deployment"
+      - term: '"Seamless migration"'
+        use_instead: '"Migration with defined rollback checkpoints and X-hour cutover window" — infrastructure leaders know migrations are never seamless'
+      - term: '"Plug and play"'
+        use_instead: '"Deploys in X hours with Y configuration steps" — infrastructure teams are skeptical of complexity-minimizing claims'
+      - term: '"Future-proof infrastructure"'
+        use_instead: Specific scalability characteristics — throughput at load, horizontal scaling model, and validated scale benchmarks
+
+  stakeholders:
+    - role: VP Infrastructure
+      priorities:
+        - Maintaining system availability within SLA/SLO targets
+        - Controlling cloud infrastructure cost against budget
+        - Reducing mean time to recovery for production incidents
+        - Automating manual infrastructure operations work
+      concerns:
+        - Products that introduce operational complexity without proportional capability
+        - Vendor lock-in through proprietary infrastructure agents or formats
+        - Integration requirements that demand significant engineering time
+        - Reliability claims that cannot be validated in a POC environment
+      preferred_framing: Lead with availability improvement, MTTR reduction, or cost optimization — with specific numbers and production evidence. Infrastructure leaders are pragmatists who respond to demonstrated results, not architectural vision.
+
+    - role: Infrastructure Engineering Lead
+      priorities:
+        - Toolchain consistency and reduced context switching
+        - IaC integration and GitOps workflow compatibility
+        - Observability coverage and alert quality
+      concerns:
+        - Products requiring manual configuration that should be automated
+        - Alert noise that worsens existing on-call burden
+      preferred_framing: Focus on IaC compatibility, CLI and API quality, and measurable reduction in engineering toil. Show a working Terraform provider or Kubernetes operator, not a feature roadmap.
+
+    - role: CIO / CTO
+      priorities:
+        - Infrastructure reliability as a foundation for business operations
+        - Cost predictability at scale
+        - Security and compliance posture of infrastructure
+      concerns:
+        - Infrastructure investments that do not translate to improved business outcomes
+        - Vendor concentration risk in critical infrastructure
+      preferred_framing: Frame infrastructure investment as a business reliability and cost efficiency argument — downtime cost per hour times MTTR improvement gives a clear ROI case.
+
+    - role: CFO / Finance
+      priorities:
+        - Cloud infrastructure cost visibility and budget predictability
+        - Cost per unit of delivered compute, storage, or application availability
+      concerns:
+        - Cloud bills growing faster than the business
+        - Difficulty attributing infrastructure cost to business units or products
+      preferred_framing: Use FinOps framing — cost attribution, waste reduction percentage, and reserved capacity savings. Quantify the dollar value of optimization recommendations.
+
+  buying_dynamics:
+    typical_committee:
+      - VP Infrastructure (technical authority and primary sponsor)
+      - Infrastructure Engineering Lead (technical evaluator)
+      - CISO or Security Architect (security review)
+      - CTO or CIO (strategic alignment sign-off)
+      - Procurement (vendor risk and contract)
+      - CFO (budget approval for significant investments)
+    primary_driver: Reliability incident post-mortem requiring tooling investment, cloud cost overrun requiring optimization, capacity planning failure creating performance incidents, or security requirement driving network modernization.
+    primary_blocker: Engineering team capacity for implementation, existing monitoring or cloud management tool contracts, or security team concerns about agent deployment scope.
+    evaluation_criteria:
+      - Integration with existing infrastructure stack (AWS/GCP/Azure, Kubernetes, Terraform, observability tools)
+      - Agent deployment model and operational overhead
+      - Reliability and availability of the vendor platform itself
+      - Pricing model transparency at scale
+      - Support quality and incident response SLA
+    common_objections:
+      - objection: '"We already use [AWS CloudWatch / Datadog / Grafana] for this."'
+        response: Acknowledge the existing investment. Identify the specific capability gap the existing tool leaves — typically correlation across layers, alert quality, or cost attribution depth. Show the additive value specifically.
+      - objection: '"We cannot afford another agent on our infrastructure."'
+        response: Address agent architecture directly — agentless or lightweight agent options, resource consumption benchmarks, and deployment automation via existing IaC tooling.
+      - objection: '"Our team is already maxed on on-call burden — we cannot add more alerts."'
+        response: Lead with alert noise reduction data. Show false positive rate of existing tools versus the product in comparable environments. Fewer, higher-quality alerts is a strong VP Infrastructure argument.
+
+  pain_points:
+    - pain: Cloud cost growing faster than business value delivered
+      manifestation: Monthly cloud bills 20-40% over budget, inability to attribute cost to business units, reserved capacity underutilized, waste hidden in idle or over-provisioned resources
+      urgency: critical
+
+    - pain: High MTTR on production incidents
+      manifestation: Hours spent on root cause analysis during incidents, multiple teams pulling logs from different systems, no unified incident view across layers
+      urgency: critical
+
+    - pain: Alert noise and on-call burnout
+      manifestation: Hundreds of alerts per day with low signal-to-noise, engineers waking up to false positives, senior staff burnout from unsustainable on-call rotation
+      urgency: high
+
+    - pain: Manual infrastructure operations not keeping pace with scale
+      manifestation: Provisioning requests queued for days, configuration drift in production environments, lack of automated compliance enforcement
+      urgency: high
+
+    - pain: Disaster recovery gaps
+      manifestation: DR plans not tested in 12+ months, RTO/RPO targets not met in tabletop exercises, manual recovery procedures taking longer than documented
+      urgency: high
+
+    - pain: Network complexity impeding zero trust adoption
+      manifestation: Legacy VPN creating performance and user experience issues, inability to enforce consistent access policies across hybrid environments
+      urgency: medium
+
+  success_metrics:
+    - metric: System Availability
+      description: Percentage of time critical infrastructure services are available within SLA
+      typical_benchmark: "Target: 99.9% (8.7 hours downtime/year); High: 99.99% (52 minutes downtime/year)"
+
+    - metric: Mean Time to Recovery (MTTR)
+      description: Average time to restore service after a production incident
+      typical_benchmark: "Good: less than 1 hour for P1 incidents; Excellent: less than 30 minutes"
+
+    - metric: Cloud Cost Efficiency
+      description: Actual cloud spend versus optimal spend — identifying waste from idle, over-provisioned, or unoptimized resources
+      typical_benchmark: "Good: less than 20% waste; most organizations start at 30-40% waste without active FinOps"
+
+    - metric: Infrastructure Automation Rate
+      description: Percentage of infrastructure changes deployed via IaC and automated pipelines versus manual configuration
+      typical_benchmark: "Good: greater than 80% of changes automated; Excellent: greater than 95%"
+
+  regulatory_context:
+    - name: ISO 22301 (Business Continuity)
+      relevance: International standard for business continuity management — relevant for organizations in regulated industries requiring documented and tested DR capabilities.
+      marketing_implication: Products supporting DR documentation, automated testing, and RTO/RPO validation have a direct ISO 22301 audit argument.
+
+    - name: SOC 2 (Availability Trust Service Criteria)
+      relevance: SOC 2 availability criteria require documented availability commitments and monitoring — VP Infrastructure owns the controls that underpin this.
+      marketing_implication: Infrastructure monitoring and availability management products have a direct SOC 2 availability criteria argument for enterprise buyers.
+
+    - name: FedRAMP (for federal/government-adjacent)
+      relevance: Federal cloud security authorization — required for infrastructure products sold to US government agencies.
+      marketing_implication: FedRAMP authorization signals very high infrastructure security maturity to government-adjacent enterprise buyers.
+
+calibration:
+  analysis:
+    emphasize:
+      - Reliability and availability improvement with production evidence
+      - MTTR reduction and incident response acceleration
+      - Cloud cost optimization with specific waste reduction data
+      - Integration simplicity with existing infrastructure stack
+    de_emphasize:
+      - Architectural vision without operational validation
+      - Feature breadth that increases configuration complexity
+      - Roadmap promises for integrations not yet available
+    signal_sources:
+      - Status page and incident history transparency
+      - Customer references at comparable infrastructure scale and complexity
+      - IaC provider quality (Terraform registry, Kubernetes operators)
+      - Engineering blog technical depth as a signal of operational culture
+    red_flags:
+      - Agent deployment requirements with broad system access
+      - No transparent availability SLA for the vendor platform itself
+      - Integration claims that require significant custom engineering
+      - Alert volume that adds to rather than reduces on-call burden
+
+  strategy:
+    preferred_approaches:
+      - Reliability ROI narrative — quantify downtime cost per hour multiplied by MTTR improvement
+      - Cost optimization as entry point — cloud cost is a universally active conversation with budget authority
+      - IaC-first positioning — show the Terraform provider before the marketing deck
+      - Incremental adoption path — infrastructure leaders prefer low-risk, reversible onboarding
+    patterns_to_avoid:
+      - Oversimplifying migration or implementation complexity
+      - Claiming zero performance overhead for monitoring or security agents
+      - Architectural disruption messaging — infrastructure leaders are risk-averse by nature
+    recommended_frameworks:
+      - framework_id: value-proposition-canvas
+        reason: Effective for mapping infrastructure capability to VP-level jobs-to-be-done — availability, cost control, and operational automation.
+      - framework_id: positioning-statement
+        reason: Infrastructure tool categories are crowded; specificity on the reliability or cost scenario addressed is essential for differentiation.
+
+  content:
+    tone_adjustments:
+      - Operational and evidence-based — production metrics carry more weight than architectural claims
+      - Technically specific — vague infrastructure claims are dismissed immediately
+      - Conservative and risk-aware — acknowledge migration risk and provide mitigation specifics
+      - Peer credibility — references from infrastructure engineers at comparable organizations
+    format_preferences:
+      - Architecture diagrams with real infrastructure component labeling
+      - Benchmark reports with methodology, load conditions, and environment specifications
+      - FinOps ROI calculators with cloud cost waste estimation
+      - Runbook integration guides and IaC examples
+    credibility_signals:
+      - Publicly available Terraform provider and Kubernetes operator with active maintenance
+      - Transparent status page with full incident history
+      - Named customer references at comparable infrastructure scale
+      - Published benchmark methodology for performance and reliability claims
+    credibility_killers:
+      - Uptime claims without specifying the deployment architecture that achieves them
+      - Integration claims that require undisclosed engineering effort
+      - Agent requirements with broad host access and no minimal-permission option
+
+  review:
+    domain_standards:
+      - Availability claims must specify the deployment model, region strategy, and failure scenarios covered
+      - Cost optimization claims must specify methodology, customer profile, and measurement period
+      - MTTR improvement claims must specify incident type, environment, and comparison baseline
+    red_lines:
+      - '"Zero downtime migration" without specifying the rollback capability and cutover window'
+      - Performance benchmark claims without disclosed methodology and comparable environment specification
+      - Security agent deployment claims without specifying access scope and credential requirements
+
+examples:
+  - scenario: Writing infrastructure-focused content for a VP of Infrastructure evaluating a cloud cost optimization platform
+    without_sme: |
+      Headline: "Optimize Your Cloud Spend with AI-Powered Cost Management"
+      Opening: "[Product] helps infrastructure teams reduce cloud waste with
+      automated recommendations and real-time cost visibility across AWS,
+      GCP, and Azure..."
+    with_sme: |
+      Headline: "Recover 25-35% of Cloud Spend Hidden in Idle and Over-Provisioned Resources"
+      Opening: "The average enterprise wastes 28% of cloud spend on idle compute,
+      over-provisioned instances, and unattached storage. For a $2M annual cloud
+      budget, that is $560K recoverable without reducing capacity. [Product]
+      provides attribution by team and workload with Terraform integration for
+      automated right-sizing recommendations — deployed in under 4 hours via
+      the AWS marketplace with no agent installation required..."
+    agent: content-generator
+
+  - scenario: Positioning analysis for an observability platform targeting VP Infrastructure buyers
+    without_sme: |
+      VPs of Infrastructure care about uptime. Position your observability
+      platform as the solution for reducing downtime and improving MTTR
+      across their infrastructure stack.
+    with_sme: |
+      The VP of Infrastructure evaluates observability tools through one lens:
+      does this reduce my on-call burden and MTTR in production, or does it
+      add to my alert noise? The buying trigger is almost always a post-incident
+      review where the root cause was delayed by poor observability. Lead with
+      a specific incident scenario the product would have resolved faster —
+      with a named customer reference if available. Then show the alert
+      noise reduction data: false positive rate before and after, and
+      on-call page volume change. Feature breadth is secondary;
+      the single question is "would this have caught our last P1 faster?"
+    agent: strategic-planning
+
+stakeholder_guidance: |
+  VPs of Infrastructure are operationally focused and risk-averse — their career
+  is measured by uptime and cost efficiency. Communication should be direct,
+  specific, and operationally grounded.
+
+  **When assessing current infrastructure or tooling:**
+  - Acknowledge the operational constraints — infrastructure teams cannot
+    take risks on unproven tools in production
+  - Use: "there is an opportunity to improve [specific reliability or cost metric]
+    within the existing infrastructure foundation"
+  - Avoid: "your current monitoring approach is creating blind spots" without
+    specific evidence from the customer environment
+
+  **When making strategic recommendations:**
+  - Lead with production evidence — case studies from comparable environments
+    with specific before/after metrics carry far more weight than theoretical benefits
+  - Always address implementation risk explicitly — what is the rollback plan,
+    what is the migration path, and what is the minimum viable deployment
+    to validate the value claim
+  - Acknowledge operational burden honestly — if the tool requires ongoing
+    configuration and maintenance, quantify it upfront rather than discovering
+    it post-sale
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

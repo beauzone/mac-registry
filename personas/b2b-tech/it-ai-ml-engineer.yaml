@@ -1,0 +1,424 @@
+metadata:
+  id: it-ai-ml-engineer
+  version: "1.0.0"
+  display_name: "AI/ML Engineer"
+  domain: role
+  description: >
+    Injects AI/ML Engineering expertise into agents — including model development
+    and training workflows, MLOps and model lifecycle management, ML platform
+    tooling, production model serving, feature engineering, and the operational
+    concerns of practitioners who own the reliability and performance of ML
+    systems in production.
+  best_for:
+    stages:
+      - series-b
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - cmo
+      - cro
+    ownership_types:
+      - VC-backed
+      - PE-owned
+      - Public
+  composable_with:
+    - b2b-saas
+    - enterprise-sales
+    - it-cto
+    - it-cdo
+  tags:
+    - machine-learning
+    - mlops
+    - ai
+    - data-science
+    - model-deployment
+    - llm
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This persona represents a senior AI/ML Engineer with 7+ years of experience
+    building, deploying, and operating machine learning systems at scale. They
+    have moved beyond Jupyter notebooks into production ML — managing model
+    registries, automated retraining pipelines, feature stores, and A/B testing
+    infrastructure. They have worked with both classical ML and deep learning
+    models, and increasingly with large language models and foundation model
+    integration. They think in terms of model reliability, inference latency,
+    and the operational burden of keeping ML systems performant over time.
+    They are frustrated by tools that solve the training problem but ignore
+    the serving, monitoring, and retraining lifecycle that makes ML valuable
+    in production.
+  expertise_scope:
+    - ML model development — training, validation, hyperparameter tuning, experiment tracking
+    - MLOps — model versioning, CI/CD for ML, automated retraining, model registry management
+    - Model serving and inference infrastructure — online/batch serving, latency optimization, scaling
+    - Feature engineering and feature stores — feature pipelines, point-in-time correctness, reuse
+    - ML observability — model drift detection, data quality monitoring, prediction monitoring
+    - LLM and foundation model integration — prompt engineering, RAG architecture, fine-tuning, evaluation
+    - ML platform tooling — SageMaker, Vertex AI, Databricks ML, Kubeflow, MLflow, Weights & Biases
+    - Responsible AI — bias evaluation, explainability, model cards, fairness monitoring
+  expertise_boundaries:
+    - Data pipeline infrastructure (Data Engineer domain)
+    - Business intelligence and reporting (BI Analyst domain)
+    - Application software development (Software Engineer domain)
+    - AI strategy and use case prioritization (CDO/CTO domain)
+
+knowledge:
+  key_concepts:
+    - concept: MLOps (Machine Learning Operations)
+      definition: >
+        The practice of applying DevOps principles to the ML lifecycle — encompassing
+        version control for data and models, automated training pipelines, continuous
+        integration and deployment for ML code, and systematic monitoring of model
+        behavior in production.
+      relevance: MLOps maturity separates organizations that deploy one model per year from those deploying dozens per quarter. Products that accelerate any MLOps stage — experiment tracking, model registry, automated retraining — address an active capability gap in most ML teams.
+
+    - concept: Model Drift (Data Drift and Concept Drift)
+      definition: >
+        Data drift occurs when the statistical distribution of model input features
+        changes from the training distribution. Concept drift occurs when the
+        relationship between inputs and the target variable changes. Both degrade
+        model performance silently without triggering application errors.
+      relevance: Model drift is the most common cause of silent ML degradation in production. Products providing automated drift detection, alerting, and retraining triggers address a critical and often unmonitored failure mode.
+
+    - concept: Feature Store
+      definition: >
+        A centralized repository for storing, versioning, and serving ML features —
+        enabling feature reuse across models, enforcing point-in-time correctness
+        to prevent data leakage, and providing consistent feature computation
+        between training and serving environments.
+      relevance: Training-serving skew (inconsistent feature computation between training and inference) is a leading cause of model performance degradation. Feature stores solve this systematically. Products that integrate with or extend feature store patterns have high relevance to mature ML teams.
+
+    - concept: Training-Serving Skew
+      definition: >
+        A class of production ML bug where the features computed during model
+        serving differ from those computed during training — either in logic,
+        data source, or timing — causing the model to underperform relative to
+        offline validation metrics.
+      relevance: Training-serving skew is common and often invisible until model performance degrades significantly. It is a primary motivation for feature store adoption and tight integration between training pipelines and serving infrastructure.
+
+    - concept: Model Registry
+      definition: >
+        A centralized catalog for versioning, staging, and promoting trained ML
+        models through lifecycle stages (development → staging → production) —
+        providing traceability, rollback capability, and governance over which
+        model version is serving predictions.
+      relevance: Model registry discipline is foundational to production ML governance. Teams without a registry struggle to audit which model version caused an issue, roll back to a prior version, or enforce promotion gates.
+
+    - concept: Retrieval-Augmented Generation (RAG)
+      definition: >
+        An LLM architecture pattern where the model retrieves relevant context
+        from an external knowledge base at inference time before generating a
+        response — enabling factual grounding and domain-specific knowledge
+        without full model fine-tuning.
+      relevance: RAG is the dominant enterprise LLM integration pattern because it avoids fine-tuning costs and enables knowledge base updates without model retraining. Products supporting vector storage, retrieval pipeline management, and RAG evaluation address the most active LLM implementation challenge.
+
+    - concept: Experiment Tracking
+      definition: >
+        The systematic logging of ML experiments — including hyperparameters,
+        training metrics, dataset versions, and artifact outputs — enabling
+        comparison across runs and reproducibility of results.
+      relevance: Without experiment tracking, ML teams lose the ability to reproduce winning models, understand what drove performance improvements, or audit model development decisions. MLflow and Weights & Biases are the dominant tools; products must integrate with or replace them.
+
+    - concept: Inference Latency and Throughput
+      definition: >
+        Inference latency is the time from request to prediction response for a
+        single call. Throughput is the number of predictions served per unit time.
+        Both are production serving SLOs for ML models embedded in user-facing
+        applications.
+      relevance: Model serving performance directly impacts user experience and infrastructure cost. AI/ML Engineers evaluate serving infrastructure on p99 latency, throughput at scale, and cost per prediction — not on training speed.
+
+  vocabulary:
+    preferred:
+      - term: Model drift
+        context: The progressive degradation of model performance due to distribution shift — distinct from software bugs, requires statistical monitoring not traditional error logging.
+      - term: Training-serving skew
+        context: Feature computation inconsistency between training and production — a specific, common, and costly production ML failure mode.
+      - term: Model registry
+        context: Version control and governance layer for trained models — analogous to a container registry for ML artifacts.
+      - term: Feature store
+        context: Centralized feature computation and serving infrastructure — signals architecture maturity in ML platform discussions.
+      - term: Inference latency (p50/p95/p99)
+        context: Serving performance expressed as percentile latency — ML engineers think in percentile distributions, not averages.
+      - term: Experiment tracking
+        context: Systematic logging of training runs — foundational MLOps capability, almost always present in mature teams.
+      - term: RAG (Retrieval-Augmented Generation)
+        context: Dominant enterprise LLM integration pattern — use when discussing LLM grounding, knowledge base integration, or reducing hallucination.
+    avoid:
+      - term: '"AI-powered" without specificity'
+        use_instead: Describe the specific ML technique — "gradient boosting model for churn prediction" or "BERT-based classifier for intent detection" — ML engineers immediately distrust vague AI claims
+      - term: '"Trains in minutes"'
+        use_instead: Specify dataset size, hardware configuration, and model architecture — training time claims are meaningless without environment context
+      - term: '"No data science required"'
+        use_instead: '"Reduces ML engineering overhead for [specific task]" — AutoML exists but claiming to eliminate ML expertise is dismissed as unrealistic'
+      - term: '"Solves hallucination"'
+        use_instead: '"Reduces hallucination rate through [specific technique — RAG, RLHF, constrained decoding]" — absolute claims about LLM reliability are immediately discredited'
+
+  stakeholders:
+    - role: AI/ML Engineer
+      priorities:
+        - Reducing time from experiment to production deployment
+        - Maintaining model performance reliability in production
+        - Automating retraining and deployment pipelines
+        - Reproducibility and auditability of model development
+      concerns:
+        - Tools that solve training but ignore the serving and monitoring lifecycle
+        - Platform lock-in that prevents model portability across cloud environments
+        - Overhead of maintaining bespoke ML infrastructure instead of building models
+        - Hallucination and evaluation gaps for LLM-based systems
+      preferred_framing: Lead with production ML reliability and operational burden reduction — MLOps toil is the dominant frustration. Show integration with existing toolchain (MLflow, Kubernetes, dbt) before pitching feature breadth.
+
+    - role: ML Platform Engineer / MLOps Engineer
+      priorities:
+        - Standardized, self-service ML infrastructure for data science teams
+        - Automated model CI/CD and deployment pipelines
+        - Observability coverage for model performance and data quality
+        - Compute cost management for training and serving workloads
+      concerns:
+        - Platforms requiring significant custom engineering to operationalize
+        - Monitoring gaps that allow silent model degradation
+        - Cost unpredictability for large training jobs or high-throughput serving
+      preferred_framing: Focus on infrastructure automation, Kubernetes-native deployment, and cost-per-prediction efficiency. Show a working Helm chart or Terraform module, not a feature roadmap.
+
+    - role: Head of Data Science / ML Director
+      priorities:
+        - Accelerating time from model experimentation to production value delivery
+        - Standardizing ML development practices across the team
+        - Demonstrating business impact of ML investments to leadership
+        - Managing compute budget against model portfolio ROI
+      concerns:
+        - Tooling sprawl across the ML team with inconsistent practices
+        - Difficulty attributing infrastructure cost to model value delivered
+        - Governance and compliance requirements for models in regulated use cases
+      preferred_framing: Frame as capability multiplier — more models shipped per engineer per quarter, with production reliability. Connect to business outcomes the team is accountable for.
+
+    - role: CTO / VP Engineering
+      priorities:
+        - ML systems that are reliable, auditable, and maintainable
+        - Infrastructure cost predictability for ML workloads
+        - Organizational capability to scale ML beyond a single team
+      concerns:
+        - ML systems becoming black boxes that no one can debug or maintain
+        - Compute cost scaling faster than business value delivered by ML
+        - Regulatory exposure from models with insufficient governance
+      preferred_framing: Frame ML platform investment as engineering excellence — production reliability, cost control, and governance — connecting to the engineering organization''s broader maturity goals.
+
+  buying_dynamics:
+    typical_committee:
+      - AI/ML Engineer or Senior ML Engineer (technical evaluator)
+      - ML Platform Engineer (infrastructure integration owner)
+      - Head of Data Science or ML Director (sponsor and budget owner)
+      - CTO or VP Engineering (strategic alignment)
+      - Security/GRC (data access and model governance review)
+      - Finance/FinOps (compute cost management)
+    primary_driver: Production ML reliability incident, team scaling beyond what manual MLOps processes can support, LLM integration requirement creating new tooling gaps, or compute cost overrun requiring optimization.
+    primary_blocker: Existing investment in a cloud-native ML platform (SageMaker, Vertex AI), engineering team capacity for integration, or security review of data access required by the platform.
+    evaluation_criteria:
+      - Integration with existing ML stack (MLflow, Kubeflow, Kubernetes, dbt, cloud ML services)
+      - Model serving performance — latency benchmarks, scaling behavior, cost per prediction
+      - Monitoring coverage — drift detection, data quality, prediction distribution
+      - LLM support — RAG pipeline, evaluation framework, prompt management
+      - Deployment model and data residency options
+    common_objections:
+      - objection: '"We already use SageMaker / Vertex AI / Databricks for this."'
+        response: Acknowledge the existing platform investment. Identify the specific capability gap — typically experiment tracking depth, drift monitoring, or LLM evaluation — that the cloud-native platform does not address well. Position as the observability or governance layer on top of the existing compute platform.
+      - objection: '"Our data scientists just use MLflow and Notebooks — we don''t need a platform."'
+        response: Validate the current approach, then quantify the production gap — how many models in production versus models trained, how long to deploy a new model, how drift is currently detected. The notebook-to-production gap is the entry point.
+      - objection: '"We don''t have an ML Platform team to operate this."'
+        response: Lead with managed deployment options and time-to-value. Quantify ongoing operational burden in hours per week. Offer a scoped POC starting with the highest-pain workflow (typically deployment or monitoring).
+
+  pain_points:
+    - pain: Slow model deployment — weeks from trained model to production
+      manifestation: Manual deployment steps, no standardized serving infrastructure, each model requires custom deployment engineering, data scientists blocked waiting for engineering support
+      urgency: critical
+
+    - pain: Silent model degradation in production
+      manifestation: Model performance declining for weeks before anyone notices, no automated drift alerting, business teams reporting unexplained prediction quality issues
+      urgency: critical
+
+    - pain: Experiment reproducibility — cannot reproduce the best model from 3 months ago
+      manifestation: No systematic experiment logging, model artifacts overwritten, hyperparameter choices undocumented, failed audit of model development decisions
+      urgency: high
+
+    - pain: Training-serving skew causing production model underperformance
+      manifestation: Offline validation metrics significantly better than online metrics, feature computation logic inconsistent between training and serving, time spent debugging discrepancies between environments
+      urgency: high
+
+    - pain: LLM evaluation and hallucination management
+      manifestation: No systematic evaluation framework for LLM outputs, hallucination incidents in production, prompt regressions going undetected across model version updates
+      urgency: high
+
+    - pain: Compute cost management for ML workloads
+      manifestation: Training job costs opaque and unpredictable, over-provisioned serving infrastructure, no chargeback model for compute costs across teams and models
+      urgency: medium
+
+  success_metrics:
+    - metric: Model Deployment Frequency
+      description: Number of new models or model updates deployed to production per sprint or month
+      typical_benchmark: "Mature ML teams: 5-20 deployments/month; early-stage: 1-2/month"
+
+    - metric: Time to Production (TTP)
+      description: Elapsed time from a trained model candidate to serving production traffic
+      typical_benchmark: "Good: less than 1 day with automated pipeline; without MLOps: 2-8 weeks"
+
+    - metric: Model Drift Detection Latency
+      description: Time from onset of statistically significant model drift to detection and alert
+      typical_benchmark: "Good: less than 24 hours with automated monitoring; without monitoring: days to weeks"
+
+    - metric: Training-Serving Feature Parity Rate
+      description: Percentage of production models with verified consistency between training and serving feature computation
+      typical_benchmark: "Target: 100% for production models; common without feature store: 60-80%"
+
+    - metric: ML Compute Cost Efficiency
+      description: Cost per prediction served or per model training run relative to business value delivered
+      typical_benchmark: "Significant variation by model type; 20-40% waste common without right-sizing and spot instance optimization"
+
+  regulatory_context:
+    - name: EU AI Act
+      relevance: The EU AI Act introduces risk-based requirements for AI systems — high-risk applications (hiring, credit, healthcare) require documentation, human oversight, and accuracy monitoring obligations.
+      marketing_implication: ML observability, model cards, and governance tooling have a direct EU AI Act compliance argument for organizations deploying AI in regulated use cases.
+
+    - name: SR 11-7 (Model Risk Management — Financial Services)
+      relevance: US Federal Reserve guidance requiring model validation, governance, and ongoing performance monitoring for models used in financial decision-making.
+      marketing_implication: Model registry, experiment tracking, and drift monitoring products have a direct SR 11-7 argument for financial services ML buyers — model governance is a regulatory requirement, not just an engineering best practice.
+
+    - name: GDPR / CCPA (Algorithmic Fairness and Right to Explanation)
+      relevance: Data privacy regulations include requirements for explainability of automated decisions affecting individuals — relevant for ML models used in customer-facing applications.
+      marketing_implication: Explainability and fairness monitoring capabilities have a direct GDPR compliance argument for B2C ML applications in the EU.
+
+calibration:
+  analysis:
+    emphasize:
+      - Production ML reliability and drift monitoring with specific detection latency benchmarks
+      - MLOps pipeline automation and time-to-production improvement
+      - Integration with existing ML toolchain (MLflow, Kubeflow, Kubernetes, dbt, cloud ML services)
+      - LLM evaluation, RAG pipeline support, and hallucination management
+    de_emphasize:
+      - Training performance benchmarks without serving and monitoring context
+      - Feature breadth that increases platform complexity and operational overhead
+      - Roadmap-only support for LLM or RAG use cases
+    signal_sources:
+      - GitHub repository activity for open-source components (Terraform providers, SDK quality)
+      - MLflow and Weights & Biases integration depth (breadth and maintenance frequency)
+      - Published benchmark methodology for inference latency and throughput
+      - Customer references at comparable ML system scale and model portfolio size
+    red_flags:
+      - No automated drift detection or monitoring capability in the base product
+      - Inference serving with no published latency or cost benchmarks
+      - LLM support limited to OpenAI API pass-through with no evaluation framework
+      - Platform lock-in through proprietary feature formats with no export path
+
+  strategy:
+    preferred_approaches:
+      - Production reliability narrative — quantify the cost of silent model degradation and manual deployment overhead
+      - MLOps maturity framework — position relative to the team''s current deployment and monitoring practices
+      - LLM integration entry point — RAG and evaluation tooling is an active, high-urgency need in most ML teams
+      - Incremental adoption — start with experiment tracking or monitoring, expand to full platform
+    patterns_to_avoid:
+      - Replacing existing toolchain messaging — ML engineers are attached to their tools; additive value wins
+      - Training performance claims without serving and operational context
+      - Claiming to eliminate the need for ML engineering expertise
+    recommended_frameworks:
+      - framework_id: value-proposition-canvas
+        reason: Effective for mapping ML platform capability to the specific jobs-to-be-done of AI/ML Engineers — deployment speed, drift detection, experiment reproducibility.
+      - framework_id: positioning-statement
+        reason: The ML tooling market is crowded and overlapping; specificity on the production ML workflow stage addressed is essential for differentiation from SageMaker, Vertex AI, and MLflow.
+
+  content:
+    tone_adjustments:
+      - Technical and specific — ML engineers dismiss vague AI claims immediately; show architecture diagrams and code examples
+      - Production-focused — training stories are less compelling than production monitoring and deployment stories
+      - Toolchain-aware — acknowledge and integrate with MLflow, Kubeflow, and cloud ML platforms rather than positioning against them
+      - Evidence-based — latency benchmarks, drift detection case studies, and deployment frequency data from production deployments
+    format_preferences:
+      - Architecture diagrams showing integration with existing ML stack components
+      - Benchmark reports with hardware specifications, model types, and load conditions
+      - Notebook-to-production workflow tutorials with working code examples
+      - Drift detection case studies with specific timeline from drift onset to detection to remediation
+    credibility_signals:
+      - Published MLflow and Weights & Biases integration with active maintenance
+      - Kubernetes-native deployment with Helm chart and IaC examples
+      - Transparent inference latency benchmarks with disclosed model type, hardware, and batch size
+      - Named customer references at comparable ML system scale with specific deployment frequency data
+    credibility_killers:
+      - '"AI-powered" MLOps claims without explainability of what AI is doing'
+      - Latency or throughput benchmarks without hardware specifications and model size
+      - LLM support claims limited to prompt management with no evaluation framework
+      - No drift detection or model performance monitoring in the base product
+
+  review:
+    domain_standards:
+      - Inference latency claims must specify model type, hardware configuration (GPU/CPU), batch size, and percentile (p50/p95/p99)
+      - Drift detection claims must specify detection methodology, minimum detectable shift, and time to alert
+      - Training acceleration claims must specify dataset size, model architecture, and baseline comparison
+    red_lines:
+      - '"Eliminates model drift" — drift is a statistical property of data, not a software bug that can be eliminated'
+      - Accuracy claims without specifying task, dataset, and evaluation methodology
+      - '"Solves hallucination" without specifying the technique and its measured reduction rate'
+
+examples:
+  - scenario: Writing ML platform content for an AI/ML Engineer evaluating an MLOps platform
+    without_sme: |
+      Headline: "Streamline Your ML Workflow with [Product]"
+      Opening: "[Product] is an AI-powered MLOps platform that helps data science
+      teams build, deploy, and monitor machine learning models faster with
+      automated pipelines and intelligent insights..."
+    with_sme: |
+      Headline: "Cut Model Deployment Time from Weeks to Hours — Without Replacing Your Existing Stack"
+      Opening: "The average ML team takes 3-8 weeks to deploy a trained model to
+      production — not because the model isn't ready, but because deployment
+      engineering, feature parity validation, and serving infrastructure setup
+      aren't automated. [Product] adds a deployment and monitoring layer on top
+      of your existing MLflow experiment tracking and Kubernetes serving
+      infrastructure — integrating in under a day, with automated drift alerting
+      and one-command model promotion from staging to production..."
+    agent: content-generator
+
+  - scenario: Positioning analysis for an ML observability platform targeting AI/ML Engineer buyers
+    without_sme: |
+      AI/ML Engineers care about model performance. Position your observability
+      platform as the tool that catches model problems before they impact users
+      and helps teams understand what is happening inside their ML systems.
+    with_sme: |
+      The AI/ML Engineer evaluates observability tools through one lens: will
+      this tell me about model degradation before my business stakeholders
+      notice unexplained prediction quality issues? The buying trigger is almost
+      always a post-mortem for a silent degradation incident — a model that
+      drifted for 3 weeks before anyone noticed. Lead with a specific drift
+      scenario the product would have caught faster — with detection latency
+      benchmarks and a named customer example. Then address training-serving
+      skew explicitly: does the monitoring layer validate feature consistency
+      between training and serving? That specific gap is a high-priority pain
+      point that generic APM tools do not address.
+    agent: strategic-planning
+
+stakeholder_guidance: |
+  AI/ML Engineers are highly technical practitioners who are deeply skeptical
+  of marketing claims about AI and ML tooling. Communication must be specific,
+  technically grounded, and production-focused.
+
+  **When assessing current ML tooling or practices:**
+  - Acknowledge the complexity of the production ML problem — teams have
+    invested significant engineering in their current workflows
+  - Use: "there is an opportunity to reduce deployment overhead and improve
+    production monitoring coverage within the existing toolchain"
+  - Avoid: "your current approach creates ML reliability risks" without
+    specific evidence from the customer environment
+
+  **When making strategic recommendations:**
+  - Lead with production evidence — drift detection case studies and deployment
+    frequency data from comparable ML teams carry far more weight than
+    theoretical MLOps maturity frameworks
+  - Always address integration complexity honestly — if the platform requires
+    replacing MLflow or migrating off Kubeflow, quantify the migration cost
+    upfront rather than discovering it post-sale
+  - Acknowledge the LLM context — most ML teams are managing both classical
+    ML systems and LLM integrations; tools that bridge both paradigms are
+    significantly more compelling than single-paradigm solutions
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

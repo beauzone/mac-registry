@@ -1,0 +1,189 @@
+metadata:
+  id: april-dunford-5-step-positioning
+  version: 1.0.0
+  display_name: April Dunford 5-Step Positioning — Competitive Context Design Model
+  category: product_pmm
+  description: Implements April Dunford’s 5-step positioning methodology to deliberately select competitive context, articulate
+    differentiated value, and define optimal category framing. Adapted for AI-native markets and board-level rigor.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    roles:
+    - ceo
+    - cmo
+    - vp-product
+    - product-marketing-manager
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: product_capabilities
+    description: Distinct technical and operational capabilities
+    source: skill
+  - field: customer_outcomes
+    description: Measurable customer results delivered
+    source: user_input
+  - field: known_competitors
+    description: Direct and substitute alternatives customers consider
+    source: user_input
+  - field: customer_segments
+    description: Defined ICP segments
+    source: existing_deliverable
+analysis:
+  instructions: 'This framework follows Dunford’s sequence: alternatives → differentiated capabilities → value themes → best-fit
+    customers → market category. It enforces competitive clarity and intentional context selection.
+
+
+    Produce a structured positioning output: Alternatives → Differentiated Capabilities → Value Themes → Best-Fit Segment
+    → Category Frame. Conclude with revised positioning statement and sales enablement implications.'
+  dimensions:
+  - id: step-1-—-identify-competitive-alternatives
+    name: Step 1 — Identify Competitive Alternatives
+    description: ''
+    prompts:
+    - What tools or processes do customers use today?
+    - Are substitutes internal builds or manual workflows?
+    - Do buyers frame us against a legacy category?
+    - Are we misclassified in sales conversations?
+  - id: step-2-—-identify-differentiated-capabilities
+    name: Step 2 — Identify Differentiated Capabilities
+    description: ''
+    prompts:
+    - What technical or operational advantages are unique?
+    - Are there proprietary data or ecosystem effects?
+    - Is there defensible workflow integration?
+    - Are these differences durable or temporary?
+  - id: step-3-—-map-capabilities-to-value-themes
+    name: Step 3 — Map Capabilities to Value Themes
+    description: ''
+    prompts:
+    - Which capabilities produce measurable impact?
+    - Are outcomes economic, operational, or strategic?
+    - Do value themes increase urgency?
+    - Are themes aligned to buyer priorities?
+  - id: step-4-—-identify-best-fit-customer-segments
+    name: Step 4 — Identify Best-Fit Customer Segments
+    description: ''
+    prompts:
+    - Which ICP segment over-indexes on this value?
+    - Where are win rates highest?
+    - Where is churn lowest?
+    - Are we targeting segments that under-value differentiation?
+  - id: step-5-—-define-market-category-frame
+    name: Step 5 — Define Market Category Frame
+    description: ''
+    prompts:
+    - Which category best highlights our strengths?
+    - Should we redefine category boundaries?
+    - Does framing elevate value perception?
+    - Does category selection exclude weak competitors?
+output_templates:
+- id: primary
+  name: April Dunford 5-Step Positioning
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Competitive Alternatives
+
+    {competitive_alternatives}
+
+
+    ## Differentiated Capabilities
+
+    {differentiated_capabilities}
+
+
+    ## Value Themes
+
+    {value_themes}
+
+
+    ## Best-Fit Customer Segment
+
+    {best-fit_customer_segment}
+
+
+    ## Category Frame Recommendation
+
+    {category_frame_recommendation}
+
+
+    ## Sales and Messaging Implications
+
+    {sales_and_messaging_implications}
+
+    '
+rubric:
+  description: Evaluates competitive clarity, defensibility of differentiation, segment precision, and strength of category
+    framing.
+  dimensions:
+  - name: Alternative Clarity
+    weight: 0.2
+    scoring:
+      1: Alternatives vaguely defined.
+      3: Clear but incomplete alternative mapping.
+      5: Precise identification of direct and substitute alternatives.
+    improvement_guidance: Explicitly list what buyers would choose otherwise.
+  - name: Differentiation Durability
+    weight: 0.25
+    scoring:
+      1: Temporary or cosmetic differentiation.
+      3: Moderate defensibility.
+      5: Structural, hard-to-replicate advantage.
+    improvement_guidance: Tie differentiation to durable assets.
+  - name: Segment Precision
+    weight: 0.2
+    scoring:
+      1: Broad undifferentiated target market.
+      3: Moderate segment clarity.
+      5: Clear best-fit ICP with evidence.
+    improvement_guidance: Use win/loss and retention data to validate.
+  - name: Category Framing Strength
+    weight: 0.2
+    scoring:
+      1: Category choice does not highlight strengths.
+      3: Acceptable but not optimal framing.
+      5: Category selection makes differentiation obvious.
+    improvement_guidance: Select context that amplifies advantage.
+  - name: Sales Impact
+    weight: 0.15
+    scoring:
+      1: No enablement implications.
+      3: Basic sales adjustments.
+      5: Clear impact on win rates and deal velocity.
+    improvement_guidance: Translate positioning into talk track shifts.
+  thresholds:
+    revise: 2.8
+    publish_ready: 3.6
+    escalate_to_user: 2.2
+anti_patterns:
+- pattern: Feature-Led Differentiation
+  description: Listing product features without competitive context.
+  mitigation: Define differentiation relative to alternatives.
+- pattern: Wrong Segment Targeting
+  description: Targeting segments that do not value differentiation.
+  mitigation: Refocus on best-fit customers.
+- pattern: Category Misclassification
+  description: Allowing competitors to define the comparison frame.
+  mitigation: Intentionally select favorable category context.
+chaining:
+  after:
+  - framework_id: positioning-statement
+    reason: ''
+  - framework_id: messaging-architecture
+    reason: ''
+  before:
+  - framework_id: competitive-strategy-deep-dive
+    reason: ''
+  - framework_id: icp-buying-committee
+    reason: ''

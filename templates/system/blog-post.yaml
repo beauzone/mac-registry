@@ -1,0 +1,32 @@
+metadata:
+  id: blog-post
+  display_name: Blog post
+  version: "1.0.0"
+  schema_version: "1.0"
+  category: web
+  content_type: blog-post
+  tags:
+    - long-form
+    - content-marketing
+
+description: >
+  Long-form blog post template following your brand voice and messaging pillars.
+  Structured to lead with a point of view, support it with proof points, and
+  close with a clear next step.
+
+sections:
+  - name: Hook
+    guidance: Open with a specific, non-obvious observation — not a generic industry stat.
+  - name: Point of view
+    guidance: State the central claim plainly. Use the voice traits from the brand spec.
+  - name: Evidence
+    guidance: Three proof points from messaging pillars or customer outcomes.
+  - name: Counterargument
+    guidance: Address the most common skeptical reaction in 2-3 sentences.
+  - name: Practical takeaway
+    guidance: What should the reader do next? Keep the CTA low-friction.
+
+starter_prompt: >
+  Draft an 800-word blog post for {target_persona}. Pick a point of view from
+  our messaging pillars and defend it with specific proof points. Match the
+  brand voice exactly — no generic SaaS-speak. End with a low-friction CTA.

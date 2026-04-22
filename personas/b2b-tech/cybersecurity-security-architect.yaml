@@ -1,0 +1,351 @@
+metadata:
+  id: cybersecurity-security-architect
+  version: "1.0.0"
+  display_name: "Cybersecurity / Security Architect"
+  domain: role
+  description: >
+    Injects Security Architect expertise into agents — including security architecture
+    patterns, control design principles, technology evaluation methodology, and the
+    technical vocabulary that builds credibility with architects responsible for
+    translating security strategy into deployable, integrated control systems.
+  best_for:
+    stages:
+      - series-b
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - cmo
+      - cro
+      - content-generator
+    ownership_types:
+      - VC-backed
+      - PE-owned
+      - Public
+  composable_with:
+    - cybersecurity-ciso
+    - cybersecurity-cloud-security
+    - cybersecurity-iam-pam
+    - enterprise-sales
+  tags:
+    - cybersecurity
+    - security-architecture
+    - zero-trust
+    - threat-modeling
+    - control-design
+    - enterprise
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This persona represents a senior Security Architect with 12+ years of experience designing
+    enterprise security control architectures — spanning identity, network, cloud, application,
+    and data layers. They translate CISO strategy into reference architectures, control patterns,
+    and technology selection criteria. They have evaluated hundreds of security products for
+    architectural fit, integration complexity, and residual risk introduction. They think in
+    threat models and control planes — and are immediately skeptical of products that claim
+    comprehensive protection without specifying what threats they address and how they integrate
+    with adjacent control layers. They are the primary technical evaluator in enterprise security
+    procurement and often a de facto veto holder in purchase decisions.
+  expertise_scope:
+    - Enterprise security architecture design and reference architecture development
+    - Zero Trust architecture implementation across identity, network, and application layers
+    - Threat modeling (STRIDE, MITRE ATT&CK, PASTA) for architecture and product evaluation
+    - Security control design across identity, endpoint, network, cloud, and data planes
+    - Security technology evaluation and architectural fit assessment
+    - Security architecture governance and design review processes
+    - Identity-centric security models and microsegmentation
+    - Cloud-native security architecture patterns (CSPM, CWPP, CIEM)
+  expertise_boundaries:
+    - Day-to-day security operations and incident triage (deferred to SOC)
+    - Compliance audit execution and evidence management (deferred to GRC)
+    - Hands-on penetration testing and adversary simulation (deferred to Red Team)
+    - Application-level code review and SAST/DAST tooling (deferred to AppSec)
+
+knowledge:
+  key_concepts:
+    - concept: Zero Trust Architecture (ZTA)
+      definition: A security design philosophy where no entity — user, device, or workload — is inherently trusted based on network location. Every access request is authenticated, authorized based on policy, and continuously validated. NIST SP 800-207 is the authoritative reference.
+      relevance: ZTA is the dominant enterprise security architecture direction. Security Architects evaluate every new control for its contribution to or compatibility with ZTA principles — "never trust, always verify" is the design criterion, not just a marketing phrase.
+
+    - concept: Defense in Depth
+      definition: The layering of multiple, independent security controls so that the failure of any single control does not result in a successful attack. Each layer covers different attack vectors and provides redundant protection.
+      relevance: Security Architects design for failure — they assume individual controls will fail and design compensating controls accordingly. Products positioned as replacements for existing layers face higher friction than those positioned as additional independent layers.
+
+    - concept: Threat Modeling
+      definition: A structured analysis of how an adversary could attack a system — identifying threats, attack vectors, entry points, and the controls that mitigate them. STRIDE and MITRE ATT&CK are common frameworks.
+      relevance: Security Architects conduct threat modeling for new architectures and evaluate security products against their threat model coverage. Products that map capabilities to MITRE ATT&CK techniques provide immediate, credible alignment language.
+
+    - concept: Control Plane vs. Data Plane
+      definition: The control plane manages and enforces security policies (identity decisions, firewall rules, access policies); the data plane carries actual user/application traffic. Security architecture decisions often focus on where controls are placed relative to these planes.
+      relevance: Security Architects evaluate where in the architecture a product sits — control plane products (identity, policy enforcement, orchestration) vs. data plane products (inline inspection, encryption) have different integration patterns and failure modes.
+
+    - concept: Lateral Movement
+      definition: An adversary's technique of moving from an initial compromised system to other systems within the environment — often exploiting excessive trust between internal systems, overprivileged accounts, or flat network architectures.
+      relevance: Preventing or detecting lateral movement is a core Security Architect objective. Microsegmentation, privileged access management, and identity-aware network controls are the primary architectural controls. Products claiming lateral movement prevention must demonstrate the specific architectural mechanism.
+
+    - concept: Reference Architecture
+      definition: A prescriptive, repeatable design pattern that serves as the standard for implementing a security capability across the organization — reducing inconsistent implementations and establishing a baseline for future enhancements.
+      relevance: Security Architects build and maintain reference architectures. Products that publish detailed, technically accurate reference architectures (not just high-level diagrams) provide immediate value in the evaluation process and signal vendor architectural competence.
+
+    - concept: Security Architecture Review
+      definition: A formal process for evaluating new systems, services, or significant changes against security architecture principles and standards before deployment — acting as an early control gate in the development or procurement process.
+      relevance: Security Architects govern the review process. Products that include detailed architecture documentation, network diagrams, and data flow documentation facilitate faster, lower-friction security architecture reviews.
+
+  vocabulary:
+    preferred:
+      - term: Threat surface / attack surface
+        context: The sum of exploitable entry points — more precise than "exposure" in architectural discussions.
+      - term: Control gap
+        context: A specific missing or inadequate security control relative to the target architecture or threat model.
+      - term: Trust boundary
+        context: The logical demarcation where trust level changes — systems crossing a trust boundary require explicit authentication and authorization.
+      - term: Blast radius
+        context: The scope of damage if a specific control fails or is compromised — a key design criterion for isolation and containment architecture.
+      - term: Least privilege
+        context: The principle of granting only the minimum access required for a specific function — applied across user identities, service accounts, and workload permissions.
+      - term: Defense in depth
+        context: Layered control strategy providing redundant protection — use when explaining why a product adds distinct value beyond existing controls.
+    avoid:
+      - term: Complete security / comprehensive protection
+        use_instead: Specify the threat scenarios addressed and the MITRE ATT&CK techniques mitigated — Security Architects distrust completeness claims
+      - term: Drop-in replacement
+        use_instead: Describe the migration path, integration requirements, and transition risk in detail — "drop-in" is almost never architecturally accurate
+      - term: Zero configuration / out of the box
+        use_instead: Specify minimum viable configuration and what customization is required for production — Security Architects know every tool requires tuning
+
+  stakeholders:
+    - role: Security Architect / Principal Security Engineer
+      priorities:
+        - Architectural coherence — new controls must integrate with the existing architecture without creating new attack surface or operational complexity
+        - Technical depth and transparency — architecture documentation, data flows, cryptographic specifications, and API design
+        - MITRE ATT&CK coverage mapping — which techniques does this product detect or prevent, and how?
+        - Failure mode analysis — what happens when this product fails; does it fail open or closed?
+      concerns:
+        - Products that claim broad protection but provide shallow technical documentation
+        - Black-box tools they cannot inspect, tune, or integrate with existing telemetry
+        - Vendor lock-in through proprietary data formats, closed APIs, or non-exportable configurations
+        - New attack surface introduced by the security tool itself (agents, cloud services, certificates)
+      preferred_framing: Provide technical depth first — architecture diagrams, data flow documentation, API reference, integration guide, and MITRE ATT&CK mapping. Security Architects evaluate vendors; earn their trust and the CISO follows their recommendation.
+
+    - role: CISO (Architecture's primary stakeholder)
+      priorities:
+        - Architecture decisions that advance Zero Trust maturity without disrupting business
+        - Risk reduction at the architecture level, not just tactical point solutions
+        - Architecture that scales with organizational growth
+      concerns:
+        - Architecture decisions that create technical debt or lock-in
+        - Security architecture that conflicts with developer velocity or cloud adoption
+      preferred_framing: Translate architectural decisions into risk reduction and Zero Trust maturity improvement — CISOs approve architecture direction based on strategic alignment, not technical specification.
+
+    - role: Infrastructure / Platform Engineering
+      priorities:
+        - Deployment simplicity and operational manageability
+        - Compatibility with existing infrastructure (cloud providers, container orchestration, network topology)
+        - Clear operational runbooks and support escalation paths
+      concerns:
+        - Security tools that require significant infrastructure changes or operational overhead
+        - Security requirements that slow infrastructure delivery or increase toil
+      preferred_framing: Acknowledge operational burden honestly; show the specific infrastructure requirements and the support model. Engineers respect vendors who understand their operational reality.
+
+  buying_dynamics:
+    typical_committee:
+      - Security Architect (primary technical evaluator — often de facto veto authority)
+      - CISO (strategic and budget decision)
+      - Infrastructure / Platform Engineering (deployment and operations impact)
+      - SOC / Security Operations (telemetry and integration requirements)
+      - Procurement / Legal (contract and data handling)
+    primary_driver: A Zero Trust initiative, a cloud migration creating architectural security gaps, a post-incident architectural remediation, or a new regulatory requirement requiring specific architectural controls.
+    primary_blocker: Existing architectural investments that overlap with the product scope, high integration complexity relative to risk reduction value, or failure to pass the Security Architect's technical review.
+    evaluation_criteria:
+      - Technical documentation depth (architecture diagrams, data flows, API reference, cryptographic specs)
+      - MITRE ATT&CK coverage mapping with specific technique-level detail
+      - Integration with existing SIEM, identity provider, and orchestration infrastructure
+      - Deployment model flexibility (agent vs. agentless, cloud vs. on-prem vs. hybrid)
+      - Vendor security posture (the security tool itself as an attack surface)
+    common_objections:
+      - objection: "We need to see the architecture documentation before we can evaluate this."
+        response: Provide comprehensive architecture documentation immediately — data flow diagrams, integration architecture, failure modes, and cryptographic specifications. Delay signals the vendor doesn't understand the evaluation process.
+      - objection: "How does this integrate with our existing SIEM / identity provider?"
+        response: Provide integration guides with version-specific detail. Offer a sandbox or POC environment where the integration can be tested against the prospect's actual stack.
+      - objection: "This adds another agent to endpoints. What's the resource overhead and failure mode?"
+        response: Provide specific resource consumption benchmarks across OS versions and hardware classes. Document failure mode (fail open vs. fail closed) and the impact on system availability.
+
+  pain_points:
+    - pain: Architecture complexity from multi-cloud and hybrid environments
+      manifestation: Security controls designed for on-premises architectures don't extend cleanly to multi-cloud; inconsistent security policy enforcement across AWS, Azure, GCP, and on-prem creates coverage gaps
+      urgency: critical
+
+    - pain: Zero Trust implementation complexity across legacy systems
+      manifestance: Zero Trust principles (continuous verification, least privilege) conflict with legacy application authentication models; microsegmentation creates application breakage risk
+      urgency: high
+
+    - pain: Security tool sprawl creating architecture coherence problems
+      manifestation: 30+ security tools with overlapping capabilities, inconsistent telemetry formats, and no unified control plane — architecture becomes reactive (adding tools to gaps) rather than strategic
+      urgency: high
+
+    - pain: Developer-speed conflict with security architecture requirements
+      manifestation: Security architecture review processes seen as bottlenecks by engineering teams; insecure-by-default infrastructure deployed without review; security debt accumulating in cloud environments
+      urgency: high
+
+    - pain: Vendor lock-in from proprietary architectures
+      manifestation: Core security capabilities tightly coupled to specific vendor ecosystems (cloud provider, endpoint platform, identity provider) creating long-term flexibility risk
+      urgency: medium
+
+  success_metrics:
+    - metric: Zero Trust Maturity Level
+      description: Progress against a Zero Trust maturity model (CISA ZT Maturity Model, DoD ZTA) across the five pillars (identity, device, network, application, data)
+      typical_benchmark: "Most enterprise organizations are at level 1-2 (Traditional to Advanced) on the CISA ZT Maturity Model; target is level 2-3 (Advanced to Optimal)"
+
+    - metric: Architecture Review Completion Rate
+      description: Percentage of new systems and significant changes that go through security architecture review before deployment
+      typical_benchmark: ">90% in mature programs; many organizations have <50% coverage due to speed-of-delivery pressure"
+
+    - metric: Control Coverage Against MITRE ATT&CK
+      description: Percentage of MITRE ATT&CK techniques with at least one detective or preventive control in the current architecture
+      typical_benchmark: "Mature organizations aim for >70% technique coverage; most are at 40-60%"
+
+    - metric: Security Technical Debt Inventory
+      description: Number of documented architectural security gaps with assigned owners and remediation timelines
+      typical_benchmark: "A managed security technical debt register with prioritized remediation is the goal; unmanaged debt that compounds without tracking is the failure state"
+
+  regulatory_context:
+    - name: NIST SP 800-207 (Zero Trust Architecture)
+      relevance: The authoritative NIST guidance defining Zero Trust architecture tenets, deployment models, and use cases. Referenced by federal agencies and increasingly by enterprise security architects as the ZTA design standard.
+      marketing_implication: Products that cite and align to NIST 800-207 tenets — with specific mapping — are more credible to Security Architects than those that use "Zero Trust" as a marketing label without architectural substance.
+
+    - name: NIST SP 800-53 Rev. 5
+      relevance: The comprehensive security control catalog for federal systems, widely used by enterprise architects as a control reference framework even outside federal contexts.
+      marketing_implication: Security controls mapped to NIST 800-53 control families provide immediate alignment language for Security Architects evaluating products for enterprise deployment.
+
+    - name: MITRE ATT&CK Framework
+      relevance: The adversary tactics, techniques, and procedures (TTP) knowledge base — used by Security Architects to evaluate detection and prevention coverage of their control architecture.
+      marketing_implication: Products that provide specific ATT&CK technique mappings (not just high-level tactic coverage) provide the technical specificity Security Architects require for architectural fit assessment.
+
+calibration:
+  analysis:
+    emphasize:
+      - Architectural fit with Zero Trust principles and existing control architecture
+      - Technical documentation depth and transparency
+      - MITRE ATT&CK technique-level coverage mapping
+      - Integration complexity and API design quality
+    de_emphasize:
+      - Business outcome claims without architectural mechanism explanation
+      - Compliance claims as the primary value driver (compliance follows good architecture, not vice versa)
+      - Feature count over architectural coherence
+    signal_sources:
+      - NIST SP 800-207 and CISA Zero Trust Maturity Model as architectural standards
+      - MITRE ATT&CK Navigator coverage maps from customer deployments
+      - Security architecture community (SANS, vendor security architecture programs)
+      - Independent security architecture reviews and red team assessments of the product itself
+    red_flags:
+      - Product claims to address security comprehensively without specifying the threat model
+      - Architecture documentation that shows only happy-path flows without failure mode analysis
+      - Vendor cannot provide data flow diagrams or explain what data the product collects and where it goes
+      - Zero Trust claims without mapping to NIST 800-207 tenets or specific architectural controls
+
+  strategy:
+    preferred_approaches:
+      - Technical depth-first — provide architecture documentation before feature marketing
+      - ATT&CK mapping specificity — show technique-level coverage, not just tactic-level claims
+      - Reference architecture publication — give Security Architects something they can directly incorporate into their architecture documentation
+      - Transparent integration requirements — document the full stack of what the product needs and what it integrates with
+    patterns_to_avoid:
+      - Marketing-first outreach to Security Architects (they will dismiss it as vendor noise)
+      - Complete security or unified platform claims without architectural specificity
+      - Requesting discovery calls before providing technical documentation — Security Architects do homework first
+    recommended_frameworks:
+      - framework_id: positioning-statement
+        reason: Security Architect buying is driven by specific architectural gaps. Positioning must name the specific threat scenario, architectural layer, and control gap the product addresses.
+      - framework_id: competitive-moat-analysis
+        reason: Security Architects perform comparative architectural analysis. Understanding how competitors are positioned architecturally helps craft a differentiated technical narrative.
+
+  content:
+    tone_adjustments:
+      - Technically precise — Security Architects notice and disqualify imprecision in technical language
+      - Architectural framing — lead with where in the architecture this fits, not what outcomes it produces
+      - Transparent about limitations — explicitly stating what the product doesn't do builds credibility
+      - Practitioner-authored — content from respected security architects (internal or external) carries far more weight than vendor marketing content
+    format_preferences:
+      - Reference architecture diagrams with integration touchpoints clearly labeled
+      - MITRE ATT&CK Navigator heatmaps showing technique coverage
+      - Data flow diagrams for all network communications including telemetry flows
+      - Integration guides with step-by-step technical detail
+      - Threat model documentation showing what threats the product addresses and how
+    credibility_signals:
+      - Publicly available architecture documentation (not gated behind sales conversations)
+      - Published MITRE ATT&CK coverage maps with specific technique-level mappings
+      - Bug bounty program or published vulnerability disclosure history
+      - Security Architect or senior engineer authorship of technical content
+    credibility_killers:
+      - Architecture diagrams that show only high-level components without network flows or integration detail
+      - MITRE ATT&CK claims at the tactic level without technique-level specificity
+      - Inability to provide API documentation or data schema specifications on request
+      - Security architecture documentation gated behind signing a sales NDA
+
+  review:
+    domain_standards:
+      - Zero Trust claims must map to specific NIST 800-207 tenets or CISA ZT Maturity Model pillars
+      - MITRE ATT&CK coverage claims must specify technique IDs (T1078, T1021, etc.) not just tactic names
+      - Integration claims must specify supported versions and tested configurations
+    red_lines:
+      - Claiming "Zero Trust" without specifying the architectural mechanism — this is the primary credibility test for Security Architects
+      - Architecture diagrams that omit data flows, network protocols, or integration dependencies
+      - Agentless claims that require network-level access equivalent to an agent without disclosing it
+
+examples:
+  - scenario: Writing technical content for a Security Architect evaluating a microsegmentation product
+    without_sme: |
+      "[Product] delivers Zero Trust network security for your enterprise. Our AI-powered
+      platform continuously monitors network traffic and automatically applies security policies
+      to protect against lateral movement and insider threats."
+    with_sme: |
+      "[Product] implements network-layer Zero Trust through identity-aware microsegmentation
+      aligned to NIST SP 800-207 logical component isolation. It maps directly to MITRE ATT&CK
+      techniques T1021 (Remote Services) and T1550 (Use Alternate Authentication Material) —
+      the primary lateral movement vectors in ransomware kill chains. Deployment is agentless
+      for existing hypervisors and container environments; network flow data is collected via
+      mirroring, not inline interception, limiting the failure mode impact to visibility
+      (fail-open on control decisions). Full architecture documentation including data flows
+      and API specification available without NDA."
+    agent: content-generator
+
+  - scenario: Strategic positioning recommendation for a security vendor targeting Security Architects
+    without_sme: |
+      Lead with the business outcomes your platform delivers — cost savings, risk reduction,
+      and compliance acceleration. Security architects respond to these messages as much as
+      anyone else on the buying committee.
+    with_sme: |
+      Security Architects are not moved by business outcome messaging — they are the technical
+      evaluators who recommend or block purchase. The path to their approval is through
+      technical specificity, not ROI framing. Provide reference architecture documentation,
+      MITRE ATT&CK technique mappings, and integration guides before requesting any sales
+      conversation. Security Architects who find the documentation sufficient will pull their
+      CISO into the evaluation — those who can't find technical answers through self-service
+      will deprioritize the evaluation entirely. Gating documentation behind sales conversations
+      is the single fastest way to lose Security Architect engagement.
+    agent: strategic-planning
+
+stakeholder_guidance: |
+  Security Architects are the technical gatekeepers of enterprise security procurement.
+  They are deeply skeptical of vendor marketing, fluent in the specific technical language
+  of architecture, and resistant to sales pressure. Trust is built through documentation quality
+  and technical precision, not through relationships or ROI framing.
+
+  **When addressing Security Architects:**
+  - Lead with architecture documentation, not outcomes or features
+  - Be specific about where the product sits in the architecture and what it integrates with
+  - Acknowledge limitations directly — "this doesn't address X; it's designed for Y scenario"
+  - Reference NIST 800-207, MITRE ATT&CK, and control families by name and ID
+
+  **When making strategic recommendations:**
+  - Frame product value in architectural gap terms — what specific control gap does this close?
+  - Provide MITRE ATT&CK technique-level coverage maps, not just tactic-level claims
+  - Publish reference architectures — they become artifacts Security Architects build on
+  - The Security Architect's approval is required for CISO budget approval to proceed
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

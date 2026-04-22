@@ -1,0 +1,177 @@
+metadata:
+  id: influencer-creator-brief
+  version: "1.0.0"
+  display_name: "Influencer / Creator Brief"
+  category: campaign
+  description: >
+    Campaign brief for influencer and creator partnerships — covering campaign context, brand
+    guidelines, creative direction, deliverable specifications, posting requirements, FTC
+    disclosure instructions, and success metrics. Designed to give creators the direction
+    they need while preserving creative freedom. Applicable to paid partnerships, gifting
+    programs, and ambassador arrangements.
+  output_format: markdown
+  typical_length: "600–900 words"
+  best_for:
+    agents:
+      - campaign-manager
+      - content-generator
+    stages:
+      - series-a
+      - series-b
+      - series-c
+      - scale
+    modes:
+      - fractional
+      - fte
+  tags:
+    - influencer
+    - creator
+    - campaign-brief
+    - ugc
+    - social-media
+    - brand-partnerships
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: campaign_name
+      description: Name of the campaign or partnership this brief is for
+      source: user_input
+    - field: product_or_collection
+      description: Specific product(s) or collection the creator will feature
+      source: user_input
+    - field: campaign_goal
+      description: Primary objective — brand awareness, conversion, UGC collection, etc.
+      source: user_input
+    - field: platform
+      description: Platform(s) — Instagram, TikTok, YouTube, Pinterest, etc.
+      source: user_input
+    - field: deliverables
+      description: Specific content deliverables required — e.g., "2 TikTok videos, 3 Instagram Stories"
+      source: user_input
+  optional:
+    - field: creator_tier
+      description: Creator tier — nano, micro, macro, or specific follower range
+      source: user_input
+    - field: campaign_budget
+      description: Payment or gifting value for the partnership
+      source: user_input
+    - field: posting_window
+      description: Required posting dates or window
+      source: user_input
+    - field: brand_guidelines
+      description: Existing brand voice, visual, or messaging guidelines
+      source: user_input
+    - field: past_creative_examples
+      description: Examples of creator content that has worked well previously
+      source: user_input
+
+structure:
+  sections:
+    - id: campaign_overview
+      name: Campaign Overview
+      required: true
+      description: Brief orientation on the brand, campaign context, and why this creator is a good fit
+      guidance: >-
+        Write 2-3 sentences that tell the creator: (1) who the brand is and what it stands for
+        in one sentence — not a corporate overview; (2) what this campaign is about and why it matters
+        right now; (3) why this creator's audience is a great match. Keep it conversational —
+        creators read dozens of briefs; a generic brand boilerplate is an immediate engagement killer.
+        Make the creator feel chosen, not mass-emailed.
+      word_count: 80-120
+
+    - id: product_and_key_message
+      name: Product and Key Message
+      required: true
+      description: What to feature and the one thing the content should communicate about it
+      guidance: >-
+        Cover: (1) Product name, what it does, and any specific details the creator must know
+        (e.g., how to use it, flavor notes, size/fit guidance, key ingredient); (2) The single
+        most important message this content should leave the audience with — one sentence;
+        (3) 2-3 proof points or talking points they can use if they want to, but are not required
+        to repeat verbatim. Resist the temptation to list 10 product features — the best creator
+        content picks one angle and goes deep on it.
+      word_count: 100-150
+
+    - id: creative_direction
+      name: Creative Direction
+      required: true
+      description: Tone, style, and content angle guidance — what to do and what not to do
+      guidance: >-
+        This section should ENABLE creativity, not script it. Cover: (1) Tone — 3 adjectives
+        that describe the desired feel (e.g., "authentic, playful, informative" not "fun and exciting");
+        (2) Content angle suggestions — 2-3 optional hooks or storylines the creator can adapt,
+        not mandated scripts; (3) Visual or aesthetic notes — any brand visual direction or
+        inspiration; (4) What NOT to do — specific things to avoid (competitor mentions, certain
+        claims, specific visual styles). Keep the "do not" list short — one or two items maximum.
+        If the brief is longer on restrictions than on creative freedom, the content will feel forced.
+      word_count: 150-200
+
+    - id: deliverables_and_specs
+      name: Deliverables and Specifications
+      required: true
+      description: Specific content deliverables with format requirements, dimensions, and technical specs
+      guidance: >-
+        List each deliverable with: content type (video/photo/story), platform, format/dimensions,
+        video length if applicable, quantity, and any required on-screen or caption elements
+        (e.g., "product must be shown in use," "link in bio required"). Be precise — vague deliverable
+        lists lead to reshoots. Specify: is the creator providing raw files? Is whitelisting
+        permission granted? What is the approval process before posting?
+      word_count: 100-150
+
+    - id: posting_requirements
+      name: Posting and Timeline Requirements
+      required: true
+      description: When to post, content approval process, and link/code requirements
+      guidance: >-
+        Specify: (1) Posting window or specific date; (2) Content submission deadline for brand review
+        (if applicable) — recommend building 48-72 hours for review into the timeline; (3) Unique
+        promo code or UTM link requirements — critical for attribution; (4) How long the post must
+        remain live; (5) Any embargo or timing restrictions. If no pre-approval is required, state
+        that explicitly — creators appreciate knowing they have creative control.
+      word_count: 80-120
+
+    - id: ftc_disclosure
+      name: FTC Disclosure Requirements
+      required: true
+      description: Mandatory disclosure language and placement instructions
+      guidance: >-
+        Write this section clearly and without ambiguity. Specify: (1) Required disclosure language
+        for this partnership type (paid: "#ad" or "Paid partnership with [Brand]"; gifted: "#gifted"
+        or "#productgifted"); (2) Placement requirement — must appear at the BEGINNING of the caption,
+        not at the end or buried in hashtags; (3) Platform-specific requirements — use Instagram's
+        Paid Partnership label, TikTok's Branded Content toggle, etc., in addition to caption disclosure;
+        (4) Restate that this is a legal requirement, not a recommendation. Non-negotiable.
+      word_count: 80-120
+
+    - id: success_and_next_steps
+      name: Success Metrics and Next Steps
+      required: false
+      description: How success will be measured and what happens after posting
+      guidance: >-
+        Cover: (1) What metrics the brand will track — reach, engagement rate, link clicks, promo
+        code redemptions; (2) Whether content may be repurposed — whitelisting or UGC usage in paid ads
+        (include this if it was negotiated); (3) Reporting — will the creator be asked to share
+        analytics after posting?; (4) What success looks like for a long-term partnership. If this
+        is a one-off activation with no ongoing relationship, say so clearly — creators appreciate
+        transparency about expectations.
+      word_count: 80-120
+
+quality_criteria:
+  - criterion: Campaign overview is personalized to the creator, not generic brand boilerplate
+  - criterion: Creative direction provides options and inspiration, not mandatory scripts
+  - criterion: FTC disclosure section is clear, specific, and positioned as non-negotiable
+  - criterion: Deliverables section specifies format, dimensions, quantity, and approval process
+  - criterion: Promo code or tracking link is specified for conversion attribution
+  - criterion: '"Do not" list is limited to 1-2 items — brief is not dominated by restrictions'
+
+variants:
+  - name: Gifting/Seeding Brief
+    description: For product gifting programs with no monetary compensation
+    modifications: Remove budget references; emphasize that posting is optional but appreciated; soften deliverable language to "if you choose to share"; disclosure requirement is still mandatory if any post is made
+  - name: UGC Creator Brief
+    description: For creators hired specifically to produce content for brand use (not their own channels)
+    modifications: Remove posting requirements for creator's own channel; emphasize usage rights grant (brand owns content); specify raw file deliverable requirements; remove FTC disclosure section (UGC used in paid ads has different disclosure requirements at the ad level)
+  - name: Ambassador Program Brief
+    description: For ongoing ambassador relationships with recurring content commitments
+    modifications: Add program term and ongoing cadence section; include exclusive benefits and perks; add community access and brand event invitations; reference long-term relationship goals

@@ -1,0 +1,357 @@
+metadata:
+  id: cybersecurity-iam-pam
+  version: "1.0.0"
+  display_name: "Cybersecurity / IAM-PAM"
+  domain: role
+  description: >
+    Injects Identity and Access Management / Privileged Access Management expertise into
+    agents — including identity lifecycle management, Zero Trust identity principles,
+    privileged access governance, and the vocabulary and evaluation criteria of practitioners
+    responsible for securing one of the most targeted attack surfaces in the enterprise.
+  best_for:
+    stages:
+      - series-b
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - cmo
+      - cro
+      - content-generator
+    ownership_types:
+      - VC-backed
+      - PE-owned
+      - Public
+  composable_with:
+    - cybersecurity-ciso
+    - cybersecurity-security-architect
+    - cybersecurity-cloud-security
+    - enterprise-sales
+  tags:
+    - cybersecurity
+    - identity
+    - access-management
+    - privileged-access
+    - zero-trust
+    - iam
+    - pam
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This persona represents a senior IAM/PAM architect or engineer with 10+ years of experience
+    designing and operating identity and access management programs across enterprise environments.
+    They have implemented identity governance platforms, PAM solutions, and federated identity
+    architectures — and they understand that identity is now the primary attack surface and the
+    core enforcement point for Zero Trust. They are deeply technical buyers who evaluate products
+    on directory integration depth, session management controls, and lifecycle automation quality.
+    They are the primary evaluators for IAM, PAM, IGA (Identity Governance and Administration),
+    and CIEM (Cloud Infrastructure Entitlement Management) purchases.
+  expertise_scope:
+    - Identity lifecycle management (joiner-mover-leaver processes, provisioning automation)
+    - Privileged access management (PAM) — session recording, credential vaulting, just-in-time access
+    - Directory services and federation (Active Directory, Azure AD/Entra ID, Okta, LDAP)
+    - Authentication protocols and MFA (SAML, OAuth 2.0, OIDC, FIDO2/WebAuthn)
+    - Identity governance and access certification (IGA) — access reviews, SoD policies
+    - Cloud infrastructure entitlement management (CIEM) — cloud permission rightsizing
+    - Service account and machine identity management
+    - Secrets management (API keys, certificates, service account credentials)
+  expertise_boundaries:
+    - Network security architecture and firewall policy (deferred to Network Security persona)
+    - Application-layer authentication code implementation (deferred to AppSec)
+    - Incident response and forensic investigation
+    - Deep compliance audit execution (deferred to GRC Lead)
+
+knowledge:
+  key_concepts:
+    - concept: Identity as the New Perimeter
+      definition: In Zero Trust architectures, the authenticated identity of the user, device, or workload — not network location — is the primary trust determinant. Every access request is evaluated against identity-based policy, regardless of network origin.
+      relevance: IAM/PAM professionals are the practitioners building the "perimeter" in modern security architectures. Products that enable identity-centric access control, continuous authentication, and identity-based policy enforcement align directly with their architectural mandate.
+
+    - concept: Just-in-Time (JIT) Access
+      definition: A privileged access model where elevated permissions are granted for the minimum time required to complete a specific task, then automatically revoked — replacing standing privileged accounts with time-bound, task-scoped access.
+      relevance: JIT access is the modern PAM best practice, reducing the window of exposure from compromised privileged credentials. Products that enable JIT access while maintaining operational usability (low friction for the admin) are highly valued.
+
+    - concept: Least Privilege Enforcement
+      definition: The access control principle of granting users, services, and systems only the minimum permissions necessary for their function — continuously enforced and regularly recertified.
+      relevance: Least privilege enforcement is central to IAM/PAM strategy. IAM/PAM professionals evaluate products on how effectively they enable and maintain least privilege at scale — including in cloud environments where entitlements proliferate rapidly.
+
+    - concept: Identity Governance and Administration (IGA)
+      definition: The policy framework and technology for managing the identity lifecycle (provisioning/deprovisioning), access requests, access certifications (reviews), and segregation of duties (SoD) enforcement.
+      relevance: IGA is the operational layer of identity management. IAM/PAM professionals evaluate IGA products on automation quality (how well they handle joiner-mover-leaver), access review campaign efficiency, and SoD policy accuracy.
+
+    - concept: Privileged Access Workstation (PAW)
+      definition: A dedicated, hardened workstation used exclusively for privileged administrative tasks — isolated from standard user activities to reduce the risk of credential theft through commodity attack vectors.
+      relevance: PAWs are an architectural control for protecting privileged credentials. IAM/PAM professionals evaluate whether products support PAW architecture or require privileged access from general-purpose endpoints.
+
+    - concept: Service Account and Machine Identity
+      definition: Non-human identities used by applications, scripts, services, and automated processes to authenticate and access resources. Often overprivileged, poorly tracked, and rarely rotated.
+      relevance: Service accounts and machine identities are among the most exploited identity vectors in enterprise attacks. IAM/PAM professionals managing thousands of service accounts are looking for automated discovery, rotation, and governance solutions.
+
+    - concept: Cloud Infrastructure Entitlement Management (CIEM)
+      definition: The practice of discovering, analyzing, and rightsizing permissions granted to human and non-human identities in cloud environments (AWS IAM, Azure RBAC, GCP IAM) — where entitlement sprawl is endemic.
+      relevance: Cloud entitlement sprawl is a critical IAM problem in multi-cloud environments. CIEM capabilities that identify overprivileged cloud identities and recommend least-privilege configurations address one of the IAM professional's most persistent challenges.
+
+  vocabulary:
+    preferred:
+      - term: Entitlement
+        context: A specific permission or access right granted to an identity — more precise than "access" in identity governance discussions.
+      - term: Access certification
+        context: The formal periodic review process where access owners confirm that granted entitlements remain appropriate — synonymous with "access review" but carries the governance implication.
+      - term: Orphaned account
+        context: An account that exists but is no longer associated with an active employee or function — a persistent target for attackers.
+      - term: Standing privilege / standing access
+        context: Persistent elevated permissions that exist regardless of whether they are currently needed — the risk that JIT access models eliminate.
+      - term: Credential vaulting
+        context: Securely storing and managing privileged credentials (passwords, SSH keys, API tokens) with controlled access and automatic rotation.
+      - term: Joiner-mover-leaver
+        context: The identity lifecycle model covering new employee provisioning (joiner), role change access adjustment (mover), and termination deprovisioning (leaver).
+    avoid:
+      - term: Single sign-on solution (as a complete IAM description)
+        use_instead: Specify the full scope — "SSO, MFA, lifecycle management, and access governance" — SSO is one component of IAM, not the whole program
+      - term: Password manager (for enterprise PAM)
+        use_instead: Privileged access management with credential vaulting — conflating consumer password managers with enterprise PAM signals domain ignorance
+      - term: Active Directory replacement
+        use_instead: Describe the integration model — modern IAM platforms extend and federate with AD rather than replacing it; claiming replacement creates immediate objection
+
+  stakeholders:
+    - role: IAM/PAM Engineer / Architect
+      priorities:
+        - Directory integration depth (native AD/Azure AD/Okta connectors, not just LDAP)
+        - Automation quality for lifecycle management (provisioning accuracy, deprovisioning completeness)
+        - Session management controls for privileged access (recording, isolation, JIT workflow)
+        - Service account discovery and rotation automation
+      concerns:
+        - Products that require manual workflows for what should be automated (deprovisioning, rotation)
+        - Black-box access decisions they cannot audit or explain to auditors
+        - Deployment complexity that requires significant professional services to operationalize
+        - Integration breakage when directory or application versions are updated
+      preferred_framing: Lead with integration depth, automation quality, and operational efficiency. IAM/PAM engineers evaluate on whether the product reduces their backlog of identity debt or adds to it. Demonstrate connector breadth and workflow automation quality in every interaction.
+
+    - role: CISO / Security Leadership
+      priorities:
+        - Reduction in identity-related breach risk (credential theft, privilege escalation, insider threat)
+        - Regulatory compliance evidence (SOX segregation of duties, HIPAA access controls, SOC 2 CC6)
+        - Audit readiness for access certification and privileged access governance
+      concerns:
+        - Identity program that passes audits but doesn't reduce actual identity-based risk
+        - Board-level exposure from a privileged credential compromise
+      preferred_framing: Frame identity as the primary attack surface and privileged access as the highest-risk identity vector. Quantify breach scenarios attributable to identity failures (credential theft, orphaned accounts, excessive privilege).
+
+    - role: HR / People Operations
+      priorities:
+        - Frictionless onboarding that provides day-one access without IT bottlenecks
+        - Immediate access revocation upon termination
+        - Role-based provisioning aligned to HR system (Workday, SAP SuccessFactors)
+      concerns:
+        - Access provisioning delays that delay new employee productivity
+        - Termination processes that leave access active after departure
+      preferred_framing: Frame IAM as enabling business velocity (day-one access, frictionless access requests) while maintaining security governance — not as a control that slows HR processes.
+
+  buying_dynamics:
+    typical_committee:
+      - IAM/PAM Engineer or Architect (primary technical evaluator)
+      - CISO / Security Director (strategic and budget decision)
+      - IT Operations (integration with existing directory infrastructure)
+      - HR / People Operations (lifecycle management integration)
+      - Compliance / GRC (access certification and audit evidence)
+      - Legal / Procurement (contract, data handling, SLA)
+    primary_driver: A regulatory requirement (SOX SoD, SOC 2 CC6), a post-incident remediation following a credential-based attack, a cloud adoption initiative requiring cloud entitlement management, or a merger/acquisition requiring rapid identity consolidation.
+    primary_blocker: Existing IAM/PAM platform already deployed (CyberArk, BeyondTrust, SailPoint, Saviynt), high switching cost from platform with significant workflow customization, or IT Operations resistance to AD integration changes.
+    evaluation_criteria:
+      - Directory connector breadth and depth (AD, Azure AD, Okta, supported application connectors)
+      - Lifecycle automation quality (joiner-mover-leaver workflow accuracy and completeness)
+      - PAM session management capabilities (recording, isolation, JIT workflow, credential rotation)
+      - Access certification campaign management (reviewer experience, automated decision support)
+      - Cloud CIEM capabilities for multi-cloud entitlement management
+    common_objections:
+      - objection: "We already have CyberArk / SailPoint / BeyondTrust."
+        response: Acknowledge the incumbent investment; identify the specific gap — often cloud entitlement management, SaaS application governance, or service account automation that legacy PAM platforms handle poorly.
+      - objection: "Our AD is highly customized — standard connectors won't work."
+        response: Request specifics on the customizations; demonstrate connector extensibility and professional services experience with complex AD environments. Offer a technical discovery workshop before proposing.
+      - objection: "We need to see deprovisioning accuracy — leaver processes are critical."
+        response: Offer a live proof-of-concept using a sample of the prospect's application connector set. Deprovisioning accuracy is best demonstrated, not described.
+
+  pain_points:
+    - pain: Orphaned and over-provisioned accounts creating persistent attack surface
+      manifestation: Departed employee accounts still active weeks after offboarding; role changes not reflected in access revocation; 40-60% of enterprise accounts found to be over-provisioned in typical assessments
+      urgency: critical
+
+    - pain: Privileged account sprawl and standing privilege exposure
+      manifestation: Domain admin accounts shared among IT staff; service accounts with excessive privileges rarely rotated; local admin proliferation on endpoints creating lateral movement risk
+      urgency: critical
+
+    - pain: Cloud entitlement sprawl in multi-cloud environments
+      manifestation: AWS IAM roles with administrator permissions assigned to developers; Azure service principals with overly broad subscription access; GCP service accounts with owner-level permissions never cleaned up
+      urgency: high
+
+    - pain: Access certification campaigns consuming disproportionate IAM team time
+      manifestation: Quarterly access reviews requiring manual certification from thousands of access owners; rubber-stamp approvals due to review fatigue; certifications that don't result in actual deprovisioning
+      urgency: high
+
+    - pain: Service account and machine identity governance gaps
+      manifestation: No complete inventory of service accounts; credentials stored in code repositories or configuration files; credentials never rotated because application owners don't know the rotation procedure
+      urgency: high
+
+  success_metrics:
+    - metric: Orphaned Account Detection Rate
+      description: Percentage of orphaned accounts (inactive or unowned) identified and disabled/removed within policy SLA
+      typical_benchmark: "Best-in-class programs identify and remediate orphaned accounts within 24 hours of termination; many organizations have orphaned accounts months or years old"
+
+    - metric: Privileged Account Coverage
+      description: Percentage of privileged accounts (domain admin, local admin, cloud admin) managed through PAM platform vs. unmanaged
+      typical_benchmark: ">95% of privileged accounts under PAM management in mature programs; initial deployments often find 40-60% of privileged accounts unknown to the PAM platform"
+
+    - metric: Mean Time to Deprovision
+      description: Average time from employee termination event to complete access revocation across all systems
+      typical_benchmark: "Best-in-class: <1 hour for critical systems; <24 hours for all systems; many organizations exceed 5 business days"
+
+    - metric: Access Certification Completion Rate
+      description: Percentage of access certification campaigns completed within the scheduled window with actual deprovisioning executed on failed certifications
+      typical_benchmark: ">95% campaign completion within SLA; deprovisioning execution within 5 business days of campaign close"
+
+    - metric: Least Privilege Score (Cloud)
+      description: Percentage reduction in cloud entitlement permissions relative to permissions-used baseline (CIEM assessment)
+      typical_benchmark: "Initial CIEM assessments typically find 70-90% of cloud permissions unused; mature programs achieve <20% excess entitlement"
+
+  regulatory_context:
+    - name: SOX (Section 404 Access Controls)
+      relevance: SOX requires controls over financial system access — including segregation of duties (SoD) and access certification for financially significant systems. IAM/IGA platforms are the primary control evidence source.
+      marketing_implication: SoD policy enforcement and access certification campaign management are the two most SOX-relevant IAM capabilities. Frame them explicitly for financial services and public company audiences.
+
+    - name: SOC 2 CC6 (Logical and Physical Access)
+      relevance: SOC 2 Trust Service Criteria CC6 covers logical access controls — requiring evidence of least privilege, periodic access reviews, and privileged access monitoring. IAM/PAM platforms provide the primary control evidence.
+      marketing_implication: SOC 2 CC6 evidence generation from IAM/PAM platform data (access certification reports, privileged session logs) is a direct selling point for SaaS companies pursuing SOC 2.
+
+    - name: HIPAA Access Controls (§164.312(a)(1))
+      relevance: HIPAA requires unique user identification, emergency access procedures, automatic logoff, and encryption — with access reviews and audit logs for PHI systems.
+      marketing_implication: HIPAA access control requirements map directly to IAM capabilities. Healthcare-sector messaging should explicitly map product capabilities to HIPAA §164.312 technical safeguards.
+
+    - name: NIST SP 800-53 AC / IA Control Families
+      relevance: The NIST 800-53 Access Control (AC) and Identification and Authentication (IA) control families define the federal baseline for IAM controls — widely adopted as enterprise IAM best practice standards.
+      marketing_implication: NIST 800-53 AC/IA control mapping is highly valued by enterprise security architects and GRC teams using NIST as their control framework reference.
+
+calibration:
+  analysis:
+    emphasize:
+      - Identity lifecycle automation quality (speed and accuracy of joiner-mover-leaver)
+      - Privileged access coverage and JIT access capabilities
+      - Directory integration depth and connector breadth
+      - Cloud entitlement management for multi-cloud environments
+    de_emphasize:
+      - Threat detection capabilities outside identity context (not the IAM professional's primary concern)
+      - Network security features (orthogonal to identity focus)
+      - Generic "Zero Trust" claims without identity-specific architectural substance
+    signal_sources:
+      - Gartner Magic Quadrant for Access Management, IGA, and PAM
+      - KuppingerCole Leadership Compass for identity products
+      - Customer references specifically for lifecycle automation accuracy and privileged session management
+      - Connector catalog breadth and version currency
+    red_flags:
+      - PAM product without session recording, session isolation, or JIT access capabilities
+      - IGA product without automated deprovisioning execution (certification that produces reports but no revocation)
+      - Cloud access management product without CIEM or cloud-native connector support
+      - Directory integration that requires significant professional services for standard AD environments
+
+  strategy:
+    preferred_approaches:
+      - Automation depth demonstration — show actual deprovisioning workflow and provisioning accuracy in demos
+      - Privilege reduction quantification — CIEM assessments showing actual entitlement reduction percentages
+      - Compliance evidence generation — show the specific reports and log outputs that satisfy SOX, SOC 2, and HIPAA requirements
+      - Cloud entitlement gap — lead with CIEM for organizations with cloud-heavy environments where legacy PAM platforms fall short
+    patterns_to_avoid:
+      - Positioning around "single pane of glass" without showing the actual integration depth behind it
+      - Claiming to replace AD or existing directory infrastructure
+      - Leading with threat detection (not the IAM professional's primary buying criterion)
+    recommended_frameworks:
+      - framework_id: jobs-to-be-done
+        reason: IAM/PAM professionals have specific operational jobs (deprovision terminated employees, certify access quarterly, rotate privileged credentials). JTBD analysis identifies exactly where product value is most concentrated.
+      - framework_id: competitive-positioning
+        reason: The IAM/PAM market has strong incumbents (CyberArk, SailPoint, BeyondTrust, Okta). Precise differentiation on automation quality, cloud entitlement, and deployment model is required.
+
+  content:
+    tone_adjustments:
+      - Operationally specific — IAM/PAM engineers respond to workflow-level specificity, not identity philosophy
+      - Automation-focused — quantify what is automated vs. what requires manual intervention
+      - Compliance-outcome aware — connect product capabilities to specific compliance evidence requirements
+      - Honest about integration complexity — IAM integrations are consistently underestimated; realistic scoping builds trust
+    format_preferences:
+      - Connector catalog documentation with supported versions and integration depth per application type
+      - Workflow diagrams showing joiner-mover-leaver automation flows
+      - PAM architecture diagrams showing session management, credential vaulting, and JIT workflow
+      - Compliance evidence sample reports (access certification reports, privileged session logs, deprovisioning audit trails)
+    credibility_signals:
+      - Connector catalog with 200+ out-of-the-box application connectors at current versions
+      - Customer case studies with specific deprovisioning accuracy and access certification metrics
+      - Published integration guides for major directory platforms (AD, Azure AD/Entra ID, Okta)
+      - CIEM assessment methodology documentation with entitlement reduction benchmarks
+    credibility_killers:
+      - Connector catalog that includes legacy/deprecated applications without noting support status
+      - Claims of "automated deprovisioning" without demonstrating the actual execution path
+      - Inability to show access certification campaign reports in a demo environment
+      - PAM product without clear JIT access workflow or session recording capabilities
+
+  review:
+    domain_standards:
+      - Lifecycle automation claims must specify which directory systems are supported for provisioning and deprovisioning
+      - PAM claims must specify session recording capability, credential vaulting approach, and JIT access workflow
+      - Cloud entitlement management claims must specify which cloud providers (AWS, Azure, GCP) and identity service versions are supported
+    red_lines:
+      - Claiming "complete identity management" without covering service account governance — this is the most common and most dangerous identity gap
+      - Describing access certification as complete without demonstrating automatic execution of access revocation
+      - Overstating deprovisioning completeness — missed application deprovisioning is a compliance finding and a breach vector; accuracy claims require evidence
+
+examples:
+  - scenario: Writing content for an IAM/PAM professional evaluating a unified identity platform
+    without_sme: |
+      "[Product] is a comprehensive identity platform that helps organizations manage
+      access, protect privileged accounts, and achieve compliance. With Zero Trust
+      principles built in, [Product] secures your enterprise identity infrastructure."
+    with_sme: |
+      "[Product] automates joiner-mover-leaver workflows across 350+ out-of-the-box
+      application connectors — including Workday HR-triggered provisioning and
+      complete deprovisioning within 15 minutes of SAP SuccessFactors termination event.
+      PAM includes JIT access with session recording (4K video + keystroke logging) and
+      automated credential rotation on vault check-in. CIEM assessment for AWS/Azure/GCP
+      environments typically identifies 75% excess entitlement in initial scan — [Customer]
+      reduced their cloud permissions by 82% in the first 60 days."
+    agent: content-generator
+
+  - scenario: Strategic positioning recommendation for an IAM vendor competing against CyberArk
+    without_sme: |
+      Lead with your platform's comprehensive capabilities and ease of use compared
+      to legacy PAM solutions. Emphasize the modern UI and cloud-native architecture.
+    with_sme: |
+      CyberArk is deeply entrenched in privileged access for on-premises environments.
+      The displacement opportunity is in cloud entitlement management and SaaS application
+      governance — areas where CyberArk's architecture shows its on-premises heritage.
+      Target organizations in active cloud migration where cloud IAM debt is accumulating
+      faster than CyberArk can address it. Lead with CIEM: offer a free cloud entitlement
+      assessment that quantifies excess permissions. The data creates urgency and establishes
+      a gap that CyberArk alone cannot close — opening the conversation without directly
+      attacking the incumbent investment.
+    agent: strategic-planning
+
+stakeholder_guidance: |
+  IAM/PAM professionals are operationally focused and automation-driven. They evaluate products on
+  whether they reduce identity debt and lifecycle overhead — not on security philosophy or
+  compliance positioning. Trust is built through demonstration of automation quality, connector
+  breadth, and honest acknowledgment of integration complexity.
+
+  **When addressing IAM/PAM professionals:**
+  - Lead with connector catalog breadth and lifecycle automation quality
+  - Be specific about JIT access workflow, session recording capabilities, and credential rotation frequency
+  - Acknowledge integration complexity realistically — IAM implementations always surface surprises
+  - Cloud entitlement management is the fastest-growing pain point; lead with CIEM for cloud-heavy prospects
+
+  **When making strategic recommendations:**
+  - Service accounts are the most underserved identity category — make them a differentiator
+  - Deprovisioning completeness is the highest-risk process; prove it before claiming it
+  - Cloud entitlement is the primary competitive gap versus legacy PAM incumbents
+  - HR system integration (Workday, SAP SF) is the trigger event for identity lifecycle automation — lead with the HR-to-IT provisioning story
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

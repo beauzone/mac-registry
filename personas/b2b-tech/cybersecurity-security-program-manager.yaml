@@ -1,0 +1,341 @@
+metadata:
+  id: cybersecurity-security-program-manager
+  version: "1.0.0"
+  display_name: "Cybersecurity / Security Program Manager"
+  domain: role
+  description: >
+    Injects Security Program Manager expertise into agents — including program execution
+    discipline, security initiative tracking, stakeholder communication patterns, and
+    the operational vocabulary that builds credibility with security program leaders
+    responsible for translating CISO strategy into delivered outcomes.
+  best_for:
+    stages:
+      - series-b
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - cmo
+      - cro
+      - content-generator
+    ownership_types:
+      - VC-backed
+      - PE-owned
+      - Public
+  composable_with:
+    - cybersecurity-ciso
+    - cybersecurity-grc-lead
+    - enterprise-sales
+  tags:
+    - cybersecurity
+    - program-management
+    - security-operations
+    - governance
+    - project-management
+    - security-metrics
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This persona represents a senior Security Program Manager with 8-12 years of experience
+    running large-scale cybersecurity initiatives — security transformation programs,
+    compliance certification efforts, technology platform rollouts, and ongoing security
+    portfolio governance. They operate at the intersection of the CISO's strategic intent
+    and the execution reality of engineering, IT, and business teams. They are deeply
+    focused on milestone delivery, resource utilization, dependency management, and
+    translating security outcomes into metrics the CISO can report upward. They are buyers
+    and evaluators of program and portfolio management tooling, GRC platforms with PM
+    capabilities, and security metrics dashboards.
+  expertise_scope:
+    - Security program planning and roadmap management (OKRs, milestones, dependencies)
+    - Security portfolio prioritization and resource allocation across initiatives
+    - Stakeholder management across CISO, IT, engineering, compliance, and legal
+    - Security metrics and KPI reporting for executive and board audiences
+    - Control implementation tracking and evidence management workflows
+    - Security governance process design (intake, prioritization, escalation)
+    - Change management for security program adoption across business units
+    - Vendor and third-party program coordination
+  expertise_boundaries:
+    - Deep technical security architecture decisions (deferred to Security Architect)
+    - Compliance framework design and audit execution (deferred to GRC Lead)
+    - Incident response coordination and forensic investigation
+    - Hands-on security tooling configuration and tuning
+
+knowledge:
+  key_concepts:
+    - concept: Security Program Roadmap
+      definition: A time-phased plan that sequences security initiatives, dependencies, and resource requirements to advance the security posture from current state to target state.
+      relevance: Security Program Managers are the primary buyers and users of roadmap tooling. Marketing that shows how a product fits into or accelerates the roadmap — rather than requiring a program restructure — resonates strongly.
+
+    - concept: Control Implementation Tracking
+      definition: The process of monitoring which security controls from a target framework (NIST CSF, CIS Controls) have been implemented, partially implemented, or are planned — with owners, timelines, and evidence.
+      relevance: Program Managers need to demonstrate progress to CISOs and auditors. Products that provide traceable implementation evidence reduce reporting overhead and increase program credibility.
+
+    - concept: Portfolio Prioritization
+      definition: The ongoing process of ranking security initiatives by risk reduction value, strategic alignment, resource cost, and dependency constraints — to allocate limited budget and headcount optimally.
+      relevance: Security Program Managers operate under persistent resource scarcity. Tools and services that help objectively score and communicate initiative priority reduce political friction and improve defensibility.
+
+    - concept: Security Metrics and KPIs
+      definition: Quantitative indicators of security program health — covering coverage, velocity (how fast vulnerabilities are closed), compliance posture, and operational performance (MTTD, MTTR).
+      relevance: Program Managers are the builders of executive security dashboards. Products that surface clean, exportable metrics reduce manual reporting work and improve the quality of CISO board presentations.
+
+    - concept: Dependency Management
+      definition: Identifying and tracking external dependencies that could delay or block security initiative delivery — such as IT infrastructure changes, vendor contract timelines, or regulatory deadlines.
+      relevance: Security programs fail most often at dependency boundaries. Program Managers deeply value visibility into cross-functional dependencies and tools that surface risks before they become delays.
+
+    - concept: Change Management for Security
+      definition: The structured approach to embedding security requirements into business processes, engineering workflows, and culture — beyond just deploying tools.
+      relevance: Security tools are often purchased but underutilized because adoption is treated as automatic. Program Managers know adoption requires change management; they respond to vendors who provide structured onboarding and adoption support.
+
+  vocabulary:
+    preferred:
+      - term: Milestone
+        context: Discrete, verifiable deliverable within a program phase — more precise than "goal" or "objective" in program management conversations.
+      - term: Dependency
+        context: A condition or resource from another team or system that must be in place before an initiative step can proceed.
+      - term: Swimlane
+        context: A program track organized by domain (identity, cloud, endpoint) or workstream — common in security roadmap visualizations.
+      - term: RAG status
+        context: Red/Amber/Green status reporting on initiative health — universally understood by security program managers and their stakeholders.
+      - term: Control coverage
+        context: The percentage of a target control framework that has been implemented — the primary measure of security program progress.
+      - term: Burn rate
+        context: Rate of budget or resource consumption relative to program plan — a key program health indicator.
+    avoid:
+      - term: Best practices (without specifics)
+        use_instead: Reference the specific framework or control family — "CIS Control 1 (asset inventory) is implemented" vs. "we follow best practices"
+      - term: Holistic security program
+        use_instead: Specify the program scope — which frameworks, which business units, which control domains are in scope
+      - term: Seamless integration
+        use_instead: Describe the specific integrations and implementation effort required — program managers know "seamless" is a sales term
+
+  stakeholders:
+    - role: Security Program Manager / Security PMO
+      priorities:
+        - On-time, on-budget delivery of security initiatives with defensible progress evidence
+        - Stakeholder visibility into program status without manual reporting overhead
+        - Clear dependency tracking to surface risks before they become delays
+        - Metrics that translate security progress into business risk language for CISO reporting
+      concerns:
+        - Tools that require extensive manual data entry to maintain program status
+        - Products that don't integrate with existing ticketing or PM systems (Jira, ServiceNow)
+        - Implementation complexity that draws security engineering resources away from program work
+        - Vendor commitments that don't survive the transition from sales to delivery teams
+      preferred_framing: Lead with reduction in program management overhead, faster audit readiness, and cleaner executive reporting. Quantify hours saved on status reporting and evidence collection. Show integration with tools already in the PM stack.
+
+    - role: CISO (Security Program Manager's primary stakeholder)
+      priorities:
+        - Confidence that initiatives are on track and risks are surfaced early
+        - Board-ready metrics without requiring CISO to manually compile data
+        - Alignment of security program to business risk priorities, not just technical to-do lists
+      concerns:
+        - Program status that looks good on paper but masks delivery risk
+        - Security initiatives that complete on time but don't move the risk needle
+      preferred_framing: Security Program Managers present to CISOs; products that make those presentations stronger and less labor-intensive create pull from both the PM and the CISO simultaneously.
+
+    - role: IT Operations / Engineering (initiative execution owners)
+      priorities:
+        - Clear, actionable requirements with realistic timelines
+        - Minimal overhead from security program governance processes
+        - Visibility into how their work contributes to the security program
+      concerns:
+        - Security mandates without adequate resource support
+        - Security program governance that slows engineering delivery
+      preferred_framing: Position security program tooling as reducing governance friction, not adding it. Automation of status updates and evidence capture reduces IT team burden.
+
+  buying_dynamics:
+    typical_committee:
+      - Security Program Manager / CISO (primary buyer)
+      - IT Project Management Office (process fit evaluation)
+      - GRC team (compliance evidence integration)
+      - Security Engineering (technical integration evaluation)
+      - Finance / Procurement (budget and contract)
+    primary_driver: A failed or late security initiative, audit finding related to program governance, or CISO mandate to improve program visibility and reporting cadence.
+    primary_blocker: Existing GRC or project management platforms already in use, IT PMO standardization on specific tools (Jira, Asana, ServiceNow), or perceived overlap with existing compliance platforms.
+    evaluation_criteria:
+      - Integration with existing project management and ticketing systems
+      - Out-of-the-box security framework templates (NIST CSF, CIS Controls, ISO 27001)
+      - Executive dashboard and reporting automation capabilities
+      - Evidence collection and audit trail functionality
+      - Ease of adoption for non-security stakeholders (IT, engineering)
+    common_objections:
+      - objection: "We manage this in Jira / ServiceNow already."
+        response: Acknowledge the existing investment; focus on what's missing — security-specific program templates, risk-weighted prioritization, and compliance reporting that generic PM tools don't provide.
+      - objection: "The CISO just wants a spreadsheet dashboard."
+        response: The spreadsheet is a symptom of insufficient tooling. Quantify the hours spent maintaining manual dashboards and the reporting errors that result from fragmented data sources.
+      - objection: "We don't have budget for another platform."
+        response: Calculate cost of current manual reporting overhead (hours × loaded cost) plus the cost of a single delayed audit or missed compliance deadline.
+
+  pain_points:
+    - pain: Manual status reporting consuming disproportionate program management time
+      manifestation: Program Managers spending 30-40% of time aggregating data from spreadsheets, email, and disparate tools to produce CISO dashboards and audit reports
+      urgency: high
+
+    - pain: Stakeholder misalignment on initiative priority and resource allocation
+      manifestation: Security initiatives stalled at dependency boundaries due to unclear ownership, competing IT priorities, and lack of visible escalation path
+      urgency: high
+
+    - pain: Evidence collection for audits and compliance reviews
+      manifestation: Scrambling to collect control evidence at audit time, inconsistent evidence formats across control owners, incomplete audit trails
+      urgency: high
+
+    - pain: Demonstrating program progress in business risk terms
+      manifestation: Program Managers fluent in milestone language but challenged to translate initiative completion into risk reduction language for board-level CISO reporting
+      urgency: medium
+
+    - pain: Resource constraints across competing security initiatives
+      manifestation: More security initiatives than available security engineering and IT headcount; no objective framework for sequencing or deferral decisions
+      urgency: medium
+
+  success_metrics:
+    - metric: Program Milestone Delivery Rate
+      description: Percentage of planned milestones delivered on schedule within the reporting period
+      typical_benchmark: ">85% on-time delivery indicates a well-managed program; <70% signals systemic resource or dependency issues"
+
+    - metric: Control Coverage Progress
+      description: Quarter-over-quarter increase in percentage of target framework controls implemented
+      typical_benchmark: "Mature programs implement 10-15% net-new control coverage per year; initial acceleration from <40% to >70% in 18-24 months is achievable"
+
+    - metric: Audit Preparation Lead Time
+      description: Calendar days required to prepare complete evidence packages for an audit cycle
+      typical_benchmark: "Best-in-class: <2 weeks with continuous evidence collection; poorly managed programs require 6-10 weeks of scramble"
+
+    - metric: Security Initiative Budget Variance
+      description: Actual spend versus planned budget across the security initiative portfolio
+      typical_benchmark: "<10% variance indicates good planning and execution discipline"
+
+  regulatory_context:
+    - name: NIST Cybersecurity Framework (CSF) 2.0
+      relevance: The most widely adopted security framework for program structure in US enterprise organizations. CSF 2.0 adds Govern as a first-class function, elevating program management to a framework-level concern.
+      marketing_implication: Products that map to CSF functions and provide out-of-the-box CSF coverage reporting have a natural alignment story with Security Program Managers building CSF-based roadmaps.
+
+    - name: CIS Controls v8
+      relevance: Prioritized security controls that provide a clear implementation sequence — highly useful for program roadmapping because controls are ordered by implementation group.
+      marketing_implication: CIS Controls alignment provides immediate roadmap scaffolding; products with pre-built CIS Controls templates reduce program setup time significantly.
+
+    - name: SOC 2 / ISO 27001 Audit Readiness
+      relevance: Security Program Managers are often directly responsible for driving the organization to SOC 2 or ISO 27001 readiness — a major multi-quarter initiative with clear milestones and audit deadlines.
+      marketing_implication: Products that accelerate audit readiness with automated evidence collection, control mapping, and gap analysis have a direct ROI story for security program managers.
+
+calibration:
+  analysis:
+    emphasize:
+      - Program efficiency metrics (time saved on reporting, evidence collection overhead reduction)
+      - Framework alignment and out-of-the-box template quality
+      - Integration with existing PM and ITSM tooling
+      - Audit readiness and evidence trail automation
+    de_emphasize:
+      - Technical security depth (this audience manages programs, not configurations)
+      - Threat intelligence and detection capabilities (not in scope for program management)
+      - Feature richness without workflow integration context
+    signal_sources:
+      - Gartner and Forrester coverage of GRC and security program management platforms
+      - Customer case studies showing audit preparation time reduction
+      - Peer community (ISACA, (ISC)², Security BSides program management discussions)
+      - Integration partner ecosystem (Jira, ServiceNow, Confluence) as credibility signal
+    red_flags:
+      - Product requires significant manual data entry to maintain program status
+      - No pre-built security framework templates or control libraries
+      - Evidence export formats incompatible with auditor requirements
+      - Implementation timeline longer than an audit cycle
+
+  strategy:
+    preferred_approaches:
+      - Efficiency-first messaging — frame value in hours saved on reporting and evidence collection
+      - Audit readiness acceleration — "be audit-ready in half the time" is a powerful program manager hook
+      - Framework template differentiation — show the breadth and accuracy of built-in framework coverage
+      - Integration story — demonstrate native connectivity to the tools already in their environment
+    patterns_to_avoid:
+      - Leading with security outcomes (risk reduction, threat coverage) — this is the CISO's language, not the PM's
+      - Feature complexity that implies significant implementation effort
+      - Claiming to replace existing ITSM or PM platforms (invoke defensiveness)
+    recommended_frameworks:
+      - framework_id: jobs-to-be-done
+        reason: Security Program Managers have very specific jobs (deliver milestones, produce executive reports, prepare for audits). JTBD analysis surfaces the exact friction points where product value is most tangible.
+      - framework_id: value-proposition-canvas
+        reason: >
+          Maps product capabilities directly to program manager pain points
+          (gains: better reporting; pains: manual overhead) for precise messaging.
+
+  content:
+    tone_adjustments:
+      - Operational and specific — program managers respond to concrete workflow improvements, not abstract value claims
+      - Efficiency-focused — quantify time savings and process improvements wherever possible
+      - Peer-credible — references from other security program managers carry more weight than analyst reports
+      - Implementation-realistic — acknowledge complexity; don't promise "easy" without backing it up
+    format_preferences:
+      - Process workflow diagrams showing how the product integrates into program management workflows
+      - ROI calculators that quantify reporting time saved and audit cost reduction
+      - Framework coverage matrices (which controls, which frameworks, at what depth)
+      - Customer case studies with specific before/after metrics on audit prep time and program delivery
+    credibility_signals:
+      - Named customer references in security program management roles at comparable organizations
+      - Pre-built framework templates reviewed and validated by practitioners
+      - Certified integrations with major ITSM platforms (ServiceNow, Jira)
+      - Audit firm recognition or endorsement of evidence format and collection methodology
+    credibility_killers:
+      - Vague claims about "streamlining security programs" without specific workflow examples
+      - Demo environments that require significant setup to show realistic use cases
+      - Implementation timelines that conflict with active audit or program delivery cycles
+      - Missing integrations with tools the prospect already uses
+
+  review:
+    domain_standards:
+      - Framework coverage claims must specify which framework version and which control families are included
+      - Integration claims must specify whether native or via middleware, and the supported versions
+      - Efficiency claims (hours saved, audit prep reduction) must reference specific customer data or methodology
+    red_lines:
+      - Claiming GRC or program management platform capabilities without audit evidence trail support
+      - Overstating framework coverage — Security Program Managers will test this in demos
+      - Promising implementation timelines that require minimal customer effort — this audience knows that's not realistic
+
+examples:
+  - scenario: Marketing a GRC platform with program management capabilities to a Security Program Manager
+    without_sme: |
+      "[Product] helps security teams manage their compliance programs efficiently.
+      With dashboards and reporting features, you can track your security initiatives
+      and stay audit-ready year-round."
+    with_sme: |
+      "[Product] eliminates the 12 hours per week the average Security Program Manager
+      spends manually compiling CISO dashboard data. Pre-built NIST CSF 2.0 and CIS
+      Controls v8 templates with native Jira sync mean your program roadmap stays current
+      without double-entry — and your next SOC 2 audit evidence package is collected
+      continuously, not assembled in a two-week scramble. Reference: [Customer] reduced
+      audit preparation from 8 weeks to 11 days."
+    agent: content-generator
+
+  - scenario: Strategic recommendation for a security vendor on reaching Security Program Managers
+    without_sme: |
+      Target CISOs and security leaders in your outreach. They make the buying decisions
+      and control the budget for security tools.
+    with_sme: |
+      Security Program Managers are a distinct buyer persona from CISOs — and often the
+      more accessible entry point. They control day-to-day tool evaluation and have strong
+      CISO influence on program tooling decisions. Outreach that speaks to milestone delivery
+      pressure, audit readiness, and executive reporting efficiency will resonate where
+      generic "improve your security posture" messaging falls flat. Target ISACA and (ISC)²
+      community channels; Security Program Managers actively seek peer validation before
+      taking tools to their CISO for budget approval.
+    agent: strategic-planning
+
+stakeholder_guidance: |
+  Security Program Managers are execution-focused and time-constrained. They respond to
+  operational specificity and peer validation — not abstract security outcomes.
+
+  **When addressing Security Program Managers:**
+  - Lead with workflow improvement and time savings, not security risk reduction
+  - Always reference specific frameworks by name and version (NIST CSF 2.0, CIS Controls v8)
+  - Acknowledge the dependency reality — their biggest pain is cross-team coordination, not security knowledge
+  - Peer references from other security program managers are far more persuasive than analyst reports
+
+  **When making strategic recommendations:**
+  - Frame product value in terms of the CISO deliverables the PM is responsible for producing
+  - Show integration with existing PM infrastructure (Jira, ServiceNow) — don't ask them to abandon their stack
+  - Quantify audit preparation time reduction — this is the most tangible ROI in the program manager world
+  - Acknowledge implementation realism — program managers know tools don't "just work"; honest scoping builds trust
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

@@ -1,0 +1,185 @@
+metadata:
+  id: value-proposition-canvas
+  version: 1.0.0
+  display_name: Value Proposition Canvas — AI-Native Fit Model
+  category: product_pmm
+  description: Maps customer jobs, pains, and gains to product pain relievers and gain creators. Modernized for AI-native
+    categories with emphasis on automation displacement, proof strength, and differentiation clarity.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - product-marketing-manager
+    - cmo
+    - vp-product
+    - ceo
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: target_segment_definition
+    description: Clearly defined ICP or segment under analysis
+    source: skill
+  - field: job_statements
+    description: Functional, emotional, and social jobs derived from JTBD analysis
+    source: existing_deliverable
+  - field: product_capabilities
+    description: Current features, differentiators, and roadmap direction
+    source: skill
+  optional:
+  - field: proof_points
+    description: Customer evidence, case studies, quantified outcomes
+    source: user_input
+analysis:
+  instructions: 'This framework aligns customer profile elements (jobs, pains, gains) with value map elements (products/services,
+    pain relievers, gain creators). In AI-native markets, emphasis is placed on measurable automation impact, defensible differentiation,
+    and substitution resistance.
+
+
+    Prioritize top 3 pains and gains. Explicitly link each to product capabilities and proof. Identify gaps where critical
+    pains lack strong relievers. Conclude with refined value proposition statement and reinforcement priorities.'
+  dimensions:
+  - id: customer-profile
+    name: Customer Profile
+    description: Jobs, pains, and gains prioritized by economic and emotional weight
+    prompts:
+    - Which jobs are most critical to the target segment?
+    - Which pains create urgency or budget justification?
+    - Which gains create competitive advantage or recognition for the buyer?
+    - Which items are marginal versus mission-critical?
+  - id: value-map-—-pain-relievers
+    name: Value Map — Pain Relievers
+    description: How product capabilities reduce or eliminate customer pains
+    prompts:
+    - Which specific product capabilities directly reduce priority pains?
+    - Are pain relievers measurable in cost, time, or risk reduction?
+    - Do competitors offer similar relief mechanisms?
+    - Are claims supported by proof?
+  - id: value-map-—-gain-creators
+    name: Value Map — Gain Creators
+    description: How product capabilities create additional value or upside
+    prompts:
+    - Which features create new capability or competitive leverage?
+    - Are gains incremental or step-change improvements?
+    - Are gains defensible or easily copied?
+    - Do gains align with emotional or reputational drivers?
+  - id: fit-and-differentiation-strength
+    name: Fit and Differentiation Strength
+    description: Degree of alignment and uniqueness in the value proposition
+    prompts:
+    - Do top pains have explicit, credible relievers?
+    - Are gain creators tied to high-priority jobs?
+    - Is differentiation rooted in capability, data, or ecosystem advantage?
+    - Where is the value proposition exposed to substitution?
+output_templates:
+- id: primary
+  name: Value Proposition Analysis
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Customer Profile Priorities
+
+    {customer_profile_priorities}
+
+
+    ## Pain Reliever Mapping
+
+    {pain_reliever_mapping}
+
+
+    ## Gain Creator Mapping
+
+    {gain_creator_mapping}
+
+
+    ## Fit Gaps and Exposure Areas
+
+    {fit_gaps_and_exposure_areas}
+
+
+    ## Refined Value Proposition Statement
+
+    {refined_value_proposition_statement}
+
+
+    ## Messaging and Roadmap Implications
+
+    {messaging_and_roadmap_implications}
+
+    '
+rubric:
+  description: Evaluates clarity of customer prioritization, strength of mapping logic, differentiation durability, and executive
+    clarity.
+  dimensions:
+  - name: Customer Prioritization
+    weight: 0.25
+    scoring:
+      1: Jobs, pains, and gains listed without ranking.
+      3: Some prioritization but limited economic logic.
+      5: Clear ranking based on urgency, revenue impact, or risk.
+    improvement_guidance: Rank items by measurable impact or buying urgency.
+  - name: Mapping Precision
+    weight: 0.25
+    scoring:
+      1: Loose or abstract linkage between pains and capabilities.
+      3: Moderate alignment but some generic mapping.
+      5: Explicit, evidence-backed linkage for top pains and gains.
+    improvement_guidance: Tie each major pain to a concrete capability and metric.
+  - name: Differentiation Strength
+    weight: 0.2
+    scoring:
+      1: Value claims easily replicated by competitors.
+      3: Some unique elements but partially defensible.
+      5: Value rooted in defensible assets (data, ecosystem, IP).
+    improvement_guidance: Highlight what competitors cannot credibly replicate.
+  - name: Strategic Coherence
+    weight: 0.15
+    scoring:
+      1: No clear link to messaging or roadmap.
+      3: Some implications identified.
+      5: Clear narrative and roadmap reinforcement derived.
+    improvement_guidance: Translate mapping into messaging themes and roadmap focus.
+  - name: Executive Readiness
+    weight: 0.15
+    scoring:
+      1: Not decision-ready.
+      3: Understandable but lacks prioritization.
+      5: Clear verdict with prioritized reinforcement plan.
+    improvement_guidance: Lead with fit verdict and top gap.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Feature Inventory Dump
+  description: Listing capabilities without linking to customer pains.
+  mitigation: Map every major feature to a ranked pain or gain.
+- pattern: Equal Weighting of All Pains
+  description: Treating minor irritations as mission-critical.
+  mitigation: Prioritize based on urgency and economic impact.
+- pattern: No Proof Layer
+  description: Making value claims without evidence.
+  mitigation: Attach quantified outcomes or case examples.
+- pattern: Ignoring Substitution Risk
+  description: Overlooking internal AI tools or adjacent platform encroachment.
+  mitigation: Evaluate exposure to automation-driven substitutes.
+chaining:
+  after:
+  - framework_id: positioning-statement
+    reason: ''
+  - framework_id: messaging-architecture
+    reason: ''
+  before:
+  - framework_id: jobs-to-be-done
+    reason: ''

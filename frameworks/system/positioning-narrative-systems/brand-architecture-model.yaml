@@ -1,0 +1,177 @@
+metadata:
+  id: brand-architecture-model
+  version: 1.0.0
+  display_name: Brand Architecture Model — Portfolio Structure & Narrative Clarity
+  category: brand
+  description: Defines optimal brand structure (branded house, house of brands, hybrid, endorsed) and aligns portfolio strategy
+    with market positioning, M&A plans, and AI-native category dynamics.
+  best_for:
+    stages:
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - ceo
+    - cmo
+    - board
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: product_portfolio_overview
+    description: List of products, sub-brands, and future roadmap expansions
+    source: user_input
+  - field: target_segments_by_product
+    description: ICP mapping per product or solution
+    source: existing_deliverable
+  - field: growth_strategy
+    description: Organic expansion, M&A, platform consolidation, verticalization
+    source: user_input
+  optional:
+  - field: brand_equity_assessment
+    description: Current awareness, perception, and trust signals
+    source: user_input
+analysis:
+  instructions: 'This framework determines the optimal brand architecture structure based on strategic focus, portfolio complexity,
+    and market clarity requirements. In AI-native environments, emphasis is placed on platform narratives, ecosystem defensibility,
+    and modular solution packaging.
+
+
+    Evaluate four models: Branded House, House of Brands, Endorsed Brand, Hybrid. Recommend primary structure with rationale
+    tied to strategic objectives. Identify migration steps if restructuring is required.'
+  dimensions:
+  - id: portfolio-complexity
+    name: Portfolio Complexity
+    description: Breadth and differentiation of product set
+    prompts:
+    - Are products tightly integrated or loosely connected?
+    - Do products serve the same ICP or distinct segments?
+    - Is there shared platform infrastructure?
+    - Is roadmap trending toward convergence or diversification?
+  - id: market-clarity-and-narrative-strength
+    name: Market Clarity and Narrative Strength
+    description: Ability of master brand to carry positioning
+    prompts:
+    - Is master brand strongly associated with core value proposition?
+    - Would sub-brands dilute or clarify positioning?
+    - Is there confusion in customer perception?
+    - Does architecture reinforce category leadership?
+  - id: growth-and-m&a-strategy
+    name: Growth and M&A Strategy
+    description: Future structural flexibility
+    prompts:
+    - Will acquisitions require separate brand identities?
+    - Is platform consolidation a strategic goal?
+    - Is there risk of brand fragmentation?
+    - Does structure support international expansion?
+  - id: economic-efficiency
+    name: Economic Efficiency
+    description: Cost and leverage implications of architecture
+    prompts:
+    - Does brand structure maximize marketing leverage?
+    - Are there duplicative brand investments?
+    - Does architecture simplify sales motion?
+    - Is there risk of internal competition between brands?
+output_templates:
+- id: primary
+  name: Brand Architecture Recommendation
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Portfolio Assessment
+
+    {portfolio_assessment}
+
+
+    ## Architecture Options Evaluation
+
+    {architecture_options_evaluation}
+
+
+    ## Recommended Model and Justification
+
+    {recommended_model_and_justification}
+
+
+    ## Transition and Implementation Plan
+
+    {transition_and_implementation_plan}
+
+
+    ## Risk Assessment
+
+    {risk_assessment}
+
+    '
+rubric:
+  description: Evaluates structural logic, narrative coherence, growth alignment, and risk mitigation.
+  dimensions:
+  - name: Strategic Alignment
+    weight: 0.3
+    scoring:
+      1: Architecture misaligned with growth strategy.
+      3: Partially aligned but with structural tension.
+      5: Fully aligned with platform and expansion strategy.
+    improvement_guidance: Validate structure against 3-year growth roadmap.
+  - name: Narrative Clarity
+    weight: 0.25
+    scoring:
+      1: Creates customer confusion.
+      3: Moderate clarity with minor overlap.
+      5: Clear master narrative across portfolio.
+    improvement_guidance: Ensure master brand carries core value consistently.
+  - name: Economic Efficiency
+    weight: 0.2
+    scoring:
+      1: High duplication of brand investment.
+      3: Moderate efficiency with some overlap.
+      5: Maximized leverage across products.
+    improvement_guidance: Consolidate redundant brand spend where possible.
+  - name: Future Flexibility
+    weight: 0.15
+    scoring:
+      1: Rigid and hard to extend.
+      3: Moderately adaptable.
+      5: Supports acquisition and expansion seamlessly.
+    improvement_guidance: Stress-test structure against M&A scenarios.
+  - name: Executive Readiness
+    weight: 0.1
+    scoring:
+      1: Conceptual only.
+      3: Clear but lacks migration plan.
+      5: Decision-ready with transition roadmap.
+    improvement_guidance: Add phased implementation milestones.
+  thresholds:
+    revise: 2.7
+    publish_ready: 3.3
+    escalate_to_user: 2.2
+anti_patterns:
+- pattern: Accidental Architecture
+  description: Brand structure emerging organically without strategic intent.
+  mitigation: Define architecture explicitly aligned to growth plan.
+- pattern: Over-Fragmentation
+  description: Excessive sub-brands diluting equity.
+  mitigation: Consolidate under master brand where possible.
+- pattern: Over-Consolidation
+  description: Forcing unrelated products under single narrative.
+  mitigation: Evaluate endorsed or hybrid structure.
+- pattern: Ignoring M&A Impact
+  description: Not planning for acquisition integration complexity.
+  mitigation: Model post-acquisition brand scenarios in advance.
+chaining:
+  after:
+  - framework_id: messaging-architecture
+    reason: ''
+  before:
+  - framework_id: positioning-statement
+    reason: ''
+  - framework_id: swot
+    reason: ''

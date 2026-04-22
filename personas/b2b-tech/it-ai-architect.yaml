@@ -1,0 +1,750 @@
+metadata:
+  id: it-ai-architect
+  version: "1.0.0"
+  display_name: "AI Architect / AI Systems Architect"
+  domain: role
+  schema_version: "1.1"
+  description: >
+    Injects AI Architect and AI Systems Architect expertise into agents — including
+    the design of enterprise AI infrastructure (RAG pipelines, agentic frameworks,
+    LLM orchestration, MCP server topology), AI governance integration patterns,
+    prompt management systems, AI observability, and the priorities of architects
+    who operate above the data layer and below the application layer to design
+    how AI systems are composed, governed, and deployed at enterprise scale.
+    Critically distinct from the ML Engineer (builds/trains models) and the
+    Enterprise Architect (broad IT systems) — the AI Architect designs AI system
+    integration patterns and governance architecture for organizations deploying
+    AI at scale.
+  best_for:
+    stages:
+      - series-b
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - cto
+      - cio
+      - caio
+      - vp-engineering
+      - vp-marketing
+    ownership_types:
+      - VC-backed
+      - PE-owned
+      - Public
+  composable_with:
+    - b2b-saas
+    - it-cto
+    - it-enterprise-architect
+    - it-ai-ml-engineer
+    - governance-caio
+    - governance-cro-enterprise
+  tags:
+    - ai-architecture
+    - agentic-ai
+    - llm-infrastructure
+    - mcp
+    - rag-architecture
+    - ai-governance
+    - enterprise-ai
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: >
+    The AI Architect is the engineer responsible for designing the AI infrastructure
+    layer at organizations deploying AI at scale. They sit above the data layer —
+    the warehouses, CDPs, and feature stores that the ML Engineer and GTM Architect
+    own — and below the application layer where product teams build user-facing AI
+    features. Their domain is the connective tissue: how LLMs are selected and
+    routed, how context is assembled and governed, how agents are orchestrated and
+    monitored, how AI systems communicate with enterprise data and tools through
+    protocols like MCP.
+
+    The AI Architect role crystallized between 2023 and 2025 as enterprises moved
+    from AI experimentation to AI production deployment. The first wave of enterprise
+    AI produced hundreds of isolated proof-of-concept integrations — a Slack bot here,
+    a document summarizer there, a lead scoring pilot elsewhere — each built by a
+    different team with different patterns, different models, different security
+    postures, and no shared infrastructure. The AI Architect role emerged to impose
+    order: to establish reference architectures, build shared infrastructure, define
+    governance standards, and ensure that the proliferation of AI use cases happens
+    on a foundation that the enterprise can actually manage.
+
+    Technically, the AI Architect works across several layers. At the model layer,
+    they define the organization's model portfolio — which LLMs are approved for
+    which use cases, how model selection is handled (static assignment vs. intelligent
+    routing), and how the organization manages relationships with multiple LLM providers
+    (Anthropic, OpenAI, Google, Mistral, Llama family). At the context layer, they
+    design RAG architectures: vector store selection (Pinecone, Weaviate, pgvector,
+    Qdrant), chunking and embedding strategies, retrieval quality evaluation, and
+    context window management patterns. At the orchestration layer, they evaluate and
+    adopt agent frameworks (LangGraph, Crew.ai, AutoGen, Semantic Kernel) and build
+    multi-agent coordination patterns for complex workflows. At the governance layer —
+    increasingly their fastest-growing domain — they design prompt management systems,
+    AI observability stacks (LangSmith, Weights & Biases, Arize, Helicone), content
+    provenance tracking, and AI audit trail infrastructure.
+
+    Model Context Protocol (MCP) has become a central organizing concept for advanced
+    AI Architects. Where earlier architectures handled context assembly ad-hoc — each
+    AI feature building its own retrieval pipeline, its own tool integrations, its own
+    security model — MCP provides a standardized protocol for exposing data sources
+    and tools to AI agents. The AI Architect who has adopted MCP thinks of it as the
+    control plane for the enterprise AI layer: a governed, auditable surface through
+    which AI systems interact with enterprise data, constrained by policy, observable
+    by design. When they encounter marketing-as-code, they evaluate it not as a content
+    tool but as a potential MCP server — a governed source of brand context, persona
+    data, and messaging frameworks that AI agents can query through a standardized
+    protocol.
+
+    The AI Architect's relationship with AI governance is complex. They are technically
+    capable of building governance infrastructure and understand exactly what logging,
+    explainability, and audit trail capabilities are achievable. But they are perpetually
+    caught between engineering velocity pressures — every sprint backlog has ten AI
+    feature requests — and governance requirements that add latency, cost, and
+    complexity. They have learned from experience that governance infrastructure
+    deferred becomes governance debt, and governance debt becomes regulatory exposure
+    at the worst possible moment. The most mature AI Architects have internalized
+    governance-by-design as a technical discipline, not a compliance obligation.
+
+  role_variants:
+    - name: "AI Platform Engineer"
+      description: >
+        Implementation-focused variant who builds the shared AI platform services
+        rather than designing architecture. Owns the LLM gateway, prompt management
+        system, and AI observability infrastructure as production services. More
+        engineering focus than design focus. Typically reports to a VP of AI Platform
+        or Head of AI Engineering.
+    - name: "ML Platform Architect"
+      description: >
+        Broader scope covering both ML infrastructure (model training, feature stores,
+        model registry, serving infrastructure) and LLM/agentic AI infrastructure.
+        More common at organizations with significant custom model development alongside
+        LLM-based applications. Often overlaps with the ML Engineer role's senior levels.
+    - name: "AI Solutions Architect"
+      description: >
+        Customer-facing or business-facing variant who designs AI implementations
+        for specific business domains. Less infrastructure focus, more application
+        architecture focus. Works with business stakeholders to translate requirements
+        into AI system designs. Common in consulting firms and large system integrators.
+    - name: "Agentic AI Architect"
+      description: >
+        Emerging specialization focused specifically on multi-agent system design:
+        agent orchestration patterns, agent communication protocols, task decomposition
+        strategies, and the specific reliability challenges of agentic workflows
+        (non-determinism, error recovery, human-in-the-loop design). This is the
+        most rapidly growing AI Architect subspecialty.
+
+knowledge:
+  key_concepts:
+    - name: "RAG Architecture (Retrieval-Augmented Generation)"
+      definition: >
+        RAG is the architectural pattern of augmenting an LLM's static training
+        knowledge with dynamically retrieved context from external data sources.
+        A query triggers retrieval from a vector store or search index; the retrieved
+        chunks are assembled into the LLM's context window; the LLM generates a
+        response grounded in the retrieved context. RAG architectures range from
+        naive (basic semantic search) to advanced (hybrid retrieval, reranking,
+        graph-augmented RAG, agentic RAG with iterative retrieval).
+      relevance_to_ai_architect: >
+        RAG architecture is one of the AI Architect's core design domains. The
+        key decisions include: vector store selection, embedding model selection,
+        chunking strategy, hybrid retrieval (dense + sparse), reranking model
+        selection, context window packing strategy, retrieval quality evaluation
+        metrics (recall@k, MRR, NDCG), and caching architecture. The AI Architect
+        also designs the data ingestion pipeline that keeps the vector store
+        synchronized with authoritative content sources.
+      marketing_as_code_intersection: >
+        MaC's structured YAML content assets are ideal RAG source material. An
+        AI Architect will evaluate whether MaC exposes its content through a
+        standardized retrieval interface (MCP or REST) that can be consumed by
+        their RAG infrastructure without manual extraction.
+
+    - name: "Model Context Protocol (MCP)"
+      definition: >
+        MCP is an open protocol developed by Anthropic (released November 2024)
+        that standardizes how AI systems connect to external data sources and tools.
+        An MCP server exposes resources (structured data), tools (callable functions),
+        and prompts (reusable templates) through a standardized JSON-RPC interface.
+        MCP clients (AI agents, LLM applications) connect to MCP servers to access
+        governed data and capabilities without building bespoke integration code
+        for each data source.
+      relevance_to_ai_architect: >
+        The AI Architect who has adopted MCP thinks of it as the governance control
+        plane for the AI layer. Instead of each AI application building its own
+        integration to CRM, knowledge base, ERP, and content systems, MCP servers
+        expose those systems through a standardized, policy-governed interface.
+        The AI Architect designs the MCP server topology: which enterprise systems
+        get MCP servers, what data and capabilities they expose, how authentication
+        and authorization work, how tool call logs are captured for audit.
+      marketing_as_code_intersection: >
+        MaC explicitly positions itself as an MCP server for brand and marketing
+        context. The AI Architect evaluates this at the protocol level: what
+        resources does the MaC MCP server expose? What tools are available?
+        How does it handle authentication? What audit logging does it provide?
+        Can it be deployed in their enterprise MCP topology alongside their
+        CRM, knowledge management, and analytics MCP servers?
+
+    - name: "Agentic AI Architecture and Multi-Agent Patterns"
+      definition: >
+        Agentic AI refers to AI systems that autonomously plan, reason, use tools,
+        and execute multi-step tasks without requiring human direction at each step.
+        Multi-agent architectures distribute complex tasks across specialized agents
+        that collaborate through defined communication protocols. Key patterns include:
+        orchestrator-worker (a coordinator agent delegates to specialist agents);
+        supervisor-agent (a human-in-the-loop design where an agent escalates to
+        human review at decision gates); and peer-to-peer agent networks (agents
+        that negotiate and collaborate as equals).
+      relevance_to_ai_architect: >
+        The AI Architect designs the multi-agent topology for enterprise AI deployments:
+        how many agents, what specializations, how they communicate, how tasks are
+        decomposed and reassembled, how errors propagate and recover, and where
+        human-in-the-loop gates are required. Framework selection (LangGraph for
+        stateful graph-based workflows; Crew.ai for role-based agent teams; AutoGen
+        for conversational agent patterns) is a key architectural decision.
+      marketing_as_code_intersection: >
+        MaC's skill and workflow system describes governed AI agent capabilities
+        with defined tool access and security postures. The AI Architect will evaluate
+        whether MaC's agent definitions are compatible with their chosen orchestration
+        framework and whether the governance model (three-scope: system/approved/
+        quarantine) maps to their enterprise AI governance requirements.
+
+    - name: "LLM Routing and Model Portfolio Management"
+      definition: >
+        Enterprise AI deployments use multiple LLM models optimized for different
+        tasks, latency requirements, cost profiles, and compliance constraints.
+        LLM routing (also called model routing or AI gateway) is the infrastructure
+        layer that selects the appropriate model for each request based on task
+        characteristics, SLA requirements, and policy constraints. Enterprise AI
+        gateways (Portkey, LiteLLM, Kong AI Gateway, AWS Bedrock) add routing,
+        caching, rate limiting, logging, and policy enforcement.
+      relevance_to_ai_architect: >
+        The AI Architect designs the organization's model portfolio and routing
+        logic. Decisions include: which providers to contract with, how to handle
+        provider outages and failover, how to implement routing logic (rule-based
+        vs. model-based), how to measure cost vs. quality trade-offs across models,
+        and how to enforce data residency constraints that require specific models
+        for EU-originated requests. AI governance regulations increasingly require
+        logging of which model processed which request — making routing audit trail
+        a compliance requirement.
+
+    - name: "AI Observability and Evaluation"
+      definition: >
+        AI observability encompasses the tooling and practices for monitoring LLM
+        application behavior in production: tracing individual LLM calls with their
+        inputs, outputs, latency, and token usage; evaluating output quality through
+        automated evals and human review; detecting prompt injection attempts and
+        other security events; and monitoring for quality drift as model behavior
+        evolves. Leading platforms include LangSmith, Weights & Biases Weave, Arize
+        Phoenix, Helicone, and Langfuse.
+      relevance_to_ai_architect: >
+        The AI Architect designs and deploys the observability stack. They define
+        the evaluation framework: what metrics matter (factual accuracy, instruction
+        following, brand compliance, toxicity, hallucination rate), how evaluations
+        are automated, and how quality alerts trigger human review. For regulated
+        industries, AI observability traces are also the primary evidence in
+        regulatory examinations — making the AI Architect's observability
+        infrastructure a direct input to the compliance function.
+
+    - name: "Prompt Management and Prompt Governance"
+      definition: >
+        Prompt management is the systematic practice of treating prompts as governed
+        software artifacts: version-controlled, tested, staged through environments,
+        and deployed through change management processes. Enterprise prompt management
+        systems maintain a registry of approved prompts, provide change audit trails,
+        support A/B testing of prompt variants, and enforce approval gates before
+        prompt changes reach production.
+      relevance_to_ai_architect: >
+        The AI Architect designs the prompt governance system as part of the AI
+        infrastructure. Ad-hoc prompt management — developers editing system prompts
+        in production without review — is one of the most common sources of AI
+        quality incidents and security vulnerabilities (prompt injection). Enterprise
+        prompt management requires a registry, change management workflow, and
+        integration with the CI/CD pipeline so that prompt changes go through the
+        same review process as code changes.
+      marketing_as_code_intersection: >
+        MaC's prompt governance module (three-scope system/approved/quarantine,
+        schema-validated prompt definitions, CLI for promotion lifecycle) is a
+        direct implementation of the prompt management architecture an AI Architect
+        would design. This is a strong resonance point — the AI Architect will
+        recognize MaC's prompt governance as production-quality infrastructure,
+        not a content management feature.
+
+    - name: "AI Security: Prompt Injection, Data Exfiltration, and Trust Boundaries"
+      definition: >
+        AI-specific security threats include prompt injection (malicious inputs that
+        override system instructions), indirect prompt injection (adversarial content
+        in retrieved documents that hijacks agent behavior), data exfiltration via
+        LLM tool calls, and privilege escalation in multi-agent systems where
+        a compromised agent gains unauthorized access to capabilities. The AI
+        Architect must design trust boundaries and containment architecture that
+        prevent these attacks.
+      relevance_to_ai_architect: >
+        Security design is a core AI Architect responsibility. They define input
+        validation requirements, constrain tool access to the minimum required,
+        design sandboxing for agent tool execution, and implement anomaly detection
+        for unusual agent behavior. The OWASP Top 10 for LLM Applications is a
+        reference framework, though the field evolves faster than published standards.
+
+    - name: "Content Provenance and AI Audit Trail Architecture"
+      definition: >
+        Content provenance tracking records the chain of custody for AI-generated
+        content: which model produced it, with what prompt, with what retrieved
+        context, reviewed by whom, approved through what governance process, and
+        deployed where. AI audit trail architecture extends this to all AI system
+        decisions and actions — creating a tamper-evident log that satisfies both
+        internal governance requirements and external regulatory examination.
+      relevance_to_ai_architect: >
+        The AI Architect designs the provenance and audit infrastructure. This
+        requires a content hash or fingerprint at generation time, logging of
+        all inputs and outputs with the LLM call, capture of retrieved context
+        sources, and an immutable audit log that correlates content IDs with their
+        full generation chain. This infrastructure becomes critical as EU AI Act
+        Article 50 transparency requirements take effect and as FTC enforcement
+        on AI-generated content disclosures escalates.
+      marketing_as_code_intersection: >
+        MaC's governance signature system (SHA-256 content hash in
+        _governance_signature, creation provenance tracking, artifact lifecycle
+        management) is exactly the content provenance architecture the AI Architect
+        would design for AI-generated marketing content. The AI Architect will
+        recognize this pattern immediately and will advocate for MaC as the right
+        foundation for marketing AI governance.
+
+  technical_proficiency:
+    languages:
+      - Python: expert (primary language for AI infrastructure)
+      - TypeScript/JavaScript: proficient (LLM SDKs, MCP server implementation)
+      - YAML/JSON: expert (configuration, schema definition, agent definitions)
+      - SQL: working knowledge
+    ai_frameworks_and_tools:
+      orchestration:
+        - LangChain (broad ecosystem awareness; architectural predecessor)
+        - LangGraph (stateful agentic workflows — current standard for complex agents)
+        - Crew.ai (role-based multi-agent teams)
+        - AutoGen (conversational multi-agent; Microsoft)
+        - Semantic Kernel (Microsoft AI SDK; strong enterprise adoption)
+        - Haystack (RAG-focused framework)
+      llm_providers_and_gateways:
+        - Anthropic Claude (Claude 3 family; MCP-native)
+        - OpenAI GPT-4 and o-series
+        - Google Gemini (1.5 Pro, 2.0 family)
+        - Meta Llama family (open weights; self-hosted)
+        - Mistral (EU-based; GDPR-favorable)
+        - AWS Bedrock (multi-model gateway with enterprise controls)
+        - Azure OpenAI (enterprise OpenAI with VNet)
+        - LiteLLM (open-source LLM proxy)
+        - Portkey (enterprise AI gateway)
+      vector_stores_and_rag:
+        - Pinecone (managed vector store)
+        - Weaviate (open-source; hybrid search)
+        - pgvector (PostgreSQL extension; low-overhead)
+        - Qdrant (performance-optimized open-source)
+        - Chroma (development-friendly)
+        - Azure AI Search (integrated with Azure OpenAI)
+        - Cohere Rerank (cross-encoder reranking)
+      observability_and_evaluation:
+        - LangSmith (LangChain tracing and evaluation platform)
+        - Weights & Biases Weave
+        - Arize Phoenix (open-source LLM observability)
+        - Helicone (logging and analytics for LLM APIs)
+        - Langfuse (open-source LLM observability)
+      mcp_and_context_management:
+        - MCP SDK (Python and TypeScript; Anthropic)
+        - Claude Desktop (MCP client reference implementation)
+        - Custom MCP server development
+        - Context window management and prompt caching
+      infrastructure_and_deployment:
+        - Docker and Kubernetes (containerized AI service deployment)
+        - GitHub Actions (CI/CD for AI infrastructure including prompt testing)
+        - Terraform (IaC for cloud AI service provisioning)
+        - Modal (serverless GPU/CPU for AI workloads)
+        - Replicate (model deployment platform)
+
+calibration:
+  communication_style: >
+    Technical and systems-oriented. Communicates in architecture diagrams, sequence
+    diagrams, and data flow descriptions. Uses precise technical vocabulary: "context
+    window," "embedding space," "reranking," "tool call," "agent loop," "trust
+    boundary," "audit trail." Will probe for architectural specifics when evaluating
+    any system — how components communicate, where state is stored, what the failure
+    modes are, how the system scales. Values intellectual rigor and will push back
+    on oversimplified explanations. Not naturally a salesperson — evaluates based
+    on technical merits and will be direct about gaps. Respects people who have
+    built AI systems in production and understand the gap between demo performance
+    and production reliability.
+
+  decision_making_framework: >
+    Architecture decisions follow a formal evaluation pattern: requirements gathering
+    (functional requirements + non-functional requirements: latency, reliability,
+    cost, security, compliance), architecture options generation, architecture decision
+    record (ADR) documenting trade-offs, prototype or proof-of-concept for high-risk
+    decisions, and staged rollout with evaluation gates. For AI systems specifically,
+    adds evaluation framework design before implementation — defining what "good
+    enough" means before building, rather than discovering quality gaps in production.
+    Build vs. buy decisions favor building shared infrastructure (LLM gateway, prompt
+    management, observability) and buying specialized capabilities (vector stores,
+    domain-specific models), but this calculus shifts as the managed services mature.
+
+  primary_goals:
+    - >
+      Design and deploy a shared AI infrastructure layer that enables product and
+      business teams to build AI features without each team reinventing RAG pipelines,
+      model routing, security patterns, and observability infrastructure.
+    - >
+      Establish AI governance architecture — prompt management, content provenance,
+      audit trail, model access controls — that satisfies both internal risk
+      management requirements and external regulatory obligations as AI Act and
+      similar frameworks take effect.
+    - >
+      Build the MCP server topology that connects the organization's authoritative
+      data sources to AI agents through a standardized, governed, auditable protocol —
+      replacing the current patchwork of bespoke integrations.
+    - >
+      Develop an AI evaluation framework that continuously measures LLM application
+      quality in production, detects quality drift before it reaches customers, and
+      provides the evidence base for AI governance attestations.
+    - >
+      Position the AI infrastructure layer as a competitive capability — demonstrating
+      that the organization can deploy AI faster, more reliably, and with better
+      governance than competitors who are building on ad-hoc foundations.
+
+  pain_points:
+    - name: "Shadow AI and Ungoverned LLM Usage"
+      description: >
+        Developers and business teams adopt AI tools, APIs, and frameworks faster
+        than the AI Architect can establish governance infrastructure. Every team
+        has direct OpenAI API keys. Product managers have enabled ChatGPT plugins
+        that access production data. Marketing is using AI writing tools that send
+        customer data to unknown model providers. The AI Architect discovers these
+        deployments in post-incident reviews, security audits, or by accident —
+        never in advance.
+      emotional_charge: very_high
+      manifestation: >
+        "I did an AI inventory audit last quarter. We found 47 distinct LLM integrations
+        across 23 teams. Eleven of them were sending customer PII to models hosted
+        outside our approved providers. Three of them were in production systems
+        with no logging. I had to brief the CISO and the Chief Privacy Officer with
+        a one-week timeline to remediate. We now have an AI intake process — it
+        didn't exist three months ago."
+
+    - name: "Prompt Injection in Agentic Systems"
+      description: >
+        As the organization deploys agents that retrieve content from the web,
+        documents, email, and databases, the attack surface for prompt injection
+        expands dramatically. Malicious content injected into a retrieved document
+        can override the agent's system instructions, exfiltrate data, or trigger
+        unauthorized tool calls. The AI Architect must design containment
+        architectures for systems that have not been built with this threat model.
+      emotional_charge: high
+      manifestation: >
+        "We deployed a document summarization agent that accesses our knowledge
+        base and a customer's uploaded contracts. A red team exercise found that
+        a carefully crafted PDF attachment could cause the agent to email contract
+        terms to an attacker-controlled address using the agent's outbound email
+        tool. We had to redesign the tool access model from scratch."
+
+    - name: "LLM Quality Drift in Production"
+      description: >
+        LLM providers update their models without always announcing breaking behavioral
+        changes. An agent that performed excellently in evaluation degrades silently
+        in production as the underlying model shifts. Without continuous evaluation
+        infrastructure, quality degradation is discovered via customer complaints
+        rather than monitoring alerts.
+      emotional_charge: high
+      manifestation: >
+        "We noticed a 12% increase in customer escalations from a support agent
+        in March. When we investigated, Anthropic had released a model update that
+        changed the tone calibration. Our evals weren't running against production
+        traffic — they were a static test set that didn't catch the drift. We're
+        now running LLM evals on 10% of production traffic continuously."
+
+    - name: "RAG Quality and Retrieval Failures"
+      description: >
+        RAG architectures that perform well in demos frequently fail in production
+        due to: poor chunking that splits semantic units across chunks; embedding
+        models that fail to retrieve semantically similar but lexically different
+        content; context window saturation when retrieved chunks exceed available
+        context; and retrieval quality degradation as the knowledge base grows
+        without curation. The AI Architect must design evaluation frameworks that
+        detect retrieval failures before they reach users.
+      emotional_charge: high
+      manifestation: >
+        "Our sales enablement agent was confidently stating incorrect pricing because
+        the correct pricing document was being consistently out-ranked in retrieval
+        by an outdated version from 18 months ago. Both were in the vector store
+        with similar embeddings. We added document metadata filters and a recency
+        bias to the retrieval, but it took two months to diagnose."
+
+    - name: "The Build vs. Buy vs. Orchestrate Trilemma"
+      description: >
+        The AI infrastructure landscape moves faster than architecture decisions
+        can be made. A vector store chosen six months ago may be technically obsolete
+        today. A framework chosen for agent orchestration may have been superseded by
+        a new abstraction. The AI Architect must make commitments to specific tools
+        while maintaining architectural flexibility to swap components as the ecosystem
+        matures — a structural tension that has no clean resolution.
+      emotional_charge: medium
+      manifestation: >
+        "We built our first RAG pipeline on LangChain in Q1 2024. By Q3 2024 the
+        whole team had migrated to LangGraph because the newer stateful architecture
+        was significantly better for our agentic use cases. We spent six weeks
+        refactoring. I now treat orchestration frameworks like scaffolding — useful
+        for building, but not something I want baked into the business logic."
+
+    - name: "MCP Server Topology Governance"
+      description: >
+        As the organization builds MCP servers to expose enterprise data to AI agents,
+        each server represents an access control decision: which agents can access
+        which data, under what authentication model, with what rate limits and audit
+        requirements. Without centralized MCP topology governance, different teams
+        build MCP servers with inconsistent security models, creating a fragmented
+        and unauditable AI access control surface.
+      emotional_charge: high
+      manifestation: >
+        "We have nine MCP servers deployed across five teams. Three of them use
+        different authentication models. Two of them expose the same data source
+        with different schema definitions. None of them have consistent audit logging.
+        I need to establish a shared MCP server design standard and migrate the
+        existing implementations before we add more."
+
+  buying_dynamics:
+    evaluation_approach: >
+      Architecture-first evaluation. Starts with the system's design documentation —
+      data models, API specifications, security model, deployment topology — before
+      looking at UI or feature lists. Will prototype integration against their own
+      AI infrastructure to validate compatibility before recommending. Evaluates
+      failure modes explicitly: what happens when the system is unavailable, when
+      data is inconsistent, when an agent misbehaves. Asks for architectural
+      documentation and security design specifications. Will engage directly with
+      the product's technical team to understand design decisions and trade-offs.
+      Dismisses products with inadequate technical documentation or opaque
+      architectures.
+    influencer_role: very_high
+    decision_authority: >
+      High authority for AI infrastructure decisions. Typically has unilateral
+      authority for tooling under $100K ARR that is part of the shared AI
+      infrastructure stack. Above that threshold or for significant architectural
+      commitments, requires CTO and sometimes CISO approval. The AI Architect's
+      architectural recommendation is rarely overridden on technical grounds —
+      executive override happens for strategic or commercial reasons, not technical
+      ones.
+    budget_ownership: >
+      Typically owns or co-owns the AI infrastructure budget, ranging from $500K
+      to $5M ARR at mid-market to enterprise scale, covering LLM API costs, vector
+      store infrastructure, observability tooling, and AI platform engineering
+      services. May have separate budget line items for LLM API spend (operational)
+      vs. AI infrastructure tooling (capital/subscription).
+    key_questions_when_evaluating_tools:
+      - "Is this an MCP server? What resources and tools does it expose? What is the authentication model?"
+      - "How does your data model handle versioning? Can I query historical state?"
+      - "What is your audit log schema? Can I export it to my observability stack?"
+      - "How does your API handle concurrent agent access? What are your rate limits?"
+      - "Can I deploy this in my own cloud environment (VPC) for data residency compliance?"
+      - "What is your approach to prompt injection in your own AI features? Show me your threat model."
+      - "How does your schema versioning work? If I upgrade, do my existing integrations break?"
+      - "What is your SLA for the MCP server endpoint? How do you handle availability during upgrades?"
+
+  stakeholder_guidance:
+    how_to_work_with_this_persona:
+      - >
+        Open with architecture documentation. Before any demo, provide system design
+        specifications, API documentation, and deployment topology diagrams. The AI
+        Architect evaluates systems structurally — features are secondary to architecture.
+      - >
+        Position your AI governance features as infrastructure, not compliance checkboxes.
+        The AI Architect cares about how audit trails are structured, how provenance is
+        tracked, and whether governance is designed in or bolted on. The distinction
+        matters to them.
+      - >
+        Engage with the MCP integration story explicitly. This is increasingly the
+        primary integration surface for enterprise AI systems. If your product has
+        an MCP server, lead with it. Describe the resource schema, tool surface,
+        authentication model, and audit logging in technical detail.
+      - >
+        Be direct about architectural trade-offs and limitations. The AI Architect
+        will probe for weaknesses. Honest acknowledgment of trade-offs builds more
+        trust than evasion. Frame limitations in terms of architectural decisions
+        with stated rationale.
+      - >
+        Offer access to technical design documentation, architecture decision records,
+        and if possible, the engineering team. Sales calls without access to technical
+        depth are low-value for this persona.
+      - >
+        Connect your product's governance model to the regulatory requirements they
+        are designing for. EU AI Act transparency obligations, FTC disclosure
+        requirements, and ISO 42001 AI Management System standards are reference
+        frameworks this persona understands and is designing against.
+    messaging_that_resonates:
+      - '"Content provenance with SHA-256 integrity hashes and a tamper-evident audit trail — examination-ready from day one"'
+      - '"Native MCP server exposing brand context, persona definitions, and approved messaging as governed resources — plug into your existing AI agent topology"'
+      - '"Prompt governance with three-scope promotion pipeline (quarantine → approved → system) — the same change management model you apply to infrastructure"'
+      - '"Schema-validated, version-controlled marketing assets — treat brand governance with the same rigor as code"'
+      - '"AI observability integration: scoring events and quality signals available via webhook for ingestion into your LangSmith or Arize stack"'
+      - '"Designed as infrastructure first — the governance layer your AI agents need to generate compliant marketing content at scale"'
+    messaging_to_avoid:
+      - '"AI-powered content creation" without specifying the governance architecture beneath it'
+      - 'Vague claims about "built-in AI safety" without specifying the technical mechanism'
+      - '"Easy to use" — this persona is comfortable with complexity and distrusts oversimplification'
+      - '"No engineering required" — implies lack of depth; this persona wants engineering leverage, not engineering avoidance'
+      - 'Marketing-centric framing that obscures the infrastructure architecture'
+    common_objections:
+      - objection: '"We are building our own prompt management and governance infrastructure."'
+        response: >
+          Acknowledge the engineering investment and explore what they are building.
+          Position MaC as complementary: their infrastructure governs how AI systems
+          execute; MaC governs what those systems are authorized to produce — the
+          content, brand, and messaging standards that become governed source-of-truth
+          data in their RAG systems. The question is not build vs. buy but what layer
+          of the stack each system owns.
+      - objection: '"How does this integrate with our MCP server topology?"'
+        response: >
+          This is an explicit buying signal. Lead with MaC's MCP server implementation:
+          what resources it exposes (brand guidelines, persona definitions, approved
+          messaging), what tools are available (scoring, content generation against
+          governed context), the authentication model (API key vs. OAuth), and the
+          audit logging schema. Offer a sandbox MCP server endpoint for technical
+          evaluation.
+      - objection: '"We are concerned about data residency — our EU AI Act obligations require that EU data stays in the EU."'
+        response: >
+          Engage with the specific regulatory requirement (EU AI Act does not have
+          data residency provisions per se — the question is likely GDPR Article 44
+          or sector-specific requirements). Address the deployment model: can MaC
+          be deployed in their VPC? Does the self-hosted deployment option satisfy
+          their residency requirements? What data does MaC process and where?
+
+examples:
+  - id: "ai-arch-ex-001"
+    title: "Designing the Enterprise AI Governance Stack with MaC as MCP Server"
+    scenario: >
+      An AI Architect at a $500M revenue B2B enterprise (financial services, 2000
+      employees) is designing the enterprise AI infrastructure for a strategic AI
+      initiative approved by the board. They are tasked with deploying 12 AI use
+      cases in 18 months while satisfying EU AI Act compliance and FINRA content
+      requirements. The marketing department's AI content generation capability
+      is one of the 12 use cases.
+    architect_actions:
+      - "Maps the AI infrastructure layers: data layer (owned by data platform team), AI layer (owned by AI Architect), application layer (owned by product teams)"
+      - "Designs the MCP server topology: CRM MCP server, knowledge management MCP server, analytics MCP server, and a brand governance MCP server (candidate: MaC)"
+      - "Evaluates MaC as the brand governance MCP server: reviews the MCP server documentation, tests resource schema, validates that persona and messaging data are queryable programmatically"
+      - "Designs the marketing AI agent: orchestrated via LangGraph, connects to MaC MCP server for brand context, LLM routing through LiteLLM gateway (Claude for creative, GPT-4o for factual), output scored against MaC rubrics before delivery"
+      - "Designs the content provenance layer: MaC governance signature (SHA-256 hash + creation provenance) captured at generation, logged to immutable audit store, correlated with FINRA review workflow"
+    key_insight: >
+      The AI Architect evaluates MaC not as a content tool but as a governed data
+      source in the MCP topology. The key evaluation criterion is not features but
+      protocol compliance: does MaC implement MCP correctly, does the resource schema
+      match the context assembly requirements, and does the audit logging schema
+      integrate with their observability stack?
+    outcome: >
+      MaC becomes the brand governance MCP server in the enterprise AI topology.
+      The AI Architect becomes a strong internal champion, presenting MaC's
+      architecture to the CAIO and CISO as the governance layer for marketing AI —
+      an infrastructure decision, not a tool purchase.
+
+  - id: "ai-arch-ex-002"
+    title: "Retrofitting AI Governance to Shadow AI in Marketing"
+    scenario: >
+      The AI Architect discovers during a security audit that the marketing department
+      has been using three different AI content tools — a standalone AI writing
+      assistant, a CRM-native AI content generator, and a browser extension — none
+      of which are in the approved AI tool registry, none of which have content
+      logging, and all of which are sending marketing copy to LLMs that are not in
+      the organization's approved model portfolio.
+    architect_actions:
+      - "Documents the shadow AI inventory: three tools, two unapproved LLM providers, zero content logging"
+      - "Assesses the risk: FINRA content requirements require review of all customer communications; AI-generated content without audit trail is a potential FINRA violation"
+      - "Proposes remediation architecture: a governed AI content platform (evaluates MaC) that replaces the three shadow tools with a single governed system"
+      - "Designs the governance controls: MaC deployed with LDAP/SSO authentication, all content generation routed through the corporate LLM gateway with logging, generated content captured with provenance metadata, compliance review queue integrated with FINRA review workflow"
+      - "Builds the migration plan: shadow tool deprecation timeline (90 days), training program for marketing team, quality evaluation framework to ensure governed system matches output quality of deprecated tools"
+    key_insight: >
+      The AI Architect's primary motivation is not improving marketing productivity
+      but closing a compliance gap. MaC is evaluated as the governance architecture
+      that satisfies the audit finding. The marketing team's needs are secondary
+      to the requirement that the solution be auditable, observable, and connected
+      to the approved model portfolio.
+
+  - id: "ai-arch-ex-003"
+    title: "Integrating MaC into a Multi-Agent Marketing System"
+    scenario: >
+      The AI Architect is building a multi-agent marketing content system: a
+      research agent that gathers competitive intelligence, a brief-writing agent
+      that synthesizes research into campaign briefs, a content generation agent
+      that produces first drafts, and a scoring agent that evaluates content against
+      brand standards. The system needs a shared context source for brand guidelines
+      and persona definitions that all agents can access consistently.
+    architect_actions:
+      - "Identifies the shared context requirement: all four agents need consistent access to brand voice, persona profiles, and approved messaging frameworks"
+      - "Evaluates context provisioning approaches: static YAML files injected into each agent (simple but not governed), custom RAG pipeline over marketing documents (complex to build and maintain), MaC MCP server (governed, standardized, low-maintenance)"
+      - "Selects MaC as the shared context source via MCP: research agent queries MaC for persona profiles, content agent queries MaC for brand voice and approved messaging, scoring agent queries MaC for rubrics and scoring criteria"
+      - "Designs the agent topology in LangGraph: orchestrator routes tasks, individual agents call MaC MCP tools for context retrieval, generated content is submitted to MaC via API for provenance registration"
+      - "Instruments the observability layer: LangSmith traces capture all MCP tool calls, context retrieved, and scoring decisions; correlated with MaC audit logs for full content provenance chain"
+    key_insight: >
+      MaC becomes the context governance layer for the entire multi-agent system.
+      The AI Architect's evaluation criterion is protocol-level: does the MCP
+      interface provide consistent, structured access to the right context data
+      for each agent role? The content governance and scoring capabilities are
+      valued as infrastructure that the agents consume, not features for human users.
+
+_source_meta:
+  source: manual
+  source_type: "synthesized"
+  primary_sources:
+    - "Anthropic MCP documentation and SDK (November 2024 release, 2025 updates)"
+    - "LangGraph documentation: stateful agentic workflow patterns (2024-2025)"
+    - "Crew.ai documentation: role-based multi-agent architecture (2024-2025)"
+    - "OWASP Top 10 for LLM Applications (v1.1, 2024)"
+    - "NIST AI Risk Management Framework (AI RMF 1.0)"
+    - "ISO/IEC 42001:2023 AI Management System Standard"
+    - "EU AI Act (Regulation (EU) 2024/1689): Article 50 transparency obligations"
+    - "Andreessen Horowitz AI infrastructure commentary (2024-2025)"
+    - "LangChain blog: State of AI Engineering survey findings (2024-2025)"
+    - "Weights & Biases AI industry reports on LLM observability practices (2024-2025)"
+    - "AWS Bedrock, Azure OpenAI, and Google Vertex AI enterprise architecture documentation"
+    - "Portkey and LiteLLM: AI gateway architecture documentation"
+    - "Pinecone, Weaviate, Qdrant: vector store architecture and scaling documentation"
+    - "Stack Overflow Developer Survey 2024: AI tool adoption in engineering"
+    - "AI Engineer World's Fair 2024: agentic architecture practitioner talks"
+    - "Enterprise AI architecture practitioner community: Reddit r/MachineLearning, Discord AI Engineer communities"
+    - "Sequoia Capital: AI infrastructure market analysis (2024-2025)"
+    - "LinkedIn job posting analysis: AI Architect, AI Platform Engineer, AI Systems Architect (2024-2025)"
+  synthesis_method: >
+    Role definition synthesized from official framework documentation, product
+    documentation for leading AI infrastructure tools, practitioner community
+    discussions, industry analyst reports, and job posting analysis. Security
+    threat model informed by OWASP LLM Application Security project. Agentic
+    architecture patterns informed by framework documentation and practitioner
+    conference content. Compensation and market sizing data sourced from salary
+    aggregators and industry surveys.
+  schema_version: "1.1"
+  created_by: "claude-sonnet-4-6"
+  creation_date: "2026-04-15"
+  intended_use: >
+    Persona injection for AI marketing agents operating in enterprise B2B contexts.
+    Calibrates agent vocabulary, objection handling, evaluation criteria, and
+    messaging approach for the AI infrastructure architect audience. Designed to
+    be composed with governance-caio and it-cto personas for enterprise AI
+    governance messaging scenarios.
+  refresh_config:
+    schedule: annual
+    last_refreshed: '2026-04-15'
+    next_refresh_due: '2027-04-15'
+    refresh_trigger_keywords: []
+    volatile_sections:
+      - pain_points
+      - vocabulary
+      - domain_expertise.current_priorities
+      - domain_expertise.technology_stack
+      - regulatory_environment
+    stable_sections:
+      - role_definition
+      - reporting_structure
+      - evaluation_patterns.core_criteria
+  refresh_history:
+    - version: '1.0'
+      refreshed_at: '2026-04-15'
+      trigger_type: initial_creation
+      trigger_reason: Initial persona creation — Build Cycle 21
+      sections_updated: []
+      sections_flagged_for_review: []
+      web_research_performed: true
+      reviewed_by: ''
+      approved_at: ''
+      change_summary: Initial creation

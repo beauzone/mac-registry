@@ -1,0 +1,181 @@
+metadata:
+  id: jobs-to-be-done
+  version: 1.0.0
+  display_name: Jobs To Be Done (JTBD) — AI-Native Outcome Mapping
+  category: product_pmm
+  description: Identifies the core functional, emotional, and social jobs customers hire a product to perform. Modernized
+    for AI-native markets with emphasis on automation shifts, switching triggers, and forces of progress.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - product-marketing-manager
+    - cmo
+    - vp-product
+    - ceo
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: target_segment_definition
+    description: Clearly defined ICP or segment under analysis
+    source: skill
+  - field: customer_interviews_or_notes
+    description: Interview transcripts, win/loss notes, support tickets, or call summaries
+    source: user_input
+  - field: current_alternatives
+    description: Tools, processes, or workarounds customers use today
+    source: skill
+  - field: product_value_summary
+    description: Core outcomes the product claims to deliver
+    source: skill
+analysis:
+  instructions: 'This framework uncovers the functional, emotional, and social jobs customers are trying to accomplish. It
+    maps forces of progress: push (pain of current state), pull (attraction to new solution), anxiety (perceived risks), and
+    habit (inertia). In AI-native markets, it emphasizes automation displacement, internal build substitutes, and switching
+    velocity.
+
+
+    Produce a concise job statement in the format: ''When [situation], I want to [motivation], so I can [desired outcome].''
+    Map forces of progress and identify primary friction barrier. Conclude with messaging implications and roadmap reinforcement
+    priorities.'
+  dimensions:
+  - id: core-functional-job
+    name: Core Functional Job
+    description: The primary task the customer needs completed
+    prompts:
+    - What outcome is the customer ultimately trying to achieve?
+    - What does success look like in measurable terms?
+    - What constraints (time, budget, risk) shape this job?
+    - How do customers currently solve this job?
+  - id: emotional-and-social-jobs
+    name: Emotional and Social Jobs
+    description: Personal and reputational drivers influencing decisions
+    prompts:
+    - How does success or failure affect the buyer personally?
+    - What reputational or career risk is involved?
+    - Does adoption signal innovation or caution internally?
+    - Are buyers trying to avoid blame or gain recognition?
+  - id: forces-of-progress
+    name: Forces of Progress
+    description: Dynamics pushing and pulling customers toward change
+    prompts:
+    - What pain in the current solution is intensifying?
+    - What attraction to the new solution is most compelling?
+    - What anxieties slow adoption (risk, security, integration)?
+    - What habits or internal processes create inertia?
+  - id: automation-and-substitution-risk
+    name: Automation and Substitution Risk
+    description: AI-native alternatives and internal builds affecting the job
+    prompts:
+    - Could internal AI tools replace this product category?
+    - Is the job evolving due to automation acceleration?
+    - Are adjacent platforms expanding into this job?
+    - Does pricing compression affect perceived value?
+output_templates:
+- id: primary
+  name: JTBD Analysis
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Job Statements
+
+    {job_statements}
+
+
+    ## Forces of Progress Map
+
+    {forces_of_progress_map}
+
+
+    ## Substitution and Automation Risk
+
+    {substitution_and_automation_risk}
+
+
+    ## Messaging Implications
+
+    {messaging_implications}
+
+
+    ## Product and Roadmap Reinforcement
+
+    {product_and_roadmap_reinforcement}
+
+    '
+rubric:
+  description: Evaluates depth of customer insight, clarity of job articulation, realism of forces analysis, and linkage to
+    messaging and product decisions.
+  dimensions:
+  - name: Job Specificity
+    weight: 0.25
+    scoring:
+      1: Job statements vague or feature-oriented.
+      3: Moderately clear but lacking contextual triggers.
+      5: Clear, context-rich job statement tied to measurable outcomes.
+    improvement_guidance: Rewrite job in situation–motivation–outcome format.
+  - name: Evidence Grounding
+    weight: 0.2
+    scoring:
+      1: Speculative assumptions without customer quotes or notes.
+      3: Some qualitative evidence referenced.
+      5: Insights anchored in real customer language or deal notes.
+    improvement_guidance: Pull direct phrases from interviews or sales calls.
+  - name: Forces Clarity
+    weight: 0.2
+    scoring:
+      1: Push/pull/anxiety/habit not clearly differentiated.
+      3: Forces identified but not prioritized.
+      5: Primary adoption barrier clearly identified and ranked.
+    improvement_guidance: Explicitly identify the dominant friction driver.
+  - name: Strategic Linkage
+    weight: 0.2
+    scoring:
+      1: No clear messaging or roadmap implications.
+      3: Some implications identified.
+      5: Clear narrative and product reinforcement derived.
+    improvement_guidance: Translate job clarity into messaging and feature reinforcement.
+  - name: Executive Readiness
+    weight: 0.15
+    scoring:
+      1: Not structured for decision-making.
+      3: Understandable but lacks prioritization.
+      5: Clear job focus and friction mitigation priority.
+    improvement_guidance: Lead with primary job and dominant barrier.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Feature Framing
+  description: Defining jobs around product features rather than customer outcomes.
+  mitigation: Focus on the outcome the customer is trying to achieve.
+- pattern: Ignoring Emotional Drivers
+  description: Treating purchase as purely rational.
+  mitigation: Map personal and reputational stakes.
+- pattern: No Forces Mapping
+  description: Listing jobs without understanding adoption friction.
+  mitigation: Explicitly map push, pull, anxiety, and habit.
+- pattern: Static Job Assumption
+  description: Assuming job definition does not evolve in AI-accelerated markets.
+  mitigation: Reassess jobs as automation shifts customer workflows.
+chaining:
+  after:
+  - framework_id: value-proposition-canvas
+    reason: ''
+  - framework_id: messaging-architecture
+    reason: ''
+  before:
+  - framework_id: icp-buying-committee
+    reason: ''

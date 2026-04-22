@@ -1,0 +1,279 @@
+metadata:
+  id: win-loss-report
+  version: "1.0.0"
+  display_name: "Win/Loss Analysis Report"
+  category: sales-enablement
+  description: >
+    A structured post-deal analysis documenting why a specific deal was won or lost.
+    Captures the decision factors, competitive dynamics, sales execution assessment,
+    and actionable recommendations. Designed for sales leadership and product marketing
+    to improve win rates.
+  output_format: markdown
+  typical_length: "600–1,000 words"
+  best_for:
+    agents:
+      - strategic-planning
+      - market-research
+      - campaign-manager
+    stages:
+      - series-a
+      - series-b
+      - series-c
+      - enterprise
+    modes:
+      - fractional
+      - fte
+      - tech_provider
+  tags:
+    - win-loss
+    - deal-analysis
+    - sales-enablement
+    - competitive-intelligence
+    - post-mortem
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: deal_name
+      description: Deal or account name (can be anonymized)
+      source: user_input
+    - field: outcome
+      description: Win or Loss
+      source: user_input
+    - field: deal_context
+      description: Deal size, sales cycle length, product/solution evaluated, and competitors involved
+      source: user_input
+    - field: decision_factors
+      description: The key factors that drove the decision — why the buyer chose (or didn't choose) you
+      source: user_input
+  optional:
+    - field: buyer_feedback
+      description: Direct quotes or feedback from the buyer or champion
+      source: user_input
+    - field: sales_rep_assessment
+      description: The sales rep's perspective on what happened and why
+      source: user_input
+    - field: competitive_dynamics
+      description: Which competitors were in the deal, their positioning, and how they influenced the outcome
+      source: user_input
+
+structure:
+  sections:
+    - id: deal-summary
+      name: Deal Summary
+      required: true
+      description: At-a-glance overview of the deal — outcome, size, timeline, competitors
+      field_limits:
+        label: 20
+        value: 60
+      guidance: >-
+        Present as a structured data block. Include: outcome (Win/Loss), deal value, sales cycle length, product evaluated, competitors in the deal, and the primary decision maker. This should give a reader full context in 10 seconds.
+      format_notes: Key-value table format.
+
+    - id: executive-summary
+      name: Executive Summary
+      required: true
+      description: 2–3 sentence summary of why the deal was won or lost
+      guidance: >-
+        Lead with the verdict. "We lost this deal because [primary reason]. Contributing factors included [secondary reasons]. The key learning is [actionable insight]." Do not hedge or soften — the value of win/loss is honest diagnosis.
+      word_count: "60–90 words"
+
+    - id: decision-factors
+      name: Decision Factors
+      required: true
+      description: Ranked list of factors that drove the buyer's decision
+      field_limits:
+        factor_label: 35
+        priority_rating: 10
+        performance_assessment: 60
+      guidance: >-
+        Rank by influence on the decision, not by how you performed. For each factor, assess: what the buyer cared about, how you performed, and how the winner (or strongest competitor) performed. Include both rational factors (price, features, integration) and relational factors (trust, responsiveness, executive engagement).
+      format_notes: >-
+        Table format: Factor | Buyer Priority (H/M/L) | Our Performance | Winner's Performance
+      word_count: "150–250 words"
+
+    - id: competitive-dynamics
+      name: Competitive Dynamics
+      required: true
+      description: How competitors influenced the deal and what tactics they used
+      guidance: >-
+        For each competitor in the deal: what was their positioning, what resonated with the buyer, and what tactics did their sales team use? Include any FUD, discounting, or executive engagement that influenced the process. Be factual, not bitter.
+      word_count: "100–200 words"
+
+    - id: sales-execution
+      name: Sales Execution Assessment
+      required: true
+      description: Honest evaluation of your sales team's execution during the deal
+      field_limits:
+        area_label: 30
+        rating: 15
+        assessment_note: 80
+      guidance: >-
+        Assess: discovery quality, stakeholder mapping, demo/POC execution, executive engagement, follow-up cadence, and proposal quality. For wins, identify what worked well. For losses, identify specific execution gaps. Be constructive — this is about improving, not blaming.
+      word_count: "100–200 words"
+
+    - id: buyer-quotes
+      name: Buyer Feedback
+      required: false
+      description: Direct quotes or paraphrased feedback from the buyer
+      guidance: >-
+        Include verbatim quotes where available. Attribute to role (not necessarily name) — "The CISO told us..." or "The evaluation committee's feedback was..." This is the most valuable section for pattern recognition.
+      format_notes: Blockquote format with role attribution.
+
+    - id: recommendations
+      name: Recommendations
+      required: true
+      description: Specific, actionable recommendations based on this deal
+      field_limits:
+        recommendation_label: 80
+        category: 20
+        owner: 25
+      guidance: >-
+        3–5 recommendations. Each should name: what to change, who owns it, and the expected impact. Categorize as product (feature gaps), sales (execution improvements), marketing (messaging or positioning), or strategy (deal qualification or targeting). Prioritize by frequency — if this is a recurring pattern, say so.
+      format_notes: >-
+        Table format: Recommendation | Category | Owner | Priority
+      word_count: "100–200 words"
+
+    - id: pattern-flags
+      name: Pattern Flags
+      required: false
+      description: Whether this deal confirms or contradicts patterns seen in other win/loss analyses
+      guidance: >-
+        Connect this deal to broader trends. "This is the third enterprise deal we've lost to [Competitor] on integration depth — this is now a pattern, not an outlier." Or "This win confirms that leading with ROI messaging to CFOs is working in the healthcare vertical." This section is what makes individual deal analysis strategically valuable.
+      word_count: "60–100 words"
+
+template: |
+  # Win/Loss Analysis: {deal_name}
+
+  ---
+
+  ## Deal Summary
+
+  | | |
+  |---|---|
+  | **Outcome** | {Win / Loss} |
+  | **Deal value** | {ARR or TCV} |
+  | **Sales cycle** | {duration} |
+  | **Product** | {product or solution evaluated} |
+  | **Competitors** | {competitors in the deal} |
+  | **Decision maker** | {title of primary decision maker} |
+  | **Date closed** | {date} |
+
+  ---
+
+  ## Executive Summary
+
+  {2–3 sentences: verdict, contributing factors, key learning. Lead with the why.}
+
+  ---
+
+  ## Decision Factors
+
+  | Factor | Buyer Priority | Our Performance | Winner's Performance |
+  |---|---|---|---|
+  | {Factor 1} | High | {assessment} | {assessment} |
+  | {Factor 2} | High | {assessment} | {assessment} |
+  | {Factor 3} | Medium | {assessment} | {assessment} |
+  | {Factor 4} | Medium | {assessment} | {assessment} |
+  | {Factor 5} | Low | {assessment} | {assessment} |
+
+  ---
+
+  ## Competitive Dynamics
+
+  **{Competitor 1}:**
+  {Their positioning, what resonated, tactics used}
+
+  **{Competitor 2}:**
+  {Their positioning, what resonated, tactics used}
+
+  ---
+
+  ## Sales Execution Assessment
+
+  | Area | Rating | Notes |
+  |---|---|---|
+  | Discovery quality | {Strong/Adequate/Weak} | {specific observation} |
+  | Stakeholder mapping | {Strong/Adequate/Weak} | {specific observation} |
+  | Demo/POC execution | {Strong/Adequate/Weak} | {specific observation} |
+  | Executive engagement | {Strong/Adequate/Weak} | {specific observation} |
+  | Follow-up cadence | {Strong/Adequate/Weak} | {specific observation} |
+  | Proposal quality | {Strong/Adequate/Weak} | {specific observation} |
+
+  ---
+
+  ## Buyer Feedback
+
+  > "{Direct quote from buyer}"
+  > — {Role}, {Company}
+
+  > "{Additional feedback}"
+  > — {Role}, {Company}
+
+  ---
+
+  ## Recommendations
+
+  | Recommendation | Category | Owner | Priority |
+  |---|---|---|---|
+  | {Specific action} | {Product/Sales/Marketing/Strategy} | {team or role} | {High/Medium} |
+  | {Specific action} | {Product/Sales/Marketing/Strategy} | {team or role} | {High/Medium} |
+  | {Specific action} | {Product/Sales/Marketing/Strategy} | {team or role} | {High/Medium} |
+
+  ---
+
+  ## Pattern Flags
+
+  {Connect this deal to broader trends. Is this an outlier or part of a pattern?}
+
+variations:
+  - id: aggregate
+    name: Aggregate Win/Loss Report
+    description: Summarizes patterns across multiple deals rather than analyzing a single deal. Replaces deal-specific sections with trend analysis.
+    overrides:
+      sections_remove:
+        - deal-summary
+        - buyer-quotes
+      sections_add:
+        - trend-analysis
+        - deal-inventory
+      tone: "Analytical and pattern-focused. Emphasize what's systemic vs. one-off."
+      word_count: "1,000–1,500 words total"
+
+  - id: quick-debrief
+    name: Quick Deal Debrief
+    description: Abbreviated version for fast capture immediately after a deal closes. Focuses on outcome, top 3 factors, and immediate actions.
+    overrides:
+      sections_remove:
+        - competitive-dynamics
+        - sales-execution
+        - pattern-flags
+      tone: "Fast capture. Prioritize accuracy over polish — this will be refined later."
+      word_count: "300–500 words total"
+
+branding:
+  supports_branding: true
+  brandable_elements:
+    - element: header_logo
+      description: Company logo in document header
+    - element: color_scheme
+      description: Win/loss color coding (green/red) aligned to brand palette
+    - element: typography
+      description: Fonts aligned to brand guidelines
+
+quality_criteria:
+  required_elements:
+    - "Executive summary leads with a clear verdict, not background"
+    - "Decision factors are ranked by buyer priority, not vendor preference"
+    - "Sales execution assessment is honest and constructive"
+    - "Recommendations are specific with owners and categories"
+    - "Deal summary is present with all key data points"
+  prohibited_elements:
+    - "Blame-oriented language in sales execution assessment"
+    - "Decision factors ranked by how well you performed instead of buyer priority"
+    - "Vague recommendations without owners ('we should do better at discovery')"
+    - "Competitor analysis based on assumptions rather than evidence"
+  length_check:
+    minimum: 500
+    maximum: 1200
+    strict: false

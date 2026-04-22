@@ -1,0 +1,156 @@
+metadata:
+  id: startup-gtm-stage-model
+  version: 1.0.0
+  display_name: Startup GTM Stage Model (Seed → Series B) — Scale Timing & Motion Alignment Model
+  category: growth
+  description: Aligns GTM motion, ICP focus, channel selection, hiring pace, and capital deployment to company stage (Seed
+    through Series B). Prevents premature scaling and enforces stage-appropriate revenue architecture.
+  best_for:
+    stages:
+    - pre-seed
+    - seed
+    - series-a
+    - series-b
+    roles:
+    - ceo
+    - cmo
+    - cro
+    - board
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: pmf_stage
+    description: Pre-Fit, Emerging Fit, Strong Fit, Scalable Fit classification
+    source: existing_deliverable
+  - field: runway_months
+    description: Current cash runway and burn rate
+    source: user_input
+  - field: icp_definition
+    description: Precision and evidence of ICP clarity
+    source: existing_deliverable
+  - field: current_motion
+    description: Founder-led, sales-led, PLG, hybrid, etc.
+    source: user_input
+  - field: growth_targets
+    description: ARR goals and fundraising expectations
+    source: user_input
+analysis:
+  instructions: 'This framework defines stage-specific GTM architecture across Seed, Series A, and Series B. It aligns motion
+    selection, hiring cadence, channel mix, and burn discipline to validated PMF level.
+
+
+    Classify company stage by PMF maturity rather than funding label. Identify misalignment between stage and current GTM
+    architecture. Recommend hiring, channel, and motion adjustments aligned to runway and growth target.'
+  dimensions:
+  - id: seed-stage-search-&-validation
+    name: Seed Stage (Search & Validation)
+    description: ''
+    prompts: []
+  - id: series-a-initial-repeatability
+    name: Series A (Initial Repeatability)
+    description: ''
+    prompts: []
+  - id: series-b-scaling-efficiency
+    name: Series B (Scaling Efficiency)
+    description: ''
+    prompts: []
+output_templates:
+- id: primary
+  name: Startup GTM Stage Alignment
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## PMF and ICP Assessment
+
+    {pmf_and_icp_assessment}
+
+
+    ## Motion and Channel Alignment
+
+    {motion_and_channel_alignment}
+
+
+    ## Hiring and Burn Analysis
+
+    {hiring_and_burn_analysis}
+
+
+    ## Stage-Appropriate Recommendations
+
+    {stage-appropriate_recommendations}
+
+    '
+rubric:
+  description: Evaluates stage accuracy, motion discipline, capital alignment, and scale readiness.
+  dimensions:
+  - name: Stage Accuracy
+    weight: 0.25
+    scoring:
+      1: Stage misclassified relative to PMF evidence.
+      3: Moderate alignment.
+      5: Stage accurately matched to retention and repeatability.
+    improvement_guidance: Anchor classification to PMF diagnostic.
+  - name: Motion Alignment
+    weight: 0.25
+    scoring:
+      1: Over-complex motion for stage.
+      3: Mostly aligned but layered prematurely.
+      5: Stage-appropriate single dominant motion.
+    improvement_guidance: Simplify motion before scaling.
+  - name: Capital Discipline
+    weight: 0.2
+    scoring:
+      1: Hiring ahead of repeatability.
+      3: Mixed discipline.
+      5: Hiring directly tied to validated demand signals.
+    improvement_guidance: Tie hiring to measurable traction metrics.
+  - name: Channel Focus
+    weight: 0.15
+    scoring:
+      1: Channel sprawl.
+      3: Some focus with distractions.
+      5: Disciplined channel concentration.
+    improvement_guidance: Prove one channel before expansion.
+  - name: Scale Readiness
+    weight: 0.15
+    scoring:
+      1: Premature scaling risk high.
+      3: Moderate readiness.
+      5: Strong readiness with repeatable economics.
+    improvement_guidance: Validate repeatability before acceleration.
+  thresholds:
+    revise: 2.8
+    publish_ready: 3.6
+    escalate_to_user: 2.2
+anti_patterns:
+- pattern: Fundraising-Driven Scaling
+  description: Expanding GTM because capital was raised.
+  mitigation: Scale only after repeatability proven.
+- pattern: Motion Stacking Too Early
+  description: Adding PLG + outbound + channel simultaneously.
+  mitigation: Sequence motions deliberately.
+- pattern: ICP Drift
+  description: Expanding target market prematurely.
+  mitigation: Narrow before expanding.
+- pattern: Burn Mismatch
+  description: Headcount growth disconnected from retention signals.
+  mitigation: Tie burn to validated unit economics.
+chaining:
+  after:
+  - framework_id: gtm-motions-framework
+    reason: ''
+  - framework_id: okrs
+    reason: ''
+  before:
+  - framework_id: product-market-fit-diagnostic
+    reason: ''
+  - framework_id: plg-hybrid-plg-framework
+    reason: ''

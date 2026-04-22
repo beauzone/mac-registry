@@ -1,0 +1,307 @@
+metadata:
+  id: channel-strategy
+  version: "1.0.0"
+  display_name: "Channel Strategy"
+  category: strategy
+  description: >
+    Multi-channel marketing strategy document covering channel audit,
+    recommendations, allocation, channel-specific tactics, attribution approach,
+    and 90-day roadmap. Used when deciding or redesigning how to reach, acquire,
+    and retain consumers across channels.
+  output_format: markdown
+  typical_length: "1,000–1,500 words"
+  best_for:
+    agents:
+      - strategic-planning
+      - market-research
+    stages:
+      - series-a
+      - series-b
+      - series-c
+      - scale
+    modes:
+      - fractional
+      - fte
+      - tech_provider
+  tags:
+    - channel-strategy
+    - acquisition-channels
+    - media-mix
+    - channel-plan
+    - growth-channels
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: company_context
+      description: What you sell, current stage, and business model (DTC, subscription, marketplace, retail, etc.)
+      source: user_input
+    - field: current_channels
+      description: What channels you're currently using and rough performance (what's working, what's not)
+      source: user_input
+    - field: strategic_objective
+      description: What you're trying to achieve — growth, channel diversification, efficiency improvement, or entering a new market
+      source: user_input
+  optional:
+    - field: budget_context
+      description: Available marketing budget range — informs what's realistic vs. aspirational
+      source: user_input
+    - field: competitor_channel_intelligence
+      description: What channels competitors appear to be investing in — useful for benchmarking and differentiation
+      source: user_input
+    - field: target_persona
+      description: Primary consumer persona — informs channel selection based on where this person actually spends time
+      source: user_input
+
+structure:
+  sections:
+    - id: strategy-overview
+      name: Channel Strategy Overview
+      required: true
+      description: The business problem this strategy solves and what success looks like in 90 days and 12 months
+      guidance: >-
+        Open by naming the specific problem this channel strategy is solving — not "we need to grow" but the precise challenge: over-reliance on one channel, declining efficiency in paid, no organic growth engine, expanding to a new market. Then define success at two horizons: 90 days (what early wins or infrastructure milestones confirm the strategy is working) and 12 months (the channel mix target state and business outcomes). This framing sets the decision-making lens for everything that follows — channel recommendations should be evaluated against whether they solve the stated problem.
+      word_count: "100–150 words"
+
+    - id: channel-audit
+      name: Current Channel Audit
+      required: true
+      description: What's working and why, what's not working and why, current efficiency benchmarks, and identified gaps
+      field_limits:
+        channel_label: 40
+        performance_summary: 100
+      guidance: >-
+        Be honest here — this is the diagnostic that makes the recommendations credible. For each active channel: summarize current performance (not just spend but efficiency metrics — CAC, ROAS, conversion rate, payback period), give a plain-language assessment of WHY it's working or not (is it the channel itself, the creative, the targeting, the offer, or the audience?), and note what would need to change to improve it. Then identify gaps: channels that could work but aren't being used, audiences being left unreached, funnel stages with no coverage. Gaps should be specific — "no retention channel for lapsed customers" is a gap; "not doing enough social" is not.
+      word_count: "150–200 words"
+
+    - id: channel-recommendations
+      name: Channel Recommendations
+      required: true
+      description: Recommended channel set with role of each, investment allocation, and rationale
+      field_limits:
+        channel_label: 40
+        role_label: 30
+        allocation_value: 10
+        rationale_copy: 120
+      guidance: >-
+        Define the recommended channel portfolio. For each channel assign a strategic role: awareness (reach new audiences who don't know you), consideration (educate and engage people who've heard of you), conversion (turn intent into purchase), or retention (keep and grow existing customers). Include the investment allocation percentage and the specific rationale for why this channel earns that allocation for THIS company at THIS stage. Separate primary channels (where the majority of budget and effort goes) from secondary channels (where you maintain presence but don't scale). Allocation must sum to 100%. Be willing to recommend against channels even if they're popular — explain why.
+      word_count: "200–250 words"
+
+    - id: channel-tactics
+      name: Channel-Specific Tactics
+      required: true
+      description: For each recommended channel — target segment, format, key message, success metric, and budget range
+      guidance: >-
+        For every channel in the recommended set, provide: the specific audience or segment to target within that channel (not just "women 25-45" but the targeting parameters — interest, behavior, keyword, or lookalike logic), the content or ad format that works best for this channel and this audience, the key message or angle (channel-adapted from the brand's core message — what works on TikTok won't work in email), the primary success metric for this channel, and the minimum viable budget to get meaningful signal. Minimum viable budget is important — if a channel requires $5,000/month to exit the learning phase, say so. Operating below that threshold produces misleading data.
+      word_count: "200–300 words"
+
+    - id: attribution-measurement
+      name: Attribution & Measurement Approach
+      required: true
+      description: How cross-channel performance will be measured, attribution model rationale, and key metrics dashboard
+      guidance: >-
+        Attribution is where channel strategies break down in practice. Be explicit about the attribution model being used (last-click, first-click, linear, data-driven, or MTA) and why it was chosen for this business and channel mix. Acknowledge the limitations honestly — last-click undervalues top-of-funnel; MTA requires data volume and tooling most small brands don't have. Recommend a pragmatic approach: what attribution method matches the company's current data maturity? Include the key metrics dashboard — what should be reviewed weekly, what monthly, and what quarterly. Distinguish channel-level metrics (efficiency) from business-level metrics (growth and profitability).
+      word_count: "100–150 words"
+
+    - id: budget-allocation
+      name: Budget Allocation
+      required: true
+      description: Recommended spend split with rationale and minimum viable spend per channel
+      field_limits:
+        category_label: 40
+        allocation_value: 10
+        mvs_value: 30
+      guidance: >-
+        Translate the channel recommendation percentages into approximate dollar ranges (or use the provided budget). Group channels into buckets: paid acquisition, owned/organic, retention, and testing. For each channel include the minimum viable spend threshold — the floor below which you won't get reliable signal. This is critical: many small brands spread budget so thin across channels that no single channel gets enough data to optimize. It's better to do 2 channels well than 6 channels poorly. If budget is constrained, recommend a sequenced approach: start with the 2 highest-confidence channels, prove CAC, then expand.
+      format_notes: >-
+        Table format: Channel | Role | Allocation % | Monthly Spend Range | Minimum Viable Spend
+      word_count: "100–150 words"
+
+    - id: roadmap-90-day
+      name: 90-Day Launch Roadmap
+      required: true
+      description: Prioritized sequence for launching or optimizing channels with key milestones
+      guidance: >-
+        Sequence matters as much as selection. Lay out the 90-day execution order: what launches or gets restructured in Month 1 (typically the highest-confidence or most broken channel), what gets layered in Month 2 (secondary channels or retention infrastructure), and what starts testing in Month 3 (experimental channels or new formats). For each phase include the key deliverables (creative assets, audience builds, tracking setup) and the milestone that signals readiness to move to the next phase. Avoid the trap of "we'll launch everything at once" — phased execution produces cleaner data and allows for course correction.
+      word_count: "100–150 words"
+
+template: |
+  # Channel Strategy: {company_context}
+
+  **Objective:** {strategic_objective}
+  **Last updated:** {date}
+
+  ---
+
+  ## Channel Strategy Overview
+
+  **The problem this solves:** {Specific channel challenge — not generic "we need to grow"}
+
+  **Success at 90 days:** {Early wins or infrastructure milestones}
+
+  **Success at 12 months:** {Target channel mix and business outcome}
+
+  ---
+
+  ## Current Channel Audit
+
+  | Channel | Current Performance | Why It's Working / Not | Efficiency Metric | Assessment |
+  |---|---|---|---|---|
+  | {Channel 1} | {spend/volume} | {root cause} | {CAC/ROAS/CVR} | Working / Underperforming / Untested |
+  | {Channel 2} | {spend/volume} | {root cause} | {metric} | {assessment} |
+  | {Channel 3} | {spend/volume} | {root cause} | {metric} | {assessment} |
+
+  **Identified gaps:**
+  - {Gap 1 — specific funnel stage or audience not covered}
+  - {Gap 2}
+  - {Gap 3}
+
+  ---
+
+  ## Channel Recommendations
+
+  ### Primary Channels
+
+  | Channel | Role | Allocation | Rationale |
+  |---|---|---|---|
+  | {Channel 1} | {Awareness/Consideration/Conversion/Retention} | {%} | {why this channel for this company at this stage} |
+  | {Channel 2} | {role} | {%} | {rationale} |
+  | {Channel 3} | {role} | {%} | {rationale} |
+
+  ### Secondary Channels
+
+  | Channel | Role | Allocation | Rationale |
+  |---|---|---|---|
+  | {Channel 4} | {role} | {%} | {rationale} |
+
+  **Total allocation:** 100%
+
+  **Channels considered and not recommended:**
+  - {Channel} — {reason}
+
+  ---
+
+  ## Channel-Specific Tactics
+
+  ### {Channel 1}
+  - **Target segment:** {specific targeting logic, not just demographics}
+  - **Format:** {ad format or content type}
+  - **Key message:** {channel-adapted angle}
+  - **Primary metric:** {KPI}
+  - **Minimum viable spend:** {$/month to exit learning phase}
+
+  ### {Channel 2}
+  - **Target segment:** {targeting logic}
+  - **Format:** {format}
+  - **Key message:** {angle}
+  - **Primary metric:** {KPI}
+  - **Minimum viable spend:** {$/month}
+
+  ### {Channel 3}
+  - **Target segment:** {targeting logic}
+  - **Format:** {format}
+  - **Key message:** {angle}
+  - **Primary metric:** {KPI}
+  - **Minimum viable spend:** {$/month}
+
+  ---
+
+  ## Attribution & Measurement Approach
+
+  **Attribution model:** {Last-click / First-click / Linear / Data-driven / MTA}
+
+  **Why this model:** {Rationale based on data maturity and channel mix}
+
+  **Known limitations:** {What this model undervalues or distorts}
+
+  **Key metrics dashboard:**
+
+  | Review Cadence | Metrics |
+  |---|---|
+  | Weekly | {channel efficiency metrics} |
+  | Monthly | {blended acquisition cost, channel mix performance} |
+  | Quarterly | {payback period, LTV:CAC by channel cohort} |
+
+  ---
+
+  ## Budget Allocation
+
+  | Channel | Role | Allocation % | Monthly Range | Minimum Viable Spend |
+  |---|---|---|---|---|
+  | {Channel 1} | {role} | {%} | {$ range} | {$ floor} |
+  | {Channel 2} | {role} | {%} | {$ range} | {$ floor} |
+  | {Channel 3} | {role} | {%} | {$ range} | {$ floor} |
+  | {Channel 4} | {role} | {%} | {$ range} | {$ floor} |
+  | **Total** | | **100%** | {total range} | |
+
+  **Sequencing recommendation:** {If budget is constrained — which 2 channels to start with and why}
+
+  ---
+
+  ## 90-Day Launch Roadmap
+
+  ### Month 1: Foundation
+  - {Channel to launch or restructure}: {key deliverables}
+  - Milestone: {what confirms readiness to move to Month 2}
+
+  ### Month 2: Layer
+  - {Secondary channel to add}: {key deliverables}
+  - {Retention infrastructure if applicable}: {key deliverables}
+  - Milestone: {what confirms month 2 success}
+
+  ### Month 3: Test & Expand
+  - {Experimental channel or new format}: {hypothesis to test}
+  - Optimization: {what gets refined based on Month 1-2 data}
+  - Milestone: {what confirms the channel strategy is working}
+
+variations:
+  - id: paid-acquisition
+    name: Paid Acquisition Channel Strategy
+    description: Focused on paid media — paid social, search, programmatic, and affiliate. Adds creative testing framework, audience architecture, and scaling playbook.
+    overrides:
+      sections_add:
+        - creative-testing-framework
+        - audience-architecture
+        - scaling-playbook
+      tone: "Performance-focused. Every channel decision is evaluated on CAC and ROAS. Include spend thresholds and scaling criteria."
+
+  - id: organic-growth
+    name: Organic Growth Channel Strategy
+    description: Focused on SEO, content, social organic, community, and word-of-mouth. Longer time horizons, compound growth logic, and content production requirements.
+    overrides:
+      sections_add:
+        - content-production-plan
+        - seo-roadmap
+        - community-strategy
+      tone: "Long-term compounding mindset. Organic channels take 6-12 months to pay off — set expectations explicitly."
+
+  - id: retention-channels
+    name: Retention Channel Strategy
+    description: Focused on email, SMS, loyalty, push notifications, and owned channels for existing customers. Adds lifecycle stage map and churn prevention architecture.
+    overrides:
+      sections_add:
+        - lifecycle-stage-map
+        - churn-prevention-architecture
+      tone: "Retention and LTV focused. Acquisition cost is sunk — the goal is maximizing value from customers you already have."
+
+quality_criteria:
+  required_elements:
+    - "Strategy overview names the specific channel problem being solved — not just 'we need to grow'"
+    - "Channel audit gives a root-cause assessment of WHY each channel is working or not"
+    - "At least one channel is recommended against with a clear reason"
+    - "Budget allocation percentages sum to 100%"
+    - "Each channel includes a minimum viable spend threshold"
+    - "Attribution section acknowledges the limitations of the chosen model honestly"
+    - "90-day roadmap is sequenced — not 'launch everything simultaneously'"
+  prohibited_elements:
+    - "Channel list without rationale for each selection"
+    - "Budget allocation that does not sum to 100%"
+    - "Minimum viable spend thresholds omitted"
+    - "Attribution that only says 'last-click' without acknowledging its limitations"
+    - "Channel audit that only says what channels are used without performance assessment"
+    - "Roadmap that says 'launch all channels in Month 1'"
+    - "Generic channel selections not grounded in the specific audience and business model"
+  length_check:
+    minimum: 900
+    maximum: 1700
+    strict: false

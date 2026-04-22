@@ -1,0 +1,286 @@
+metadata:
+  id: gartner-brand-marketing-framework
+  version: 1.0.0
+  display_name: Gartner Brand Marketing Framework
+  category: product
+  description: 'A six-dimension framework for evaluating and improving brand marketing effectiveness. It links brand strategy
+    and awareness to engagement, customer experience, and measurable business outcomes in order to strengthen brand health
+    and long-term growth.
+
+    '
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c
+    - growth
+    - enterprise
+    roles:
+    - cmo
+    - vp-marketing
+    - brand-leader
+    - ceo
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  tags:
+  - brand
+  - brand-strategy
+  - brand-health
+  - marketing
+  - gartner
+  source: Gartner Brand Health Framework
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: brand_strategy
+    description: Current brand positioning and value proposition
+    source: skill
+  - field: target_audience
+    description: Primary audience segments the brand targets
+    source: skill
+  - field: marketing_channels
+    description: Channels used to communicate the brand
+    source: skill
+  optional:
+  - field: brand_metrics
+    description: Current brand awareness, engagement, and loyalty metrics
+    source: user_input
+  - field: customer_feedback
+    description: Qualitative feedback from customers about brand perception
+    source: skill
+analysis:
+  instructions: 'Evaluate brand marketing effectiveness using the six-dimension
+
+    Gartner Brand Marketing Framework.
+
+
+    Step 1: Brand Strategy
+
+    Confirm that the brand strategy clearly communicates value and
+
+    differentiation to the target audience.
+
+
+    Step 2: Reach
+
+    Assess whether the target audience is aware of the brand and whether
+
+    marketing channels effectively create brand visibility.
+
+
+    Step 3: Communication
+
+    Determine whether brand messaging clearly communicates the brand
+
+    strategy and value proposition.
+
+
+    Step 4: Engagement
+
+    Evaluate whether audiences actively engage with brand content,
+
+    campaigns, and experiences.
+
+
+    Step 5: Experience
+
+    Assess whether the customer experience consistently reflects the
+
+    brand promise and positioning.
+
+
+    Step 6: Business Outcomes
+
+    Determine whether brand marketing drives measurable business
+
+    results such as purchase frequency, loyalty, and advocacy.
+
+    '
+  dimensions:
+  - id: brand-strategy
+    name: Brand Strategy
+    description: Strength and clarity of brand differentiation
+    prompts:
+    - Does the brand strategy clearly differentiate the company?
+    - Does the target audience value the differentiation?
+  - id: reach
+    name: Brand Reach
+    description: Awareness among the target audience
+    prompts:
+    - How many of the target audience know about the brand?
+    - Are brand visibility channels effective?
+  - id: communication
+    name: Brand Communication
+    description: Clarity and consistency of brand messaging
+    prompts:
+    - Does marketing clearly communicate the brand strategy?
+    - Is the messaging consistent across channels?
+  - id: engagement
+    name: Audience Engagement
+    description: Level of interaction between audience and brand
+    prompts:
+    - Do audiences interact with brand content?
+    - Are campaigns generating meaningful engagement?
+  - id: experience
+    name: Brand Experience
+    description: Alignment between brand promise and customer experience
+    prompts:
+    - Does the product or service experience match brand messaging?
+    - Are key moments in the customer journey aligned with the brand?
+  - id: business-outcomes
+    name: Business Outcomes
+    description: Impact of brand marketing on revenue and loyalty
+    prompts:
+    - Does brand marketing increase purchase frequency?
+    - Does it drive advocacy and loyalty?
+output_templates:
+- id: brand-health-report
+  name: Brand Health Assessment
+  format: markdown
+  template: '# Brand Health Assessment - {company_name}
+
+
+    ## Executive Summary
+
+    {summary}
+
+
+    ## Brand Strategy
+
+    {analysis}
+
+
+    ## Brand Reach
+
+    {analysis}
+
+
+    ## Communication
+
+    {analysis}
+
+
+    ## Engagement
+
+    {analysis}
+
+
+    ## Experience
+
+    {analysis}
+
+
+    ## Business Outcomes
+
+    {analysis}
+
+
+    ## Key Recommendations
+
+    - {recommendation_1}
+
+    - {recommendation_2}
+
+    - {recommendation_3}
+
+    '
+  when_to_use: Use for brand health assessment deliverables.
+- id: brand-health-scorecard
+  name: Brand Health Scorecard
+  format: table
+  template: '| Dimension | Score | Key Insight |
+
+    |-----------|-------|------------|
+
+    | Brand Strategy | {score} | {insight} |
+
+    | Reach | {score} | {insight} |
+
+    | Communication | {score} | {insight} |
+
+    | Engagement | {score} | {insight} |
+
+    | Experience | {score} | {insight} |
+
+    | Business Outcomes | {score} | {insight} |
+
+    '
+  when_to_use: Use for brand health scorecard deliverables.
+rubric:
+  scoring_model: 1-5
+  dimensions:
+  - id: brand-clarity
+    name: Brand Clarity
+    weight: 0.2
+    scores:
+      5: Strong differentiated brand strategy clearly understood by audience
+      3: Moderate differentiation with inconsistent messaging
+      1: Unclear brand positioning
+    description: Quality of brand clarity.
+  - id: awareness
+    name: Brand Awareness
+    weight: 0.2
+    scores:
+      5: High awareness within target audience
+      3: Moderate awareness
+      1: Low brand visibility
+    description: Quality of brand awareness.
+  - id: engagement
+    name: Audience Engagement
+    weight: 0.2
+    scores:
+      5: High engagement across channels
+      3: Moderate engagement
+      1: Minimal engagement
+    description: Quality of audience engagement.
+  - id: experience-alignment
+    name: Experience Alignment
+    weight: 0.2
+    scores:
+      5: Customer experience strongly reflects brand promise
+      3: Partial alignment
+      1: Brand promise not reflected in experience
+    description: Quality of experience alignment.
+  - id: business-impact
+    name: Business Impact
+    weight: 0.2
+    scores:
+      5: Brand marketing drives measurable growth outcomes
+      3: Moderate impact
+      1: Little measurable impact
+    description: Quality of business impact.
+  thresholds:
+    publish_ready: 4.0
+    revise: 3.0
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Awareness Without Differentiation
+  description: High awareness but unclear brand value
+  mitigation: Strengthen brand positioning and messaging
+- pattern: Brand Promise Gap
+  description: Customer experience does not reflect brand messaging
+  mitigation: Align product and service experience with brand strategy
+- pattern: Engagement Without Outcomes
+  description: High engagement but no measurable business impact
+  mitigation: Tie brand initiatives to measurable business metrics
+chaining:
+  before:
+  - framework_id: gartner-customer-proof-framework
+    reason: Customer proof assets establish credibility before brand marketing strategy is set
+  - framework_id: gartner-marketing-strategic-planning-framework
+    reason: Strategic planning defines brand objectives before brand marketing execution
+  after:
+  - framework_id: corporate-narrative-master-story
+    reason: Brand framework outcomes feed the master corporate narrative and story architecture
+  - framework_id: messaging-architecture
+    reason: Brand voice and positioning inform downstream messaging architecture
+stakeholder_guidance: 'When presenting brand health results, emphasize the connection between
+
+  brand strength and business outcomes. Avoid focusing solely on awareness
+
+  metrics; highlight how brand engagement and experience influence
+
+  customer loyalty, advocacy, and revenue growth.'

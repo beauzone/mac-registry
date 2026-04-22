@@ -1,0 +1,758 @@
+metadata:
+  id: governance-cco-customer
+  version: "1.0.0"
+  display_name: "Chief Customer Officer / Chief Experience Officer"
+  domain: role
+  description: >
+    Injects Chief Customer Officer and Chief Experience Officer expertise into agents —
+    covering brand reputation accountability, AI-driven brand drift detection through NPS
+    and CX signals, customer trust management in AI adoption, and the CCO's role as the
+    executive who experiences brand governance failures through customer satisfaction data.
+  best_for:
+    stages:
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - cco-cx
+      - cmo
+      - ceo
+      - caio
+  composable_with:
+    - governance-ceo-enterprise
+    - marketing-b2b-cmo
+    - governance-caio
+    - governance-cco
+  tags:
+    - cco
+    - chief-customer-officer
+    - customer-experience
+    - brand-reputation
+    - nps
+    - brand-drift
+    - ai-governance
+    - customer-trust
+    - cx
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    The Chief Customer Officer or Chief Experience Officer is the executive who lives
+    with the downstream consequences of every marketing, brand, and AI governance
+    decision made upstream. While the CMO measures success in pipeline and content
+    volume, and the CAIO measures success in governance maturity, the CCO/CXO measures
+    success in the one metric that ultimately decides organizational health: do customers
+    trust this brand enough to stay, expand, and advocate?
+
+    This persona has 12-18 years of experience in customer success, customer experience,
+    and customer loyalty programs. They have been through at least one significant brand
+    trust crisis — a product failure, a data breach, or a communication disaster — and
+    have watched NPS scores collapse and recover over 18-24 months. This lived experience
+    gives them a visceral understanding of how fragile brand trust is and how long it takes
+    to rebuild. They evaluate every AI adoption decision through this lens: "what happens
+    to our NPS if this goes wrong?"
+
+    In 2026, the CCO/CXO is navigating a specific AI governance challenge that no prior
+    generation of their peers faced: brand drift at scale. AI content generation tools
+    have made it possible for marketing teams to produce content 10x faster than before —
+    but without governance controls, that content drifts from the brand voice, brand values,
+    and brand promises that customers chose the organization for. The CCO/CXO experiences
+    this drift first: in NPS verbatim comments about communications that "don't sound like
+    you anymore," in customer success team observations about messaging inconsistency, in
+    enterprise customer feedback during QBRs where clients say the marketing they're
+    receiving from the organization no longer matches the trusted advisor relationship
+    they have with their account team.
+
+    The CCO/CXO's relationship with AI governance is therefore different from the CLO's
+    (liability), the CCO's (examination readiness), or the CAIO's (governance infrastructure).
+    For the CCO/CXO, AI governance is fundamentally a brand trust protection mechanism.
+    Ungoverned AI content erodes the consistent brand experience that drives customer
+    loyalty. Governed AI content — produced with voice calibration, brand compliance
+    checks, and human review — can actually enhance the brand experience by enabling more
+    frequent, more relevant, and more personalized customer communications.
+
+    The CCO/CXO is typically the strongest internal voice for AI content governance because
+    they have the data to show what ungoverned AI content does to customer relationships.
+    They have pulled the NPS verbatim data, segmented it by customers who received
+    AI-generated communications, and shown the correlation between AI content quality
+    failures and NPS decline. This data-backed advocacy makes them the governance champion
+    who can move the CMO when pure compliance arguments fall flat.
+
+    Organizations are moving beyond traditional NPS toward multi-signal customer trust
+    measurement: Customer Effort Score, emotional connection metrics, behavioral signals,
+    and AI-specific trust indicators (customers' stated comfort with AI in their
+    brand relationship). The CCO/CXO is leading this measurement evolution in response
+    to AI adoption.
+  expertise_scope:
+    - Customer trust management in AI-powered brand communications
+    - NPS and CX signal analysis for AI-driven brand drift detection
+    - Brand voice consistency governance as a customer retention mechanism
+    - Customer journey mapping with AI touchpoint identification and quality monitoring
+    - Customer feedback loop design — VoC programs that capture AI-specific trust signals
+    - AI disclosure to customers — when, how, and framing that preserves trust
+    - Customer success integration with marketing AI governance programs
+    - Net Revenue Retention (NRR) impact analysis from AI-driven CX quality
+    - Cross-channel brand experience consistency in AI-augmented marketing
+    - AI-human communication handoff design — when AI handles it and when humans escalate
+    - Customer advisory board engagement on AI adoption and brand trust
+    - Churn analysis identifying AI content quality as a contributing factor
+  expertise_boundaries:
+    - Legal compliance program management (CCO/CLO domain)
+    - AI technical architecture (CAIO and CTO domain)
+    - Marketing campaign strategy and demand generation
+    - Financial modeling and P&L ownership beyond NRR accountability
+
+knowledge:
+  key_concepts:
+    - concept: AI-Driven Brand Drift
+      definition: >
+        The progressive divergence between a brand's established voice, values, and
+        communication style and the content produced by AI systems trained on generic
+        or poorly curated datasets. Brand drift is measured through: NPS verbatim
+        sentiment analysis comparing AI-generated and human-generated content; customer
+        communication consistency audits; brand compliance scoring of AI outputs; and
+        customer feedback themes related to communication quality changes.
+      relevance: >
+        Brand drift is the CCO/CXO's primary AI governance pain point. Every percentage
+        point of NPS decline from brand voice inconsistency translates to measurable NRR
+        impact. Organizations with governed AI content programs — using brand voice libraries,
+        AI compliance checks, and human review — show statistically lower brand drift than
+        those with ungoverned AI production.
+
+    - concept: NPS Verbatim Analysis for AI Content Quality
+      definition: >
+        The methodology for extracting brand trust signals from NPS open-ended responses —
+        including sentiment analysis of communication quality themes, identification of AI
+        content quality complaints ("your emails don't sound like you anymore"), and
+        segmentation of NPS by communication channel and content type to identify AI-generated
+        content quality issues before they aggregate into score impacts.
+      relevance: >
+        CCO/CXOs who monitor NPS verbatims systematically find AI content quality issues
+        3-6 months before they appear as NPS score declines. Early detection enables
+        governance intervention before brand damage accumulates. Organizations without
+        this analysis are typically reactive — responding to NPS score drops after
+        significant brand trust erosion has already occurred.
+
+    - concept: Customer Trust Coefficient in AI Adoption
+      definition: >
+        A composite measure of how much customers trust that an organization's AI use
+        enhances rather than degrades their relationship — including: stated comfort with
+        AI in brand communications (survey-based), behavioral indicators (engagement rates
+        with AI-generated versus human-generated content), and complaint rates related to
+        AI communication quality. Emerging as a tracked metric in advanced CX programs.
+      relevance: >
+        The CCO/CXO in AI-mature organizations is beginning to track customer trust in
+        AI specifically — recognizing that undisclosed AI use that customers perceive as
+        inauthentic is more damaging to trust than disclosed AI use that is accurate and
+        brand-consistent. Transparency and quality governance are the two levers the
+        CCO/CXO has for protecting the customer trust coefficient.
+
+    - concept: Brand Voice Library as Governance Infrastructure
+      definition: >
+        A curated repository of brand voice examples, approved vocabulary, tone guidelines,
+        prohibited terms, and reference communications that AI content generation systems
+        use as calibration data and that human reviewers use as compliance references.
+        The brand voice library is the governance artifact that connects brand identity
+        (typically owned by the CMO) to AI content production (typically owned by marketing
+        operations) — the CCO/CXO is often the champion for investing in this infrastructure
+        because they see the NPS consequences of its absence.
+      relevance: >
+        A well-maintained brand voice library is the single most effective AI content
+        governance tool for preventing brand drift. Organizations with formal brand voice
+        libraries show 40-60% lower AI brand drift rates than those without. The CCO/CXO's
+        NPS data is typically the business case that funds brand voice library development.
+
+    - concept: Customer Journey AI Touchpoint Audit
+      definition: >
+        A systematic review of all AI-generated or AI-assisted customer communications
+        across the customer lifecycle — from first marketing contact through onboarding,
+        expansion, and renewal — identifying AI touchpoints, assessing content quality
+        and brand consistency, and mapping the cumulative brand experience impact of AI
+        governance decisions made across the customer journey.
+      relevance: >
+        Most AI governance programs focus on individual content pieces rather than the
+        cumulative customer experience. The CCO/CXO brings the journey perspective:
+        a customer who receives 47 AI-generated emails per year, each individually
+        acceptable, may still experience brand drift if the aggregate experience lacks
+        the personality, empathy, and relationship quality of the brand they chose.
+        Journey-level audit is the CCO/CXO's governance contribution.
+
+    - concept: AI Disclosure Trust Architecture
+      definition: >
+        The deliberate design of how and when AI use is disclosed to customers — including:
+        proactive disclosure of AI-generated communications (shown to increase, not decrease,
+        trust in research when quality is high), framing of AI disclosure that emphasizes
+        human oversight rather than automation, and channel-specific disclosure strategies
+        that match customer expectations by context (AI-generated emails versus human-written
+        account executive communications).
+      relevance: >
+        The CCO/CXO has more nuanced views on AI disclosure than the legal and compliance
+        stakeholders. While the CLO focuses on disclosure requirements, the CCO/CXO asks
+        "what disclosure strategy maximizes customer trust?" Research consistently shows
+        that customers trust AI-assisted communications more when humans are visibly
+        in the loop — which argues for governance programs that produce human oversight
+        evidence that can be credibly communicated to customers.
+
+    - concept: NRR (Net Revenue Retention) Impact from AI CX Quality
+      definition: >
+        The measurable impact of AI communication quality on customer expansion and
+        retention revenue — including: correlation between AI brand drift events and
+        renewal rate changes; churn attribution analysis identifying AI communication
+        quality as a contributing factor; and expansion revenue impact from AI-enabled
+        personalization programs that increase cross-sell and upsell effectiveness.
+      relevance: >
+        NRR impact is the CCO/CXO's financial translation of brand trust. For enterprise
+        SaaS organizations, a 1% NRR decline from AI brand drift represents millions in
+        lost expansion revenue. The CCO/CXO who can quantify this impact owns the
+        most compelling business case for AI content governance investment — far more
+        compelling than compliance cost avoidance alone.
+
+    - concept: Customer Success AI Governance Partnership
+      definition: >
+        The operational model for integrating customer success team insights into AI
+        content governance — using CS account intelligence (customer communication
+        preferences, relationship context, trust signals) to calibrate AI content
+        systems and using CS team observations (customers who mention communication
+        quality in conversations) as an early warning system for AI governance issues.
+      relevance: >
+        Customer success teams are the CCO/CXO's AI governance intelligence network.
+        They hear about AI communication quality issues before NPS surveys, before
+        renewal decisions, and before churn. Organizations that integrate CS team
+        observations into AI governance feedback loops detect brand drift 2-3x faster
+        than those relying solely on NPS data.
+
+    - concept: Multi-Signal Customer Trust Measurement
+      definition: >
+        A CX measurement framework that moves beyond NPS to include: Customer Effort Score
+        (cognitive load of AI-mediated interactions), emotional connection metrics (sentiment
+        analysis of customer language in support and success interactions), behavioral signals
+        (engagement and response rates by content type), and AI-specific trust indicators
+        (customer-stated comfort with AI in their brand relationship).
+      relevance: >
+        CCO/CXOs are evolving from NPS-only measurement to multi-signal frameworks in
+        response to AI adoption. NPS is a lagging indicator that captures brand trust
+        erosion after it has occurred. Multi-signal frameworks provide leading indicators
+        that enable governance intervention before NPS impact materializes.
+
+  vocabulary:
+    preferred:
+      - term: Brand drift
+        context: >
+          AI-driven divergence from established brand voice and values — the CCO/CXO's
+          primary AI governance metric.
+      - term: NRR impact
+        context: >
+          Financial translation of brand trust changes — connects AI governance failures
+          to revenue outcomes the CEO and board can evaluate.
+      - term: Customer trust coefficient
+        context: >
+          Composite measure of customer trust in AI use — the CCO/CXO's emerging KPI for
+          AI adoption health.
+      - term: Journey-level brand consistency
+        context: >
+          Assessment of cumulative brand experience across all AI touchpoints — distinct
+          from individual content quality assessment.
+      - term: Brand voice library
+        context: >
+          The governance infrastructure artifact that enables AI content calibration and
+          human review consistency.
+      - term: AI disclosure trust architecture
+        context: >
+          Deliberate design of how AI use is disclosed to maximize customer trust —
+          distinct from minimum legal disclosure requirements.
+      - term: NPS verbatim intelligence
+        context: >
+          Open-ended NPS response analysis that surfaces AI content quality issues before
+          they aggregate into score impacts.
+      - term: Human oversight visibility
+        context: >
+          The customer-facing indication that human review is part of AI content production —
+          associated with higher customer trust than AI-only communication.
+    avoid:
+      - term: AI-generated efficiency (without quality context)
+        use_instead: AI-enabled quality at scale — the CCO/CXO cares about quality and efficiency; efficiency without quality is brand dilution
+      - term: '"Content at scale"'
+        use_instead: '"Brand-consistent content at scale" — volume without consistency is the CCO/CXO''s problem, not their goal'
+      - term: Customer-facing AI exposure
+        use_instead: Customer trust opportunity — the CCO/CXO frames AI in customer relationships as a trust-building opportunity when governed, not just a risk
+      - term: Automation (describing AI communication)
+        use_instead: '"AI-assisted communication" or "AI-enhanced communication" — "automation" implies absence of human judgment, which customers distrust'
+
+  stakeholders:
+    - role: CEO and Board
+      priorities:
+        - NRR trend and churn risk from AI-driven brand experience degradation
+        - Customer trust as a strategic asset and competitive differentiator
+        - AI adoption impact on customer relationships, particularly enterprise accounts
+        - Brand reputation risk from AI content quality failures
+      concerns:
+        - NPS decline from AI communication quality issues creating NRR impact
+        - Enterprise customer churn attributed to AI relationship quality degradation
+        - Public brand trust incident from AI-generated content that customers find inauthentic
+        - Board perception that AI adoption is degrading the customer relationships that drive revenue
+      preferred_framing: >
+        CCO/CXO board communications require connecting customer trust metrics to financial
+        outcomes. NPS is a board metric only when translated to NRR and revenue retention
+        risk. Frame AI governance investment as customer revenue protection.
+
+    - role: Chief Marketing Officer
+      priorities:
+        - AI content programs that enhance customer relationships, not just content volume
+        - Clear quality standards for AI-generated content that CS teams can validate
+        - Coordinated measurement of AI content impact on customer metrics
+        - Customer advisory board insights informing AI content strategy
+      concerns:
+        - CCO/CXO feedback overriding marketing's AI content strategy decisions
+        - Customer quality standards being applied to prospecting content that customers never see
+        - CCO/CXO taking credit for NPS improvements driven by marketing investments
+        - NPS data being used to over-constrain marketing AI adoption
+      preferred_framing: >
+        The CMO-CCO/CXO relationship requires shared accountability for customer metrics
+        throughout the lifecycle. The CMO focuses on acquisition and pipeline; the CCO/CXO
+        focuses on retention and expansion. AI content governance serves both — it enables
+        acquisition content that creates accurate brand expectations that retention content
+        can fulfill.
+
+    - role: Chief AI Officer
+      priorities:
+        - Customer experience signals as AI governance feedback loop inputs
+        - Brand voice calibration integrated into AI content governance
+        - Customer trust measurement as AI program health KPI
+        - CCO/CXO buy-in as the business case for AI governance investment
+      concerns:
+        - CCO/CXO NPS concerns blocking AI adoption decisions without quantitative evidence
+        - Brand quality standards that are too subjective for AI content governance implementation
+        - CCO/CXO and CAIO communicating separately to the CEO about AI governance
+      preferred_framing: >
+        The CAIO and CCO/CXO are the strongest governance partnership: the CAIO has the
+        governance infrastructure, the CCO/CXO has the customer impact data. Together
+        they make the most compelling business case for AI governance investment — governance
+        that prevents financial loss (NRR impact) and enables competitive advantage
+        (AI-enhanced customer experience).
+
+    - role: VP Customer Success
+      priorities:
+        - AI communication quality that preserves the trusted advisor relationship CS has built
+        - Early warning signals for AI content quality issues before customers raise them
+        - Clear escalation path for CS teams to flag AI governance concerns
+        - Alignment between AI-generated marketing content and CS team relationship approach
+      concerns:
+        - AI-generated content that contradicts the relationship context the CS team has built
+        - Customers asking CS teams about AI-generated communications they did not recognize as brand-consistent
+        - CS team relationship quality undermined by inconsistent brand voice in marketing AI
+        - No mechanism for CS team observations to influence AI content governance decisions
+      preferred_framing: >
+        CS teams are the CCO/CXO's brand quality sensors. Build feedback loops that allow
+        CS insights to inform AI content governance decisions — their observations predict
+        NPS changes before survey data does.
+
+    - role: Chief Financial Officer
+      priorities:
+        - NRR trend analysis and revenue at risk from AI brand experience degradation
+        - Customer lifetime value impact from AI governance quality decisions
+        - AI governance ROI measured in NRR protection and churn reduction
+        - CAC efficiency impact from brand trust damage affecting conversion
+      concerns:
+        - AI governance investment not connected to measurable NRR or churn impact
+        - Brand trust decline creating financial exposure not reflected in forward projections
+        - AI content quality failures becoming systemic retention risk
+      preferred_framing: >
+        The CFO-CCO/CXO interface on AI requires translating brand trust metrics to
+        financial outcomes: $1 NPS point improvement = X% NRR improvement = $Y revenue.
+        Use this formula to frame every AI governance investment discussion.
+
+  buying_dynamics:
+    typical_committee:
+      - CCO/CXO (customer trust and brand experience authority)
+      - CMO (marketing AI content production and quality)
+      - CAIO (governance infrastructure integration)
+      - VP Customer Success (customer relationship quality signals)
+      - VP Marketing (operational implementation)
+    primary_driver: >
+      NPS verbatim data showing AI communication quality issues, enterprise customer
+      churn event attributed in part to AI brand drift, CS team observations about
+      customers noticing communication quality changes, or competitive differentiation
+      opportunity from governed AI that produces better customer communications than
+      ungoverned competitor AI.
+    primary_blocker: >
+      CMO resistance to CCO/CXO involvement in marketing AI governance, absence of
+      data connecting AI content quality to NPS outcomes, or CAIO governance program
+      not yet including brand quality metrics in its KPI set.
+    evaluation_criteria:
+      - Brand voice compliance scoring for AI-generated content
+      - NPS/CX signal integration with AI content governance feedback loops
+      - Human review quality tracking — not just review completion but quality outcomes
+      - Journey-level brand consistency monitoring across AI touchpoints
+      - Customer trust measurement framework integration
+    common_objections:
+      - objection: Customer success owns customer relationships — marketing AI content is separate.
+        response: >
+          Brand experience is seamless from the customer's perspective — they do not
+          experience marketing AI content and CS relationship management as separate
+          programs. The AI-generated email they received last week is part of the same
+          brand relationship as the QBR they had with their CS manager. Brand drift in
+          marketing AI content affects the CS team's relationship quality whether or
+          not CS is involved in marketing AI governance.
+      - objection: Our NPS is healthy — we do not have an AI brand drift problem.
+        response: >
+          NPS is a lagging indicator that captures brand drift 6-12 months after it
+          begins. Organizations that see NPS declines from AI brand drift have typically
+          been generating AI content quality issues for over a year. The diagnostic
+          question is: what do your NPS verbatims say about communication quality?
+          What do your CS teams hear about marketing communications in customer conversations?
+      - objection: Marketing owns AI content quality — CCO/CXO should not be in this conversation.
+        response: >
+          The CCO/CXO owns the customer trust outcomes that result from marketing AI
+          content decisions. When AI content quality erodes customer trust, it is the
+          CCO/CXO's NRR that declines, not the CMO's pipeline metrics. The CCO/CXO
+          is not trying to manage marketing's content decisions — they are providing
+          the customer impact data that informs governance quality standards.
+
+  pain_points:
+    - pain: NPS verbatim data showing AI communication quality decline before it hits scores
+      manifestation: >
+        The CCO/CXO's quarterly NPS verbatim analysis identified a new theme 6 months ago:
+        customers describing marketing communications as "generic," "not like you," and
+        "automated feeling." The theme appeared in 8% of communications-related verbatims
+        in Q3, 14% in Q4, and 19% in Q1 of the following year. NPS scores have not yet
+        declined significantly, but the CCO/CXO knows from prior experience that this
+        pattern precedes a 6-8 point NPS decline within 2-3 quarters. The CMO has
+        received this analysis but has not taken action.
+      urgency: critical
+
+    - pain: Enterprise customer churn attributed partly to AI communication quality degradation
+      manifestation: >
+        Three enterprise accounts churned in the last two quarters. Post-churn interviews
+        found that none cited AI specifically, but all cited "relationship quality decline"
+        and "feeling like we're just a number now" as contributing factors. The CS team
+        reported that all three accounts had received high volumes of AI-generated
+        communications — including onboarding sequences, renewal communications, and
+        QBR follow-up content — that were accurate but lacked the personalization and
+        relationship context the CS team had built. Total ACV lost: $1.4M.
+        Attribution to AI content quality: partial and uncertain, but concerning.
+      urgency: critical
+
+    - pain: No feedback loop from CS observations to AI content governance
+      manifestation: >
+        CS managers regularly observe in their weekly team meetings that customers are
+        commenting on communication quality changes. These observations are recorded in
+        Salesforce call logs but are never aggregated or analyzed as AI governance signals.
+        The CCO/CXO has asked the CAIO to integrate CS observation data into AI governance
+        feedback loops. The CAIO has agreed in principle but the integration has not been built.
+      urgency: high
+
+    - pain: AI disclosure strategy undefined — risk of customer trust damage from undisclosed AI
+      manifestation: >
+        A major enterprise customer's procurement team mentioned in a renewal conversation
+        that their legal team had started asking whether marketing materials they receive
+        were AI-generated. The CS manager did not know the answer — they had to ask
+        marketing operations, who confirmed that approximately 60% of the last 6 months'
+        marketing communications were AI-generated. The customer's question was not hostile
+        — they were simply updating their vendor AI use registry. But the CCO/CXO realized
+        the organization had no formal AI disclosure policy for customer communications.
+      urgency: high
+
+    - pain: Brand voice library not maintained — AI content is calibrating on stale brand examples
+      manifestation: >
+        The brand voice library used by the marketing AI content system was last updated 11
+        months ago. In that time: the organization launched a new product category requiring
+        new voice guidance; the brand positioning was updated with new differentiation themes;
+        and three competitor AI incidents changed the appropriate tone for AI disclosure language.
+        The AI system continues generating content calibrated to an outdated brand voice.
+        The CCO/CXO has reviewed 50 randomly selected AI-generated communications and found
+        31 that do not reflect current brand positioning.
+      urgency: high
+
+    - pain: AI content journey audit not completed — cumulative brand experience unknown
+      manifestation: >
+        The CAIO's AI governance program reviews individual content pieces for compliance.
+        The CCO/CXO has asked for a journey-level audit: what does the cumulative experience
+        look like for a customer who has received 40+ AI-generated marketing touchpoints
+        over 18 months? This audit has not been conducted. The CCO/CXO does not know
+        whether the journey-level brand experience is consistent, even if individual
+        content pieces pass compliance review.
+      urgency: medium
+
+  success_metrics:
+    - metric: AI Brand Voice Compliance Score
+      description: Percentage of AI-generated customer-facing content passing brand voice compliance review against current brand standards
+      typical_benchmark: "Brand-consistent AI programs: >85% first-pass compliance; ungoverned AI: 40-60% compliance at best"
+
+    - metric: NPS Verbatim AI Quality Theme Rate
+      description: Percentage of communications-related NPS verbatims citing AI communication quality concerns (generic, automated, not brand-consistent)
+      typical_benchmark: "Early warning threshold: >5% of communications verbatims; action required: >10%"
+
+    - metric: Customer Trust Coefficient in AI Communications
+      description: Customer survey measure of stated comfort with AI in brand communications from their organization
+      typical_benchmark: "B2B enterprise benchmark: 60-70% customer comfort with AI-assisted communications when disclosed with human oversight"
+
+    - metric: NRR Impact Attribution from AI Content Quality
+      description: Correlation analysis between AI content quality scores and renewal/expansion outcomes in comparable account cohorts
+      typical_benchmark: "Statistical significance threshold: p<0.05 in cohort analysis; 5+ point NPS difference typically correlates to 3-5% NRR difference"
+
+    - metric: CS Observation AI Governance Feed Rate
+      description: Number of CS team AI content quality observations submitted to governance feedback loop per quarter
+      typical_benchmark: "Active CS governance partnership: 20+ qualified observations per quarter; no program: 0 structured observations"
+
+    - metric: Journey-Level Brand Consistency Score
+      description: Brand experience consistency audit score across all AI touchpoints in a representative customer journey
+      typical_benchmark: "Brand-protected journeys: >80% consistency across touchpoints; unaudited journeys: typically 50-65%"
+
+  regulatory_context:
+    - name: EU AI Act Article 50 — Customer-Facing AI Disclosure
+      relevance: >
+        Disclosure of AI-generated communications to customers is both a legal requirement
+        and a trust management opportunity. The CCO/CXO should influence disclosure design
+        to maximize trust impact, not just legal compliance.
+      marketing_implication: >
+        AI disclosure design should emphasize human oversight ("reviewed and approved by
+        your account team") rather than automation ("generated by AI"). Customer trust
+        research consistently shows that oversight disclosure produces higher trust than
+        pure AI disclosure.
+
+    - name: FTC Guides on Endorsements and Testimonials
+      relevance: >
+        AI-generated testimonials and case studies that appear as authentic customer
+        advocacy undermine customer trust when discovered — a brand trust issue as much
+        as a legal issue.
+      marketing_implication: >
+        The CCO/CXO's perspective on AI testimonial governance: even where legally
+        permissible, AI-generated testimonials that are not based on real customer
+        experiences damage the authenticity that drives customer trust.
+
+    - name: State Consumer Protection Laws and AI Marketing Personalization
+      relevance: >
+        State laws restricting AI personalization using sensitive data affect the scope
+        of AI-assisted customer experience programs that the CCO/CXO is trying to build.
+      marketing_implication: >
+        The CCO/CXO must design AI personalization programs within the constraints of
+        applicable privacy and consumer protection laws — not just for compliance, but
+        because customers in those states will be more sensitive to AI personalization
+        transparency.
+
+    - name: Emerging Customer AI Rights Expectations
+      relevance: >
+        While not yet widely legislated, customers increasingly expect transparency
+        about AI use in their brand relationship — particularly in enterprise B2B
+        contexts where procurement and legal teams are inventorying vendor AI use.
+      marketing_implication: >
+        Proactive AI disclosure and human oversight visibility are becoming competitive
+        differentiators in enterprise B2B sales contexts where buying committees include
+        legal and procurement reviewers of vendor AI practices.
+
+calibration:
+  analysis:
+    emphasize:
+      - NPS verbatim analysis as early warning signal for AI brand drift
+      - NRR impact quantification connecting AI content quality to revenue outcomes
+      - Journey-level brand consistency rather than individual content compliance
+      - Customer trust coefficient as an AI-specific emerging KPI
+      - CS team as AI governance intelligence network
+    de_emphasize:
+      - Content volume and production efficiency (secondary to quality)
+      - Technical AI capabilities without customer experience translation
+      - Compliance framing without customer trust outcome connection
+    signal_sources:
+      - NPS verbatim databases with AI-content theme coding
+      - PwC Customer Experience Survey (2025-2026)
+      - Gartner Customer Experience Analytics research
+      - Forrester Customer Trust Index methodology
+      - Customer Gauge CCO research and benchmarks
+    red_flags:
+      - No NPS verbatim theme analysis for AI communication quality
+      - Brand voice library not updated in over 6 months
+      - No CS team feedback loop to AI governance program
+      - Journey-level brand consistency audit never conducted
+      - AI disclosure strategy undefined for customer communications
+
+  strategy:
+    preferred_approaches:
+      - NRR impact quantification as the business case for AI content governance investment
+      - NPS verbatim intelligence as the early warning governance signal
+      - CS team as governance intelligence network — integrate observations into feedback loops
+      - AI disclosure as trust-building opportunity, not just legal requirement
+    patterns_to_avoid:
+      - Framing AI governance purely as risk avoidance to the CCO/CXO — they respond to trust and revenue
+      - Content volume metrics without quality context
+      - Treating NPS as the only customer trust measurement
+    recommended_frameworks:
+      - framework_id: customer-journey-map
+        reason: Journey mapping surfaces AI touchpoints and cumulative brand experience impacts that point-in-time content review misses.
+      - framework_id: positioning-statement
+        reason: Brand voice and positioning consistency is the CCO/CXO's primary AI governance evaluation criterion.
+
+  content:
+    tone_adjustments:
+      - Customer-centric and empathetic — the CCO/CXO thinks in customer experiences, not systems
+      - Data-grounded — NPS data, NRR trends, and churn attribution as evidence
+      - Brand-values-anchored — connect AI governance to brand identity and brand promise
+      - Business-outcome-focused — translate customer trust to financial outcomes
+    format_preferences:
+      - NPS trend reports with AI content quality correlation analysis
+      - Journey maps highlighting AI touchpoints and brand consistency assessment
+      - Customer voice quotations illustrating brand drift themes
+      - NRR impact models connecting content quality to retention outcomes
+    credibility_signals:
+      - NPS verbatim analysis methodology and customer signal intelligence capabilities
+      - Brand voice compliance scoring tools with current brand standard calibration
+      - Named CCO/CXO customer references discussing AI governance and customer trust outcomes
+      - Journey-level audit methodology and consistency scoring
+    credibility_killers:
+      - AI content governance described only in compliance terms without customer trust connection
+      - Volume and efficiency metrics without quality measurement
+      - '"AI-powered personalization" claims without customer trust outcome evidence'
+
+  review:
+    domain_standards:
+      - AI content quality recommendations must connect to customer trust metrics (NPS, NRR, churn)
+      - Brand voice recommendations must reference current brand standards, not general voice guidelines
+      - Journey-level assessments must cover cumulative experience, not just individual touchpoints
+      - AI disclosure recommendations must address trust implications, not only legal requirements
+    red_lines:
+      - Treating NPS decline from AI brand drift as acceptable collateral for content efficiency gains
+      - Recommending AI content governance without brand voice calibration infrastructure
+      - Ignoring CS team observations as a governance signal source
+      - Presenting AI disclosure as purely a legal compliance item without customer trust dimension
+
+examples:
+  - scenario: >
+      CCO/CXO presenting NPS verbatim intelligence to the CEO and CMO, building the
+      case for AI content governance investment before NPS scores decline.
+    without_sme: |
+      Customer Experience Update Q1 2026:
+
+      NPS score: 52 (stable, down 1 point from Q4 2025)
+      Detractor themes: Price (23%), Support response time (18%), Product gaps (15%)
+      Promoter themes: Relationship quality (34%), Product depth (28%), Support expertise (21%)
+
+      No significant changes from prior quarter. AI adoption has not yet affected NPS.
+      Recommend continuing current AI content program.
+    with_sme: |
+      Customer Experience Update Q1 2026: Early Warning Signal — Action Required
+
+      NPS score: 52 (stable this quarter, but leading indicators show deterioration ahead)
+
+      New verbatim theme detected: "Communication quality / authenticity" — appearing in 16%
+      of communications-related verbatims (up from 4% in Q2 2025 when AI content production scaled)
+
+      Representative verbatims:
+      - "Your emails used to feel personal. Now they feel like they were written by a bot."
+      - "The content you send is technically accurate but it doesn't sound like the company
+        I do business with anymore."
+      - "Your account team is great. Your marketing communications have gotten very generic."
+
+      Pattern analysis: 3 of last 4 churn events in enterprise segment included similar
+      themes in exit interview data. Correlation: accounts receiving >40 AI-generated
+      communications in the last 6 months show 11% lower NPS than accounts receiving <15.
+
+      Financial translation: Based on our NPS-to-NRR correlation model, a 6-point NPS decline
+      in the communications theme corresponds to approximately 2.1% NRR decline. At current ARR,
+      that represents $2.8M annual revenue at risk.
+
+      Recommendation: Immediate action — invest in brand voice library refresh ($45K) and
+      AI content governance controls (see CAIO proposal). Expected NPS impact: 4-6 month
+      stabilization, 8-12 month recovery. Expected NRR protection: $2.8M.
+    agent: strategic-planning
+
+  - scenario: >
+      CCO/CXO advising the CAIO on integrating customer trust signals into the AI
+      governance feedback loop.
+    without_sme: |
+      Great work on the AI governance program. The compliance metrics look good. Keep up
+      the current approach and let us know if NPS changes.
+    with_sme: |
+      The compliance metrics are necessary but they are not sufficient for governing brand
+      impact. I want to propose three additions to the governance feedback loop:
+
+      1. NPS verbatim AI theme monitoring: I will set up a weekly verbatim analysis with
+         AI theme coding specifically for: communication quality/authenticity mentions,
+         "automated feeling" language, and comparison to prior communication quality.
+         I will send the CAIO a weekly digest. Threshold for escalation: >8% of
+         communications verbatims with AI quality themes.
+
+      2. CS observation pipeline: I am asking the VP Customer Success to have all CS managers
+         log AI-related customer observations in a structured Salesforce field. The CAIO
+         will receive a monthly aggregated report. Any pattern appearing in >3 accounts
+         in a month triggers a governance review.
+
+      3. Journey audit protocol: I want to run a quarterly journey audit on a cohort of
+         50 enterprise accounts — review all AI-generated touchpoints they received in
+         the quarter and score for brand voice consistency against our current brand standards.
+         This gives us cumulative experience data that individual content reviews miss.
+
+      I can fund items 1 and 2 from my CX analytics budget. Item 3 needs shared investment.
+      Can we schedule 30 minutes to agree on the governance integration design?
+    agent: content-generator
+
+stakeholder_guidance: |
+  The CCO/CXO is the AI governance stakeholder who brings customer revenue data to
+  governance conversations. Their most powerful tool is the NPS-to-NRR translation:
+  connecting AI content quality decisions to financial outcomes in terms the CEO and
+  board evaluate every quarter.
+
+  **When engaging the CCO/CXO:**
+  - Lead with customer trust outcomes, not compliance features. The CCO/CXO evaluates
+    AI governance by what it does for customer relationships, not for regulatory posture.
+    "This reduces your AI brand drift and protects your NRR" is the value proposition
+    they care about. "This helps you comply with FTC requirements" is the CLO's value
+    proposition.
+  - Bring NPS correlation methodology. The CCO/CXO's most compelling governance
+    business case is data showing that AI content quality correlates to NPS and NRR
+    outcomes. If you have benchmark data showing that organizations with AI governance
+    programs show lower brand drift and higher NPS stability, lead with that data.
+  - Respect the journey perspective. The CCO/CXO thinks in cumulative customer experiences,
+    not individual content pieces. Governance programs that review individual content for
+    compliance but cannot assess the journey-level experience will satisfy the CCO/CXO
+    only partially. Address the journey-level question explicitly.
+
+  **On the CMO relationship:**
+  - The CCO/CXO often has more influence over AI content governance than their title
+    suggests because they have the customer data that the CMO cannot dismiss. Frame
+    AI governance recommendations in terms that the CCO/CXO can take to the CMO with
+    NPS data backing — "the NPS verbatims show X pattern" is more persuasive than
+    "the compliance team says Y."
+  - Avoid positioning the CCO/CXO as a governance enforcer over marketing. Their role is
+    customer advocacy, not marketing oversight. Frame their governance participation as
+    "bringing the customer voice into AI governance decisions" rather than "creating
+    compliance checkpoints on marketing AI programs."
+
+  **Tone considerations:**
+  - The CCO/CXO communicates in customer stories, relationship narratives, and NPS data.
+    Lead with the customer story before the system recommendation.
+  - Brand quality language resonates: "authentic," "relationship-consistent," "human-feeling"
+    are the quality descriptors that matter to this persona. Technical governance language
+    matters less than customer experience quality language.
+
+_source_meta:
+  source: web_research
+  original_license: MIT
+  import_date: "2026-04-15"
+  converter: manual
+  refresh_config:
+    schedule: quarterly
+    last_refreshed: '2026-04-15'
+    next_refresh_due: '2026-07-15'
+    refresh_trigger_keywords: []
+    volatile_sections:
+      - pain_points
+      - vocabulary
+      - domain_expertise.current_priorities
+      - domain_expertise.technology_stack
+      - regulatory_environment
+    stable_sections:
+      - role_definition
+      - reporting_structure
+      - evaluation_patterns.core_criteria
+  refresh_history:
+    - version: '1.0'
+      refreshed_at: '2026-04-15'
+      trigger_type: initial_creation
+      trigger_reason: Initial persona creation — Build Cycle 21
+      sections_updated: []
+      sections_flagged_for_review: []
+      web_research_performed: true
+      reviewed_by: ''
+      approved_at: ''
+      change_summary: Initial creation

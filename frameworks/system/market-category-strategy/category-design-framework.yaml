@@ -1,0 +1,196 @@
+metadata:
+  id: category-design-framework
+  version: 1.0.0
+  display_name: Category Design — Market Creation & Narrative Control Model
+  category: strategy
+  description: Defines, frames, and operationalizes a new market category to shape buyer perception, competitive positioning,
+    and long-term value capture. Adapted for AI-native, rapidly evolving technology sectors.
+  best_for:
+    stages:
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - ceo
+    - cmo
+    - board
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: structural_market_shift
+    description: Clear articulation of technological, regulatory, or behavioral change
+    source: skill
+  - field: icp_definition
+    description: Target segment most impacted by the shift
+    source: existing_deliverable
+  - field: competitive_landscape
+    description: Current category labels and key incumbents
+    source: skill
+  - field: differentiated_capabilities
+    description: Unique assets enabling leadership in proposed category
+    source: skill
+  optional:
+  - field: proof_and_validation
+    description: Customer traction, analyst coverage, or ecosystem support
+    source: user_input
+analysis:
+  instructions: 'This framework establishes a new category by identifying structural shifts, naming the problem, defining
+    the category construct, and aligning company narrative to category leadership. In AI-native markets, emphasis is placed
+    on automation disruption, workflow consolidation, and defensible data advantage.
+
+
+    Define category name, problem statement, inclusion criteria, and leadership claim. Outline 12-month evangelization roadmap.
+    Quantify potential TAM expansion enabled by reframing.'
+  dimensions:
+  - id: structural-shift-validation
+    name: Structural Shift Validation
+    description: Evidence of meaningful market change
+    prompts:
+    - Is there a clear technological or economic inflection point?
+    - Are incumbents structurally misaligned with new reality?
+    - Is buyer behavior demonstrably changing?
+    - Is the shift durable rather than cyclical?
+  - id: problem-reframing
+    name: Problem Reframing
+    description: Redefining how buyers understand the core issue
+    prompts:
+    - Is the legacy framing incomplete or outdated?
+    - Does reframing increase urgency?
+    - Is the problem defined in economic terms?
+    - Does reframing expose incumbent weaknesses?
+  - id: category-construct-definition
+    name: Category Construct Definition
+    description: Clear articulation of new category label and criteria
+    prompts:
+    - Is the category name intuitive and memorable?
+    - Are inclusion criteria explicit?
+    - Does the construct exclude legacy players?
+    - Is the scope large enough to matter?
+  - id: category-leadership-claim
+    name: Category Leadership Claim
+    description: Justification for why the company leads the category
+    prompts:
+    - Does the company uniquely embody the category definition?
+    - Are assets defensible (data, ecosystem, IP)?
+    - Is proof aligned to category criteria?
+    - Can competitors easily reposition into this narrative?
+  - id: evangelization-strategy
+    name: Evangelization Strategy
+    description: Plan to institutionalize the category in market perception
+    prompts:
+    - Are thought leadership channels identified?
+    - Is analyst education planned?
+    - Are customers equipped to repeat the category narrative?
+    - Is sales messaging aligned to the category frame?
+output_templates:
+- id: primary
+  name: Category Design Strategy
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Structural Shift Analysis
+
+    {structural_shift_analysis}
+
+
+    ## Problem Reframing Narrative
+
+    {problem_reframing_narrative}
+
+
+    ## Category Definition and Criteria
+
+    {category_definition_and_criteria}
+
+
+    ## Leadership Justification
+
+    {leadership_justification}
+
+
+    ## Evangelization Roadmap
+
+    {evangelization_roadmap}
+
+
+    ## Strategic Risks and Countermoves
+
+    {strategic_risks_and_countermoves}
+
+    '
+rubric:
+  description: Evaluates structural validity, narrative power, defensibility, and institutionalization strategy. Board-facing
+    rigor applied.
+  dimensions:
+  - name: Structural Validity
+    weight: 0.25
+    scoring:
+      1: Weak or speculative market shift.
+      3: Plausible but partially evidenced shift.
+      5: Clear, durable structural inflection validated by data.
+    improvement_guidance: Strengthen evidence of technological or economic discontinuity.
+  - name: Narrative Power
+    weight: 0.25
+    scoring:
+      1: Reframing not materially different from status quo.
+      3: Clear but not transformative.
+      5: Compelling reframing that changes evaluation criteria.
+    improvement_guidance: Sharpen contrast between legacy and new worldview.
+  - name: Defensibility
+    weight: 0.2
+    scoring:
+      1: Competitors can easily adopt framing.
+      3: Some defensible elements present.
+      5: Category criteria anchored to unique company assets.
+    improvement_guidance: Tie definition to proprietary advantages.
+  - name: Economic Scale
+    weight: 0.15
+    scoring:
+      1: Category too narrow to justify investment.
+      3: Moderate scale potential.
+      5: Large, expanding TAM unlocked by reframing.
+    improvement_guidance: Quantify TAM expansion explicitly.
+  - name: Institutionalization Plan
+    weight: 0.15
+    scoring:
+      1: No clear evangelization roadmap.
+      3: High-level promotion plan.
+      5: Structured 12-month institutionalization strategy.
+    improvement_guidance: Define analyst, PR, content, and sales enablement milestones.
+  thresholds:
+    revise: 2.8
+    publish_ready: 3.7
+    escalate_to_user: 2.3
+anti_patterns:
+- pattern: Renaming Without Reframing
+  description: Simply changing labels without altering buyer criteria.
+  mitigation: Redefine evaluation standards, not just terminology.
+- pattern: Overclaiming Category Creation
+  description: Declaring new category without structural shift evidence.
+  mitigation: Validate durable inflection point before framing.
+- pattern: Defensive Positioning
+  description: Framing category purely to escape competitor comparison.
+  mitigation: Anchor narrative in buyer problem evolution.
+- pattern: No Evangelization Plan
+  description: Assuming category adoption without institutional effort.
+  mitigation: Build explicit analyst, content, and sales rollout plan.
+chaining:
+  after:
+  - framework_id: positioning-statement
+    reason: ''
+  - framework_id: messaging-architecture
+    reason: ''
+  before:
+  - framework_id: porter-five-forces
+    reason: ''
+  - framework_id: swot
+    reason: ''

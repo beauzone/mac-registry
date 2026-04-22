@@ -1,0 +1,193 @@
+metadata:
+  id: competitive-strategy-deep-dive
+  version: 1.0.0
+  display_name: Competitive Strategy Deep Dive — Structural Advantage & Countermove Model
+  category: strategy
+  description: Performs a rigorous competitive analysis to identify structural advantage, relative positioning, economic durability,
+    and likely competitor countermoves. Designed for board-facing strategic decisions in AI-native and rapidly evolving markets.
+  best_for:
+    stages:
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - ceo
+    - cmo
+    - cro
+    - board
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: defined_market_scope
+    description: Clear market and segment boundaries under evaluation
+    source: existing_deliverable
+  - field: primary_competitors
+    description: Named direct, adjacent, and substitute competitors
+    source: user_input
+  - field: differentiation_assets
+    description: Proprietary capabilities, data, ecosystem leverage
+    source: skill
+  - field: strategic_objectives
+    description: Company growth goals in this market
+    source: user_input
+  optional:
+  - field: market_share_or_signal_data
+    description: Relative traction indicators (ARR, growth, funding, partnerships)
+    source: user_input
+analysis:
+  instructions: 'This framework evaluates competitive dynamics through structural positioning, economic model comparison,
+    capability differentiation, and probable countermove simulation. Emphasis is placed on durable advantage rather than feature
+    parity.
+
+
+    Produce a competitive positioning matrix and value curve summary. Identify primary structural advantage and primary vulnerability.
+    Outline 2–3 proactive moves and 2 likely competitor countermoves. Conclude with strategic recommendation aligned to growth
+    objective.'
+  dimensions:
+  - id: competitive-landscape-mapping
+    name: Competitive Landscape Mapping
+    description: Market structure and role clarity
+    prompts:
+    - Who are direct competitors versus substitutes?
+    - Are there platform players with ecosystem leverage?
+    - Is competition fragmented or concentrated?
+    - Are barriers to entry rising or falling?
+  - id: value-curve-comparison
+    name: Value Curve Comparison
+    description: Relative positioning across critical buyer criteria
+    prompts:
+    - What criteria matter most to ICP?
+    - Where does each competitor over- or under-invest?
+    - Are we competing on price, feature breadth, or outcome?
+    - Can we redefine evaluation criteria?
+  - id: economic-model-contrast
+    name: Economic Model Contrast
+    description: Revenue mechanics and margin durability
+    prompts:
+    - Is competitor growth capital-efficient?
+    - Are there network or data effects?
+    - Is switching cost embedded?
+    - Does competitor rely on subsidies or loss-leader pricing?
+  - id: structural-advantage-assessment
+    name: Structural Advantage Assessment
+    description: Durable moat evaluation
+    prompts:
+    - Are our assets replicable?
+    - Is advantage improving or eroding over time?
+    - Do we control key distribution channels?
+    - Is there ecosystem lock-in?
+  - id: countermove-simulation
+    name: Countermove Simulation
+    description: Anticipated competitor reactions
+    prompts:
+    - How would incumbents respond to aggressive expansion?
+    - Could competitors bundle or underprice?
+    - Would platform players extend into our category?
+    - What defensive actions should be pre-emptive?
+output_templates:
+- id: primary
+  name: Competitive Strategy Deep Dive
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Competitive Landscape Map
+
+    {competitive_landscape_map}
+
+
+    ## Value Curve Comparison
+
+    {value_curve_comparison}
+
+
+    ## Economic and Moat Analysis
+
+    {economic_and_moat_analysis}
+
+
+    ## Countermove Scenarios
+
+    {countermove_scenarios}
+
+
+    ## Strategic Recommendations
+
+    {strategic_recommendations}
+
+    '
+rubric:
+  description: Board-facing rigor. Assesses structural clarity, defensibility logic, realism of countermoves, and decisiveness
+    of recommendation.
+  dimensions:
+  - name: Structural Clarity
+    weight: 0.25
+    scoring:
+      1: Superficial competitor listing.
+      3: Clear but incomplete structural mapping.
+      5: Comprehensive structural understanding of market forces.
+    improvement_guidance: Distinguish direct, adjacent, and substitute threats explicitly.
+  - name: Differentiation Depth
+    weight: 0.25
+    scoring:
+      1: Feature comparison only.
+      3: Moderate capability contrast.
+      5: Outcome-level and structural differentiation articulated.
+    improvement_guidance: Shift comparison from features to economic outcomes.
+  - name: Countermove Realism
+    weight: 0.2
+    scoring:
+      1: Competitor responses ignored.
+      3: Basic response scenarios.
+      5: Plausible and economically grounded countermove modeling.
+    improvement_guidance: Model competitor incentives and constraints.
+  - name: Strategic Coherence
+    weight: 0.15
+    scoring:
+      1: Recommendations disconnected from analysis.
+      3: Mostly aligned but not tightly argued.
+      5: Recommendations flow directly from structural insight.
+    improvement_guidance: Tie each action to structural advantage or vulnerability.
+  - name: Decision Readiness
+    weight: 0.15
+    scoring:
+      1: Exploratory only.
+      3: Clear but lacks prioritization.
+      5: Decisive strategic direction provided.
+    improvement_guidance: Conclude with clear first move and resource implication.
+  thresholds:
+    revise: 3.0
+    publish_ready: 3.8
+    escalate_to_user: 2.4
+anti_patterns:
+- pattern: Feature Grid Analysis Only
+  description: Comparing feature checklists without strategic context.
+  mitigation: Elevate analysis to structural and economic differences.
+- pattern: Ignoring Platform Threats
+  description: Underestimating adjacent ecosystem expansion.
+  mitigation: Model platform adjacency risk explicitly.
+- pattern: Reactive Posture
+  description: Strategy centered only on competitor response.
+  mitigation: Define proactive structural advantage moves.
+- pattern: No Vulnerability Disclosure
+  description: Failing to identify own structural weaknesses.
+  mitigation: Explicitly document primary exposure.
+chaining:
+  after:
+  - framework_id: category-design-framework
+    reason: ''
+  - framework_id: investor-narrative-framework
+    reason: ''
+  before:
+  - framework_id: porter-five-forces
+    reason: ''
+  - framework_id: swot
+    reason: ''

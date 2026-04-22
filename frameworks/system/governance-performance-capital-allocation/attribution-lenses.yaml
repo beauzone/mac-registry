@@ -1,0 +1,181 @@
+metadata:
+  id: attribution-lenses
+  version: 1.0.0
+  display_name: Attribution Lenses — Measurement Integrity Model
+  category: gtm
+  description: Evaluates marketing attribution models (first-touch, last-touch, multi-touch, incrementality) and recommends
+    a measurement strategy aligned to decision-making needs. Adapted for AI-native, multi-channel environments.
+  best_for:
+    stages:
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - cmo
+    - cro
+    - vp-marketing
+    - cfo
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: current_attribution_model
+    description: Existing attribution logic (first-touch, last-touch, MTA, etc.)
+    source: user_input
+  - field: channel_mix
+    description: Paid, organic, outbound, partner, product-led sources
+    source: user_input
+  - field: conversion_paths
+    description: Typical customer journey touchpoints and time-to-close
+    source: user_input
+  - field: revenue_reporting_structure
+    description: How revenue is currently tracked and forecasted
+    source: user_input
+  optional:
+  - field: experimentation_capability
+    description: Ability to run geo tests, holdouts, or incrementality experiments
+    source: user_input
+analysis:
+  instructions: 'This framework evaluates the strengths and biases of different attribution models and recommends a measurement
+    stack aligned to strategic decisions. In AI-native and multi-channel environments, it emphasizes incrementality testing,
+    signal quality, and decision usefulness over cosmetic precision.
+
+
+    Recommend a primary attribution lens for reporting and a complementary lens for optimization. Identify major bias risks
+    and instrumentation gaps. Conclude with incrementality testing roadmap and budget allocation guardrails.'
+  dimensions:
+  - id: model-fit-to-decision-type
+    name: Model Fit to Decision Type
+    description: Alignment between attribution model and business decision
+    prompts:
+    - Is attribution being used for optimization or reporting?
+    - Does the model match sales cycle complexity?
+    - Is the model influencing budget allocation decisions?
+    - Are there decision types requiring incrementality testing?
+  - id: bias-and-blind-spots
+    name: Bias and Blind Spots
+    description: Known distortions within each attribution lens
+    prompts:
+    - Does last-touch over-credit bottom-funnel channels?
+    - Does first-touch ignore nurturing influence?
+    - Is multi-touch dependent on unreliable tracking?
+    - Are offline or dark social influences captured?
+  - id: data-integrity-and-instrumentation
+    name: Data Integrity and Instrumentation
+    description: Quality and reliability of tracking systems
+    prompts:
+    - Are UTM and CRM data consistently applied?
+    - Is identity resolution reliable across devices?
+    - Are there major tracking gaps or signal loss?
+    - Is revenue attribution reconciled with finance data?
+  - id: incrementality-and-causal-testing
+    name: Incrementality and Causal Testing
+    description: Use of experiments to validate true lift
+    prompts:
+    - Can geo or holdout tests be executed?
+    - Has incrementality testing validated channel ROI?
+    - Are assumptions periodically stress-tested?
+    - Is there an experimentation roadmap?
+output_templates:
+- id: primary
+  name: Attribution Model Review
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Current Model Assessment
+
+    {current_model_assessment}
+
+
+    ## Bias and Risk Analysis
+
+    {bias_and_risk_analysis}
+
+
+    ## Incrementality Strategy
+
+    {incrementality_strategy}
+
+
+    ## Budget Allocation Implications
+
+    {budget_allocation_implications}
+
+
+    ## Instrumentation Improvements
+
+    {instrumentation_improvements}
+
+    '
+rubric:
+  description: Evaluates model alignment, bias awareness, causal rigor, and executive clarity.
+  dimensions:
+  - name: Decision Alignment
+    weight: 0.25
+    scoring:
+      1: Model misaligned with business decisions.
+      3: Partial alignment but some misuse.
+      5: Clear distinction between reporting and optimization models.
+    improvement_guidance: Clarify which decisions each attribution lens informs.
+  - name: Bias Recognition
+    weight: 0.2
+    scoring:
+      1: Blind trust in single model.
+      3: Some bias acknowledgment.
+      5: Explicit documentation of model distortions.
+    improvement_guidance: Document over- and under-credit risks per channel.
+  - name: Data Integrity
+    weight: 0.2
+    scoring:
+      1: Major tracking inconsistencies.
+      3: Moderate reliability with known gaps.
+      5: High confidence in CRM and attribution data reconciliation.
+    improvement_guidance: Audit CRM and UTM hygiene quarterly.
+  - name: Incrementality Rigor
+    weight: 0.25
+    scoring:
+      1: No causal validation.
+      3: Occasional experimentation.
+      5: Structured incrementality testing roadmap.
+    improvement_guidance: Implement geo or holdout tests for major channels.
+  - name: Executive Readiness
+    weight: 0.1
+    scoring:
+      1: Too technical or unclear.
+      3: Clear but not decisive.
+      5: Concise, decision-oriented guidance.
+    improvement_guidance: Translate measurement insight into budget guardrails.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Single-Model Dogmatism
+  description: Treating one attribution model as absolute truth.
+  mitigation: Use multiple lenses for different decision types.
+- pattern: Precision Illusion
+  description: Assuming multi-touch precision equals accuracy.
+  mitigation: Validate with incrementality testing.
+- pattern: Finance Disconnect
+  description: Marketing attribution not reconciled with booked revenue.
+  mitigation: Align CRM data with finance reporting.
+- pattern: No Experimentation Cadence
+  description: Static attribution model without validation.
+  mitigation: Schedule quarterly incrementality reviews.
+chaining:
+  after:
+  - framework_id: okrs
+    reason: ''
+  before:
+  - framework_id: marketing-revenue-funnel-model
+    reason: ''
+  - framework_id: aarrr-pirate-metrics
+    reason: ''

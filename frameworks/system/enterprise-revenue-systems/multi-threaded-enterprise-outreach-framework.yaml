@@ -1,0 +1,178 @@
+metadata:
+  id: multi-threaded-enterprise-outreach-framework
+  version: 1.0.0
+  display_name: Multi-Threaded Enterprise Outreach — Buying Committee Penetration & Alignment Model
+  category: sales
+  description: Designs structured engagement across enterprise buying committees to reduce single-thread risk, accelerate
+    deal velocity, and increase win probability. Integrates persona mapping, influence sequencing, message differentiation,
+    and internal alignment signaling.
+  best_for:
+    stages:
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - cro
+    - vp-sales
+    - enterprise-ae
+    - abm-lead
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: icp_definition
+    description: Enterprise segment definition
+    source: existing_deliverable
+  - field: buying_committee_map
+    description: Identified personas within target accounts
+    source: existing_deliverable
+  - field: deal_size_band
+    description: Typical ACV range
+    source: user_input
+  - field: sales_cycle_length
+    description: Average enterprise cycle duration
+    source: user_input
+  - field: value_hypothesis
+    description: Core strategic outcome tied to executive priorities
+    source: existing_deliverable
+analysis:
+  instructions: 'This framework operationalizes enterprise multi-threading by mapping influence networks, sequencing outreach
+    by authority gradient, differentiating value narratives by persona, and reducing dependency on a single champion.
+
+
+    Evaluate current deal multi-thread depth. Identify single-thread risks. Recommend persona sequencing adjustments, executive
+    escalation timing, and CRM governance rules. Establish minimum stakeholder engagement thresholds before late-stage forecasting.'
+  dimensions:
+  - id: influence-mapping-layer
+    name: Influence Mapping Layer
+    description: ''
+    prompts:
+    - Who controls budget?
+    - Who can veto technical feasibility?
+    - Who experiences daily workflow pain?
+    - Are there hidden blockers?
+  - id: authority-sequencing-strategy
+    name: Authority Sequencing Strategy
+    description: ''
+    prompts: []
+  - id: persona-specific-value-framing
+    name: Persona-Specific Value Framing
+    description: ''
+    prompts: []
+  - id: internal-alignment-signaling
+    name: Internal Alignment Signaling
+    description: ''
+    prompts: []
+  - id: risk-diversification-layer
+    name: Risk Diversification Layer
+    description: ''
+    prompts: []
+  - id: account-narrative-cohesion
+    name: Account Narrative Cohesion
+    description: ''
+    prompts: []
+output_templates:
+- id: primary
+  name: Multi-Threaded Enterprise Outreach Strategy
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Buying Committee Mapping
+
+    {buying_committee_mapping}
+
+
+    ## Authority Sequencing Plan
+
+    {authority_sequencing_plan}
+
+
+    ## Persona-Specific Messaging Matrix
+
+    {persona-specific_messaging_matrix}
+
+
+    ## Risk Diversification Controls
+
+    {risk_diversification_controls}
+
+
+    ## KPI and Governance Model
+
+    {kpi_and_governance_model}
+
+    '
+rubric:
+  description: Evaluates stakeholder coverage, sequencing logic, risk mitigation, and enterprise deal acceleration impact.
+  dimensions:
+  - name: Stakeholder Coverage
+    weight: 0.25
+    scoring:
+      1: Single-thread champion only.
+      3: 2 stakeholders engaged.
+      5: 3+ stakeholders across authority levels.
+    improvement_guidance: Expand engagement beyond primary contact.
+  - name: Executive Penetration
+    weight: 0.2
+    scoring:
+      1: No executive visibility.
+      3: Late-stage executive involvement.
+      5: Early executive alignment achieved.
+    improvement_guidance: Introduce executive summary narrative earlier.
+  - name: Narrative Cohesion
+    weight: 0.2
+    scoring:
+      1: Inconsistent messaging by role.
+      3: Partially aligned messaging.
+      5: Unified narrative with role-specific emphasis.
+    improvement_guidance: Standardize core story and adapt framing only.
+  - name: Risk Mitigation Discipline
+    weight: 0.2
+    scoring:
+      1: Forecast based on single champion.
+      3: Partial redundancy.
+      5: Structured multi-thread validation before commit.
+    improvement_guidance: Set CRM validation rules.
+  - name: Deal Acceleration Impact
+    weight: 0.15
+    scoring:
+      1: No measurable velocity change.
+      3: Moderate acceleration.
+      5: Consistent velocity improvement with deeper threading.
+    improvement_guidance: Track velocity by stakeholder count.
+  thresholds:
+    revise: 2.9
+    publish_ready: 3.7
+    escalate_to_user: 2.3
+anti_patterns:
+- pattern: Champion Dependency Trap
+  description: Over-reliance on single internal advocate.
+  mitigation: Engage additional stakeholders early.
+- pattern: Executive Bypass Avoidance
+  description: Delaying executive alignment until late stage.
+  mitigation: Introduce executive narrative early.
+- pattern: Messaging Fragmentation
+  description: Contradictory positioning across roles.
+  mitigation: Maintain core narrative cohesion.
+- pattern: Forecast Inflation
+  description: Advancing stage without multi-thread validation.
+  mitigation: Require minimum stakeholder threshold before commit.
+chaining:
+  after:
+  - framework_id: revenue-operations-operating-model
+    reason: ''
+  before:
+  - framework_id: outbound-prospecting-architecture-framework
+    reason: ''
+  - framework_id: sales-cadence-architecture-framework
+    reason: ''
+  - framework_id: icp-framework
+    reason: ''

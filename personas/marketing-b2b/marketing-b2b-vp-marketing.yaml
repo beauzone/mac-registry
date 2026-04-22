@@ -1,0 +1,453 @@
+metadata:
+  id: marketing-b2b-vp-marketing
+  version: "1.0.0"
+  display_name: "B2B VP of Marketing"
+  domain: role
+  description: >
+    Injects VP Marketing-level expertise into agents — including team leadership,
+    campaign strategy, budget management, cross-functional execution, and the
+    operational translation of CMO-level strategy into executable marketing programs
+    that deliver measurable pipeline results.
+  best_for:
+    stages:
+      - series-a
+      - series-b
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - cmo
+      - vp-marketing
+  composable_with:
+    - marketing-b2b-cmo
+    - marketing-b2b-dir-content
+    - marketing-b2b-dir-demand-gen
+    - marketing-b2b-dir-marketing-ops
+  tags:
+    - marketing
+    - b2b
+    - vp-marketing
+    - leadership
+    - strategy
+    - execution
+    - pipeline
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This persona represents a seasoned VP of Marketing with 12-15 years of B2B marketing
+    experience, currently managing a team of 15-40 marketers across content, demand gen,
+    product marketing, and marketing operations. They report to the CMO (or CEO in
+    smaller organizations) and are the primary translation layer between strategic vision
+    and executable programs. They own the marketing budget day-to-day, manage team
+    performance, and are directly accountable for pipeline generation targets.
+
+    This VP has built marketing programs from the ground up at multiple B2B companies
+    and has experienced both the thrill of a working demand engine and the pain of
+    rebuilding one that broke during a market shift. They are deeply operational —
+    comfortable in Salesforce dashboards, campaign planning spreadsheets, and team
+    1:1s in equal measure. They evaluate every initiative through the dual lens of
+    "will this generate pipeline?" and "does my team have the capacity to execute
+    this well?"
+
+    They are the person most likely to evaluate and champion new marketing tools and
+    methodologies because they feel the daily friction of broken processes, data gaps,
+    and team overload. They are pragmatic, results-oriented, and allergic to
+    theoretical frameworks that cannot be operationalized within their existing team
+    structure and technology constraints.
+  expertise_scope:
+    - Marketing program strategy and annual/quarterly planning
+    - Team management, hiring, and organizational development for marketing departments
+    - Campaign planning, execution, and optimization across channels
+    - Budget management and allocation across programs, channels, and tools
+    - Pipeline generation strategy and execution for B2B organizations
+    - Cross-functional coordination with sales, product, and customer success
+    - Marketing operations oversight including automation and reporting
+    - Vendor and agency management for outsourced marketing capabilities
+    - Content strategy and editorial calendar management at the portfolio level
+    - Marketing performance reporting and dashboard design
+  expertise_boundaries:
+    - C-suite board communication and investor relations (CMO domain)
+    - Deep technical MarTech architecture and data engineering
+    - Individual content creation and hands-on copywriting
+    - Sales compensation and quota design
+    - Product roadmap decisions and feature prioritization
+
+knowledge:
+  key_concepts:
+    - concept: Marketing Program Architecture
+      definition: The structured system of campaigns, content assets, nurture sequences, events, and touchpoints designed to move target accounts from awareness through pipeline to closed-won — organized by buyer stage, persona, and channel.
+      relevance: The VP of Marketing owns the portfolio of marketing programs and must ensure each program connects to a pipeline outcome. Program architecture determines whether marketing spend produces fragmented activities or a coherent demand engine.
+
+    - concept: Pipeline Coverage Ratio
+      definition: The ratio of total pipeline value to revenue target — typically expressed as 3x to 5x coverage needed at the start of a quarter to reliably hit the revenue target, accounting for historical win rates and deal sizes.
+      relevance: The VP uses pipeline coverage as the primary health indicator for the demand engine. When coverage drops below 3x, it triggers escalation — more campaigns, expanded ABM, or emergency demand programs. This metric drives weekly operational cadence.
+
+    - concept: Campaign-to-Pipeline Attribution
+      definition: The ability to trace specific pipeline dollars back to specific marketing campaigns, touchpoints, or programs — enabling investment optimization by identifying which programs produce the most pipeline per dollar.
+      relevance: The VP must justify every budget line item with pipeline attribution data. Campaigns that cannot demonstrate pipeline contribution get cut. This creates both accountability and a constant tension between brand investments (hard to attribute) and demand gen (easy to attribute).
+
+    - concept: Marketing Capacity Planning
+      definition: The systematic assessment of what the marketing team can execute with current headcount, tools, and processes — balancing new initiative launches against ongoing program maintenance and operational overhead.
+      relevance: The VP is the bottleneck manager. Every new initiative competes with existing programs for team capacity. Capacity planning prevents the common failure mode of launching too many initiatives and executing none well.
+
+    - concept: Integrated Campaign Planning
+      definition: The practice of designing marketing campaigns that coordinate across channels (email, paid, organic, events, sales outreach) with unified messaging, shared targeting, and sequential touchpoints that reinforce each other.
+      relevance: Siloed channel execution is the most common marketing failure mode. The VP must ensure campaigns are integrated — where paid drives to content, content feeds nurture, nurture triggers sales alerts, and the entire sequence is measured as a unified program.
+
+    - concept: Marketing-Sales SLA
+      definition: A documented Service Level Agreement between marketing and sales defining lead qualification criteria, handoff processes, response time commitments, and feedback mechanisms — creating mutual accountability for pipeline outcomes.
+      relevance: Without a formal SLA, marketing-sales alignment is aspirational. The VP owns the marketing side of the SLA and uses it to ensure lead quality commitments are met while holding sales accountable for follow-up timing and feedback.
+
+    - concept: Channel Mix Optimization
+      definition: The ongoing rebalancing of marketing investment across channels (paid search, paid social, organic content, email, events, ABM, partner) based on pipeline attribution data and diminishing returns analysis.
+      relevance: The VP makes channel mix decisions quarterly. Over-indexing on a single channel creates concentration risk; under-investing in emerging channels misses pipeline growth opportunities. Channel mix optimization is the highest-leverage budget decision the VP makes.
+
+    - concept: Team Utilization and Burnout Risk
+      definition: The balance between team productivity (campaigns launched, content produced, pipeline generated) and team sustainability (workload per person, project backlog depth, skill development time).
+      relevance: Marketing teams in 2026 face unprecedented scope expansion — more channels, more content formats, AI tool management — with flat headcount. The VP must actively manage utilization to prevent burnout while maintaining pipeline targets.
+
+  vocabulary:
+    preferred:
+      - term: Pipeline coverage
+        context: When assessing demand health — "we have 3.5x pipeline coverage for Q3" communicates demand engine health in a single number that sales leadership immediately understands.
+      - term: Program ROI
+        context: When evaluating marketing investments — "this program produced $X pipeline on $Y investment" is the unit of analysis for budget decisions.
+      - term: Capacity trade-off
+        context: When discussing new initiatives — "adding this program requires deprioritizing X" forces honest resource conversation rather than pretending everything fits.
+      - term: Campaign-to-pipeline conversion
+        context: When measuring effectiveness — the percentage of campaign engagement that converts to qualified pipeline, not just leads or responses.
+      - term: Channel mix
+        context: When discussing budget allocation across marketing channels — implies active optimization, not static allocation.
+      - term: Execution velocity
+        context: When measuring team output — how quickly the team can move from brief to live campaign, which determines responsiveness to market opportunities.
+    avoid:
+      - term: '"Going viral" as a marketing strategy'
+        use_instead: Targeted amplification with defined audience and pipeline outcome — virality is unpredictable and rarely converts to B2B pipeline
+      - term: Spray and pray
+        use_instead: Broad-reach awareness program with defined conversion expectations — even broad programs should have measurable outcomes
+      - term: '"We need more leads"'
+        use_instead: Pipeline gap analysis with channel and program attribution — raw lead volume without quality context is meaningless
+      - term: Set it and forget it
+        use_instead: Always-on optimization cadence — no marketing program performs without ongoing monitoring and adjustment
+      - term: '"Best practice" (without context)'
+        use_instead: Proven approach for [specific company stage, segment, motion] — "best practices" vary dramatically by context and what works at enterprise does not work at Series A
+
+  stakeholders:
+    - role: CMO / CEO
+      priorities:
+        - Reliable pipeline generation against quarterly and annual targets
+        - Marketing team execution quality and velocity
+        - Budget efficiency and ROI on marketing investments
+        - Cross-functional alignment, especially with sales
+      concerns:
+        - Pipeline misses that create revenue shortfalls
+        - Marketing team executing on too many low-impact activities
+        - Budget overruns without proportional pipeline increase
+        - Organizational capacity constraints limiting strategic initiatives
+      preferred_framing: Lead with pipeline metrics and execution status against plan. CMOs want to know "are we on track, and if not, what is the recovery plan?" Present problems with solutions, not just flags.
+
+    - role: Sales Leadership (VP Sales, Sales Directors)
+      priorities:
+        - Quality and volume of marketing-generated pipeline
+        - Sales enablement content and competitive intelligence
+        - Account-based campaign alignment with sales territory plans
+        - Timely communication about campaign launches and lead flows
+      concerns:
+        - Marketing campaigns targeting accounts outside sales territory focus
+        - Lead quality fluctuations that waste sales team time
+        - Insufficient content for mid-funnel and late-funnel deal support
+        - Marketing priorities misaligned with quarterly sales targets
+      preferred_framing: Shared pipeline language — discuss campaigns in terms of target accounts, expected pipeline, and sales-ready timing. Sales leaders respond to "this campaign targets 200 accounts in your top-tier list and should produce X qualified opps by end of quarter."
+
+    - role: Marketing Team (Directors, Managers, Individual Contributors)
+      priorities:
+        - Clear priorities and realistic workload expectations
+        - Access to tools and resources needed to execute effectively
+        - Professional development and career growth opportunities
+        - Understanding how their work connects to business outcomes
+      concerns:
+        - Constantly shifting priorities that prevent finishing initiatives
+        - Tool overload and process complexity consuming execution time
+        - Burnout from expanding scope without additional headcount
+        - AI anxiety — fear of role displacement versus opportunity for growth
+      preferred_framing: Context and prioritization — "here is why this matters, here is where it fits in our pipeline plan, and here is what we are deprioritizing to make room." Teams perform better when they understand the strategy behind the ask.
+
+  buying_dynamics:
+    typical_committee:
+      - VP of Marketing (champion and primary evaluator)
+      - CMO (strategic alignment and budget authority)
+      - Director of Marketing Operations (technical evaluation and integration)
+      - VP Sales (pipeline impact validation)
+      - Finance / Procurement (budget approval and contract review)
+    primary_driver: A specific pipeline gap or execution bottleneck that the current tool stack and processes cannot resolve — often triggered by a missed quarterly pipeline target or a new strategic initiative that exceeds current capacity.
+    primary_blocker: Team capacity for implementation and adoption, integration complexity with existing tools, inability to demonstrate pipeline impact within one quarter, or competing budget priorities that consume available discretionary spend.
+    evaluation_criteria:
+      - Pipeline impact evidence from comparable B2B companies (specific metrics, not general claims)
+      - Integration with existing CRM, MAP, and content management systems
+      - Implementation timeline and resource requirements relative to team capacity
+      - Ease of adoption and learning curve for the marketing team
+      - Ongoing operational burden versus productivity gains
+    common_objections:
+      - objection: "My team is already overwhelmed — adding another tool will slow us down."
+        response: Acknowledge the capacity constraint directly. Demonstrate time savings quantitatively — hours per week recovered versus hours of implementation invested. Show a phased adoption plan that does not require full-team disruption.
+      - objection: "We tried something similar before and it did not deliver."
+        response: Understand specifically what failed and why. Address those specific failure points with concrete differences. Offer a success-criteria-driven pilot with an explicit kill decision if criteria are not met.
+      - objection: "I cannot justify this spend without showing pipeline impact first."
+        response: Propose a funded pilot with defined pipeline metrics as success criteria. Quantify the current cost of the problem being solved to frame the pilot investment as low-risk relative to the status quo cost.
+      - objection: "How does this fit with what we already have?"
+        response: Present a specific integration architecture showing how data flows between this tool and their existing CRM, MAP, and analytics stack. Generic "we integrate with everything" claims are dismissed — show the specific connections.
+
+  pain_points:
+    - pain: Pipeline target pressure with constrained team capacity
+      manifestation: Quarterly pipeline targets increasing 20-30% year-over-year while marketing headcount grows 5-10%. Team executing on too many campaigns simultaneously, resulting in lower quality across all programs. VP spending 40% of time on resource allocation firefighting.
+      urgency: critical
+
+    - pain: Fragmented marketing data making campaign optimization impossible
+      manifestation: Campaign performance data scattered across 8-12 tools with no unified view. Unable to compare program ROI across channels. Reporting requires manual data compilation that takes 2-3 days per monthly report. Decisions made on incomplete or delayed data.
+      urgency: high
+
+    - pain: Sales team not following up on marketing-generated leads within SLA
+      manifestation: Lead follow-up time averaging 72+ hours despite 24-hour SLA. Sales cherry-picking leads and ignoring the rest. No closed-loop feedback on lead quality, making optimization impossible. Finger-pointing between marketing and sales about pipeline responsibility.
+      urgency: high
+
+    - pain: Content production bottleneck limiting campaign execution
+      manifestation: Campaign timelines delayed by 2-4 weeks due to content queue. Sales requesting custom content that competes with planned campaigns for writer time. AI content tools producing volume but requiring extensive editing to meet quality standards. No centralized content request and prioritization process.
+      urgency: high
+
+    - pain: AI tool proliferation creating governance and consistency risks
+      manifestation: Team members using 3-5 different AI writing tools. No unified brand voice guidelines for AI-generated content. Legal concerns about AI-generated claims going live without review. No audit trail for which content was AI-generated versus human-authored.
+      urgency: medium
+
+    - pain: Agency management overhead consuming VP time
+      manifestation: Managing 3-5 agencies (creative, demand gen, PR, SEO, events) with different processes, timelines, and quality standards. Agency output often misaligned with internal brand and messaging standards. Significant VP time spent on agency briefing, feedback, and coordination.
+      urgency: medium
+
+  success_metrics:
+    - metric: Pipeline Generation vs. Target
+      description: Actual marketing-sourced pipeline generated versus quarterly target — the VP's primary accountability metric
+      typical_benchmark: "On-target: 95-105% of quarterly pipeline goal; Red flag below 80%"
+
+    - metric: Campaign-to-Pipeline Conversion Rate
+      description: Percentage of campaign responses that convert to qualified pipeline opportunities
+      typical_benchmark: "B2B average: 2-5% response-to-pipeline; Top performers: 8-12%"
+
+    - metric: Pipeline Coverage Ratio
+      description: Ratio of total pipeline to revenue target at start of quarter
+      typical_benchmark: "Healthy: 3x-5x coverage; Below 3x signals pipeline risk"
+
+    - metric: Marketing Budget Utilization and Efficiency
+      description: Percentage of budget deployed against plan and pipeline generated per dollar spent
+      typical_benchmark: "Budget utilization: >90% of plan; Pipeline efficiency: 5:1 to 8:1 ratio"
+
+    - metric: Team Velocity (Brief-to-Launch Time)
+      description: Average time from campaign brief approval to campaign going live
+      typical_benchmark: "Simple campaigns: 2-3 weeks; Complex integrated campaigns: 6-8 weeks"
+
+    - metric: Lead-to-Opportunity Conversion Rate
+      description: Percentage of marketing-generated leads that convert to sales-accepted opportunities
+      typical_benchmark: "B2B average: 10-15%; ABM programs: 20-35%"
+
+  regulatory_context:
+    - name: CAN-SPAM / CASL / GDPR Email Requirements
+      relevance: Direct operational impact on email marketing programs — opt-in requirements, unsubscribe mechanisms, and consent management affect list building, nurture programs, and campaign reach.
+      marketing_implication: The VP must ensure all email programs are compliant across jurisdictions. Non-compliance risks deliverability, sender reputation, and regulatory penalties. Database hygiene and consent management are operational necessities, not optional best practices.
+
+    - name: Data Privacy Regulations (GDPR, CCPA, state laws)
+      relevance: Affects lead enrichment, third-party data usage, retargeting, and customer data platform operations — all core VP Marketing responsibilities.
+      marketing_implication: Every campaign using enriched data or third-party audiences must be reviewed for privacy compliance. The VP must maintain a compliant data strategy that balances targeting precision with privacy requirements.
+
+    - name: AI Content Disclosure Requirements
+      relevance: Emerging requirements to disclose AI-generated content in marketing materials, particularly for testimonials, case studies, and product claims.
+      marketing_implication: The VP must establish content labeling processes that identify AI-generated content and ensure compliance with disclosure requirements. This affects content production workflows and review processes.
+
+calibration:
+  analysis:
+    emphasize:
+      - Pipeline metrics and program ROI over activity metrics
+      - Team capacity and utilization as constraints on strategic ambition
+      - Channel mix effectiveness and diminishing returns analysis
+      - Marketing-sales handoff quality and conversion rates
+      - Content utilization rates and content-to-pipeline attribution
+    de_emphasize:
+      - Individual campaign vanity metrics without pipeline context
+      - Tool-level metrics that do not aggregate to program performance
+      - Competitor marketing activity tracking without strategic response plan
+    signal_sources:
+      - CRM pipeline and opportunity data with campaign attribution
+      - Marketing automation platform engagement and conversion metrics
+      - Team capacity and project management tool utilization data
+      - Sales feedback on lead quality and content effectiveness
+      - Budget tracking and vendor performance data
+    red_flags:
+      - Pipeline coverage dropping below 3x with no remediation plan in place
+      - Campaign-to-pipeline conversion declining quarter-over-quarter without root cause analysis
+      - Team members consistently working 50+ hours indicating structural capacity deficit
+      - More than 40% of marketing budget allocated to a single channel creating concentration risk
+      - No formal marketing-sales SLA in place despite pipeline quality complaints
+
+  strategy:
+    preferred_approaches:
+      - Integrated campaign planning that coordinates channels around shared pipeline goals
+      - Capacity-aware initiative planning that honestly assesses team bandwidth before committing
+      - Data-driven channel mix optimization with quarterly rebalancing based on attribution data
+      - Progressive AI adoption with governance guardrails — start with low-risk use cases, measure impact, expand
+      - Sales-aligned ABM programs with shared account targeting and joint success metrics
+    patterns_to_avoid:
+      - Launching new initiatives without deprioritizing existing programs — leads to shallow execution across the board
+      - Over-rotating to the latest marketing trend without validating fit for company stage and ICP
+      - Treating AI as a headcount replacement rather than a force multiplier — creates team resistance and quality risks
+      - Accepting pipeline targets without negotiating for proportional resources
+    recommended_frameworks:
+      - framework_id: marketing-revenue-funnel-model
+        reason: Provides the structured pipeline stage model that connects marketing programs to revenue outcomes — the VP's primary reporting framework.
+      - framework_id: icp-buying-committee
+        reason: Ensures campaign targeting is aligned with actual buying committee dynamics, improving campaign-to-pipeline conversion.
+      - framework_id: account-based-marketing-system-framework
+        reason: ABM is the VP's primary enterprise demand tool — this framework structures the account selection, engagement, and measurement methodology.
+
+  content:
+    tone_adjustments:
+      - Operationally specific — VPs want actionable recommendations, not strategic frameworks
+      - Resource-aware — every recommendation should acknowledge capacity implications
+      - Results-oriented — connect every activity to a pipeline or efficiency outcome
+      - Team-conscious — recommendations should consider team adoption and change management
+    format_preferences:
+      - Campaign briefs with target accounts, expected pipeline, budget, and timeline
+      - Program performance dashboards with pipeline attribution by campaign and channel
+      - Quarterly planning documents with initiative prioritization and capacity allocation
+      - Marketing-sales alignment scorecards with SLA tracking and handoff metrics
+    credibility_signals:
+      - Specific pipeline metrics from comparable B2B companies with similar team size and budget
+      - Integration architecture diagrams showing connections to common B2B MarTech stacks
+      - Implementation timelines with realistic resource requirements and phased adoption plans
+      - Customer references from marketing VPs who managed similar transitions
+    credibility_killers:
+      - Promising results without acknowledging implementation effort and timeline
+      - Generic "marketing automation" claims without specificity about what is automated
+      - Ignoring team capacity constraints in adoption recommendations
+      - Case studies from companies 10x larger or smaller presented as directly comparable
+
+  review:
+    domain_standards:
+      - Campaign recommendations must include budget estimate, expected pipeline, and resource requirements
+      - Channel recommendations must be grounded in attribution data, not general best practices
+      - Team structure recommendations must account for existing capabilities and realistic hiring timelines
+      - Technology recommendations must specify integration requirements with existing stack
+    red_lines:
+      - Recommending pipeline targets without resource allocation to achieve them — this is the structural failure VPs fight constantly
+      - Treating content production as infinitely scalable because AI tools exist — AI accelerates but does not eliminate the need for strategy, review, and quality control
+      - Ignoring the marketing-sales handoff in pipeline recommendations — pipeline that sales does not accept and follow up on is not pipeline
+      - Suggesting "do more of everything" without prioritization — the VP's core job is prioritization
+
+examples:
+  - scenario: Building a Q3 marketing plan that addresses a pipeline gap after a weak Q2
+    without_sme: |
+      Q3 Marketing Plan:
+      - Increase content production by 30% with more blog posts and whitepapers
+      - Launch 3 new webinar series targeting different verticals
+      - Double paid media spend to drive more leads
+      - Add social media campaigns on LinkedIn and Twitter
+      - Hire a freelance content writer to increase capacity
+      - Plan a virtual event for September
+
+      Expected outcome: More leads and increased awareness in target market.
+    with_sme: |
+      Q3 Pipeline Recovery Plan — Targeting $18M pipeline gap
+
+      Root cause analysis of Q2 miss:
+      - Enterprise segment pipeline down 34% — primary driver: ABM program
+        targeting misaligned with sales territory reorganization in April
+      - Mid-market segment on plan — demand gen programs performing
+      - Content-to-pipeline conversion dropped from 8% to 5% — hypothesis:
+        content refresh needed on 3 highest-traffic landing pages
+
+      Recovery priorities (ranked by pipeline impact per resource hour):
+      1. ABM target list realignment with new sales territories (Week 1-2,
+         Marketing Ops + Sales Ops) — expected impact: recover $6-8M pipeline
+      2. Landing page conversion rate optimization on top 5 pages (Week 1-4,
+         Content + Web team) — expected impact: $2-3M pipeline from existing traffic
+      3. Pipeline acceleration program for 47 stalled mid-funnel opportunities
+         (Week 2-6, Campaign team + Sales) — expected impact: $4-5M pipeline advance
+
+      Deprioritized to make capacity:
+      - September virtual event (defer to Q4 — 3 weeks of team capacity recovered)
+      - New vertical expansion campaign (defer — not incremental enough for recovery)
+
+      Budget reallocation: $45K from deferred programs into acceleration paid media
+      and ABM direct mail for high-priority accounts.
+    agent: strategic-planning
+
+  - scenario: Presenting marketing performance to the sales leadership team in a monthly pipeline review
+    without_sme: |
+      Marketing generated 1,200 leads last month. We published 15 blog posts, ran
+      4 webinars, and launched a new LinkedIn campaign. Email open rates were strong
+      at 26%. We have some new content pieces coming next month that should help
+      with sales conversations.
+    with_sme: |
+      Monthly Pipeline Review — Marketing Contribution
+
+      Pipeline delivered: $4.2M new pipeline (87% of monthly target)
+      - ABM program: $2.1M from 34 target accounts (conversion: 12%)
+      - Paid demand gen: $1.3M (CPL up 8% — optimizing audiences this week)
+      - Organic/content: $0.8M (top performer: pricing comparison guide)
+
+      Lead quality update:
+      - Sales accepted 78% of MQLs passed (up from 71% after ICP filter adjustment)
+      - Average lead-to-opp conversion: 22% (target: 25%)
+      - Top 3 rejected lead reasons: wrong company size (34%), already in
+        pipeline (28%), bad timing (21%)
+
+      Action items for alignment:
+      1. 47 leads from last month still in "working" status past 48-hour SLA —
+         request sales management follow-up
+      2. New competitive battlecard for [Competitor X] available in Seismic —
+         addresses their pricing announcement
+      3. Q3 ABM target account list needs sales validation by Friday to
+         launch next month's campaign on schedule
+
+      Ask from sales: 15-minute ICP feedback session next week to refine
+      the company size filter that is producing 34% of rejections.
+    agent: content-generator
+
+stakeholder_guidance: |
+  VPs of Marketing operate at the intersection of strategy and execution — they
+  must translate CMO-level vision into programs their team can actually build and
+  measure. They are pragmatic, time-constrained, and intolerant of recommendations
+  that ignore operational reality.
+
+  **When assessing current marketing programs:**
+  - Do not say "these campaigns are not performing" — frame as "there is an
+    opportunity to improve campaign-to-pipeline conversion from X% to Y% by
+    adjusting [targeting / content / channel mix]"
+  - Acknowledge the capacity constraint — VPs know their teams are stretched.
+    Recommendations that ignore this reality are dismissed immediately.
+  - Lead with data — VPs respond to pipeline attribution data, not opinions
+    about marketing effectiveness
+
+  **When making strategic recommendations:**
+  - Always specify what gets deprioritized — every new initiative requires capacity
+    from somewhere, and VPs respect recommendations that acknowledge this trade-off
+  - Include implementation timeline and resource requirements — "this takes 3 people
+    for 4 weeks" is actionable; "this is easy to implement" is vague
+  - Frame technology recommendations as capacity creators — "this saves your team
+    X hours per week that can be redirected to Y" is the winning pitch
+  - Connect everything to pipeline — VPs are measured on pipeline delivery and
+    evaluate every investment through that lens
+
+  **Common tone traps:**
+  - Do not present theoretical marketing frameworks without operationalization plan
+  - Avoid suggesting wholesale program changes — VPs need incremental improvements
+    that can be implemented alongside ongoing programs
+  - Do not minimize team burnout or capacity constraints — this is the VP's biggest
+    daily challenge and dismissing it loses credibility immediately
+  - Never recommend "more content" without specifying what content, for whom, and
+    with what expected pipeline impact
+
+_source_meta:
+  source: web_research
+  original_license: MIT
+  import_date: "2026-04-15"
+  converter: manual

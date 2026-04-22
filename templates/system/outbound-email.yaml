@@ -1,0 +1,35 @@
+metadata:
+  id: outbound-email
+  display_name: Outbound email
+  version: "1.0.0"
+  schema_version: "1.0"
+  category: campaign
+  content_type: email
+  tags:
+    - sales
+    - outbound
+    - cold-email
+
+description: >
+  Short, high-specificity outbound email aimed at a single named persona.
+  Avoids generic openers. Anchors on one pain point and one proof point.
+
+sections:
+  - name: Subject line
+    guidance: Under 50 characters. No clickbait. Hint at the value, don't promise it.
+  - name: Opener
+    guidance: >
+      Specific observation about the recipient's company or role — never a
+      "saw you on LinkedIn" opener. Pull from public signals if possible.
+  - name: Pain hypothesis
+    guidance: One sentence naming a pain you think they have. Frame as a question.
+  - name: Proof point
+    guidance: One metric or outcome from a comparable customer.
+  - name: Ask
+    guidance: Low friction — 15 minutes, a shared doc, a quick opinion.
+
+starter_prompt: >
+  Write an outbound email (subject + body, under 120 words) to a
+  {target_persona} at a mid-market company. Use the pain hypothesis pattern,
+  anchor on one proof point from our messaging pillars, and close with a
+  15-minute ask. Match brand voice exactly.

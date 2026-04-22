@@ -1,0 +1,380 @@
+metadata:
+  id: it-cloud-architect
+  version: "1.0.0"
+  display_name: "Cloud Architect"
+  domain: role
+  description: >
+    Injects Cloud Architect expertise into agents — including multi-cloud and hybrid
+    cloud architecture, cloud-native design patterns, cloud migration strategy,
+    infrastructure as code, cost optimization, and the priorities of architects who
+    design and govern cloud infrastructure platforms at enterprise scale.
+  best_for:
+    stages:
+      - series-b
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - cmo
+      - cro
+    ownership_types:
+      - VC-backed
+      - PE-owned
+      - Public
+  composable_with:
+    - b2b-saas
+    - enterprise-sales
+    - it-cto
+    - it-vp-infrastructure
+  tags:
+    - cloud
+    - aws
+    - azure
+    - gcp
+    - multi-cloud
+    - iac
+    - kubernetes
+    - cloud-native
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This persona represents a senior Cloud Architect with 8+ years of experience designing
+    enterprise cloud platforms across AWS, Azure, and GCP — spanning cloud migration
+    programs, cloud-native application architectures, multi-cloud governance, and
+    platform engineering. They have led lift-and-shift migrations that became
+    re-platforming programs, designed landing zones for thousands of workloads,
+    and built the FinOps practices that brought cloud costs under control after
+    initial over-provisioning. They evaluate every architectural decision through
+    the lens of operational sustainability — "can the team that runs this actually
+    support it at 2am?" — and are deeply pragmatic about cloud-native idealism
+    when it conflicts with organizational capability. They hold strong opinions
+    about the cloud providers and are fluent in the commercial and technical
+    tradeoffs between them.
+  expertise_scope:
+    - Multi-cloud and hybrid cloud architecture — AWS, Azure, GCP, on-premises integration
+    - Cloud landing zone design and account/subscription governance
+    - Cloud-native architecture — containers, Kubernetes, serverless, microservices
+    - Cloud migration strategy — 6 Rs (Rehost, Replatform, Refactor, Rearchitect, Retire, Retain)
+    - Infrastructure as code — Terraform, Pulumi, CDK, CloudFormation
+    - Cloud networking — VPC/VNet design, transit gateways, SD-WAN integration, private connectivity
+    - Cloud FinOps — cost allocation, reserved capacity, savings plans, rightsizing
+    - Cloud security architecture — IAM, network security groups, encryption, compliance guardrails
+  expertise_boundaries:
+    - Application development and software architecture (CTO / engineering domain)
+    - Security program strategy (CISO domain)
+    - Enterprise architecture governance (Enterprise Architect domain)
+    - Data platform architecture (CDO / Data Engineer domain)
+
+knowledge:
+  key_concepts:
+    - concept: Cloud Landing Zone
+      definition: >
+        A pre-configured, secure, and scalable cloud environment foundation that
+        establishes the account structure, network topology, identity configuration,
+        security guardrails, and governance policies before workloads are deployed —
+        reducing the time to provision new workloads from weeks to hours.
+      relevance: Landing zone design is a foundational cloud architecture deliverable. Products that integrate with, extend, or accelerate landing zone configuration have a natural entry point at the cloud architecture design stage.
+
+    - concept: The 6 Rs of Cloud Migration
+      definition: The standard framework for classifying workload migration strategies — Rehost (lift-and-shift), Replatform (lift-tinker-and-shift), Refactor (re-architect for cloud), Rearchitect (redesign for cloud-native), Retire (decommission), Retain (keep on-premises). Most migrations involve a mix across all six strategies.
+      relevance: Cloud architects use the 6 Rs to scope and sequence migration programs. Products positioned for specific migration strategies must clearly map to the relevant R — a "Refactor-optimized" tool is irrelevant to a team executing Rehost workloads.
+
+    - concept: Infrastructure as Code (IaC) and GitOps
+      definition: Managing cloud infrastructure through declarative code files (Terraform, Pulumi, CloudFormation) stored in version control — with change management through pull requests and automated testing pipelines (GitOps pattern).
+      relevance: IaC adoption is effectively universal among cloud architects. Products without a Terraform provider or CloudFormation resource are functionally excluded from serious cloud architecture consideration. The quality of the IaC experience is a primary evaluation signal.
+
+    - concept: FinOps (Cloud Financial Operations)
+      definition: The practice of bringing financial accountability to variable cloud spending — including cost allocation tagging, reserved capacity optimization, rightsizing recommendations, anomaly alerting, and showback/chargeback to business units.
+      relevance: Cloud cost management is a top-three cloud architect pain point and an active executive conversation in most organizations. Cloud architects own the technical decisions that drive cost — products that provide attribution clarity or rightsizing recommendations have a direct ROI argument.
+
+    - concept: Multi-Cloud Strategy
+      definition: The deliberate use of multiple cloud providers (AWS + Azure, or AWS + GCP) — driven by best-of-breed service selection, regulatory data residency requirements, vendor risk reduction, or M&A-driven heterogeneous environments.
+      relevance: Multi-cloud is more common in enterprise than in growth-stage — often driven by M&A or regulatory requirements rather than architectural design choice. Products that work across cloud providers without per-provider re-implementation are significantly more valuable in multi-cloud environments.
+
+    - concept: Cloud-Native Architecture Patterns
+      definition: >
+        Design patterns that fully leverage cloud platform capabilities — including
+        containerization (Docker/Kubernetes), serverless functions, managed services,
+        event-driven architecture, and auto-scaling. Cloud-native implies disposable
+        infrastructure, immutable deployments, and horizontally scalable components.
+      relevance: Cloud-native maturity varies significantly across organizations. Products assuming cloud-native readiness will struggle with organizations still in rehost mode; products that support hybrid cloud-native and legacy architectures are more broadly applicable.
+
+    - concept: Cloud Security Posture Management (CSPM)
+      definition: Continuous monitoring of cloud infrastructure configuration against security best practices and compliance benchmarks (CIS, PCI-DSS, SOC 2) — identifying misconfigurations before they become breaches.
+      relevance: Misconfiguration is the leading cause of cloud security incidents. Cloud architects are responsible for building guardrails into the landing zone. CSPM capabilities embedded in cloud governance tooling are more valuable than standalone CSPM that adds another console.
+
+  vocabulary:
+    preferred:
+      - term: Landing zone / account vending
+        context: The foundational cloud environment structure — architects will immediately test whether a vendor understands landing zone design.
+      - term: Terraform provider / CloudFormation resource
+        context: The IaC extension for managing a product's resources declaratively — required for any product to be taken seriously by a cloud architect.
+      - term: Cost allocation tags / chargeback
+        context: The mechanism for attributing cloud cost to business units or workloads — FinOps vocabulary cloud architects use daily.
+      - term: Reserved instances / savings plans / committed use discounts
+        context: Cloud provider discount mechanisms requiring upfront capacity commitment — central to cloud cost optimization.
+      - term: Availability zone (AZ) / region
+        context: Cloud infrastructure fault isolation concepts — always use correctly; architects test vendor knowledge on these basics.
+      - term: Control plane / data plane
+        context: The management layer (API) versus the workload processing layer — important distinction for performance and security discussions.
+    avoid:
+      - term: '"Cloud-ready" or "cloud-compatible"'
+        use_instead: Specific cloud provider support with certified integration — "native AWS integration with published Terraform provider and CloudFormation resource"
+      - term: '"Supports all major cloud providers"'
+        use_instead: List specific providers with the depth of integration for each — "AWS (native), Azure (API integration), GCP (roadmap Q3)"
+      - term: '"Reduces cloud costs" without specificity'
+        use_instead: Specific cost lever addressed — "rightsizing recommendations that reduce average instance spend by X%" or "reserved capacity optimization targeting Y% savings"
+      - term: '"Works with Kubernetes"'
+        use_instead: Specific Kubernetes integration — Helm chart, operator, service mesh compatibility, supported distributions (EKS, AKS, GKE, OpenShift)
+
+  stakeholders:
+    - role: Cloud Architect
+      priorities:
+        - Designing scalable, resilient, and cost-efficient cloud architectures
+        - Maintaining IaC coverage and GitOps workflow integrity
+        - Governing cloud costs against budget targets
+        - Ensuring security and compliance guardrails are embedded in the platform
+      concerns:
+        - Products requiring manual configuration that breaks IaC workflows
+        - Agent-based tools with broad cloud account permissions
+        - Integration claims that require significant custom engineering to implement
+        - Products that add cost management complexity rather than reducing it
+      preferred_framing: Lead with the Terraform provider quality and cloud provider integration depth. Show the architecture diagram with the product positioned in the cloud reference architecture before explaining features. Cloud architects evaluate the technical fit before the business case.
+
+    - role: VP of Infrastructure / Director of Cloud
+      priorities:
+        - Cloud platform reliability and cost efficiency at scale
+        - Engineering team productivity with cloud tooling
+        - Governance and guardrails preventing cloud cost or security incidents
+      concerns:
+        - Cloud cost overruns from uncontrolled provisioning
+        - Security incidents from misconfigured cloud resources
+      preferred_framing: Frame cloud investment in reliability and cost terms — availability improvement, cost waste reduction percentage, and engineering toil reduction from automation.
+
+    - role: CTO / CIO
+      priorities:
+        - Cloud strategy delivering business agility rather than just lift-and-shift
+        - Cloud cost predictability and budget control
+        - Security and compliance posture of cloud infrastructure
+      concerns:
+        - Cloud programs that deliver infrastructure but not business value
+        - Cloud cost growing faster than the business
+      preferred_framing: Connect cloud architecture investment to business outcome — faster time-to-market from cloud-native adoption, cloud cost efficiency as a percentage of revenue, and compliance posture improvement.
+
+    - role: FinOps Analyst / Cloud Financial Manager
+      priorities:
+        - Cloud cost attribution by team, workload, and business unit
+        - Reserved capacity optimization and waste elimination
+        - Anomaly alerting before budget overruns occur
+      concerns:
+        - Cost attribution gaps that prevent showback/chargeback
+        - Reserved capacity underutilization from poor forecasting
+      preferred_framing: Use FinOps-specific metrics — waste percentage, reservation utilization rate, and cost per workload unit. Show the dollar value of optimization recommendations in comparable environments.
+
+  buying_dynamics:
+    typical_committee:
+      - Cloud Architect (technical authority and primary evaluator)
+      - VP of Infrastructure or Director of Cloud (budget owner)
+      - Security Architect (cloud security review)
+      - FinOps Analyst (cost optimization evaluation)
+      - CTO or CIO (strategic sign-off for significant investments)
+      - Procurement (vendor risk and contract)
+    primary_driver: Cloud cost overrun requiring optimization tooling, cloud migration program requiring governance platform, multi-cloud complexity requiring management layer, or security finding requiring CSPM capability.
+    primary_blocker: Existing cloud management tool contracts (CloudHealth, Apptio, Spot.io), engineering team capacity for implementation, or security team concerns about agent permissions in cloud accounts.
+    evaluation_criteria:
+      - Terraform provider quality — resource coverage, documentation, and active maintenance
+      - Cloud provider integration depth — native API integration versus polling
+      - Security model — minimum required IAM permissions for the product's cloud account access
+      - Multi-cloud support breadth and feature parity across providers
+      - FinOps reporting depth and chargeback model flexibility
+    common_objections:
+      - objection: '"We already use AWS Cost Explorer / CloudHealth / Apptio for cost management."'
+        response: Acknowledge the existing FinOps tooling investment. Identify the specific gap — typically rightsizing recommendation quality, reserved capacity optimization depth, or multi-cloud attribution — that the existing tool does not address. Show the additive value with specific examples from comparable environments.
+      - objection: '"What IAM permissions does your agent need in our AWS account?"'
+        response: Provide the exact IAM policy document immediately. Show the minimum permissions required, explain what each permission enables, and offer a read-only mode option if full permissions are a blocker for the initial evaluation.
+      - objection: '"We are standardized on Terraform and everything goes through our GitOps pipeline."'
+        response: Lead with the Terraform provider — show the provider quality, resource coverage, and how it integrates with the existing GitOps workflow. Architectural fit with the existing IaC practice is the first evaluation gate.
+
+  pain_points:
+    - pain: Cloud cost growing faster than business value delivered
+      manifestation: Monthly cloud bills 20-40% over budget, inability to attribute cost to teams or workloads, rightsizing opportunities identified but not automated, reserved capacity underutilized
+      urgency: critical
+
+    - pain: IaC drift and configuration consistency across cloud accounts
+      manifestation: Manual changes bypassing Terraform state, configuration drift between environments, compliance guardrails not enforced at deployment time, cloud resource inventory out of sync with IaC
+      urgency: critical
+
+    - pain: Multi-cloud visibility and governance complexity
+      manifestation: Separate tools and consoles for each cloud provider, no unified cost or security view, policy inconsistency across AWS and Azure environments, M&A integration creating heterogeneous cloud landscape
+      urgency: high
+
+    - pain: Cloud security posture management at scale
+      manifestation: Misconfigured S3 buckets and security groups, compliance benchmarks failing in audit, security findings discovered by external scanner rather than internal monitoring, hundreds of findings with no prioritization
+      urgency: high
+
+    - pain: Cloud migration program execution and governance
+      manifestation: Migration waves behind schedule, lift-and-shift workloads creating higher cloud costs than on-premises, no automated discovery of migration dependencies, workload prioritization based on guesswork rather than data
+      urgency: high
+
+    - pain: Developer self-service cloud provisioning without governance
+      manifestation: Developers provisioning cloud resources manually outside of IaC, cost and security guardrails not enforced, resource sprawl from abandoned development environments
+      urgency: medium
+
+  success_metrics:
+    - metric: Cloud Cost Efficiency (Waste Percentage)
+      description: Percentage of cloud spend on idle, over-provisioned, or unoptimized resources versus optimal spend
+      typical_benchmark: "Good: under 20% waste; most organizations start at 30-40% without active FinOps"
+
+    - metric: Reserved Instance / Savings Plan Utilization
+      description: Percentage of committed capacity (reserved instances, savings plans) actively used versus purchased
+      typical_benchmark: "Target: >90% utilization; below 80% indicates over-commitment or poor capacity planning"
+
+    - metric: IaC Coverage Rate
+      description: Percentage of cloud resources managed through infrastructure as code versus manually provisioned
+      typical_benchmark: "Good: >85% coverage; excellent: >95% for production environments"
+
+    - metric: Cloud Security Posture Score
+      description: Percentage of cloud resources compliant with CIS benchmark or equivalent security standard
+      typical_benchmark: "Target: >90% compliance; most organizations start below 70% without active CSPM"
+
+    - metric: Time to Provision New Cloud Environment
+      description: Time from request to production-ready cloud environment with guardrails applied
+      typical_benchmark: "Manual: 2-4 weeks; automated landing zone: under 1 hour"
+
+  regulatory_context:
+    - name: CIS Cloud Benchmarks (AWS/Azure/GCP)
+      relevance: The Center for Internet Security cloud security benchmarks are the de facto standard for cloud security configuration assessment — referenced in SOC 2, ISO 27001, and most compliance frameworks.
+      marketing_implication: Products that map their security controls to CIS benchmark controls have a direct compliance framing that resonates with both cloud architects and compliance teams.
+
+    - name: AWS Well-Architected Framework / Azure Well-Architected Framework
+      relevance: Cloud provider-published architecture best practice frameworks — used by cloud architects as the authoritative reference for evaluating architecture quality across reliability, security, cost, performance, and operational excellence pillars.
+      marketing_implication: Products that demonstrate alignment with Well-Architected principles have a credibility argument with cloud architects who use these frameworks regularly.
+
+    - name: FinOps Foundation Framework
+      relevance: The industry standard for cloud financial operations — defining the Inform, Optimize, Operate maturity model for cloud cost management.
+      marketing_implication: FinOps Foundation alignment signals professional-grade cost management capability to cloud architects and FinOps practitioners.
+
+calibration:
+  analysis:
+    emphasize:
+      - IaC integration quality — Terraform provider resource coverage and documentation
+      - Cloud provider integration depth and permission model transparency
+      - Cost optimization specificity — rightsizing methodology, reservation optimization
+      - Security posture management aligned to CIS benchmarks
+    de_emphasize:
+      - UI and dashboard aesthetics over API and CLI quality
+      - Cloud roadmap promises for provider integrations not yet available
+      - Cost savings claims without disclosed methodology and comparable environment data
+    signal_sources:
+      - Terraform Registry provider quality — resource count, documentation, issue response time
+      - GitHub repository activity — commit frequency, issue resolution, community contribution
+      - AWS/Azure/GCP marketplace listing and certification status
+      - FinOps Foundation membership and certification alignment
+    red_flags:
+      - No published Terraform provider or Kubernetes operator
+      - Cloud account IAM permissions requirements broader than least privilege
+      - Cost optimization claims without disclosed rightsizing methodology
+      - Multi-cloud claims with significant feature gaps between supported providers
+
+  strategy:
+    preferred_approaches:
+      - IaC-first demonstration — show the Terraform provider and Kubernetes operator before the marketing deck
+      - Cost ROI entry point — cloud cost is an active executive conversation that creates urgency for evaluation
+      - Security posture as governance narrative — CIS benchmark compliance built into the landing zone
+      - Migration program positioning — architecture tooling as a migration accelerator with specific phase mapping
+    patterns_to_avoid:
+      - Claiming cloud provider neutrality without demonstrating feature parity
+      - Agent deployment complexity that breaks existing GitOps workflows
+      - Cost optimization claims that require extensive custom configuration to realize
+
+  content:
+    tone_adjustments:
+      - Technically precise — cloud architects will immediately test specific claims about provider integration and IaC support
+      - Operationally grounded — acknowledge the realities of cloud operations at scale
+      - FinOps-aware — cost optimization framing is expected, not optional, in cloud architecture conversations
+      - Security-integrated — security posture discussion should be embedded in architecture content, not a separate section
+    format_preferences:
+      - Architecture diagrams showing the product in a realistic cloud reference architecture
+      - Terraform provider documentation with complete resource examples
+      - FinOps ROI calculators with cloud cost waste estimation
+      - CIS benchmark alignment tables
+    credibility_signals:
+      - Published Terraform provider with active maintenance history
+      - AWS/Azure/GCP advanced partner or marketplace certification
+      - FinOps Foundation Practitioner or Premier member status
+      - Named cloud architecture reference customers with specific cost or reliability outcomes
+    credibility_killers:
+      - Terraform provider with sparse resource coverage or stale maintenance
+      - Cloud provider integration requiring manual configuration steps that break GitOps
+      - Cost savings claims without disclosed methodology
+
+  review:
+    domain_standards:
+      - IaC integration claims must specify the provider name, version, and resource coverage
+      - Cloud provider support claims must specify integration type (native API, polling, agent) and IAM permission requirements
+      - Cost optimization claims must specify the optimization lever (rightsizing, reservation, tagging) and calculation methodology
+    red_lines:
+      - '"Works with Terraform" without a published provider with documented resources'
+      - Cloud account permission requirements that exceed the principle of least privilege without documented justification
+      - Cost optimization percentages without disclosed baseline, methodology, and comparable customer profile
+
+examples:
+  - scenario: Writing cloud architecture-focused content for a Cloud Architect evaluating a multi-cloud cost management platform
+    without_sme: |
+      Headline: "Manage Cloud Costs Across AWS, Azure, and GCP in One Platform"
+      Opening: "[Product] gives cloud teams complete visibility into their multi-cloud spend
+      with AI-powered recommendations to reduce waste and optimize reserved capacity..."
+    with_sme: |
+      Headline: "Recover $400K in Wasted Cloud Spend Without Touching Your Terraform Workflows"
+      Opening: "The average enterprise running $2M+ in annual cloud spend has 28-35% in
+      recoverable waste — idle compute, over-provisioned instances, and unattached storage.
+      Finding it is straightforward. Fixing it without breaking your GitOps pipeline is harder.
+      [Product] integrates with your existing Terraform state via a read-only provider,
+      surfacing rightsizing recommendations as Terraform plan diffs you can review, test,
+      and merge — same workflow, no agent with write permissions in your AWS account..."
+    agent: content-generator
+
+  - scenario: Positioning analysis for a cloud security platform targeting Cloud Architects at enterprise buyers
+    without_sme: |
+      Cloud Architects care about security. Position your CSPM platform as the solution
+      for getting cloud security visibility and fixing misconfigurations quickly.
+    with_sme: |
+      Cloud Architects evaluate CSPM through a specific lens: does this fit into my
+      landing zone guardrails, or does it become another separate console I have to
+      check? The highest-credibility positioning embeds CSPM into the IaC workflow —
+      scanning Terraform plans before deployment, not just scanning deployed resources
+      after the fact. "Shift-left" security on cloud infrastructure is a well-understood
+      concept that Cloud Architects have been trying to implement. Position as the
+      Terraform-native CSPM that catches CIS benchmark violations at plan time, and
+      the post-deployment monitoring is the backstop — not the primary product. That
+      framing makes the product a development workflow tool rather than another
+      security console, which dramatically changes the buying conversation.
+    agent: strategic-planning
+
+stakeholder_guidance: |
+  Cloud Architects are technically exacting and commercially experienced with cloud
+  vendor claims. They evaluate products through a specific lens: "does this fit my
+  architecture, or does it create new complexity I have to manage?"
+
+  **When assessing current cloud architecture or tooling:**
+  - Acknowledge the complexity of the existing multi-cloud or hybrid environment
+  - Use: "there is an opportunity to improve [specific capability] within the existing
+    Terraform and GitOps foundation"
+  - Avoid: "your current cloud setup is costing you money" without specific evidence —
+    cloud architects know their cost picture and do not appreciate unsolicited audits
+
+  **When making strategic recommendations:**
+  - Lead with IaC integration — the Terraform provider is the first credibility gate
+  - Always address the IAM permission model explicitly — broad permissions are an
+    immediate objection that must be anticipated and addressed proactively
+  - Frame cost optimization in FinOps language — rightsizing, reservation optimization,
+    tagging strategy — not generic "cost savings"
+  - Acknowledge provider feature gaps honestly — claiming parity across AWS, Azure,
+    and GCP that does not exist will be discovered in the first technical call
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

@@ -1,0 +1,260 @@
+metadata:
+  id: gartner-customer-journey-framework
+  version: 1.0.0
+  display_name: Gartner Customer Journey / B2B Buying Journey Framework
+  category: gtm
+  description: 'A framework for understanding how B2B buyers progress through complex, non-linear purchase decisions. It identifies
+    the core buying jobs buyers must complete-from problem identification to internal consensus-and helps marketing, sales,
+    and product teams align engagement strategies with buyer needs at each stage.
+
+    '
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c
+    - growth
+    - enterprise
+    roles:
+    - cmo
+    - cro
+    - vp-marketing
+    - vp-sales
+    - product-marketing
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  tags:
+  - customer-journey
+  - buyer-journey
+  - b2b
+  - gtm
+  - gartner
+  source: Gartner B2B Buying Journey Research
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: product_or_solution
+    description: Product or solution being purchased
+    source: skill
+  - field: target_buyers
+    description: Buyer personas and stakeholders
+    source: skill
+  - field: buying_committee
+    description: Roles typically involved in purchasing decisions
+    source: skill
+  optional:
+  - field: sales_process
+    description: Current sales process stages
+    source: user_input
+  - field: marketing_touchpoints
+    description: Marketing channels and engagement points
+    source: skill
+analysis:
+  instructions: 'Apply the Gartner Customer Journey Framework to map the
+
+    buyer''s decision process and align marketing and sales
+
+    engagement strategies.
+
+
+    Step 1: Identify Buyer Problem Recognition
+
+    Determine how buyers become aware of the business problem.
+
+
+    Step 2: Map Solution Exploration
+
+    Understand how buyers research potential solutions and
+
+    gather information.
+
+
+    Step 3: Document Requirements Building
+
+    Identify how buyers define evaluation criteria and
+
+    technical requirements.
+
+
+    Step 4: Analyze Supplier Selection
+
+    Evaluate how buyers compare vendors and shortlist options.
+
+
+    Step 5: Understand Validation
+
+    Determine how buyers confirm their preferred choice through
+
+    references, demos, or trials.
+
+
+    Step 6: Capture Consensus Creation
+
+    Understand how buying groups secure internal agreement
+
+    before completing a purchase.
+
+    '
+  dimensions:
+  - id: problem-identification
+    name: Problem Identification
+    description: Recognition of a business challenge or opportunity
+    prompts:
+    - What triggers buyers to recognize the problem?
+    - What signals indicate the need for a new solution?
+  - id: solution-exploration
+    name: Solution Exploration
+    description: Researching potential solutions
+    prompts:
+    - Where do buyers look for information?
+    - What content influences early exploration?
+  - id: requirements-building
+    name: Requirements Building
+    description: Defining evaluation criteria
+    prompts:
+    - What requirements are used to evaluate solutions?
+    - Who defines the criteria?
+  - id: supplier-selection
+    name: Supplier Selection
+    description: Evaluating vendors
+    prompts:
+    - How do buyers compare vendors?
+    - What information influences selection?
+  - id: validation
+    name: Validation
+    description: Confirming the chosen solution
+    prompts:
+    - What proof do buyers require before purchase?
+    - Are trials, demos, or references used?
+  - id: consensus
+    name: Consensus Creation
+    description: Achieving internal agreement within the buying group
+    prompts:
+    - Which stakeholders must approve the purchase?
+    - What objections typically arise?
+output_templates:
+- id: buyer-journey-map
+  name: Buyer Journey Map
+  format: markdown
+  template: '# Buyer Journey Map - {company_name}
+
+
+    ## Problem Identification
+
+    {analysis}
+
+
+    ## Solution Exploration
+
+    {analysis}
+
+
+    ## Requirements Building
+
+    {analysis}
+
+
+    ## Supplier Selection
+
+    {analysis}
+
+
+    ## Validation
+
+    {analysis}
+
+
+    ## Consensus Creation
+
+    {analysis}
+
+
+    ## Engagement Strategy
+
+    {recommended_marketing_and_sales_actions}
+
+    '
+  when_to_use: Use for buyer journey map deliverables.
+- id: journey-touchpoint-table
+  name: Journey Touchpoint Table
+  format: table
+  template: '| Stage | Buyer Objective | Key Questions | Marketing Content | Sales Interaction |
+
+    |------|----------------|---------------|------------------|------------------|
+
+    | Problem Identification | {objective} | {questions} | {content} | {interaction} |
+
+    | Solution Exploration | {objective} | {questions} | {content} | {interaction} |
+
+    | Requirements Building | {objective} | {questions} | {content} | {interaction} |
+
+    | Supplier Selection | {objective} | {questions} | {content} | {interaction} |
+
+    | Validation | {objective} | {questions} | {content} | {interaction} |
+
+    | Consensus Creation | {objective} | {questions} | {content} | {interaction} |
+
+    '
+  when_to_use: Use for journey touchpoint table deliverables.
+rubric:
+  scoring_model: 1-5
+  dimensions:
+  - id: buyer-understanding
+    name: Buyer Understanding
+    weight: 0.3
+    scores:
+      5: Deep understanding of buyer needs and journey stages
+      3: Moderate understanding
+      1: Limited insight into buyer behavior
+    description: Quality of buyer understanding.
+  - id: journey-alignment
+    name: Journey Alignment
+    weight: 0.35
+    scores:
+      5: Marketing and sales engagement aligned with buyer stages
+      3: Partial alignment
+      1: Sales process disconnected from buyer journey
+    description: Quality of journey alignment.
+  - id: stakeholder-coverage
+    name: Stakeholder Coverage
+    weight: 0.35
+    scores:
+      5: All key buying group roles addressed
+      3: Some stakeholders covered
+      1: Key stakeholders ignored
+    description: Quality of stakeholder coverage.
+  thresholds:
+    publish_ready: 4.0
+    revise: 3.0
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Linear Funnel Thinking
+  description: Treating the buyer journey as a simple sequential funnel
+  mitigation: Account for non-linear movement across stages
+- pattern: Single Persona Focus
+  description: Ignoring buying committee dynamics
+  mitigation: Map multiple stakeholders and decision roles
+- pattern: Sales-Only Journey
+  description: Assuming all engagement occurs through sales reps
+  mitigation: Integrate digital and marketing interactions
+chaining:
+  before:
+  - framework_id: gartner-go-to-market-strategy-framework
+    reason: GTM strategy defines the market and segments the buyer journey maps to
+  - framework_id: icp-buying-committee
+    reason: ICP and buying committee analysis informs which journey stages to prioritize
+  after:
+  - framework_id: account-based-marketing-system-framework
+    reason: Buyer journey stages drive ABM play selection and orchestration
+  - framework_id: outbound-prospecting-architecture-framework
+    reason: Journey entry points inform outbound sequencing and touch cadence
+stakeholder_guidance: 'Emphasize that the buyer journey is complex and involves
+
+  multiple stakeholders. Focus on enabling buyers to make
+
+  confident decisions rather than forcing them through a
+
+  rigid sales funnel.'

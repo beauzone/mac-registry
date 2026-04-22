@@ -1,0 +1,192 @@
+metadata:
+  id: pricing-strategy-framework
+  version: 1.0.0
+  display_name: Pricing Strategy — Value Capture & Economic Leverage Model
+  category: strategy
+  description: Designs pricing architecture aligned to value creation, competitive positioning, margin targets, and expansion
+    mechanics. Built for SaaS, usage-based, hybrid, and AI-native business models.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - ceo
+    - cmo
+    - cro
+    - cfo
+    - vp-product
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: value_metric_definition
+    description: Core unit of value delivered (seat, usage, transaction, outcome, etc.)
+    source: skill
+  - field: customer_segments
+    description: ICP tiers and willingness-to-pay differences
+    source: existing_deliverable
+  - field: competitive_pricing_signals
+    description: Known competitor pricing structures and discount patterns
+    source: user_input
+  - field: cost_structure
+    description: Gross margin profile and variable cost drivers
+    source: user_input
+  - field: strategic_objectives
+    description: Growth vs margin trade-off priorities
+    source: user_input
+analysis:
+  instructions: 'This framework aligns pricing to value capture mechanics, competitive dynamics, and long-term margin expansion.
+    Emphasis is placed on value metric alignment, expansion leverage, defensibility against price compression, and board-level
+    economic durability.
+
+
+    Define primary value metric and packaging model. Recommend price positioning (premium, parity, or penetration). Outline
+    expansion mechanics and margin trajectory. Include transition plan if migrating pricing architecture.'
+  dimensions:
+  - id: value-metric-integrity
+    name: Value Metric Integrity
+    description: Alignment between pricing unit and delivered customer value
+    prompts:
+    - Does pricing scale with customer success?
+    - Is the metric intuitive and measurable?
+    - Does the metric discourage usage?
+    - Is there misalignment between value and price growth?
+  - id: packaging-and-tier-design
+    name: Packaging and Tier Design
+    description: Feature and capability segmentation across plans
+    prompts:
+    - Are tiers aligned to segment willingness-to-pay?
+    - Is there clear upgrade path?
+    - Are feature gates value-based rather than arbitrary?
+    - Does packaging reinforce positioning?
+  - id: competitive-positioning
+    name: Competitive Positioning
+    description: Relative price-to-value posture
+    prompts:
+    - Is pricing premium, parity, or disruptive?
+    - Is discounting structurally required?
+    - Are we competing on price or differentiated value?
+    - Is there vulnerability to bundling by platforms?
+  - id: economic-durability
+    name: Economic Durability
+    description: Margin and expansion sustainability
+    prompts:
+    - Are gross margins improving at scale?
+    - Is expansion revenue embedded in model?
+    - Are variable costs compressing margin?
+    - Does pricing support operating leverage?
+  - id: behavioral-and-psychological-factors
+    name: Behavioral and Psychological Factors
+    description: Buyer perception and adoption friction
+    prompts:
+    - Is pricing simple to understand?
+    - Are anchor prices strategically positioned?
+    - Does freemium or trial drive efficient conversion?
+    - Is pricing aligned with procurement expectations?
+output_templates:
+- id: primary
+  name: Pricing Strategy
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Value Metric and Packaging Design
+
+    {value_metric_and_packaging_design}
+
+
+    ## Competitive Pricing Position
+
+    {competitive_pricing_position}
+
+
+    ## Margin and Expansion Model
+
+    {margin_and_expansion_model}
+
+
+    ## Migration or Adjustment Plan
+
+    {migration_or_adjustment_plan}
+
+
+    ## Strategic Risks
+
+    {strategic_risks}
+
+    '
+rubric:
+  description: Board-facing rigor. Evaluates value alignment, economic durability, competitive clarity, and execution feasibility.
+  dimensions:
+  - name: Value Alignment
+    weight: 0.25
+    scoring:
+      1: Pricing disconnected from delivered value.
+      3: Partial alignment with some distortion.
+      5: Strong alignment between value metric and price scaling.
+    improvement_guidance: Re-anchor pricing to measurable customer outcome.
+  - name: Margin Sustainability
+    weight: 0.25
+    scoring:
+      1: Margins fragile or declining.
+      3: Moderate sustainability.
+      5: Clear operating leverage and durable gross margins.
+    improvement_guidance: Model variable cost reduction and expansion lift.
+  - name: Competitive Strength
+    weight: 0.2
+    scoring:
+      1: Competes primarily on discounting.
+      3: Mixed positioning.
+      5: Clear value-based premium or disruptive logic.
+    improvement_guidance: Strengthen differentiation narrative in pricing.
+  - name: Expansion Leverage
+    weight: 0.15
+    scoring:
+      1: Limited upsell or cross-sell path.
+      3: Moderate expansion opportunity.
+      5: Embedded expansion mechanics tied to usage growth.
+    improvement_guidance: Introduce scalable usage or tier migration triggers.
+  - name: Execution Readiness
+    weight: 0.15
+    scoring:
+      1: No implementation path.
+      3: General plan outlined.
+      5: Phased rollout with risk mitigation.
+    improvement_guidance: Add communication and customer transition plan.
+  thresholds:
+    revise: 3.0
+    publish_ready: 3.8
+    escalate_to_user: 2.4
+anti_patterns:
+- pattern: Cost-Plus Pricing
+  description: Pricing based solely on internal cost structure.
+  mitigation: Anchor price to delivered value and willingness-to-pay.
+- pattern: Over-Complex Packaging
+  description: Excessive tiers creating confusion.
+  mitigation: Simplify tiers and clarify upgrade path.
+- pattern: Growth-at-All-Costs Discounting
+  description: Structural reliance on heavy discounting.
+  mitigation: Shift to value-based justification.
+- pattern: Ignoring Platform Bundling Risk
+  description: Underestimating ecosystem price compression.
+  mitigation: Model bundling defense and differentiation.
+chaining:
+  after:
+  - framework_id: investor-narrative-framework
+    reason: ''
+  - framework_id: okrs
+    reason: ''
+  before:
+  - framework_id: value-proposition-canvas
+    reason: ''
+  - framework_id: competitive-strategy-deep-dive
+    reason: ''

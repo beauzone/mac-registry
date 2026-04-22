@@ -1,0 +1,190 @@
+metadata:
+  id: positioning-statement
+  version: 1.0.0
+  display_name: Positioning Statement Template — Strategic Narrative Core
+  category: product_pmm
+  description: Standardized framework for crafting a differentiated, defensible positioning statement with reasons-to-believe
+    and guardrails. Adapted for AI-native and fast-evolving categories.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - product-marketing-manager
+    - cmo
+    - ceo
+    - vp-marketing
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: target_segment_definition
+    description: Clearly defined ICP or primary target segment
+    source: skill
+  - field: core_job_or_problem
+    description: Primary job-to-be-done or urgent customer problem
+    source: existing_deliverable
+  - field: differentiated_capabilities
+    description: Capabilities or assets competitors cannot easily replicate
+    source: skill
+  - field: proof_points
+    description: Customer evidence, quantified outcomes, validation signals
+    source: user_input
+  - field: competitive_alternatives
+    description: Direct competitors and substitute solutions
+    source: skill
+analysis:
+  instructions: 'This framework converts validated customer insight and value mapping into a concise positioning statement.
+    It enforces differentiation, audience specificity, and proof alignment. In AI-native markets, emphasis is placed on defensible
+    advantage (data, ecosystem, workflow integration) and substitution resistance.
+
+
+    Produce final positioning statement using template: ''For [target segment], who [problem context], {company_name} is the
+    [category frame] that [primary differentiated outcome], unlike [primary alternative], we [key differentiator].'' Include
+    3–5 reasons-to-believe and 3 explicit ''we are not'' guardrails.'
+  dimensions:
+  - id: audience-definition
+    name: Audience Definition
+    description: Clear articulation of the primary target segment
+    prompts:
+    - Is the target segment defined precisely and economically?
+    - Does the statement exclude non-priority segments implicitly or explicitly?
+    - Does the segment align with ICP evidence?
+    - Is the buying context clear?
+  - id: problem-framing
+    name: Problem Framing
+    description: Clear statement of the urgent and valuable problem
+    prompts:
+    - Is the problem framed in customer language?
+    - Is the problem economically meaningful?
+    - Is urgency implied or explicit?
+    - Does framing avoid feature language?
+  - id: differentiated-value-claim
+    name: Differentiated Value Claim
+    description: Core value delivered relative to alternatives
+    prompts:
+    - What outcome does the product uniquely enable?
+    - Is the differentiation capability-based or asset-based?
+    - Could a competitor credibly claim the same value?
+    - Is value expressed as outcome, not activity?
+  - id: reasons-to-believe-rtbs
+    name: Reasons to Believe (RTBs)
+    description: Evidence supporting the value claim
+    prompts:
+    - Are RTBs concrete and defensible?
+    - Are proof points quantified where possible?
+    - Do RTBs align directly with the differentiation claim?
+    - Are validation signals recent and relevant?
+  - id: guardrails-and-exclusions
+    name: Guardrails and Exclusions
+    description: Explicit statements clarifying what the company does not claim
+    prompts:
+    - Are there adjacent categories intentionally not claimed?
+    - Does the statement avoid overreach?
+    - Are unrealistic expectations preemptively managed?
+    - Is positioning resilient against substitution narratives?
+output_templates:
+- id: primary
+  name: Positioning Statement
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Final Positioning Statement
+
+    {final_positioning_statement}
+
+
+    ## Reasons to Believe
+
+    {reasons_to_believe}
+
+
+    ## Guardrails and Exclusions
+
+    {guardrails_and_exclusions}
+
+
+    ## Competitive Contrast Summary
+
+    {competitive_contrast_summary}
+
+
+    ## Messaging Implications
+
+    {messaging_implications}
+
+    '
+rubric:
+  description: Evaluates clarity, differentiation strength, credibility, memorability, and strategic alignment.
+  dimensions:
+  - name: Clarity
+    weight: 0.25
+    scoring:
+      1: Confusing or jargon-heavy statement.
+      3: Understandable but somewhat abstract.
+      5: Clear, concise, and easily repeatable.
+    improvement_guidance: Simplify language. Remove internal terminology.
+  - name: Differentiation
+    weight: 0.25
+    scoring:
+      1: Claim could apply to most competitors.
+      3: Partially distinctive but overlaps category norms.
+      5: Distinctive, defensible positioning territory.
+    improvement_guidance: Highlight what competitors cannot credibly claim.
+  - name: Credibility
+    weight: 0.2
+    scoring:
+      1: Value claims unsupported by proof.
+      3: Some evidence but not tightly aligned.
+      5: Strong proof directly reinforces core claim.
+    improvement_guidance: Align RTBs directly to differentiation claim.
+  - name: Memorability
+    weight: 0.15
+    scoring:
+      1: Generic or overly long.
+      3: Moderately distinctive.
+      5: Concise and strategically sharp.
+    improvement_guidance: Shorten phrasing and tighten outcome framing.
+  - name: Strategic Alignment
+    weight: 0.15
+    scoring:
+      1: Misaligned with ICP or roadmap.
+      3: Mostly aligned but minor gaps.
+      5: Fully aligned with ICP, differentiation, and roadmap.
+    improvement_guidance: Validate against ICP and capability roadmap.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Category Labeling Only
+  description: Defining positioning purely by category name without outcome framing.
+  mitigation: Lead with differentiated outcome, not just category.
+- pattern: Feature-Led Statement
+  description: Leading with product capabilities instead of customer value.
+  mitigation: Rewrite statement around outcome enabled.
+- pattern: Overclaiming
+  description: Attempting to claim broad market leadership without proof.
+  mitigation: Constrain positioning to defensible territory.
+- pattern: No Guardrails
+  description: Leaving positioning open to misinterpretation or scope creep.
+  mitigation: Add explicit 'we are not' boundaries.
+chaining:
+  after:
+  - framework_id: messaging-architecture
+    reason: ''
+  before:
+  - framework_id: value-proposition-canvas
+    reason: ''
+  - framework_id: stp-segmentation-targeting-positioning
+    reason: ''

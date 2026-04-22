@@ -1,0 +1,183 @@
+metadata:
+  id: north-star-metric-driver-tree
+  version: 1.0.0
+  display_name: North Star Metric + Driver Tree — Operating Alignment Model
+  category: gtm
+  description: Defines a single unifying North Star Metric (NSM) and decomposes it into a causal driver tree. Aligns marketing,
+    product, and revenue teams around measurable growth mechanics in AI-native environments.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - ceo
+    - cmo
+    - vp-product
+    - cro
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: strategic_objectives
+    description: 12–36 month company growth objectives and constraints
+    source: user_input
+  - field: current_revenue_and_usage_metrics
+    description: Baseline revenue, retention, engagement, and expansion data
+    source: user_input
+  - field: product_value_mechanics
+    description: How product usage translates into customer value and revenue
+    source: skill
+  - field: growth_model_type
+    description: PLG, enterprise sales-led, hybrid, marketplace, usage-based, etc.
+    source: skill
+analysis:
+  instructions: 'This framework selects a single North Star Metric that best reflects durable customer value creation and
+    long-term revenue potential. It then decomposes the NSM into a causal driver tree with controllable input metrics. In
+    AI-native environments, emphasis is placed on automation leverage, engagement depth, and expansion mechanics.
+
+
+    Select one North Star Metric. Present a visual or structured driver tree showing top-level components and sub-drivers.
+    Identify the highest-leverage driver for the next 2 quarters. Conclude with ownership assignments and reporting cadence.'
+  dimensions:
+  - id: north-star-metric-selection
+    name: North Star Metric Selection
+    description: Identification of the primary value-aligned metric
+    prompts:
+    - Does the metric reflect customer value rather than internal activity?
+    - Is the metric leading, not purely lagging revenue?
+    - Can teams directly influence the metric?
+    - Does the metric scale with long-term revenue potential?
+  - id: revenue-alignment-validation
+    name: Revenue Alignment Validation
+    description: Ensuring NSM correlates with durable revenue growth
+    prompts:
+    - Does growth in NSM historically correlate with revenue growth?
+    - Does NSM account for retention and expansion dynamics?
+    - Is there evidence that higher NSM levels reduce churn?
+    - Is the metric resilient to vanity inflation?
+  - id: driver-tree-decomposition
+    name: Driver Tree Decomposition
+    description: Breaking NSM into causal, controllable inputs
+    prompts:
+    - What are the primary multiplicative components of the NSM?
+    - Which drivers are marketing-owned, product-owned, or sales-owned?
+    - Which drivers are leading indicators?
+    - Are driver relationships empirically supported?
+  - id: operational-cadence-and-ownership
+    name: Operational Cadence and Ownership
+    description: Embedding NSM and drivers into execution rhythm
+    prompts:
+    - Are driver owners clearly assigned?
+    - Is there a weekly or monthly review cadence?
+    - Are experiments tied to specific driver improvements?
+    - Is reporting standardized across teams?
+output_templates:
+- id: primary
+  name: North Star Metric Framework
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## North Star Metric Definition
+
+    {north_star_metric_definition}
+
+
+    ## Revenue Correlation Analysis
+
+    {revenue_correlation_analysis}
+
+
+    ## Driver Tree Breakdown
+
+    {driver_tree_breakdown}
+
+
+    ## Highest-Leverage Focus Area
+
+    {highest-leverage_focus_area}
+
+
+    ## Operating Cadence and Ownership Model
+
+    {operating_cadence_and_ownership_model}
+
+
+    ## Board Discussion Questions
+
+    {board_discussion_questions}
+
+    '
+rubric:
+  description: Evaluates metric validity, causal clarity, ownership structure, and strategic alignment.
+  dimensions:
+  - name: Value Alignment
+    weight: 0.25
+    scoring:
+      1: Metric reflects internal activity only.
+      3: Partially aligned to customer value.
+      5: Directly reflects durable customer value creation.
+    improvement_guidance: Select metric tied to realized customer outcomes.
+  - name: Revenue Correlation Strength
+    weight: 0.25
+    scoring:
+      1: Weak or assumed correlation to revenue.
+      3: Moderate historical correlation.
+      5: Clear empirical linkage to retention and expansion.
+    improvement_guidance: Analyze cohort data to validate correlation.
+  - name: Driver Clarity
+    weight: 0.2
+    scoring:
+      1: Drivers loosely defined.
+      3: Most drivers defined but some ambiguity.
+      5: Clear, causal, measurable drivers with ownership.
+    improvement_guidance: Ensure each driver is measurable and controllable.
+  - name: Focus and Prioritization
+    weight: 0.15
+    scoring:
+      1: Multiple priorities without leverage ranking.
+      3: Some prioritization but lacks clarity.
+      5: Clear highest-leverage driver identified.
+    improvement_guidance: Rank drivers by expected revenue impact.
+  - name: Operational Readiness
+    weight: 0.15
+    scoring:
+      1: No embedded cadence or accountability.
+      3: Moderate integration into reporting.
+      5: Fully embedded into weekly/monthly operating rhythm.
+    improvement_guidance: Tie driver review into leadership cadence.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Revenue as North Star
+  description: Selecting revenue itself as NSM without leading drivers.
+  mitigation: Choose a leading value metric that predicts revenue.
+- pattern: Vanity Engagement Metric
+  description: Choosing easily inflated metrics without retention linkage.
+  mitigation: Validate correlation to durable revenue.
+- pattern: Overly Complex Driver Tree
+  description: Creating too many layers without clarity.
+  mitigation: Limit tree to meaningful, controllable drivers.
+- pattern: No Ownership
+  description: Drivers defined without accountable owner.
+  mitigation: Assign clear ownership and review cadence.
+chaining:
+  after:
+  - framework_id: okrs
+    reason: ''
+  before:
+  - framework_id: aarrr-pirate-metrics
+    reason: ''
+  - framework_id: swot
+    reason: ''

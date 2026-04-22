@@ -1,0 +1,190 @@
+metadata:
+  id: icp-buying-committee
+  version: 1.0.0
+  display_name: ICP + Buying Committee Mapping — Revenue Alignment Model
+  category: gtm
+  description: |-
+    Defines the Ideal Customer Profile (ICP) and maps buying committee roles, decision dynamics, and objections. Aligns marketing, sales, and product around revenue-efficient account selection.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c
+    - enterprise
+    roles:
+    - cro
+    - cmo
+    - product-marketing-manager
+    - vp-sales
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: revenue_data_by_segment
+    description: Revenue, retention, expansion, and win rate by segment
+    source: user_input
+  - field: recent_won_deals
+    description: 5–10 representative closed-won accounts with deal notes
+    source: user_input
+  - field: recent_lost_deals
+    description: 5–10 representative closed-lost accounts with reasons
+    source: user_input
+  - field: product_value_drivers
+    description: Core outcomes delivered and differentiators
+    source: skill
+  - field: sales_process_overview
+    description: Current sales motion and qualification method
+    source: user_input
+analysis:
+  instructions: |-
+    This framework defines the Ideal Customer Profile using economic performance indicators, then maps the buying committee roles influencing purchase decisions. Emphasis is placed on deal velocity, expansion potential, and objection patterns in AI-native and enterprise environments.
+
+    **Synthesis Guidance:** Produce a clear ICP definition with inclusion and exclusion criteria. Map buying committee roles with influence weight. Identify top three friction patterns and corresponding enablement improvements. Conclude with qualification updates and messaging adjustments.
+  dimensions:
+  - id: ideal-customer-profile-definition
+    name: Ideal Customer Profile Definition
+    description: Economic and behavioral traits of highest-performing accounts
+    prompts:
+    - Which accounts show highest LTV/CAC and strongest retention?
+    - Which verticals or segments close fastest?
+    - What common operational or maturity traits do top accounts share?
+    - Which characteristics correlate with expansion revenue?
+  - id: buying-committee-roles
+    name: Buying Committee Roles
+    description: Stakeholders involved in evaluation and approval
+    prompts:
+    - Who is the economic buyer and budget owner?
+    - Who is the technical evaluator or security gatekeeper?
+    - Who is the primary champion or internal advocate?
+    - Are there hidden blockers (procurement, compliance, IT)?
+  - id: pain-points-and-triggers
+    name: Pain Points and Triggers
+    description: Problems and catalysts that initiate buying motion
+    prompts:
+    - What business event typically triggers evaluation?
+    - Which KPIs are under pressure at time of purchase?
+    - What urgency signals accelerate deal timelines?
+    - Are triggers regulatory, competitive, or operational?
+  - id: objections-and-friction-points
+    name: Objections and Friction Points
+    description: Common resistance themes and deal slowdowns
+    prompts:
+    - What objections recur in lost deals?
+    - Which stakeholders introduce friction most often?
+    - Are objections pricing-based or risk-based?
+    - Which objections are preventable with earlier enablement?
+output_templates:
+- id: memo
+  name: ICP and Buying Committee Analysis
+  format: markdown
+  when_to_use: Primary strategic deliverable for stakeholder and executive review.
+  template: |
+    # ICP and Buying Committee Analysis — {company_name} — {date}
+
+    ## Executive Summary
+    {executive_summary}
+
+    ## Ideal Customer Profile Definition
+    {ideal_customer_profile_definition}
+
+    ## Buying Committee Map
+    {buying_committee_map}
+
+    ## Trigger Events and Pain Themes
+    {trigger_events_and_pain_themes}
+
+    ## Objection Patterns and Friction Points
+    {objection_patterns_and_friction_points}
+
+    ## Qualification and Enablement Implications
+    {qualification_and_enablement_implications}
+
+    ## Board Discussion Questions
+    {board_discussion_questions}
+rubric:
+  scoring_model: 1-5
+  dimensions:
+  - id: economic-grounding
+    name: Economic Grounding
+    description: Anchor ICP traits to measurable deal performance metrics.
+    weight: 0.25
+    scores:
+      1: ICP defined abstractly without revenue evidence.
+      3: Some revenue linkage but limited quantitative backing.
+      5: ICP defined using clear LTV/CAC, retention, and velocity data.
+  - id: buying-committee-completeness
+    name: Buying Committee Completeness
+    description: Map economic buyer, technical evaluator, champion, and blocker explicitly.
+    weight: 0.2
+    scores:
+      1: Single persona focus only.
+      3: Primary roles mapped but some influence gaps.
+      5: Full decision ecosystem mapped with influence weighting.
+  - id: objection-realism
+    name: Objection Realism
+    description: Pull objection language from real sales notes or transcripts.
+    weight: 0.2
+    scores:
+      1: Generic objections listed.
+      3: Common objections identified but not quantified.
+      5: Objections tied to specific lost deal patterns.
+  - id: revenue-alignment
+    name: Revenue Alignment
+    description: Translate insights into sales qualification updates.
+    weight: 0.2
+    scores:
+      1: No clear impact on qualification or messaging.
+      3: Some implications identified.
+      5: Clear qualification criteria and enablement changes derived.
+  - id: executive-readiness
+    name: Executive Readiness
+    description: State which accounts to pursue and which to avoid.
+    weight: 0.15
+    scores:
+      1: Not decision-ready.
+      3: Understandable but lacks prioritization.
+      5: Clear ICP focus and trade-offs articulated.
+  thresholds:
+    publish_ready: 3.5
+    revise: 2.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Aspirational ICP
+  description: Defining ICP based on brand aspiration rather than economic reality.
+  mitigation: Base ICP on highest-performing actual customers.
+- pattern: Persona Inflation
+  description: Listing excessive personas without influence weighting.
+  mitigation: Prioritize roles by decision authority and impact.
+- pattern: Ignoring Lost Deals
+  description: Over-indexing on wins and ignoring failure signals.
+  mitigation: Analyze lost deals for qualification refinement.
+- pattern: Messaging Without Qualification Shift
+  description: Updating messaging without tightening account selection.
+  mitigation: Align qualification rules with ICP findings.
+chaining:
+  before:
+  - framework_id: stp-segmentation-targeting-positioning
+    reason: |-
+      STP selects target segments. ICP framework defines precise account traits and decision dynamics, feeding messaging and sales enablement frameworks.
+  after:
+  - framework_id: messaging-architecture
+    reason: |-
+      STP selects target segments. ICP framework defines precise account traits and decision dynamics, feeding messaging and sales enablement frameworks.
+  - framework_id: sales-methodology-lens
+    reason: |-
+      STP selects target segments. ICP framework defines precise account traits and decision dynamics, feeding messaging and sales enablement frameworks.
+stakeholder_guidance: |-
+  When presenting ICP + Buying Committee Mapping — Revenue Alignment Model outputs to company stakeholders, apply constructive, forward-looking framing throughout.
+
+  **Key guidance:**
+  - Frame current-state findings as a foundation to build from, not a verdict on past decisions
+  - Present gaps as "opportunities to sharpen" rather than failures or weaknesses
+  - When analyzing Ideal Customer Profile Definition, Buying Committee Roles, Pain Points and Triggers, lead with what is working before identifying where to focus next
+  - Acknowledge the strategic logic behind decisions that may be set aside
+  - Use outcome-oriented language: "this will accelerate X" rather than "Y is holding back growth"
+
+  Avoid language that implies prior decisions were wrong, ineffective, or poorly considered. See STAKEHOLDER-RELATIONS.md for detailed guidance and before/after examples.

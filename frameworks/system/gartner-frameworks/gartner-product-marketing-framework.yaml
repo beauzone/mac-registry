@@ -1,0 +1,174 @@
+metadata:
+  id: gartner-product-marketing-framework
+  version: 1.0.0
+  display_name: Gartner Product Marketing Framework
+  category: product
+  description: 'A structured approach for product marketing teams to define market understanding, differentiation, messaging,
+    and revenue enablement that drives buyer engagement and supports sales growth.
+
+    '
+  tags:
+  - product-marketing
+  - gtm
+  - positioning
+  - messaging
+  - revenue-enablement
+  source: Gartner Product Marketing Research
+  best_for: {}
+  schema_version: '1.0'
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+inputs:
+  required:
+  - field: product_description
+    description: Core product or solution description
+    source: skill
+  - field: target_customer_segments
+    description: Key segments or ICPs
+    source: skill
+  - field: competitive_landscape
+    description: Primary competitors and alternatives
+    source: skill
+  optional: []
+analysis:
+  instructions: 'Apply the Gartner Product Marketing Framework to design a product marketing
+
+    strategy that aligns market insight with revenue enablement.
+
+
+    Step 1: Market Understanding
+
+    Analyze buyer needs, pain points, and market dynamics.
+
+
+    Step 2: Differentiation
+
+    Identify unique product value compared to competitors.
+
+
+    Step 3: Positioning and Messaging
+
+    Translate differentiation into clear positioning and messaging.
+
+
+    Step 4: Revenue Enablement
+
+    Equip sales teams with messaging, assets, and narratives.
+
+
+    Step 5: Market Activation
+
+    Launch campaigns and programs that communicate product value.
+
+    '
+  dimensions:
+  - id: market-insight
+    name: Market Understanding
+    description: Assessment area for Market Understanding.
+    prompts:
+    - What evidence supports performance in Market Understanding?
+  - id: differentiation
+    name: Competitive Differentiation
+    description: Assessment area for Competitive Differentiation.
+    prompts:
+    - What evidence supports performance in Competitive Differentiation?
+  - id: messaging
+    name: Messaging and Value Narrative
+    description: Assessment area for Messaging and Value Narrative.
+    prompts:
+    - What evidence supports performance in Messaging and Value Narrative?
+  - id: enablement
+    name: Sales and Revenue Enablement
+    description: Assessment area for Sales and Revenue Enablement.
+    prompts:
+    - What evidence supports performance in Sales and Revenue Enablement?
+  - id: activation
+    name: Market Activation
+    description: Assessment area for Market Activation.
+    prompts:
+    - What evidence supports performance in Market Activation?
+output_templates:
+- id: product-positioning
+  name: Product Positioning
+  format: markdown
+  when_to_use: Use when delivering product positioning output.
+  template: '# Product Positioning\n\n{summary}\n'
+- id: messaging-framework
+  name: Messaging Framework
+  format: markdown
+  when_to_use: Use when delivering messaging framework output.
+  template: '# Messaging Framework\n\n{summary}\n'
+- id: sales-enablement-assets
+  name: Sales Enablement Assets
+  format: markdown
+  when_to_use: Use when delivering sales enablement assets output.
+  template: '# Sales Enablement Assets\n\n{summary}\n'
+rubric:
+  scoring_model: 1-5
+  dimensions:
+  - id: market-insight
+    name: Market Understanding
+    description: Assessment area for Market Understanding.
+    weight: 0.2
+    scores:
+      5: Strong market understanding assessment with clear evidence.
+      3: Adequate market understanding assessment with some gaps.
+      1: Weak market understanding assessment lacking specificity.
+  - id: differentiation
+    name: Competitive Differentiation
+    description: Assessment area for Competitive Differentiation.
+    weight: 0.2
+    scores:
+      5: Strong competitive differentiation assessment with clear evidence.
+      3: Adequate competitive differentiation assessment with some gaps.
+      1: Weak competitive differentiation assessment lacking specificity.
+  - id: messaging
+    name: Messaging and Value Narrative
+    description: Assessment area for Messaging and Value Narrative.
+    weight: 0.2
+    scores:
+      5: Strong messaging and value narrative assessment with clear evidence.
+      3: Adequate messaging and value narrative assessment with some gaps.
+      1: Weak messaging and value narrative assessment lacking specificity.
+  - id: enablement
+    name: Sales and Revenue Enablement
+    description: Assessment area for Sales and Revenue Enablement.
+    weight: 0.2
+    scores:
+      5: Strong sales and revenue enablement assessment with clear evidence.
+      3: Adequate sales and revenue enablement assessment with some gaps.
+      1: Weak sales and revenue enablement assessment lacking specificity.
+  - id: activation
+    name: Market Activation
+    description: Assessment area for Market Activation.
+    weight: 0.2
+    scores:
+      5: Strong market activation assessment with clear evidence.
+      3: Adequate market activation assessment with some gaps.
+      1: Weak market activation assessment lacking specificity.
+  thresholds:
+    publish_ready: 4.0
+    revise: 3.0
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Framework-Only Conclusions
+  description: Treating the framework output as definitive without context or evidence.
+  mitigation: Ground conclusions in available evidence and document assumptions.
+- pattern: Generic Recommendations
+  description: Providing recommendations not tied to the company context.
+  mitigation: Translate findings into context-specific, actionable recommendations.
+stakeholder_guidance: Use constructive, evidence-based language. Highlight opportunities to improve and avoid framing prior
+  decisions as failures.
+chaining:
+  before:
+  - framework_id: gartner-positioning-messaging-framework
+    reason: Differentiated messaging is required input to product marketing execution
+  - framework_id: gartner-product-positioning-framework
+    reason: Product positioning defines the competitive context PMM executes within
+  after:
+  - framework_id: messaging-architecture
+    reason: Product marketing outputs drive the full messaging architecture hierarchy
+  - framework_id: gartner-brand-marketing-framework
+    reason: Product-level outcomes feed brand marketing effectiveness dimensions

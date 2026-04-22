@@ -1,0 +1,229 @@
+metadata:
+  id: competitive-scorecard
+  version: "1.0.0"
+  display_name: "Competitive Scorecard"
+  category: research
+  description: >
+    A structured comparison matrix scoring competitors across defined criteria.
+    Produces a table-based competitive landscape snapshot that supports positioning
+    decisions, sales enablement, and strategic planning.
+  output_format: table
+  typical_length: "1–2 pages (scoring matrix + narrative verdict)"
+  best_for:
+    agents:
+      - market-research
+      - strategic-planning
+      - campaign-manager
+    stages:
+      - seed
+      - series-a
+      - series-b
+      - series-c
+      - enterprise
+    modes:
+      - fractional
+      - fte
+      - tech_provider
+  tags:
+    - competitive
+    - analysis
+    - scorecard
+    - positioning
+    - sales-enablement
+    - market-research
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: company_name
+      description: The company being evaluated against competitors
+      source: skill
+    - field: competitors
+      description: List of 3–6 competitor names to include in the matrix
+      source: user_input
+    - field: scoring_criteria
+      description: The dimensions on which competitors are scored (e.g., pricing, product capability, brand, GTM motion)
+      source: framework_output
+    - field: scoring_rationale
+      description: Evidence or reasoning behind each competitor's score per criterion
+      source: framework_output
+  optional:
+    - field: icp_segment
+      description: The ICP segment this scorecard is optimized for — criteria weights may differ by segment
+      source: user_input
+    - field: analyst_date
+      description: Date of analysis — competitive landscapes shift; freshness matters
+      source: user_input
+    - field: win_loss_signal
+      description: Recent win/loss data informing the competitive assessment
+      source: skill
+
+structure:
+  sections:
+    - id: overview
+      name: Overview
+      required: true
+      description: Purpose, scope, and freshness of this scorecard
+      guidance: 2–3 sentences. State the ICP segment this scorecard covers, the date of analysis, and the primary use case (e.g., sales enablement, positioning review). Freshness matters — always surface the date.
+      word_count: "40–60 words"
+
+    - id: scoring-criteria
+      name: Scoring Criteria
+      required: true
+      description: Definition of each criterion and the 1–5 scoring rubric
+      guidance: >-
+        Define each criterion clearly. Use a consistent 1–5 rubric: 1 = significant weakness, 3 = market parity, 5 = clear leader. Criteria should be chosen based on what matters to the ICP, not what the company is strong at.
+      format_notes: Use a definition table — criterion name, what it measures, what a 5 looks like vs. a 1
+
+    - id: scoring-matrix
+      name: Scoring Matrix
+      required: true
+      description: The comparison table — rows = criteria, columns = company + competitors, cells = scores
+      guidance: Present {company_name} first, then competitors in alphabetical order. Use consistent scoring. Include a Total row with sum and a weighted total row if criteria have different weights. Highlight cells where {company_name} leads or trails by 2+ points.
+      format_notes: Markdown table; bold {company_name} column header
+
+    - id: key-findings
+      name: Key Findings
+      required: true
+      description: The 3–5 most significant competitive insights from the matrix
+      guidance: Extract the non-obvious insights. Not just "we scored highest overall" but "we lead on product capability but trail on brand recognition in the enterprise segment, which explains the 40-day average sales cycle." Be specific.
+      word_count: "100–200 words"
+
+    - id: where-we-win
+      name: Where We Win
+      required: true
+      description: The competitive scenarios and buyer profiles where the company has clear advantage
+      guidance: Describe the specific buyer profile, use case, or competitive matchup where {company_name} wins consistently. Use supporting evidence — win/loss data, proof points, deal characteristics.
+      word_count: "80–150 words"
+
+    - id: where-we-lose
+      name: Where We Lose / Risk Scenarios
+      required: true
+      description: The competitive matchups or criteria where the company is at a disadvantage
+      guidance: Be honest. Identify the competitor that beats the company most frequently and in what scenario. Include the reason — product gap, brand gap, pricing, reference customers. This section should directly inform product and marketing priorities.
+      word_count: "80–150 words"
+
+    - id: positioning-implications
+      name: Positioning Implications
+      required: false
+      description: What this scorecard means for messaging, targeting, and GTM approach
+      guidance: Translate the competitive data into positioning recommendations. Where should the company lean in? What claims should be avoided because a competitor dominates that position? What segment or use case should be owned?
+      word_count: "100–150 words"
+
+template: |
+  # Competitive Scorecard — {company_name}
+
+  **Segment:** {icp_segment}
+  **Analysis Date:** {analyst_date}
+  **Prepared by:** {author}
+
+  ---
+
+  ## Overview
+
+  {2–3 sentences on the scope of this scorecard, the ICP segment it covers, and its primary use case.}
+
+  ---
+
+  ## Scoring Criteria
+
+  | Criterion | What It Measures | Score 1 (Weakness) | Score 5 (Leader) |
+  |---|---|---|---|
+  | {Criterion 1} | {definition} | {what 1 looks like} | {what 5 looks like} |
+  | {Criterion 2} | {definition} | {what 1 looks like} | {what 5 looks like} |
+  | {Criterion 3} | {definition} | {what 1 looks like} | {what 5 looks like} |
+  | {Criterion 4} | {definition} | {what 1 looks like} | {what 5 looks like} |
+  | {Criterion 5} | {definition} | {what 1 looks like} | {what 5 looks like} |
+
+  ---
+
+  ## Scoring Matrix
+
+  | Criterion | **{company_name}** | {Competitor A} | {Competitor B} | {Competitor C} | {Competitor D} |
+  |---|---|---|---|---|---|
+  | {Criterion 1} | {score} | {score} | {score} | {score} | {score} |
+  | {Criterion 2} | {score} | {score} | {score} | {score} | {score} |
+  | {Criterion 3} | {score} | {score} | {score} | {score} | {score} |
+  | {Criterion 4} | {score} | {score} | {score} | {score} | {score} |
+  | {Criterion 5} | {score} | {score} | {score} | {score} | {score} |
+  | **Total** | **{total}** | {total} | {total} | {total} | {total} |
+
+  *Scores: 1 = significant weakness, 3 = market parity, 5 = clear leader*
+
+  ---
+
+  ## Key Findings
+
+  {3–5 specific, non-obvious insights from the matrix. Lead with the most strategically important finding.}
+
+  ---
+
+  ## Where We Win
+
+  **Best-fit buyer:** {buyer profile or use case}
+
+  {Paragraph describing the competitive scenario where {company_name} wins. Include supporting evidence.}
+
+  ---
+
+  ## Where We Lose / Risk Scenarios
+
+  **Highest-risk matchup:** {competitor + scenario}
+
+  {Paragraph describing the competitive scenario where {company_name} is at a disadvantage. Be specific about root cause.}
+
+  ---
+
+  ## Positioning Implications *(include when driving a positioning or messaging review)*
+
+  {Recommendations for messaging, targeting, or GTM based on the competitive data.}
+
+variations:
+  - id: sales-battlecard
+    name: Sales Battlecard
+    description: Optimized for sales team use — adds objection handling and trap-setting questions. Remove positioning-implications section, add competitive-traps and objection-responses sections.
+    overrides:
+      sections_add:
+        - competitive-traps
+        - objection-responses
+      sections_remove:
+        - positioning-implications
+      tone: "Tactical. Written for an AE, not a CMO. Use second-person ('When they say X, you say Y.')."
+
+  - id: executive-summary
+    name: Executive Summary View
+    description: C-suite version — key findings and positioning implications only, no full matrix.
+    overrides:
+      sections_remove:
+        - scoring-criteria
+        - scoring-matrix
+      tone: "Strategic. Emphasize market implications and resource allocation consequences."
+
+branding:
+  supports_branding: true
+  brandable_elements:
+    - element: header_logo
+      description: Company logo in document header
+    - element: color_scheme
+      description: Table accent colors and heading colors aligned to brand palette
+    - element: footer
+      description: Confidentiality notice and company name in footer
+    - element: company_column_highlight
+      description: Visual treatment (bold, color) distinguishing the company's column in the matrix
+
+quality_criteria:
+  required_elements:
+    - "Scoring criteria are defined with explicit 1–5 rubric descriptions"
+    - "Scoring matrix includes at least 3 competitors and at least 4 criteria"
+    - "Key findings are specific and non-obvious — not restatements of the highest scores"
+    - "Where We Win and Where We Lose sections both present with supporting rationale"
+    - "Analysis date is present"
+  prohibited_elements:
+    - "Scores without rationale or evidence"
+    - "Criteria chosen to make the company look good rather than reflect buyer priorities"
+    - "Key findings that only state 'we score highest overall'"
+    - "Stale data without date or freshness caveat"
+  length_check:
+    minimum: 300
+    maximum: 1200
+    strict: false

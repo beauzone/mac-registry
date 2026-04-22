@@ -1,0 +1,263 @@
+metadata:
+  id: sales-battlecard
+  version: "1.0.0"
+  display_name: "Sales Battlecard"
+  category: sales-enablement
+  description: >
+    A 1–2 page competitive quick-reference designed for sales reps to use during
+    live deals. Covers positioning, differentiation, objection handling, landmine
+    questions, and competitive traps. Designed for fast scanning mid-call — not
+    deep reading.
+  output_format: markdown
+  typical_length: "500–800 words"
+  best_for:
+    agents:
+      - campaign-manager
+      - content-generator
+      - strategic-planning
+    stages:
+      - series-a
+      - series-b
+      - series-c
+      - enterprise
+    modes:
+      - fractional
+      - fte
+      - tech_provider
+  tags:
+    - battlecard
+    - competitive
+    - sales-enablement
+    - objection-handling
+    - win-loss
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: your_company
+      description: Your company name and one-line positioning statement
+      source: user_input
+    - field: competitor_name
+      description: The specific competitor this battlecard targets
+      source: user_input
+    - field: key_differentiators
+      description: 3–5 ways your solution is genuinely different or better
+      source: user_input
+    - field: common_objections
+      description: Objections reps hear when competing against this vendor
+      source: user_input
+  optional:
+    - field: competitor_weaknesses
+      description: Known weaknesses, gaps, or customer complaints about the competitor
+      source: user_input
+    - field: win_loss_data
+      description: Recent win/loss data or patterns against this competitor
+      source: user_input
+    - field: target_persona
+      description: The primary buyer persona this battlecard is calibrated for
+      source: user_input
+
+structure:
+  sections:
+    - id: header
+      name: Battlecard Header
+      required: true
+      description: Competitor name, last updated date, and one-line competitive positioning
+      char_limit: 100
+      field_limits:
+        positioning_line: 100
+        competitor_name: 40
+      guidance: >-
+        Keep it to one line — how you position against this specific competitor. Not your general positioning. Example: "Against [Competitor], we win on deployment speed and total cost of ownership."
+      format_notes: Bold header with competitor logo placeholder and last-updated date.
+
+    - id: competitor-snapshot
+      name: Competitor Snapshot
+      required: true
+      description: Quick profile of the competitor — what they do, who they sell to, pricing model
+      guidance: >-
+        Keep it factual and concise. Include: what they sell, their target market, approximate pricing model, and their primary go-to-market motion. No editorializing — reps need facts.
+      word_count: "60–100 words"
+
+    - id: why-we-win
+      name: Why We Win
+      required: true
+      description: The 3–5 key differentiators that drive wins against this competitor
+      field_limits:
+        differentiator_label: 45
+        differentiator_copy: 150
+      guidance: >-
+        Lead with the differentiator that matters most to the target persona. Each differentiator should be a claim + proof point pair. "We deploy in days, not months — average onboarding is 5 days vs. their 90-day implementation." Avoid vague claims like "better technology."
+      format_notes: Numbered list with bold claim followed by supporting evidence.
+
+    - id: where-they-win
+      name: Where They Win
+      required: true
+      description: Honest assessment of where the competitor has advantages
+      guidance: >-
+        Reps trust battlecards that are honest. If the competitor has a genuine strength, name it and explain how to navigate it. "They have broader compliance certifications — counter by focusing on speed-to-compliance for the certifications that matter most to this prospect."
+      word_count: "60–100 words"
+
+    - id: landmine-questions
+      name: Landmine Questions
+      required: true
+      description: Questions reps should ask prospects that expose the competitor's weaknesses
+      field_limits:
+        question: 120
+        exposes_note: 60
+      guidance: >-
+        These are discovery questions that, when answered honestly, make the prospect realize the competitor has a gap. "How long did your last vendor take to onboard?" or "Can you see real-time data, or do you wait for batch reports?" Frame as genuine discovery, not gotcha questions.
+      format_notes: Numbered list of 4–6 questions with brief parenthetical on what each question exposes.
+
+    - id: objection-handling
+      name: Objection Handling
+      required: true
+      description: Common objections and scripted responses
+      field_limits:
+        objection: 80
+        response: 250
+        proof_point: 80
+      guidance: >-
+        Use the format "When they say X → respond with Y." Keep responses to 2–3 sentences. Responses should acknowledge the concern, pivot to your strength, and offer proof. Never trash the competitor directly — reframe around what the prospect needs.
+      format_notes: >-
+        Table format: Objection | Response | Proof Point
+
+    - id: competitive-traps
+      name: Competitive Traps to Avoid
+      required: true
+      description: Tactics the competitor's sales team uses and how to counter them
+      field_limits:
+        trap_label: 40
+        trap_copy: 120
+        counter_copy: 120
+      guidance: >-
+        What does this competitor's sales team do to undercut you? Free extended trials, FUD about your product, forcing bake-offs on their strongest features? Name the trap and the counter-move.
+      word_count: "60–100 words"
+
+    - id: quick-stats
+      name: Quick Comparison Stats
+      required: false
+      description: Side-by-side comparison on 4–6 key metrics
+      field_limits:
+        metric_label: 30
+        metric_value: 25
+      guidance: >-
+        Choose metrics where you win or are competitive. If you lose on a metric, either omit it or include it with context. Use check/X marks or numeric comparisons.
+      format_notes: >-
+        Comparison table: Metric | Us | Them
+
+template: |
+  # ⚔️ Battlecard: {your_company} vs. {competitor_name}
+
+  **Last updated:** {date}
+  **Positioning:** {one-line competitive positioning against this specific competitor}
+
+  ---
+
+  ## Competitor Snapshot
+
+  | | |
+  |---|---|
+  | **What they sell** | {product/solution description} |
+  | **Target market** | {their ICP} |
+  | **Pricing model** | {pricing approach} |
+  | **GTM motion** | {sales-led, PLG, channel, etc.} |
+
+  ---
+
+  ## ✅ Why We Win
+
+  1. **{Differentiator 1}** — {proof point with data}
+  2. **{Differentiator 2}** — {proof point with data}
+  3. **{Differentiator 3}** — {proof point with data}
+  4. **{Differentiator 4}** — {proof point with data}
+
+  ---
+
+  ## ⚠️ Where They Win
+
+  {Honest assessment of competitor strengths + how to navigate each one}
+
+  ---
+
+  ## 🎯 Landmine Questions
+
+  1. "{Discovery question}" — *(exposes: {weakness})*
+  2. "{Discovery question}" — *(exposes: {weakness})*
+  3. "{Discovery question}" — *(exposes: {weakness})*
+  4. "{Discovery question}" — *(exposes: {weakness})*
+
+  ---
+
+  ## 💬 Objection Handling
+
+  | Objection | Response | Proof Point |
+  |---|---|---|
+  | "{Objection 1}" | {2–3 sentence response} | {customer name, stat, or case study} |
+  | "{Objection 2}" | {2–3 sentence response} | {customer name, stat, or case study} |
+  | "{Objection 3}" | {2–3 sentence response} | {customer name, stat, or case study} |
+
+  ---
+
+  ## 🪤 Competitive Traps to Avoid
+
+  - **{Trap 1}:** {what they do} → **Counter:** {what to do instead}
+  - **{Trap 2}:** {what they do} → **Counter:** {what to do instead}
+
+  ---
+
+  ## 📊 Quick Comparison
+
+  | Metric | {your_company} | {competitor_name} |
+  |---|---|---|
+  | {Metric 1} | {value} | {value} |
+  | {Metric 2} | {value} | {value} |
+  | {Metric 3} | {value} | {value} |
+  | {Metric 4} | {value} | {value} |
+
+variations:
+  - id: single-page
+    name: Single-Page Print Version
+    description: Condensed to fit on one printed page. Removes competitive traps and quick stats, tightens all sections.
+    overrides:
+      sections_remove:
+        - competitive-traps
+        - quick-stats
+      tone: "Ultra-concise. Every word must earn its place."
+      word_count: "300–500 words total"
+
+  - id: technical-audience
+    name: Technical Buyer Version
+    description: Calibrated for a technical evaluator (architect, engineer). Adds architecture comparison and integration details.
+    overrides:
+      sections_add:
+        - architecture-comparison
+      tone: "Technical and specific. Include architecture details, API capabilities, and integration patterns."
+
+branding:
+  supports_branding: true
+  brandable_elements:
+    - element: header_logo
+      description: Your company logo in the header
+    - element: color_scheme
+      description: Win/loss color coding aligned to brand palette
+    - element: typography
+      description: Fonts aligned to brand guidelines
+
+quality_criteria:
+  required_elements:
+    - "Why We Win section has specific proof points, not vague claims"
+    - "Where They Win section is honest and includes navigation guidance"
+    - "Landmine questions are framed as genuine discovery, not gotcha traps"
+    - "Objection responses acknowledge the concern before pivoting"
+    - "All content is scannable in under 60 seconds"
+  prohibited_elements:
+    - "Direct competitor bashing or inflammatory language"
+    - "Vague differentiators without proof ('better technology', 'more innovative')"
+    - "Objection responses that ignore the concern and pivot immediately"
+    - "More than 6 differentiators in the Why We Win section"
+    - "Outdated competitor information without a last-updated date"
+  length_check:
+    minimum: 400
+    maximum: 900
+    strict: false

@@ -1,0 +1,234 @@
+metadata:
+  id: solution-brief
+  version: "1.0.0"
+  display_name: "Solution Brief"
+  category: sales-enablement
+  description: >
+    A 2-page buyer-facing product positioning document for a specific use case,
+    vertical, or buyer persona. Designed to be handed to a prospect during a sales
+    cycle — explains the problem, the solution, the differentiation, and the proof
+    in a format optimized for executive skim-reading.
+  output_format: markdown
+  typical_length: "500–800 words"
+  best_for:
+    agents:
+      - content-generator
+      - campaign-manager
+      - strategic-planning
+    stages:
+      - series-a
+      - series-b
+      - series-c
+      - enterprise
+    modes:
+      - fractional
+      - fte
+      - tech_provider
+  tags:
+    - solution-brief
+    - product-brief
+    - sales-enablement
+    - use-case
+    - positioning
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: solution_name
+      description: The product, solution, or use case this brief covers
+      source: user_input
+    - field: target_audience
+      description: The specific buyer persona or vertical this brief is calibrated for
+      source: user_input
+    - field: problem_statement
+      description: The business problem this solution addresses — in the buyer's language
+      source: user_input
+    - field: solution_description
+      description: What the solution does and how it works — concrete, not abstract
+      source: user_input
+    - field: key_differentiators
+      description: 3–4 ways this solution is different from alternatives
+      source: user_input
+  optional:
+    - field: customer_proof
+      description: Customer results, case study references, or third-party validation
+      source: user_input
+    - field: technical_details
+      description: Architecture, integration, or deployment details for technical evaluators
+      source: user_input
+    - field: pricing_guidance
+      description: Pricing model or packaging information to include
+      source: user_input
+
+structure:
+  sections:
+    - id: headline
+      name: Headline & Subheadline
+      required: true
+      description: An outcome-led headline and a supporting subheadline that explains who this is for
+      field_limits:
+        headline: 70
+        subheadline: 90
+      guidance: >-
+        The headline should state the outcome, not the product. "Reduce incident response time from hours to minutes" beats "Next-Generation SOAR Platform." The subheadline contextualizes for the audience: "For security teams managing 1,000+ alerts per day."
+      word_count: "15–30 words"
+
+    - id: problem
+      name: The Problem
+      required: true
+      description: The business problem in the buyer's language — what's broken and why it matters
+      guidance: >-
+        Write from the buyer's perspective. Describe the problem they experience, not the problem your product solves. Use their vocabulary. Include the business impact — cost, risk, lost revenue, team productivity. End with the implication: what happens if this problem goes unsolved.
+      word_count: "80–120 words"
+
+    - id: solution
+      name: The Solution
+      required: true
+      description: What your solution does and how it works — concrete and specific
+      guidance: >-
+        Lead with what it does (outcome), then how it works (mechanism). Avoid feature lists — instead, describe capabilities in terms of the problems they solve. "Automatically correlates alerts across your stack and surfaces the 3% that need human attention" is better than "AI-powered alert correlation engine." Include a visual architecture diagram placeholder if the solution has technical depth.
+      word_count: "100–150 words"
+
+    - id: key-benefits
+      name: Key Benefits
+      required: true
+      description: 3–4 benefits tied to the buyer's priorities — not a feature list
+      field_limits:
+        benefit_label: 45
+        benefit_copy: 150
+        benefit_proof_point: 80
+      guidance: >-
+        Each benefit should be: a bold claim (the benefit), a supporting sentence (how the solution delivers it), and a proof point (evidence). Order by what the target persona cares about most. If targeting a CISO, lead with risk reduction. If targeting a CTO, lead with integration and scale.
+      format_notes: Numbered list with bold benefit headline and supporting text.
+
+    - id: differentiators
+      name: Why Us
+      required: true
+      description: What makes this solution different from alternatives
+      field_limits:
+        differentiator_label: 40
+        differentiator_copy: 120
+      guidance: >-
+        "Alternatives" includes competitors and the status quo (do nothing, build in-house, use a point tool). For each differentiator, explain why it matters to this specific audience — not just that you have it, but why the buyer should care.
+      word_count: "80–120 words"
+
+    - id: proof
+      name: Proof Points
+      required: true
+      description: Customer results, stats, analyst validation, or other evidence
+      field_limits:
+        customer_name: 30
+        outcome_label: 50
+        stat_callout: 25
+      guidance: >-
+        Include 2–3 proof points. At least one should be a named customer result with quantified outcomes. Analyst quotes (Gartner, Forrester) add credibility for enterprise buyers. Technical benchmarks work for technical evaluators.
+      format_notes: Stat callouts or a concise proof table.
+
+    - id: call-to-action
+      name: Call to Action
+      required: true
+      description: Clear next step for the reader
+      char_limit: 180
+      guidance: >-
+        Match the CTA to the sales stage. Early stage: "See it in action — request a personalized demo." Mid stage: "Start a free pilot." Late stage: "Talk to a solution architect about your deployment." Include contact method.
+      word_count: "20–40 words"
+
+template: |
+  # {Outcome-led headline — lead with the result, not the product}
+
+  *{Subheadline — who this is for and why it matters}*
+
+  ---
+
+  ## The Problem
+
+  {80–120 words describing the business problem from the buyer's perspective. What's broken, what's the impact, and what happens if it goes unsolved?}
+
+  ---
+
+  ## The Solution
+
+  {100–150 words on what the solution does and how it works. Lead with outcomes, then mechanisms. Include architecture diagram placeholder if relevant.}
+
+  ---
+
+  ## Key Benefits
+
+  1. **{Benefit 1}** — {How the solution delivers this benefit. Proof point.}
+  2. **{Benefit 2}** — {How the solution delivers this benefit. Proof point.}
+  3. **{Benefit 3}** — {How the solution delivers this benefit. Proof point.}
+
+  ---
+
+  ## Why {company_name}
+
+  - **{Differentiator 1}** — {Why this matters to the target audience}
+  - **{Differentiator 2}** — {Why this matters to the target audience}
+  - **{Differentiator 3}** — {Why this matters to the target audience}
+
+  ---
+
+  ## Results
+
+  | Customer | Outcome | Metric |
+  |---|---|---|
+  | {Customer 1} | {What they achieved} | {Quantified result} |
+  | {Customer 2} | {What they achieved} | {Quantified result} |
+
+  > "{Analyst or customer quote}" — {Source}
+
+  ---
+
+  ## Get Started
+
+  {20–40 word CTA with clear next step and contact method}
+
+variations:
+  - id: technical
+    name: Technical Solution Brief
+    description: Adds architecture diagram, integration details, and deployment options for technical evaluators.
+    overrides:
+      sections_add:
+        - architecture
+        - integrations
+        - deployment-options
+      tone: "Technical and specific. Include API details, architecture patterns, and integration methods."
+
+  - id: vertical
+    name: Vertical-Specific Brief
+    description: Calibrated for a specific industry vertical. Adds regulatory context, vertical-specific use cases, and industry proof points.
+    overrides:
+      sections_add:
+        - regulatory-context
+        - vertical-use-cases
+      tone: "Industry-fluent. Use vertical-specific terminology and reference industry-specific challenges."
+
+branding:
+  supports_branding: true
+  brandable_elements:
+    - element: header_logo
+      description: Company logo in header, optional partner logo for co-branded briefs
+    - element: color_scheme
+      description: Section headers, stat callouts, and CTA button colors aligned to brand
+    - element: typography
+      description: Headline and body fonts aligned to brand guidelines
+    - element: footer
+      description: Company name, website, and contact info in footer
+
+quality_criteria:
+  required_elements:
+    - "Headline leads with an outcome, not a product name"
+    - "Problem section is written from the buyer's perspective"
+    - "Benefits are tied to buyer priorities, not feature descriptions"
+    - "At least one named customer proof point with quantified results"
+    - "CTA is specific to the sales stage"
+  prohibited_elements:
+    - "Feature lists without benefit framing"
+    - "Headlines that lead with the product name or category"
+    - "Problem section that reads like a vendor pitch"
+    - "More than 4 key benefits (keeps it focused)"
+    - "Generic CTAs ('contact us for more information')"
+  length_check:
+    minimum: 400
+    maximum: 900
+    strict: false

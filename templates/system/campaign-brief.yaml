@@ -1,0 +1,320 @@
+metadata:
+  id: campaign-brief
+  version: "1.0.0"
+  display_name: "Campaign Brief"
+  category: execution
+  description: >
+    Structured creative and media campaign brief for internal alignment and
+    agency or creator handoff. Covers campaign objective, target consumer,
+    creative strategy, channel plan, content requirements, and measurement
+    framework.
+  output_format: markdown
+  typical_length: "800–1,200 words"
+  best_for:
+    agents:
+      - campaign-manager
+      - strategic-planning
+    stages:
+      - seed
+      - series-a
+      - series-b
+      - series-c
+      - scale
+    modes:
+      - fractional
+      - fte
+      - tech_provider
+  tags:
+    - campaign
+    - campaign-brief
+    - creative-brief
+    - media-brief
+    - channel-plan
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: campaign_name
+      description: Name or working title for this campaign
+      source: user_input
+    - field: campaign_objective
+      description: What business goal this campaign serves (acquisition, retention, awareness, launch, etc.)
+      source: user_input
+    - field: primary_persona
+      description: Who you're reaching — reference a persona profile or summarize key traits
+      source: user_input
+    - field: campaign_timeframe
+      description: Campaign start and end dates or duration
+      source: user_input
+  optional:
+    - field: budget_range
+      description: Total campaign budget or range — informs channel plan realism
+      source: user_input
+    - field: existing_brand_guidelines
+      description: Brand voice, visual style, or tone constraints the campaign must follow
+      source: user_input
+    - field: previous_campaign_performance
+      description: Results from prior campaigns — helps set benchmarks and avoid repeating mistakes
+      source: user_input
+    - field: competitive_context
+      description: What competitors are running — informs differentiation in creative direction
+      source: user_input
+
+structure:
+  sections:
+    - id: campaign-overview
+      name: Campaign Overview
+      required: true
+      description: Name, business objective, primary KPI, timeframe, budget range, and one-sentence success definition
+      field_limits:
+        campaign_name: 60
+        success_definition: 120
+      guidance: >-
+        This section is the campaign's north star — everything in the brief should connect back to it. State the campaign name, the specific business objective (not "increase awareness" but "acquire 2,000 new customers in Q3"), and the single primary KPI that will determine whether the campaign succeeded. Include the timeframe and budget range if shareable. End with one sentence that defines success plainly: "This campaign succeeds if X." That sentence should be concrete enough that a team member could confirm or deny success at the campaign's end without any ambiguity.
+      word_count: "80–120 words"
+
+    - id: target-audience
+      name: Target Audience
+      required: true
+      description: Primary persona summary, secondary audiences if relevant, and the key insight driving creative direction
+      guidance: >-
+        Reference the consumer persona profile if one exists. If not, summarize the persona's essential traits: who they are, what they want, what they fear, and where they spend attention. Identify any secondary audiences (retargeting segments, lookalikes, existing customers being upsold). Then articulate the single audience insight that the creative strategy is built on — not a demographic fact but a behavioral or emotional truth about this person. Example: "She follows 40+ wellness creators but trusts real people over polished brand content — every ad that feels produced gets scrolled past." That insight should visibly drive the creative direction in the next section.
+      word_count: "100–150 words"
+
+    - id: campaign-kpis
+      name: Campaign Objective & KPIs
+      required: true
+      description: Primary KPI with goal, 2-3 secondary KPIs, and measurement methodology
+      field_limits:
+        metric_label: 40
+        target_value: 30
+      guidance: >-
+        State the primary KPI first — one metric, one target, one timeframe. Then list 2-3 secondary KPIs that provide signal without becoming the success definition. For each KPI include: the metric name, the target value, how it will be measured, and the data source. Measurement methodology matters — if you're tracking conversions, note whether that's last-click, multi-touch, or blended. If a KPI can only be approximated (brand awareness, sentiment), say so and explain the proxy measurement. Avoid listing more than 4 KPIs total — campaign teams lose focus when every metric has equal weight.
+      word_count: "80–120 words"
+
+    - id: creative-strategy
+      name: Creative Strategy
+      required: true
+      description: Core message, tone and emotional direction, visual style, formats required, and mandatory inclusions and exclusions
+      guidance: >-
+        Lead with the ONE core message — the single most important thing this campaign communicates. Not a tagline but the idea. If a team member had to remember one thing about this campaign, what is it? Then build out: the emotional direction (what should the audience feel, not just think), the visual style with specific references or descriptors ("shot like UGC, messy and real — not studio-lit"), required formats (static, video, UGC, carousel, etc.) with creative rationale for each, and mandatory elements (product must be shown in use, not on a surface; CTA must go in first 3 seconds of video). End with a clear exclusions list — what this campaign will NOT do or say.
+      word_count: "150–200 words"
+
+    - id: channel-plan
+      name: Channel Plan
+      required: true
+      description: Channels selected with rationale, targeting approach per channel, budget allocation, and expected performance benchmarks
+      field_limits:
+        channel_label: 30
+        allocation_value: 10
+        rationale_copy: 100
+        benchmark_copy: 60
+      guidance: >-
+        For each channel, explain WHY it was selected — not just that the audience is there, but why it's the right channel for this specific campaign objective and creative format. Include: targeting approach (interest-based, lookalike, retargeting, keyword), budget allocation as a percentage, and expected performance benchmarks per channel (CTR, CPM, CPC, ROAS — whatever is relevant). Channel selection must be directionally driven by where the target audience is AND by what creative formats this campaign requires. If a channel was considered and rejected, note it with the reason — that shows intentionality.
+      word_count: "150–200 words"
+
+    - id: content-requirements
+      name: Content Requirements
+      required: true
+      description: Full asset list with format, dimensions, copy lengths, quantities, CTAs, and approval process
+      guidance: >-
+        List every asset required for this campaign. For each asset: format (video/static/story/email), dimensions or specs, copy length or character limit, quantity needed, and the CTA. Group by channel. Include the approval workflow: who reviews creative, how many rounds, turnaround time expectation. If working with an agency or creator, note what they're responsible for vs. what the internal team delivers. This section is primarily for the production team and agency partner — it should be specific enough that no one needs to ask follow-up questions about what to make.
+      word_count: "100–150 words"
+
+    - id: timeline-milestones
+      name: Timeline & Milestones
+      required: true
+      description: Checkpoint sequence from brief to creative to approval to launch to optimization
+      field_limits:
+        milestone_label: 60
+        owner_field: 30
+      guidance: >-
+        Map the campaign execution timeline in a logical sequence. Include: brief finalization, creative kick-off, first draft delivery, feedback round, final approval, trafficking/setup, launch date, first optimization checkpoint (typically Day 7-14), and campaign close. For each milestone note the owner and whether it's a hard deadline (launch date) or a soft checkpoint. Flag dependencies — creative approval must happen before trafficking; trafficking must be complete before launch. If the campaign has a pre-launch phase (teaser, waitlist), include that sequence separately.
+      format_notes: >-
+        Table format: Milestone | Owner | Date | Hard/Soft deadline
+      word_count: "80–100 words"
+
+    - id: measurement-reporting
+      name: Measurement & Reporting
+      required: true
+      description: Tracking setup, reporting cadence, and optimization criteria
+      guidance: >-
+        Define what tracking infrastructure must be in place before launch (pixel firing, UTM parameters, conversion events, discount code tracking). Set the reporting cadence — typically weekly during the flight with a post-campaign wrap. Define optimization criteria: at what performance threshold do you shift budget between channels? What creative metrics indicate a winning ad vs. a losing one, and how quickly? Define the kill criteria — if a creative or channel is underperforming, when do you pull it (Day 7? After $X spend?). Good optimization criteria are defined before launch, not discovered mid-campaign.
+      word_count: "80–100 words"
+
+template: |
+  # Campaign Brief: {campaign_name}
+
+  **Objective:** {campaign_objective}
+  **Timeframe:** {campaign_timeframe}
+  **Budget:** {budget_range or "TBD"}
+  **Brief owner:** {name/role}
+  **Last updated:** {date}
+
+  ---
+
+  ## Campaign Overview
+
+  **Campaign name:** {campaign_name}
+  **Business objective:** {specific, measurable objective}
+  **Primary KPI:** {one metric with target}
+  **Timeframe:** {start date} – {end date}
+  **Budget:** {range if shareable}
+
+  **Success definition:** This campaign succeeds if {concrete, unambiguous success condition}.
+
+  ---
+
+  ## Target Audience
+
+  **Primary persona:** {Persona name and 2-3 sentence summary}
+
+  **Key traits for this campaign:**
+  - {Trait 1 relevant to channel and creative choices}
+  - {Trait 2}
+  - {Trait 3}
+
+  **Secondary audience:** {Retargeting segment, lookalike, or existing customer segment — or "none"}
+
+  **Audience insight driving creative:** {The behavioral or emotional truth this campaign is built on}
+
+  ---
+
+  ## Campaign Objective & KPIs
+
+  **Primary KPI:** {metric} → Target: {value} by {date}
+
+  | KPI | Target | Measurement Method | Data Source |
+  |---|---|---|---|
+  | {Primary KPI} | {target} | {how measured} | {source} |
+  | {Secondary KPI 1} | {target} | {how measured} | {source} |
+  | {Secondary KPI 2} | {target} | {how measured} | {source} |
+
+  ---
+
+  ## Creative Strategy
+
+  **Core message:** {The single most important thing this campaign communicates — one sentence}
+
+  **Emotional direction:** {What the audience should feel, not just think}
+
+  **Visual style:** {Specific descriptors or references — not just "on-brand"}
+
+  **Required formats:**
+  - {Format 1} — {rationale}
+  - {Format 2} — {rationale}
+  - {Format 3} — {rationale}
+
+  **Mandatory inclusions:**
+  - {Must-include element 1}
+  - {Must-include element 2}
+
+  **Exclusions — this campaign will NOT:**
+  - {Exclusion 1}
+  - {Exclusion 2}
+
+  ---
+
+  ## Channel Plan
+
+  | Channel | Why Selected | Targeting Approach | Budget Allocation | Benchmark |
+  |---|---|---|---|---|
+  | {Channel 1} | {rationale} | {targeting method} | {%} | {CTR/ROAS/etc.} |
+  | {Channel 2} | {rationale} | {targeting method} | {%} | {benchmark} |
+  | {Channel 3} | {rationale} | {targeting method} | {%} | {benchmark} |
+  | **Total** | | | **100%** | |
+
+  **Channels considered and not selected:** {channel — reason not used}
+
+  ---
+
+  ## Content Requirements
+
+  | Asset | Format | Specs | Quantity | CTA | Responsible |
+  |---|---|---|---|---|---|
+  | {Asset 1} | {video/static/story} | {dimensions, length} | {qty} | {CTA copy} | {internal/agency} |
+  | {Asset 2} | {format} | {specs} | {qty} | {CTA} | {responsible} |
+  | {Asset 3} | {format} | {specs} | {qty} | {CTA} | {responsible} |
+
+  **Approval process:** {Who reviews, how many rounds, turnaround time}
+
+  ---
+
+  ## Timeline & Milestones
+
+  | Milestone | Owner | Date | Type |
+  |---|---|---|---|
+  | Brief finalized | {owner} | {date} | Hard |
+  | Creative kick-off | {owner} | {date} | Hard |
+  | First draft delivery | {owner} | {date} | Soft |
+  | Feedback round | {owner} | {date} | Soft |
+  | Final creative approval | {owner} | {date} | Hard |
+  | Trafficking / setup complete | {owner} | {date} | Hard |
+  | Campaign launch | {owner} | {date} | Hard |
+  | First optimization checkpoint | {owner} | {date} | Hard |
+  | Campaign close | {owner} | {date} | Hard |
+
+  ---
+
+  ## Measurement & Reporting
+
+  **Tracking setup required:** {Pixel, UTMs, conversion events, discount codes — confirm before launch}
+
+  **Reporting cadence:** {Weekly during flight / Post-campaign wrap}
+
+  **Optimization criteria:**
+  - Shift budget when: {threshold}
+  - Winning creative signal: {metric + threshold}
+  - Kill criteria: {when to cut underperforming creative or channel}
+
+variations:
+  - id: performance-campaign
+    name: Performance Campaign Brief
+    description: Acquisition-focused. Emphasizes conversion funnel, cost-per-acquisition targets, retargeting architecture, and ROAS thresholds. Creative strategy oriented toward direct response.
+    overrides:
+      sections_add:
+        - funnel-architecture
+        - retargeting-plan
+      tone: "Direct response focused. Every creative element must serve conversion. Lead with offer, urgency, and proof."
+
+  - id: brand-campaign
+    name: Brand Campaign Brief
+    description: Awareness and brand-building focused. Adds brand health metrics, share of voice targets, sentiment measurement, and longer creative durations. Less emphasis on direct conversion.
+    overrides:
+      sections_add:
+        - brand-health-metrics
+        - share-of-voice-target
+      tone: "Brand building. Prioritize memorability, emotional resonance, and brand association over direct response signals."
+
+  - id: influencer-creator-campaign
+    name: Influencer / Creator Campaign Brief
+    description: For campaigns built on creator partnerships. Replaces paid media channel plan with creator tier strategy, seeding plan, and usage rights framework.
+    overrides:
+      sections_add:
+        - creator-tier-strategy
+        - seeding-plan
+        - usage-rights
+      tone: "Creator-first. Creative direction is guidance, not a script. Authenticity over brand perfection."
+
+quality_criteria:
+  required_elements:
+    - "Campaign overview includes one unambiguous success definition sentence"
+    - "Creative strategy identifies ONE core message — not a list of messages"
+    - "Channel plan explains WHY each channel was selected, not just lists channels"
+    - "Channel allocation percentages sum to 100%"
+    - "Content requirements section is specific enough that no production follow-up questions are needed"
+    - "Timeline includes realistic dates and hard vs. soft deadline distinctions"
+    - "Optimization criteria are defined before launch — kill criteria included"
+    - "Audience insight is behavioral or emotional, not just demographic"
+  prohibited_elements:
+    - "Creative strategy with multiple 'core messages' (there is only one)"
+    - "Channel plan that lists channels without rationale"
+    - "Budget allocation that does not sum to 100%"
+    - "Timeline without owners or dates"
+    - "KPI list with more than 4 metrics (dilutes focus)"
+    - "Optimization criteria of 'we'll decide as we go'"
+    - "Content requirements that say 'various assets' without specifying formats and quantities"
+  length_check:
+    minimum: 700
+    maximum: 1400
+    strict: false

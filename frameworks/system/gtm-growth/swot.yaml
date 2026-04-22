@@ -1,0 +1,186 @@
+metadata:
+  id: swot
+  version: 1.0.0
+  display_name: SWOT — Strategic Synthesis for AI-Native Organizations
+  category: strategy
+  description: Structured assessment of strengths, weaknesses, opportunities, and threats with enforced prioritization and
+    strategic synthesis. Modernized for fast-moving, AI-accelerated markets.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - ceo
+    - cmo
+    - cro
+    - cpo
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: company_overview
+    description: Company mission, product portfolio, stage, and strategic ambition
+    source: skill
+  - field: performance_snapshot
+    description: Current revenue, growth rate, retention, and GTM health indicators
+    source: user_input
+  - field: competitive_context
+    description: Key competitors, substitutes, and market dynamics
+    source: skill
+  - field: internal_capabilities
+    description: Core assets including talent, IP, data, distribution, brand, partnerships
+    source: user_input
+  optional:
+  - field: macro_factors
+    description: Regulatory, capital market, or technology shifts affecting the category
+    source: research
+analysis:
+  instructions: 'This framework evaluates internal capabilities (Strengths, Weaknesses) and external conditions (Opportunities,
+    Threats) with enforced prioritization and cross-quadrant synthesis. In AI-native markets, emphasis is placed on data defensibility,
+    distribution velocity, capital efficiency, and automation risk.
+
+
+    Prioritize top 3 strengths, weaknesses, opportunities, and threats by material impact. Then construct 3 strategic moves:
+    (1) Strength × Opportunity leverage play, (2) Weakness × Threat mitigation plan, (3) Capability investment priority. Conclude
+    with clear sequencing and ownership themes.'
+  dimensions:
+  - id: strengths
+    name: Strengths
+    description: Internal capabilities that create durable advantage
+    prompts:
+    - Which capabilities are difficult for competitors to replicate?
+    - Where does the company outperform category averages?
+    - Does the company possess proprietary data, ecosystem leverage, or distribution advantage?
+    - Which strengths directly support margin or growth durability?
+  - id: weaknesses
+    name: Weaknesses
+    description: Internal limitations constraining performance
+    prompts:
+    - Where is execution consistently strained or slow?
+    - Which capabilities are underdeveloped relative to competitors?
+    - Are there structural cost disadvantages?
+    - Do product gaps reduce win rates or expansion?
+  - id: opportunities
+    name: Opportunities
+    description: External shifts that could enhance growth or defensibility
+    prompts:
+    - Which adjacent segments or use cases are emerging?
+    - Are regulatory or technological shifts expanding the category?
+    - Where is competitor complacency creating whitespace?
+    - Can AI acceleration create leverage rather than compression?
+  - id: threats
+    name: Threats
+    description: External forces that may erode growth or margin
+    prompts:
+    - Are new entrants leveraging automation to compress pricing?
+    - Is platform bundling threatening standalone vendors?
+    - Are buyer budgets tightening or consolidating?
+    - Is substitution risk increasing due to internal AI tooling?
+output_templates:
+- id: primary
+  name: Strategic SWOT Analysis
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Prioritized SWOT Matrix
+
+    {prioritized_swot_matrix}
+
+
+    ## Strategic Synthesis
+
+    {strategic_synthesis}
+
+
+    ## Strategic Moves and Trade-offs
+
+    {strategic_moves_and_trade-offs}
+
+
+    ## Execution Implications
+
+    {execution_implications}
+
+
+    ## Board Discussion Questions
+
+    {board_discussion_questions}
+
+    '
+rubric:
+  description: Evaluates depth, prioritization rigor, cross-quadrant synthesis, and executive clarity. Designed for board-facing
+    strategy alignment.
+  dimensions:
+  - name: Specificity
+    weight: 0.2
+    scoring:
+      1: Generic bullet points lacking concrete evidence.
+      3: Moderately specific but some vague entries remain.
+      5: Each item concrete, measurable, and evidence-backed.
+    improvement_guidance: Replace abstract labels with observable facts or metrics.
+  - name: Prioritization Rigor
+    weight: 0.2
+    scoring:
+      1: Long undifferentiated list.
+      3: Some prioritization but unclear criteria.
+      5: Top items clearly ranked by material business impact.
+    improvement_guidance: Force ranking by revenue, margin, or strategic risk impact.
+  - name: Cross-Quadrant Insight
+    weight: 0.3
+    scoring:
+      1: Quadrants treated independently.
+      3: Some connections drawn but not decisive.
+      5: Clear leverage and mitigation strategies derived from quadrant interactions.
+    improvement_guidance: Explicitly link strengths to opportunities and weaknesses to threats.
+  - name: Actionability
+    weight: 0.15
+    scoring:
+      1: No strategic moves identified.
+      3: Moves identified but not sequenced.
+      5: Clear initiatives with sequencing and ownership implications.
+    improvement_guidance: Translate synthesis into 12–18 month initiatives.
+  - name: Board Readiness
+    weight: 0.15
+    scoring:
+      1: Not structured for executive clarity.
+      3: Clear but lacks decisive framing.
+      5: Crisp, prioritized, defensible conclusions.
+    improvement_guidance: Lead with verdict. Remove filler. Emphasize trade-offs.
+  thresholds:
+    revise: 2.7
+    publish_ready: 3.7
+    escalate_to_user: 2.2
+anti_patterns:
+- pattern: Brainstorm List Dump
+  description: Treating SWOT as a collection exercise rather than a decision tool.
+  mitigation: Limit to top 3 per quadrant and force impact-based ranking.
+- pattern: Internal-Only Focus
+  description: Overemphasizing strengths and weaknesses without market context.
+  mitigation: Balance internal assessment with real external pressures.
+- pattern: No Synthesis
+  description: Failing to convert SWOT into strategic moves.
+  mitigation: Require at least three cross-quadrant strategic actions.
+- pattern: Defensive Framing
+  description: Presenting weaknesses as failures rather than improvement areas.
+  mitigation: Frame weaknesses as capability development priorities.
+chaining:
+  after:
+  - framework_id: okrs
+    reason: ''
+  - framework_id: north-star-metric-driver-tree
+    reason: ''
+  before:
+  - framework_id: porter-five-forces
+    reason: ''
+  - framework_id: tam-sam-som
+    reason: ''

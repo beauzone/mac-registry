@@ -1,0 +1,297 @@
+metadata:
+  id: brand-guidelines-brief
+  version: "1.0.0"
+  display_name: "Brand Guidelines Brief"
+  category: brand
+  description: >
+    Brand voice, tone, and identity guidelines document for internal teams and
+    agency partners. Covers brand purpose, personality, messaging hierarchy,
+    voice and tone in practice, visual direction, and platform-specific
+    adaptations.
+  output_format: markdown
+  typical_length: "800–1,200 words"
+  best_for:
+    agents:
+      - strategic-planning
+    stages:
+      - seed
+      - series-a
+      - series-b
+      - series-c
+      - scale
+    modes:
+      - fractional
+      - fte
+      - tech_provider
+  tags:
+    - brand
+    - brand-guidelines
+    - tone-of-voice
+    - brand-voice
+    - visual-identity
+    - messaging
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: brand_name
+      description: The brand name
+      source: user_input
+    - field: brand_positioning
+      description: What you stand for and who you're for — the brand's reason for existing beyond revenue
+      source: user_input
+    - field: brand_personality
+      description: 3-5 personality adjectives that describe the brand's character
+      source: user_input
+  optional:
+    - field: existing_brand_examples
+      description: Copy or visual examples the brand is happy with — grounds the guidelines in what's already working
+      source: user_input
+    - field: anti_examples
+      description: Examples that feel off-brand — extremely useful for defining what the brand is NOT
+      source: user_input
+    - field: target_consumer_description
+      description: Who the brand speaks to — informs tone and vocabulary choices
+      source: user_input
+
+structure:
+  sections:
+    - id: brand-identity-summary
+      name: Brand Identity Summary
+      required: true
+      description: Brand purpose, one-sentence positioning, personality in three words, and the brand vibe described concretely
+      guidance: >-
+        Open with brand purpose — the why beyond revenue. This should be a belief the brand holds about the world or a problem it exists to solve, not a mission statement. Then a positioning sentence: not a formal positioning statement but a plain-language articulation of what the brand is and for whom. Personality in 3 words (pull from the input, then make them specific — "bold" is generic; "unapologetically direct" is specific). End with the brand vibe described in concrete, sensory, or cultural terms: not "modern and approachable" but "the feeling of getting honest advice from a friend who actually knows what they're talking about." That concreteness is what makes guidelines usable.
+      word_count: "100–150 words"
+
+    - id: brand-voice-tone
+      name: Brand Voice & Tone
+      required: true
+      description: Voice pillars with descriptions and examples, tone variations by context
+      guidance: >-
+        Define 3-4 voice pillars. Each pillar must be specific enough to guide writing decisions — "Friendly" is not a pillar; "Speaks like a smart friend who happens to know a lot about skincare, not a lab scientist" is a pillar. For each pillar provide: the pillar name, a 1-2 sentence description, an example of the pillar in action (a real sentence or headline), and a counter-example showing what this pillar is NOT. The counter-examples are often more useful than the examples because they prevent drift. Then address tone variations by context: same voice expressed differently on social vs. email vs. packaging vs. customer service. Voice is stable; tone flexes for the moment.
+      word_count: "200–250 words"
+
+    - id: messaging-hierarchy
+      name: Messaging Hierarchy
+      required: true
+      description: Core brand message, supporting pillars with proof, elevator pitch, and tagline or rally cry
+      field_limits:
+        core_message: 120
+        pillar_label: 40
+        proof_point: 80
+        elevator_pitch: 200
+      guidance: >-
+        The messaging hierarchy ensures everyone — internal team, agencies, creators — is saying the same things. Start with the core brand message: the one sentence that captures what the brand does and why it matters. This is not the tagline; it's the internal anchor. Then 3 supporting pillars, each with a brief proof point that makes the claim credible (not just "high quality" but "high quality — every formulation is third-party tested before launch"). Write the elevator pitch: what you'd say in 30 seconds if someone asked what the brand is. Include the tagline or rally cry if one exists — and if not, note it as a gap.
+      word_count: "150–200 words"
+
+    - id: language-dos-donts
+      name: Language Dos & Don'ts
+      required: true
+      description: Words and phrases the brand uses, words to avoid, and style rules
+      guidance: >-
+        This is the most referenced section of any brand guidelines document — make it scannable and specific. Organize into three parts: words and phrases the brand actively uses (with context for when/where they're most effective), words and phrases to avoid (with the reason for each — is it because they're overused in the category, inauthentic to the brand voice, or associated with a competitor?), and style rules covering the mechanics of brand writing (capitalization quirks, comma style, whether the brand uses exclamation points, emoji use and in what contexts, Oxford comma stance, sentence length preference). Style rules should be based on how the brand actually wants to sound, not generic grammar rules.
+      word_count: "100–150 words"
+
+    - id: in-action-examples
+      name: In-Action Examples
+      required: true
+      description: Before/after examples showing off-brand vs. on-brand versions of the same content
+      guidance: >-
+        Before/after examples are the most actionable part of any voice guidelines document. Choose 3-5 real content types this brand actually produces: a product description, a social caption, an email subject line, a customer service response, an ad headline. For each, write the off-brand version first (how it might be written without these guidelines — usually too generic, too corporate, or too salesy), then the on-brand version. After each example, add a one-sentence annotation explaining what changed and why. The examples should demonstrate different voice pillars — don't use the same pillar for every example.
+      word_count: "150–200 words"
+
+    - id: platform-adaptations
+      name: Platform Adaptations
+      required: true
+      description: How voice and tone adjust by channel — same voice, different expression
+      guidance: >-
+        The brand voice is one voice — it doesn't become a different brand on TikTok. But the expression adapts: length, format, formality, emoji use, humor register, and vocabulary all flex by platform and context. For each major channel this brand uses: describe how the voice is expressed differently, what's permitted on this platform that isn't elsewhere (slang, humor, meme formats), what's not appropriate for this platform, and any format-specific guidance (TikTok captions, Instagram bio, email subject line style, packaging text). Include at least one digital channel and one non-digital touchpoint (packaging, in-store, or customer service) to show the guidelines span beyond social.
+      word_count: "100–150 words"
+
+template: |
+  # Brand Guidelines Brief: {brand_name}
+
+  **Last updated:** {date}
+
+  ---
+
+  ## Brand Identity Summary
+
+  **Brand purpose:** {Why the brand exists beyond making money — a belief or problem it exists to solve}
+
+  **Positioning:** {plain-language sentence — what this brand is and for whom}
+
+  **Brand personality:** {Adjective 1} · {Adjective 2} · {Adjective 3}
+
+  **The brand vibe:** {Concrete, sensory, or cultural description — not abstract adjectives}
+
+  ---
+
+  ## Brand Voice & Tone
+
+  ### Voice Pillars
+
+  **Pillar 1: {Name}**
+  {1-2 sentence description}
+  - Example: *"{sentence that demonstrates this pillar}"*
+  - NOT: *"{counter-example showing what this pillar is not}"*
+
+  **Pillar 2: {Name}**
+  {1-2 sentence description}
+  - Example: *"{example}"*
+  - NOT: *"{counter-example}"*
+
+  **Pillar 3: {Name}**
+  {1-2 sentence description}
+  - Example: *"{example}"*
+  - NOT: *"{counter-example}"*
+
+  ### Tone by Context
+
+  | Context | Tone Adjustment |
+  |---|---|
+  | Social media (organic) | {how tone flexes — e.g., more casual, humor permitted} |
+  | Email marketing | {tone in email context} |
+  | Packaging / product copy | {tone for physical touchpoints} |
+  | Customer service | {tone when something's gone wrong} |
+  | Advertising / paid | {tone in paid placements} |
+
+  ---
+
+  ## Messaging Hierarchy
+
+  **Core brand message:** {The one internal anchor sentence — not the tagline}
+
+  **Supporting pillars:**
+  1. **{Pillar 1}** — {claim} // Proof: {specific proof point}
+  2. **{Pillar 2}** — {claim} // Proof: {specific proof point}
+  3. **{Pillar 3}** — {claim} // Proof: {specific proof point}
+
+  **Elevator pitch (30 seconds):**
+  {2-3 sentences — what you'd say if someone asked what this brand is}
+
+  **Tagline / rally cry:** {if exists — or note as gap to develop}
+
+  ---
+
+  ## Language Dos & Don'ts
+
+  **Use:**
+  - {Word/phrase 1} — {context: when and where it works best}
+  - {Word/phrase 2} — {context}
+  - {Word/phrase 3} — {context}
+
+  **Avoid:**
+  - {Word/phrase 1} — {reason: overused in category / inauthentic / competitor-associated}
+  - {Word/phrase 2} — {reason}
+  - {Word/phrase 3} — {reason}
+
+  **Style rules:**
+  - Capitalization: {brand-specific capitalization rules}
+  - Exclamation points: {when permitted, when not}
+  - Emoji: {use / don't use / specific contexts}
+  - Sentence length: {preference — short and punchy / varied / long-form OK}
+  - Oxford comma: {use / don't use}
+
+  ---
+
+  ## In-Action Examples
+
+  ### Example 1: {Content type — e.g., Product description}
+
+  **Off-brand:**
+  > {How it might be written without these guidelines — generic, corporate, or inauthentic}
+
+  **On-brand:**
+  > {The version that follows these guidelines}
+
+  *Why it works: {one-sentence annotation}*
+
+  ---
+
+  ### Example 2: {Content type — e.g., Social caption}
+
+  **Off-brand:**
+  > {Off-brand version}
+
+  **On-brand:**
+  > {On-brand version}
+
+  *Why it works: {annotation}*
+
+  ---
+
+  ### Example 3: {Content type — e.g., Email subject line}
+
+  **Off-brand:**
+  > {Off-brand version}
+
+  **On-brand:**
+  > {On-brand version}
+
+  *Why it works: {annotation}*
+
+  ---
+
+  ## Platform Adaptations
+
+  | Platform | Voice Expression | Permitted Here | Not Appropriate Here |
+  |---|---|---|---|
+  | TikTok | {how voice shows up — length, format, humor register} | {slang, meme formats, etc.} | {what feels wrong here} |
+  | Instagram | {expression} | {what works} | {what doesn't} |
+  | Email | {expression} | {what works} | {what doesn't} |
+  | Packaging | {expression} | {what works} | {what doesn't} |
+  | Customer service | {expression} | {what works} | {what doesn't} |
+
+variations:
+  - id: full-brand-guidelines
+    name: Full Brand Guidelines
+    description: Expanded version covering visual identity system, logo usage rules, color palette, typography, photography style, and asset library. Requires visual examples.
+    overrides:
+      sections_add:
+        - visual-identity-system
+        - logo-usage-rules
+        - color-palette
+        - typography-system
+        - photography-style
+      tone: "Comprehensive reference document. Designed to be handed to any agency or contractor without follow-up."
+
+  - id: voice-tone-only
+    name: Brand Voice & Tone Only
+    description: Condensed version focused exclusively on writing — no visual identity. Used when visual guidelines already exist and only copy standards need documenting.
+    overrides:
+      sections_remove:
+        - brand-identity-summary
+      tone: "Writing-focused only. Assumes visual identity is handled elsewhere. Every section should be directly actionable by a copywriter."
+
+  - id: campaign-brand-brief
+    name: Campaign-Specific Brand Brief
+    description: Adapted version for a specific campaign. Layers campaign-specific tone permissions and creative direction on top of core brand guidelines.
+    overrides:
+      sections_add:
+        - campaign-tone-permissions
+        - campaign-specific-vocabulary
+      tone: "Campaign-specific. Clearly mark what's a campaign-level adaptation vs. evergreen brand standard."
+
+quality_criteria:
+  required_elements:
+    - "Brand purpose is a belief or problem to solve — not a mission statement or revenue goal"
+    - "Voice pillars are specific enough to guide writing decisions — not generic adjectives like 'friendly' or 'professional'"
+    - "Each voice pillar includes both an example AND a counter-example"
+    - "Messaging hierarchy has exactly one core message — not a list"
+    - "At least 3 before/after examples covering different content types"
+    - "Language section includes an 'avoid' list with reasons for each item"
+    - "Platform adaptations cover at least one digital channel and one non-digital touchpoint"
+    - "Tone by context table shows how tone flexes — not just repeats the same description for every context"
+  prohibited_elements:
+    - "Voice pillars that are single generic adjectives with no description or examples"
+    - "Missing counter-examples for voice pillars"
+    - "Messaging hierarchy with multiple 'core messages'"
+    - "Before/after examples that all demonstrate the same voice pillar"
+    - "Language dos/don'ts without reasons for what to avoid"
+    - "Platform adaptations that say the same thing for every platform"
+  length_check:
+    minimum: 700
+    maximum: 1400
+    strict: false

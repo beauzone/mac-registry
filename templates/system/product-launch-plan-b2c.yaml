@@ -1,0 +1,177 @@
+metadata:
+  id: product-launch-plan-b2c
+  version: "1.0.0"
+  display_name: "Product Launch Plan (B2C)"
+  category: planning
+  description: >
+    Structured go-to-market launch plan for a new B2C product, collection, or feature —
+    covering launch objectives, target consumer, channel strategy, creative approach,
+    timing and phasing, measurement framework, and risk mitigation. Designed for consumer
+    product launches across DTC, retail, subscription, and app contexts.
+  output_format: markdown
+  typical_length: "1,200–1,800 words"
+  best_for:
+    agents:
+      - strategic-planning
+      - campaign-manager
+    stages:
+      - seed
+      - series-a
+      - series-b
+      - series-c
+      - scale
+    modes:
+      - fractional
+      - fte
+  tags:
+    - product-launch
+    - go-to-market
+    - b2c
+    - launch-plan
+    - gtm
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: product_name
+      description: Name of the product, collection, feature, or service being launched
+      source: user_input
+    - field: product_description
+      description: What the product does, what problem it solves, and what makes it different
+      source: user_input
+    - field: target_consumer
+      description: Who this product is for — demographics, psychographics, and the job it does for them
+      source: user_input
+    - field: launch_timeline
+      description: Target launch date and any key milestones or constraints
+      source: user_input
+  optional:
+    - field: launch_budget
+      description: Total available marketing budget for the launch period
+      source: user_input
+    - field: distribution_channels
+      description: Where the product will be sold — DTC website, Amazon, retail, app store, etc.
+      source: user_input
+    - field: competitive_context
+      description: Key competitors and how this product is positioned against them
+      source: user_input
+    - field: existing_audience
+      description: Current email list size, social following, or existing customer base to leverage
+      source: user_input
+    - field: success_metrics
+      description: KPIs that will define a successful launch
+      source: user_input
+
+structure:
+  sections:
+    - id: launch_summary
+      name: Launch Summary
+      required: true
+      description: One-paragraph executive summary of the launch — what, who, when, and what success looks like
+      guidance: >-
+        Write a tight executive summary that answers: What is launching? Who is the primary target
+        consumer (one sentence)? When is launch? What does success look like in the first 30/60/90 days?
+        Keep to 100-150 words. This is the section that gets forwarded to leadership.
+      word_count: 100-150
+
+    - id: launch_objectives
+      name: Launch Objectives
+      required: true
+      description: 3-5 specific, measurable launch objectives tied to the business stage and product goals
+      guidance: >-
+        Write 3-5 objectives in SMART format. Each objective should specify a metric, a target, and a
+        timeframe. Distinguish between awareness objectives (reach, impressions, share of voice),
+        acquisition objectives (trial, purchase, subscriber), and engagement objectives (repeat purchase,
+        referral, review). Avoid objectives that are outputs (e.g., "run 3 campaigns") rather than outcomes.
+      word_count: 150-250
+
+    - id: target_consumer
+      name: Target Consumer
+      required: true
+      description: Profile of the primary launch target — who they are, what they want, and how they discover new products
+      guidance: >-
+        Describe the primary target consumer in behavioral terms, not just demographics. Cover:
+        what job they are hiring this product to do, what they currently use instead, where they
+        discover new products in this category, and what trust signals matter most for purchase
+        decisions. If a consumer archetype persona has been loaded, connect the archetype to this
+        specific product and launch context.
+      word_count: 200-300
+
+    - id: channel_strategy
+      name: Channel Strategy
+      required: true
+      description: Which channels will be used at each launch phase and why — with reasoning for channel selection
+      guidance: >-
+        Structure as pre-launch (awareness building, waitlist, seeding), launch week (concentrated
+        activation), and post-launch (sustained acquisition and retention). For each phase, specify:
+        channels used, content type, audience targeting, and expected role in the funnel
+        (awareness/consideration/conversion). Include creator/influencer strategy if relevant.
+        Be specific about paid vs. organic vs. owned channel mix.
+      word_count: 300-400
+
+    - id: creative_approach
+      name: Creative and Messaging Approach
+      required: true
+      description: Core message, visual direction, and channel-specific content guidance
+      guidance: >-
+        Cover: (1) Core message — the single most important thing consumers should understand
+        about this product in the first 7 seconds of any touchpoint; (2) Proof points — 2-3
+        specific claims or demonstrations that substantiate the core message; (3) Tone and visual
+        direction — brand voice and aesthetic for launch assets; (4) Channel-specific creative notes —
+        what the message looks like translated to paid social, email, creator brief, and landing page.
+        Do NOT produce a full creative brief here — this section orientates the creative direction.
+      word_count: 200-300
+
+    - id: launch_timeline
+      name: Launch Timeline and Phasing
+      required: true
+      description: Week-by-week or phase-by-phase launch schedule with key milestones and owners
+      guidance: >-
+        Present as a phased timeline: Pre-Launch (8-4 weeks out), Launch Week, and Post-Launch
+        (weeks 2-8). For each phase, list: key activities, deliverables due, channels active, and
+        success checkpoints. Flag any hard dependencies — things that must be complete before the
+        next phase can begin. Keep this section actionable and specific, not aspirational.
+      word_count: 200-300
+
+    - id: measurement_framework
+      name: Measurement Framework
+      required: true
+      description: KPIs, measurement methodology, and reporting cadence for the launch
+      guidance: >-
+        Specify: (1) Primary success metric — the single number that will define whether this launch
+        succeeded; (2) Secondary metrics by launch phase; (3) Attribution approach — how will channel
+        contribution be measured?; (4) Review cadence — daily during launch week, weekly thereafter;
+        (5) Decision triggers — what metrics would trigger a pivot (e.g., if day-3 CAC is 2x target,
+        we shift budget from X to Y). Avoid listing 15+ metrics — prioritize the 3-5 that actually
+        drive decisions.
+      word_count: 150-250
+
+    - id: risk_mitigation
+      name: Risk and Contingency
+      required: false
+      description: Top 3 launch risks and pre-planned contingency responses
+      guidance: >-
+        Identify the 3 most likely failure modes for this launch — not catastrophic scenarios, but
+        realistic risks (e.g., creator content doesn't perform, paid CAC is above target by launch
+        week 2, supply/inventory issue). For each, describe the early warning signal and the
+        pre-planned response. Having contingency responses pre-planned is what separates good
+        launch planning from calendar management.
+      word_count: 150-200
+
+quality_criteria:
+  - criterion: Measurable objectives with specific metrics and timeframes
+  - criterion: Channel strategy matched to the target consumer's discovery behavior
+  - criterion: Clear launch phases with specific activities, not just aspirations
+  - criterion: A primary success metric that will drive decision-making during launch
+  - criterion: At least one risk with a specific contingency response
+
+variants:
+  - name: DTC Digital Launch
+    description: For products launching exclusively or primarily through own website and direct channels
+    modifications: Emphasize email and owned audience activation in pre-launch; paid social and organic creator strategy for launch week; post-launch email lifecycle for conversion optimization
+  - name: Retail Launch
+    description: For products entering physical retail or Amazon for the first time
+    modifications: Add retail readiness section (in-store materials, retailer co-op programs, Amazon listing optimization); modify measurement framework to include sell-through rate and retail velocity metrics
+  - name: App Feature Launch
+    description: For significant feature launches within an existing consumer app
+    modifications: Emphasize in-app messaging and push notification strategy; include app store update notes; modify success metrics to activation rate and feature adoption rather than acquisition

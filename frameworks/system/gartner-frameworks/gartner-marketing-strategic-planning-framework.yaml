@@ -1,0 +1,253 @@
+metadata:
+  id: gartner-marketing-strategic-planning-framework
+  version: 1.0.0
+  display_name: Gartner Marketing Strategic Planning Framework
+  category: strategy
+  description: 'A structured process for aligning marketing strategy with enterprise business objectives. The framework helps
+    marketing leaders verify the business context, define marketing goals aligned to enterprise strategy, allocate resources,
+    establish performance metrics, and document a strategic marketing plan for execution and stakeholder communication.
+
+    '
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c
+    - growth
+    - enterprise
+    roles:
+    - cmo
+    - vp-marketing
+    - cro
+    - ceo
+    - board
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  tags:
+  - strategic-planning
+  - marketing-governance
+  - gartner
+  - marketing-strategy
+  - planning
+  source: Gartner Marketing Strategic Planning Template
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: business_strategy
+    description: Overall enterprise strategy and growth objectives
+    source: skill
+  - field: marketing_function_overview
+    description: Current state of the marketing organization
+    source: skill
+  - field: target_market_segments
+    description: Primary customer segments and markets
+    source: skill
+  optional:
+  - field: marketing_budget
+    description: Current marketing budget allocation
+    source: user_input
+  - field: marketing_capabilities
+    description: Current marketing capabilities and maturity
+    source: skill
+  - field: key_performance_metrics
+    description: Existing marketing KPIs
+    source: skill
+analysis:
+  instructions: 'Apply the Gartner Marketing Strategic Planning Framework to align
+
+    marketing strategy with enterprise business goals.
+
+
+    Step 1: Verify the Business Context
+
+    Evaluate enterprise strategy, market conditions, and competitive
+
+    landscape to determine the role marketing must play in achieving
+
+    business objectives.
+
+
+    Step 2: Align Marketing Goals for Impact
+
+    Translate enterprise growth goals into marketing objectives.
+
+    Define how marketing contributes to revenue growth, pipeline
+
+    generation, brand development, and customer acquisition.
+
+
+    Step 3: Strategically Manage Marketing Budgets
+
+    Allocate resources based on strategic priorities and expected
+
+    business impact. Evaluate cost efficiency and return on marketing
+
+    investments.
+
+
+    Step 4: Decide How to Measure Progress
+
+    Define metrics and KPIs that track marketing''s contribution to
+
+    business outcomes. Ensure alignment between operational metrics
+
+    and executive-level performance indicators.
+
+
+    Step 5: Document and Communicate the Strategy
+
+    Create a concise strategic plan summarizing marketing goals,
+
+    initiatives, investments, and performance metrics to align
+
+    stakeholders and guide execution.
+
+    '
+  dimensions:
+  - id: business-context
+    name: Business Context Verification
+    description: Understanding enterprise strategy and market conditions
+    prompts:
+    - What enterprise goals must marketing support?
+    - What macro trends and competitive dynamics affect the strategy?
+    - What role does marketing play in driving growth?
+  - id: goal-alignment
+    name: Marketing Goal Alignment
+    description: Degree to which marketing objectives support enterprise goals
+    prompts:
+    - Are marketing goals directly tied to business outcomes?
+    - Is there clarity around marketing's revenue impact?
+  - id: resource-allocation
+    name: Strategic Resource Allocation
+    description: Effectiveness of budget and resource deployment
+    prompts:
+    - Are marketing investments aligned with growth priorities?
+    - Are resources focused on high-impact initiatives?
+  - id: measurement-framework
+    name: Measurement and Metrics
+    description: Ability to measure marketing performance and impact
+    prompts:
+    - Are metrics aligned with enterprise goals?
+    - Do dashboards track both leading and lagging indicators?
+  - id: strategy-communication
+    name: Strategy Communication
+    description: Clarity and accessibility of the marketing strategy
+    prompts:
+    - Is the strategy documented clearly for stakeholders?
+    - Does the organization understand marketing priorities?
+output_templates:
+- id: marketing-strategy-plan
+  name: Marketing Strategic Plan
+  format: markdown
+  template: '# Marketing Strategic Plan - {company_name}
+
+
+    ## Executive Summary
+
+    {overview_of_marketing_strategy}
+
+
+    ## Business Context
+
+    {enterprise_goals_and_market_conditions}
+
+
+    ## Marketing Goals
+
+    {strategic_objectives}
+
+
+    ## Strategic Initiatives
+
+    {key_marketing_programs}
+
+
+    ## Budget Allocation
+
+    {investment_priorities}
+
+
+    ## Metrics and Measurement
+
+    {kpis_and_tracking}
+
+
+    ## Execution Roadmap
+
+    {timeline_and_ownership}
+
+    '
+  when_to_use: Use for marketing strategic plan deliverables.
+- id: strategy-on-a-page
+  name: Marketing Strategy on a Page
+  format: table
+  template: '| Strategic Objective | Initiative | Budget | KPI | Owner |
+
+    |--------------------|------------|--------|-----|------|
+
+    | {objective} | {initiative} | {budget} | {metric} | {owner} |
+
+    '
+  when_to_use: Use for marketing strategy on a page deliverables.
+rubric:
+  scoring_model: 1-5
+  dimensions:
+  - id: strategic-alignment
+    name: Strategic Alignment
+    weight: 0.35
+    scores:
+      5: Marketing strategy tightly aligned with enterprise goals
+      3: Partial alignment with some gaps
+      1: Marketing strategy disconnected from business strategy
+    description: Quality of strategic alignment.
+  - id: resource-efficiency
+    name: Resource Efficiency
+    weight: 0.3
+    scores:
+      5: Resources concentrated on high-impact initiatives
+      3: Moderate prioritization
+      1: Budget spread across low-impact activities
+    description: Quality of resource efficiency.
+  - id: measurement-discipline
+    name: Measurement Discipline
+    weight: 0.35
+    scores:
+      5: Clear metrics tied to business outcomes
+      3: Some performance metrics exist
+      1: Limited measurement of marketing performance
+    description: Quality of measurement discipline.
+  thresholds:
+    publish_ready: 4.0
+    revise: 3.0
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Strategy Without Metrics
+  description: Marketing strategy lacks measurable outcomes
+  mitigation: Define KPIs linked to business objectives
+- pattern: Budget Fragmentation
+  description: Marketing investments spread across too many initiatives
+  mitigation: Prioritize investments based on strategic impact
+- pattern: Disconnected Planning
+  description: Marketing plans created without alignment with enterprise strategy
+  mitigation: Ensure executive alignment before finalizing plan
+chaining:
+  before:
+  - framework_id: steeple
+    reason: Environmental scan informs strategic context and assumptions
+  - framework_id: account-based-marketing-system-framework
+    reason: ABM execution data feeds performance inputs to strategic planning cycles
+  after:
+  - framework_id: gartner-go-to-market-strategy-framework
+    reason: Strategic plan outputs set the GTM objectives and resource allocation
+  - framework_id: okrs
+    reason: Marketing strategic plan drives OKR setting and goal alignment
+stakeholder_guidance: 'Marketing strategy should be presented as a driver of enterprise growth.
+
+  Frame the plan in terms of business outcomes rather than marketing activities.
+
+  When discussing budget allocation, emphasize ROI and strategic priorities.
+
+  Use concise visual summaries to communicate the plan effectively to executives.'

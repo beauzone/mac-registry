@@ -1,0 +1,299 @@
+metadata:
+  id: quarterly-strategy
+  version: "1.0.0"
+  display_name: "Quarterly Strategy Deck"
+  category: strategy
+  description: >
+    A slide-outline for a quarterly marketing strategy presentation. Covers prior
+    quarter performance, current quarter priorities, key initiatives, resource plan,
+    and the asks or decisions required from leadership. Suitable for QBR presentations
+    and quarterly planning reviews.
+  output_format: slide-outline
+  typical_length: "10–14 slides"
+  best_for:
+    agents:
+      - strategic-planning
+      - chief-of-staff
+      - campaign-manager
+    stages:
+      - series-a
+      - series-b
+      - series-c
+      - enterprise
+    modes:
+      - fractional
+      - fte
+  tags:
+    - quarterly
+    - strategy
+    - qbr
+    - planning
+    - presentation
+    - leadership
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: quarter
+      description: The quarter this deck covers (e.g., Q2 2026)
+      source: user_input
+    - field: company_name
+      description: Company name for the deck header
+      source: skill
+    - field: prior_quarter_performance
+      description: Key metrics from the prior quarter — actuals vs. targets
+      source: skill
+    - field: strategic_priorities
+      description: The 3–5 strategic priorities for the current quarter
+      source: framework_output
+    - field: key_initiatives
+      description: The specific programs or campaigns driving each strategic priority
+      source: user_input
+  optional:
+    - field: budget_summary
+      description: Marketing budget envelope and allocation by channel or initiative
+      source: skill
+    - field: headcount
+      description: Team headcount and any open roles affecting capacity
+      source: user_input
+    - field: executive_audience
+      description: Who is in the room — CEO, board, leadership team, marketing team only
+      source: user_input
+
+structure:
+  sections:
+    - id: title-slide
+      name: Title Slide
+      required: true
+      description: Deck title, quarter, presenter, and date
+      guidance: >-
+        Keep it simple. Include: company name (or logo placeholder), deck title ("Q{N} Marketing Strategy"), quarter, presenter name/role, and date. No content — this is a cover.
+
+    - id: executive-summary
+      name: Executive Summary
+      required: true
+      description: The 3–5 most important things leadership needs to know from this deck
+      guidance: Write this as "what leadership needs to take away." Not a table of contents — a summary of the strategic situation. Include the prior quarter verdict (on track / off track), the top priority for the current quarter, and the most important ask or decision.
+      word_count: "80–120 words per slide"
+
+    - id: prior-quarter-scorecard
+      name: Prior Quarter Scorecard
+      required: true
+      description: Performance against prior quarter goals — actuals vs. targets with verdict
+      guidance: >-
+        Present as a table with columns: Goal, Target, Actual, Status (Green/Yellow/Red). Include a 2–3 sentence narrative below the table that explains the overall verdict — not just "we hit 2 of 3 goals" but what the performance signals about the business. Be honest about misses.
+      format_notes: One slide. Table + 3-sentence narrative. Traffic light status indicators.
+
+    - id: what-we-learned
+      name: What We Learned
+      required: true
+      description: 3–5 insights from prior quarter that inform current quarter strategy
+      guidance: These should be actionable insights, not data restatements. "Demand gen underperformed in mid-market because our ICP definition was too broad" is an insight. "We generated 200 MQLs" is not. Each insight should connect to a current-quarter priority or change.
+      format_notes: Bullet points. 3–5 bullets maximum. One slide.
+
+    - id: strategic-priorities
+      name: "Q{N} Strategic Priorities"
+      required: true
+      description: The 3–5 strategic priorities for the current quarter with rationale
+      guidance: Present each priority as a named theme, not a tactic. Include the business rationale — why does this priority matter this quarter? Connect each priority to a business metric (pipeline, NRR, brand). Avoid listing priorities that are just continuation of prior work with no differentiation.
+      format_notes: One priority per slide section (or combined if fewer than 4). Name + 2–3 sentence rationale + linked metric.
+
+    - id: key-initiatives
+      name: Key Initiatives
+      required: true
+      description: The specific programs, campaigns, or projects driving each strategic priority
+      guidance: >-
+        For each priority, list the 1–3 key initiatives. Include: initiative name, brief description, owner, budget, and expected outcome. Avoid including everything — only the initiatives that materially move the priority metrics.
+      format_notes: >-
+        Table per priority or single combined table: Initiative | Priority | Owner | Budget | Expected Outcome
+
+    - id: resource-plan
+      name: Resource Plan
+      required: false
+      description: Budget allocation by initiative or channel, headcount, and capacity constraints
+      guidance: Present the budget envelope and key allocation decisions. Flag any resource constraints that limit the plan. If headcount is a constraint, name the specific capability gap. Include a "what we'd do with more" note if relevant for executive audience.
+      format_notes: Budget table + brief narrative on constraints
+
+    - id: risks-and-dependencies
+      name: Risks and Dependencies
+      required: false
+      description: Risks to plan execution and cross-functional dependencies
+      guidance: Include 3–5 realistic risks, not worst-case catastrophes. Cross-functional dependencies matter most — what does marketing need from Sales, Product, or Finance to execute the plan? Be explicit about timeline dependencies.
+      format_notes: >-
+        Table: Risk/Dependency | Impact | Mitigation / Ask
+
+    - id: asks-and-decisions
+      name: Asks and Decisions Required
+      required: true
+      description: The specific decisions or approvals needed from leadership to execute the plan
+      guidance: This is the action slide. List the specific decisions leadership needs to make — budget approvals, priority trade-offs, resource allocation decisions. Do not bury asks in the narrative. One slide, 3–5 items maximum.
+      format_notes: Bulleted list. Each ask should have a decision deadline.
+
+    - id: appendix
+      name: Appendix
+      required: false
+      description: Supporting data, methodology, or detail referenced in the deck
+      guidance: Include only what was explicitly requested or what supports key assertions in the main deck. Label each appendix slide with the section it supports.
+
+template: |
+  # {company_name} — {quarter} Marketing Strategy
+
+  *{presenter_name}, {presenter_role} | {date}*
+
+  ---
+
+  ## Slide 1: Title
+
+  **{company_name}**
+  **{quarter} Marketing Strategy**
+  {presenter_name} | {date}
+
+  ---
+
+  ## Slide 2: Executive Summary
+
+  **What leadership needs to know:**
+
+  - **Prior quarter verdict:** {on track / off track — 1 sentence on why}
+  - **Top priority this quarter:** {1-sentence statement of the most important priority}
+  - **The ask:** {the most important decision or approval needed}
+
+  *{2–3 sentence narrative connecting these three points for leaders who will only read this slide.}*
+
+  ---
+
+  ## Slide 3: Prior Quarter Scorecard
+
+  | Goal | Target | Actual | Status |
+  |---|---|---|---|
+  | {Goal 1} | {target} | {actual} | 🟢 On Track |
+  | {Goal 2} | {target} | {actual} | 🔴 Missed |
+  | {Goal 3} | {target} | {actual} | 🟡 At Risk |
+
+  **Verdict:** {2–3 sentence narrative on what the overall performance signals about the business.}
+
+  ---
+
+  ## Slide 4: What We Learned
+
+  **Insights that shape {quarter} strategy:**
+
+  - {Insight 1 — specific and actionable, connected to a current-quarter change}
+  - {Insight 2 — specific and actionable}
+  - {Insight 3 — specific and actionable}
+  - {Insight 4 — optional, specific and actionable}
+
+  ---
+
+  ## Slide 5: {quarter} Strategic Priorities
+
+  **Priority 1: {Priority Name}**
+  {2–3 sentence rationale. Why this quarter? What business metric does it move?}
+
+  **Priority 2: {Priority Name}**
+  {2–3 sentence rationale.}
+
+  **Priority 3: {Priority Name}**
+  {2–3 sentence rationale.}
+
+  *{Add Priority 4 and 5 only if distinct from above — avoid diluting focus}*
+
+  ---
+
+  ## Slide 6: Key Initiatives
+
+  | Initiative | Priority | Owner | Budget | Expected Outcome |
+  |---|---|---|---|---|
+  | {Initiative 1} | {Priority} | {owner} | {$amount} | {metric + target} |
+  | {Initiative 2} | {Priority} | {owner} | {$amount} | {metric + target} |
+  | {Initiative 3} | {Priority} | {owner} | {$amount} | {metric + target} |
+  | {Initiative 4} | {Priority} | {owner} | {$amount} | {metric + target} |
+
+  ---
+
+  ## Slide 7: Resource Plan *(include when presenting to leadership or board)*
+
+  **Budget:** {total marketing budget envelope for quarter}
+
+  | Allocation | Amount | % of Budget |
+  |---|---|---|
+  | {Channel or initiative category} | {$amount} | {%} |
+  | {Channel or initiative category} | {$amount} | {%} |
+  | {Channel or initiative category} | {$amount} | {%} |
+
+  **Capacity constraints:** {1–2 sentences on headcount gaps or resource limits that affect plan execution.}
+
+  ---
+
+  ## Slide 8: Risks and Dependencies *(include when plan has meaningful cross-functional dependencies)*
+
+  | Risk / Dependency | Impact | Mitigation / Ask |
+  |---|---|---|
+  | {Risk 1} | {H/M/L} | {mitigation or ask} |
+  | {Dependency on Sales} | {H/M/L} | {specific ask from Sales} |
+  | {Dependency on Product} | {H/M/L} | {specific ask from Product} |
+
+  ---
+
+  ## Slide 9: Asks and Decisions Required
+
+  **To execute this plan, we need:**
+
+  - {Decision 1 — specific ask, decision needed by {date}}
+  - {Decision 2 — specific ask, decision needed by {date}}
+  - {Decision 3 — budget approval / resource allocation / priority trade-off}
+
+  ---
+
+  ## Appendix *(as needed)*
+
+  **A1: {Supporting data or methodology}**
+  {Detail that supports assertions in the main deck.}
+
+variations:
+  - id: board-update
+    name: Board / Investor Update
+    description: Adapted for board meeting context. Add investor-relevant metrics (pipeline contribution, brand positioning progress). Remove internal resource detail. Increase emphasis on strategic narrative.
+    overrides:
+      sections_add:
+        - investor-metrics
+      sections_remove:
+        - resource-plan
+      tone: "Formal. Lead with business impact and strategic implications. Assume investors want numbers and narrative, not internal planning detail."
+
+  - id: team-qbr
+    name: Team QBR
+    description: Internal team version. More detailed on initiatives and learnings. Less emphasis on executive summary and asks.
+    overrides:
+      sections_remove:
+        - asks-and-decisions
+      tone: "Collaborative and direct. Include more detail on learnings and experiment results. Written for the team, not for executives."
+
+branding:
+  supports_branding: true
+  brandable_elements:
+    - element: cover_page
+      description: Company logo, brand colors, and typography on title slide
+    - element: color_scheme
+      description: Slide header and table accent colors aligned to brand palette
+    - element: footer
+      description: Company name, quarter, and confidentiality notice on each slide
+    - element: status_indicators
+      description: Traffic light colors (green/yellow/red) aligned to brand palette where possible
+
+quality_criteria:
+  required_elements:
+    - "Prior quarter scorecard present with actuals vs. targets and a narrative verdict"
+    - "What We Learned section contains specific, actionable insights — not data restatements"
+    - "Strategic priorities are named themes with rationale, not tactic lists"
+    - "Key initiatives table includes owner and expected outcome for each initiative"
+    - "Asks and Decisions slide is present with specific decisions and deadlines"
+  prohibited_elements:
+    - "Priorities list that is just a continuation of prior quarter with no differentiation"
+    - "Asks buried in narrative rather than surfaced as a dedicated slide"
+    - "Performance metrics reported without a verdict or interpretation"
+    - "More than 5 strategic priorities"
+  length_check:
+    minimum: 8
+    maximum: 16
+    strict: false

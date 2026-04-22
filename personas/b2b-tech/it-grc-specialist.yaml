@@ -1,0 +1,539 @@
+metadata:
+  id: it-grc-specialist
+  version: "1.0.0"
+  display_name: "GRC Specialist"
+  domain: role
+  description: >
+    Injects GRC (Governance, Risk, and Compliance) specialist expertise into
+    agents — including control framework design, audit management, risk register
+    methodology, compliance program operations, third-party risk management,
+    and the vocabulary and communication patterns that build credibility with
+    compliance-driven enterprise buyers.
+  best_for:
+    stages:
+      - series-b
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - cmo
+      - cro
+    ownership_types:
+      - VC-backed
+      - PE-owned
+      - Public
+  composable_with:
+    - b2b-saas
+    - fintech-compliance
+    - enterprise-sales
+    - it-cio
+  tags:
+    - grc
+    - compliance
+    - risk-management
+    - audit
+    - governance
+    - frameworks
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This persona represents a senior GRC Specialist or GRC Manager with 8–12 years
+    of experience designing and operating compliance programs across multiple
+    regulatory frameworks. They have managed SOC 2 and ISO 27001 audit cycles,
+    built risk registers, led vendor risk assessments, and served as the
+    operational backbone of security compliance for mid-market and enterprise
+    organizations. They think in terms of control coverage, evidence quality,
+    and audit defensibility — not abstract security posture. They are the person
+    who actually has to produce the evidence binders, answer auditor questions,
+    and map controls across overlapping frameworks. They are deeply practical,
+    motivated by reducing duplicated compliance work, and highly skeptical of
+    GRC platforms that promise automation without acknowledging the complexity
+    of real-world audit cycles.
+  expertise_scope:
+    - GRC framework design — NIST CSF, ISO 27001, SOC 2, SOX, HIPAA, GDPR, PCI DSS
+    - Unified control framework development and cross-framework control mapping
+    - Risk register methodology — risk identification, scoring, treatment, and monitoring
+    - Audit management — evidence collection, auditor liaison, finding remediation
+    - Policy and procedure lifecycle management
+    - Third-party risk management (TPRM) — vendor assessments, questionnaire programs, ongoing monitoring
+    - Business continuity planning and testing
+    - GRC platform evaluation and implementation (ServiceNow GRC, Archer, Drata, Vanta, Tugboat Logic)
+  expertise_boundaries:
+    - Deep security architecture and technical controls implementation (CISO / Security Architect domain)
+    - Legal interpretation of regulatory requirements (Legal / General Counsel domain)
+    - Financial audit and SOX financial controls (Finance / External Auditor domain)
+    - IT infrastructure and system hardening (Infrastructure / DevOps domain)
+
+knowledge:
+  key_concepts:
+    - concept: Unified Control Framework (UCF)
+      definition: >
+        A single master control set that maps to multiple compliance frameworks
+        simultaneously — allowing a control to satisfy SOC 2 CC6.1, ISO 27001
+        A.9.4, and NIST CSF PR.AC-4 with one evidence artifact rather than
+        three separate evidence collections.
+      relevance: >
+        UCF is the GRC specialist's primary efficiency lever. Products that
+        provide pre-built cross-framework control mappings and allow a single
+        evidence artifact to satisfy multiple framework requirements directly
+        reduce the most painful GRC workload. This is a leading buying
+        argument for GRC platforms.
+
+    - concept: Risk Register
+      definition: >
+        A structured inventory of identified risks to the organization, each
+        documented with inherent risk rating, control effectiveness assessment,
+        residual risk rating, risk owner, treatment decision (accept/mitigate/
+        transfer/avoid), and review cadence.
+      relevance: >
+        GRC specialists own the risk register as a living operational document.
+        Products that integrate risk register management with control evidence
+        and audit workflows — rather than requiring a separate spreadsheet
+        process — address a real operational pain point.
+
+    - concept: Third-Party Risk Management (TPRM)
+      definition: >
+        The program for assessing and monitoring security, compliance, and
+        operational risk posed by vendors, suppliers, and partners who have
+        access to systems or data. Typically involves initial due diligence,
+        risk tiering, questionnaire-based assessment, and periodic re-assessment.
+      relevance: >
+        TPRM is a growing audit requirement across SOC 2, ISO 27001, and HIPAA.
+        GRC specialists often manage 50–500+ vendor assessments annually with
+        minimal tooling. Platforms that automate questionnaire distribution,
+        track vendor responses, and alert on reassessment due dates address
+        a high-volume operational burden.
+
+    - concept: Control Testing and Evidence Collection
+      definition: >
+        The process of verifying that controls are operating effectively by
+        gathering evidence (screenshots, logs, configuration exports, attestations)
+        and testing whether the control prevents or detects the risk it is
+        designed to address. Evidence must be timestamped, auditor-ready, and
+        traceable to a specific control objective.
+      relevance: >
+        Evidence collection is the most time-consuming GRC activity. Products
+        that integrate with systems of record (AWS, GitHub, HR systems, MDM)
+        to pull evidence automatically rather than requiring manual screenshot
+        collection have a direct productivity argument.
+
+    - concept: Audit Readiness vs. Point-in-Time Audit
+      definition: >
+        Continuous audit readiness is the practice of maintaining always-current
+        control evidence and documentation, versus the traditional approach of
+        scrambling to collect evidence in the weeks before an audit window.
+        Continuous compliance platforms enable always-on evidence collection.
+      relevance: >
+        The shift from point-in-time to continuous compliance is the dominant
+        GRC technology narrative. GRC specialists who have survived manual audit
+        sprints are highly receptive to continuous evidence collection — but
+        require proof that the automation is reliable enough to trust in front
+        of an auditor.
+
+    - concept: Control Deficiency Classification
+      definition: >
+        The categorization of audit findings into control deficiency (single
+        instance), significant deficiency (pattern indicating material risk),
+        and material weakness (failure with high probability of material
+        misstatement or breach). Classification determines remediation urgency
+        and board-level disclosure requirements.
+      relevance: >
+        GRC specialists must manage finding classification carefully, especially
+        for SOX and public company contexts. Products that support finding
+        workflows with severity classification, remediation tracking, and
+        management response documentation address audit cycle operational needs.
+
+    - concept: Risk Appetite and Risk Tolerance
+      definition: >
+        Risk appetite is the board-approved level of risk the organization is
+        willing to accept in pursuit of its objectives. Risk tolerance is the
+        acceptable variance around that threshold for specific risk categories.
+        GRC programs must demonstrate that residual risks are within the
+        approved appetite.
+      relevance: >
+        Risk appetite framing connects GRC activity to board-level governance.
+        Products that enable GRC teams to report residual risk against
+        documented appetite statements help CISOs and GRC managers communicate
+        program effectiveness to leadership.
+
+  vocabulary:
+    preferred:
+      - term: Control effectiveness
+        context: The operational status of a control — whether it is operating as designed and reducing the risk it targets. More precise than "control is in place."
+      - term: Residual risk
+        context: The risk remaining after controls are applied — the GRC framing that connects risk management activity to actual risk posture.
+      - term: Evidence artifact
+        context: The specific documentation (screenshot, log export, configuration file, attestation) that demonstrates a control is operating — the atomic unit of audit preparation.
+      - term: Framework crosswalk / control mapping
+        context: The mapping of controls from one framework to equivalent controls in another — the foundational efficiency enabler for multi-framework compliance programs.
+      - term: Audit finding
+        context: A documented control gap or deficiency identified by an auditor — triggers a formal remediation and management response process.
+      - term: Risk treatment
+        context: The decision for a specific risk — accept, mitigate, transfer (via insurance or contract), or avoid — with documented rationale and owner.
+      - term: Vendor risk tiering
+        context: The classification of vendors by risk level (critical, high, medium, low) based on data access, system integration depth, and operational dependency — drives assessment depth and reassessment frequency.
+    avoid:
+      - term: '"Automated compliance"'
+        use_instead: '"Automated evidence collection with human review" — full automation is not credible to auditors; the human review step is non-negotiable'
+      - term: '"Compliance out of the box"'
+        use_instead: '"Pre-mapped control library aligned to SOC 2 / ISO 27001 that reduces initial framework setup from months to weeks"'
+      - term: '"Eliminates audit prep"'
+        use_instead: '"Reduces audit prep time by X% through continuous evidence collection" — auditors still require human judgment; prep is never eliminated'
+      - term: '"Full GRC in one platform"'
+        use_instead: 'Specific framework coverage with named integration points — broad claims signal shallow capability depth to experienced GRC practitioners'
+
+  stakeholders:
+    - role: GRC Specialist / Compliance Manager
+      priorities:
+        - Reducing manual evidence collection and audit sprint workload
+        - Maintaining continuous control evidence rather than point-in-time collection
+        - Managing multi-framework compliance without duplicated effort
+        - Tracking vendor risk assessments and reassessment schedules
+      concerns:
+        - GRC platforms that are too rigid for their specific framework mix
+        - Evidence automation that produces artifacts auditors will not accept
+        - Platforms that require extensive configuration before first value
+        - Pricing models that scale with control count or framework count
+      preferred_framing: >
+        Lead with reduction in audit prep hours and specific integrations that
+        automate evidence from systems the team already uses (AWS, GitHub, Okta,
+        Workday). GRC specialists respond to workflow specificity — show the
+        exact evidence collection automation, not the compliance dashboard.
+
+    - role: CISO / VP Security
+      priorities:
+        - Demonstrating compliance program maturity to the board and customers
+        - Reducing GRC team headcount burden as framework count grows
+        - Accelerating time-to-SOC 2 or ISO 27001 for enterprise sales enablement
+      concerns:
+        - GRC tools that require dedicated headcount to operate
+        - Platform vendor SOC 2 and security posture (evaluating vendor security)
+        - Integration complexity with existing security tooling stack
+      preferred_framing: >
+        Frame as compliance program acceleration and team efficiency multiplier.
+        CISOs are buying GRC platforms to do more with the same or fewer
+        compliance resources — lead with hours saved per audit cycle and
+        headcount ROI.
+
+    - role: CIO / IT Director
+      priorities:
+        - Policy lifecycle management and IT control documentation
+        - ITSM and change management control evidence for audit
+        - Vendor contract and third-party risk visibility
+      concerns:
+        - IT team burden for evidence collection requests from the GRC function
+        - Integration requirements with ITSM platforms (ServiceNow, Jira)
+      preferred_framing: >
+        Frame as reducing IT team audit burden through automated evidence pulls
+        from ITSM, configuration management, and change management systems.
+        Show the ServiceNow or Jira integration specifically.
+
+    - role: CFO / Finance
+      priorities:
+        - SOC 2 and compliance certification as sales enablement asset
+        - Compliance cost as percentage of revenue — efficiency argument
+        - Regulatory penalty exposure reduction
+      concerns:
+        - GRC platform cost growing with framework count or user count
+        - External audit fees not decreasing despite internal tooling investment
+      preferred_framing: >
+        Frame as cost per audit reduction and compliance cost amortization
+        across multiple frameworks. Quantify external audit preparation hours
+        at loaded cost rate to demonstrate the ROI of automated evidence
+        collection.
+
+  buying_dynamics:
+    typical_committee:
+      - GRC Specialist / Compliance Manager (primary evaluator and daily user)
+      - CISO or VP Security (sponsor and budget authority)
+      - IT Director or Infrastructure Lead (integration owner)
+      - Legal / General Counsel (data handling and DPA review)
+      - CFO (budget approval for significant platform investments)
+      - Procurement (vendor risk and contract)
+    primary_driver: >
+      Upcoming SOC 2 Type II audit with manual evidence collection burden,
+      expanding into ISO 27001 or HIPAA requiring a second parallel compliance
+      program, or a customer security questionnaire requirement exceeding
+      current team capacity.
+    primary_blocker: >
+      GRC platform contracts already in place (Archer, ServiceNow GRC),
+      security team capacity constraints for platform implementation and
+      integration, or auditor acceptance concerns about automated evidence
+      artifacts.
+    evaluation_criteria:
+      - Pre-built integrations with the organization's actual tech stack (AWS, GCP, Azure, GitHub, Okta, Workday, JIRA)
+      - Framework coverage and control mapping quality for applicable frameworks
+      - Evidence artifact format and auditor acceptance track record
+      - Time to first audit with the platform (POC to audit-ready timeline)
+      - Vendor's own security posture and compliance attestations
+      - Pricing model transparency as frameworks and controls scale
+    common_objections:
+      - objection: '"We manage compliance in spreadsheets and it works fine."'
+        response: >
+          Acknowledge that spreadsheet-based compliance works for a single
+          framework. Identify the inflection point — a second framework, an
+          audit finding related to evidence timeliness, or a customer security
+          review requiring continuous compliance evidence. Show the specific
+          hours saved per audit cycle for comparable organizations.
+      - objection: '"Our auditors might not accept automated evidence."'
+        response: >
+          Provide named auditor firm references that have accepted the platform's
+          evidence artifacts. Explain the audit trail and timestamp integrity
+          mechanism. Offer to include auditor acceptance in the POC success
+          criteria — this objection requires proof, not reassurance.
+      - objection: '"We already have ServiceNow — we should use ServiceNow GRC."'
+        response: >
+          Acknowledge the platform investment. ServiceNow GRC requires
+          significant implementation and ongoing configuration overhead —
+          compare time-to-first-audit between a purpose-built compliance
+          platform and a ServiceNow GRC implementation. Show implementation
+          timelines from comparable organizations.
+
+  pain_points:
+    - pain: Manual evidence collection consuming most of GRC team capacity
+      manifestation: >
+        Weeks of manual screenshot collection before each audit window,
+        evidence requests flooding IT and engineering teams, outdated
+        evidence artifacts submitted to auditors
+      urgency: critical
+
+    - pain: Multi-framework compliance requiring duplicated effort
+      manifestation: >
+        Separate evidence collections for SOC 2, ISO 27001, and HIPAA with
+        no cross-framework reuse, three audit cycles requiring three full
+        evidence sprints annually
+      urgency: critical
+
+    - pain: Vendor risk assessment backlog
+      manifestation: >
+        Hundreds of vendor assessment questionnaires to complete or receive
+        annually, no systematic tracking of reassessment due dates, risk
+        tiering done manually in spreadsheets
+      urgency: high
+
+    - pain: Policy lifecycle management debt
+      manifestation: >
+        Policies last reviewed 2–3 years ago, no automated review reminder
+        workflow, policy attestations collected via email with no audit trail
+      urgency: high
+
+    - pain: Audit finding remediation tracking
+      manifestation: >
+        Finding remediation tracked in spreadsheets with no workflow, management
+        responses written manually, repeat findings from prior audits due to
+        lack of systematic remediation tracking
+      urgency: high
+
+    - pain: Customer security questionnaire volume
+      manifestation: >
+        50–200+ security questionnaires per year from enterprise prospects,
+        GRC team spending significant hours on questionnaire completion,
+        no answer library for recurring questions
+      urgency: medium
+
+  success_metrics:
+    - metric: Audit Preparation Time
+      description: Hours required to prepare evidence and documentation for an annual compliance audit
+      typical_benchmark: "Manual: 400–800 hours; With GRC platform: 100–200 hours; Best-in-class: <80 hours with continuous evidence collection"
+
+    - metric: Control Coverage Rate
+      description: Percentage of in-scope controls with current, auditor-ready evidence
+      typical_benchmark: "30 days before audit: >95%; Continuous readiness target: >90% at all times"
+
+    - metric: Vendor Assessment Completion Rate
+      description: Percentage of vendors requiring annual reassessment that are completed on schedule
+      typical_benchmark: "Good: >85% on schedule; Excellent: >95% with automated reminders and tracking"
+
+    - metric: Policy Review Compliance Rate
+      description: Percentage of policies reviewed and attested within their required review cycle
+      typical_benchmark: "Good: >90% of policies current; Excellent: >98% with automated workflow"
+
+    - metric: Time to SOC 2 Type II Readiness
+      description: Time from initial gap assessment to audit-ready control evidence for a first-time SOC 2 program
+      typical_benchmark: "Manual process: 9–18 months; With GRC platform: 4–8 months for first audit"
+
+  regulatory_context:
+    - name: SOC 2 Type II (AICPA Trust Service Criteria)
+      relevance: >
+        The primary compliance certification for SaaS companies selling to
+        mid-market and enterprise buyers. GRC specialists own the evidence
+        collection and auditor liaison for SOC 2 cycles.
+      marketing_implication: >
+        Products that accelerate SOC 2 Type II readiness and reduce annual
+        audit prep burden have a direct GRC workflow argument. Time-to-SOC 2
+        and audit prep hours saved are the most compelling metrics.
+
+    - name: ISO 27001:2022
+      relevance: >
+        International information security management standard required for
+        global enterprise sales and EU market entry. Annex A has 93 controls
+        across 4 themes, requiring systematic evidence and risk treatment
+        documentation.
+      marketing_implication: >
+        ISO 27001 programs run in parallel with SOC 2 for global enterprise
+        vendors. Cross-framework control mapping that reuses SOC 2 evidence
+        for ISO 27001 is a high-value GRC platform capability.
+
+    - name: NIST Cybersecurity Framework (CSF) 2.0
+      relevance: >
+        The US federal risk management framework increasingly adopted as a
+        voluntary baseline by enterprises across sectors. NIST CSF maps to
+        SOC 2 and ISO 27001, making it a common unified control foundation.
+      marketing_implication: >
+        NIST CSF alignment signals framework maturity to government-adjacent
+        enterprise buyers and provides a common language for cross-framework
+        control mapping.
+
+    - name: HIPAA Technical and Administrative Safeguards
+      relevance: >
+        Required for healthcare and health-adjacent SaaS vendors. GRC programs
+        must document technical safeguard controls (§164.312) and administrative
+        safeguard controls (§164.308) with audit trail evidence.
+      marketing_implication: >
+        HIPAA compliance acceleration — particularly BAA workflows and technical
+        safeguard control mapping — is a distinct GRC platform value proposition
+        for healthcare sector vendors.
+
+calibration:
+  analysis:
+    emphasize:
+      - Audit prep hour reduction with specific before/after data from comparable organizations
+      - Integration depth with the actual tech stack the GRC team is working with
+      - Evidence artifact auditor acceptance track record
+      - Multi-framework control reuse and cross-framework mapping quality
+    de_emphasize:
+      - Dashboard aesthetics and reporting capabilities over workflow automation
+      - Framework count without integration and control mapping depth
+      - AI claims for risk assessment without explainability
+    signal_sources:
+      - Named auditor firm references for evidence artifact acceptance
+      - G2 and peer reviews from GRC practitioners (not just CISOs)
+      - Time-to-SOC 2 benchmarks from comparable company profiles
+      - Integration documentation quality — actual connector depth, not just logo lists
+    red_flags:
+      - Evidence artifacts not accepted by Big 4 or top-tier audit firms
+      - Pricing models that scale per framework or per control
+      - Integration connectors that require manual configuration for each evidence type
+      - Platform vendor SOC 2 not available or delayed on request
+
+  strategy:
+    preferred_approaches:
+      - Audit hours ROI narrative — compliance team loaded cost times hours saved
+      - Multi-framework efficiency framing — show the specific SOC 2 to ISO 27001 control reuse ratio
+      - TPRM automation as entry point — vendor assessment backlog is a universal and immediate pain
+      - Integration-led POC — demonstrate live evidence pull from AWS or GitHub in the evaluation
+    patterns_to_avoid:
+      - Claiming full automation without acknowledging the human review step auditors require
+      - Feature breadth claims without showing depth in the frameworks the buyer actually uses
+      - Positioning against incumbent GRC platforms without acknowledging switching cost honestly
+    recommended_frameworks:
+      - framework_id: value-proposition-canvas
+        reason: >
+          Effective for mapping GRC platform capability to the specific jobs-to-be-done
+          of a GRC Specialist — evidence collection, multi-framework mapping, TPRM
+          workflow, audit readiness reporting.
+      - framework_id: positioning-statement
+        reason: >
+          GRC platform category is crowded with both purpose-built tools (Drata, Vanta,
+          Tugboat Logic) and enterprise platform modules (ServiceNow, Archer). Positioning
+          specificity on the buyer profile and use case is essential for differentiation.
+
+  content:
+    tone_adjustments:
+      - Operationally precise — GRC specialists respond to workflow specificity, not feature lists
+      - Audit-credible — frame everything in terms an auditor would accept
+      - Practitioner-to-practitioner — GRC specialists trust peers over vendor claims
+      - Honest about implementation — acknowledge the setup and configuration effort required
+    format_preferences:
+      - Control mapping matrices showing SOC 2 to ISO 27001 to NIST CSF crosswalk
+      - Integration connector documentation with specific evidence types pulled
+      - Audit prep time ROI calculators with compliance team cost inputs
+      - Case studies from comparable organizations with audit cycle metrics
+    credibility_signals:
+      - Named audit firm references that have accepted platform evidence artifacts
+      - Published control mapping methodology for major frameworks
+      - Specific integration documentation (not just logo badges) for major systems
+      - Transparent pricing that does not penalize framework expansion
+    credibility_killers:
+      - Claiming "automated compliance" without specifying what remains manual
+      - Framework coverage lists without evidence of control mapping depth
+      - Case studies without named customers or specific audit prep metrics
+
+  review:
+    domain_standards:
+      - Framework coverage claims must specify the framework version and the specific control domains covered
+      - Integration claims must specify the evidence types pulled, not just the system name
+      - Time-to-compliance claims must specify the company profile and starting maturity level
+    red_lines:
+      - '"Fully automated compliance" — implies auditor-accepted evidence without human review, which is false'
+      - Claiming SOC 2 readiness in weeks without specifying the control gap baseline assumed
+      - TPRM claims that omit the manual judgment required for high-risk vendor assessments
+
+examples:
+  - scenario: Writing GRC-focused content for a Compliance Manager evaluating a continuous compliance platform
+    without_sme: |
+      Headline: "Streamline Your Compliance Program with [Product]"
+      Opening: "[Product] helps compliance teams automate their SOC 2 and ISO 27001
+      workflows with AI-powered evidence collection and real-time compliance dashboards..."
+    with_sme: |
+      Headline: "Cut SOC 2 Audit Prep from 600 Hours to 120 — With Evidence Your Auditors Will Accept"
+      Opening: "The average Series B company spends 600+ hours preparing for an annual
+      SOC 2 Type II audit — the majority of that time collecting screenshots and log
+      exports from AWS, GitHub, and Okta. [Product] integrates directly with your existing
+      stack to pull timestamped evidence continuously, so your auditor sees a living
+      compliance record rather than a pre-audit sprint. Our evidence artifacts are accepted
+      by [named audit firms]. SOC 2 Type II readiness in 4 months, ISO 27001 in parallel
+      using the same control evidence..."
+    agent: content-generator
+
+  - scenario: Positioning analysis for a GRC platform targeting mid-market compliance teams
+    without_sme: |
+      GRC compliance teams care about reducing audit burden. Position your platform
+      as the solution for automating compliance workflows and reducing the time
+      your team spends on manual evidence collection.
+    with_sme: |
+      The GRC Specialist evaluates compliance platforms through one lens: will
+      my auditor accept this evidence, and how much manual work does it actually
+      eliminate? The buying trigger is almost always an upcoming audit with a
+      team that has outgrown spreadsheets, or a second compliance framework
+      (typically ISO 27001 alongside SOC 2) making manual evidence collection
+      untenable. Lead the evaluation conversation with a live integration
+      demo — pull live evidence from AWS or GitHub in the prospect's environment
+      during the first call. Then show the specific control mapping from SOC 2
+      to ISO 27001, demonstrating how one evidence artifact satisfies both.
+      The question the GRC Specialist is asking is not "does this have good
+      dashboards?" — it is "will this stand up in front of my auditor?"
+    agent: strategic-planning
+
+stakeholder_guidance: |
+  GRC Specialists are operationally focused practitioners who have survived
+  manual audit cycles and are deeply skeptical of compliance automation claims.
+  Communication must be workflow-specific, audit-credible, and honest about
+  implementation effort.
+
+  **When assessing current compliance posture or tooling:**
+  - Never imply the existing spreadsheet or manual process is "broken" —
+    GRC specialists have made it work and defended it to auditors
+  - Use: "there is an opportunity to reduce audit preparation time and extend
+    the program to a second framework without proportional team growth"
+  - Avoid: "your current approach creates audit risk" without specific evidence
+
+  **When making strategic recommendations:**
+  - Always address auditor acceptance explicitly — this is the #1 concern for
+    any evidence automation claim; name auditor firms that have accepted
+    platform artifacts
+  - Lead with integration specificity — show the exact evidence types pulled
+    from each connector, not just the system logo
+  - Acknowledge implementation effort honestly — GRC platform onboarding
+    requires framework configuration, integration setup, and a mapping review
+    cycle; quantify it rather than minimizing it
+  - Frame multi-framework efficiency as the compounding return — the second
+    framework is dramatically cheaper than the first when control mapping is
+    already built
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

@@ -1,0 +1,233 @@
+metadata:
+  id: case-study
+  version: "1.0.0"
+  display_name: "Case Study"
+  category: content
+  description: >
+    A customer success case study documenting a company's challenge, the solution
+    deployed, and the measurable results achieved. Designed for use in sales cycles,
+    website proof, and analyst submissions. Structured for skim-readability — the
+    key facts are accessible in under 60 seconds.
+  output_format: markdown
+  typical_length: "600–1,000 words"
+  best_for:
+    agents:
+      - content-generator
+      - campaign-manager
+      - post-engagement
+    stages:
+      - seed
+      - series-a
+      - series-b
+      - series-c
+      - enterprise
+    modes:
+      - fractional
+      - fte
+      - tech_provider
+  tags:
+    - case-study
+    - customer-story
+    - social-proof
+    - sales-enablement
+    - content
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: customer_name
+      description: Name of the customer company (or anonymized descriptor if NDA-protected)
+      source: user_input
+    - field: customer_profile
+      description: Industry, company size, and ICP segment of the customer
+      source: user_input
+    - field: challenge
+      description: The specific business problem or pain point the customer faced before adopting the solution
+      source: user_input
+    - field: solution_deployed
+      description: What was implemented — specific product, service, or approach used
+      source: user_input
+    - field: quantified_results
+      description: Measurable outcomes achieved — numbers, percentages, timeframes
+      source: user_input
+  optional:
+    - field: customer_quote
+      description: A direct quote from a named executive or champion at the customer company
+      source: user_input
+    - field: implementation_timeline
+      description: How long the implementation or onboarding took
+      source: user_input
+    - field: icp_use_for
+      description: The specific ICP segment or sales scenario this case study is best used in
+      source: user_input
+
+structure:
+  sections:
+    - id: headline
+      name: Headline
+      required: true
+      description: A single, results-led headline that captures the most compelling outcome
+      guidance: Lead with the result, not the company name or product. "How FleetOps cut customer acquisition cost by 42% in 90 days" outperforms "FleetOps Case Study." Use a number wherever possible. Avoid vague outcomes like "improved efficiency."
+      word_count: "10–20 words"
+
+    - id: customer-snapshot
+      name: Customer Snapshot
+      required: true
+      description: At-a-glance profile of the customer company — sidebar or callout box
+      guidance: >-
+        Present as a structured data block, not prose. Include: Company, Industry, Size (employees or ARR), HQ, ICP segment. Keep it scannable — a reader should get the context in 5 seconds.
+      format_notes: Key-value pairs or definition list. Do not write in sentence form.
+
+    - id: results-at-a-glance
+      name: Results at a Glance
+      required: true
+      description: The 3–5 most compelling quantified results — designed to be read first
+      guidance: >-
+        Place this early — before the challenge narrative. Readers decide in seconds whether to read further. Lead with the most impressive number. All results should be quantified: not "improved team productivity" but "reduced report generation time from 4 hours to 20 minutes." Include timeframes.
+      format_notes: >-
+        Large-format stat callouts or a metrics table: Metric | Before | After | Improvement
+
+    - id: challenge
+      name: The Challenge
+      required: true
+      description: The specific business problem or pain point the customer faced
+      guidance: Write from the customer's perspective, not the vendor's. The challenge should resonate with the ICP — it should sound like a problem that target prospects also have. Avoid making the customer sound incompetent — they had a real challenge that required expertise to solve.
+      word_count: "100–200 words"
+
+    - id: solution
+      name: The Solution
+      required: true
+      description: What was implemented, how, and why this approach was chosen
+      guidance: Describe the solution in concrete terms — what was deployed, configured, or done. Avoid purely feature-led descriptions. Connect each solution element to the specific challenge it addressed. If the approach was differentiated or non-obvious, explain why it worked where others might not have.
+      word_count: "150–250 words"
+
+    - id: results
+      name: The Results
+      required: true
+      description: The full results narrative — what changed, by how much, and what it means for the business
+      guidance: Expand on the Results at a Glance with context and narrative. Quantify everything that can be quantified. Include both the hard metrics and the softer business impact (team time freed, confidence in decisions, ability to scale). Lead with the most strategically important result, not the easiest one to measure.
+      word_count: "150–250 words"
+
+    - id: customer-quote
+      name: Customer Quote
+      required: false
+      description: A direct quote from a named executive or champion at the customer company
+      guidance: A great quote expresses an outcome the customer cares about in their own words. Avoid generic praise ("the team was great to work with"). The best quotes are specific ("We finally have the pipeline visibility we need to plan two quarters ahead") and attributable to a named person with title.
+      format_notes: Blockquote format. Include name, title, and company of the quote source.
+
+    - id: call-to-action
+      name: Call to Action
+      required: false
+      description: A brief closing invitation relevant to the ICP audience
+      guidance: Keep it short — one or two sentences. For sales-facing case studies, the CTA drives a conversation or demo. For website use, point to the product or contact page. For PR or analyst use, omit or make it subtle. Never end with a hard sell — a case study CTA should feel earned.
+      word_count: "20–50 words"
+
+template: |
+  # {results-led headline — lead with the number}
+
+  ---
+
+  ## Customer Snapshot
+
+  | | |
+  |---|---|
+  | **Company** | {customer_name} |
+  | **Industry** | {industry} |
+  | **Size** | {employee count or ARR range} |
+  | **HQ** | {city, country} |
+  | **Segment** | {ICP segment — e.g., Series B B2B SaaS, Mid-market Healthcare} |
+
+  ---
+
+  ## Results at a Glance
+
+  | Metric | Before | After | Improvement |
+  |---|---|---|---|
+  | {Key result 1} | {baseline} | {outcome} | {+/- % or timeframe} |
+  | {Key result 2} | {baseline} | {outcome} | {+/- % or timeframe} |
+  | {Key result 3} | {baseline} | {outcome} | {+/- % or timeframe} |
+
+  ---
+
+  ## The Challenge
+
+  {100–200 word narrative written from the customer's perspective. What was the specific business problem they faced? Why was it painful? What had they tried before?}
+
+  ---
+
+  ## The Solution
+
+  {150–250 word narrative on what was implemented. Concrete and specific — not a product brochure. Connect each solution element to the challenge it addressed.}
+
+  ---
+
+  ## The Results
+
+  {150–250 word narrative expanding on the at-a-glance metrics. Include context for each result. What does this mean for their business? Lead with the most strategically important outcome.}
+
+  ---
+
+  > **"{Customer quote — specific, outcome-led, attributable}"**
+  >
+  > — {Name}, {Title}, {Company}
+
+  ---
+
+  ## {Optional call to action}
+
+  {1–2 sentence CTA appropriate for the distribution context.}
+
+variations:
+  - id: sales-one-pager
+    name: Sales One-Pager
+    description: Condensed version designed to be printed or shared as a PDF in a sales cycle. Tighter word counts, larger stat callouts, and a clear CTA to schedule a call.
+    overrides:
+      tone: "Efficient and proof-led. Designed for a skeptical buyer. Every sentence must earn its place."
+      word_count: "400–600 words total"
+
+  - id: anonymized
+    name: Anonymized Version
+    description: For case studies where the customer cannot be named. Descriptive company profile instead of company name; quote removed or made generic.
+    overrides:
+      sections_remove:
+        - customer-quote
+      tone: "Slightly more generic on company identity but equally specific on the challenge, solution, and results."
+
+  - id: video-script
+    name: Video Script / Testimonial Brief
+    description: Adapted for use as a video testimonial script or a brief for a filmed customer story. Conversational tone, shorter sections, quote-heavy.
+    overrides:
+      tone: "Conversational. Designed to be spoken, not read. Short sentences. Active voice throughout."
+      word_count: "300–500 words total"
+
+branding:
+  supports_branding: true
+  brandable_elements:
+    - element: header_logo
+      description: Vendor company logo in document header; optionally customer logo in co-branded versions
+    - element: color_scheme
+      description: Stat callout background colors and section heading colors aligned to brand palette
+    - element: footer
+      description: Company name, product name, and CTA link in footer
+    - element: typography
+      description: Headline and body fonts aligned to brand guidelines; stat callouts use large, bold typography
+    - element: customer_logo
+      description: Optional customer logo in Customer Snapshot section (requires customer approval)
+
+quality_criteria:
+  required_elements:
+    - "Results at a Glance is present with quantified before/after metrics"
+    - "Headline leads with a quantified result, not the company name"
+    - "Challenge section is written from the customer's perspective"
+    - "All results include numbers, percentages, or time savings — not vague descriptors"
+    - "Customer Snapshot section is present and scannable"
+  prohibited_elements:
+    - "Vague results without quantification ('improved efficiency', 'saved time')"
+    - "Headline that leads with company name or product name rather than outcome"
+    - "Challenge section that makes the customer sound incompetent"
+    - "Generic customer quote that could apply to any vendor ('the team was great to work with')"
+    - "More than 5 result metrics in the at-a-glance section"
+  length_check:
+    minimum: 400
+    maximum: 1200
+    strict: false

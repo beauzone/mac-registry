@@ -1,0 +1,34 @@
+metadata:
+  id: one-pager
+  display_name: One-pager
+  version: "1.0.0"
+  schema_version: "1.0"
+  category: collateral
+  content_type: one-pager
+  tags:
+    - sales-enablement
+    - product-marketing
+
+description: >
+  Single-page sales asset. Problem → solution → proof → CTA. Dense enough
+  for a deal-stage handoff; light enough for a cold prospect.
+
+sections:
+  - name: Headline
+    guidance: One line that captures the positioning statement.
+  - name: Problem
+    guidance: Name the problem in the customer's language, not yours.
+  - name: Solution
+    guidance: One-sentence description of what you do. Map to messaging pillars.
+  - name: Three differentiators
+    guidance: Three bullets, each a benefit backed by a capability.
+  - name: Proof
+    guidance: One customer outcome with a named metric.
+  - name: CTA
+    guidance: Demo, pilot, or docs — whichever matches the use case.
+
+starter_prompt: >
+  Draft a one-pager using our positioning statement as the headline. Lead
+  with the problem in the customer's language, then three differentiators
+  mapped to our messaging pillars. Include one customer proof point and a
+  low-friction CTA.

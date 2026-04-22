@@ -1,0 +1,303 @@
+metadata:
+  id: messaging-framework
+  version: "1.0.0"
+  display_name: "Messaging Framework"
+  category: positioning
+  description: >
+    A hierarchical messaging house that organizes a company's core narrative,
+    messaging pillars, value propositions, and proof points into a single reference
+    document. Designed to ensure consistent messaging across sales, marketing,
+    product marketing, and content teams.
+  output_format: markdown
+  typical_length: "800–1,200 words"
+  best_for:
+    agents:
+      - strategic-planning
+      - content-generator
+      - campaign-manager
+    stages:
+      - series-a
+      - series-b
+      - series-c
+      - enterprise
+    modes:
+      - fractional
+      - fte
+      - tech_provider
+  tags:
+    - messaging
+    - positioning
+    - value-proposition
+    - narrative
+    - messaging-house
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: company_name
+      description: Company name and what you sell
+      source: user_input
+    - field: target_audience
+      description: Primary audience(s) this messaging targets — ICP, persona, or segment
+      source: user_input
+    - field: positioning
+      description: Current positioning statement or how you describe what you do and why it matters
+      source: user_input
+    - field: key_differentiators
+      description: What makes you different from alternatives (competitors and status quo)
+      source: user_input
+  optional:
+    - field: brand_voice
+      description: Existing brand voice guidelines or tone descriptors
+      source: user_input
+    - field: existing_messaging
+      description: Current taglines, boilerplate, or messaging documents to build from
+      source: user_input
+    - field: competitive_context
+      description: Key competitors and how they position themselves
+      source: user_input
+
+structure:
+  sections:
+    - id: core-narrative
+      name: Core Narrative
+      required: true
+      description: The overarching story — why your company exists, what change you're driving, and why it matters now
+      char_limit: 500
+      guidance: >-
+        This is the 30-second version of your company story. Structure as: the world is changing (context), this creates a problem (tension), we exist to solve it (resolution), and here's the outcome (vision). This should work as the opening of a keynote, the first paragraph of a press release, or the elevator pitch. Keep it under 100 words.
+      word_count: "60–100 words"
+
+    - id: positioning-statement
+      name: Positioning Statement
+      required: true
+      description: The formal positioning statement following a structured format
+      char_limit: 300
+      guidance: >-
+        Use the standard format: For [target audience] who [need/pain], [company] is a [category] that [key benefit]. Unlike [alternatives], we [primary differentiator]. This should be precise enough to guide all downstream messaging but flexible enough to adapt by audience.
+      word_count: "30–60 words"
+
+    - id: messaging-pillars
+      name: Messaging Pillars
+      required: true
+      description: 3–4 core themes that organize all messaging — each pillar represents a major reason to believe
+      field_limits:
+        pillar_name: 30
+        pillar_claim: 120
+        proof_point: 100
+        resonates_with: 40
+      guidance: >-
+        Each pillar should be: a clear theme name (2–4 words), a one-sentence claim, 2–3 supporting proof points, and the persona or buying committee role it resonates with most. Pillars should be mutually exclusive (no overlap) and collectively exhaustive (cover the full value story). Order them by importance to the primary buyer.
+      word_count: "300–500 words"
+      format_notes: >-
+        Structured blocks per pillar: Pillar Name → Claim → Proof Points → Resonates With
+
+    - id: value-propositions
+      name: Audience-Specific Value Propositions
+      required: true
+      description: Tailored value statements for each key persona or buying committee role
+      field_limits:
+        persona_label: 30
+        care_about: 60
+        value_statement: 120
+        proof_point: 80
+      guidance: >-
+        For each persona, provide: what they care about, the specific value statement calibrated to their priorities, and the proof point that matters most to them. A CISO hears "reduce breach risk by 60%" while a CFO hears "cut security spend by 40% while improving coverage."
+      format_notes: >-
+        Table format: Persona | What They Care About | Value Statement | Key Proof Point
+
+    - id: proof-points
+      name: Proof Point Library
+      required: true
+      description: The evidence that supports the messaging — organized by pillar
+      guidance: >-
+        Include customer stats, case study references, third-party validation (analyst quotes, awards), technical benchmarks, and before/after metrics. Each proof point should be specific and attributable. Tag each proof point to the pillar(s) it supports.
+      format_notes: >-
+        Table format: Proof Point | Type (stat/customer/analyst/benchmark) | Supports Pillar
+
+    - id: competitive-messaging
+      name: Competitive Differentiation Messaging
+      required: false
+      description: How to position against key competitors in messaging
+      guidance: >-
+        For each major competitor, provide: their likely positioning claim and your counter-positioning. Frame as "They say X; we say Y because Z." Do not attack — differentiate. This section feeds into battlecards and competitive content.
+      word_count: "100–200 words"
+
+    - id: boilerplate
+      name: Boilerplate & Taglines
+      required: true
+      description: Standard boilerplate paragraph and candidate taglines
+      field_limits:
+        boilerplate_block: 400
+        tagline: 40
+      guidance: >-
+        The boilerplate is the standard company description used in press releases, event bios, and website footers. 50–75 words. Include 2–3 tagline candidates — short (3–6 words), memorable, and aligned to the core narrative. Taglines should pass the "T-shirt test" — would someone wear it?
+      word_count: "100–150 words"
+
+    - id: messaging-dont
+      name: Messaging Guardrails
+      required: true
+      description: Words, phrases, and framings to avoid
+      guidance: >-
+        Include: overused industry jargon to avoid, competitor names or framings to never adopt, claims that can't be substantiated, and tone violations. This prevents messaging drift and ensures consistency.
+      word_count: "60–100 words"
+
+template: |
+  # Messaging Framework: {company_name}
+
+  **Target audience:** {primary audience}
+  **Last updated:** {date}
+
+  ---
+
+  ## Core Narrative
+
+  {60–100 word company story: context → tension → resolution → vision}
+
+  ---
+
+  ## Positioning Statement
+
+  For **{target audience}** who **{need or pain point}**,
+  **{company}** is a **{category}** that **{key benefit}**.
+  Unlike **{alternatives}**, we **{primary differentiator}**.
+
+  ---
+
+  ## Messaging Pillars
+
+  ### Pillar 1: {Theme Name}
+
+  **Claim:** {One-sentence claim}
+
+  **Proof points:**
+  - {Proof point 1 — specific and quantified}
+  - {Proof point 2}
+  - {Proof point 3}
+
+  **Resonates most with:** {persona/role}
+
+  ---
+
+  ### Pillar 2: {Theme Name}
+
+  **Claim:** {One-sentence claim}
+
+  **Proof points:**
+  - {Proof point 1}
+  - {Proof point 2}
+  - {Proof point 3}
+
+  **Resonates most with:** {persona/role}
+
+  ---
+
+  ### Pillar 3: {Theme Name}
+
+  **Claim:** {One-sentence claim}
+
+  **Proof points:**
+  - {Proof point 1}
+  - {Proof point 2}
+  - {Proof point 3}
+
+  **Resonates most with:** {persona/role}
+
+  ---
+
+  ## Audience-Specific Value Propositions
+
+  | Persona | What They Care About | Value Statement | Key Proof Point |
+  |---|---|---|---|
+  | {Persona 1} | {priority} | {tailored value statement} | {proof} |
+  | {Persona 2} | {priority} | {tailored value statement} | {proof} |
+  | {Persona 3} | {priority} | {tailored value statement} | {proof} |
+
+  ---
+
+  ## Proof Point Library
+
+  | Proof Point | Type | Supports Pillar |
+  |---|---|---|
+  | {Specific stat or customer result} | Stat | Pillar 1 |
+  | {Customer name + outcome} | Customer | Pillar 1, 2 |
+  | {Analyst quote or award} | Analyst | Pillar 3 |
+  | {Technical benchmark} | Benchmark | Pillar 2 |
+
+  ---
+
+  ## Competitive Differentiation
+
+  | Competitor | They Say | We Say | Because |
+  |---|---|---|---|
+  | {Competitor 1} | {their claim} | {our counter-position} | {evidence} |
+  | {Competitor 2} | {their claim} | {our counter-position} | {evidence} |
+
+  ---
+
+  ## Boilerplate
+
+  {50–75 word standard company description}
+
+  **Tagline candidates:**
+  1. {Tagline 1}
+  2. {Tagline 2}
+  3. {Tagline 3}
+
+  ---
+
+  ## Messaging Guardrails
+
+  **Avoid these words/phrases:**
+  - {Term 1} — {why}
+  - {Term 2} — {why}
+  - {Term 3} — {why}
+
+  **Never:**
+  - {Framing to avoid}
+  - {Claim that can't be substantiated}
+
+variations:
+  - id: persona-specific
+    name: Persona-Specific Messaging
+    description: Deep messaging calibration for a single persona. Expands value propositions and proof points for one buyer role.
+    overrides:
+      tone: "Deeply calibrated to a single persona. Every word should resonate with their professional context."
+
+  - id: product-launch
+    name: Product Launch Messaging
+    description: Adapted for a new product or feature launch. Adds launch narrative, positioning vs. existing product, and launch-specific proof points.
+    overrides:
+      sections_add:
+        - launch-narrative
+        - existing-product-comparison
+      tone: "Forward-looking and momentum-driven. Emphasize what's new and why it matters now."
+
+branding:
+  supports_branding: true
+  brandable_elements:
+    - element: header_logo
+      description: Company logo in document header
+    - element: color_scheme
+      description: Pillar color coding aligned to brand palette
+    - element: typography
+      description: Fonts aligned to brand guidelines
+
+quality_criteria:
+  required_elements:
+    - "Core narrative tells a complete story in under 100 words"
+    - "Positioning statement follows the For/Who/Is/That/Unlike format"
+    - "3–4 messaging pillars that are mutually exclusive and collectively exhaustive"
+    - "Value propositions are tailored per persona, not generic"
+    - "Proof points are specific and attributable"
+    - "Messaging guardrails are included"
+  prohibited_elements:
+    - "More than 4 messaging pillars (dilutes focus)"
+    - "Proof points without specifics ('many customers', 'significant improvement')"
+    - "Value propositions that read the same across all personas"
+    - "Competitor bashing in differentiation messaging"
+    - "Boilerplate over 75 words"
+  length_check:
+    minimum: 600
+    maximum: 1400
+    strict: false

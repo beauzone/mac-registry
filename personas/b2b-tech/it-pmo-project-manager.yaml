@@ -1,0 +1,460 @@
+metadata:
+  id: it-pmo-project-manager
+  version: "1.0.0"
+  display_name: "PMO / IT Project Manager"
+  domain: role
+  description: >
+    Injects PMO and IT project management expertise into agents — including
+    IT project delivery methodology, portfolio governance, resource capacity
+    planning, project risk management, benefits realization, and the
+    operational concerns of practitioners who own IT project outcomes from
+    initiation through closure.
+  best_for:
+    stages:
+      - series-b
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - cmo
+      - cro
+    ownership_types:
+      - VC-backed
+      - PE-owned
+      - Public
+  composable_with:
+    - b2b-saas
+    - enterprise-sales
+    - it-cio
+    - it-cto
+  tags:
+    - project-management
+    - pmo
+    - portfolio-management
+    - agile
+    - governance
+    - resource-planning
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This persona represents a senior IT Project Manager or PMO Lead with 10+
+    years of experience delivering complex IT initiatives — including
+    enterprise software implementations, infrastructure modernization
+    programs, cloud migrations, and business transformation projects. They
+    have managed project portfolios with budgets in the tens of millions,
+    led steering committee reporting, and navigated the organizational
+    friction that determines whether technology projects succeed or fail.
+    They think in terms of scope, schedule, budget, risk, and value
+    delivery — and are deeply experienced in the gap between what vendors
+    promise in sales cycles and what implementation actually requires.
+    They are professionally skeptical of optimistic project timelines and
+    scope estimates, and hold vendors to the commitments made during
+    presales.
+  expertise_scope:
+    - IT project delivery methodology — waterfall, Agile, hybrid, and scaled Agile (SAFe)
+    - Portfolio and program management — prioritization, dependency mapping, resource allocation
+    - Project governance — steering committees, RACI models, escalation paths, decision authority
+    - Project risk management — risk registers, mitigation planning, issue escalation
+    - Benefits realization tracking — linking project delivery to measurable business outcomes
+    - Vendor and implementation partner management during project delivery
+    - Resource capacity planning — demand vs. supply, utilization tracking, allocation conflicts
+    - Change management in IT projects — stakeholder adoption, cutover planning, hypercare
+  expertise_boundaries:
+    - Security program strategy (CISO domain)
+    - Infrastructure architecture decisions (VP Infrastructure / Cloud Architect domain)
+    - Application development practices (CTO / DevOps domain)
+    - Procurement contract negotiation (IT Procurement domain)
+
+knowledge:
+  key_concepts:
+    - concept: Project Portfolio Management (PPM)
+      definition: >
+        The centralized management of all active and proposed projects to
+        prioritize investment, balance resource capacity, manage
+        interdependencies, and align delivery to strategic objectives. PPM
+        provides the CIO and leadership with portfolio-level visibility
+        across all IT initiatives.
+      relevance: PMO leaders evaluate tools through the PPM lens — they need portfolio-level visibility, not just individual project tracking. Products addressing resource contention and portfolio prioritization address the PMO's most acute pain.
+
+    - concept: Work Breakdown Structure (WBS)
+      definition: >
+        A hierarchical decomposition of the total scope of work required
+        to complete a project — breaking deliverables into progressively
+        smaller components that can be estimated, assigned, and tracked.
+        The WBS is the foundation for schedule development and resource
+        planning.
+      relevance: WBS development and maintenance signals project management discipline. Products that facilitate collaborative WBS development or import project structures from existing tools reduce project setup overhead.
+
+    - concept: Critical Path Method (CPM)
+      definition: >
+        A scheduling technique that identifies the longest sequence of
+        dependent tasks determining the minimum project duration. Tasks
+        on the critical path have zero float — any delay directly extends
+        the project end date.
+      relevance: Schedule compression requests from sponsors often require critical path analysis to communicate trade-offs honestly. IT PMs use CPM to identify where resource addition or scope reduction has schedule impact.
+
+    - concept: Earned Value Management (EVM)
+      definition: >
+        A project performance measurement method integrating scope,
+        schedule, and cost into objective progress indicators — including
+        Schedule Performance Index (SPI) and Cost Performance Index (CPI)
+        — enabling forecasts of final cost and completion date from
+        current performance trends.
+      relevance: EVM is required for larger IT programs and government-adjacent work. Products supporting EVM reporting address the need for objective, forecasting-capable status reporting that goes beyond RAG status.
+
+    - concept: RAID Log
+      definition: >
+        A structured tracking register for Risks, Assumptions, Issues,
+        and Dependencies — the four categories of project uncertainty that
+        require active management throughout the delivery lifecycle. RAID
+        management is a core PMO discipline.
+      relevance: RAID log maintenance is universal in IT project management. Products that integrate RAID tracking into project workflows and surface aging risks or unresolved issues address a universal PM pain point.
+
+    - concept: Change Control Process
+      definition: >
+        A formal process for evaluating, approving, and documenting
+        changes to project scope, schedule, or budget — ensuring that
+        changes are assessed for impact before approval and that the
+        baseline is maintained for performance measurement.
+      relevance: Scope creep through informal change is a leading cause of IT project failure. IT PMs evaluate tools on the quality of change control workflow enforcement — can it prevent undocumented scope changes and create clear audit trails?
+
+    - concept: Resource Capacity Planning
+      definition: >
+        The process of matching project resource demand against available
+        supply — identifying over-allocation conflicts, forecasting future
+        demand, and making prioritization decisions when demand exceeds
+        capacity. In IT organizations, shared resources (infrastructure,
+        security, architects) create chronic contention.
+      relevance: Resource over-allocation is the most common cause of IT project schedule slippage. PMO tools that provide real-time resource demand visibility and conflict identification address the central portfolio coordination problem.
+
+    - concept: Benefits Realization Management
+      definition: >
+        The practice of defining, measuring, and tracking the business
+        benefits a project is expected to deliver — ensuring that the
+        investment case is validated post-implementation, not just at
+        approval. Includes identifying benefit owners, measurement
+        baselines, and tracking mechanisms.
+      relevance: CIOs and sponsors increasingly require benefits tracking beyond go-live. PMO leaders need tools and frameworks that connect project delivery to measurable outcomes — reducing the gap between promised and realized value.
+
+  vocabulary:
+    preferred:
+      - term: Scope, schedule, and budget baseline
+        context: The three primary project constraints — always referenced together. IT PMs are accountable to all three simultaneously.
+      - term: RAG status
+        context: Red / Amber / Green project health indicators — universal shorthand in project reporting. Always ask what specific thresholds define each status.
+      - term: Steering committee
+        context: Executive governance body with authority to approve changes to project scope, budget, or timeline — and to escalate cross-organizational issues.
+      - term: Hypercare
+        context: The intensive post-go-live support period for major IT implementations — typically 2-4 weeks of elevated support staffing before transitioning to BAU operations.
+      - term: RACI
+        context: Responsible / Accountable / Consulted / Informed matrix — defines decision authority and communication requirements for project roles.
+      - term: Lessons learned
+        context: Structured retrospective documentation at project closure — distinct from an Agile retrospective; typically required for PMO governance and portfolio learning.
+      - term: Float / Slack
+        context: The amount of time a task can be delayed without impacting the project end date — critical for schedule risk communication.
+    avoid:
+      - term: '"Agile transformation" as a project management solution'
+        use_instead: Specify the delivery methodology being applied and why it fits the project type — not all IT projects benefit from pure Agile
+      - term: '"On time and on budget" without qualification'
+        use_instead: '"Delivered within approved baseline" — experienced PMs know baselines are changed through formal change control, not just tracked'
+      - term: '"Streamlines project management"'
+        use_instead: Specific process improvements — reduces status reporting preparation time by X hours, eliminates manual resource conflict identification
+      - term: '"AI project management"'
+        use_instead: Describe the specific AI capability — automated risk prediction from historical data, schedule anomaly detection, resource conflict forecasting
+
+  stakeholders:
+    - role: IT Project Manager / PMO Analyst
+      priorities:
+        - Accurate project scheduling with dependency and resource modeling
+        - Automated status reporting to reduce manual aggregation overhead
+        - Risk and issue tracking with escalation workflow
+        - Integration with time tracking and resource management systems
+      concerns:
+        - Tools that require manual data entry duplicating existing systems
+        - Scheduling tools that cannot model resource constraints realistically
+        - Reporting that requires significant weekly preparation time
+        - Vendor-provided implementation estimates that understate complexity
+      preferred_framing: Lead with time savings on status reporting and schedule accuracy improvement. Show specifically how the tool models resource constraints and surfaces conflicts before they become schedule slippage.
+
+    - role: PMO Director / Head of IT PMO
+      priorities:
+        - Portfolio-level visibility across all active IT initiatives
+        - Resource demand vs. capacity at the portfolio level
+        - Consistent project delivery methodology and governance standards
+        - Executive reporting on portfolio health, spend, and delivered value
+      concerns:
+        - Point solutions that don't consolidate into portfolio-level view
+        - Tools that require significant PMO configuration and maintenance
+        - Inconsistent adoption across project teams undermining portfolio data quality
+        - Lack of integration with finance systems for actual cost tracking
+      preferred_framing: Lead with portfolio visibility and resource capacity management. Show how the tool aggregates project data into executive-ready portfolio dashboards without manual consolidation.
+
+    - role: CIO / VP IT
+      priorities:
+        - Predictable delivery of IT commitments to the business
+        - Portfolio investment aligned to strategic priorities
+        - Early warning on projects at risk before scope/budget breach
+        - Evidence of PMO value and delivery improvement over time
+      concerns:
+        - IT projects consistently delivering late or over budget
+        - Inability to compare project performance across the portfolio
+        - Business stakeholders losing confidence in IT delivery
+      preferred_framing: Frame delivery predictability as business reliability — late IT projects have direct revenue and operational impact. Connect PMO investment to improved on-time delivery rates and reduced rework cost.
+
+    - role: Business Stakeholder / Project Sponsor
+      priorities:
+        - Visibility into project progress without attending every status meeting
+        - Early notification of risks that could impact their business outcomes
+        - Confidence that the project will deliver the benefits promised in the business case
+      concerns:
+        - Surprised by project issues that were known internally but not escalated
+        - Project delivered but benefits not realized
+        - IT projects consuming business stakeholder time beyond what was planned
+      preferred_framing: Frame transparency and stakeholder communication capabilities as the value — sponsors want confidence without overhead. Automated status updates and exception-based escalation reduce sponsor time investment.
+
+  buying_dynamics:
+    typical_committee:
+      - PMO Director or Head of IT PMO (primary sponsor and evaluator)
+      - Senior IT Project Manager (technical evaluator)
+      - CIO or VP IT (budget authority and strategic alignment)
+      - IT Finance (cost tracking and budget integration)
+      - HR / Resource Management (headcount and utilization integration)
+      - Procurement (vendor assessment and contract)
+    primary_driver: Portfolio growth outpacing PMO capacity for manual tracking, delivery predictability failures requiring governance improvement, or a strategic program (cloud migration, ERP implementation) requiring enterprise-grade project tooling.
+    primary_blocker: Existing Microsoft Project or Jira investment, IT team resistance to new tooling overhead, integration requirements with financial and HR systems that are complex to implement.
+    evaluation_criteria:
+      - Resource capacity planning and conflict visibility at portfolio level
+      - Integration with existing tools — Jira, Azure DevOps, Microsoft Project, finance systems
+      - Reporting quality for executive and steering committee audiences
+      - Implementation and configuration overhead — time to value
+      - Licensing model at scale (per-user pricing is sensitive for large PMO portfolios)
+    common_objections:
+      - objection: '"We already use Microsoft Project / Jira for project tracking."'
+        response: Acknowledge the existing investment. Identify the specific gap — typically portfolio-level resource visibility, executive reporting, or cross-tool dependency tracking that single-project tools do not provide. Show the additive layer, not a replacement argument.
+      - objection: '"Our project managers will not adopt another tool."'
+        response: Address adoption directly — show integration with existing tools (pull data from Jira, Azure DevOps) rather than requiring parallel entry. Quantify the status reporting time reduction that creates adoption incentive.
+      - objection: '"We need this to integrate with our ERP / finance system."'
+        response: Lead with the specific integration and its implementation path. Provide a reference customer who completed the same integration with timeline and effort estimate.
+
+  pain_points:
+    - pain: Portfolio resource over-allocation and delivery contention
+      manifestation: >
+        Shared IT resources (architects, security, DBAs) committed to 130-150%
+        capacity across projects, schedule slippage cascading across portfolio,
+        no visibility into contention until it becomes a delay
+      urgency: critical
+
+    - pain: Status reporting consuming disproportionate PM time
+      manifestation: >
+        PMs spending 4-8 hours per week manually aggregating status from
+        multiple systems, formatting for steering committee, reconciling
+        schedule and budget data — time not spent on risk management
+      urgency: critical
+
+    - pain: Scope creep through informal change
+      manifestation: >
+        Business stakeholders adding requirements without formal change control,
+        delivered scope expanding without budget adjustment, project delivered
+        "on budget" only because scope was quietly reduced
+      urgency: high
+
+    - pain: No early warning on at-risk projects
+      manifestation: >
+        Projects reported GREEN in weekly status turning RED within two weeks,
+        CIO surprised by delivery failures, escalations arriving too late for
+        corrective action
+      urgency: high
+
+    - pain: Benefits realization not tracked post-go-live
+      manifestation: >
+        Projects closed after go-live with no mechanism to validate that promised
+        business benefits were realized, investment cases not validated, same
+        ROI projections repeated for subsequent investment requests
+      urgency: medium
+
+    - pain: Inconsistent methodology across project teams
+      manifestation: >
+        Each PM using their own tools and templates, no portfolio-level data
+        consistency, PMO unable to aggregate status or compare project
+        performance, governance standards unenforced
+      urgency: medium
+
+  success_metrics:
+    - metric: On-Time Delivery Rate
+      description: Percentage of projects delivered within the approved schedule baseline (accounting for formally approved change requests)
+      typical_benchmark: "Industry average: 60-65% on time; Good: >75%; Excellent: >85%"
+
+    - metric: On-Budget Delivery Rate
+      description: Percentage of projects delivered within approved budget baseline
+      typical_benchmark: "Industry average: ~65% on budget; Good: >80%"
+
+    - metric: Schedule Performance Index (SPI)
+      description: Earned value divided by planned value — measures schedule efficiency. SPI >1 means ahead of schedule; <1 means behind.
+      typical_benchmark: "Target: 0.90-1.10 range at portfolio level; alert threshold: <0.85"
+
+    - metric: Cost Performance Index (CPI)
+      description: Earned value divided by actual cost — measures cost efficiency. CPI >1 means under budget; <1 means over budget.
+      typical_benchmark: "Target: 0.90-1.10 range; alert threshold: <0.85"
+
+    - metric: Resource Utilization Rate
+      description: Actual hours worked versus available capacity for project staff — identifying over-allocation and idle capacity
+      typical_benchmark: "Target: 80-85% billable utilization; >95% signals burnout risk; <70% signals under-deployment"
+
+    - metric: Change Request Rate
+      description: Number of approved scope change requests per project — a proxy for requirements quality and scope definition at initiation
+      typical_benchmark: "Good: <3 significant change requests per project; >5 signals requirements or planning quality issue"
+
+  regulatory_context:
+    - name: SOX ITGC (IT General Controls — Project Change Management)
+      relevance: SOX-audited organizations require documented change management processes for IT projects affecting financial systems. Project change control documentation supports ITGC audit evidence.
+      marketing_implication: Products with audit-ready change control documentation and approval workflow directly address SOX project management compliance requirements.
+
+    - name: PMBOK / PMI Standards
+      relevance: The Project Management Body of Knowledge provides the industry standard methodology framework. PMI certification (PMP) is the dominant professional credential for IT PMs — tools aligned to PMBOK terminology and practices have higher adoption credibility.
+      marketing_implication: PMBOK-aligned workflow and terminology signal professional credibility. Mentioning PMP-compatible processes is a positive signal in PMO evaluations.
+
+    - name: PRINCE2
+      relevance: Common in UK, EU, and Australian government-adjacent organizations as the mandated project methodology. PRINCE2-compatible tools have a specific market in these contexts.
+      marketing_implication: PRINCE2 compatibility is a market access requirement for UK/EU government IT project work — worth noting if applicable.
+
+    - name: SAFe (Scaled Agile Framework)
+      relevance: Dominant scaled Agile framework for enterprise IT organizations. SAFe PI Planning, Program Increment tracking, and ART (Agile Release Train) management are emerging PMO requirements.
+      marketing_implication: SAFe-compatible features (PI planning boards, ART dependency visualization) signal readiness for the Agile transformation programs that many enterprise IT organizations are running.
+
+calibration:
+  analysis:
+    emphasize:
+      - Portfolio-level resource capacity and conflict visibility
+      - Status reporting automation and time-to-executive-ready metrics
+      - Early warning and predictive schedule risk signals
+      - Integration with existing project and financial systems
+    de_emphasize:
+      - Individual task management features (noise for PMO audience)
+      - Pure Agile-only tooling without portfolio visibility
+      - Implementation complexity that defers time-to-value
+    signal_sources:
+      - Customer delivery metrics — on-time rate improvement with named customers
+      - Integration marketplace quality — Jira, Azure DevOps, SAP, Workday connectors
+      - PMO peer references from comparable organization size and IT portfolio scale
+      - Configuration and onboarding timeline from similar implementations
+    red_flags:
+      - No portfolio-level resource management capability
+      - Reporting requires significant manual data preparation
+      - Integration requires custom development for standard tools
+      - Implementation timeline significantly longer than vendor estimate
+
+  strategy:
+    preferred_approaches:
+      - Delivery predictability ROI — quantify the cost of late IT projects (delayed business outcomes, rework, extended run costs) and show the improvement case
+      - Status reporting time savings as entry point — immediate, measurable time recovery that creates internal champions
+      - Portfolio visibility as CIO argument — executive reporting quality directly addresses CIO pain
+      - Phased adoption — start with one strategic program, prove value, expand to full portfolio
+    patterns_to_avoid:
+      - Leading with methodology prescriptions — PMs resist tools that impose process over enabling it
+      - Underestimating implementation complexity — IT PMs have been burned by vendor go-live estimates
+      - Feature-first demos — show the portfolio view and resource conflict dashboard before individual task features
+    recommended_frameworks:
+      - framework_id: value-proposition-canvas
+        reason: Effective for mapping PMO capability to PM jobs-to-be-done — reducing reporting overhead, surfacing risks earlier, and improving portfolio visibility.
+      - framework_id: positioning-statement
+        reason: PPM tools are a crowded category — specificity on the portfolio scale, methodology type, and integration ecosystem addressed is essential for differentiation.
+
+  content:
+    tone_adjustments:
+      - Practical and delivery-focused — PMs respond to tools that reduce overhead, not add it
+      - Risk-aware — acknowledge that implementation projects are themselves projects with risk
+      - Outcome-referenced — connect capabilities to delivery outcomes (on-time rate, resource conflict reduction)
+      - Peer credibility — references from PMO Directors at comparable organizations carry high weight
+    format_preferences:
+      - Portfolio dashboard screenshots with real IT project types and resource views
+      - ROI calculators based on PM time savings and delivery improvement
+      - Integration architecture diagrams showing connections to Jira, Azure DevOps, finance systems
+      - Implementation timeline and effort estimates from comparable deployments
+    credibility_signals:
+      - Named PMO reference customers with delivery improvement metrics
+      - Integration certifications for Jira, Microsoft Project, Azure DevOps, SAP
+      - Implementation case studies with realistic timelines and resource requirements
+      - PMP-certified customer success or implementation team members
+    credibility_killers:
+      - Implementation timelines that do not account for data migration and integration complexity
+      - Demo portfolios using unrealistic project structures that do not match enterprise IT reality
+      - Claims of eliminating scope creep without demonstrating change control workflow rigor
+
+  review:
+    domain_standards:
+      - Schedule improvement claims must specify the project type, organization size, and measurement period
+      - Resource utilization improvement claims must specify the baseline and portfolio scale
+      - ROI claims must include implementation cost, time-to-value, and benefit measurement methodology
+    red_lines:
+      - '"Guaranteed on-time delivery" — delivery depends on organizational execution, not tooling alone'
+      - Implementation timeline claims without disclosing data migration and integration requirements
+      - '"Replaces your PMO" or "no PMO needed" — tools enable process, they do not replace governance'
+
+examples:
+  - scenario: Writing PMO-focused content for a PMO Director evaluating a portfolio management platform
+    without_sme: |
+      Headline: "Manage Your IT Projects with [Product]"
+      Opening: "[Product] gives your PMO complete visibility into all IT
+      projects with real-time dashboards and automated reporting..."
+    with_sme: |
+      Headline: "Recover 6 Hours of PM Time Per Week While Cutting Portfolio Resource Conflicts by 40%"
+      Opening: "The average enterprise IT PMO spends 35% of project manager
+      capacity on status aggregation and reporting — time not available for
+      risk management. [Product] automates portfolio status rollup from Jira,
+      Azure DevOps, and Microsoft Project into steering-committee-ready
+      executive dashboards, while surfacing resource over-allocation conflicts
+      4-6 weeks before they become schedule slippage. Deployed in 6 weeks
+      with native connectors requiring no custom integration code..."
+    agent: content-generator
+
+  - scenario: Positioning analysis for a project management tool targeting IT PMO buyers
+    without_sme: |
+      IT PMOs need better project visibility. Position your tool as the
+      modern alternative to legacy project management software with AI-powered
+      insights and real-time dashboards.
+    with_sme: |
+      The IT PMO buyer has two distinct problems that often require different
+      value arguments. The working PM wants to reduce the 4-6 hours per week
+      spent on manual status reporting — this is an immediate, measurable pain
+      with a concrete time-savings ROI. The PMO Director wants portfolio-level
+      resource capacity visibility that individual project tools cannot provide
+      — the ability to see that the security architect is committed at 140%
+      across three projects before that becomes a missed milestone. Lead with
+      reporting time savings to create PM-level champions, then escalate to
+      the portfolio resource view to win the PMO Director and CIO budget
+      approval. The buying trigger is almost always a delivery failure that
+      exposed the absence of early warning capability.
+    agent: strategic-planning
+
+stakeholder_guidance: |
+  IT Project Managers and PMO leaders are measured by delivery outcomes —
+  on time, on budget, in scope, with the promised benefits realized.
+  They have been burned by optimistic vendor estimates and are professionally
+  skeptical of implementation simplicity claims.
+
+  **When assessing current PMO tooling or practices:**
+  - Acknowledge the delivery discipline already in place — criticizing existing
+    processes is counterproductive with practitioners who defend their methods
+  - Use: "there is an opportunity to reduce the manual effort in [specific
+    process] while improving [specific visibility capability]"
+  - Avoid: "your current approach lacks visibility" without specific evidence
+    from their environment
+
+  **When making strategic recommendations:**
+  - Always address implementation risk explicitly — what does the migration
+    from existing tools look like, how long does it realistically take, and
+    what is the minimum viable deployment to demonstrate value
+  - Quantify the PM time savings first — this is the most credible near-term
+    value argument and creates internal champions
+  - Connect portfolio visibility to CIO-level outcomes — delivery predictability
+    is a CIO accountability, not just a PMO efficiency argument
+  - Acknowledge the adoption challenge honestly — tools that require
+    significant behavior change from individual PMs have high failure rates
+    regardless of portfolio-level value
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

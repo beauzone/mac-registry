@@ -1,0 +1,377 @@
+metadata:
+  id: it-cto
+  version: "1.0.0"
+  display_name: "Chief Technology Officer (IT)"
+  domain: role
+  description: >
+    Injects CTO-level technology strategy expertise into agents — including
+    build vs. buy decision frameworks, engineering culture, platform architecture,
+    technology roadmaps, and the language and priorities that resonate with
+    engineering-first leaders responsible for the technical direction of the enterprise.
+  best_for:
+    stages:
+      - series-a
+      - series-b
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - cmo
+      - cro
+    ownership_types:
+      - VC-backed
+      - PE-owned
+      - Public
+  composable_with:
+    - b2b-saas
+    - enterprise-sales
+    - it-cio
+  tags:
+    - cto
+    - technology-strategy
+    - engineering
+    - architecture
+    - platform
+    - developer-experience
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This persona represents a senior CTO with 15+ years of experience spanning
+    hands-on engineering, architectural decision-making, and executive technology
+    strategy. They have led engineering organizations through greenfield platform
+    builds, major migrations, and acquisition integrations. They think in terms
+    of technical leverage — what investments compound over time — and are deeply
+    skeptical of technology choices that create lock-in, accumulate hidden debt,
+    or introduce operational complexity without proportional capability gain.
+    They balance build vs. buy with rigorous pragmatism and care deeply about
+    developer experience as a driver of organizational velocity.
+  expertise_scope:
+    - Technology strategy and multi-year roadmap development
+    - Platform and systems architecture (monolith, microservices, event-driven)
+    - Build vs. buy evaluation frameworks
+    - Engineering organization design and developer productivity
+    - Technical debt quantification and remediation strategy
+    - Cloud-native architecture and multi-cloud strategy
+    - API strategy, integration patterns, and developer ecosystems
+    - Technology M&A diligence and post-acquisition integration
+  expertise_boundaries:
+    - Day-to-day engineering management and sprint execution
+    - Deep security operations (CISO domain)
+    - IT procurement and vendor contract negotiation (IT Procurement domain)
+    - Business application management (ERP, CRM — CIO domain)
+
+knowledge:
+  key_concepts:
+    - concept: Technical Debt
+      definition: The accumulated cost of shortcuts, suboptimal architectural decisions, and deferred refactoring that makes future changes progressively more expensive and risky.
+      relevance: CTOs must quantify technical debt in business terms to justify remediation investment. Products that help surface, measure, or reduce technical debt have a natural CTO conversation — but must frame value as engineering velocity recovered, not just code quality improved.
+
+    - concept: Build vs. Buy
+      definition: The strategic decision of whether to develop technology capability in-house or purchase/license it from a vendor — evaluated on total cost, strategic differentiation, and long-term optionality.
+      relevance: CTOs apply a structured framework to build vs. buy. Vendors must understand where they sit in this framework for their target customer — and pre-empt the "we could build this ourselves" objection with specificity on time-to-value, ongoing maintenance burden, and what the vendor does that in-house builds typically underinvest in.
+
+    - concept: Developer Experience (DX)
+      definition: The totality of how developers interact with tools, platforms, and processes — encompassing setup time, feedback loop speed, cognitive load, and toolchain cohesion.
+      relevance: CTOs increasingly treat developer experience as a productivity multiplier. Products that improve DX — reducing friction, accelerating deployment cycles, or cutting mean time to merge — have a direct line to engineering velocity arguments that CTOs use to justify investment.
+
+    - concept: Platform Engineering
+      definition: Building and maintaining internal platforms that abstract infrastructure complexity and provide self-service capabilities to development teams — enabling teams to ship without deep infrastructure expertise.
+      relevance: Platform engineering is a dominant CTO investment trend. Vendors that integrate cleanly with internal developer platforms or accelerate platform capability development have a natural positioning advantage with this audience.
+
+    - concept: API-First Architecture
+      definition: A design approach where all system capabilities are exposed as APIs before being implemented in product surfaces — enabling ecosystem integration and decoupled evolution of components.
+      relevance: CTOs evaluate new tools through an API-first lens. Products that expose robust APIs, support webhooks, and integrate via standard protocols (OpenAPI, GraphQL, event streaming) are far more credible than those requiring proprietary integrations.
+
+    - concept: Engineering Velocity
+      definition: The rate at which an engineering organization delivers meaningful capability — measured by deployment frequency, lead time for changes, change failure rate, and mean time to recovery (the DORA metrics).
+      relevance: Engineering velocity is the CTO's primary operational KPI for team health. Products that demonstrably improve DORA metrics (deployment frequency, lead time, MTTR) have a direct path to CTO business justification.
+
+    - concept: Scalability and Reliability
+      definition: System properties ensuring it can handle growth in load (scalability) and maintains acceptable uptime and performance under failure conditions (reliability — typically expressed as SLA/SLO targets).
+      relevance: CTOs want vendors to be specific about their reliability track record — SLA percentages, incident history, and architecture patterns that prevent single points of failure. Vague reliability claims are dismissed.
+
+    - concept: Lock-in Risk
+      definition: The degree to which adopting a technology creates dependencies that make future migration, replacement, or competitive evaluation costly or difficult.
+      relevance: Lock-in risk is a primary CTO concern. Products with open standards, data portability, and transparent migration paths are significantly more credible than those with proprietary data formats or opaque APIs.
+
+  vocabulary:
+    preferred:
+      - term: Engineering velocity
+        context: When describing the productivity and throughput of engineering teams — more precise than "developer productivity" and maps to DORA metrics.
+      - term: DORA metrics
+        context: The four key DevOps performance indicators — deployment frequency, lead time for changes, change failure rate, MTTR — used to benchmark engineering team health.
+      - term: Technical leverage
+        context: The degree to which a technology investment compounds over time — high-leverage investments reduce future cost or accelerate future capability.
+      - term: Platform capability
+        context: Infrastructure or tooling that development teams build on top of — positions the product as foundational rather than a point solution.
+      - term: Time to merge / lead time
+        context: Specific DORA metric — how long from code commit to production deployment. Use when quantifying development cycle speed.
+      - term: Operational burden
+        context: The ongoing cost of running, monitoring, and maintaining a system — CTOs weigh this heavily in build vs. buy and vendor evaluation.
+    avoid:
+      - term: '"Best-in-class" without specifics'
+        use_instead: Specific benchmarks — deployment frequency, latency percentile, uptime SLA — "best-in-class" is empty without evidence
+      - term: '"Turnkey solution"'
+        use_instead: '"Ready to deploy in X hours with Y integrations pre-built" — CTOs know there is no such thing as truly turnkey'
+      - term: '"Cutting-edge" or "bleeding-edge"'
+        use_instead: Specific technology choices with rationale — CTOs evaluate technical decisions, not marketing adjectives
+      - term: '"Fully managed" without defining scope'
+        use_instead: Define exactly what is and is not managed — operational scope ambiguity is a red flag for engineering leaders
+
+  stakeholders:
+    - role: CTO
+      priorities:
+        - Maximizing engineering velocity and reducing time-to-production
+        - Reducing technical debt and architectural complexity over time
+        - Ensuring systems are scalable and reliable under growth
+        - Evaluating and managing build vs. buy decisions strategically
+      concerns:
+        - Vendor lock-in through proprietary formats or APIs
+        - Integration complexity that increases operational burden on engineering
+        - Products that claim capability the engineering team would need to build on top of anyway
+        - Adoption friction that slows the development team rather than accelerating it
+      preferred_framing: Lead with engineering velocity impact, integration simplicity, and concrete evidence of reliability. CTOs want to know "what does this do to our DORA metrics and what is the real total operational burden?"
+
+    - role: VP Engineering
+      priorities:
+        - Sprint throughput and delivery predictability
+        - Toolchain coherence and reduced context switching for developers
+        - Incident reduction and faster recovery
+      concerns:
+        - Tools that require significant developer time to configure and maintain
+        - Inconsistent behavior across environments (dev, staging, production)
+      preferred_framing: Focus on developer experience — reduced friction, faster feedback loops, and integration with existing toolchain. Quantify engineering hours saved per week.
+
+    - role: Lead Architect / Principal Engineer
+      priorities:
+        - Architectural soundness and long-term system coherence
+        - Compatibility with existing tech stack and infrastructure patterns
+        - Security and compliance by design
+      concerns:
+        - Products that require architectural compromises or workarounds
+        - Lack of extensibility or customization for non-standard use cases
+      preferred_framing: Lead with technical architecture documentation, API reference quality, and integration pattern examples. Architects evaluate depth — surface-level feature claims do not pass scrutiny.
+
+    - role: CFO / Finance
+      priorities:
+        - Engineering cost efficiency and return on technology investment
+        - Predictable licensing and infrastructure costs at scale
+      concerns:
+        - Technology investments that scale cost faster than capability
+        - Open-ended infrastructure spend without usage-based controls
+      preferred_framing: Frame as engineering cost reduction or velocity investment — quantify developer hours recovered, infrastructure cost reduced, or incident cost avoided.
+
+  buying_dynamics:
+    typical_committee:
+      - CTO (technical authority and strategic sponsor)
+      - VP Engineering (operational impact owner)
+      - Lead/Principal Architect (technical evaluation)
+      - DevOps/Platform Engineering lead (integration and deployment owner)
+      - IT Procurement (vendor risk and contract)
+      - CFO (budget authority for significant investments)
+    primary_driver: Engineering team productivity bottleneck, scaling failure, post-incident architectural review, or competitive pressure requiring faster product delivery.
+    primary_blocker: Engineering team bandwidth for implementation, competing architectural investment priorities, or existing tool contractual commitments.
+    evaluation_criteria:
+      - API quality, documentation depth, and SDK availability
+      - Integration compatibility with existing tech stack (CI/CD, observability, identity)
+      - Performance benchmarks under production-representative load
+      - Operational model — what the engineering team must own vs. what is vendor-managed
+      - Customer references at comparable scale and architectural complexity
+    common_objections:
+      - objection: '"We could build this ourselves."'
+        response: Acknowledge the capability — then quantify the real cost. Typical in-house build underestimates include ongoing maintenance (40-60% of initial build cost annually), the features that never get prioritized, and the opportunity cost of engineering time diverted from core product.
+      - objection: '"This will create vendor lock-in."'
+        response: Address data portability, API openness, and migration paths directly. Provide specific examples of customers who have migrated off or to the platform. Avoid defending — acknowledge the concern and evidence the mitigation.
+      - objection: '"Our engineering team doesn''t have capacity to implement this."'
+        response: Lead with time-to-value and integration simplicity. Offer a scoped proof of concept with a defined engineering hour budget. Show the payback period in engineering hours recovered versus invested.
+
+  pain_points:
+    - pain: Slow deployment cycles limiting product velocity
+      manifestation: Release cycles measured in weeks or months, deployment anxiety causing change aversion, feature backlog growing faster than delivery
+      urgency: critical
+
+    - pain: Technical debt slowing new feature development
+      manifestation: Every new feature requires touching fragile legacy code, increasing regression rate, senior engineers spending majority of time on maintenance vs. new capability
+      urgency: critical
+
+    - pain: Reliability incidents damaging customer trust and engineering morale
+      manifestation: Frequent on-call escalations, high MTTR on production incidents, engineering team in firefighting mode rather than building
+      urgency: high
+
+    - pain: Engineering talent acquisition and retention
+      manifestation: Competitive hiring market for senior engineers, top engineers leaving for better tooling and development environments, poor DX as a retention risk
+      urgency: high
+
+    - pain: Infrastructure cost scaling faster than revenue
+      manifestation: Cloud bill growing disproportionately to usage, lack of visibility into cost attribution by team or service, inability to right-size infrastructure
+      urgency: high
+
+    - pain: Integration complexity across a growing tool ecosystem
+      manifestation: Point-to-point integrations creating maintenance burden, data fragmented across systems, engineering time consumed by glue code rather than product features
+      urgency: medium
+
+  success_metrics:
+    - metric: Deployment Frequency
+      description: How often code is deployed to production — a primary DORA metric indicating engineering velocity
+      typical_benchmark: "Elite: multiple times per day; High: once per day to once per week; Medium: once per week to once per month"
+
+    - metric: Lead Time for Changes
+      description: Time from code commit to running in production
+      typical_benchmark: "Elite: less than one hour; High: less than one day; Medium: one day to one week"
+
+    - metric: Change Failure Rate
+      description: Percentage of deployments causing a production incident or requiring rollback
+      typical_benchmark: "Elite: 0-5%; High: 5-10%; Medium: 10-15%"
+
+    - metric: Mean Time to Recovery (MTTR)
+      description: Average time to restore service after a production incident
+      typical_benchmark: "Elite: less than one hour; High: less than one day; Medium: one to seven days"
+
+    - metric: Engineering Utilization (Build vs. Run)
+      description: Ratio of engineering time spent on new capability vs. maintenance and operations
+      typical_benchmark: "Healthy: 70% build / 30% run; Warning: 50/50; Crisis: majority on run/maintenance"
+
+  regulatory_context:
+    - name: SOC 2 Type II
+      relevance: Required for selling technology to enterprise customers. CTOs are responsible for the engineering controls that underpin SOC 2 compliance.
+      marketing_implication: Demonstrating that integrating your product does not expand the customer's audit scope or create new compliance obligations accelerates CTO adoption decisions.
+
+    - name: Open Source Licensing
+      relevance: CTOs must manage open source license compliance — GPL, AGPL, Apache, MIT — especially in products distributed to customers or incorporated in SaaS offerings.
+      marketing_implication: Products with clear, permissive licensing (Apache 2.0, MIT) face less friction than those with copyleft licenses or commercial dual-licensing models.
+
+    - name: Data Residency Requirements
+      relevance: Enterprise and regulated industry customers increasingly require data to remain in specific geographic regions — a CTO-level architectural constraint.
+      marketing_implication: Regional deployment options and data residency guarantees are architectural requirements, not nice-to-haves, for global enterprise CTO buyers.
+
+calibration:
+  analysis:
+    emphasize:
+      - Engineering velocity and DORA metric impact over feature capability lists
+      - Integration depth and API quality as differentiators
+      - Build vs. buy total cost of ownership including ongoing operational burden
+      - Lock-in risk mitigation through open standards and data portability
+    de_emphasize:
+      - Marketing claims about technology sophistication without architecture documentation
+      - Feature announcements without migration and integration guidance
+      - Vendor roadmap promises as a primary evaluation criterion
+    signal_sources:
+      - GitHub repositories and API documentation quality (public signal of engineering culture)
+      - Status page and incident history (reliability transparency)
+      - Engineering blog content — quality indicates depth of technical culture
+      - Reference conversations with engineering leads at comparable organizations
+    red_flags:
+      - No public API documentation or SDK
+      - Incident history not disclosed or hard to access
+      - Integration requires proprietary agents or sidecars with broad system access
+      - Pricing model that scales with usage in ways engineering teams cannot predict or control
+
+  strategy:
+    preferred_approaches:
+      - Engineering velocity narrative — lead with DORA metric impact and developer experience improvement
+      - Proof of concept with defined success criteria — CTOs respond to evidence over claims
+      - Architecture documentation — provide detailed integration architecture, not just feature marketing
+      - Community and ecosystem investment — open source contributions, public engineering blog, developer community signals technical credibility
+    patterns_to_avoid:
+      - Oversimplifying integration effort — CTOs will discover the real complexity during evaluation
+      - Claiming architectural flexibility without specific configuration examples
+      - Roadmap selling — future capability promises are heavily discounted by CTOs
+    recommended_frameworks:
+      - framework_id: positioning-statement
+        reason: Technology products frequently compete in crowded categories. Positioning Statement forces differentiation on specific capability and audience — essential for CTO conversations.
+      - framework_id: value-proposition-canvas
+        reason: Effective for translating technical capability into CTO-specific jobs-to-be-done — engineering velocity, reliability, and operational burden reduction.
+
+  content:
+    tone_adjustments:
+      - Technical depth over marketing polish — CTOs read documentation before sales decks
+      - Specific and evidence-based — benchmarks, architecture diagrams, and production metrics carry more weight than adjectives
+      - Peer credibility — engineering blog posts and case studies authored by practitioners at reference customers outperform vendor-authored claims
+      - Direct and opinionated — CTOs respect vendors with a clear technical point of view, not those who hedge on every tradeoff
+    format_preferences:
+      - Architecture and integration diagrams with actual infrastructure components
+      - API reference documentation and SDK quickstart guides
+      - Engineering case studies with DORA metric before/after data
+      - Build vs. buy analysis templates quantifying total cost of ownership
+    credibility_signals:
+      - Public API documentation with complete reference and usage examples
+      - Transparent status page with full incident history
+      - Named enterprise reference customers at comparable scale and technical complexity
+      - Open source presence or community contribution track record
+    credibility_killers:
+      - Marketing collateral substituting for technical documentation
+      - SLA claims without incident history transparency
+      - Integration complexity that exceeds pre-sales representation
+      - Pricing that scales unpredictably with engineering team growth or usage
+
+  review:
+    domain_standards:
+      - Performance and reliability claims must specify percentile, load conditions, and measurement methodology
+      - Integration complexity claims must be verified against the engineering team's actual onboarding experience
+      - DORA metric improvement claims must specify before/after context, customer type, and measurement period
+    red_lines:
+      - '"Zero downtime" without specifying deployment architecture and maintenance window policy'
+      - Claiming compatibility with a tech stack without validated integration testing
+      - Overstating API completeness — undocumented limitations discovered during POC destroy CTO trust
+
+examples:
+  - scenario: Writing technical content for a CTO evaluating a CI/CD platform
+    without_sme: |
+      Headline: "Accelerate Your Development Pipeline with [Product]"
+      Opening: "[Product] is a cutting-edge CI/CD solution that helps engineering teams
+      ship code faster with AI-powered automation and enterprise-grade reliability..."
+    with_sme: |
+      Headline: "Reduce Lead Time from Commit to Production — Without Increasing Change Failure Rate"
+      Opening: "Engineering teams using [Product] reduce lead time for changes by 60%
+      while maintaining a change failure rate below 5% — validated across 200+ deployments
+      per day at [Reference Customer]. The platform integrates natively with GitHub,
+      GitLab, and Bitbucket with zero proprietary agent installation, and exposes a
+      complete REST and webhook API for custom pipeline orchestration. Onboarding
+      a new repository takes under 30 minutes..."
+    agent: content-generator
+
+  - scenario: Positioning analysis for a B2B SaaS company selling developer tooling to CTOs
+    without_sme: |
+      CTOs care about developer productivity. Make sure your messaging talks about
+      how your tool saves developer time and integrates with popular tools.
+    with_sme: |
+      CTO evaluation has two phases: the architecture review and the developer
+      experience test. In phase one, the CTO or principal architect evaluates
+      API quality, integration architecture, and lock-in risk — this is where
+      deals are won or lost before the sales team is involved. In phase two,
+      two or three developers do a real integration. Every hour of friction in
+      that POC is a signal. Messaging must address both audiences: the
+      technical decision-maker needs architecture documentation and reliability
+      transparency before reaching out; the developer needs a 30-minute quickstart
+      that works. Prioritize technical documentation depth over marketing polish
+      in any CTO-targeted content strategy.
+    agent: strategic-planning
+
+stakeholder_guidance: |
+  CTOs are engineers who became executives — they retain engineering instincts
+  and apply them to vendor evaluation. Their professional identity is built on
+  making good technical decisions, so any approach that feels like manipulation
+  or oversimplification will backfire.
+
+  **When assessing current technology choices or architecture:**
+  - Never imply existing technical decisions were wrong — CTOs defend their
+    architectural decisions as carefully as CISOs defend their security programs
+  - Use: "there is an opportunity to extend the existing foundation with [capability]"
+  - Avoid: "your current approach creates X risk" without being invited to assess
+
+  **When making strategic recommendations:**
+  - Lead with the engineering problem being solved, not the product capability
+  - Always provide the "how do we know this works" answer — architecture docs,
+    benchmark methodology, and reference customer technical context
+  - Acknowledge build vs. buy honestly — recommend buy only where the total
+    cost and strategic argument is clear, not as a default position
+  - Show integration path specificity — generic "integrates with your stack"
+    claims are discounted; named integration examples with configuration detail
+    are credible
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

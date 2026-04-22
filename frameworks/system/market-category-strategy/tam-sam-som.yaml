@@ -1,0 +1,192 @@
+metadata:
+  id: tam-sam-som
+  version: 1.0.0
+  display_name: TAM / SAM / SOM — AI-Native Market Sizing
+  category: strategy
+  description: Board-ready market sizing framework adapted for AI-native and rapidly evolving categories. Produces transparent
+    assumptions, sensitivity analysis, and strategic implications.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - ceo
+    - cmo
+    - cfo
+    - cro
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: category_definition
+    description: Clear definition of the problem category and inclusion/exclusion boundaries
+    source: skill
+  - field: target_segments
+    description: Defined ICP segments and geographic scope
+    source: skill
+  - field: pricing_model
+    description: Monetization structure (subscription, usage-based, enterprise license, etc.)
+    source: skill
+  - field: adoption_assumptions
+    description: Expected penetration rates and expansion assumptions
+    source: user_input
+  optional:
+  - field: growth_rate_assumptions
+    description: Expected market growth and AI acceleration effects
+    source: research
+analysis:
+  instructions: 'This framework sizes total addressable market (TAM), serviceable addressable market (SAM), and serviceable
+    obtainable market (SOM). In AI-native markets, it explicitly evaluates velocity of adoption, pricing compression risk,
+    and automation substitution effects. Assumptions are made explicit and sensitivity-tested.
+
+
+    Present base case, conservative case, and upside case scenarios. Identify primary assumption risk and strategic lever
+    that most increases obtainable market share. Conclude with market attractiveness verdict and capital allocation implication.'
+  dimensions:
+  - id: total-addressable-market-tam
+    name: Total Addressable Market (TAM)
+    description: Full revenue opportunity if the company captured 100% of defined category
+    prompts:
+    - What is the total number of potential customers in scope?
+    - What is realistic annual revenue per customer under the pricing model?
+    - How does AI-driven efficiency change pricing ceilings or floors?
+    - Is the category expanding due to automation tailwinds?
+  - id: serviceable-addressable-market-sam
+    name: Serviceable Addressable Market (SAM)
+    description: Portion of TAM reachable given product, geography, and distribution model
+    prompts:
+    - Which segments are realistically reachable with current GTM motion?
+    - Are there regulatory or ecosystem constraints limiting access?
+    - Does distribution model constrain segment reach?
+    - Which verticals are excluded intentionally?
+  - id: serviceable-obtainable-market-som
+    name: Serviceable Obtainable Market (SOM)
+    description: Realistic share achievable within 3–5 years
+    prompts:
+    - What penetration rate is realistic given competition and switching costs?
+    - How quickly can the company scale distribution capacity?
+    - What historical benchmarks exist for similar companies?
+    - What capital and hiring levels are required to reach target share?
+  - id: sensitivity-and-risk-analysis
+    name: Sensitivity and Risk Analysis
+    description: Assumption robustness and downside scenarios
+    prompts:
+    - Which assumption most influences TAM/SAM/SOM output?
+    - How would pricing compression impact revenue potential?
+    - What happens if adoption velocity is 50% slower than expected?
+    - Are substitution risks increasing over time?
+output_templates:
+- id: primary
+  name: Market Sizing Analysis
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Category Definition and Boundaries
+
+    {category_definition_and_boundaries}
+
+
+    ## TAM Calculation
+
+    {tam_calculation}
+
+
+    ## SAM Refinement
+
+    {sam_refinement}
+
+
+    ## SOM Projection
+
+    {som_projection}
+
+
+    ## Sensitivity Analysis
+
+    {sensitivity_analysis}
+
+
+    ## Strategic Implications
+
+    {strategic_implications}
+
+
+    ## Board Discussion Questions
+
+    {board_discussion_questions}
+
+    '
+rubric:
+  description: Evaluates analytical rigor, transparency, realism, and executive readiness. Designed for board-level review.
+  dimensions:
+  - name: Assumption Transparency
+    weight: 0.25
+    scoring:
+      1: Assumptions unclear or implicit.
+      3: Most assumptions stated but not stress-tested.
+      5: All assumptions explicit, defensible, and sensitivity-tested.
+    improvement_guidance: List every major driver explicitly and quantify its impact.
+  - name: Logical Coherence
+    weight: 0.2
+    scoring:
+      1: Math or segmentation logic inconsistent.
+      3: Mostly coherent but minor gaps.
+      5: Clear, defensible, internally consistent calculations.
+    improvement_guidance: Ensure TAM rolls cleanly into SAM and SOM without double counting.
+  - name: Realism
+    weight: 0.2
+    scoring:
+      1: Overly optimistic penetration or pricing.
+      3: Moderate realism but limited benchmarks.
+      5: Penetration and pricing grounded in competitive and historical patterns.
+    improvement_guidance: Anchor penetration rates to observable category precedents.
+  - name: Strategic Insight
+    weight: 0.2
+    scoring:
+      1: Descriptive sizing only.
+      3: Some strategic implications identified.
+      5: Clear link between market size and capital strategy.
+    improvement_guidance: Translate sizing into hiring, GTM investment, and product roadmap implications.
+  - name: Board Readiness
+    weight: 0.15
+    scoring:
+      1: Not suitable for executive review.
+      3: Understandable but lacks sharp summary.
+      5: Concise verdict with risks and trade-offs articulated.
+    improvement_guidance: State a verdict and frame assumption risk explicitly.
+  thresholds:
+    revise: 2.7
+    publish_ready: 3.7
+    escalate_to_user: 2.2
+anti_patterns:
+- pattern: Top-Down Hand-Waving
+  description: Using large analyst numbers without segmentation clarity.
+  mitigation: Break large figures into customer counts × pricing assumptions.
+- pattern: Inflated SOM Claims
+  description: Assuming unrealistic early market share capture.
+  mitigation: Model penetration conservatively relative to distribution capacity.
+- pattern: Ignoring AI Pricing Compression
+  description: Assuming stable pricing in automation-heavy markets.
+  mitigation: Model downside scenario where pricing declines over time.
+- pattern: No Sensitivity Analysis
+  description: Presenting single-point estimate as certainty.
+  mitigation: Provide downside and upside scenarios with explicit variable adjustments.
+chaining:
+  after:
+  - framework_id: porter-five-forces
+    reason: ''
+  - framework_id: stp-segmentation-targeting-positioning
+    reason: ''
+  - framework_id: okrs
+    reason: ''
+  before: []

@@ -1,0 +1,34 @@
+metadata:
+  id: linkedin-post
+  display_name: LinkedIn post
+  version: "1.0.0"
+  schema_version: "1.0"
+  category: web
+  content_type: social-post
+  tags:
+    - social
+    - linkedin
+    - thought-leadership
+
+description: >
+  200-400 word LinkedIn post with a specific hook, a bulleted middle, and
+  a conversation-opening close. Calibrated to the brand voice — no "excited
+  to announce" openings.
+
+sections:
+  - name: Hook (first 2 lines)
+    guidance: These are the only lines visible before "see more". Make them specific.
+  - name: Setup
+    guidance: 2-3 sentences of context. Avoid setup-joke structure.
+  - name: Bullets
+    guidance: 3-5 short bullets. Parallel structure. Each a complete thought.
+  - name: Takeaway
+    guidance: One sentence the reader can quote.
+  - name: Soft CTA
+    guidance: A question, an invitation to disagree, or a link with context.
+
+starter_prompt: >
+  Write a 300-word LinkedIn post from the perspective of a marketing leader
+  at our company. Pick a point of view from our messaging pillars, open with
+  a specific hook (no "excited to announce"), use 3-5 parallel bullets, and
+  close with a conversation-opening question. Match brand voice exactly.

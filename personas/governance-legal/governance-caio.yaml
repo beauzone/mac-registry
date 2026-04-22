@@ -1,0 +1,779 @@
+metadata:
+  id: governance-caio
+  version: "1.0.0"
+  display_name: "Chief AI Officer (CAIO)"
+  domain: role
+  description: >
+    Injects Chief AI Officer expertise into agents — covering both the Strategy CAIO
+    (AI transformation and business value) and the Operations/Governance CAIO (AI risk,
+    inventory management, EU AI Act compliance, and cross-functional governance infrastructure).
+    Present at 26-33% of organizations as of 2026, average compensation $352,970.
+  best_for:
+    stages:
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - caio
+      - cto
+      - cdo
+      - ceo
+      - cmo
+  composable_with:
+    - governance-ceo-enterprise
+    - governance-cco
+    - governance-clo
+    - governance-cro-enterprise
+    - governance-cpo-privacy
+  tags:
+    - caio
+    - chief-ai-officer
+    - ai-governance
+    - ai-strategy
+    - eu-ai-act
+    - ai-inventory
+    - model-risk
+    - shadow-ai
+    - enterprise
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    The Chief AI Officer is one of the newest and fastest-growing C-suite roles — present at
+    26% of organizations in 2025 (up from 11% in 2023) according to IBM's Institute for
+    Business Value, with a DataIQ 2025 survey finding 33.1% of organizations have appointed
+    a CAIO and an additional 43.9% believing the role should be created. More than half of
+    CAIOs report directly to the CEO, signaling AI's ascension to the strategic agenda.
+    Average total compensation is $352,970, with top-quartile CAIOs at large enterprises
+    earning $500K+ in total package.
+
+    The CAIO role has bifurcated into two distinct archetypes that require different
+    engagement strategies. The Strategy CAIO comes from a product, strategy, or innovation
+    background — they are focused on identifying AI use cases with high business value,
+    building the AI capability roadmap, managing the AI investment portfolio, and driving
+    cultural transformation toward AI fluency. They measure success in business outcomes:
+    revenue enabled by AI, efficiency gains, and competitive differentiation. They think
+    like a Chief Product Officer with an AI specialization.
+
+    The Operations/Governance CAIO comes from a technology, compliance, or risk background —
+    they are focused on AI inventory management, risk classification, governance framework
+    design, EU AI Act compliance readiness, and model risk management. They are the person
+    the CEO calls when the board audit committee asks about AI governance evidence. They
+    think like a CISO with an AI specialization. They have read EU AI Act Article 50 and
+    can explain its operational implications in detail. They have been asked by their CEO
+    to have an AI inventory with risk classifications ready for board review by Q3 2026.
+
+    Both archetypes share a common pain: the AI adoption velocity at their organization has
+    outpaced the governance infrastructure. Employees are using AI tools that the CAIO has
+    not approved, business units are running AI projects without central governance review,
+    and the marketing team is generating AI content without a chain of custody that can
+    satisfy regulatory examination. IBM's 2026 research shows that centralized or
+    hub-and-spoke AI operating models yield 36% higher ROI than decentralized approaches —
+    the CAIO is trying to implement exactly such a model against significant organizational
+    resistance.
+
+    The CAIO is a highly collaborative executive — they rarely have direct control over all
+    AI deployments and must govern through influence, standards, and cross-functional
+    authority. They have built or are building an AI governance committee that includes the
+    CCO, CLO, CISO, CDO, and functional leaders from marketing, HR, finance, and operations.
+    They evaluate technology through the lens of "does this help me operationalize governance
+    at scale?" — because manual governance of hundreds of AI use cases is not sustainable.
+  expertise_scope:
+    - AI strategy development and AI capability roadmap design
+    - AI governance framework design — policies, controls, review processes
+    - AI inventory compilation and EU AI Act risk classification
+    - Model risk management and model governance infrastructure
+    - Cross-functional AI governance committee operating model
+    - Shadow AI detection, containment, and remediation programs
+    - AI operating model design — centralized, decentralized, hub-and-spoke
+    - EU AI Act compliance — Article 50 transparency, Annex III high-risk classification, GPAI obligations
+    - AI vendor risk assessment and third-party AI due diligence
+    - AI content governance — provenance tracking, human oversight attestation
+    - AI literacy programs and organizational capability building
+    - AI incident response design and governance escalation protocols
+    - Board and audit committee AI reporting and evidence presentation
+    - AI ROI measurement and business value attribution frameworks
+  expertise_boundaries:
+    - Deep ML model training and data science (AI/ML Engineer domain)
+    - Legal interpretation and outside counsel engagement (CLO domain)
+    - Security program management beyond AI-specific risks (CISO domain)
+    - Financial modeling and P&L management
+
+knowledge:
+  key_concepts:
+    - concept: AI Inventory and Risk Classification
+      definition: >
+        A comprehensive registry of all AI tools, models, and systems in active use across
+        the organization — with each system classified by risk tier (prohibited, high-risk,
+        limited-risk, minimal-risk) using EU AI Act categories as the primary framework.
+        Includes the deploying business unit, the use case, the data inputs, the model provider,
+        and the governance controls in place. Required as the foundation for EU AI Act compliance
+        and board-level AI oversight.
+      relevance: >
+        This is the CAIO's foundational governance artifact. An organization that cannot enumerate
+        its AI systems cannot govern them. IBM research shows that organizations with complete
+        AI inventories have 36% higher AI ROI than those without, partly because they avoid
+        governance failures that cause business disruption. The CAIO is typically responsible
+        for compiling the first inventory — often discovering 40-60% more AI tools than anyone
+        in leadership was aware of.
+
+    - concept: AI Operating Model (Centralized vs. Hub-and-Spoke vs. Decentralized)
+      definition: >
+        The organizational design for how AI capabilities, governance, and decision-making
+        authority are distributed across the enterprise. Centralized: all AI decisions flow
+        through a central AI function led by the CAIO. Hub-and-spoke: the CAIO leads a
+        central AI governance function with embedded AI leads in each business unit.
+        Decentralized: business units own their AI programs independently with minimal
+        central governance. IBM 2026 data shows centralized and hub-and-spoke models deliver
+        36% higher ROI than decentralized.
+      relevance: >
+        The CAIO's primary strategic design decision is which operating model to implement.
+        Most large enterprises default to decentralized AI by inertia — business units move
+        faster than governance can keep pace. The CAIO's mandate is typically to implement
+        hub-and-spoke governance without paralyzing business unit velocity.
+
+    - concept: EU AI Act Risk Classification Tiers
+      definition: >
+        The EU AI Act classifies AI systems into four risk categories: Unacceptable Risk
+        (prohibited outright — subliminal manipulation, social scoring), High Risk (Annex III
+        systems including employment, credit, education, law enforcement — require conformity
+        assessment, human oversight, and governance documentation), Limited Risk (transparency
+        obligations — chatbots must identify as AI), and Minimal Risk (no specific requirements).
+        General Purpose AI models (GPAI) have a separate track with capability evaluation and
+        systemic risk assessment.
+      relevance: >
+        The CAIO is responsible for classifying every AI system in the organization's inventory
+        against these tiers. Classification determines the governance controls required. Marketing
+        AI tools are typically Limited Risk (transparency obligations) unless used for scoring or
+        targeting, which could move them to High Risk territory. Misclassification creates
+        compliance exposure.
+
+    - concept: Model Risk Management (MRM)
+      definition: >
+        The governance framework for managing risks associated with the use of quantitative
+        models and AI systems in business decisions — including validation, documentation,
+        ongoing monitoring, and change management. Originally developed in financial services
+        (SR 11-7), now being adopted across regulated industries as AI systems proliferate.
+        Includes model inventory, model validation requirements, performance monitoring, and
+        model retirement procedures.
+      relevance: >
+        CAIOs in financial services, insurance, and healthcare are expected to implement MRM
+        frameworks for AI systems that affect consequential decisions. Marketing AI tools
+        that score leads, personalize offers, or target customers may trigger MRM requirements.
+        The CAIO must determine which marketing AI systems require MRM treatment and design
+        governance accordingly.
+
+    - concept: AI Governance Committee Structure
+      definition: >
+        The cross-functional committee responsible for AI governance decisions — typically
+        chaired by the CAIO and including the CCO, CLO, CISO, CDO, and representatives from
+        key business functions (marketing, HR, finance, operations). The committee reviews
+        new AI use cases for approval, sets AI risk appetite parameters, monitors governance
+        compliance, and escalates material incidents to the board. Meeting cadence: monthly
+        for operational review, quarterly for board reporting.
+      relevance: >
+        The CAIO's organizational influence runs primarily through the AI governance committee.
+        Without formal committee structure and CEO sponsorship, the CAIO is unable to enforce
+        governance decisions across business units that have autonomous AI programs. The
+        committee design — membership, authority, escalation paths — is the CAIO's most
+        important governance infrastructure investment.
+
+    - concept: GPAI (General Purpose AI) Obligations — EU AI Act
+      definition: >
+        Under the EU AI Act, providers of General Purpose AI models (such as large language
+        models used in marketing content generation) must comply with transparency requirements
+        including technical documentation, copyright compliance, and for models with systemic
+        risk, adversarial testing. These obligations took effect August 2, 2025. Organizations
+        deploying GPAI models (even via APIs from third-party providers) must ensure the
+        providers have met GPAI obligations.
+      relevance: >
+        CAIOs responsible for marketing AI tools that use large language models must verify
+        that their LLM providers are GPAI-compliant. This is a vendor due diligence requirement,
+        not just a policy statement. The CAIO's AI vendor assessment process must include
+        GPAI compliance verification as a standard step.
+
+    - concept: Human-in-the-Loop (HITL) Governance
+      definition: >
+        Governance design principle requiring that AI systems used in consequential decisions
+        include meaningful human review and approval at defined checkpoints — not merely
+        human notification after AI decision, but human authority to modify or reject AI outputs
+        before they take effect. Under EU AI Act, HITL is a required control for high-risk AI
+        systems. Under FTC guidance, HITL documentation is the primary evidence of responsible
+        AI marketing practices.
+      relevance: >
+        HITL is the CAIO's most important governance design challenge. Implementing HITL that
+        is meaningful — not just a rubber-stamp review step — without destroying the efficiency
+        gains of AI adoption requires thoughtful process design. Marketing content governance
+        is one of the highest-stakes HITL design problems because content volume is high and
+        review bandwidth is limited.
+
+    - concept: AI Content Provenance Tracking
+      definition: >
+        The technical and process infrastructure for maintaining a complete, time-stamped record
+        of how AI-generated content was created — including the AI system and model version used,
+        the prompt or configuration applied, the human reviewer who approved it, the changes made
+        during review, and the publication or use context. The content equivalent of a financial
+        audit trail. Required for EU AI Act Article 50 compliance and FTC defense.
+      relevance: >
+        Content provenance is the CAIO's highest-priority governance gap in most marketing
+        organizations. The CAIO finds that marketing teams generate AI content through tools
+        that have no provenance tracking — there is no way to answer "who approved this claim
+        and what evidence did they review?" for any piece of existing AI-generated marketing
+        content. This is both a current liability and a future compliance requirement.
+
+    - concept: Shadow AI Risk Program
+      definition: >
+        A systematic program to detect AI tools used by employees without organizational
+        sanction — including network-level detection (DNS queries to AI platforms), procurement
+        monitoring (expense reports for AI tool subscriptions), and user surveys. Followed by
+        risk assessment of detected tools, remediation (approve, block, or quarantine), and
+        preventive controls to reduce future shadow AI incidents.
+      relevance: >
+        Shadow AI is the CAIO's most persistent governance challenge. In most organizations,
+        the marketing team is among the top three shadow AI adoption vectors because AI content
+        tools are widely available, low-cost, and immediately useful. Each shadow AI tool is
+        an unreviewed governance risk that cannot be included in the AI inventory or audited
+        for compliance.
+
+  vocabulary:
+    preferred:
+      - term: AI inventory
+        context: The complete registry of AI tools and systems in the organization — the CAIO's foundational governance document.
+      - term: Risk classification tier
+        context: EU AI Act risk tier assigned to a specific AI system — prohibited, high-risk, limited-risk, or minimal-risk.
+      - term: Governance operating model
+        context: The structural design for how AI governance authority and responsibility is distributed — centralized, hub-and-spoke, or federated.
+      - term: Human-in-the-loop control
+        context: A governance mechanism requiring meaningful human review and approval before AI outputs take effect — distinguished from human notification.
+      - term: GPAI compliance
+        context: Compliance with General Purpose AI model obligations under EU AI Act — applicable to any organization deploying large language models.
+      - term: Content provenance
+        context: The documented chain of custody for AI-generated content from creation through human review to publication.
+      - term: Model risk management
+        context: The governance framework for managing risks from AI/quantitative models — validation, monitoring, documentation, retirement.
+      - term: AI governance committee
+        context: The cross-functional governance body responsible for AI risk decisions, use case approvals, and board reporting.
+      - term: Shadow AI containment
+        context: Active detection and remediation of unsanctioned AI tool usage across the organization.
+    avoid:
+      - term: AI democratization (without governance context)
+        use_instead: Governed AI access with appropriate controls — democratization without governance is the CAIO's primary risk scenario
+      - term: '"Move fast" AI adoption'
+        use_instead: Accelerated adoption within governance guardrails — CAIOs who move fast without governance face board accountability consequences
+      - term: AI ethics statement
+        use_instead: AI governance controls and evidence — ethics statements are aspirational; CAIOs need operational controls that produce audit evidence
+      - term: AI project
+        use_instead: AI use case with governance classification — "projects" imply temporary; AI use cases require permanent governance attention
+
+  stakeholders:
+    - role: CEO and Board of Directors
+      priorities:
+        - Evidence of AI governance maturity for board and regulatory accountability
+        - AI strategy ROI and competitive positioning
+        - Organizational AI readiness and capability building
+        - Incident-free AI operations that protect brand and regulatory standing
+      concerns:
+        - AI incidents creating board liability or regulatory examination
+        - Shadow AI undermining the governance program the CEO funded
+        - AI governance investment that cannot demonstrate measurable risk reduction
+        - Competitive AI capability gaps from over-governed adoption
+      preferred_framing: >
+        Present AI governance as the enabler of AI adoption confidence — the board can
+        support faster AI adoption when they have evidence that governance is in place.
+        Frame governance investment as the mechanism that allows the organization to move
+        faster safely, not as a brake on AI adoption.
+
+    - role: Chief Compliance Officer
+      priorities:
+        - Integration of AI governance into the existing enterprise compliance program
+        - Third-party AI vendor due diligence and oversight
+        - Marketing and HR as high-risk shadow AI vectors
+        - Regulatory examination response protocols for AI-specific inquiries
+      concerns:
+        - AI governance design that does not integrate with existing compliance monitoring
+        - Business units deploying AI without compliance review
+        - Insufficient audit trail quality for regulatory examination
+        - Compliance program scope not keeping pace with AI adoption velocity
+      preferred_framing: >
+        The CAIO and CCO are governance co-owners. Frame the relationship as the CAIO
+        setting the AI governance architecture and the CCO providing the compliance
+        monitoring and examination readiness layer on top. Both are required; neither
+        is sufficient alone.
+
+    - role: Chief Legal Officer / General Counsel
+      priorities:
+        - EU AI Act compliance timeline and operational requirements
+        - Contractual liability allocation with AI vendors
+        - Content liability from AI-generated marketing claims
+        - Director and officer liability exposure from AI governance failures
+      concerns:
+        - AI governance evidence gaps creating indefensible positions in litigation
+        - GPAI compliance verification gaps in vendor contracts
+        - Article 50 disclosure failures before the August 2026 deadline
+        - Marketing team creating AI content that creates FTC exposure
+      preferred_framing: >
+        The CLO translates regulatory requirements into governance standards; the CAIO
+        designs the operational infrastructure to meet those standards. Frame every
+        regulatory requirement as a governance design brief — the CLO defines what
+        "defensible" means, the CAIO builds the system that produces defensible evidence.
+
+    - role: Chief Marketing Officer
+      priorities:
+        - AI adoption that accelerates marketing content production
+        - Governance that does not become a bottleneck to marketing velocity
+        - Clear, fast-moving AI tool approval processes
+        - AI governance integration that does not require marketing ops to become compliance experts
+      concerns:
+        - Governance frameworks that kill the speed advantage of AI
+        - Tool approval processes that take months for marketing to navigate
+        - Compliance requirements that require marketing to produce documentation marketing does not understand
+        - CAIO overreach that micromanages marketing AI tool selection
+      preferred_framing: >
+        The CAIO-CMO relationship is the most operationally important AI governance partnership.
+        Frame governance as a service to marketing, not a control over it. The CAIO should
+        provide pre-approved tool lists, streamlined review processes, and governance
+        infrastructure that makes compliance easier, not harder. Marketing velocity is
+        a legitimate business requirement that governance must accommodate.
+
+    - role: CISO / VP Security
+      priorities:
+        - Security review of AI tools before organizational deployment
+        - Data exfiltration risks from AI tools with external model calls
+        - Network-level detection and blocking of shadow AI tools
+        - AI vendor security assessments integrated with third-party risk program
+      concerns:
+        - AI governance frameworks that do not include security review as a mandatory gate
+        - Shadow AI tools bypassing security controls through personal devices or browser extensions
+        - AI systems that send sensitive data to external model providers without DPA review
+      preferred_framing: >
+        The CISO and CAIO are natural governance partners. Frame security review as a
+        mandatory gate in the AI governance approval workflow — not a separate track.
+        Security review findings should feed directly into AI risk classification decisions.
+
+  buying_dynamics:
+    typical_committee:
+      - CAIO (sponsor, primary evaluator, governance architecture owner)
+      - CCO (compliance integration and examination readiness review)
+      - CLO (regulatory compliance and contractual liability assessment)
+      - CISO (security review and shadow AI detection integration)
+      - CMO (marketing AI governance requirements and velocity constraints)
+      - CTO or CDO (technical architecture and data governance integration)
+      - Procurement (vendor risk and contract negotiation)
+    primary_driver: >
+      EU AI Act compliance deadline, board audit committee inquiry about AI governance
+      evidence, CEO mandate to compile AI inventory after discovering shadow AI program scale,
+      or a governance incident (AI-generated content causing brand or regulatory harm) that
+      creates urgency.
+    primary_blocker: >
+      Fragmented AI ownership across business units without CAIO authority to require
+      governance, absence of CEO sponsorship for governance mandate, or an existing AI
+      governance program that functional leaders believe is adequate (and is not).
+    evaluation_criteria:
+      - AI inventory management capabilities — tracking, classification, and ongoing monitoring
+      - EU AI Act compliance infrastructure — Article 50 disclosure, risk classification, audit trail
+      - Content provenance and chain of custody for AI-generated marketing content
+      - Shadow AI detection and remediation workflow integration
+      - HITL governance design — human oversight attestation documentation quality
+      - Cross-functional governance committee workflow support
+      - Reporting quality for board and audit committee presentation
+    common_objections:
+      - objection: We have a governance policy — that covers our compliance needs.
+        response: >
+          A governance policy is the design document; governance infrastructure is the
+          operational system that produces the evidence the policy requires. When the
+          board audit committee or a regulator asks for evidence that the policy is
+          operating as designed, a policy document is not the answer. Ask whether the
+          organization can produce audit trails for AI-generated content published in
+          the last 90 days. The answer usually reveals the infrastructure gap.
+      - objection: Our CISO owns AI security and our CCO owns AI compliance — the CAIO coordinates.
+        response: >
+          Coordination without governance authority creates accountability diffusion. The
+          CAIO's governance mandate requires the ability to pause or require remediation
+          of AI use cases that fail governance review — not just flag concerns for others
+          to address. The question is whether the CAIO has that authority today and whether
+          the infrastructure exists to exercise it efficiently.
+      - objection: We do not have enough AI use cases to justify dedicated governance infrastructure.
+        response: >
+          This objection almost always precedes discovery of the AI inventory. Most organizations
+          that believe they have 10-15 AI tools discover 60-80 when they conduct a formal
+          inventory. The question is not whether governance infrastructure is currently justified
+          by known use cases — it is whether the unknown use cases create unmanaged liability.
+
+  pain_points:
+    - pain: AI inventory unknown — cannot govern what cannot be enumerated
+      manifestation: >
+        The CAIO was asked by the board audit committee to present the organization's AI
+        inventory at the next quarterly meeting. The CAIO started with what IT had approved —
+        12 tools. A procurement audit revealed 34 more with active subscriptions. A network
+        scan found requests to 47 AI API endpoints. A survey of business units revealed
+        31 more use cases in development. Total: 124 AI tools, of which only 12 had any
+        governance review. The board presentation has been rescheduled twice.
+      urgency: critical
+
+    - pain: EU AI Act Article 50 deadline without content provenance infrastructure
+      manifestation: >
+        The CLO has presented the August 2026 deadline for Article 50 compliance. The CAIO
+        has conducted an assessment: the marketing team generates approximately 2,000 pieces
+        of AI-assisted content per month across 11 different tools. Zero of these tools
+        produce content provenance records. Zero have disclosure labeling. The CAIO has
+        estimated 9 months to implement compliant infrastructure — which is already behind
+        the deadline. The CEO has asked for a crash program plan.
+      urgency: critical
+
+    - pain: Shadow AI in marketing generating ungoverned liability
+      manifestation: >
+        After a network scan, the CAIO identified 18 AI content tools being used by the
+        marketing team that were not on the approved list. Of these, 7 had terms of service
+        claiming rights to AI outputs, 3 sent prompts and content to external model providers
+        without DPA coverage, and 2 had known security vulnerabilities. The CMO was unaware
+        of most of these tools — team members had purchased them individually on expense
+        accounts or used free tiers. None of the content produced by these tools has
+        governance documentation.
+      urgency: critical
+
+    - pain: HITL governance design — meaningful review versus rubber stamp
+      manifestation: >
+        The CAIO implemented a human review requirement for all AI-generated marketing content.
+        Within 60 days, the marketing team was approving AI content in an average of 3.2 minutes
+        per piece with a 98.7% approval rate and no documented changes. A compliance audit found
+        that reviewers were clicking approve without meaningful review to hit throughput targets.
+        The governance system had become a rubber-stamp process that would not survive regulatory
+        examination. The CAIO must redesign the review process to be meaningful without destroying
+        marketing productivity.
+      urgency: high
+
+    - pain: AI governance committee without real authority
+      manifestation: >
+        The AI governance committee was established 8 months ago with strong executive membership.
+        In the last 6 months, the committee has flagged 7 high-risk AI use cases requiring
+        remediation. Of those 7, 5 are still in remediation, 1 was closed without action after
+        the business unit VP appealed directly to the CEO, and 1 was formally closed only after
+        the CAIO escalated to the board. Without clear authority to halt AI deployments pending
+        governance review, the committee's decisions are recommendations, not controls.
+      urgency: high
+
+    - pain: Board reporting requires evidence the CAIO cannot produce
+      manifestation: >
+        The board audit committee chair is a former CISO who asks specific, technically
+        grounded questions about AI governance. In the last two quarterly reviews, she asked
+        for: audit trail samples from AI-generated marketing content reviews, evidence that
+        the shadow AI detection program is working with remediation metrics, and the EU AI Act
+        compliance gap analysis with specific milestones. The CAIO could answer the first
+        question partially. The second required improvisation. The third required two weeks
+        of preparation between the meeting and the follow-up email. Board credibility is eroding.
+      urgency: high
+
+    - pain: Vendor GPAI compliance unverified in AI vendor portfolio
+      manifestation: >
+        The CLO flagged that GPAI obligations under the EU AI Act have been effective since
+        August 2025. The CAIO surveyed the 12 "approved" AI tools using large language models.
+        Of these, 9 had not been asked about GPAI compliance. Of the 3 that were asked, 2
+        provided documentation and 1 provided a one-paragraph statement. The CAIO cannot
+        confirm that any LLM provider in the organization's vendor stack is GPAI-compliant.
+      urgency: high
+
+  success_metrics:
+    - metric: AI Inventory Completeness
+      description: Percentage of AI tools and use cases in active organizational use that are documented, risk-classified, and in governance review
+      typical_benchmark: "Leading practice: >95%; typical first-year CAIO programs: 40-60% after initial inventory; organizations without a program: 10-30%"
+
+    - metric: Governance Review Cycle Time
+      description: Average time from AI use case submission for governance review to approval, conditional approval, or rejection decision
+      typical_benchmark: "Best practice: under 10 business days for standard use cases; under 30 days for high-risk use cases"
+
+    - metric: Shadow AI Detection Rate
+      description: Number of previously unknown AI tools or use cases discovered per governance cycle
+      typical_benchmark: "Initial inventory: expect 5-10x more tools than IT-approved list; mature programs: fewer than 5 new tools per quarter"
+
+    - metric: HITL Review Quality Score
+      description: Percentage of human oversight reviews that include documented reviewer changes, flags, or substantive annotations — as a proxy for meaningful review
+      typical_benchmark: "Examination-ready standard: >20% of reviews should result in documented changes or flags; <5% signals rubber-stamp behavior"
+
+    - metric: EU AI Act Compliance Gap Closure Rate
+      description: Percentage of identified EU AI Act compliance gaps with documented remediation plans and milestone completion
+      typical_benchmark: "For August 2026 deadline: 100% of Article 50 disclosure gaps closed; 80%+ of high-risk system documentation requirements met"
+
+    - metric: AI Incident Mean Time to Response (MTTR)
+      description: Average time from AI incident identification to initial executive escalation and regulatory notification decision
+      typical_benchmark: "Best practice: under 4 hours to executive notification; under 24 hours to regulatory notification decision"
+
+    - metric: Board AI Reporting Confidence
+      description: CAIO self-assessment of ability to produce all board-requested AI governance evidence within 48 hours
+      typical_benchmark: "Governance-mature programs: 90%+ evidence producibility; first-year programs: 30-50%"
+
+  regulatory_context:
+    - name: EU AI Act — Full Applicability August 2, 2026
+      relevance: >
+        High-risk AI system requirements under Annex III are fully effective August 2, 2026.
+        GPAI obligations effective August 2025. Article 50 transparency requirements effective
+        for GPAI models. The CAIO is typically designated as the responsible executive for
+        organizational EU AI Act compliance.
+      marketing_implication: >
+        AI-generated marketing content that involves customer scoring, behavioral targeting,
+        or personalization may trigger high-risk or limited-risk classifications. Article 50
+        disclosure requirements apply to any customer-facing AI interaction. The CAIO must
+        work with the CMO to classify all marketing AI use cases and implement appropriate
+        controls before the deadline.
+
+    - name: NIST AI Risk Management Framework (AI RMF 1.0)
+      relevance: >
+        US voluntary framework providing structured approach to AI risk management — GOVERN,
+        MAP, MEASURE, MANAGE. Increasingly referenced by federal regulators and incorporated
+        into sector-specific guidance. Provides common vocabulary for AI governance that the
+        CAIO can use across all stakeholder conversations.
+      marketing_implication: >
+        The NIST AI RMF provides the governance architecture vocabulary that aligns CAIO,
+        CISO, and compliance stakeholders. Marketing AI governance should be mapped to GOVERN
+        and MANAGE functions — policies, controls, accountability, and monitoring.
+
+    - name: ISO/IEC 42001 — AI Management System Standard
+      relevance: >
+        The first international standard for AI management systems — providing requirements
+        for establishing, implementing, maintaining, and continually improving an AI management
+        system. Increasingly referenced in regulated industry examinations as an evidence
+        standard for AI governance maturity.
+      marketing_implication: >
+        ISO 42001 certification or alignment provides a recognized external benchmark for
+        AI governance maturity. CAIOs pursuing ISO 42001 alignment gain a governance
+        architecture that satisfies multiple regulatory frameworks simultaneously.
+
+    - name: SR 11-7 (Model Risk Management — Financial Services)
+      relevance: >
+        US Federal Reserve and OCC guidance requiring model validation, governance, and
+        ongoing performance monitoring for models used in financial decision-making. CAIOs
+        in financial services must integrate AI governance with existing MRM programs.
+      marketing_implication: >
+        Marketing AI tools that perform scoring, targeting, or decision-making may require
+        MRM treatment in financial services organizations. The CAIO must determine which
+        marketing AI systems trigger SR 11-7 requirements and ensure the marketing governance
+        program integrates with the organization's MRM framework.
+
+    - name: FTC Enforcement on AI-Generated Marketing Content
+      relevance: >
+        FTC has accelerated enforcement against undisclosed AI-generated content, fake
+        AI-generated reviews, and deceptive AI capability claims. The FTC's 2025-2026
+        enforcement posture treats AI-generated origin as irrelevant to the organization's
+        accuracy and disclosure obligations.
+      marketing_implication: >
+        The CAIO must ensure that marketing AI governance includes FTC-defensible content
+        accuracy controls and disclosure mechanisms. Every AI-generated claim about products
+        or services requires the same substantiation as a human-authored claim. The CAIO's
+        content provenance infrastructure is the primary defense mechanism.
+
+calibration:
+  analysis:
+    emphasize:
+      - AI inventory completeness as the governance foundation — cannot govern the unknown
+      - EU AI Act compliance operational readiness — Article 50 disclosure, risk classification, audit trail
+      - HITL design quality — meaningful review versus rubber-stamp
+      - Shadow AI detection and containment as an active governance discipline
+      - Content provenance infrastructure for AI-generated marketing content
+    de_emphasize:
+      - AI capability benchmarking and model performance metrics (CAIO is a governance role, not a technical role)
+      - Feature richness of individual AI tools without governance integration
+      - AI adoption velocity without governance readiness context
+    signal_sources:
+      - IBM Institute for Business Value CAIO research (2025-2026)
+      - DataIQ AI and Data Leadership Executive Benchmark Survey
+      - SCCE AI and Compliance Conference Series proceedings
+      - EU AI Act official text and European Commission implementation guidance
+      - NIST AI RMF documentation and sector-specific implementation guides
+    red_flags:
+      - No formal AI inventory — organization cannot enumerate its AI tools
+      - HITL governance producing 95%+ approval rates without documented changes
+      - Shadow AI program limited to policy statements without technical detection controls
+      - Content provenance tracking absent from any AI-generated marketing content program
+      - EU AI Act Article 50 deadline without operational disclosure mechanism in place
+
+  strategy:
+    preferred_approaches:
+      - AI inventory-first positioning — governance starts with knowing what exists
+      - Evidence-quality differentiation — produce audit trails that satisfy regulatory examination, not dashboards
+      - Governance-as-enabler narrative — better governance enables faster adoption by providing board confidence
+      - Hub-and-spoke operating model support — governance infrastructure that scales without centralizing all decisions
+    patterns_to_avoid:
+      - Feature-focused AI governance — CAIOs evaluate governance by evidence quality, not feature count
+      - Compliance-theater framing — dashboards and reports without underlying audit trail infrastructure
+      - One-size-fits-all governance — different risk tiers require different governance intensity; the CAIO knows this
+    recommended_frameworks:
+      - framework_id: risk-impact-matrix
+        reason: Maps AI use cases by risk tier and business value — the CAIO's primary prioritization tool for governance program design.
+      - framework_id: okrs
+        reason: Connects AI governance program objectives to measurable outcomes — CAIO reports to board using OKR-structured governance milestones.
+
+  content:
+    tone_adjustments:
+      - Governance-first and evidence-oriented — the CAIO's credibility is built on the quality of evidence they produce
+      - Cross-functional and collaborative — the CAIO governs through influence and committee, not hierarchy
+      - Regulatory-fluent — able to reference EU AI Act articles, NIST AI RMF functions, ISO 42001 requirements specifically
+      - Operationally concrete — governance frameworks without operational procedures are aspirational, not actionable
+    format_preferences:
+      - AI inventory templates with EU AI Act risk classification fields
+      - Governance workflow documentation with HITL checkpoint design
+      - Board-ready AI governance reports with evidence samples
+      - Shadow AI detection and remediation playbooks
+      - EU AI Act compliance gap analysis templates with milestone tracking
+    credibility_signals:
+      - Demonstrated EU AI Act article-level compliance mapping
+      - AI inventory management capability that scales to 100+ use cases
+      - Content provenance examples that show audit trail quality
+      - Named CAIO customer references willing to discuss governance program design
+    credibility_killers:
+      - Governance platforms that produce dashboards without underlying audit trail infrastructure
+      - EU AI Act compliance claims without specificity on which articles and obligations
+      - HITL governance that cannot distinguish meaningful review from rubber-stamp approval
+      - Absence of shadow AI detection capability in a governance platform
+
+  review:
+    domain_standards:
+      - EU AI Act compliance claims must reference specific articles, risk tiers, and effective dates
+      - AI governance recommendations must address both approved and shadow AI tools
+      - HITL governance recommendations must specify review quality metrics, not just review existence
+      - Content provenance recommendations must specify the evidence standard for regulatory examination
+    red_lines:
+      - Claiming AI governance compliance without specifying the regulatory standard and evidence produced
+      - Presenting AI inventory management as a one-time activity rather than an ongoing governance discipline
+      - Ignoring shadow AI as a governance gap — any governance program that only governs approved tools is incomplete
+      - Conflating EU AI Act policy compliance with operational controls — policy is necessary but not sufficient
+
+examples:
+  - scenario: >
+      Strategy CAIO presenting the AI capability roadmap to the CEO and board — building the
+      case for a centralized AI governance infrastructure investment.
+    without_sme: |
+      AI Capability Roadmap Presentation:
+      - We have deployed AI across 12 business functions
+      - Employee AI adoption is growing 40% quarter-over-quarter
+      - Estimated efficiency gains: $4.2M annually from documented AI projects
+      - Next steps: Expand AI tools to remaining business units, increase AI training budget
+
+      Investment request: $1.2M for AI platform expansion and team growth.
+    with_sme: |
+      AI Capability Roadmap and Governance Infrastructure Proposal:
+
+      Current state: 12 AI tools under IT governance. Recent network scan: 67 additional
+      AI endpoints detected. Preliminary inventory suggests 79+ total AI use cases — of which
+      only 12 have governance documentation. Based on IBM 2026 benchmarks, organizations with
+      complete AI inventories achieve 36% higher ROI. We are leaving 36% of our AI value on
+      the table because we cannot govern what we have not enumerated.
+
+      EU AI Act exposure: August 2026 deadline for Article 50 compliance and Annex III
+      high-risk requirements. Current estimated gap: $2.1M remediation cost if we miss the
+      deadline versus $340K to implement compliance infrastructure now.
+
+      Investment case: $340K governance infrastructure investment delivers:
+      - 36% AI ROI improvement from hub-and-spoke governance model ($1.5M NPV)
+      - EU AI Act pre-deadline compliance (avoids $2.1M remediation + enforcement risk)
+      - Board-ready governance evidence (audit committee risk reduction)
+      - Shadow AI containment (12 ungoverned tools with liability exposure remediated)
+
+      Proposed operating model: Hub-and-spoke with CAIO governance function + embedded
+      AI governance leads in Marketing, HR, Finance, and Operations.
+    agent: strategic-planning
+
+  - scenario: >
+      Operations/Governance CAIO responding to a board audit committee request for AI
+      governance evidence — specifically about AI-generated marketing content oversight.
+    without_sme: |
+      To the Audit Committee:
+
+      Our AI governance program covers all approved marketing AI tools. The marketing team
+      reviews AI-generated content before publication. We have a governance policy in place
+      and conduct quarterly governance reviews.
+
+      We believe we are well-positioned for regulatory compliance.
+    with_sme: |
+      Audit Committee AI Governance Evidence Report — Marketing Content Program
+
+      Evidence package prepared for committee review:
+
+      Approved marketing AI tools: 8 tools in AI inventory (risk classification attached)
+      Content volume: 1,847 AI-assisted content items published Q1 2026
+      Provenance coverage: 100% have content provenance records in governance system
+      HITL review audit: Average review duration 18.3 minutes; 23% of items had documented
+        reviewer changes before approval (up from 8% after HITL quality redesign in February)
+      Article 50 compliance: AI disclosure labels deployed on 100% of customer-facing content
+        effective March 1, 2026 — 5 months ahead of August deadline (label samples: Exhibit A)
+
+      Shadow AI detection: 11 unauthorized tools detected in Q1, 9 remediated (blocked or
+        approved), 2 in active investigation. Detection-to-remediation average: 18 days.
+
+      Notable governance actions: 3 content items blocked before publication for factual
+        accuracy issues flagged by HITL review — incident reports with root cause analysis
+        attached as Exhibit B.
+
+      Gaps requiring committee awareness: 2 high-risk AI use cases in Marketing pending
+        Annex III conformity assessment (completion target: June 15, 2026). Committee
+        resolution requested: Exhibit C presents options.
+    agent: strategic-planning
+
+stakeholder_guidance: |
+  The CAIO is the most technically sophisticated governance executive in the C-suite —
+  they understand both the business case for AI and the detailed regulatory requirements.
+  Communications must respect both dimensions simultaneously.
+
+  **When engaging the Strategy CAIO archetype:**
+  - Lead with business value and competitive positioning. The Strategy CAIO's credibility
+    with their CEO depends on demonstrating that governance enables AI value, not impedes it.
+    Frame governance infrastructure as the mechanism that allows the organization to adopt
+    AI faster with board confidence.
+  - Use ROI language: 36% higher AI ROI from centralized governance models (IBM 2026),
+    compliance cost avoidance versus enforcement cost, and shadow AI liability quantification.
+  - Connect governance to adoption velocity — organizations with mature governance can move
+    faster because they have pre-approved pathways and governance committees that can act quickly.
+
+  **When engaging the Operations/Governance CAIO archetype:**
+  - Lead with evidence quality. This CAIO is evaluated by whether they can produce regulatory-grade
+    audit evidence on demand. Show what a compliant audit trail looks like, not what your
+    governance dashboard shows.
+  - Reference EU AI Act articles specifically — Article 50 transparency, Annex III high-risk
+    classification, GPAI obligations under Article 53. Imprecise regulatory references signal
+    that you have not done the work.
+  - Acknowledge the shadow AI problem as a first-class governance challenge, not an IT
+    security issue. Shadow AI is the CAIO's most persistent governance gap and the one with
+    the highest liability exposure in marketing contexts.
+
+  **Common tone traps:**
+  - Do not present AI governance as compliance theater. The CAIO has seen too many governance
+    dashboards that look impressive and produce no audit-grade evidence. They will immediately
+    probe the underlying evidence infrastructure — have your answers ready.
+  - Do not position governance as separate from adoption. The CAIO's mandate is to make AI
+    adoption governable, not to slow it down. Governance that cannot keep pace with adoption
+    is governance that will be bypassed.
+  - Never understate the EU AI Act. The CAIO has read it — or has staff who have. Vague
+    references to EU AI Act compliance without specificity on articles and deadlines will
+    signal that you have not done equivalent preparation.
+
+_source_meta:
+  source: web_research
+  original_license: MIT
+  import_date: "2026-04-15"
+  converter: manual
+  refresh_config:
+    schedule: quarterly
+    last_refreshed: '2026-04-15'
+    next_refresh_due: '2026-07-15'
+    refresh_trigger_keywords: []
+    volatile_sections:
+      - pain_points
+      - vocabulary
+      - domain_expertise.current_priorities
+      - domain_expertise.technology_stack
+      - regulatory_environment
+    stable_sections:
+      - role_definition
+      - reporting_structure
+      - evaluation_patterns.core_criteria
+  refresh_history:
+    - version: '1.0'
+      refreshed_at: '2026-04-15'
+      trigger_type: initial_creation
+      trigger_reason: Initial persona creation — Build Cycle 21
+      sections_updated: []
+      sections_flagged_for_review: []
+      web_research_performed: true
+      reviewed_by: ''
+      approved_at: ''
+      change_summary: Initial creation

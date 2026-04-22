@@ -1,0 +1,204 @@
+metadata:
+  id: voc-thematic-analysis
+  version: 1.0.0
+  display_name: Voice of Customer Thematic Analysis
+  category: product_pmm
+  description: Provides a structured approach to analyze Voice of Customer data, identify themes and sentiment, and translate
+    insights into prioritized actions for product, CX, and GTM.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - late-stage-private
+    - public
+    roles:
+    - cmo
+    - vp-marketing
+    - vp-product
+    - product-marketing-manager
+    - marketing-director
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: voc_objectives
+    description: What the team wants to learn from VoC (e.g., reduce churn, refine ICP, improve onboarding).
+    source: user_input
+  - field: customer_segments
+    description: Key segments or cohorts to consider (e.g., size, industry, plan, role).
+    source: user_input
+  - field: feedback_sources
+    description: Description of VoC sources (surveys, interviews, reviews, support tickets, product usage comments).
+    source: user_input
+  - field: qualitative_feedback_samples
+    description: Representative qualitative feedback (verbatim excerpts or summarized notes) tagged with source and segment
+      where possible.
+    source: existing_deliverable
+  optional:
+  - field: existing_metrics
+    description: Any relevant quantitative metrics (NPS, CSAT, churn, expansion rate) for context.
+    source: existing_deliverable
+analysis:
+  instructions: 'This framework guides VoC analysis through four steps: scoping objectives and segments, thematically coding
+    feedback, layering in sentiment, and synthesizing the most important themes and their business impact into clear action
+    tracks.
+
+
+    Synthesis should surface the 3-5 highest-impact themes, describe their sentiment and segment patterns, explain why they
+    matter to the business, and outline clear product, CX, and GTM actions. Emphasize how these actions build on existing
+    strengths and recent progress rather than suggesting the company start from scratch.'
+  dimensions:
+  - id: scope-and-segmentation
+    name: Scope and Segmentation
+    description: Ensures the analysis is focused on the right objectives, segments, and data sources.
+    prompts:
+    - What decisions will this VoC analysis inform (e.g., roadmap, messaging, onboarding, pricing)?
+    - Which customer segments or cohorts are most important to those decisions?
+    - Which feedback sources are represented, and where might there be blind spots?
+  - id: theme-identification
+    name: Theme Identification
+    description: Identifies recurring topics, issues, and desires across qualitative feedback.
+    prompts:
+    - What topics, needs, or friction points appear repeatedly across feedback samples?
+    - Can these be grouped into clear themes and sub-themes that are easy for stakeholders to understand?
+    - Which themes are specific enough to be actionable but broad enough to matter across more than one customer?
+  - id: sentiment-and-intensity
+    name: Sentiment and Intensity
+    description: Assesses the sentiment and strength of feeling attached to each theme.
+    prompts:
+    - For each theme, what is the balance of positive, neutral, and negative sentiment?
+    - Which themes show strong emotional intensity that may signal high impact on loyalty or adoption?
+    - How do themes and sentiment differ by segment, plan, or role?
+  - id: business-impact-and-prioritization
+    name: Business Impact and Prioritization
+    description: Connects themes to business outcomes and prioritizes action.
+    prompts:
+    - Which themes are most likely to influence churn, expansion, new-logo conversion, or advocacy?
+    - Where do customer needs align strongly with the company's strategy and capabilities?
+    - Which 3-5 themes should be prioritized now, and which can be monitored over time?
+  - id: action-tracks
+    name: Action Tracks
+    description: Translates prioritized themes into clear initiatives with owners and next steps.
+    prompts:
+    - For each priority theme, what concrete actions could Product, CX, and GTM teams take to respond?
+    - What small tests or pilots could validate the impact of changes before scaling?
+    - How will the company share VoC insights internally so teams can build on them?
+output_templates:
+- id: primary
+  name: Voice of Customer Thematic Analysis -- company_name -- date
+  format: memo
+  when_to_use: ''
+  template: '## Objectives and Scope
+
+    {objectives_and_scope}
+
+
+    ## Key Themes Overview
+
+    {key_themes_overview}
+
+
+    ## Theme Details and Sentiment
+
+    {theme_details_and_sentiment}
+
+
+    ## Business Impact
+
+    {business_impact}
+
+
+    ## Action Tracks
+
+    {action_tracks}
+
+
+    ## Next VoC Cycle
+
+    {next_voc_cycle}
+
+    '
+- id: alternative
+  name: VoC Theme Summary -- company_name
+  format: table
+  when_to_use: ''
+  template: '## Theme Table
+
+    {theme_table}
+
+
+    ## Top Actions
+
+    {top_actions}
+
+    '
+rubric:
+  description: Assesses the quality of VoC synthesis, including clarity of themes, integration of sentiment, and strength
+    of business-linked recommendations.
+  dimensions:
+  - name: Theme Clarity
+    weight: 0.3
+    scoring:
+      1: Themes are vague, overlapping, or so broad that they are difficult to act on.
+      3: Most themes are understandable and distinct, though a few may be broad or overlapping.
+      5: Themes are crisp, non-overlapping, and expressed in language that stakeholders immediately understand.
+    improvement_guidance: Refine or merge themes to remove overlap and make each theme specific enough to inform clear actions.
+  - name: Sentiment Integration
+    weight: 0.25
+    scoring:
+      1: Sentiment is not discussed or is based on isolated anecdotes.
+      3: Sentiment is described directionally but without clear patterns by theme or segment.
+      5: Each theme includes a clear view of sentiment and intensity, with notable segment differences called out.
+    improvement_guidance: For each theme, explicitly summarize the sentiment mix and any strong emotional signals.
+  - name: Business Relevance
+    weight: 0.25
+    scoring:
+      1: Themes are interesting but only loosely connected to business outcomes.
+      3: Some themes are clearly linked to churn, expansion, or growth, while others lack clear connection.
+      5: All priority themes are explicitly tied to key business outcomes or strategic initiatives.
+    improvement_guidance: Add a brief statement for each theme describing how it could influence key metrics or strategic
+      goals.
+  - name: Actionability
+    weight: 0.2
+    scoring:
+      1: Few or no concrete actions are suggested; recommendations are vague.
+      3: Some actionable ideas are present but may lack owners, sequencing, or feasibility considerations.
+      5: A concise set of realistic, sequenced actions is proposed and clearly linked to themes.
+    improvement_guidance: Convert insights into a short list of specific actions, pilots, or experiments with clear internal
+      owners.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Anecdote-Driven Conclusions
+  description: Over-indexing on a few striking quotes instead of recurring patterns.
+  mitigation: Weight conclusions by frequency and segment coverage, using quotes as illustration rather than the sole basis
+    for decisions.
+- pattern: Theme Overload
+  description: Surfacing too many themes, making it unclear what matters most.
+  mitigation: Cluster related topics and highlight only the top 3-5 priority themes, parking others for future cycles.
+- pattern: Problem-Only Framing
+  description: Presenting VoC solely as a list of issues without acknowledging strengths.
+  mitigation: Balance friction themes with positive themes to highlight strengths to double down on.
+- pattern: Insights Without Owners
+  description: Generating insights without specifying who will act on them.
+  mitigation: Map each priority theme to specific teams and propose concrete next steps.
+chaining:
+  after:
+  - framework_id: roadmap-prioritization
+    reason: ''
+  - framework_id: messaging-architecture
+    reason: ''
+  - framework_id: onboarding-journey-optimization
+    reason: ''
+  before:
+  - framework_id: customer-interview-program
+    reason: ''
+  - framework_id: survey-analysis
+    reason: ''

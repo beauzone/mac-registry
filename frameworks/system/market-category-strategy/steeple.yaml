@@ -1,0 +1,263 @@
+metadata:
+  id: steep-steeple-analysis
+  version: "1.0.0"
+  display_name: "STEEP / STEEPLE Analysis"
+  category: strategy
+  description: >
+    Performs structured macro-environmental scanning across Social, Technological,
+    Economic, Environmental, and Political factors (STEEP), with optional Legal and
+    Ethical expansion (STEEPLE). Produces a structured external opportunities and
+    threats assessment for strategic planning.
+  best_for:
+    stages:
+      - pre-seed
+      - seed
+      - series-a
+      - series-b
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - ceo
+      - cmo
+      - cro
+      - board
+  invocation_modes:
+    - explicit
+    - recommended
+    - free_form
+  tags:
+    - macro-environment
+    - external-analysis
+    - strategic-planning
+    - risk-analysis
+    - market-context
+  source: "Macro-environmental scanning methodology (STEEP/STEEPLE)"
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: company_description
+      description: Clear description of what the company does and its market
+      source: skill
+    - field: primary_market
+      description: Geographic and industry scope of operation
+      source: skill
+  optional:
+    - field: regulatory_environment
+      description: Known regulatory constraints or exposure areas
+      source: user_input
+    - field: strategic_objectives
+      description: Current 12–24 month strategic priorities
+      source: skill
+
+analysis:
+  instructions: |
+    Conduct a structured macro-environmental scan.
+
+    Step 1: Determine whether STEEP or STEEPLE is appropriate.
+    - Use STEEP for general strategic scanning.
+    - Use STEEPLE when legal exposure or ethical reputation risk is material.
+
+    Step 2: Assess each applicable dimension independently.
+    - Identify 3–5 major external forces per dimension.
+    - Distinguish between current conditions and emerging trends.
+    - Classify each finding as potential opportunity, threat, or dual-impact.
+
+    Step 3: Evaluate materiality.
+    - Prioritize factors by impact magnitude and time horizon.
+    - Calibrate depth by company stage:
+      - Early stage: focus on high-variance macro risks.
+      - Growth/enterprise: include regulatory and geopolitical complexity.
+
+    Step 4: Synthesize cross-dimensional implications.
+    - Identify reinforcing patterns across dimensions.
+    - Highlight second-order effects.
+    - Surface strategic inflection risks.
+
+    Step 5: Translate findings into strategic implications.
+    - Explicitly connect macro factors to revenue, cost, positioning, or risk exposure.
+
+  dimensions:
+    - id: social
+      name: Social
+      description: Demographic, cultural, behavioral, and societal shifts affecting demand or workforce dynamics
+      prompts:
+        - "What demographic or generational shifts affect the target market?"
+        - "Are consumer values or expectations changing in ways that alter demand?"
+        - "Are workforce norms or talent expectations shifting?"
+
+    - id: technological
+      name: Technological
+      description: Innovation, automation, infrastructure, and R&D developments that impact competitive dynamics
+      prompts:
+        - "What emerging technologies could disrupt the current model?"
+        - "Is automation reducing costs or changing value creation?"
+        - "Are competitors leveraging technological shifts faster?"
+
+    - id: economic
+      name: Economic
+      description: Macroeconomic conditions influencing capital flow, demand, pricing power, or cost structure
+      prompts:
+        - "How do interest rates, inflation, or GDP growth affect purchasing behavior?"
+        - "Are capital markets conditions affecting funding availability?"
+        - "Are supply chain or cost inputs shifting materially?"
+
+    - id: environmental
+      name: Environmental
+      description: Climate, sustainability, and ecological factors affecting operations or brand risk
+      prompts:
+        - "Are climate policies impacting operational costs?"
+        - "Are customers demanding sustainability transparency?"
+        - "Is physical climate risk material to operations?"
+
+    - id: political
+      name: Political
+      description: Government stability, trade policy, and public policy factors affecting the market
+      prompts:
+        - "Are trade policies or tariffs affecting operations?"
+        - "Is regulatory direction stable or volatile?"
+        - "Are geopolitical tensions introducing risk?"
+
+    - id: legal
+      name: Legal (STEEPLE Only)
+      description: Laws, compliance requirements, litigation risk, and regulatory enforcement
+      prompts:
+        - "Are new regulations emerging that materially change compliance cost?"
+        - "Is antitrust or IP litigation risk relevant?"
+        - "Are employment or safety laws materially shifting?"
+
+    - id: ethical
+      name: Ethical (STEEPLE Only)
+      description: Corporate responsibility, ethical scrutiny, and reputational expectations
+      prompts:
+        - "Are there ethical expectations that affect brand trust?"
+        - "Could AI, data, or sourcing practices raise scrutiny?"
+        - "Is reputational exposure a strategic risk?"
+
+output_templates:
+  - id: strategic-memo
+    name: Strategic Memo
+    format: markdown
+    when_to_use: Executive-level strategic planning or board review.
+    template: |
+      # STEEP / STEEPLE Analysis — {company_name}
+      **Date:** {date}
+
+      ## Executive Summary
+      {High-level synthesis of macro-environmental outlook.}
+
+      ## External Factors by Dimension
+
+      ### Social
+      {Key findings and implications.}
+
+      ### Technological
+      {Key findings and implications.}
+
+      ### Economic
+      {Key findings and implications.}
+
+      ### Environmental
+      {Key findings and implications.}
+
+      ### Political
+      {Key findings and implications.}
+
+      ### Legal (if applicable)
+      {Key findings and implications.}
+
+      ### Ethical (if applicable)
+      {Key findings and implications.}
+
+      ## Strategic Implications
+      - {Opportunity 1}
+      - {Threat 1}
+      - {Priority response}
+
+      ## Recommended Actions
+      - {Action 1}
+      - {Action 2}
+      - {Action 3}
+
+  - id: opportunity-threat-table
+    name: Opportunities & Threats Table
+    format: table
+    when_to_use: Input into SWOT or risk planning exercises.
+    template: |
+      | Dimension | External Factor | Classification | Time Horizon | Strategic Impact |
+      |------------|----------------|----------------|--------------|-----------------|
+      | Social | {factor} | Opportunity / Threat | {short/medium/long} | {impact} |
+      | Technological | {factor} | Opportunity / Threat | {short/medium/long} | {impact} |
+      | Economic | {factor} | Opportunity / Threat | {short/medium/long} | {impact} |
+      | Environmental | {factor} | Opportunity / Threat | {short/medium/long} | {impact} |
+      | Political | {factor} | Opportunity / Threat | {short/medium/long} | {impact} |
+      | Legal | {factor} | Opportunity / Threat | {short/medium/long} | {impact} |
+      | Ethical | {factor} | Opportunity / Threat | {short/medium/long} | {impact} |
+
+rubric:
+  scoring_model: "1-5"
+  dimensions:
+    - id: coverage-depth
+      name: Coverage Depth
+      description: Completeness and relevance of external factor identification
+      weight: 0.3
+      scores:
+        5: "All relevant dimensions covered with prioritized, material insights."
+        3: "Most dimensions covered but lacking prioritization or depth."
+        1: "Superficial listing without strategic relevance."
+
+    - id: materiality-prioritization
+      name: Materiality Prioritization
+      description: Clear ranking by impact and time horizon
+      weight: 0.3
+      scores:
+        5: "Clear impact ranking and time-based prioritization."
+        3: "Some prioritization but inconsistent."
+        1: "No prioritization; all factors treated equally."
+
+    - id: strategic-linkage
+      name: Strategic Linkage
+      description: Connection between macro forces and company implications
+      weight: 0.4
+      scores:
+        5: "Explicit connection to revenue, cost, positioning, or risk."
+        3: "General implications but not quantified."
+        1: "Abstract macro commentary with no company linkage."
+
+  thresholds:
+    publish_ready: 4.0
+    revise: 3.0
+    escalate_to_user: 2.0
+
+anti_patterns:
+  - pattern: "Checklist Listing"
+    description: Simply listing macro factors without strategic interpretation.
+    mitigation: "Require explicit linkage to company impact and classification as opportunity or threat."
+
+  - pattern: "Overlapping Dimensions"
+    description: Mixing legal or ethical issues into political without clarity.
+    mitigation: "If legal or ethical exposure is material, formally expand to STEEPLE and separate dimensions."
+
+  - pattern: "False Precision Forecasting"
+    description: Treating macro predictions as deterministic rather than scenario-based.
+    mitigation: "Frame forward-looking factors probabilistically and tie to scenario planning."
+
+chaining:
+  before:
+    - framework_id: swot
+      reason: "STEEP/STEEPLE populates the Opportunities and Threats sections."
+  after:
+    - framework_id: scenario-planning-risk-matrix
+      reason: "Identified macro risks inform contingency planning."
+
+stakeholder_guidance: |
+  External analysis may surface politically sensitive or regulatory risks.
+  Frame findings constructively:
+
+  - Use "emerging external pressure" rather than "regulatory threat."
+  - Avoid attributing blame to prior leadership decisions.
+  - When highlighting risk exposure, pair each risk with a mitigation pathway.
+  - Present ethical considerations as long-term brand positioning opportunities rather than compliance burdens.
+
+  For board-facing outputs, emphasize prioritization and action readiness over exhaustive enumeration.

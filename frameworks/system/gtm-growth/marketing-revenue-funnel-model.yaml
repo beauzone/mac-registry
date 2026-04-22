@@ -1,0 +1,185 @@
+metadata:
+  id: marketing-revenue-funnel-model
+  version: 1.0.0
+  display_name: Marketing / Revenue Funnel Model — Conversion & Leakage Diagnostics
+  category: gtm
+  description: Defines and diagnoses the full marketing-to-revenue funnel, identifying stage leakage, conversion bottlenecks,
+    and SLA misalignment. Adapted for AI-native, hybrid GTM, and enterprise sales models.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - cmo
+    - cro
+    - vp-marketing
+    - vp-sales
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: stage_definitions
+    description: Formal definitions for lifecycle stages (e.g., Visitor, MQL, SQL, Opportunity, Closed-Won)
+    source: user_input
+  - field: stage_conversion_metrics
+    description: Conversion rates and velocity between each stage
+    source: user_input
+  - field: pipeline_value_by_stage
+    description: Dollar value and volume distribution across funnel
+    source: user_input
+  - field: sla_and_handoff_rules
+    description: Marketing-to-sales handoff criteria and response time standards
+    source: user_input
+  optional:
+  - field: segmentation_breakdown
+    description: Funnel metrics segmented by ICP, channel, or region
+    source: user_input
+analysis:
+  instructions: 'This framework evaluates the complete marketing-to-revenue funnel, identifying structural leakage, conversion
+    constraints, and cross-functional misalignment. In AI-native environments, it emphasizes automation efficiency, qualification
+    rigor, and revenue predictability.
+
+
+    Identify primary leakage stage and quantify revenue impact. Recommend 3 prioritized interventions addressing conversion
+    or SLA misalignment. Conclude with revised stage definitions or qualification updates if required.'
+  dimensions:
+  - id: stage-definition-integrity
+    name: Stage Definition Integrity
+    description: Clarity and consistency of funnel stage definitions
+    prompts:
+    - Are stage definitions explicit and measurable?
+    - Are definitions consistently applied across systems?
+    - Are stages outcome-based rather than activity-based?
+    - Do definitions align with sales qualification criteria?
+  - id: conversion-and-leakage-analysis
+    name: Conversion and Leakage Analysis
+    description: Performance and drop-off between stages
+    prompts:
+    - Where are the largest percentage and dollar-value drop-offs?
+    - Are conversion rates trending positively or negatively?
+    - Does velocity vary significantly by segment?
+    - Are there systemic bottlenecks in qualification or follow-up?
+  - id: sales-and-marketing-alignment
+    name: Sales and Marketing Alignment
+    description: Handoff effectiveness and SLA performance
+    prompts:
+    - Are MQL-to-SQL acceptance rates healthy?
+    - Is response time impacting conversion?
+    - Are qualification criteria mutually agreed upon?
+    - Is feedback loop from sales to marketing operationalized?
+  - id: revenue-predictability-and-coverage
+    name: Revenue Predictability and Coverage
+    description: Pipeline sufficiency and forecasting health
+    prompts:
+    - Is pipeline coverage adequate for revenue targets?
+    - Is forecast accuracy within acceptable range?
+    - Are stage weighting assumptions validated?
+    - Does segmentation reveal hidden performance disparities?
+output_templates:
+- id: primary
+  name: Revenue Funnel Diagnostic
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Funnel Definitions and Baseline Metrics
+
+    {funnel_definitions_and_baseline_metrics}
+
+
+    ## Conversion and Leakage Analysis
+
+    {conversion_and_leakage_analysis}
+
+
+    ## Alignment and SLA Review
+
+    {alignment_and_sla_review}
+
+
+    ## Revenue Coverage and Forecast Health
+
+    {revenue_coverage_and_forecast_health}
+
+
+    ## Recommended Interventions
+
+    {recommended_interventions}
+
+    '
+rubric:
+  description: Evaluates clarity of definitions, rigor of leakage analysis, alignment diagnosis quality, and intervention
+    practicality.
+  dimensions:
+  - name: Definition Precision
+    weight: 0.2
+    scoring:
+      1: Stage definitions ambiguous or inconsistent.
+      3: Mostly clear but minor misalignment.
+      5: Explicit, measurable stage criteria applied consistently.
+    improvement_guidance: Formalize entry and exit criteria for each stage.
+  - name: Leakage Quantification
+    weight: 0.3
+    scoring:
+      1: Leakage described qualitatively only.
+      3: Some quantification but limited segmentation.
+      5: Leakage quantified by stage, segment, and revenue impact.
+    improvement_guidance: Calculate revenue impact of conversion improvements.
+  - name: Alignment Diagnosis
+    weight: 0.2
+    scoring:
+      1: Alignment issues vaguely referenced.
+      3: Clear friction identified but not root-caused.
+      5: Root cause analysis with SLA and qualification refinement.
+    improvement_guidance: Analyze MQL-to-SQL acceptance and response times.
+  - name: Intervention Quality
+    weight: 0.2
+    scoring:
+      1: Generic recommendations.
+      3: Moderately actionable improvements.
+      5: Targeted, high-leverage interventions with impact estimate.
+    improvement_guidance: Tie each intervention to specific conversion lift target.
+  - name: Executive Readiness
+    weight: 0.1
+    scoring:
+      1: Not suitable for board-level review.
+      3: Clear but not sharply prioritized.
+      5: Concise, quantified, and decision-ready.
+    improvement_guidance: Lead with quantified revenue impact.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Volume Obsession
+  description: Focusing solely on lead volume rather than conversion efficiency.
+  mitigation: Evaluate stage-to-stage conversion impact on revenue.
+- pattern: Undefined Handoffs
+  description: Ambiguous MQL/SQL criteria creating friction.
+  mitigation: Formalize qualification definitions and SLAs.
+- pattern: Blended Averages Only
+  description: Ignoring segmentation differences in funnel performance.
+  mitigation: Segment analysis by ICP, channel, or region.
+- pattern: No Revenue Translation
+  description: Describing funnel metrics without revenue implications.
+  mitigation: Quantify revenue impact of conversion improvements.
+chaining:
+  after:
+  - framework_id: aarrr-pirate-metrics
+    reason: ''
+  - framework_id: okrs
+    reason: ''
+  before:
+  - framework_id: stp-segmentation-targeting-positioning
+    reason: ''
+  - framework_id: icp-buying-committee
+    reason: ''

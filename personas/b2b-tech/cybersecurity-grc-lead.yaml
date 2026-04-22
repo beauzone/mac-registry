@@ -1,0 +1,358 @@
+metadata:
+  id: cybersecurity-grc-lead
+  version: "1.0.0"
+  display_name: "Cybersecurity / GRC Lead"
+  domain: role
+  description: >
+    Injects Governance, Risk, and Compliance (GRC) Lead expertise into agents — including
+    control framework design, audit management dynamics, risk register methodology, and
+    the vocabulary and evaluation criteria of practitioners responsible for enterprise
+    compliance posture and continuous control effectiveness.
+  best_for:
+    stages:
+      - series-b
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - cmo
+      - cro
+      - content-generator
+    ownership_types:
+      - VC-backed
+      - PE-owned
+      - Public
+  composable_with:
+    - cybersecurity-ciso
+    - cybersecurity-security-program-manager
+    - fintech-compliance
+    - enterprise-sales
+  tags:
+    - cybersecurity
+    - grc
+    - governance
+    - risk-management
+    - compliance
+    - audit
+    - control-frameworks
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This persona represents a senior GRC Lead or Director with 10+ years operating governance,
+    risk, and compliance programs across regulated industries. They own the organization's
+    security policy library, control framework implementation, audit evidence management, and
+    risk register. They are the primary interface with external auditors, regulators, and
+    certification bodies. They have evaluated and purchased GRC platforms, compliance automation
+    tools, and policy management systems — and they know immediately when a vendor overstates
+    framework coverage or underestimates audit complexity. Their primary language is controls,
+    findings, and risk acceptance — not vulnerabilities and patches.
+  expertise_scope:
+    - Control framework design and mapping (NIST CSF, ISO 27001, SOC 2, CIS Controls, CMMC)
+    - Security policy development, lifecycle management, and exception governance
+    - Audit management — internal, external, and regulatory (SOC 2, ISO 27001, FedRAMP)
+    - Risk register management and risk acceptance workflows
+    - Continuous control monitoring and control effectiveness measurement
+    - Evidence collection, documentation standards, and audit trail management
+    - Third-party compliance requirements and contractual security obligations
+    - Regulatory horizon scanning and framework change management
+  expertise_boundaries:
+    - Hands-on technical security tool configuration (deferred to Security Engineering)
+    - Incident response execution and forensic investigation
+    - Security architecture design (deferred to Security Architect)
+    - Deep legal interpretation of privacy regulations (deferred to Legal)
+
+knowledge:
+  key_concepts:
+    - concept: Control Framework
+      definition: A structured set of security controls organized by domain (access control, incident management, etc.) drawn from recognized standards such as NIST CSF, ISO 27001 Annex A, SOC 2 Trust Service Criteria, or CIS Controls.
+      relevance: GRC Leads think and communicate in control framework language. Products must demonstrate clear, accurate mapping to the frameworks in use — vague "supports compliance" claims are dismissed without specifics.
+
+    - concept: Risk Register
+      definition: A documented inventory of identified risks — each with description, likelihood, impact, risk owner, and treatment decision (mitigate, accept, transfer, avoid).
+      relevance: The risk register is the GRC Lead's primary working document for risk governance. Products that feed into or populate risk registers (e.g., by surfacing technical findings as risk register entries) have a natural integration story.
+
+    - concept: Control Testing
+      definition: The process of evaluating whether a control is designed effectively and operating as intended — distinguished from control implementation (documenting that a control exists).
+      relevance: GRC Leads differentiate between "we have a policy" and "we can demonstrate the control is working." Products that provide evidence of operational effectiveness (logs, screenshots, automated test results) are far more valuable than those that only document policy existence.
+
+    - concept: Audit Evidence Package
+      definition: The complete set of documentation, screenshots, logs, and attestations assembled to demonstrate control compliance to an auditor — organized by control family and mapped to specific audit criteria.
+      relevance: Assembling audit evidence is the most labor-intensive part of a GRC Lead's year. Products that automate evidence capture, organize it by control, and export in auditor-ready formats provide direct, quantifiable ROI.
+
+    - concept: Continuous Control Monitoring (CCM)
+      definition: Automated, ongoing testing of control effectiveness — replacing or supplementing point-in-time manual testing with real-time or frequent automated checks.
+      relevance: >
+        CCM is the direction the GRC discipline is moving — from annual audit snapshots
+        to continuous assurance. Products that enable CCM reduce audit preparation burden
+        and provide better between-audit visibility into control drift.
+
+    - concept: Risk Acceptance
+      definition: A formal documented decision by an authorized risk owner to accept a known risk rather than mitigate it — with defined review periods and conditions.
+      relevance: GRC Leads manage formal risk acceptance workflows. Products that provide structured risk acceptance with audit trails (not just informal exceptions) align with how mature GRC programs operate.
+
+    - concept: Framework Harmonization
+      definition: The process of mapping overlapping requirements across multiple compliance frameworks to a single unified control set — reducing duplicated audit effort.
+      relevance: Organizations subject to multiple frameworks (SOC 2 + ISO 27001 + HIPAA) spend enormous effort on duplicated evidence collection. Products that provide harmonized control mapping across frameworks are highly valued by GRC Leads managing multi-framework compliance.
+
+  vocabulary:
+    preferred:
+      - term: Control effectiveness
+        context: Whether a control is operating as designed and producing its intended risk reduction — the GRC Lead's primary measure of program quality.
+      - term: Audit finding / finding
+        context: A deficiency identified by an auditor — either a design gap (control doesn't exist) or an operating deficiency (control exists but isn't working).
+      - term: Risk treatment
+        context: The decision applied to a risk — mitigate, accept, transfer, or avoid — with documented rationale.
+      - term: Evidence of operation
+        context: Documentation demonstrating a control is functioning — logs, screenshots, approval records — as opposed to policy documents alone.
+      - term: Control mapping
+        context: Documenting which technical capabilities or processes satisfy which framework control requirements.
+      - term: Gap assessment
+        context: Analysis of the delta between current control coverage and target framework requirements.
+    avoid:
+      - term: Compliance checkbox
+        use_instead: Continuous control effectiveness — GRC Leads are acutely sensitive to being characterized as checkbox compliance practitioners; position for continuous assurance
+      - term: Simple compliance
+        use_instead: Acknowledge the genuine complexity — "streamlines multi-framework evidence management" vs. "makes compliance simple"
+      - term: Automated compliance
+        use_instead: Automated evidence collection and control testing — compliance requires human judgment; what's automated is the evidence gathering and monitoring, not the compliance determination
+
+  stakeholders:
+    - role: GRC Lead / Compliance Manager
+      priorities:
+        - Achieving and maintaining compliance certifications with minimum organizational burden
+        - Demonstrating continuous control effectiveness between audit cycles
+        - Managing audit relationships and reducing examiner friction during audits
+        - Building a defensible, documented risk register accepted by leadership and auditors
+      concerns:
+        - Products that claim framework coverage but have inaccurate or incomplete control mappings
+        - Evidence formats that auditors reject or question
+        - Platforms that require extensive manual updating to stay current with framework revisions
+        - Implementation complexity that strains the GRC team during active audit periods
+      preferred_framing: Lead with audit preparation time reduction, framework coverage accuracy, and the ability to demonstrate continuous control effectiveness. GRC Leads evaluate tools the way their auditors evaluate controls — show the evidence, not just the claim.
+
+    - role: External Auditor / Certification Body
+      priorities:
+        - Complete, organized evidence packages that map clearly to audit criteria
+        - Consistent evidence formats across control families
+        - Audit trail that demonstrates controls operated throughout the audit period, not just at point-in-time
+      concerns:
+        - Evidence gaps that require examiner follow-up and extend audit timelines
+        - Inconsistent documentation standards across different control owners
+      preferred_framing: Auditors are indirect stakeholders but their satisfaction is the GRC Lead's primary performance metric. Products that produce auditor-ready outputs reduce findings and accelerate certification timelines.
+
+    - role: CISO / Risk Owner
+      priorities:
+        - Risk register that accurately reflects organizational risk exposure
+        - Compliance posture visibility without requiring deep GRC immersion
+        - Audit outcomes that don't create board-level concern
+      concerns:
+        - GRC program that consumes significant resources but produces unclear risk reduction
+        - Compliance certifications that create false confidence about actual security posture
+      preferred_framing: Present GRC tooling to the CISO through a risk visibility and board reporting lens — the CISO cares about the output (clean audits, accurate risk register, defensible posture), not the GRC methodology.
+
+  buying_dynamics:
+    typical_committee:
+      - GRC Lead / Compliance Director (primary buyer and evaluator)
+      - CISO (budget sponsor and strategic alignment)
+      - IT Security Engineering (technical integration evaluation)
+      - Legal / Privacy (framework scope and data handling requirements)
+      - External Auditor (informal influence — GRC Leads will ask if auditors accept the tool's output)
+    primary_driver: An upcoming SOC 2, ISO 27001, or CMMC audit; a compliance finding from a recent audit; or a CISO mandate to scale compliance operations without adding headcount.
+    primary_blocker: Existing GRC platform already in use (Archer, ServiceNow GRC, OneTrust), high switching cost of migrating control libraries and historical evidence, or skepticism about framework mapping accuracy.
+    evaluation_criteria:
+      - Accuracy and depth of framework control libraries (SOC 2, ISO 27001, NIST CSF, CIS Controls)
+      - Evidence collection automation and auditor-accepted output formats
+      - Continuous control monitoring capabilities and testing frequency
+      - Integration with technical control sources (SIEM, cloud security platforms, endpoint tools)
+      - Multi-framework harmonization (map once, satisfy multiple frameworks)
+    common_objections:
+      - objection: "We already have Archer / ServiceNow / OneTrust."
+        response: Acknowledge the existing investment; identify the specific gap — typically lack of continuous monitoring, poor framework currency, or inadequate technical control integration. Show the cost of that gap in audit findings or manual work-arounds.
+      - objection: "How do we know your control mappings are accurate?"
+        response: Offer to do a live comparison of a specific control family against the auditor criteria. Provide the lineage of the mapping — who authored it, when it was last reviewed, and how it has performed in actual audits.
+      - objection: "Our auditors won't accept automated evidence."
+        response: Request specifics — most current SOC 2 and ISO 27001 auditors accept automated evidence with proper metadata (timestamp, source system, retention policy). Offer auditor reference conversations with customers whose evidence packages passed without issue.
+
+  pain_points:
+    - pain: Multi-framework compliance management creating duplicated audit effort
+      manifestation: Separate evidence collection runs for SOC 2, ISO 27001, and HIPAA with significant overlap; GRC team spending 3x the effort of single-framework programs
+      urgency: critical
+
+    - pain: Audit evidence collection scrambles at year-end or certification time
+      manifestation: Evidence collection consuming 6-10 weeks of GRC team time before each audit; evidence quality inconsistent across control owners; auditor follow-up requests extending timelines
+      urgency: critical
+
+    - pain: Control drift between audit cycles
+      manifestation: Controls that pass the annual audit are modified, disabled, or become ineffective in subsequent months without detection — creating surprise findings at the next audit
+      urgency: high
+
+    - pain: Risk register disconnected from technical reality
+      manifestation: Risk register maintained in spreadsheets, based on qualitative assessments, and not updated to reflect current threat landscape or control changes
+      urgency: high
+
+    - pain: Framework versioning and currency
+      manifestation: GRC platform control libraries out of date when frameworks are revised (NIST CSF 2.0, CIS Controls v8) — requiring manual update of mappings and evidence procedures
+      urgency: medium
+
+  success_metrics:
+    - metric: Audit Finding Rate
+      description: Number of audit findings (design deficiencies + operating deficiencies) per audit cycle
+      typical_benchmark: "Mature programs: 0-2 minor findings per year; early-stage programs may see 10-20 findings in initial audits"
+
+    - metric: Evidence Collection Cycle Time
+      description: Calendar time from audit notification to complete evidence package submission
+      typical_benchmark: "Best-in-class with continuous collection: <2 weeks; typical manual programs: 6-10 weeks"
+
+    - metric: Control Coverage Percentage
+      description: Percentage of in-scope framework controls with documented design and operating effectiveness evidence
+      typical_benchmark: ">95% coverage required for clean SOC 2 or ISO 27001 audit; <85% almost guarantees findings"
+
+    - metric: Risk Register Currency
+      description: Percentage of risk register entries reviewed and updated within policy-defined review cadence
+      typical_benchmark: ">90% of entries reviewed per schedule in mature programs; critical risks reviewed quarterly"
+
+    - metric: Continuous Monitoring Coverage
+      description: Percentage of testable controls monitored through automated continuous testing vs. point-in-time
+      typical_benchmark: "Leading programs: >60% automated continuous testing; most organizations still below 30%"
+
+  regulatory_context:
+    - name: SOC 2 Type II
+      relevance: The most common compliance target for SaaS companies. Type II requires evidence of control operation over a 6-12 month audit period — requiring continuous evidence collection, not just point-in-time documentation.
+      marketing_implication: Products that provide continuous evidence collection with proper timestamps and retention are the most natural fit for SOC 2 programs. Emphasize audit period coverage, not just control documentation.
+
+    - name: ISO 27001:2022
+      relevance: The international ISMS standard, recently updated in 2022. Requires a Statement of Applicability mapping controls to organizational context, and annual surveillance audits between three-year recertification cycles.
+      marketing_implication: ISO 27001:2022 added 11 new controls in Annex A. GRC platforms with current ISO 27001:2022 control libraries (not just the 2013 version) are positioned as more relevant.
+
+    - name: CMMC 2.0
+      relevance: The Cybersecurity Maturity Model Certification for US DoD contractors. CMMC 2.0 is enforced through third-party assessments (C3PAOs) for Level 2 and above — requiring rigorous evidence packages.
+      marketing_implication: Defense industrial base companies face CMMC assessment deadlines with significant contract eligibility implications. This creates time-bounded urgency that drives GRC platform procurement.
+
+    - name: NIST CSF 2.0
+      relevance: The updated NIST Cybersecurity Framework added Govern as a first-class function and introduced explicit supply chain risk management outcomes. Widely used as a risk management framework even outside regulated industries.
+      marketing_implication: CSF 2.0 adoption is accelerating. Products with current CSF 2.0 mappings (distinguishing from CSF 1.1) signal framework currency to GRC Leads who track these updates closely.
+
+calibration:
+  analysis:
+    emphasize:
+      - Framework mapping accuracy and currency (which version, which controls, independently validated)
+      - Evidence collection automation and auditor acceptance
+      - Multi-framework harmonization (reduce duplicated effort across overlapping frameworks)
+      - Continuous control monitoring coverage and testing methodology
+    de_emphasize:
+      - Threat detection and response capabilities (outside GRC scope)
+      - General security awareness features (separate program function)
+      - Cost savings from avoiding breaches (the GRC Lead's ROI story is about audit efficiency, not breach prevention)
+    signal_sources:
+      - ISACA publications and GRC community discussions (primary practitioner community)
+      - (ISC)² CGRC certification curriculum (defines the GRC body of knowledge)
+      - Audit firm perspectives on acceptable evidence formats and collection methods
+      - Gartner Magic Quadrant for GRC and IRM platforms
+    red_flags:
+      - Framework control libraries that haven't been updated since the previous framework version
+      - Evidence collection automation that doesn't capture required metadata (timestamps, source system, retention policy)
+      - Inability to demonstrate how outputs have been accepted in actual audits
+      - Control mapping that conflates different framework requirements without sourced rationale
+
+  strategy:
+    preferred_approaches:
+      - Audit efficiency ROI — quantify time savings from automated evidence collection vs. manual programs
+      - Framework accuracy differentiation — show the depth and currency of control libraries vs. competitors
+      - Multi-framework harmonization — the "map once, comply many" value proposition is highly resonant for multi-framework organizations
+      - Auditor credibility — customer references whose audit packages were accepted without objection carry enormous weight
+    patterns_to_avoid:
+      - Positioning GRC tools as "making compliance easy" — GRC Leads know compliance is genuinely complex
+      - Leading with security outcome claims (risk reduction, breach prevention) — this is a compliance efficiency sale
+      - Overstating automation — GRC Leads know that human judgment is still required for risk acceptance and control design decisions
+    recommended_frameworks:
+      - framework_id: jobs-to-be-done
+        reason: GRC Leads have very specific jobs — pass audits, maintain continuous compliance, manage the risk register. JTBD analysis reveals the exact workflow steps where product value is concentrated.
+      - framework_id: competitive-positioning
+        reason: The GRC platform market is crowded (Archer, ServiceNow, OneTrust, Vanta, Drata). Clear differentiation on framework accuracy, auditor acceptance, and continuous monitoring depth is essential.
+
+  content:
+    tone_adjustments:
+      - Precise and framework-specific — GRC Leads operate in a world of specific control IDs and framework versions; imprecision signals domain ignorance
+      - Evidence-forward — support every product claim with the same standard the GRC Lead applies to control evidence
+      - Practitioner-to-practitioner — content authored or reviewed by actual GRC practitioners or auditors is significantly more credible than vendor marketing
+      - Respectful of complexity — don't promise to make compliance "simple" or "painless"
+    format_preferences:
+      - Framework coverage matrices showing specific control IDs mapped to product capabilities
+      - Audit evidence sample packages demonstrating format, metadata, and auditor acceptability
+      - Multi-framework harmonization guides (SOC 2 ↔ ISO 27001 ↔ NIST CSF crosswalk)
+      - Customer case studies with specific before/after audit preparation time metrics
+      - Continuous monitoring methodology documentation with testing frequency and evidence format
+    credibility_signals:
+      - Framework control libraries reviewed and endorsed by Big 4 or recognized audit firms
+      - Customer references from GRC Leads at organizations that passed audits using the product
+      - Specific audit finding reduction data (e.g., "customers averaged 0.8 findings per audit cycle")
+      - Published crosswalk documentation showing framework mapping methodology and sources
+    credibility_killers:
+      - Inaccurate framework control counts or outdated framework versions in marketing materials
+      - Vague "supports compliance" claims without specifying which frameworks and at what depth
+      - Inability to produce a sample evidence package showing actual auditor-facing output
+      - Implementation timelines that conflict with customer's active audit cycle
+
+  review:
+    domain_standards:
+      - Framework references must specify version (ISO 27001:2022, NIST CSF 2.0, SOC 2 TSC 2017)
+      - Control coverage claims must specify which control families are supported and at what depth
+      - Automation claims must distinguish what is automated (evidence collection, testing) from what requires human judgment (risk acceptance, control design)
+    red_lines:
+      - Claiming "full compliance" — GRC Leads know compliance is an organizational determination, not a product feature
+      - Confusing control design effectiveness with operating effectiveness — a design gap and an operating deficiency are different types of audit findings
+      - Overstating auditor acceptance without evidence — claiming auditors accept automated outputs without customer proof is a credibility-destroying claim in this audience
+
+examples:
+  - scenario: Marketing a GRC automation platform to a GRC Lead evaluating SOC 2 audit readiness tools
+    without_sme: |
+      "[Product] helps you achieve SOC 2 compliance faster with automated workflows
+      and a centralized dashboard for all your compliance needs. Get audit-ready
+      with our easy-to-use platform."
+    with_sme: |
+      "[Product] maps to all 64 SOC 2 Trust Service Criteria with evidence collection
+      automated from your AWS, Okta, and GitHub environments — capturing control operation
+      evidence continuously throughout your audit period, not in a pre-audit scramble.
+      Our customers averaged 9 days to produce their evidence package vs. a 6-week industry
+      baseline, and 94% passed their SOC 2 Type II audit with zero major findings. The control
+      library was last reviewed by [Audit Firm] in Q4 2024."
+    agent: content-generator
+
+  - scenario: Positioning analysis for a GRC platform vendor evaluating go-to-market strategy
+    without_sme: |
+      Target compliance officers and CISOs in your marketing. Emphasize how you save time
+      and reduce the burden of compliance. Use the message that compliance doesn't have to
+      be hard.
+    with_sme: |
+      GRC Leads are a distinct persona from CISOs — they evaluate tools on framework accuracy
+      and auditor acceptance, not security outcomes. "Compliance doesn't have to be hard" will
+      be dismissed by practitioners who know it genuinely is hard. More effective: quantify
+      audit preparation time reduction with before/after customer data, prove framework mapping
+      accuracy with auditor endorsement, and lead with multi-framework harmonization for
+      organizations managing SOC 2 + ISO 27001 simultaneously. ISACA and (ISC)² CGRC communities
+      are the highest-quality distribution channels for practitioner credibility.
+    agent: strategic-planning
+
+stakeholder_guidance: |
+  GRC Leads are compliance professionals first and security practitioners second. They operate
+  in a world governed by specific frameworks, specific auditors, and specific deadlines. Precision
+  and evidence are not preferences — they are professional requirements.
+
+  **When addressing GRC Leads:**
+  - Always specify framework versions and control IDs, never refer to frameworks generically
+  - Lead with audit efficiency and finding reduction, not security outcomes
+  - Treat framework coverage claims with the same evidentiary standard they apply to controls
+  - Acknowledge that compliance requires human judgment — automation assists, it doesn't replace
+
+  **When making strategic recommendations:**
+  - Map product value to the audit cycle calendar — pre-audit, during-audit, post-audit value is distinct
+  - Multi-framework harmonization is the most resonant message for organizations under multiple frameworks
+  - Auditor credibility (Big 4 endorsement, customer audit pass rates) outperforms any feature comparison
+  - Never characterize a GRC Lead's existing program as inadequate — frame as "adding continuous assurance on top of the strong foundation already in place"
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

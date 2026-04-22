@@ -1,0 +1,194 @@
+metadata:
+  id: investor-narrative-framework
+  version: 1.0.0
+  display_name: Investor Narrative — Capital Markets Positioning Model
+  category: strategy
+  description: Structures a board- and investor-ready narrative linking market opportunity, structural advantage, growth mechanics,
+    and financial trajectory. Designed for venture, growth equity, and public market contexts.
+  best_for:
+    stages:
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - ceo
+    - cmo
+    - cfo
+    - board
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: market_opportunity_definition
+    description: TAM, growth rate, and structural drivers
+    source: existing_deliverable
+  - field: structural_shift
+    description: Durable technological or economic inflection point
+    source: existing_deliverable
+  - field: differentiation_assets
+    description: Proprietary data, network effects, IP, ecosystem leverage
+    source: skill
+  - field: growth_metrics
+    description: ARR, growth rate, retention, expansion, CAC/LTV
+    source: user_input
+  - field: long_term_model
+    description: 3–5 year margin and scale trajectory
+    source: user_input
+analysis:
+  instructions: 'This framework aligns company narrative with investor evaluation criteria: market size, structural inevitability,
+    competitive advantage, growth durability, and capital efficiency. Emphasis is placed on defensibility, compounding economics,
+    and credible path to scale.
+
+
+    Produce a tight 6–10 slide-equivalent narrative structure: Market Shift → Category Control → Unique Advantage → Growth
+    Engine → Financial Model → Long-Term Vision. Ensure claims are evidence-backed and valuation-multiple aligned.'
+  dimensions:
+  - id: market-inevitability
+    name: Market Inevitability
+    description: Structural argument for why the market must expand
+    prompts:
+    - Is the market shift durable and irreversible?
+    - Are macro tailwinds quantified?
+    - Is TAM expansion tied to structural change?
+    - Is urgency evident?
+  - id: unique-right-to-win
+    name: Unique Right to Win
+    description: Defensible competitive advantage
+    prompts:
+    - What assets cannot be easily replicated?
+    - Are network or data effects compounding?
+    - Is switching cost increasing over time?
+    - Is moat widening or narrowing?
+  - id: growth-engine-clarity
+    name: Growth Engine Clarity
+    description: Repeatable and scalable acquisition mechanics
+    prompts:
+    - Is growth model clearly articulated?
+    - Are retention and expansion strong?
+    - Is CAC efficiency improving?
+    - Are growth drivers measurable?
+  - id: financial-trajectory-credibility
+    name: Financial Trajectory Credibility
+    description: Path to margin expansion and scale
+    prompts:
+    - Is operating leverage visible?
+    - Are gross margins defensible?
+    - Is burn aligned to growth efficiency?
+    - Is long-term margin profile competitive?
+  - id: strategic-optionality
+    name: Strategic Optionality
+    description: Upside paths beyond base case
+    prompts:
+    - Are there adjacent expansion vectors?
+    - Is M&A strategically coherent?
+    - Does platform support ecosystem growth?
+    - Are there embedded pricing levers?
+output_templates:
+- id: primary
+  name: Investor Narrative
+  format: memo
+  when_to_use: ''
+  template: '## Executive Investment Thesis
+
+    {executive_investment_thesis}
+
+
+    ## Market Inevitability
+
+    {market_inevitability}
+
+
+    ## Unique Right to Win
+
+    {unique_right_to_win}
+
+
+    ## Growth Engine Mechanics
+
+    {growth_engine_mechanics}
+
+
+    ## Financial Model Trajectory
+
+    {financial_model_trajectory}
+
+
+    ## Strategic Optionality
+
+    {strategic_optionality}
+
+
+    ## Risk Factors and Mitigation
+
+    {risk_factors_and_mitigation}
+
+    '
+rubric:
+  description: Board-facing evaluation. Higher approval threshold. Assesses structural inevitability, defensibility, economic
+    durability, and narrative coherence.
+  dimensions:
+  - name: Structural Conviction
+    weight: 0.25
+    scoring:
+      1: Weak or speculative macro argument.
+      3: Plausible but thinly evidenced.
+      5: Compelling, data-backed structural inevitability.
+    improvement_guidance: Strengthen macro data and inflection evidence.
+  - name: Moat Strength
+    weight: 0.25
+    scoring:
+      1: Advantage easily replicated.
+      3: Moderate defensibility.
+      5: Clear compounding structural advantage.
+    improvement_guidance: Tie moat to proprietary assets and switching costs.
+  - name: Economic Durability
+    weight: 0.2
+    scoring:
+      1: Growth unsustainably driven by spend.
+      3: Mixed signals on efficiency.
+      5: Strong retention, expansion, and improving efficiency.
+    improvement_guidance: Highlight net retention and CAC efficiency trends.
+  - name: Narrative Coherence
+    weight: 0.15
+    scoring:
+      1: Disconnected claims.
+      3: Mostly logical but some gaps.
+      5: Clear, tight, and internally consistent thesis.
+    improvement_guidance: Align all claims to central investment thesis.
+  - name: Risk Transparency
+    weight: 0.15
+    scoring:
+      1: Risks ignored or minimized.
+      3: Risks acknowledged but shallow mitigation.
+      5: Explicit risk articulation with credible mitigation plan.
+    improvement_guidance: Quantify impact of primary downside scenarios.
+  thresholds:
+    revise: 3.0
+    publish_ready: 3.8
+    escalate_to_user: 2.4
+anti_patterns:
+- pattern: Feature-Led Pitch
+  description: Overemphasis on product details over investment logic.
+  mitigation: Anchor narrative in market inevitability and economics.
+- pattern: TAM Inflation
+  description: Overstated market sizing without credible penetration logic.
+  mitigation: Tie TAM to realistic adoption curves.
+- pattern: Growth Without Moat
+  description: High growth without defensibility explanation.
+  mitigation: Demonstrate compounding structural advantage.
+- pattern: No Downside Analysis
+  description: Ignoring credible risk factors.
+  mitigation: Explicitly address competitive and macro risks.
+chaining:
+  after:
+  - framework_id: okrs
+    reason: ''
+  before:
+  - framework_id: category-design-framework
+    reason: ''
+  - framework_id: north-star-metric-driver-tree
+    reason: ''

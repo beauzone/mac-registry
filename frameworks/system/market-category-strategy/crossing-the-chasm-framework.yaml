@@ -1,0 +1,189 @@
+metadata:
+  id: crossing-the-chasm-framework
+  version: 1.0.0
+  display_name: Crossing the Chasm — Adoption Transition & Market Focus Model
+  category: strategy
+  description: Operationalizes Geoffrey Moore’s technology adoption lifecycle model to transition from early adopters to the
+    early majority. Emphasizes beachhead focus, whole product strategy, and category credibility. Adapted for SaaS and AI-native
+    companies.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    roles:
+    - ceo
+    - cmo
+    - cro
+    - board
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: current_customer_profile
+    description: Characteristics of existing early customers
+    source: user_input
+  - field: win_loss_patterns
+    description: Deal success and failure themes
+    source: user_input
+  - field: product_maturity
+    description: Capability depth and reliability level
+    source: user_input
+  - field: reference_customers
+    description: Case studies and credible proof points
+    source: user_input
+  - field: segment_performance_data
+    description: Retention and expansion by segment
+    source: user_input
+analysis:
+  instructions: 'This framework addresses the gap between visionary early adopters and pragmatic early majority buyers. It
+    enforces beachhead segmentation, whole product completeness, and concentrated market dominance before expansion.
+
+
+    Identify whether company remains in early adopter phase or approaching early majority. Define beachhead segment. Specify
+    whole product gaps. Outline credibility-building plan. Establish criteria for adjacent segment expansion.'
+  dimensions:
+  - id: beachhead-market-selection
+    name: Beachhead Market Selection
+    description: ''
+    prompts:
+    - Which segment shows strongest retention and urgency?
+    - Where are reference wins clustered?
+    - Is segment economically meaningful?
+    - Can this segment produce repeatable case studies?
+  - id: whole-product-definition
+    name: Whole Product Definition
+    description: ''
+    prompts:
+    - Are integrations and workflows complete?
+    - Is implementation predictable?
+    - Are support expectations met?
+    - Is reliability enterprise-grade?
+  - id: referenceability-&-social-proof
+    name: Referenceability & Social Proof
+    description: ''
+    prompts:
+    - Do customers act as references?
+    - Are case studies segment-specific?
+    - Is analyst or ecosystem validation present?
+    - Is credibility concentrated in beachhead?
+  - id: category-credibility
+    name: Category Credibility
+    description: ''
+    prompts:
+    - Is messaging tailored to pragmatic buyers?
+    - Are ROI claims quantified?
+    - Is risk mitigation emphasized?
+    - Are competitors reframed as incomplete?
+  - id: expansion-sequencing
+    name: Expansion Sequencing
+    description: ''
+    prompts:
+    - Has beachhead achieved repeatable wins?
+    - Is NRR strong within segment?
+    - Is brand recognized in that niche?
+    - Is expansion adjacent, not random?
+output_templates:
+- id: primary
+  name: Crossing the Chasm Strategy
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Adoption Stage Assessment
+
+    {adoption_stage_assessment}
+
+
+    ## Beachhead Market Definition
+
+    {beachhead_market_definition}
+
+
+    ## Whole Product Gaps
+
+    {whole_product_gaps}
+
+
+    ## Referenceability Plan
+
+    {referenceability_plan}
+
+
+    ## Expansion Criteria and Sequencing
+
+    {expansion_criteria_and_sequencing}
+
+    '
+rubric:
+  description: Evaluates focus discipline, whole product readiness, segment credibility, and sequencing logic.
+  dimensions:
+  - name: Beachhead Focus
+    weight: 0.3
+    scoring:
+      1: Broad unfocused targeting.
+      3: Defined segment but weak concentration.
+      5: Clear narrow beachhead with dominance strategy.
+    improvement_guidance: Concentrate on single segment before expansion.
+  - name: Whole Product Completeness
+    weight: 0.25
+    scoring:
+      1: Product incomplete for mainstream buyers.
+      3: Functional but with integration gaps.
+      5: Comprehensive and reliable whole solution.
+    improvement_guidance: Address implementation and reliability gaps.
+  - name: Reference Density
+    weight: 0.2
+    scoring:
+      1: Sparse or generic proof.
+      3: Some segment-specific references.
+      5: High density of reference customers within niche.
+    improvement_guidance: Build concentrated case study cluster.
+  - name: Sequencing Discipline
+    weight: 0.15
+    scoring:
+      1: Random segment expansion.
+      3: Partial sequencing logic.
+      5: Deliberate adjacent expansion plan.
+    improvement_guidance: Define expansion trigger criteria.
+  - name: Pragmatist Messaging Fit
+    weight: 0.1
+    scoring:
+      1: Visionary messaging only.
+      3: Mixed buyer framing.
+      5: Risk-mitigating ROI-focused narrative.
+    improvement_guidance: Shift messaging to reliability and ROI.
+  thresholds:
+    revise: 2.9
+    publish_ready: 3.7
+    escalate_to_user: 2.3
+anti_patterns:
+- pattern: Segment Sprawl
+  description: Expanding into multiple verticals simultaneously.
+  mitigation: Win one segment decisively first.
+- pattern: Visionary-Only Messaging
+  description: Selling innovation without pragmatic proof.
+  mitigation: Lead with case studies and ROI evidence.
+- pattern: Incomplete Whole Product
+  description: Missing integrations or operational readiness.
+  mitigation: Invest in ecosystem and reliability.
+- pattern: Premature Expansion
+  description: Expanding before beachhead dominance.
+  mitigation: Set measurable dominance thresholds.
+chaining:
+  after:
+  - framework_id: gtm-motions-framework
+    reason: ''
+  - framework_id: startup-gtm-stage-model
+    reason: ''
+  before:
+  - framework_id: product-market-fit-diagnostic
+    reason: ''
+  - framework_id: april-dunford-5-step-positioning
+    reason: ''

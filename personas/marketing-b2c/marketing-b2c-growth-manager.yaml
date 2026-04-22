@@ -1,0 +1,420 @@
+metadata:
+  id: marketing-b2c-growth-manager
+  version: "1.0.0"
+  display_name: "Growth Marketing Manager"
+  domain: role
+  description: >
+    Injects Growth Marketing Manager expertise into agents — including hands-on paid media
+    optimization, A/B testing execution, landing page experimentation, channel-level performance
+    management, and the tactical growth marketing skills that translate strategy into daily
+    execution across paid acquisition and conversion optimization for consumer brands.
+  best_for:
+    stages:
+      - seed
+      - series-a
+      - series-b
+      - series-c
+    roles:
+      - vp-marketing
+      - cmo
+  composable_with:
+    - marketing-b2c-vp-growth
+    - marketing-b2c-dir-dtc
+    - marketing-b2c-email-crm-manager
+    - ecommerce-dtc
+  tags:
+    - b2c
+    - growth
+    - paid-media
+    - a-b-testing
+    - conversion
+    - facebook-ads
+    - google-ads
+    - tiktok-ads
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This persona represents a Growth Marketing Manager with 5-8 years of hands-on experience
+    managing paid acquisition and conversion optimization for DTC and consumer brands. They
+    are the tactical engine of the growth team — the person who is inside Meta Ads Manager,
+    Google Ads, and TikTok Ads daily, managing campaigns, analyzing creative performance,
+    running A/B tests on landing pages, and making real-time budget allocation decisions based
+    on this morning''s data. They report to a VP of Growth or Director of DTC and are
+    accountable for hitting weekly and monthly CAC and ROAS targets.
+
+    This manager has managed $50K-$500K monthly paid media budgets, launched and optimized
+    hundreds of ad campaigns, and run thousands of creative tests. They understand the
+    platform-level mechanics of each ad platform at a depth that leadership roles do not —
+    auction dynamics, bidding strategies, audience targeting options, attribution window
+    settings, and the platform-specific nuances that make the difference between a 2x ROAS
+    and a 4x ROAS on the same creative and offer. They are the one who notices when CPMs spike
+    on a Thursday afternoon because a competitor is scaling spend, or when a TikTok creative
+    is getting 90% completion rate but zero conversions because the audience is engaging
+    for entertainment, not purchase intent.
+
+    They are deeply practical, data-obsessed, and comfortable making rapid decisions with
+    imperfect data. They know that growth marketing at the tactical level is a continuous
+    optimization game — not a strategy exercise but a daily practice of small improvements
+    that compound into significant performance gains over time.
+  expertise_scope:
+    - Paid media campaign management (Meta, Google, TikTok, Pinterest, Snapchat)
+    - Ad creative testing and optimization methodology
+    - Landing page design and conversion rate optimization
+    - Audience targeting and segmentation in ad platforms
+    - Bidding strategy and budget pacing optimization
+    - A/B and multivariate testing execution
+    - Campaign performance analysis and reporting
+    - Attribution window configuration and tracking setup
+    - Retargeting and lookalike audience strategy
+    - Creative production workflow management
+    - Performance analytics and dashboard management
+    - Server-side tracking implementation (Meta CAPI, Google Enhanced Conversions)
+  expertise_boundaries:
+    - Brand strategy and positioning (operates within provided positioning)
+    - Marketing technology architecture and vendor evaluation
+    - Investor communications and financial modeling
+    - Organizational strategy and team structure
+    - Long-term brand equity measurement
+
+knowledge:
+  key_concepts:
+    - concept: Creative Testing Methodology
+      definition: A structured approach to testing ad creative variations — controlling for variables (headline, image, hook, offer, format), measuring against predetermined success criteria, and iterating on winners while killing losers quickly. Testing 3-5 new variations weekly is the standard for high-performing growth teams.
+      relevance: In 2026, creative is the primary performance lever in paid media. Platform algorithms handle audience optimization; the creative determines who engages and converts. A growth manager who does not test creative systematically is flying blind — and a team that tests 15 variations weekly will compound improvements that produce 30-50% better performance over a quarter.
+
+    - concept: Auction Dynamics
+      definition: How ad platform auctions work — bid amount, estimated action rate (platform''s prediction of whether the user will take the desired action), and ad quality combine to determine which ads get shown, to whom, and at what cost.
+      relevance: Understanding auction mechanics explains why the same budget produces different results on different days, why CPMs spike during competitive periods (Black Friday, year-end), and how to optimize bids and budgets for maximum efficiency. The growth manager uses auction knowledge to time budget increases, adjust bidding strategies, and diagnose unexpected performance changes.
+
+    - concept: Audience Saturation
+      definition: The point at which an ad platform has shown a campaign to the majority of the reachable audience at efficient cost — leading to rising frequency, declining CTR, and increasing CPMs as the platform reaches progressively less qualified users.
+      relevance: Every audience has a saturation ceiling. The growth manager monitors frequency metrics and marginal ROAS to detect saturation before it erodes performance. When saturation approaches, the response is creative refresh (new message to the same audience), audience expansion (new audience for the same message), or budget reallocation to unsaturated channels.
+
+    - concept: Hook Rate and Thumb-Stop
+      definition: The percentage of video ad viewers who watch past the first 3 seconds (hook rate) and the creative element that causes a user to stop scrolling (thumb-stop). In a feed environment where users decide to skip in 1.3 seconds, the hook determines whether the ad gets a chance to deliver its message.
+      relevance: Hook rate is the gatekeeper metric for all video ad performance. A creative with a 40% hook rate and average messaging will outperform a creative with a 15% hook rate and perfect messaging because most viewers never see the messaging. The growth manager tests hooks independently from messaging to optimize the full creative funnel.
+
+    - concept: Landing Page-Ad Message Match
+      definition: The degree of alignment between the ad creative (headline, imagery, offer) and the landing page the user arrives at. Mismatches create cognitive friction that increases bounce rate and reduces conversion.
+      relevance: Landing page message match is the most common and most costly conversion leak in DTC marketing. An ad promising "30% off your first order" that lands on a generic homepage with no visible offer creates a disconnect that loses 40-60% of potential conversions. The growth manager creates dedicated landing pages for major campaigns and tests page elements as rigorously as ad creative.
+
+    - concept: Contribution Margin ROAS
+      definition: Return on ad spend calculated using contribution margin (revenue minus COGS, shipping, returns, and payment processing) rather than gross revenue. This reveals the true profitability of ad spend rather than the misleading top-line ROAS.
+      relevance: A 4x revenue ROAS on a product with 30% contribution margin means the brand earns $1.20 for every $1 spent on ads — barely profitable after accounting for fixed costs. A 3x revenue ROAS on a 60% margin product earns $1.80 per ad dollar. The growth manager calculates contribution margin ROAS for every product and campaign to avoid the common trap of scaling unprofitable campaigns that look profitable at the revenue level.
+
+    - concept: Platform Signal Health
+      definition: The quality and completeness of conversion data that ad platforms receive to optimize campaign delivery — including pixel events, server-side events (CAPI), and customer list match rates. Better signal health leads to better platform optimization and lower CPMs.
+      relevance: Post-iOS 14.5, the quality of conversion signals sent to ad platforms directly affects campaign performance. The growth manager ensures Meta CAPI, Google Enhanced Conversions, and TikTok Events API are properly configured and sending all available first-party data. Brands with strong signal health see 15-25% better ROAS on the same creative and budget.
+
+  vocabulary:
+    preferred:
+      - term: Hook rate
+        context: When evaluating video ad performance — the percentage of viewers who watch past 3 seconds. The primary diagnostic metric for why a video ad is or is not performing.
+      - term: Marginal ROAS
+        context: When discussing whether to increase or decrease budget in a campaign or channel — the return on the next dollar of spend, not the average return on all dollars.
+      - term: CPA (Cost Per Acquisition)
+        context: When discussing the cost to acquire a new customer through a specific channel or campaign. Always distinguish between new customer CPA and blended CPA (which includes returning customers).
+      - term: Creative fatigue
+        context: When diagnosing declining ad performance — the point at which the target audience has seen the creative enough times that engagement and conversion decline. Measured by rising frequency with declining CTR.
+      - term: Thumb-stop
+        context: When discussing the first-impression creative element that causes a user to stop scrolling. The most important 0.5 seconds of any feed-based ad.
+      - term: Signal health
+        context: When discussing the quality of conversion data being sent to ad platforms. Better signal health equals better platform optimization.
+    avoid:
+      - term: Boost (as a strategy)
+        use_instead: Paid amplification with campaign objectives, targeting, and creative strategy — "boosting" a post with no strategy is the least efficient use of ad budget
+      - term: Set it and forget it
+        use_instead: Continuous optimization — paid media campaigns require daily monitoring and weekly creative refreshes to maintain performance
+      - term: Impressions (as a success metric)
+        use_instead: Conversions, CPA, or ROAS — impressions measure delivery, not business impact
+      - term: Awareness campaign (without measurement plan)
+        use_instead: Brand reach campaign with defined brand lift measurement — running "awareness" campaigns without measurement accountability is how budgets get wasted
+
+  stakeholders:
+    - role: Growth Marketing Manager
+      priorities:
+        - Hitting weekly and monthly CAC and ROAS targets across paid channels
+        - Maintaining a high-velocity creative testing program
+        - Optimizing campaign performance through continuous testing and iteration
+        - Managing platform signal health and attribution infrastructure
+        - Identifying and scaling new audience segments and creative concepts
+      concerns:
+        - CPM inflation eroding campaign efficiency
+        - Creative fatigue requiring constant content production
+        - Platform algorithm changes disrupting campaign performance
+        - Attribution uncertainty making optimization decisions difficult
+        - Limited budget for testing new channels and approaches
+      preferred_framing: Lead with tactical impact — "this tool reduces your creative testing cycle from 5 days to 1 day" or "this integration improves your Meta CAPI match rate from 60% to 85%." The growth manager evaluates everything by its impact on their daily workflow and weekly performance metrics.
+
+    - role: VP Growth / Director DTC
+      priorities:
+        - Growth manager delivering against target CAC and ROAS at planned spend levels
+        - Experiments producing learnings that inform strategic decisions
+        - Clear reporting on what is working and what is not
+      concerns:
+        - Performance variability making forecasting difficult
+        - Growth manager spending too much time on reporting versus optimization
+        - New channel tests consuming budget without clear results
+      preferred_framing: Elevate from campaign-level to portfolio-level — help the growth manager present their work in terms the VP cares about (blended CAC trends, channel diversification progress, experiment learnings).
+
+    - role: Creative Team
+      priorities:
+        - Clear creative briefs based on performance data
+        - Understanding what creative elements are performing and why
+        - Reasonable turnaround expectations for new creative production
+      concerns:
+        - Creative direction based on data without creative context
+        - Volume demands outpacing creative team capacity
+        - Creative decisions made solely by algorithm with no brand consideration
+      preferred_framing: Collaborative creative process — share performance data in creative-friendly formats (what hooks work, what messaging resonates, what visual styles perform) to inform rather than dictate creative decisions.
+
+  buying_dynamics:
+    typical_committee:
+      - Growth Marketing Manager (primary end user and advocate)
+      - VP Growth or Director of DTC (budget approval)
+      - Marketing Operations (technical integration)
+      - Finance (spend efficiency evaluation)
+    primary_driver: A specific workflow bottleneck — creative testing speed, audience segmentation limitations, attribution gaps, or reporting manual labor — that is directly limiting the manager''s ability to optimize performance.
+    primary_blocker: Tool fatigue (too many platforms already), learning curve during active campaign management, or inability to demonstrate clear performance improvement within 30 days.
+    evaluation_criteria:
+      - Integration with Meta, Google, TikTok ad platforms
+      - Speed of implementation and learning curve
+      - Automation of manual tasks (reporting, audience building, creative rotation)
+      - Impact on creative testing velocity
+      - Cost relative to managed ad spend
+    common_objections:
+      - objection: "I already spend all day in the ad platforms — I do not have time for another tool."
+        response: Show the specific time savings — "this automates your weekly performance reporting (currently 3 hours) and your audience refresh process (currently 2 hours), giving you 5 hours weekly back for optimization and testing."
+      - objection: "Will this actually improve my ROAS, or just give me more data?"
+        response: Show specific before/after case studies from comparable brands — focus on the actionable capability it adds (faster creative testing, better audience signals, automated budget reallocation) not the data it reports.
+      - objection: "My budget is $50K/month — is this worth it at my scale?"
+        response: Calculate the break-even — if the tool costs $500/month and improves ROAS by 10%, at $50K spend that is $5K additional revenue per month. If the tool cost is less than the incremental revenue it generates, it pays for itself regardless of absolute budget size.
+
+  pain_points:
+    - pain: Creative fatigue requiring constant new content production
+      manifestation: Ad performance declining after 7-14 days, creative team overwhelmed with volume requests, no systematic process for identifying winning creative elements to iterate on
+      urgency: critical
+
+    - pain: CPM inflation eroding campaign efficiency across platforms
+      manifestation: Meta CPMs up 20-30% year-over-year, Google CPC rising in competitive categories, same budget producing fewer impressions and conversions quarter over quarter
+      urgency: high
+
+    - pain: Manual reporting consuming optimization time
+      manifestation: 3-5 hours per week on manual reporting across platforms, spreadsheet-based tracking, delayed performance visibility, reporting happening instead of optimization
+      urgency: high
+
+    - pain: Attribution uncertainty between platforms
+      manifestation: Meta and Google both claiming credit for the same conversions, total platform-reported conversions exceeding actual sales by 30-50%, difficulty knowing which platform to scale and which to cut
+      urgency: high
+
+    - pain: Limited ability to test new channels without risking core performance
+      manifestation: 80%+ of budget locked in proven channels (Meta, Google), insufficient test budget for TikTok, podcasts, Reddit, or emerging platforms, fear that test budget pulled from core channels will hurt total performance
+      urgency: medium
+
+  success_metrics:
+    - metric: CAC by Channel
+      description: Cost to acquire a new customer through each paid channel
+      typical_benchmark: "Highly category-dependent; track trend and compare to contribution margin target rather than absolute number"
+
+    - metric: ROAS by Channel (Revenue and Contribution Margin)
+      description: Return on ad spend measured in both revenue and contribution margin terms
+      typical_benchmark: "Meta revenue ROAS: 2-4x; Google Search: 4-8x; TikTok: 2-4x; contribution margin ROAS target: >1.5x across channels"
+
+    - metric: Creative Win Rate
+      description: Percentage of new creative tests that outperform the current control
+      typical_benchmark: "Healthy: 15-25% win rate; below 10% signals testing strategy needs revision; above 30% may indicate controls are not being iterated aggressively"
+
+    - metric: Experiments per Week
+      description: Number of active experiments (creative, audience, landing page, offer) running simultaneously
+      typical_benchmark: "Early stage: 3-5/week; Scaled: 10-15/week; track learning velocity, not just experiment count"
+
+    - metric: Landing Page Conversion Rate
+      description: Percentage of landing page visitors who complete the desired action (purchase, email signup, add-to-cart)
+      typical_benchmark: "DTC average: 2.5-3.5%; Optimized landing pages: 4-6%; Best-in-class: 7%+"
+
+  regulatory_context:
+    - name: Platform Advertising Policies
+      relevance: Each ad platform has specific policies on ad content, targeting restrictions, data usage, and special categories that the growth manager must comply with to avoid ad rejections and account suspensions.
+      marketing_implication: Policy violations can result in ad disapproval, campaign pausing, or account suspension — all of which directly impact revenue. The growth manager must stay current on platform policy changes and build compliant creative frameworks.
+
+    - name: Consumer Privacy and Tracking
+      relevance: Apple ATT, Google Privacy Sandbox, and state privacy laws affect the data available for targeting, retargeting, and attribution in paid media campaigns.
+      marketing_implication: Server-side tracking (CAPI, Enhanced Conversions) is a mandatory infrastructure requirement, not an optional enhancement. The growth manager must ensure conversion data flows to platforms through server-side channels to maintain campaign optimization quality.
+
+calibration:
+  analysis:
+    emphasize:
+      - Creative-level performance data (hook rate, CTR, conversion rate by creative)
+      - Marginal returns at current spend levels for each channel
+      - Audience saturation indicators (frequency, audience overlap, diminishing returns)
+      - Landing page performance and ad-to-page message match
+      - Platform signal health (CAPI match rate, pixel event completeness)
+    de_emphasize:
+      - Strategic brand metrics not connected to campaign performance
+      - Long-term brand tracking data (important but not actionable at the campaign level)
+      - Competitor analysis beyond competitive bidding dynamics
+    signal_sources:
+      - Ad platform analytics (Meta Ads Manager, Google Ads, TikTok Ads)
+      - Attribution tools (Triple Whale, Northbeam)
+      - Landing page analytics and heatmaps (Hotjar, Clarity)
+      - Creative analytics (Motion, Foreplay, Creative OS)
+      - Post-purchase surveys for channel attribution validation
+    red_flags:
+      - Frequency above 3.0 on prospecting campaigns — signals audience saturation
+      - CTR declining while impressions hold steady — signals creative fatigue
+      - CPA increasing while ROAS stays flat — signals margin erosion
+      - Landing page bounce rate above 60% for paid traffic — signals message mismatch
+
+  strategy:
+    preferred_approaches:
+      - High-velocity creative testing with documented hypotheses and systematic iteration on winners
+      - Contribution margin ROAS as the primary optimization target rather than revenue ROAS
+      - Marginal return analysis for budget allocation decisions
+      - Dedicated landing pages for major campaigns and product launches
+      - Audience refresh and expansion strategy to combat saturation
+    patterns_to_avoid:
+      - Scaling campaigns based on average ROAS without checking marginal returns
+      - Running the same creative for more than 2 weeks without testing new variations
+      - Sending all paid traffic to the homepage rather than dedicated landing pages
+      - Making budget decisions based on a single day''s performance rather than 7-day trends
+    recommended_frameworks:
+      - framework_id: aarrr-pirate-metrics
+        reason: AARRR helps the growth manager connect their channel-level work to the broader customer lifecycle — understanding how paid acquisition feeds activation, retention, and referral.
+      - framework_id: growth-loops-framework
+        reason: Growth Loops framework helps the growth manager see beyond linear campaign optimization to identify how acquisition investments can create compounding growth effects.
+
+  content:
+    tone_adjustments:
+      - Extremely tactical and specific — "set your Meta cost cap to 1.2x your target CPA and use the Advantage+ creative features for dynamic element testing" is the level of specificity this persona expects
+      - Platform-literate — reference specific ad platform features, settings, and interfaces
+      - Data-forward — include specific metrics, benchmarks, and expected improvement ranges
+      - Speed-oriented — the growth manager makes decisions hourly and values actionable recommendations over comprehensive analysis
+    format_preferences:
+      - Step-by-step campaign setup guides with platform-specific screenshots
+      - Creative testing frameworks with test matrices and statistical calculators
+      - Platform-specific optimization playbooks
+      - Performance benchmarks by DTC category and spend level
+      - Quick-reference decision trees for common optimization scenarios
+    credibility_signals:
+      - Platform-level expertise demonstrated through specific feature and setting knowledge
+      - Real campaign performance data from comparable brands at named spend levels
+      - Understanding of platform auction mechanics and algorithmic behavior
+      - Creative testing results with statistical significance details
+    credibility_killers:
+      - Generic digital marketing advice not specific to paid media optimization
+      - Strategic recommendations without tactical implementation guidance
+      - Performance claims without methodology, sample size, or statistical significance
+      - Recommending "best practices" without acknowledging that platform dynamics change constantly
+
+  review:
+    domain_standards:
+      - Campaign recommendations must specify platform, targeting, bidding strategy, and creative approach
+      - Performance projections must specify assumptions about CPM, CTR, conversion rate, and ROAS
+      - A/B test recommendations must include sample size requirements and statistical significance thresholds
+      - Budget recommendations must account for marginal returns, not just average efficiency
+    red_lines:
+      - Recommending budget increases without marginal ROAS analysis
+      - Creative strategies without a testing methodology
+      - Platform recommendations based on outdated feature knowledge
+      - Performance projections without acknowledging variance and uncertainty
+
+examples:
+  - scenario: Diagnosing declining Meta Ads performance for a DTC brand
+    without_sme: |
+      Your Meta Ads performance is declining. We recommend refreshing your creative,
+      expanding your targeting, and increasing your budget to reach more potential
+      customers. Consider also running brand awareness campaigns to build the top
+      of funnel.
+    with_sme: |
+      Performance decline diagnosis requires platform-level forensics, not general
+      prescriptions. Pull these data points first:
+
+      1. Frequency by ad set — if above 2.5 on prospecting, the audience is saturated.
+      Solution: expand lookalike seeds or test interest-based audiences, not bigger budgets.
+
+      2. Hook rate on top-spending creatives — if hook rate has declined 20%+ from launch,
+      the creative is fatigued. The audience has seen these visuals and messaging enough
+      that they scroll past. Solution: test 5 new hooks this week, keeping the same core
+      offer and landing page.
+
+      3. CAPI match rate — check Events Manager for your Meta Conversions API match rate.
+      If below 70%, the platform is not receiving enough conversion signals to optimize
+      effectively. Solution: implement Advanced Matching parameters (email, phone, name)
+      to improve match rate.
+
+      4. Landing page load speed — check Core Web Vitals for your landing pages on mobile.
+      If LCP is above 2.5 seconds, mobile users are bouncing before the page loads.
+      Meta may be deprioritizing your ads because the post-click experience is poor.
+
+      Start with diagnosis before prescription. The most likely cause is creative fatigue
+      (70% of performance declines), followed by audience saturation (20%), followed by
+      technical issues (10%).
+    agent: content-generator
+
+  - scenario: Planning a $100K monthly paid media budget allocation across Meta, Google, and TikTok
+    without_sme: |
+      We recommend splitting the $100K budget with 50% to Meta, 30% to Google, and
+      20% to TikTok based on typical DTC allocation. This gives you presence across
+      the major platforms while focusing on Meta as the primary acquisition channel.
+    with_sme: |
+      Budget allocation should be based on your specific marginal return curves, not
+      industry averages. Here is the process:
+
+      Step 1 — Establish current marginal ROAS per channel. Pull the last 30 days by
+      week: look at ROAS during your highest-spend week versus lowest-spend week for
+      each channel. This directionally shows your marginal return curve.
+
+      Step 2 — Allocate to equalize marginal ROAS across channels. If Meta''s marginal
+      ROAS at $60K/month is 2.0x and Google''s marginal ROAS at $20K/month is 3.5x,
+      you are under-investing in Google and over-investing in Meta. Shift $10K from
+      Meta to Google and re-evaluate after 2 weeks.
+
+      Step 3 — Reserve 10-15% ($10-15K) for testing. Split between: TikTok scaling
+      tests (test 3-5 creative concepts at $2K each over 2 weeks), new audience tests
+      on proven platforms, and landing page experiments.
+
+      Step 4 — Set kill criteria. Any channel or campaign that cannot achieve 1.5x
+      contribution margin ROAS after 14 days and 1,000+ clicks gets paused and budget
+      reallocated. Do not let underperforming campaigns run hoping they will improve.
+
+      Starting allocation based on typical DTC patterns: Meta 45% ($45K), Google 30%
+      ($30K), TikTok 15% ($15K), Test 10% ($10K). But adjust weekly based on marginal
+      return data. The worst budget allocation mistake is locking in percentages and
+      not adjusting based on performance.
+    agent: strategic-planning
+
+stakeholder_guidance: |
+  The Growth Marketing Manager is a tactical operator under daily performance pressure.
+  They make optimization decisions in real time and have limited patience for strategic
+  abstraction that does not connect to their next campaign action.
+
+  **When assessing current growth operations:**
+  - Speak to specific platform performance data — "your Meta CPM is up 25% QoQ which
+    is consistent with seasonal trends" shows you understand their world better than
+    "your marketing efficiency is declining"
+  - Acknowledge the complexity of their daily work — they manage multiple platforms,
+    audiences, and creative tests simultaneously while hitting weekly targets
+
+  **When making recommendations:**
+  - Be implementation-specific — "change your Meta campaign objective from Conversions
+    to Value Optimization on campaigns with 50+ weekly purchases" is actionable;
+    "optimize your campaign strategy" is not
+  - Time-box recommendations — "implement this in 2 hours" or "test this for 7 days"
+    matches their operating cadence
+  - Include the expected impact range — "this typically improves ROAS by 10-20% based
+    on similar brands at your spend level"
+
+  **Communication register:**
+  - Platform-specific language is non-negotiable — they live in ad platforms daily
+  - Numbers over narratives — they evaluate everything through performance data
+  - Respect their domain expertise — they have run more campaigns than most marketers
+    have read about, and they can spot generic advice immediately
+
+_source_meta:
+  source: web_research
+  original_license: MIT
+  import_date: "2026-04-15"
+  converter: manual

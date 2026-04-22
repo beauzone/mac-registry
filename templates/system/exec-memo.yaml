@@ -1,0 +1,212 @@
+metadata:
+  id: exec-memo
+  version: "1.0.0"
+  display_name: "Executive Memo"
+  category: strategy
+  description: >
+    A concise, structured memo for communicating strategic findings, recommendations,
+    or decisions to a VP or C-level executive. Designed for async reading —
+    complete picture in under 5 minutes.
+  output_format: markdown
+  typical_length: "600–900 words"
+  best_for:
+    agents:
+      - strategic-planning
+      - market-research
+      - chief-of-staff
+    stages:
+      - series-a
+      - series-b
+      - series-c
+      - enterprise
+    modes:
+      - fractional
+      - fte
+  tags:
+    - memo
+    - executive
+    - strategy
+    - async
+    - recommendation
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: subject
+      description: The specific topic or question this memo addresses
+      source: user_input
+    - field: context
+      description: Brief background on why this memo is being written now
+      source: user_input
+    - field: findings_or_analysis
+      description: The substantive content — analysis, data, or recommendations
+      source: framework_output
+    - field: recommendation
+      description: The specific action or decision recommended
+      source: derived
+  optional:
+    - field: recipient_role
+      description: The specific exec role this memo is addressed to
+      source: user_input
+    - field: deadline_or_urgency
+      description: Any time-sensitive context affecting the decision
+      source: user_input
+
+structure:
+  sections:
+    - id: header
+      name: Header
+      required: true
+      description: Document identification and routing
+      guidance: >-
+        Include To, From, Date, Subject. Keep Subject line specific — not "Marketing Update" but "Recommendation: Shift Budget to ABM Program for Enterprise Segment"
+      format_notes: Use the memo header format exactly as shown in the template
+
+    - id: summary
+      name: Summary
+      required: true
+      description: The entire memo in 2–3 sentences — situation, key finding, recommendation
+      guidance: Write this last. It should stand alone — a reader who only reads the Summary should know the situation and the recommendation.
+      word_count: "60–90 words"
+
+    - id: context
+      name: Context
+      required: true
+      description: Why this question or decision is relevant now
+      guidance: 2–3 sentences maximum. Do not rehash background the recipient already knows. Focus on the triggering event or deadline that makes this memo timely.
+      word_count: "50–80 words"
+
+    - id: findings
+      name: Findings
+      required: true
+      description: The substantive analysis or evidence supporting the recommendation
+      guidance: Lead with the most important finding. Use tables or bullet points for comparative data. Avoid burying the key finding.
+      word_count: "200–350 words"
+
+    - id: recommendation
+      name: Recommendation
+      required: true
+      description: The specific, actionable recommendation with rationale
+      guidance: One clear recommendation. Do not hedge. State rationale in 2–3 sentences.
+      word_count: "80–120 words"
+
+    - id: options
+      name: Options Considered
+      required: false
+      description: Alternative approaches considered and why they were not recommended
+      guidance: Use a table. Present each option fairly. Explain why the recommended option was chosen over each alternative.
+      format_notes: Use the options table format from the template
+
+    - id: next-steps
+      name: Next Steps
+      required: true
+      description: Specific actions, owners, and timelines
+      guidance: 3–5 items maximum. Every item should have an owner and a date. Avoid vague actions like "monitor situation."
+      word_count: "50–80 words"
+
+template: |
+  **MEMO**
+
+  **To:** {recipient_name_and_role}
+  **From:** {author}
+  **Date:** {date}
+  **Subject:** {specific_subject_line}
+
+  ---
+
+  ## Summary
+
+  {2–3 sentence summary: situation, key finding, recommendation. Written for someone who may read only this section.}
+
+  ---
+
+  ## Context
+
+  {2–3 sentences on why this analysis was commissioned or why this decision is relevant now. Focus on triggering events and timing — not general background.}
+
+  ---
+
+  ## Findings
+
+  {Lead with the most important finding. Use headers or bullets for multiple findings. Include supporting evidence inline.}
+
+  {If comparing options or competitors, use a table:}
+
+  | | {Criterion 1} | {Criterion 2} | {Criterion 3} |
+  |---|---|---|---|
+  | {Option A} | {assessment} | {assessment} | {assessment} |
+  | {Option B} | {assessment} | {assessment} | {assessment} |
+
+  ---
+
+  ## Recommendation
+
+  **Recommended action:** {One clear, specific recommendation.}
+
+  {2–3 sentences of rationale. Lead with the strongest reason. Do not hedge.}
+
+  ---
+
+  ## Options Considered *(include if decision has meaningful alternatives)*
+
+  | Option | What it achieves | Why not recommended |
+  |---|---|---|
+  | {Option A — recommended} | {benefit} | — |
+  | {Option B} | {benefit} | {specific reason} |
+  | {Option C} | {benefit} | {specific reason} |
+
+  ---
+
+  ## Next Steps
+
+  | Action | Owner | By |
+  |---|---|---|
+  | {specific action} | {role or name} | {date} |
+  | {specific action} | {role or name} | {date} |
+  | {specific action} | {role or name} | {date} |
+
+variations:
+  - id: board-brief
+    name: Board Brief
+    description: Use for board or investor-facing memos. Shorter, higher formality, more emphasis on financial and strategic implications.
+    overrides:
+      sections_remove:
+        - options
+      tone: "Formal. Fewer adjectives. Lead with financial or strategic impact. Assume sophisticated reader."
+      word_count: "400–600 words total"
+
+  - id: internal-team
+    name: Internal Team Brief
+    description: Use for internal team alignment — less formal, more detail in findings, action-oriented.
+    overrides:
+      sections_add:
+        - dependencies
+      tone: "Conversational. Include enough context for team members who weren't in the strategy discussions."
+
+branding:
+  supports_branding: true
+  brandable_elements:
+    - element: header_logo
+      description: Company logo placed in document header
+    - element: color_scheme
+      description: Heading colors aligned to brand palette
+    - element: footer
+      description: Company name, tagline, and confidentiality notice in footer
+    - element: typography
+      description: Heading and body fonts aligned to brand guidelines
+
+quality_criteria:
+  required_elements:
+    - "Summary section is present and stands alone as a complete summary"
+    - "Recommendation is specific and actionable (not 'consider X' but 'do X by Y date')"
+    - "Next steps each have an owner and a date"
+    - "Findings lead with the most important finding, not background"
+  prohibited_elements:
+    - "Recommendations that criticize existing strategy without constructive framing"
+    - "Vague next steps without owners or dates"
+    - "Summary that restates the context rather than summarizing findings and recommendation"
+    - "More than 5 next steps"
+  length_check:
+    minimum: 400
+    maximum: 1000
+    strict: false

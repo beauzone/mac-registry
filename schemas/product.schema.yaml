@@ -1,0 +1,329 @@
+# Product Schema — Marketing as Code
+# Governs product and service catalog documents in sources/products/
+# Each file represents one product or service offered by the company.
+#
+# Version: 1.1.0
+# Changes from 1.0.0:
+#   - buyer_journey_stage replaces audience_scope (standard B2B marketing terminology)
+#   - industry_ids and compliance_tags added to use_cases structure
+#   - master_language removed (declared once at company level in config/system.yaml)
+#   - canonical_ref and adaptation_status added for federated instance linkage (HQ → regional)
+#   - ISO 3166-1 country codes + company-configured region IDs in distribution
+#   - proof point governance: unverified claims blocked from approved artifacts
+#
+# Design principles:
+#   - Schema.org as the identity and interoperability anchor (schema_type field)
+#   - MaC marketing intelligence layer on top (use cases, personas, proof points, messaging)
+#   - Schema extensions for category-specific fields (see schemas/extensions/)
+#   - External reference block for ERP/CRM/billing integration (enterprise tier)
+#   - Graph-ready: product IDs are node identity for artifact lineage and knowledge graph edges
+
+metadata:
+  id: product-schema
+  version: "1.1.0"
+  display_name: "Product and Service Schema"
+  schema_version: "1.0"
+  description: >
+    Schema for product and service source assets in sources/products/. Each product or
+    service the company sells is a first-class governed source asset with its own file.
+    Products are the subject anchor for artifact lineage — all content artifacts must
+    declare which product(s) they are about, or declare corporate scope.
+
+# ─────────────────────────────────────────────
+# REQUIRED FIELDS
+# ─────────────────────────────────────────────
+
+required_fields:
+
+  metadata:
+    - id              # type: string (kebab-case) — unique product identifier e.g. "clearpath-analytics-core"
+    - version         # type: string (semver) — product spec version e.g. "1.0.0"
+    - display_name    # type: string — product name as marketed
+    - schema_version  # type: string — version of this schema the file conforms to
+    - status          # type: enum[active, beta, announced, sunset] — product lifecycle stage
+    - schema_type     # type: enum — Schema.org base type (see field_definitions below)
+    - _source_meta    # type: object — provenance block (see provenance section)
+
+  identity:
+    - name               # type: string — product name (may differ from display_name for legal/formal use)
+    - short_description  # type: string — one-sentence description (≤160 chars). Used in search, MCP context, previews.
+    - overview           # type: string — 2–5 paragraph product overview. Primary AI-readable product brief.
+
+  classification:
+    - schema_type     # type: enum — Schema.org type (duplicated for explicitness at parse time)
+    - product_type    # type: enum[product, service, bundle] — commercial classification
+
+  marketing_intelligence:
+    - use_cases           # type: list[object] — at least one required. See use_cases structure below.
+    - value_propositions  # type: list[object] — at least one required. See value_propositions structure below.
+    - target_personas     # type: list[string] — at least one persona ID or path in sources/audiences/personas/
+    - target_icps         # type: list[string] — at least one ICP ID or path in sources/audiences/icps/
+
+# ─────────────────────────────────────────────
+# OPTIONAL FIELDS
+# ─────────────────────────────────────────────
+
+optional_fields:
+
+  identity:
+    - tagline             # type: string — product-level tagline or positioning headline
+    - brand_id            # type: string — brand this product belongs to (multi-brand deployments)
+    - product_family      # type: string — product family or suite e.g. "Security Platform"
+    - parent_product_id   # type: string — parent product ID if this is a module or add-on
+    - related_product_ids # type: list[string] — IDs of related or complementary products
+    - launch_date         # type: string (YYYY-MM-DD) — GA launch date
+    - end_of_life_date    # type: string (YYYY-MM-DD) — EOL date if status is sunset
+
+  classification:
+    - extension_ref       # type: string — path to category-specific schema extension in schemas/extensions/
+                          #   e.g. "schemas/extensions/product-saas-extension.schema.yaml"
+    - unspsc_code         # type: string — UN/SPSC classification code (for enterprise procurement systems)
+    - custom_category     # type: string — free-text category if Schema.org base type is insufficient alone
+
+  marketing_intelligence:
+    - messaging_pillars       # type: list[object] — product-level messaging pillars
+    - proof_points            # type: list[object] — evidence library for this product
+    - competitive_positioning # type: list[object] — positioning against specific competitors
+    - objection_handling      # type: list[object] — common objections and responses
+    - key_differentiators     # type: list[string] — top 3–5 differentiating claims
+    - market_category         # type: string — market category in positioning sense
+                              #   e.g. "Cloud Security Posture Management", "Revenue Intelligence"
+
+  pricing:
+    - model               # type: enum[subscription, perpetual, usage-based, outcome-based, freemium, free, custom]
+    - currency            # type: string — ISO 4217 code e.g. "USD"
+    - tiers               # type: list[object] — see pricing_tiers structure below
+    - trial_available     # type: boolean
+    - trial_duration_days # type: number
+
+  features:
+    - feature_list        # type: list[string] — key features (maps to Schema.org featureList)
+
+  distribution:
+    - channels            # type: list[string] — e.g. ["direct", "partner", "self-serve"]
+    - motion              # type: string — GTM motion e.g. "product-led-growth", "enterprise-sales"
+    - available_countries # type: list[string] — ISO 3166-1 alpha-2 codes e.g. ["US", "CA", "GB", "DE"]
+    - available_regions   # type: list[string] — company-configured region IDs from config/geography-config.yaml
+    - delivery_model      # type: string — e.g. "cloud-hosted", "on-premise", "hybrid"
+
+  technical:
+    - integrations        # type: list[object] — key integrations and technology partnerships
+    - certifications      # type: list[string] — compliance certifications e.g. ["SOC 2 Type II", "ISO 27001"]
+    - supported_platforms # type: list[string] — platforms supported (maps to Schema.org operatingSystem)
+
+  customer_evidence:
+    - testimonials        # type: list[object] — product-specific customer quotes
+    - case_study_refs     # type: list[string] — paths to case study artifacts
+    - logos               # type: list[string] — notable customer logos using this product
+
+  external_references:
+    # Enterprise integration block. All fields optional in all tiers.
+    # Present in schema to signal architectural readiness for ERP/CRM/billing integration.
+    - erp_item_id         # type: string — item master ID in ERP (SAP, Oracle, NetSuite)
+    - crm_product_id      # type: string — product ID in CRM (Salesforce, HubSpot)
+    - billing_system_id   # type: string — product ID in billing system (Stripe, Zuora, Chargebee)
+    - pim_id              # type: string — product ID in PIM system
+    - schema_org_url      # type: string (URL) — canonical Schema.org-compatible product page URL
+
+  localization:
+    # Regional adaptation tracking. Used in federated instance model (HQ → regional).
+    - canonical_ref       # type: string — URI to the HQ master version of this product spec.
+                          #   Format: "github:{org}/{repo}/sources/products/{product-id}.yaml"
+                          #   Present only when this spec is a regional adaptation of an HQ master.
+    - adaptation_status   # type: enum[not-adapted, in-progress, reviewed, approved]
+                          #   Lifecycle status of this regional adaptation.
+    - adaptation_notes    # type: string — what was adapted from the HQ version and why
+
+  metadata:
+    - tags                # type: list[string] — classification tags for search and filtering
+    - valid_from          # type: string (ISO 8601) — when this spec became authoritative
+    - superseded_by       # type: string — ID of the spec that superseded this one
+    - authority_level     # type: enum — content authority tier (see company schema)
+
+# ─────────────────────────────────────────────
+# NESTED OBJECT STRUCTURES
+# ─────────────────────────────────────────────
+
+structure:
+
+  use_cases:
+    description: >
+      Concrete scenarios in which a customer uses this product to solve a problem.
+      At least one required. Primary AI context for content generation.
+    fields:
+      - id                   # type: string (kebab-case) — unique within this product e.g. "uc-01"
+      - title                # type: string — short title e.g. "Automated Compliance Reporting"
+      - persona_ids          # type: list[string] — personas this use case is most relevant to
+      - problem              # type: string — the pain point this use case addresses
+      - solution             # type: string — how this product solves the problem
+      - outcome              # type: string — measurable or observable customer outcome
+      - icp_ids              # type: list[string] — ICPs this use case targets (optional)
+      - industry_ids         # type: list[string] — industry verticals this use case applies to (optional)
+                             #   e.g. ["financial-services", "healthcare", "government", "manufacturing",
+                             #          "energy", "retail", "education", "life-sciences"]
+                             #   Omit if use case applies across all industries.
+      - compliance_tags      # type: list[string] — compliance frameworks relevant to this use case (optional)
+                             #   Free-text in v1 — extend beyond the starter list as needed.
+                             #   Starter list (use consistent slugging):
+                             #   Regulatory: GDPR, CCPA, HIPAA, FedRAMP, FISMA, ITAR, SOX, PCI-DSS
+                             #   Security certifications: SOC-2-Type-II, ISO-27001, ISO-27017, ISO-27018
+                             #   Industry-specific: FINRA, GLBA, FERPA, COPPA, PIPEDA
+                             #   AI-specific: EU-AI-Act, NIST-AI-RMF
+                             #   Omit if use case has no specific compliance context.
+      - buyer_journey_stage  # type: enum[awareness, consideration, decision, retention, expansion]
+                             #   Standard B2B buyer journey stage. Omit if applicable across all stages.
+
+  value_propositions:
+    description: >
+      Specific value claims for this product. At least one required.
+    fields:
+      - id              # type: string (kebab-case) e.g. "vp-01"
+      - headline        # type: string — one sentence
+      - body            # type: string — 2–4 sentences
+      - persona_ids     # type: list[string] — omit if universal
+      - proof_point_ids # type: list[string] — substantiating proof points (optional)
+
+  proof_points:
+    description: >
+      Evidence that substantiates product claims. Unverified proof points
+      (verified: false) are blocked from externally-facing approved artifacts
+      by the scoring pipeline.
+    fields:
+      - id              # type: string (kebab-case) e.g. "pp-01"
+      - claim           # type: string — e.g. "Reduces compliance prep time by 60%"
+      - evidence_type   # type: enum[customer-stat, analyst-data, internal-benchmark, award, certification, testimonial]
+      - source          # type: string — customer name, analyst firm, or internal study
+      - verified        # type: boolean — approved for external use
+      - _source_meta    # type: object
+
+  competitive_positioning:
+    description: >
+      How this product positions against specific named competitors.
+      Used by battlecard templates and competitive safety rubric scoring.
+    fields:
+      - competitor_name  # type: string
+      - our_advantage    # type: string
+      - their_advantage  # type: string — honest assessment
+      - key_messages     # type: list[string]
+      - avoid            # type: list[string] — framings to avoid
+      - _source_meta     # type: object
+
+  pricing_tiers:
+    description: >
+      Pricing tier definitions. Maps to Schema.org Offer / UnitPriceSpecification.
+    fields:
+      - id               # type: string e.g. "starter", "professional", "enterprise"
+      - name             # type: string
+      - description      # type: string
+      - price            # type: number — use 0 for free tiers
+      - billing_period   # type: enum[monthly, annual, one-time, usage, custom]
+      - target_segment   # type: string
+
+  messaging_pillars:
+    description: >
+      Product-level pillars. Only needed when product messaging differs materially
+      from company-level pillars in sources/messaging/messaging-pillars.yaml.
+    fields:
+      - id               # type: string
+      - pillar           # type: string
+      - claim            # type: string
+      - proof_point_ids  # type: list[string]
+
+# ─────────────────────────────────────────────
+# FIELD DEFINITIONS
+# ─────────────────────────────────────────────
+
+field_definitions:
+
+  metadata.schema_type:
+    type: enum
+    values:
+      - Product               # Generic physical or digital product
+      - SoftwareApplication   # Software product — any delivery model
+      - WebApplication        # Browser-based SaaS or web app
+      - MobileApplication     # Mobile app
+      - Service               # Generic service offering
+      - FinancialProduct      # Financial product or instrument
+      - IndividualProduct     # Unique, one-of-a-kind product instance
+      - ProductGroup          # Family or suite of related products
+    description: >
+      Schema.org base type. Determines which Schema.org properties apply and which
+      category-specific extension schema is appropriate. Used for Brand API generation
+      (JSON-LD output) and AI crawler interoperability.
+      Reference: https://schema.org/Product and subtypes.
+
+  metadata.status:
+    type: enum
+    values: [active, beta, announced, sunset]
+
+  classification.product_type:
+    type: enum
+    values: [product, service, bundle]
+
+  pricing.model:
+    type: enum
+    values: [subscription, perpetual, usage-based, outcome-based, freemium, free, custom]
+
+  proof_points.evidence_type:
+    type: enum
+    values: [customer-stat, analyst-data, internal-benchmark, award, certification, testimonial]
+
+  use_cases.buyer_journey_stage:
+    type: enum
+    values: [awareness, consideration, decision, retention, expansion]
+    description: >
+      Standard B2B buyer journey stage terminology.
+      awareness    = buyer recognizes a problem, not yet evaluating solutions.
+      consideration = buyer evaluating solution categories and vendors.
+      decision     = buyer selecting a vendor, seeking final validation.
+      retention    = post-sale; supports adoption and renewal.
+      expansion    = post-sale; drives upsell, cross-sell, advocacy.
+
+  localization.adaptation_status:
+    type: enum
+    values: [not-adapted, in-progress, reviewed, approved]
+    description: >
+      Lifecycle of a regional adaptation of an HQ master product spec.
+      not-adapted = HQ spec received, adaptation not yet started.
+      in-progress = adaptation underway.
+      reviewed    = adaptation agent has proposed changes; awaiting HITL review.
+      approved    = HITL has reviewed and approved the regional adaptation.
+
+# ─────────────────────────────────────────────
+# PROVENANCE
+# ─────────────────────────────────────────────
+
+provenance:
+  every_section_supports: _source_meta
+  _source_meta_fields:
+    - source        # type: enum[web_research, document_upload, erp_import, user_interview, ai_generated, inferred]
+    - last_verified # type: string (YYYY-MM-DD)
+    - confidence    # type: enum[confirmed, provisional, unverified]
+    - notes         # type: string
+
+# ─────────────────────────────────────────────
+# VALIDATION RULES
+# ─────────────────────────────────────────────
+
+validation_rules:
+  - "id must be unique across all files in sources/products/"
+  - "schema_type must be a valid Schema.org type from the defined enum"
+  - "status must be one of: active, beta, announced, sunset"
+  - "short_description must not exceed 160 characters"
+  - "use_cases must contain at least one entry"
+  - "value_propositions must contain at least one entry"
+  - "target_personas must reference at least one valid ID in sources/audiences/personas/"
+  - "target_icps must reference at least one valid ID in sources/audiences/icps/"
+  - "use_cases entries must have unique id values within the file"
+  - "value_propositions entries must have unique id values within the file"
+  - "proof_points entries must have unique id values within the file"
+  - "proof_points.verified = false items must not be cited in artifacts with verdict: approved or ready_to_deploy"
+  - "If proof_point_ids referenced in value_propositions, those IDs must exist in proof_points"
+  - "If extension_ref is present, the referenced file must exist in schemas/extensions/"
+  - "If parent_product_id is present, the referenced ID must exist in sources/products/"
+  - "If case_study_refs are present, paths must resolve to valid files in artifacts/"
+  - "If status is sunset, end_of_life_date should be present"
+  - "competitive_positioning entries must include _source_meta with last_verified date"
+  - "pricing.tiers, when present, must include at least one entry with billing_period defined"
+  - "distribution.available_regions references must resolve to IDs in config/geography-config.yaml"
+  - "If localization.canonical_ref is present, adaptation_status must also be present"

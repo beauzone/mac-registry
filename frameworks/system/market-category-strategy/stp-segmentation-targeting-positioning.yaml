@@ -1,0 +1,184 @@
+metadata:
+  id: stp-segmentation-targeting-positioning
+  version: 1.0.0
+  display_name: STP — Segmentation, Targeting, Positioning (AI-Native GTM Spine)
+  category: gtm
+  description: Defines market segments, prioritizes target segments, and clarifies positioning choices. Modernized for AI-native
+    categories with data-driven segmentation and dynamic positioning logic.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - cmo
+    - cro
+    - product-marketing-manager
+    - ceo
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: category_definition
+    description: Clear definition of the product category and primary problem solved
+    source: skill
+  - field: existing_customer_data
+    description: Revenue distribution, retention, expansion, and win rate by segment
+    source: user_input
+  - field: product_capabilities
+    description: Core features, differentiators, and roadmap direction
+    source: skill
+  - field: competitive_landscape
+    description: Key competitors and substitute alternatives
+    source: skill
+  - field: strategic_objectives
+    description: Growth targets, capital constraints, and time horizon
+    source: user_input
+analysis:
+  instructions: 'This framework structures go-to-market clarity through three sequential steps: (1) segmentation based on
+    meaningful behavioral and economic differences, (2) explicit targeting choices with trade-offs, and (3) positioning aligned
+    to chosen segments. In AI-native markets, emphasis is placed on data maturity, automation readiness, and distribution
+    efficiency.
+
+
+    Produce a segment ranking table, select 1–2 primary targets, and articulate a concise positioning direction per primary
+    segment. Explicitly document segments intentionally deprioritized. Conclude with GTM alignment implications across marketing,
+    sales, and product.'
+  dimensions:
+  - id: segmentation
+    name: Segmentation
+    description: Dividing the market into distinct, economically meaningful groups
+    prompts:
+    - Which variables (industry, size, data maturity, buying trigger) meaningfully differentiate behavior?
+    - Which segments show materially different retention or expansion patterns?
+    - Are there segments underserved by incumbents?
+    - Do segments differ in automation readiness or AI sophistication?
+  - id: targeting
+    name: Targeting
+    description: Selecting priority segments with clear rationale and exclusions
+    prompts:
+    - Which segments align strongest with strategic objectives and capabilities?
+    - Where does the company win most efficiently (CAC vs LTV)?
+    - Which segments should be deprioritized despite size?
+    - Does distribution model favor specific segments?
+  - id: positioning
+    name: Positioning
+    description: Defining value narrative relative to alternatives for chosen segments
+    prompts:
+    - What core problem does the target segment prioritize most urgently?
+    - Which differentiation resonates uniquely with this segment?
+    - What proof points are strongest for this segment?
+    - How does positioning shift versus adjacent segments?
+output_templates:
+- id: primary
+  name: STP Analysis
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Market Segmentation Model
+
+    {market_segmentation_model}
+
+
+    ## Target Segment Selection
+
+    {target_segment_selection}
+
+
+    ## Positioning Direction
+
+    {positioning_direction}
+
+
+    ## Deprioritized Segments
+
+    {deprioritized_segments}
+
+
+    ## GTM Alignment Implications
+
+    {gtm_alignment_implications}
+
+
+    ## Board Discussion Questions
+
+    {board_discussion_questions}
+
+    '
+rubric:
+  description: Evaluates segmentation logic, targeting discipline, positioning clarity, and cross-functional alignment readiness.
+  dimensions:
+  - name: Segment Distinctness
+    weight: 0.25
+    scoring:
+      1: Segments vague or overlapping.
+      3: Segments somewhat distinct but partially redundant.
+      5: Segments clearly differentiated with measurable behavioral or economic differences.
+    improvement_guidance: Define segments using quantifiable criteria (revenue band, use case, data maturity).
+  - name: Targeting Rationale
+    weight: 0.25
+    scoring:
+      1: Targets chosen without clear economic logic.
+      3: Moderate rationale but limited trade-off discussion.
+      5: Clear CAC/LTV, capability fit, and strategic alignment logic.
+    improvement_guidance: Force explicit trade-offs and document excluded segments.
+  - name: Positioning Clarity
+    weight: 0.25
+    scoring:
+      1: Generic positioning not segment-specific.
+      3: Positioning moderately tailored.
+      5: Positioning tightly aligned to segment pain and differentiation.
+    improvement_guidance: Use segment-specific language and proof points.
+  - name: Strategic Coherence
+    weight: 0.15
+    scoring:
+      1: Misalignment between segmentation, targeting, and positioning.
+      3: Mostly aligned but minor inconsistencies.
+      5: Clear logical flow from segmentation to GTM execution.
+    improvement_guidance: Ensure positioning directly reflects target segment characteristics.
+  - name: Executive Readiness
+    weight: 0.1
+    scoring:
+      1: Not decision-ready.
+      3: Understandable but lacks decisiveness.
+      5: Clear focus with explicit trade-offs.
+    improvement_guidance: Lead with focus. Remove neutral language.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Everyone Is a Target
+  description: Attempting to serve all segments equally.
+  mitigation: Select 1–2 primary segments and deprioritize others explicitly.
+- pattern: Demographic-Only Segmentation
+  description: Using firmographics without behavioral or economic differentiation.
+  mitigation: Incorporate buying triggers, maturity, and value realization patterns.
+- pattern: Positioning Before Targeting
+  description: Crafting positioning without committing to a segment.
+  mitigation: Lock target segments before refining messaging.
+- pattern: Static Segmentation
+  description: Treating segments as fixed despite market shifts.
+  mitigation: Re-evaluate segmentation annually or after major product shifts.
+chaining:
+  after:
+  - framework_id: positioning-statement
+    reason: ''
+  - framework_id: messaging-architecture
+    reason: ''
+  - framework_id: icp-buying-committee
+    reason: ''
+  before:
+  - framework_id: tam-sam-som
+    reason: ''
+  - framework_id: porter-five-forces
+    reason: ''

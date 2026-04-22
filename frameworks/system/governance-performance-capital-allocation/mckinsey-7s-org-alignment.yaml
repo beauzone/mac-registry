@@ -1,0 +1,211 @@
+metadata:
+  id: mckinsey-7s-org-alignment
+  version: 1.0.0
+  display_name: McKinsey 7S Organizational Alignment
+  category: strategy
+  description: |-
+    Uses the McKinsey 7S model—Strategy, Structure, Systems, Skills, Staff, Style, and Shared Values—to assess how well an organization is aligned to its growth and GTM objectives.
+  best_for:
+    stages:
+    - series-a
+    - series-b
+    - series-c
+    - enterprise
+    - division
+    roles:
+    - cmo
+    - ceo
+    - cro
+    - vp-marketing
+    - vp-sales
+    - vp-product
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: company_overview
+    description: Company size, stage, primary business model, and key revenue motions.
+    source: skill
+  - field: current_strategy_summary
+    description: Summary of current strategy and growth priorities for the next 12–24 months.
+    source: user_input
+  - field: org_structure_overview
+    description: High-level org chart or description of how Marketing, Sales, Product, and Customer teams are structured.
+    source: user_input
+  optional:
+  - field: key_processes_and_systems
+    description: Core GTM and operational systems (e.g., CRM, MAP, PLG stack) and any major processes.
+    source: user_input
+  - field: leadership_perspectives
+    description: Qualitative input from key leaders on what is working well and where there is room to grow.
+    source: user_input
+analysis:
+  instructions: |-
+    This framework evaluates seven interdependent elements—Strategy, Structure, Systems, Skills, Staff, Style, and Shared Values—to surface how well the organization is configured to deliver against its goals and where there is opportunity to strengthen alignment.
+
+    **Synthesis Guidance:** After assessing each of the seven elements, highlight the 3–5 areas where alignment is strongest and the 3–5 areas with the most promising opportunities to strengthen support for the strategy. Emphasize how these elements interact, and propose a small number of sequenced, practical steps that build on existing strengths rather than suggesting wholesale change.
+  dimensions:
+  - id: strategy
+    name: Strategy
+    description: |-
+      The integrated set of choices about where to play and how to win, including target segments, value proposition, and growth levers.
+    prompts:
+    - How clearly are the company's strategic choices articulated for target segments, offerings, and go-to-market motions?
+    - Do Marketing, Sales, Product, and Customer teams share the same understanding of the growth strategy?
+    - Where could additional clarity on priorities help teams focus their effort more effectively?
+  - id: structure
+    name: Structure
+    description: How the organization is arranged—reporting lines, units, spans and layers, and geographic or product configurations.
+    prompts:
+    - How well does the current structure support the strategy, especially around ICP focus and primary GTM motions?
+    - Where do handoffs or overlaps between teams create friction or slow down execution?
+    - What opportunities exist to simplify or clarify ownership while preserving what already works well?
+  - id: systems
+    name: Systems
+    description: |-
+      The processes, procedures, and tools that run the business day-to-day, including planning, budgeting, performance management, and core GTM systems.
+    prompts:
+    - |-
+      Which systems and processes are most critical to delivering the strategy (e.g., pipeline management, campaign execution, product release process)?
+    - Where are data, tooling, or process gaps creating friction or limiting visibility for leaders and teams?
+    - How could improvements to systems build on existing workflows and make it easier for teams to collaborate?
+  - id: skills
+    name: Skills
+    description: The capabilities and competencies present in the organization, especially within GTM and product functions.
+    prompts:
+    - |-
+      Which skills are currently strengths for the organization relative to its strategy (e.g., PLG, ABM, enterprise selling, product storytelling)?
+    - Where does the next phase of strategy require deeper or new capabilities?
+    - How can training, hiring, or partnering enhance skills without disrupting existing strengths?
+  - id: staff
+    name: Staff
+    description: 'The people themselves: roles, headcount mix, and talent allocation across functions and regions.'
+    prompts:
+    - How well does the current staffing mix align with priority segments, channels, and products?
+    - Are there areas where teams are stretched thin or where roles are not clearly defined?
+    - What adjustments in focus or resourcing would best support the strategy while respecting current contributions?
+  - id: style
+    name: Style
+    description: Leadership and management styles, as well as how decisions are made and communicated.
+    prompts:
+    - How would team members describe the dominant leadership and collaboration style across GTM and product?
+    - How do leaders typically make and communicate decisions that affect cross-functional work?
+    - Where might adjustments in communication or decision-making help teams move faster and feel more aligned?
+  - id: shared-values
+    name: Shared Values
+    description: Core cultural norms, beliefs, and standards that guide how work is done and how success is defined.
+    prompts:
+    - What shared values or cultural themes show up consistently across teams when they describe the company?
+    - How well do these values support the current strategy and the desired future direction?
+    - Are there values or behaviors the company wants to amplify in the next phase to enable stronger alignment?
+output_templates:
+- id: memo
+  name: McKinsey 7S Organizational Alignment
+  format: markdown
+  when_to_use: Primary strategic deliverable for stakeholder and executive review.
+  template: |
+    # McKinsey 7S Organizational Alignment — {company_name} — {date}
+
+    ## Executive Overview
+    {executive_overview}
+
+    ## Strategy Alignment
+    {strategy_alignment}
+
+    ## Structure and Systems
+    {structure_and_systems}
+
+    ## Skills and Staff
+    {skills_and_staff}
+
+    ## Style and Shared Values
+    {style_and_shared_values}
+
+    ## Integrated Implications
+    {integrated_implications}
+
+    ## Recommended Next Phase
+    {recommended_next_phase}
+rubric:
+  scoring_model: 1-5
+  dimensions:
+  - id: completeness-across-7s
+    name: Completeness Across 7S
+    description: Ensure each S includes at least a few specific, organization-relevant observations rather than generic descriptions.
+    weight: 0.25
+    scores:
+      1: Several elements are barely addressed or missing; analysis feels partial.
+      3: All seven elements are covered with varying depth; core points are present.
+      5: Each element is addressed with clear, concrete observations tailored to the organization.
+  - id: interdependencies-and-systems-thinking
+    name: Interdependencies and Systems Thinking
+    description: Call out 2–3 key interdependencies (e.g., strategy-structure, systems-skills) and how they shape the path forward.
+    weight: 0.25
+    scores:
+      1: Each element is treated in isolation; little sense of how they influence one another.
+      3: Some interactions are mentioned but not deeply explored.
+      5: Analysis clearly shows how changes in one area affect others and uses this to shape recommendations.
+  - id: actionability-of-recommendations
+    name: Actionability of Recommendations
+    description: Limit recommendations to those with the highest impact and make them specific enough that an owner could act.
+    weight: 0.3
+    scores:
+      1: Recommendations are vague, high level, or overwhelming in quantity.
+      3: Recommendations are mostly clear but may lack prioritization or sequencing.
+      5: A focused set of phased, realistic actions is prioritized and clearly linked to findings.
+  - id: constructive-tone
+    name: Constructive Tone
+    description: Rephrase any critique into opportunity-focused language that respects prior work and decisions.
+    weight: 0.2
+    scores:
+      1: Language sounds critical of current leaders or implies past decisions were wrong.
+      3: Tone is mostly constructive with occasional sharp phrasing.
+      5: Tone consistently acknowledges existing strengths and frames changes as evolution of what is already working.
+  thresholds:
+    publish_ready: 3.5
+    revise: 2.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Idealized Org Chart
+  description: Designing an abstract "perfect" structure without reference to current strengths or constraints.
+  mitigation: |-
+    Anchor recommendations in the current organization, highlighting incremental steps that preserve what works while enhancing alignment.
+- pattern: Blaming Culture
+  description: Attributing issues broadly to "culture" without specifying behaviors or practices.
+  mitigation: |-
+    Translate cultural observations into specific behaviors, rituals, or communication patterns that can be reinforced or adjusted.
+- pattern: Tool-First Fixes
+  description: Focusing primarily on tools or systems without addressing strategy, roles, or decision-making.
+  mitigation: Ensure any tooling changes are connected to clear process and ownership shifts that support the strategy.
+- pattern: Over-Engineering
+  description: Proposing complex changes that could disrupt execution more than they help.
+  mitigation: Favor simple, high-leverage adjustments that teams can adopt without major disruption.
+chaining:
+  before:
+  - framework_id: company-strategy-clarification
+    reason: |-
+      7S analysis is most effective after strategy and macro context are clear and can inform subsequent operating model and org design work.
+  - framework_id: pestle-macro-environment
+    reason: |-
+      7S analysis is most effective after strategy and macro context are clear and can inform subsequent operating model and org design work.
+  after:
+  - framework_id: operating-model-design
+    reason: |-
+      7S analysis is most effective after strategy and macro context are clear and can inform subsequent operating model and org design work.
+  - framework_id: marketing-org-design
+    reason: |-
+      7S analysis is most effective after strategy and macro context are clear and can inform subsequent operating model and org design work.
+stakeholder_guidance: |-
+  When presenting McKinsey 7S Organizational Alignment outputs to company stakeholders, apply constructive, forward-looking framing throughout.
+
+  **Key guidance:**
+  - Frame current-state findings as a foundation to build from, not a verdict on past decisions
+  - Present gaps as "opportunities to sharpen" rather than failures or weaknesses
+  - When analyzing Strategy, Structure, Systems, lead with what is working before identifying where to focus next
+  - Acknowledge the strategic logic behind decisions that may be set aside
+  - Use outcome-oriented language: "this will accelerate X" rather than "Y is holding back growth"
+
+  Avoid language that implies prior decisions were wrong, ineffective, or poorly considered. See STAKEHOLDER-RELATIONS.md for detailed guidance and before/after examples.

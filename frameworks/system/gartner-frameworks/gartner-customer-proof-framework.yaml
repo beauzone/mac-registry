@@ -1,0 +1,169 @@
+metadata:
+  id: gartner-customer-proof-framework
+  version: 1.0.0
+  display_name: Gartner Customer Proof / Case Study Framework
+  category: gtm
+  description: 'A structured methodology for developing customer proof assets (case studies, success stories, and reference
+    narratives) that demonstrate measurable business outcomes.
+
+    '
+  tags:
+  - case-studies
+  - customer-proof
+  - marketing-assets
+  - sales-support
+  source: Gartner marketing best practices and case study methodology
+  best_for: {}
+  schema_version: '1.0'
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+inputs:
+  required:
+  - field: customer_name
+    description: Customer organization featured
+    source: skill
+  - field: problem_statement
+    description: Business challenge the customer faced
+    source: skill
+  - field: implemented_solution
+    description: Product or service used
+    source: skill
+  optional: []
+analysis:
+  instructions: 'Develop a customer case study using a structured proof narrative.
+
+
+    Step 1: Identify Customer Challenge
+
+    Document the key business problem.
+
+
+    Step 2: Describe the Solution
+
+    Explain how the product or service was deployed.
+
+
+    Step 3: Demonstrate Business Outcomes
+
+    Quantify measurable results.
+
+
+    Step 4: Capture Customer Voice
+
+    Include direct quotes or testimonials.
+
+
+    Step 5: Create Reusable Proof Assets
+
+    Adapt the story into sales decks, web case studies, and marketing assets.
+
+    '
+  dimensions:
+  - id: challenge
+    name: Business Challenge
+    description: Assessment area for Business Challenge.
+    prompts:
+    - What evidence supports performance in Business Challenge?
+  - id: solution
+    name: Solution Implementation
+    description: Assessment area for Solution Implementation.
+    prompts:
+    - What evidence supports performance in Solution Implementation?
+  - id: results
+    name: Measurable Results
+    description: Assessment area for Measurable Results.
+    prompts:
+    - What evidence supports performance in Measurable Results?
+  - id: credibility
+    name: Customer Credibility
+    description: Assessment area for Customer Credibility.
+    prompts:
+    - What evidence supports performance in Customer Credibility?
+  - id: reuse
+    name: Asset Reusability
+    description: Assessment area for Asset Reusability.
+    prompts:
+    - What evidence supports performance in Asset Reusability?
+output_templates:
+- id: customer-case-study
+  name: Customer Case Study
+  format: markdown
+  when_to_use: Use when delivering customer case study output.
+  template: '# Customer Case Study\n\n{summary}\n'
+- id: sales-reference-story
+  name: Sales Reference Story
+  format: markdown
+  when_to_use: Use when delivering sales reference story output.
+  template: '# Sales Reference Story\n\n{summary}\n'
+- id: proof-point-library
+  name: Proof Point Library
+  format: structured-list
+  when_to_use: Use when delivering proof point library output.
+  template: '# Proof Point Library\n\n{summary}\n'
+rubric:
+  scoring_model: 1-5
+  dimensions:
+  - id: challenge
+    name: Business Challenge
+    description: Assessment area for Business Challenge.
+    weight: 0.2
+    scores:
+      5: Strong business challenge assessment with clear evidence.
+      3: Adequate business challenge assessment with some gaps.
+      1: Weak business challenge assessment lacking specificity.
+  - id: solution
+    name: Solution Implementation
+    description: Assessment area for Solution Implementation.
+    weight: 0.2
+    scores:
+      5: Strong solution implementation assessment with clear evidence.
+      3: Adequate solution implementation assessment with some gaps.
+      1: Weak solution implementation assessment lacking specificity.
+  - id: results
+    name: Measurable Results
+    description: Assessment area for Measurable Results.
+    weight: 0.2
+    scores:
+      5: Strong measurable results assessment with clear evidence.
+      3: Adequate measurable results assessment with some gaps.
+      1: Weak measurable results assessment lacking specificity.
+  - id: credibility
+    name: Customer Credibility
+    description: Assessment area for Customer Credibility.
+    weight: 0.2
+    scores:
+      5: Strong customer credibility assessment with clear evidence.
+      3: Adequate customer credibility assessment with some gaps.
+      1: Weak customer credibility assessment lacking specificity.
+  - id: reuse
+    name: Asset Reusability
+    description: Assessment area for Asset Reusability.
+    weight: 0.2
+    scores:
+      5: Strong asset reusability assessment with clear evidence.
+      3: Adequate asset reusability assessment with some gaps.
+      1: Weak asset reusability assessment lacking specificity.
+  thresholds:
+    publish_ready: 4.0
+    revise: 3.0
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Framework-Only Conclusions
+  description: Treating the framework output as definitive without context or evidence.
+  mitigation: Ground conclusions in available evidence and document assumptions.
+- pattern: Generic Recommendations
+  description: Providing recommendations not tied to the company context.
+  mitigation: Translate findings into context-specific, actionable recommendations.
+stakeholder_guidance: Use constructive, evidence-based language. Highlight opportunities to improve and avoid framing prior
+  decisions as failures.
+chaining:
+  before:
+  - framework_id: gartner-go-to-market-strategy-framework
+    reason: GTM strategy identifies which customer segments and outcomes to prioritize for proof
+  after:
+  - framework_id: gartner-brand-marketing-framework
+    reason: Customer proof assets are a primary input to brand marketing effectiveness
+  - framework_id: corporate-narrative-master-story
+    reason: Validated customer outcomes feed proof points into the corporate narrative

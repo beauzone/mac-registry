@@ -1,0 +1,195 @@
+metadata:
+  id: land-and-expand-expansion-architecture-framework
+  version: 1.0.0
+  display_name: Land-and-Expand / Expansion Architecture — Revenue Density & Account Compounding Model
+  category: growth
+  description: Designs structured land-and-expand strategies to increase revenue density within existing accounts. Integrates
+    initial land strategy, usage expansion triggers, cross-sell pathways, stakeholder penetration, and retention defense mechanisms.
+    Built for B2B SaaS and AI-native recurring revenue models.
+  best_for:
+    stages:
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - cro
+    - cmo
+    - vp-sales
+    - vp-customer-success
+    - revops
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: current_nrr
+    description: Net Revenue Retention rate and expansion breakdown
+    source: user_input
+  - field: initial_land_scope
+    description: Typical entry point (team, use case, product module)
+    source: user_input
+  - field: product_expansion_paths
+    description: Additional modules, seats, usage tiers, or adjacent use cases
+    source: user_input
+  - field: stakeholder_map
+    description: Roles engaged post-sale
+    source: existing_deliverable
+  - field: churn_drivers
+    description: Primary reasons for contraction or churn
+    source: user_input
+analysis:
+  instructions: 'This framework structures expansion as a deliberate architecture rather than opportunistic upselling. It
+    links initial land positioning, product adoption depth, stakeholder penetration, pricing alignment, and retention defense
+    into a compounding account growth model.
+
+
+    Evaluate initial land positioning, adoption health, expansion trigger visibility, and pricing alignment. Identify bottlenecks
+    preventing revenue density growth. Recommend structured expansion plays and governance rules to increase NRR and reduce
+    churn.'
+  dimensions:
+  - id: strategic-land-design
+    name: Strategic Land Design
+    description: ''
+    prompts:
+    - Is the initial use case urgent and high-visibility?
+    - Does land create internal referenceability?
+    - Is initial scope small enough for low friction but large enough for value proof?
+    - Does land enable natural adjacent expansion?
+  - id: adoption-depth-engine
+    name: Adoption Depth Engine
+    description: ''
+    prompts: []
+  - id: expansion-trigger-mapping
+    name: Expansion Trigger Mapping
+    description: ''
+    prompts: []
+  - id: cross-sell-&-module-pathways
+    name: Cross-Sell & Module Pathways
+    description: ''
+    prompts: []
+  - id: stakeholder-expansion-layer
+    name: Stakeholder Expansion Layer
+    description: ''
+    prompts: []
+  - id: pricing-&-packaging-alignment
+    name: Pricing & Packaging Alignment
+    description: ''
+    prompts: []
+  - id: retention-defense-system
+    name: Retention Defense System
+    description: ''
+    prompts: []
+output_templates:
+- id: primary
+  name: Land-and-Expand Architecture
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Land Strategy Assessment
+
+    {land_strategy_assessment}
+
+
+    ## Adoption & Usage Analysis
+
+    {adoption_&_usage_analysis}
+
+
+    ## Expansion Pathway Design
+
+    {expansion_pathway_design}
+
+
+    ## Stakeholder & Budget Penetration Plan
+
+    {stakeholder_&_budget_penetration_plan}
+
+
+    ## Retention Defense Strategy
+
+    {retention_defense_strategy}
+
+
+    ## NRR Improvement Roadmap
+
+    {nrr_improvement_roadmap}
+
+    '
+rubric:
+  description: Evaluates revenue density architecture, expansion discipline, and retention resilience.
+  dimensions:
+  - name: Land Effectiveness
+    weight: 0.2
+    scoring:
+      1: Low strategic value initial use case.
+      3: Moderate proof-of-value land.
+      5: High-visibility wedge enabling expansion.
+    improvement_guidance: Redesign entry use case for strategic relevance.
+  - name: Adoption Depth
+    weight: 0.2
+    scoring:
+      1: Shallow usage and low engagement.
+      3: Moderate usage depth.
+      5: Deep workflow embedding across users.
+    improvement_guidance: Strengthen onboarding and success milestones.
+  - name: Expansion Trigger Discipline
+    weight: 0.2
+    scoring:
+      1: Reactive upselling.
+      3: Some usage-based triggers.
+      5: Clear automated expansion signals.
+    improvement_guidance: Instrument trigger analytics.
+  - name: Cross-Sell Coherence
+    weight: 0.15
+    scoring:
+      1: Random module selling.
+      3: Partial adjacency logic.
+      5: Structured adjacency roadmap.
+    improvement_guidance: Map portfolio adjacency formally.
+  - name: Retention Resilience
+    weight: 0.15
+    scoring:
+      1: Frequent unexpected churn.
+      3: Basic health scoring.
+      5: Proactive churn prevention system.
+    improvement_guidance: Implement predictive health model.
+  - name: Revenue Density Growth
+    weight: 0.1
+    scoring:
+      1: Flat or declining NRR.
+      3: Stable NRR.
+      5: Consistently improving NRR above target threshold.
+    improvement_guidance: Align expansion incentives with success outcomes.
+  thresholds:
+    revise: 2.9
+    publish_ready: 3.7
+    escalate_to_user: 2.3
+anti_patterns:
+- pattern: Shallow Land Trap
+  description: Landing in low-value corner of account with no adjacency.
+  mitigation: Select strategic wedge use case.
+- pattern: Expansion by Discounting
+  description: Growth driven by price concessions.
+  mitigation: Tie expansion to value realization.
+- pattern: Champion-Only Expansion
+  description: No executive alignment before upsell.
+  mitigation: Secure multi-level stakeholder support.
+- pattern: Reactive Retention
+  description: Addressing churn only at renewal time.
+  mitigation: Implement ongoing health monitoring.
+chaining:
+  after:
+  - framework_id: revenue-operations-operating-model
+    reason: ''
+  before:
+  - framework_id: multi-threaded-enterprise-outreach-framework
+    reason: ''
+  - framework_id: plg-hybrid-plg-framework
+    reason: ''

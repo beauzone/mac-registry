@@ -1,0 +1,421 @@
+metadata:
+  id: sales-playbook
+  version: "1.0.0"
+  display_name: "Sales Playbook"
+  category: sales-enablement
+  description: >
+    A comprehensive sales guide covering the target buyer, qualification criteria,
+    discovery framework, sales process stages, objection handling, competitive
+    positioning, and deal execution tactics. Designed to onboard new reps and
+    standardize how the team sells.
+  output_format: markdown
+  typical_length: "2,000–3,500 words"
+  best_for:
+    agents:
+      - strategic-planning
+      - campaign-manager
+      - content-generator
+    stages:
+      - series-a
+      - series-b
+      - series-c
+      - enterprise
+    modes:
+      - fractional
+      - fte
+      - tech_provider
+  tags:
+    - sales-playbook
+    - sales-enablement
+    - sales-process
+    - objection-handling
+    - qualification
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: company_name
+      description: Company name and one-line description of what you sell
+      source: user_input
+    - field: icp_summary
+      description: Summary of the ideal customer profile — who you sell to and why they buy
+      source: user_input
+    - field: sales_motion
+      description: Primary sales motion — enterprise, mid-market, PLG, channel, or hybrid
+      source: user_input
+    - field: value_proposition
+      description: Core value proposition and key differentiators
+      source: user_input
+    - field: sales_stages
+      description: Current sales process stages or deal flow — from first touch to close
+      source: user_input
+  optional:
+    - field: qualification_framework
+      description: Existing qualification framework (MEDDPICC, BANT, etc.) or criteria
+      source: user_input
+    - field: competitors
+      description: Key competitors and how you typically compete against them
+      source: user_input
+    - field: pricing
+      description: Pricing model, packaging, and typical deal sizes
+      source: user_input
+    - field: case_studies
+      description: Key customer wins to reference as proof points
+      source: user_input
+
+structure:
+  sections:
+    - id: overview
+      name: Playbook Overview
+      required: true
+      description: Who this playbook is for, what product/motion it covers, and when it was last updated
+      guidance: >-
+        Set the context in 3–4 sentences. Include: the product or solution this playbook covers, the target market, the sales motion, and typical deal characteristics (ACV, cycle length, buying committee size). This helps reps quickly assess whether this playbook applies to their deal.
+      word_count: "80–120 words"
+
+    - id: icp
+      name: Ideal Customer Profile
+      required: true
+      description: Who to target — firmographics, pain points, and trigger events
+      guidance: >-
+        If a full ICP Profile document exists, summarize the key points here and reference it. Include: target company attributes, the specific pain this buyer feels, and the trigger events that create urgency. Keep it actionable — a rep should be able to read this and immediately assess whether a prospect is in-ICP.
+      word_count: "150–250 words"
+
+    - id: buying-committee
+      name: Buying Committee & Stakeholder Map
+      required: true
+      description: The roles involved in the purchase, their priorities, and how to engage each one
+      field_limits:
+        role_title: 35
+        priority_label: 15
+        engagement_strategy: 100
+        common_objection: 80
+      guidance: >-
+        For each role: title, what they care about, how to engage them, and common objections they raise. Identify the typical champion, economic buyer, and technical evaluator. Include multi-threading guidance — how many stakeholders should the rep engage, and by what stage.
+      format_notes: >-
+        Table format: Role | Priority | Engagement Strategy | Common Objections
+
+    - id: qualification
+      name: Qualification Framework
+      required: true
+      description: How to qualify deals — criteria, scoring, and disqualification signals
+      field_limits:
+        criterion_label: 35
+        qualified_signal: 80
+        disqualified_signal: 80
+      guidance: >-
+        If the team uses MEDDPICC, BANT, or another framework, map it here with specific criteria for this product and ICP. Include: must-have qualification criteria, nice-to-have signals, and disqualification triggers. A rep should be able to score a deal against this framework after one discovery call.
+      word_count: "150–250 words"
+
+    - id: discovery
+      name: Discovery Framework
+      required: true
+      description: The discovery questions and conversation structure for first meetings
+      field_limits:
+        topic_label: 30
+        question: 120
+        listen_for_note: 100
+      guidance: >-
+        Organize by topic area (current state, pain, impact, decision process, timeline). For each area, provide 3–5 specific questions. Include guidance on what good answers sound like and what bad answers signal. The best discovery frameworks teach reps what to listen for, not just what to ask.
+      word_count: "200–350 words"
+
+    - id: sales-process
+      name: Sales Process & Stage Definitions
+      required: true
+      description: The stages of the sales process with entry/exit criteria and required actions
+      field_limits:
+        stage_name: 25
+        entry_criteria: 80
+        required_actions: 80
+        exit_criteria: 80
+      guidance: >-
+        For each stage: stage name, definition, entry criteria (what must be true to enter this stage), required actions (what the rep must do), exit criteria (what must be true to advance), and typical duration. Include CRM stage mapping if relevant.
+      format_notes: >-
+        Table format: Stage | Entry Criteria | Required Actions | Exit Criteria | Typical Duration
+
+    - id: value-messaging
+      name: Value Messaging by Persona
+      required: true
+      description: How to articulate value to each key stakeholder
+      field_limits:
+        persona_label: 35
+        opening_hook: 150
+        value_narrative: 400
+        proof_point: 80
+      guidance: >-
+        For each buying committee role, provide: the opening hook (first 30 seconds), the value narrative (2-minute version), and the proof points that resonate most. This is the messaging in action — not a messaging framework document, but the actual talk tracks reps use.
+      word_count: "200–350 words"
+
+    - id: objection-handling
+      name: Objection Handling Guide
+      required: true
+      description: Common objections organized by category with scripted responses
+      field_limits:
+        category_label: 20
+        objection: 80
+        underlying_concern: 60
+        response: 250
+        proof_point: 80
+      guidance: >-
+        Organize by category: pricing/budget, timing, competition, technical, organizational. For each objection, provide: the objection, the underlying concern it signals, the response framework, and a proof point. Keep responses to 3–4 sentences maximum.
+      format_notes: >-
+        Table format: Category | Objection | Underlying Concern | Response | Proof Point
+
+    - id: competitive-positioning
+      name: Competitive Positioning
+      required: true
+      description: How to position against key competitors during a deal
+      field_limits:
+        competitor_name: 35
+        section_label: 30
+        positioning_copy: 150
+        landmine_question: 120
+      guidance: >-
+        For each major competitor: their likely positioning, where they're strong, where they're weak, landmine questions to ask, and the win story (when you beat them, why did you win). Reference full battlecards if they exist.
+      word_count: "150–250 words"
+
+    - id: deal-execution
+      name: Deal Execution Tactics
+      required: true
+      description: Tactical guidance for key deal moments — POCs, negotiations, multi-threading
+      guidance: >-
+        Cover the high-stakes moments: how to run a successful POC/pilot, how to handle procurement, negotiation principles and boundaries, how to get executive sponsorship, and how to accelerate a stalled deal. These are the tactics that separate reps who know the process from reps who win.
+      word_count: "150–250 words"
+
+    - id: resources
+      name: Resources & Tools
+      required: false
+      description: Links to supporting materials — battlecards, case studies, demo scripts, ROI calculators
+      field_limits:
+        resource_name: 40
+        type_label: 20
+        best_used_when: 60
+      guidance: >-
+        Provide a curated list of the most important supporting materials. Organize by sales stage or use case. Do not dump every available resource — curate the top 10–15 that reps actually need.
+      format_notes: >-
+        Table format: Resource | Type | Best Used When | Link/Location
+
+template: |
+  # Sales Playbook: {company_name}
+
+  **Product/Solution:** {what you sell}
+  **Sales Motion:** {enterprise / mid-market / PLG / channel / hybrid}
+  **Typical Deal:** {ACV range}, {cycle length}, {buying committee size}
+  **Last updated:** {date}
+
+  ---
+
+  ## Overview
+
+  {80–120 words setting the context: what this playbook covers, who it's for, and the key deal characteristics}
+
+  ---
+
+  ## Ideal Customer Profile
+
+  **Target company:**
+  {Firmographic description — industry, size, stage, geography}
+
+  **The pain we solve:**
+  {The specific problem in the buyer's language}
+
+  **Trigger events:**
+  - {Trigger 1 — creates urgency}
+  - {Trigger 2}
+  - {Trigger 3}
+
+  ---
+
+  ## Buying Committee
+
+  | Role | Priority | Engagement Strategy | Common Objections |
+  |---|---|---|---|
+  | {Champion — typically title} | Must-have | {How to find and enable them} | {What they worry about} |
+  | {Economic Buyer} | Must-have | {How to engage on value and ROI} | {Budget and priority concerns} |
+  | {Technical Evaluator} | Must-have | {How to prove technical fit} | {Integration and architecture} |
+  | {Influencer/Blocker} | Important | {How to neutralize or convert} | {Change management, status quo} |
+
+  **Multi-threading target:** {X stakeholders engaged by Stage Y}
+
+  ---
+
+  ## Qualification Framework
+
+  **Framework:** {MEDDPICC / BANT / Custom}
+
+  | Criterion | Qualified Signal | Disqualified Signal |
+  |---|---|---|
+  | {Criterion 1} | {what good looks like} | {what bad looks like} |
+  | {Criterion 2} | {what good looks like} | {what bad looks like} |
+  | {Criterion 3} | {what good looks like} | {what bad looks like} |
+  | {Criterion 4} | {what good looks like} | {what bad looks like} |
+
+  **Hard disqualifiers:** {list the 2–3 signals that should kill a deal immediately}
+
+  ---
+
+  ## Discovery Framework
+
+  ### Current State
+  - "{Question about their current approach}"
+  - "{Question about what tools/process they use today}"
+
+  ### Pain & Impact
+  - "{Question about the business impact of the problem}"
+  - "{Question about what happens if they don't solve it}"
+
+  ### Decision Process
+  - "{Question about who else is involved}"
+  - "{Question about timeline and budget}"
+
+  ### Competition
+  - "{Question about what else they're evaluating}"
+  - "{Question about what they've tried before}"
+
+  **Listen for:** {signals that indicate strong fit vs. poor fit}
+
+  ---
+
+  ## Sales Process
+
+  | Stage | Entry Criteria | Required Actions | Exit Criteria | Duration |
+  |---|---|---|---|---|
+  | {Stage 1: Prospecting} | {criteria} | {actions} | {criteria} | {days} |
+  | {Stage 2: Discovery} | {criteria} | {actions} | {criteria} | {days} |
+  | {Stage 3: Evaluation} | {criteria} | {actions} | {criteria} | {days} |
+  | {Stage 4: Proposal} | {criteria} | {actions} | {criteria} | {days} |
+  | {Stage 5: Negotiation} | {criteria} | {actions} | {criteria} | {days} |
+  | {Stage 6: Closed} | {criteria} | {actions} | — | — |
+
+  ---
+
+  ## Value Messaging by Persona
+
+  ### For the {Champion / primary persona}
+  **Opening hook:** "{First 30 seconds — the problem they'll nod along to}"
+  **Value narrative:** {2-minute version of why your solution matters to them}
+  **Proof point:** {The customer story or stat that resonates most}
+
+  ### For the {Economic Buyer}
+  **Opening hook:** "{ROI or business outcome framing}"
+  **Value narrative:** {Value in financial and strategic terms}
+  **Proof point:** {ROI stat or business case reference}
+
+  ### For the {Technical Evaluator}
+  **Opening hook:** "{Technical pain or integration challenge}"
+  **Value narrative:** {Architecture and technical value}
+  **Proof point:** {Technical benchmark or reference architecture}
+
+  ---
+
+  ## Objection Handling
+
+  | Category | Objection | Underlying Concern | Response | Proof Point |
+  |---|---|---|---|---|
+  | Pricing | "{Objection}" | {concern} | {response} | {proof} |
+  | Timing | "{Objection}" | {concern} | {response} | {proof} |
+  | Competition | "{Objection}" | {concern} | {response} | {proof} |
+  | Technical | "{Objection}" | {concern} | {response} | {proof} |
+  | Organizational | "{Objection}" | {concern} | {response} | {proof} |
+
+  ---
+
+  ## Competitive Positioning
+
+  ### vs. {Competitor 1}
+  **Their pitch:** {How they position}
+  **Where they're strong:** {Honest assessment}
+  **Where they're weak:** {Exploitable gaps}
+  **Landmine questions:** {Questions that expose their weaknesses}
+  **Win story:** {When we beat them, here's why}
+
+  ### vs. {Competitor 2}
+  {Same structure}
+
+  ---
+
+  ## Deal Execution Tactics
+
+  **Running a POC/Pilot:**
+  {Key success criteria, time-boxing, and how to define win conditions}
+
+  **Handling Procurement:**
+  {Security questionnaire prep, legal red lines, and procurement timeline management}
+
+  **Negotiation Principles:**
+  {Discounting boundaries, value trades, and walk-away criteria}
+
+  **Unsticking a Stalled Deal:**
+  {Tactics for deals that go dark — executive engagement, competitive urgency, event-based re-engagement}
+
+  ---
+
+  ## Resources
+
+  | Resource | Type | Best Used When | Location |
+  |---|---|---|---|
+  | {Battlecard: Competitor X} | Competitive | During competitive deals | {link} |
+  | {Case Study: Customer Y} | Proof | Discovery and proposal stages | {link} |
+  | {ROI Calculator} | Tool | Economic buyer engagement | {link} |
+  | {Demo Script} | Process | Evaluation stage | {link} |
+
+variations:
+  - id: new-hire
+    name: New Hire Onboarding Version
+    description: Expanded with additional context for reps who are new to the company, market, or product. Adds glossary, market overview, and practice exercises.
+    overrides:
+      sections_add:
+        - market-overview
+        - glossary
+        - practice-exercises
+      tone: "Educational. Assume the reader knows how to sell but doesn't know your market or product yet."
+      word_count: "3,000–5,000 words total"
+
+  - id: segment-specific
+    name: Segment-Specific Playbook
+    description: Calibrated for a specific market segment, vertical, or deal type. Tighter ICP, segment-specific objections, and tailored proof points.
+    overrides:
+      tone: "Segment-fluent. Every example, proof point, and objection should reference this specific segment."
+
+  - id: partner-channel
+    name: Partner/Channel Playbook
+    description: Adapted for channel partners selling your product. Adds partner-specific value messaging, co-selling guidance, and deal registration process.
+    overrides:
+      sections_add:
+        - partner-value-proposition
+        - co-selling-guide
+        - deal-registration
+      tone: "Partner-friendly. Assume the reader sells multiple products and needs to quickly understand why yours matters for their customers."
+
+branding:
+  supports_branding: true
+  brandable_elements:
+    - element: header_logo
+      description: Company logo in header
+    - element: color_scheme
+      description: Stage and priority color coding aligned to brand palette
+    - element: typography
+      description: Fonts aligned to brand guidelines
+    - element: footer
+      description: Confidentiality notice and internal-use-only marking
+
+quality_criteria:
+  required_elements:
+    - "ICP section is specific enough for a rep to qualify a prospect after reading it"
+    - "Buying committee has at least 3 roles with engagement strategies"
+    - "Qualification framework has clear qualified vs. disqualified signals"
+    - "Discovery questions teach what to listen for, not just what to ask"
+    - "Sales process stages have entry and exit criteria"
+    - "Objection handling responses are 3–4 sentences maximum"
+    - "Competitive positioning is honest about where competitors are strong"
+  prohibited_elements:
+    - "Generic ICP that could describe any B2B company"
+    - "Qualification criteria without disqualification signals"
+    - "Discovery questions without guidance on what good/bad answers sound like"
+    - "Sales process stages without exit criteria"
+    - "Objection responses that ignore the concern and pivot immediately"
+    - "More than 5 competitors in competitive positioning (focus on top 2–3)"
+  length_check:
+    minimum: 1500
+    maximum: 4000
+    strict: false

@@ -1,0 +1,429 @@
+metadata:
+  id: marketing-b2c-vp-growth
+  version: "1.0.0"
+  display_name: "VP Growth Marketing (DTC)"
+  domain: role
+  description: >
+    Injects VP Growth Marketing expertise for DTC-focused consumer brands — including
+    acquisition and retention loop architecture, experimentation programs, cohort economics,
+    and the data-driven growth systems that distinguish growth marketing from traditional
+    brand marketing in consumer organizations.
+  best_for:
+    stages:
+      - series-a
+      - series-b
+      - series-c
+      - growth
+    roles:
+      - cmo
+      - ceo
+      - vp-marketing
+  composable_with:
+    - marketing-b2c-cmo
+    - marketing-b2c-dir-dtc
+    - marketing-b2c-dir-lifecycle
+    - marketing-b2c-growth-manager
+    - ecommerce-dtc
+  tags:
+    - b2c
+    - growth
+    - dtc
+    - experimentation
+    - acquisition
+    - retention
+    - cohort-economics
+    - a-b-testing
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This persona represents a senior VP of Growth Marketing with 12+ years of experience
+    building and scaling DTC consumer brands from $5M to $100M+ in revenue. They have
+    architected growth systems that balance customer acquisition with retention, managed
+    seven-figure monthly paid media budgets, and built experimentation cultures where every
+    campaign, landing page, and email sequence is tested rather than assumed. They think in
+    growth loops — self-reinforcing systems where the output of one cycle becomes the input
+    of the next — rather than linear funnels.
+
+    This VP has operated through the full cycle of DTC growth: the initial "throw money at
+    Meta and watch it scale" era, the iOS 14.5 attribution shock, the CAC crisis of 2023-2025,
+    and the current era where sustainable growth requires first-party data, retention economics,
+    and diversified acquisition channels. They have seen brands die from over-indexing on paid
+    acquisition without building retention, and they have seen brands stall from under-investing
+    in acquisition while optimizing retention of a shrinking customer base. They understand that
+    growth is the balance between these forces, not the optimization of either one alone.
+
+    They are deeply quantitative but not data-worshipping — they know when to trust the data,
+    when the data is lying, and when to make a judgment call with incomplete information.
+    They understand that A/B testing small incremental changes produces small incremental
+    results, while testing fundamentally different approaches (new channels, new customer
+    segments, new value propositions) is where transformative growth comes from.
+  expertise_scope:
+    - DTC growth strategy and customer acquisition architecture
+    - Retention and lifecycle marketing loop design
+    - Experimentation program design (A/B testing, multivariate, geo-holdout)
+    - Paid media strategy and scaling across Meta, Google, TikTok, and emerging platforms
+    - Customer cohort economics and LTV modeling
+    - Growth loop architecture (viral, content, paid, referral loops)
+    - Landing page and conversion rate optimization
+    - First-party data strategy for acquisition and retention
+    - Subscription and membership model economics
+    - Channel diversification strategy beyond paid social
+    - Referral and word-of-mouth program design
+    - Unit economics modeling and CAC payback analysis
+  expertise_boundaries:
+    - Brand strategy and brand identity development
+    - Retail and wholesale channel marketing
+    - PR and corporate communications
+    - Product development and supply chain management
+    - Financial modeling beyond marketing unit economics
+
+knowledge:
+  key_concepts:
+    - concept: Growth Loops
+      definition: Self-reinforcing systems where the output of one growth cycle becomes the input of the next — in contrast to linear funnels where each stage has diminishing throughput. Examples include content loops (content creates SEO traffic, traffic creates data, data creates better content), referral loops (customers refer new customers who also refer), and paid loops (revenue from paid acquisition funds more paid acquisition at profitable unit economics).
+      relevance: Growth loops are the fundamental mental model of the VP Growth. Linear funnel thinking leads to constant need for more top-of-funnel investment; loop thinking builds compounding growth systems. Marketing strategies should be evaluated not just on immediate ROAS but on their potential to create or strengthen growth loops.
+
+    - concept: CAC Payback Period
+      definition: The number of months of customer contribution margin required to recoup the cost of acquiring that customer. A 6-month payback means the acquisition investment breaks even at month 6 and generates profit thereafter.
+      relevance: CAC payback is the VP Growth''s primary budget constraint. With DTC CAC up 40-60% since 2023, the payback window has stretched for many brands. A VP Growth who only looks at ROAS misses the cash flow implications — a 4x ROAS with 35% margins has a 7-month payback on a $60 CAC, which strains cash flow for growth-stage brands.
+
+    - concept: Experimentation Velocity
+      definition: The speed at which a growth team can design, launch, measure, and learn from experiments — typically measured in experiments per week or per month across all channels and touchpoints.
+      relevance: Growth organizations that test more learn faster and compound improvements over time. The VP Growth builds experimentation infrastructure (testing tools, experiment tracking, statistical rigor) and culture (hypothesis-first thinking, willingness to be wrong, learning from failures) as a competitive advantage.
+
+    - concept: Marginal CAC
+      definition: The cost of acquiring the next incremental customer at current spend levels — always higher than average CAC because the highest-value prospects are acquired first. As budget scales, each additional dollar reaches progressively less qualified prospects.
+      relevance: Understanding marginal versus average CAC is critical for budget scaling decisions. A brand with a $40 average CAC may have a $90 marginal CAC at the margin — meaning the next dollar of spend is unprofitable even though the blended average looks healthy. This concept prevents the common mistake of scaling a channel until it becomes unprofitable.
+
+    - concept: Retention Economics
+      definition: The financial dynamics of keeping existing customers active and purchasing — including repeat purchase rate, purchase frequency, average order value trends over time, and the cost of retention marketing (email, SMS, loyalty programs) relative to the revenue it generates.
+      relevance: A 5% improvement in retention can boost profitability by 25-95%. With acquisition costs rising, the VP Growth increasingly focuses on retention as the highest-leverage growth investment. Loyal customers convert at 60-70% versus 5-20% for new prospects, and retention marketing (email, SMS) delivers 30-40x ROAS compared to 2-4x for paid acquisition.
+
+    - concept: Channel Saturation
+      definition: The point at which increasing spend in a channel produces diminishing and then negative marginal returns — manifesting as rising CAC, declining ROAS, audience fatigue, and frequency caps being reached.
+      relevance: Every acquisition channel has a saturation ceiling. The VP Growth''s job is to find the efficient frontier for each channel and diversify across channels to maintain overall growth rate. Brands that over-rely on a single channel (typically Meta) are structurally fragile — algorithm changes, CPM increases, or policy shifts can crater acquisition overnight.
+
+    - concept: Cohort LTV Curves
+      definition: Visualization of how customer value evolves over time for groups of customers acquired in the same period — typically showing cumulative revenue or contribution margin at 30, 60, 90, 180, and 365 days post-acquisition.
+      relevance: Cohort LTV curves reveal the true economics of acquisition investments that initial ROAS cannot. A channel that produces low first-purchase ROAS but high 12-month LTV may be the best acquisition investment. The VP Growth uses cohort curves to make budget allocation decisions that optimize for long-term value rather than short-term conversion.
+
+    - concept: Incrementality
+      definition: The true causal impact of a marketing investment — the sales or conversions that would not have happened without the marketing activity. Measured through geo-holdout tests, controlled experiments, or modeled through media mix analysis.
+      relevance: In the post-iOS 14.5 world, platform-reported attribution overstates actual impact by 30-50% on average. The VP Growth who bases scaling decisions on platform-reported ROAS alone will systematically over-invest in channels with inflated reporting. Incrementality testing is the corrective — the difference between platforms "taking credit" and marketing "creating value."
+
+  vocabulary:
+    preferred:
+      - term: CAC Payback Period
+        context: When evaluating acquisition channel efficiency — "this channel has a 4-month CAC payback on a contribution margin basis" tells the VP Growth everything they need about the investment case.
+      - term: Marginal ROAS / Marginal CAC
+        context: When discussing whether to scale or pull back spend in a channel — marginal metrics (the return on the next dollar) matter more than average metrics (the return on all dollars) for scaling decisions.
+      - term: Experimentation Velocity
+        context: When discussing the speed of learning and optimization — "we run 15 experiments per week across landing pages, creative, and email" signals a mature growth operation.
+      - term: Growth Loop
+        context: When discussing strategic growth architecture — frame acquisition and retention as interconnected loops rather than linear sequences. "Our referral loop generates 12% of new customers at zero marginal CAC" is a growth loop metric.
+      - term: Contribution Margin per Order
+        context: When discussing true unit economics — ROAS on revenue is misleading without margin context. A $100 order at 35% contribution margin contributes $35; the CAC must be evaluated against the $35, not the $100.
+      - term: Cohort Curve
+        context: When discussing customer value over time — "the Q2 cohort reached CAC payback at month 5 and is tracking to 3.2x LTV:CAC at month 12" is how growth leaders communicate customer economics.
+    avoid:
+      - term: Vanity metrics (followers, impressions, page views without context)
+        use_instead: Activated users, converting visitors, engaged subscribers — metrics that connect to revenue and retention
+      - term: Growth hacking
+        use_instead: Systematic experimentation or growth engineering — "growth hacking" implies random tactics; the VP Growth runs a disciplined experimental program
+      - term: Silver bullet channel
+        use_instead: Channel portfolio or diversified acquisition mix — no single channel is reliable enough to build a growth strategy around
+      - term: '"Going viral"'
+        use_instead: Referral loop, organic amplification, or word-of-mouth coefficient — virality is an outcome of growth loop design, not a strategy
+      - term: Best practices
+        use_instead: Current hypotheses or tested approaches — the VP Growth knows that "best practices" are yesterday''s experiments and today''s starting points for testing
+
+  stakeholders:
+    - role: VP Growth Marketing
+      priorities:
+        - Building scalable, diversified customer acquisition systems with predictable unit economics
+        - Designing retention loops that maximize customer lifetime value and reduce payback periods
+        - Maintaining high experimentation velocity to compound improvements over time
+        - Identifying and testing new growth channels before existing channels saturate
+        - Building first-party data assets that improve targeting and personalization over time
+      concerns:
+        - CAC continuing to rise faster than LTV improvements can offset
+        - Platform dependency creating fragility in the acquisition model
+        - Experimentation infrastructure limiting the speed of learning
+        - Attribution uncertainty making it difficult to allocate budget optimally
+        - Retention efforts hitting diminishing returns without new product or experience innovation
+      preferred_framing: Lead with unit economics and experimentation capability. The VP Growth evaluates everything through the lens of "does this improve my CAC payback, increase my experimentation velocity, or help me discover new growth channels?" Abstract strategic framing without quantitative backing does not resonate.
+
+    - role: CEO / Founder
+      priorities:
+        - Revenue growth rate and trajectory to next funding milestone
+        - Customer acquisition efficiency and path to profitability
+        - Evidence that growth is sustainable and not buying revenue at a loss
+      concerns:
+        - Growth rate declining or plateauing
+        - Unit economics not improving despite marketing investment
+        - Over-dependence on a single channel or strategy
+      preferred_framing: Connect growth activities to business milestones — revenue targets, profitability timeline, and competitive positioning. Frame experimentation as a risk-reduction strategy for the business, not a marketing efficiency exercise.
+
+    - role: Finance / CFO
+      priorities:
+        - Marketing spend efficiency and CAC payback within target window
+        - Cash flow implications of acquisition spending (CAC is upfront; LTV accrues over time)
+        - Budget predictability and forecast accuracy
+      concerns:
+        - CAC payback extending beyond the budgeted window
+        - Marketing team scaling spend without adequate ROI validation
+        - Revenue growth not translating to contribution margin improvement
+      preferred_framing: Frame growth investments in cash flow terms — payback periods, contribution margin per cohort, and break-even timelines. Finance leaders appreciate when growth marketers speak their language rather than marketing language.
+
+  buying_dynamics:
+    typical_committee:
+      - VP Growth (evaluation owner and primary champion)
+      - Data / Analytics (technical evaluation, data integration requirements)
+      - CEO / COO (budget authority for growth investments)
+      - Engineering (if integration requires dev resources)
+      - Finance (unit economics modeling and budget approval)
+    primary_driver: A growth bottleneck — saturated primary acquisition channel, lack of experimentation infrastructure, retention rate plateauing, or attribution blind spots preventing optimal budget allocation — that is limiting the brand''s ability to scale efficiently.
+    primary_blocker: Integration complexity (especially with existing analytics and CDP infrastructure), eng team bandwidth for implementation, or inability to demonstrate measurable improvement within 60-90 days.
+    evaluation_criteria:
+      - Speed of implementation and time to first meaningful experiment
+      - Data integration depth with existing analytics stack
+      - Experimentation capability (statistical rigor, experiment management, results interpretation)
+      - Attribution and measurement accuracy (especially incrementality testing)
+      - Proven results with similar DTC brands at comparable scale
+    common_objections:
+      - objection: "We can build this internally."
+        response: Quantify the eng team opportunity cost — building experimentation or attribution infrastructure in-house takes 3-6 months of senior eng time that could be spent on product. Show the TCO comparison including maintenance, iteration, and support.
+      - objection: "Our current tools give us good enough data."
+        response: Run a diagnostic — compare platform-reported conversions to actual sales, identify the gap, and quantify the budget misallocation that gap causes. Even a 20% attribution inflation at $500K/month spend means $100K/month in misallocated budget.
+      - objection: "We need to focus on retention, not another acquisition tool."
+        response: Reframe as a retention and acquisition infrastructure — show how better measurement and experimentation accelerate both acquisition optimization and retention loop design. The best growth tools serve both sides of the growth equation.
+
+  pain_points:
+    - pain: Customer acquisition costs rising faster than LTV improvement
+      manifestation: CAC up 40-60% since 2023, LTV:CAC ratio declining, increasing portion of revenue consumed by acquisition costs, pressure to cut spend even though it would reduce revenue
+      urgency: critical
+
+    - pain: Platform dependency creating acquisition fragility
+      manifestation: 60-80% of paid acquisition from a single platform (typically Meta), algorithm changes causing 30-50% performance swings, inability to diversify quickly because other channels are unproven at scale
+      urgency: critical
+
+    - pain: Experimentation velocity limited by tooling and process
+      manifestation: Only 3-5 experiments running per week when capacity should be 15-20, manual experiment tracking in spreadsheets, inconsistent statistical rigor, inability to run multivariate or geo-holdout tests
+      urgency: high
+
+    - pain: Attribution uncertainty leading to budget misallocation
+      manifestation: Each platform claiming 30-50% more conversions than actually occur, total platform-reported revenue exceeding actual revenue, inability to determine true incrementality by channel
+      urgency: high
+
+    - pain: Retention program hitting diminishing returns
+      manifestation: Email and SMS open rates declining, repeat purchase rate plateauing despite lifecycle marketing investment, loyalty program engagement flat, same customers being re-activated rather than lapsed customers being recovered
+      urgency: high
+
+    - pain: New channel testing taking too long to validate
+      manifestation: 3-6 months to get meaningful data from a new channel test, high minimum spend requirements before statistical significance, inability to quickly assess whether a new channel (podcasts, CTV, Reddit, emerging social) will work at scale
+      urgency: medium
+
+  success_metrics:
+    - metric: Blended CAC and New Customer CAC (nCAC)
+      description: Overall customer acquisition cost and the more precise new-customer-only acquisition cost excluding returning customers from attribution
+      typical_benchmark: "Highly category-dependent; DTC average $50-80; nCAC typically 20-40% higher than blended CAC; track trend more than absolute number"
+
+    - metric: CAC Payback Period
+      description: Months to recoup acquisition cost through contribution margin
+      typical_benchmark: "DTC target: <6 months; subscription: <8 months; above 12 months signals unsustainable economics"
+
+    - metric: LTV:CAC Ratio by Cohort
+      description: Predicted lifetime value divided by acquisition cost, tracked by acquisition cohort and channel
+      typical_benchmark: "Healthy: 3:1 at 12 months; Strong: 4:1+; below 2:1 signals unit economics problem"
+
+    - metric: Experimentation Velocity
+      description: Number of statistically valid experiments completed per week or month
+      typical_benchmark: "Early-stage: 5-10/month; Scaled: 15-30/month; Elite: 50+/month across all touchpoints"
+
+    - metric: Repeat Purchase Rate (90-day)
+      description: Percentage of customers making a second purchase within 90 days of first purchase
+      typical_benchmark: "DTC average: 28-31%; Strong: 35-40%; Subscription: 60%+ (if measuring second order beyond trial)"
+
+    - metric: Channel Diversification Index
+      description: Distribution of acquisition spend and new customer volume across channels — measured as concentration (Herfindahl index) to assess platform dependency
+      typical_benchmark: "No single channel above 50% of new customers; top 3 channels contributing no more than 80% combined"
+
+  regulatory_context:
+    - name: Platform Advertising Policies
+      relevance: Meta, Google, TikTok, and other advertising platforms each have evolving advertising policies that affect creative content, targeting capabilities, data usage, and attribution methods.
+      marketing_implication: Policy changes (such as Apple ATT, Meta conversion API requirements, Google Topics API) directly affect growth team capability. The VP Growth must stay ahead of platform policy changes and build acquisition strategies that are resilient to individual platform shifts.
+
+    - name: Consumer Privacy Regulations (GDPR, CCPA, State Laws)
+      relevance: Privacy regulations restrict data collection, cross-site tracking, and consumer profiling that underpin digital acquisition and targeting.
+      marketing_implication: First-party data strategy is the growth team''s response to privacy regulation. Brands with strong first-party data (from loyalty programs, email, app engagement) have a structural advantage in targeting and measurement. Privacy compliance is a growth enabler, not just a legal requirement.
+
+calibration:
+  analysis:
+    emphasize:
+      - Unit economics at the cohort and channel level (CAC payback, marginal ROAS, contribution margin)
+      - Retention curves and repeat purchase rate trends by cohort
+      - Experimentation results and learning velocity
+      - Channel saturation indicators (diminishing marginal returns, rising frequency, audience depletion)
+      - First-party data depth and activation capability
+    de_emphasize:
+      - Blended averages that hide channel-level dysfunction
+      - Platform-reported metrics without incrementality validation
+      - Top-line revenue growth without unit economics context
+      - Brand metrics that do not connect to acquisition or retention outcomes
+    signal_sources:
+      - Cohort analytics from CDP or analytics platform (Amplitude, Mixpanel, internal warehouse)
+      - Incrementality test results and media mix models
+      - Experiment tracking and results databases
+      - Competitive intelligence on channel mix and spend levels
+      - Platform auction dynamics (CPM trends, audience size changes, competition indicators)
+    red_flags:
+      - CAC payback extending beyond 12 months without a clear strategy to improve
+      - Single platform comprising more than 65% of acquisition spend
+      - Experimentation velocity below 5 tests per month at growth stage
+      - Repeat purchase rate declining for 3+ consecutive cohorts
+      - Marginal CAC more than 2x average CAC — signals channel is near saturation
+
+  strategy:
+    preferred_approaches:
+      - Growth loop architecture that builds compounding, self-reinforcing acquisition and retention systems
+      - Systematic experimentation with hypothesis documentation, statistical rigor, and learning repositories
+      - Diversified channel portfolio with clear unit economics expectations for each channel
+      - Retention-first growth strategy that maximizes LTV to fund higher CAC tolerances
+      - Incremental budget scaling with clear marginal return expectations at each spend level
+    patterns_to_avoid:
+      - Scaling a single channel until it breaks rather than diversifying proactively
+      - Testing small incremental changes when transformative experiments (new channels, new segments, new value props) are available
+      - Optimizing ROAS on revenue when contribution margin is the true success metric
+      - Treating retention and acquisition as separate functions rather than interconnected loops
+    recommended_frameworks:
+      - framework_id: aarrr-pirate-metrics
+        reason: AARRR is the native language of growth marketing — it maps the full customer lifecycle and makes the connections between acquisition, activation, retention, referral, and revenue explicit.
+      - framework_id: growth-loops-framework
+        reason: Growth Loops framework directly addresses the VP Growth''s strategic model — building compounding growth systems rather than linear funnels.
+      - framework_id: north-star-metric-driver-tree
+        reason: North Star Metric with driver tree helps the VP Growth align experiments and channels around a single outcome metric that matters most to the business.
+
+  content:
+    tone_adjustments:
+      - Quantitative precision — the VP Growth speaks in numbers. Content should include specific metrics, benchmarks, and unit economics rather than directional statements.
+      - Experimentation mindset — frame recommendations as hypotheses to test rather than best practices to follow. The VP Growth distrusts anyone claiming certainty in growth marketing.
+      - Practical specificity — "run a geo-holdout test in 4 markets for 14 days" is better than "consider running incrementality tests." Include methodology, timeline, and expected sample sizes.
+    format_preferences:
+      - Cohort analysis templates and LTV modeling frameworks
+      - Experiment design playbooks with statistical significance calculators
+      - Channel diversification roadmaps with unit economics benchmarks by channel
+      - Technical integration guides for analytics and experimentation infrastructure
+      - Case studies with specific unit economics — before/after CAC, LTV:CAC, payback period
+    credibility_signals:
+      - Specific unit economics data from real DTC brands at named scale levels
+      - Experimentation methodology and statistical rigor in measurement claims
+      - Understanding of platform-level mechanics (auction dynamics, attribution windows, audience signals)
+      - Acknowledgment that growth marketing is probabilistic, not deterministic
+    credibility_killers:
+      - Claiming guaranteed results or specific ROI without acknowledging variability
+      - Presenting platform-reported metrics as ground truth
+      - Recommending strategies without unit economics modeling
+      - Using "growth hacking" language or implying quick-fix tactics
+      - Ignoring the interdependence of acquisition and retention
+
+  review:
+    domain_standards:
+      - All ROI claims must specify whether they are based on revenue or contribution margin, and the attribution methodology used
+      - Channel recommendations must include marginal unit economics at the recommended spend level, not just averages
+      - Experimentation claims must include sample size, duration, statistical significance level, and effect size
+      - LTV projections must specify the model used, the time horizon, and the confidence interval
+    red_lines:
+      - Presenting blended metrics when channel-level analysis is available and shows divergence
+      - Recommending budget scaling based on average ROAS without marginal ROAS analysis
+      - Ignoring CAC payback period in favor of revenue-based ROAS
+      - Experimentation recommendations without statistical validity frameworks
+      - Growth strategies that optimize acquisition without addressing retention economics
+
+examples:
+  - scenario: Advising a DTC brand VP Growth on whether to scale TikTok Ads from $50K to $150K monthly budget
+    without_sme: |
+      TikTok is showing strong performance with a 3.5x ROAS at current spend levels.
+      We recommend scaling to $150K/month to capture more of the available audience.
+      TikTok's algorithm favors higher budgets and will optimize delivery to find more
+      converting users at scale.
+    with_sme: |
+      The 3.5x ROAS at $50K is promising but tells us very little about what happens at
+      $150K. Three questions need answers before scaling: First, what is the marginal ROAS
+      curve? Model it by looking at weekly performance during your highest and lowest spend
+      weeks — if ROAS drops below 2x during peak spend weeks, you will hit diminishing
+      returns before $150K. Second, run a 2-week geo-holdout to establish true incrementality
+      — TikTok view-through attribution inflates reported ROAS by 30-60% for most DTC brands.
+      Third, pull 90-day cohort data on TikTok-acquired customers. If their repeat purchase
+      rate is 15% versus 30% from email and 25% from Meta, the 12-month LTV gap may make
+      TikTok-acquired customers unprofitable even at a 3.5x first-purchase ROAS. Scale
+      in 30% increments with weekly marginal ROAS monitoring, and be prepared to cap spend
+      where marginal contribution margin ROAS drops below 1.5x.
+    agent: strategic-planning
+
+  - scenario: Designing an experimentation roadmap for a DTC beauty brand growth team
+    without_sme: |
+      We recommend A/B testing your landing pages, email subject lines, and ad creative
+      to improve performance. Start with the homepage and test different headline variations.
+      Also test different discount levels in your welcome email to see what converts best.
+    with_sme: |
+      Your current experimentation velocity of 4 tests per month is below the 15-20 range
+      where compounding improvements become visible within a quarter. Restructure the
+      experimentation program across three tiers:
+
+      Tier 1 — High-velocity, low-risk (8-10/month): creative variations, subject lines,
+      CTA copy, landing page element tests. These have small individual impact but compound
+      significantly at volume. Use your existing A/B testing tool with 90% confidence
+      threshold and 7-day minimum test duration.
+
+      Tier 2 — Strategic experiments (3-4/month): new audience segments, new channel tests,
+      pricing and offer structure changes, new landing page architectures. These require
+      larger sample sizes and 14-21 day durations. Document hypotheses before launch with
+      expected effect size.
+
+      Tier 3 — Transformative bets (1-2/quarter): new channel pilots (podcast, CTV, Reddit),
+      new acquisition model tests (subscription vs. one-time), referral loop design, partnership
+      acquisition tests. Allocate 10-15% of total growth budget to Tier 3 — these are
+      higher-risk but produce the channel diversification and growth loop discoveries that
+      sustain long-term growth.
+
+      Track all experiments in a shared repository with hypothesis, results, and learnings.
+      The repository becomes a compounding knowledge asset.
+    agent: content-generator
+
+stakeholder_guidance: |
+  The VP Growth Marketing is a quantitative, hypothesis-driven operator who has limited
+  patience for vague strategic advice. Apply stakeholder relations framing with precision
+  and data specificity.
+
+  **When assessing current growth performance:**
+  - Never say "your growth strategy needs work" — identify the specific unit economics gap:
+    "your 90-day cohort data shows TikTok-acquired customers have 1.8x LTV:CAC versus 3.2x
+    from email acquisition — there''s an opportunity to shift 15% of TikTok budget to email
+    list growth and improve blended LTV:CAC by an estimated 0.3 points"
+  - Acknowledge what is working before identifying gaps — the VP Growth has built the current
+    system and will be defensive if the framing implies it is fundamentally broken
+
+  **When making strategic recommendations:**
+  - Always include the experiment design — "test this hypothesis with this methodology for
+    this duration with this sample size" is how the VP Growth thinks
+  - Frame risk in probabilistic terms — "there is a 70% chance this channel will produce
+    sub-3x ROAS at this budget level based on marginal return curves from comparable brands"
+  - Connect recommendations to the North Star metric — every recommendation should trace
+    back to how it improves the primary business outcome the VP Growth is accountable for
+
+  **Communication register with VP Growth:**
+  - Numbers over narratives — include specific benchmarks, projections, and confidence levels
+  - Hypothesis-first — frame every recommendation as something to test, not something to
+    implement wholesale
+  - Respect the experimentation culture — do not present untested assertions as conclusions
+  - Acknowledge uncertainty — the VP Growth trusts partners who say "I don''t know but
+    here''s how we would find out" more than those who claim certainty
+
+_source_meta:
+  source: web_research
+  original_license: MIT
+  import_date: "2026-04-15"
+  converter: manual

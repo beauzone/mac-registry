@@ -1,0 +1,181 @@
+metadata:
+  id: prioritization-rice-ice-moscow
+  version: 1.0.0
+  display_name: Initiative Prioritization (RICE / ICE / MoSCoW) — Capital Allocation Discipline Model
+  category: operations
+  description: Applies structured prioritization models (RICE, ICE, MoSCoW) to allocate capital and execution capacity across
+    marketing, product, and revenue initiatives. Enforces measurable impact, confidence weighting, and trade-off transparency.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - ceo
+    - cmo
+    - vp-product
+    - cro
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: initiative_list
+    description: Clearly defined initiatives with scope boundaries
+    source: user_input
+  - field: estimated_reach
+    description: Number of users, accounts, or revenue influenced
+    source: user_input
+  - field: expected_impact
+    description: Projected outcome lift (revenue, retention, pipeline, etc.)
+    source: user_input
+  - field: confidence_level
+    description: Evidence strength supporting impact assumption
+    source: user_input
+  - field: effort_estimate
+    description: Resource cost (engineering weeks, budget, headcount)
+    source: user_input
+analysis:
+  instructions: 'This framework applies quantitative and qualitative prioritization lenses. RICE emphasizes reach-weighted
+    impact and effort normalization. ICE emphasizes speed and simplicity. MoSCoW enforces categorical necessity. Emphasis
+    is placed on measurable outcome impact and explicit opportunity cost.
+
+
+    Score all initiatives using RICE. Apply ICE for experimental backlog. Categorize via MoSCoW to enforce boundary discipline.
+    Produce ranked list with explicit top 3 investments and explicit deprioritized items. Document trade-offs.'
+  dimensions:
+  - id: impact-rigor
+    name: Impact Rigor
+    description: Quality of projected outcome measurement
+    prompts:
+    - Is impact tied to revenue, retention, or strategic metric?
+    - Is baseline clearly defined?
+    - Is time horizon explicit?
+    - Are assumptions documented?
+  - id: effort-normalization
+    name: Effort Normalization
+    description: Consistency of resource estimation
+    prompts:
+    - Are effort units standardized?
+    - Are cross-functional dependencies included?
+    - Is opportunity cost visible?
+    - Are hidden support costs accounted for?
+  - id: confidence-calibration
+    name: Confidence Calibration
+    description: Evidence strength weighting
+    prompts:
+    - Is confidence based on experiment data or opinion?
+    - Are prior results incorporated?
+    - Are risk factors reducing score appropriately?
+    - Is overconfidence penalized?
+  - id: strategic-alignment
+    name: Strategic Alignment
+    description: Fit with current company priorities
+    prompts:
+    - Does initiative align to North Star driver?
+    - Does it reinforce positioning or ICP focus?
+    - Does it reduce primary funnel constraint?
+    - Is it consistent with OKRs?
+output_templates:
+- id: primary
+  name: Initiative Prioritization
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Scoring Methodology
+
+    {scoring_methodology}
+
+
+    ## Ranked Initiative Table
+
+    {ranked_initiative_table}
+
+
+    ## MoSCoW Categorization
+
+    {moscow_categorization}
+
+
+    ## Resource Allocation Recommendation
+
+    {resource_allocation_recommendation}
+
+
+    ## Deprioritized and Deferred Initiatives
+
+    {deprioritized_and_deferred_initiatives}
+
+    '
+rubric:
+  description: Evaluates scoring integrity, assumption transparency, strategic alignment, and trade-off clarity.
+  dimensions:
+  - name: Assumption Transparency
+    weight: 0.25
+    scoring:
+      1: Scores presented without rationale.
+      3: Some assumptions documented.
+      5: All assumptions clearly documented and challengeable.
+    improvement_guidance: Document calculation inputs explicitly.
+  - name: Alignment to Strategy
+    weight: 0.25
+    scoring:
+      1: Priorities misaligned with core objectives.
+      3: Mostly aligned but minor inconsistencies.
+      5: Direct reinforcement of strategic drivers.
+    improvement_guidance: Cross-check against North Star and OKRs.
+  - name: Trade-off Explicitness
+    weight: 0.2
+    scoring:
+      1: No deprioritized list.
+      3: Some deferred items noted.
+      5: Clear opportunity cost articulation.
+    improvement_guidance: Explicitly state what will not be pursued.
+  - name: Effort Accuracy
+    weight: 0.15
+    scoring:
+      1: Unrealistic effort estimates.
+      3: Moderate estimation discipline.
+      5: Cross-functional effort validated.
+    improvement_guidance: Validate estimates with execution owners.
+  - name: Decision Readiness
+    weight: 0.15
+    scoring:
+      1: Not suitable for executive review.
+      3: Mostly clear but lacks final recommendation.
+      5: Clear ranked output with resource implications.
+    improvement_guidance: Lead with top 3 initiatives and capital impact.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Opinion-Based Scoring
+  description: Inflating impact without data.
+  mitigation: Tie impact to measurable metric change.
+- pattern: Effort Underestimation
+  description: Ignoring integration and support costs.
+  mitigation: Include cross-functional load in effort.
+- pattern: Too Many Must-Haves
+  description: Overusing MoSCoW Must category.
+  mitigation: Limit Must to strategic essentials.
+- pattern: No Deprioritization
+  description: Failing to document what will not be pursued.
+  mitigation: List deferred initiatives explicitly.
+chaining:
+  after:
+  - framework_id: okrs
+    reason: ''
+  before:
+  - framework_id: north-star-metric-driver-tree
+    reason: ''
+  - framework_id: marketing-revenue-funnel-model
+    reason: ''

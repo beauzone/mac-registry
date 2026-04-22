@@ -1,0 +1,185 @@
+metadata:
+  id: scenario-planning-risk-matrix
+  version: 1.0.0
+  display_name: Scenario Planning / Risk Matrix — Strategic Resilience Model
+  category: strategy
+  description: Identifies critical uncertainties, models plausible future scenarios, and defines pre-emptive strategic responses.
+    Designed for board-level resilience planning in volatile AI-native markets.
+  best_for:
+    stages:
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - ceo
+    - cmo
+    - cfo
+    - board
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: strategic_objectives
+    description: 2–3 year growth and market objectives
+    source: existing_deliverable
+  - field: key_dependencies
+    description: Platform, regulatory, supplier, or ecosystem dependencies
+    source: user_input
+  - field: financial_profile
+    description: Revenue mix, margin structure, burn, capital access
+    source: user_input
+  - field: competitive_exposures
+    description: Known structural vulnerabilities
+    source: existing_deliverable
+analysis:
+  instructions: 'This framework identifies high-impact uncertainties, constructs 3–4 plausible future scenarios, and defines
+    early warning indicators and strategic responses. Emphasis is placed on structural risk rather than tactical volatility.
+
+
+    Construct 3–4 scenarios with probability weighting. Identify highest-impact downside risk and define mitigation plan.
+    Establish quarterly monitoring cadence for early warning indicators.'
+  dimensions:
+  - id: critical-uncertainty-identification
+    name: Critical Uncertainty Identification
+    description: Variables with high impact and high uncertainty
+    prompts:
+    - Which external forces could materially alter trajectory?
+    - Are platform or regulatory shifts plausible?
+    - Could capital markets tighten significantly?
+    - Are technological disruptions accelerating?
+  - id: scenario-construction
+    name: Scenario Construction
+    description: Development of coherent alternative futures
+    prompts:
+    - What does best-case structural acceleration look like?
+    - What does base-case continuation look like?
+    - What does downside contraction or disruption look like?
+    - Are assumptions internally consistent?
+  - id: impact-assessment
+    name: Impact Assessment
+    description: Financial and strategic implications per scenario
+    prompts:
+    - How would ARR growth change?
+    - Would gross margins compress or expand?
+    - Would moat strengthen or erode?
+    - Is liquidity risk introduced?
+  - id: early-warning-indicators
+    name: Early Warning Indicators
+    description: Leading signals for scenario emergence
+    prompts:
+    - What data signals indicate shift toward downside case?
+    - Are competitor moves early indicators?
+    - Are macro metrics relevant?
+    - Can internal KPIs serve as alert triggers?
+  - id: strategic-response-options
+    name: Strategic Response Options
+    description: Pre-committed defensive or offensive actions
+    prompts:
+    - What cost controls activate under downside?
+    - What investment accelerates under upside?
+    - What hedging strategies reduce exposure?
+    - Are optionality investments justified?
+output_templates:
+- id: primary
+  name: Scenario Planning & Risk Matrix
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Critical Uncertainties
+
+    {critical_uncertainties}
+
+
+    ## Scenario Narratives
+
+    {scenario_narratives}
+
+
+    ## Financial and Strategic Impact Analysis
+
+    {financial_and_strategic_impact_analysis}
+
+
+    ## Early Warning Dashboard
+
+    {early_warning_dashboard}
+
+
+    ## Mitigation and Contingency Plan
+
+    {mitigation_and_contingency_plan}
+
+    '
+rubric:
+  description: Board-facing rigor. Evaluates structural risk identification, scenario coherence, mitigation practicality,
+    and monitoring discipline.
+  dimensions:
+  - name: Risk Depth
+    weight: 0.25
+    scoring:
+      1: Surface-level risks only.
+      3: Moderate structural awareness.
+      5: Deep structural and systemic risk mapping.
+    improvement_guidance: Focus on high-impact external shifts.
+  - name: Scenario Coherence
+    weight: 0.2
+    scoring:
+      1: Inconsistent assumptions.
+      3: Mostly coherent but partially fragmented.
+      5: Fully internally consistent scenario narratives.
+    improvement_guidance: Stress-test logical consistency.
+  - name: Financial Clarity
+    weight: 0.2
+    scoring:
+      1: Qualitative impact only.
+      3: Some quantification.
+      5: Clear ARR, margin, and liquidity implications.
+    improvement_guidance: Model scenario-level financial impact.
+  - name: Mitigation Strength
+    weight: 0.2
+    scoring:
+      1: Generic contingency suggestions.
+      3: Moderately actionable responses.
+      5: Pre-committed, executable response plan.
+    improvement_guidance: Define trigger-based actions.
+  - name: Monitoring Discipline
+    weight: 0.15
+    scoring:
+      1: No ongoing review cadence.
+      3: Periodic informal review.
+      5: Embedded quarterly dashboard review.
+    improvement_guidance: Institutionalize risk dashboard in board agenda.
+  thresholds:
+    revise: 3.0
+    publish_ready: 3.8
+    escalate_to_user: 2.4
+anti_patterns:
+- pattern: Single-Future Bias
+  description: Assuming base case will continue.
+  mitigation: Model at least one credible downside case.
+- pattern: Vague Mitigation
+  description: No trigger-based contingency plan.
+  mitigation: Define action thresholds.
+- pattern: No Quantification
+  description: Failing to tie scenarios to financial metrics.
+  mitigation: Model ARR and margin impact per scenario.
+- pattern: Static Planning
+  description: One-time scenario exercise.
+  mitigation: Establish recurring review cadence.
+chaining:
+  after:
+  - framework_id: okrs
+    reason: ''
+  before:
+  - framework_id: competitive-strategy-deep-dive
+    reason: ''
+  - framework_id: investor-narrative-framework
+    reason: ''

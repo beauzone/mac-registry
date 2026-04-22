@@ -1,0 +1,183 @@
+metadata:
+  id: account-based-marketing-system-framework
+  version: 1.0.0
+  display_name: Account-Based Marketing (ABM) System — Target Account Orchestration & Revenue Acceleration Model
+  category: sales
+  description: Designs a coordinated Marketing + Sales system focused on high-value target accounts. Integrates account selection
+    logic, persona mapping, personalized engagement, content orchestration, and revenue measurement discipline. Built for
+    B2B SaaS and enterprise GTM motions.
+  best_for:
+    stages:
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - cro
+    - cmo
+    - vp-sales
+    - vp-marketing
+    - abm-lead
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: target_account_criteria
+    description: Firmographic and behavioral qualification logic
+    source: existing_deliverable
+  - field: buying_committee_map
+    description: Persona coverage within each account
+    source: existing_deliverable
+  - field: deal_size_band
+    description: Expected ACV range
+    source: user_input
+  - field: revenue_goals
+    description: Pipeline and booking targets for ABM accounts
+    source: user_input
+  - field: content_assets
+    description: Case studies, executive briefs, technical docs, ROI models
+    source: user_input
+analysis:
+  instructions: 'This framework operationalizes ABM as a coordinated system rather than a campaign. It aligns account selection,
+    persona penetration, tailored messaging, channel orchestration, and measurement discipline around named high-value targets.
+
+
+    Evaluate account tiering logic, persona penetration depth, personalization rigor, and marketing-sales coordination discipline.
+    Identify under-engaged accounts and adjust resource allocation by tier performance.'
+  dimensions:
+  - id: account-selection-architecture
+    name: Account Selection Architecture
+    description: ''
+    prompts: []
+  - id: account-intelligence-layer
+    name: Account Intelligence Layer
+    description: ''
+    prompts:
+    - What strategic initiative aligns with our value?
+    - Where is measurable business pressure?
+  - id: persona-coverage-model
+    name: Persona Coverage Model
+    description: ''
+    prompts: []
+  - id: personalized-value-orchestration
+    name: Personalized Value Orchestration
+    description: ''
+    prompts: []
+  - id: channel-orchestration-layer
+    name: Channel Orchestration Layer
+    description: ''
+    prompts: []
+  - id: content-asset-alignment
+    name: Content Asset Alignment
+    description: ''
+    prompts: []
+  - id: measurement-&-governance-layer
+    name: Measurement & Governance Layer
+    description: ''
+    prompts: []
+output_templates:
+- id: primary
+  name: Account-Based Marketing System Design
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Account Tiering & Selection Logic
+
+    {account_tiering_&_selection_logic}
+
+
+    ## Persona Coverage Strategy
+
+    {persona_coverage_strategy}
+
+
+    ## Personalization Architecture
+
+    {personalization_architecture}
+
+
+    ## Channel & Content Orchestration Plan
+
+    {channel_&_content_orchestration_plan}
+
+
+    ## KPI & Governance Framework
+
+    {kpi_&_governance_framework}
+
+    '
+rubric:
+  description: Evaluates account selection rigor, personalization depth, persona penetration, and revenue impact effectiveness.
+  dimensions:
+  - name: Account Precision
+    weight: 0.25
+    scoring:
+      1: Broad list without prioritization.
+      3: Basic tiering but weak criteria.
+      5: Data-driven high-fit tier prioritization.
+    improvement_guidance: Refine selection using intent and fit scoring.
+  - name: Persona Coverage
+    weight: 0.2
+    scoring:
+      1: Single-thread engagement.
+      3: Partial multi-threading.
+      5: Full committee coverage across roles.
+    improvement_guidance: Map additional stakeholders early.
+  - name: Personalization Depth
+    weight: 0.2
+    scoring:
+      1: Superficial customization.
+      3: Industry-level personalization.
+      5: Account-specific value narrative.
+    improvement_guidance: Tailor to strategic initiative.
+  - name: Coordination Discipline
+    weight: 0.2
+    scoring:
+      1: Marketing and Sales operate independently.
+      3: Periodic alignment.
+      5: Shared execution calendar and KPI ownership.
+    improvement_guidance: Implement shared planning cadence.
+  - name: Revenue Impact
+    weight: 0.15
+    scoring:
+      1: No measurable lift vs baseline.
+      3: Moderate improvement.
+      5: Clear lift in win rate and velocity.
+    improvement_guidance: Track ABM vs non-ABM cohort performance.
+  thresholds:
+    revise: 2.9
+    publish_ready: 3.7
+    escalate_to_user: 2.3
+anti_patterns:
+- pattern: ABM as Campaign
+  description: Treating ABM as short-term marketing program.
+  mitigation: Design as long-term revenue system.
+- pattern: Cosmetic Personalization
+  description: Name insertion without strategic tailoring.
+  mitigation: Align narrative to account initiative.
+- pattern: Sales-Marketing Disconnect
+  description: Lack of shared execution plan.
+  mitigation: Establish joint governance cadence.
+- pattern: Tier Dilution
+  description: Too many Tier 1 accounts.
+  mitigation: Limit Tier 1 to resource-capable number.
+chaining:
+  after:
+  - framework_id: multi-threaded-enterprise-outreach-framework
+    reason: ''
+  - framework_id: revenue-operations-operating-model
+    reason: ''
+  before:
+  - framework_id: icp-framework
+    reason: ''
+  - framework_id: outbound-prospecting-architecture-framework
+    reason: ''
+  - framework_id: gartner-customer-journey-framework
+    reason: Buyer journey mapping defines the engagement stages ABM plays are designed for

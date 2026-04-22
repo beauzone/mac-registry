@@ -1,0 +1,182 @@
+metadata:
+  id: sales-methodology-lens
+  version: 1.0.0
+  display_name: Sales Methodology Lens (MEDDICC / Challenger) — Revenue Qualification & Enablement Model
+  category: sales
+  description: Applies structured sales methodologies (MEDDICC and Challenger) to evaluate deal qualification rigor, forecast
+    reliability, and enablement effectiveness. Adapted for AI-native and enterprise revenue motions.
+  best_for:
+    stages:
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - cro
+    - vp-sales
+    - cmo
+    - ceo
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: current_sales_methodology
+    description: Existing qualification framework (if any)
+    source: user_input
+  - field: recent_pipeline_snapshot
+    description: Active opportunities with stage, deal size, and probability
+    source: user_input
+  - field: win_loss_analysis
+    description: Patterns from recent won and lost deals
+    source: existing_deliverable
+  - field: sales_cycle_length
+    description: Average sales cycle duration and stage distribution
+    source: user_input
+  optional:
+  - field: enablement_assets
+    description: Current messaging, battlecards, case studies, and objection handling materials
+    source: user_input
+analysis:
+  instructions: 'This framework evaluates sales rigor using MEDDICC qualification components and Challenger selling principles.
+    It identifies qualification gaps, multi-threading weaknesses, and enablement misalignment. In AI-native environments,
+    emphasis is placed on economic value articulation, risk mitigation, and competitive reframing.
+
+
+    Score pipeline sample against MEDDICC completeness. Identify top three qualification gaps and forecast risk drivers. Recommend
+    enablement upgrades aligned to Challenger insight themes. Conclude with forecast adjustment guidance and sales training
+    priorities.'
+  dimensions:
+  - id: meddicc-qualification-integrity
+    name: MEDDICC Qualification Integrity
+    description: Assessment of structured qualification rigor
+    prompts:
+    - Are Metrics clearly defined and quantified in each deal?
+    - Is the Economic Buyer identified and engaged?
+    - Are Decision Criteria and Process documented?
+    - Is a Champion validated and empowered?
+  - id: forecast-reliability
+    name: Forecast Reliability
+    description: Alignment between qualification signals and close probability
+    prompts:
+    - Do late-stage deals consistently close at expected rates?
+    - Are stalled deals missing MEDDICC components?
+    - Is stage progression based on evidence or optimism?
+    - Is forecast variance trending upward or downward?
+  - id: challenger-effectiveness
+    name: Challenger Effectiveness
+    description: Ability to reframe customer thinking and lead with insight
+    prompts:
+    - Are reps leading with commercial insight?
+    - Is differentiation framed around customer value gaps?
+    - Are competitive narratives proactive rather than reactive?
+    - Do deals create urgency through quantified impact?
+  - id: enablement-and-marketing-alignment
+    name: Enablement and Marketing Alignment
+    description: Support systems reinforcing qualification and insight selling
+    prompts:
+    - Do marketing assets reinforce MEDDICC discovery themes?
+    - Are objection-handling materials aligned to lost deal patterns?
+    - Are case studies tied to quantified metrics?
+    - Is there a feedback loop between sales and marketing?
+output_templates:
+- id: primary
+  name: Sales Methodology Diagnostic
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## MEDDICC Assessment
+
+    {meddicc_assessment}
+
+
+    ## Forecast Risk Analysis
+
+    {forecast_risk_analysis}
+
+
+    ## Challenger Selling Review
+
+    {challenger_selling_review}
+
+
+    ## Enablement Gaps and Upgrades
+
+    {enablement_gaps_and_upgrades}
+
+
+    ## Recommended Actions
+
+    {recommended_actions}
+
+    '
+rubric:
+  description: Evaluates qualification rigor, forecast predictability, commercial insight strength, and enablement alignment.
+  dimensions:
+  - name: Qualification Rigor
+    weight: 0.3
+    scoring:
+      1: Minimal MEDDICC adherence; optimistic stage progression.
+      3: Partial adherence with inconsistencies.
+      5: Consistent, evidence-backed MEDDICC discipline.
+    improvement_guidance: Enforce documented MEDDICC criteria before stage advancement.
+  - name: Forecast Accuracy
+    weight: 0.25
+    scoring:
+      1: High variance and frequent late-stage losses.
+      3: Moderate reliability with some slippage.
+      5: Forecast closely aligned to actual close rates.
+    improvement_guidance: Align stage probability to MEDDICC completeness.
+  - name: Commercial Insight Strength
+    weight: 0.2
+    scoring:
+      1: Product-led selling without business reframing.
+      3: Some value articulation but inconsistent.
+      5: Clear challenger-led commercial reframing.
+    improvement_guidance: Train reps to quantify impact and reframe status quo risk.
+  - name: Enablement Alignment
+    weight: 0.15
+    scoring:
+      1: Marketing assets disconnected from sales methodology.
+      3: Partial alignment with gaps.
+      5: Enablement tightly reinforces qualification themes.
+    improvement_guidance: Tie case studies to economic metrics and objections.
+  - name: Executive Clarity
+    weight: 0.1
+    scoring:
+      1: Not decision-ready.
+      3: Moderately clear but lacks prioritization.
+      5: Clear risks and corrective priorities articulated.
+    improvement_guidance: Lead with forecast risk and revenue impact.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Checkbox MEDDICC
+  description: Treating qualification components as administrative tasks.
+  mitigation: Require evidence for each MEDDICC component.
+- pattern: Optimism Bias
+  description: Advancing deals without economic buyer validation.
+  mitigation: Gate stage progression on MEDDICC completeness.
+- pattern: Feature Pitching
+  description: Leading with product demo instead of insight.
+  mitigation: Train reps to lead with quantified business impact.
+- pattern: No Feedback Loop
+  description: Lost deal insights not informing enablement updates.
+  mitigation: Institutionalize win/loss feedback integration.
+chaining:
+  after:
+  - framework_id: okrs
+    reason: ''
+  before:
+  - framework_id: icp-buying-committee
+    reason: ''
+  - framework_id: messaging-architecture
+    reason: ''

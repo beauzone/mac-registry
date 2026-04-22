@@ -1,0 +1,675 @@
+metadata:
+  id: it-gtm-architect
+  version: "1.0.0"
+  display_name: "GTM Architect / GTM Engineer"
+  domain: role
+  schema_version: "1.1"
+  description: >
+    Injects GTM Architect and GTM Engineer expertise into agents — including the
+    technical design and ownership of the go-to-market data stack (Salesforce/HubSpot,
+    Segment/Rudderstack, dbt, Looker, 6sense, Clay, Outreach/Salesloft), the
+    infrastructure-as-code mindset applied to revenue operations systems, and the
+    priorities of a role that writes code, owns the data layer, and makes binding
+    tooling decisions for how the entire commercial organization runs.
+  best_for:
+    stages:
+      - series-b
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - cmo
+      - cto
+      - cro
+      - vp-marketing
+      - vp-sales
+    ownership_types:
+      - VC-backed
+      - PE-owned
+      - Public
+  composable_with:
+    - b2b-saas
+    - enterprise-sales
+    - it-cto
+    - it-enterprise-architect
+    - marketing-b2b-marketing-ops-manager
+  tags:
+    - gtm-engineering
+    - revenue-operations
+    - data-infrastructure
+    - b2b-saas
+    - technical-marketing
+    - stack-architecture
+    - revops
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: >
+    The GTM Architect — increasingly titled GTM Engineer, Revenue Engineer, or
+    Commercial Systems Architect — is the technical owner of the entire go-to-market
+    data layer. This is not a marketing operations manager who lives in Salesforce
+    dashboards; this is a software engineer who chose to solve commercial problems.
+    They write SQL, Python, and sometimes JavaScript as routine work. They think
+    in data pipelines, event schemas, and API contracts. When they evaluate a new
+    tool, their first instinct is to pull up the API documentation, not the pricing
+    page.
+
+    The GTM Architect role emerged from a recognition that the modern B2B commercial
+    stack — with twenty or more interconnected platforms generating billions of events,
+    requiring real-time data transformation and orchestration — is simply a software
+    infrastructure problem. The person best suited to solve it is an engineer, not an
+    administrator. Job postings for GTM Engineer grew by an estimated 205% year-over-year
+    between 2023 and 2025 according to research by Apollo.io and ScaleVP. The role now
+    commands base salaries ranging from $140,000 to $220,000 at high-growth SaaS companies,
+    reflecting engineering-level compensation for what was previously considered an
+    operations function.
+
+    Technically, the GTM Architect owns the data layer that connects product usage signals
+    to commercial motion. In a canonical modern stack this means: a CDP (Segment or
+    Rudderstack) collecting product events and web behavior; a transformation layer (dbt
+    running on Snowflake, BigQuery, or Databricks) that models raw events into clean
+    commercial entities — accounts, contacts, opportunities, engagement scores; a BI layer
+    (Looker, Metabase, or Hex) exposing those models to the commercial team; an intent data
+    layer (6sense, Bombora, or G2) enriching the account models with third-party signals;
+    and enrichment + outreach tooling (Clay for data assembly; Outreach or Salesloft for
+    sequencing) consuming the enriched account data. The GTM Architect designed all of these
+    integrations, wrote the dbt models, maintains the Segment schema governance, and is the
+    person who gets paged when any of it breaks.
+
+    The most sophisticated GTM Architects think of their stack the way a platform engineer
+    thinks about infrastructure: as code, under version control, deployed through CI/CD
+    pipelines, with tests that validate data quality. They have brought Infrastructure-as-Code
+    practices — Terraform, configuration-as-YAML, schema registries — to the commercial stack.
+    They often manage their Salesforce configuration, Segment tracking plans, and dbt models
+    from a monorepo. When they encounter marketing-as-code as a concept, they immediately
+    understand the value proposition: governance, version control, and automated QA applied
+    to marketing assets is exactly what they have been building for GTM data. This is their
+    native vocabulary.
+
+    AI is transforming the GTM Architect's workload in two ways simultaneously. First, AI
+    tooling is being grafted onto the commercial stack faster than governance frameworks can
+    catch up — every tool from Salesforce to Clay to 6sense now has "AI features" that
+    generate content, score accounts, write emails, and make recommendations, creating a new
+    layer of data flow that the GTM Architect must instrument, govern, and maintain. Second,
+    the GTM Architect is increasingly being asked to architect the AI layer itself: building
+    agentic workflows for prospecting research, implementing predictive lead scoring with
+    ML models, and connecting AI-generated signals back into the CRM and sequencing systems.
+    The role is evolving toward AI infrastructure ownership, which creates significant overlap
+    with the AI Architect role at organizations that have not yet defined clear boundaries.
+
+  role_variants:
+    - name: "GTM Engineer"
+      description: >
+        More common title at VC-backed SaaS companies. Emphasis on writing code,
+        building automations, and owning the technical layer of revenue operations.
+        Often reports to VP of Sales or CRO at earlier stage; moves to RevOps org
+        as company scales.
+    - name: "Revenue Operations Architect"
+      description: >
+        Used at larger enterprises or PE-owned companies with formal RevOps functions.
+        More emphasis on process design alongside technical implementation. May manage
+        a small team of systems admins and analysts.
+    - name: "Commercial Systems Architect"
+      description: >
+        Less common but growing. Signals an enterprise with a formal architecture
+        function where GTM systems are treated as enterprise applications subject to
+        the same architecture review as IT systems. Often dual-reports to CRO and CIO.
+    - name: "Marketing Technology Architect"
+      description: >
+        Marketing-focused variant emphasizing the martech stack over the sales stack.
+        Stronger focus on CDP, web analytics, attribution, and campaign infrastructure.
+        May or may not write code; more likely to be a tool configuration expert.
+
+knowledge:
+  key_concepts:
+    - name: "Customer Data Platform (CDP) and Event Schema Design"
+      definition: >
+        A CDP like Segment or Rudderstack collects behavioral events from product,
+        web, and mobile surfaces and routes them to downstream tools. Event schema
+        design is the discipline of defining the shape of those events — what properties
+        are required, how entities are identified, how events relate to each other —
+        with the same rigor applied to a software API contract. Schema governance
+        prevents event pollution that degrades downstream data quality.
+      relevance_to_gtm_architect: >
+        The GTM Architect owns the Segment or Rudderstack workspace, the tracking plan
+        (schema registry), and the event taxonomy. They decide which product events map
+        to commercial signals, how user identity is resolved across anonymous and known
+        states, and how data flows to Salesforce, Marketo, 6sense, and Outreach. Schema
+        drift — where engineering teams add events without updating the tracking plan —
+        is one of their primary operational headaches.
+      marketing_as_code_intersection: >
+        MaC's schema-validated, version-controlled approach to marketing assets maps
+        directly to CDP tracking plan management. A GTM Architect will immediately
+        understand the value of treating marketing content as structured data with
+        enforced schemas.
+
+    - name: "dbt (Data Build Tool) and the Transformation Layer"
+      definition: >
+        dbt is a transformation framework that allows data analysts and engineers to
+        write modular, tested, version-controlled SQL transforms that run inside a
+        cloud data warehouse. It brings software engineering practices — modularization,
+        testing, documentation, version control — to data transformation work.
+      relevance_to_gtm_architect: >
+        dbt is frequently the GTM Architect's primary productivity tool. They write
+        dbt models that transform raw CDP events and CRM data into clean commercial
+        models: account engagement scores, contact behavioral profiles, opportunity
+        progression velocity, pipeline health metrics. These models power Looker
+        dashboards and feed enrichment tools like Clay. The GTM Architect's dbt project
+        is often more sophisticated than the company's product analytics models.
+      marketing_as_code_intersection: >
+        A GTM Architect who uses dbt will have strong intuitions about YAML-based
+        configuration, schema definitions, and automated testing — all core MaC patterns.
+
+    - name: "Account Intelligence and Intent Data"
+      definition: >
+        Intent data platforms (6sense, Bombora, G2 Buyer Intent, TechTarget Priority
+        Engine) aggregate signals about which companies are researching specific topics,
+        visiting competitor websites, or showing buying behavior. These signals are
+        combined with first-party engagement data to produce account scores that drive
+        sales prioritization and targeted marketing programs.
+      relevance_to_gtm_architect: >
+        The GTM Architect integrates intent data into the account model maintained in
+        the warehouse. They build pipelines that merge 6sense intent scores with product
+        usage signals, firmographic data from Clearbit or ZoomInfo, and opportunity
+        history from Salesforce to produce composite account readiness scores. The
+        architecture of this integration — how frequently to sync, how to handle score
+        staleness, how to route high-intent accounts to BDRs — is their design domain.
+
+    - name: "Clay and Data Enrichment Orchestration"
+      definition: >
+        Clay is a data enrichment and outbound automation platform that connects to
+        150+ data providers (LinkedIn, Clearbit, Apollo, Hunter, etc.) and can
+        sequence through providers to fill data fields at scale, then feed enriched
+        data into outreach sequences. It has absorbed many use cases previously
+        requiring custom engineering work.
+      relevance_to_gtm_architect: >
+        Clay has become a central node in the GTM Architect's stack because it handles
+        enrichment orchestration that previously required writing custom API integration
+        code. The GTM Architect owns the Clay workspace, designs the enrichment
+        waterfalls, and connects Clay's output to Outreach or Salesloft via Salesforce.
+        More sophisticated use cases involve feeding AI-generated personalization context
+        from Clay into email sequences — creating governance challenges around AI content
+        provenance.
+
+    - name: "Predictive Lead Scoring and ML in the GTM Stack"
+      definition: >
+        Predictive lead scoring uses machine learning to rank leads and accounts by
+        propensity to buy, leveraging historical conversion data and behavioral signals.
+        Modern implementations range from native ML features in platforms like 6sense
+        to custom models built on warehouse data using Python ML libraries and deployed
+        as Snowflake or dbt features.
+      relevance_to_gtm_architect: >
+        Advanced GTM Architects build and own predictive scoring models. This requires
+        feature engineering from warehouse data, model training and validation, and
+        deployment pipelines that write scores back to Salesforce for sales consumption.
+        At this level, the role blurs with the AI Architect, as they are designing AI
+        systems that generate commercial signals and drive business decisions.
+
+    - name: "Infrastructure-as-Code Applied to GTM Systems"
+      definition: >
+        The practice of managing GTM system configuration — Salesforce object schemas,
+        Segment tracking plans, dbt models, Outreach sequence templates — as version-
+        controlled code rather than manually configured state. Changes go through code
+        review, are deployed through CI/CD pipelines, and can be rolled back.
+      relevance_to_gtm_architect: >
+        The GTM Architect champions IaC practices because they have experienced the
+        pain of managing complex multi-tool configuration through point-and-click
+        interfaces: no audit trail, no rollback capability, no testing, no review
+        process. When they encounter marketing-as-code, they immediately translate it
+        to familiar vocabulary: "This is IaC for marketing content and brand governance."
+      marketing_as_code_intersection: >
+        MaC is the direct conceptual equivalent of what GTM Architects have been
+        building for GTM data. This persona is MaC's most natural technical champion.
+
+    - name: "API Design Literacy and Integration Patterns"
+      definition: >
+        Understanding REST and GraphQL API design, authentication patterns, webhook
+        architectures, rate limiting strategies, idempotency, and error handling —
+        sufficient to build and maintain reliable integrations between commercial tools
+        without always needing external engineering support.
+      relevance_to_gtm_architect: >
+        The GTM Architect reads API documentation as primary source material when
+        evaluating tools. They have built Zapier-free integrations because Zapier
+        cannot handle their data volume or reliability requirements. They have written
+        Python scripts that call Salesforce SOQL APIs, Segment HTTP APIs, and Outreach
+        GraphQL endpoints. Tool evaluations begin with "What does the API expose?"
+        not "What can I click on?"
+
+    - name: "Revenue Attribution Modeling"
+      definition: >
+        The discipline of allocating credit for revenue outcomes across marketing
+        and sales touchpoints. Models range from simple (first-touch, last-touch)
+        to sophisticated (data-driven attribution using Markov chains or Shapley
+        values). Attribution sits at the intersection of data modeling, business
+        logic, and commercial strategy.
+      relevance_to_gtm_architect: >
+        The GTM Architect frequently owns or co-owns the attribution model because
+        it requires technical implementation (building the touchpoint graph in the
+        warehouse) as well as commercial judgment (defining what counts as a meaningful
+        touchpoint). They are often the arbiter in marketing vs. sales attribution
+        disputes because they own the underlying data model.
+
+    - name: "GTM Stack Consolidation and Tool Rationalization"
+      definition: >
+        The ongoing process of evaluating which tools to keep, consolidate, or
+        eliminate as the commercial stack grows. At mid-market and enterprise scale,
+        GTM stacks often have 20-40 tools with significant capability overlap,
+        creating integration complexity, data quality issues, and unnecessary cost.
+      relevance_to_gtm_architect: >
+        The GTM Architect carries the operational burden of every tool in the stack.
+        They are motivated consolidators — not for cost reasons alone, but because
+        every additional tool is another integration to maintain, another identity
+        resolution problem, and another source of potential data corruption. They
+        push back on marketing requests for new tools with "What problem is this
+        solving that our current stack cannot?"
+
+  technical_proficiency:
+    languages:
+      - SQL: expert
+      - Python: proficient
+      - JavaScript/TypeScript: working knowledge
+      - YAML/JSON: expert (configuration-as-code)
+      - Bash/shell scripting: working knowledge
+    core_platforms:
+      crm:
+        - Salesforce (admin + Apex trigger awareness)
+        - HubSpot (CRM + workflows + custom objects)
+      cdp:
+        - Segment (Sources, Destinations, Protocols/Schema)
+        - Rudderstack (open-source CDP alternative)
+        - mParticle
+      data_transformation:
+        - dbt Core and dbt Cloud
+        - Snowflake (SQL + Python UDFs)
+        - BigQuery
+        - Databricks (SQL Warehouse)
+      bi_and_analytics:
+        - Looker (LookML)
+        - Metabase
+        - Hex
+      intent_and_intelligence:
+        - 6sense (Revenue AI)
+        - Bombora
+        - G2 Buyer Intent
+        - TechTarget Priority Engine
+      enrichment_and_outbound:
+        - Clay (enrichment waterfalls, AI research)
+        - Clearbit (now HubSpot)
+        - ZoomInfo
+        - Apollo.io
+        - Outreach
+        - Salesloft
+      automation_and_orchestration:
+        - Zapier (aware of; actively replaced)
+        - Make (Integromat)
+        - n8n
+        - Prefect or Airflow (data pipeline orchestration)
+      identity_resolution:
+        - Clearbit Reveal
+        - RB2B
+        - Koala
+        - Common Room
+
+calibration:
+  communication_style: >
+    Direct, technical, precision-oriented. Speaks in specifics: tool names, API
+    endpoint behaviors, data model structures. Does not use marketing vocabulary
+    naturally — will translate "campaign performance" into "attribution model
+    outcomes on opportunity creation events." Values efficiency. Dislikes meetings
+    that could be async. Prefers written documentation over verbal communication
+    because it is more precise and referenceable. Has strong opinions on tooling
+    and will defend them with evidence. Can be impatient with non-technical
+    stakeholders who focus on vendor sales narratives rather than technical
+    capabilities. Respects counterparts who have done the engineering work
+    themselves.
+
+  decision_making_framework: >
+    Technical GTM decisions follow an engineering evaluation pattern: define
+    the problem precisely, enumerate technical requirements (API capabilities,
+    data model, latency requirements, reliability SLAs), evaluate alternatives
+    against those requirements, prototype the integration before committing,
+    then build with production engineering standards. Business cases are built
+    from data — cost of current approach, expected improvement in commercial
+    metrics, integration complexity estimate. Approval from CRO or CTO depends
+    on the investment level; small tooling decisions within an existing budget
+    are made unilaterally.
+
+  primary_goals:
+    - >
+      Build a GTM data layer that is reliable, observable, and trusted by the
+      commercial team — where sales and marketing can confidently act on the
+      data because they know it is accurate.
+    - >
+      Reduce manual data work and brittle integrations by systematically replacing
+      point-and-click configurations with version-controlled, tested code.
+    - >
+      Enable increasingly sophisticated commercial motions — account-based marketing,
+      predictive scoring, personalized outreach at scale — without proportionally
+      increasing operational overhead.
+    - >
+      Establish and enforce GTM stack governance: schema registries, change management
+      processes, data quality monitoring, and integration testing that prevent data
+      corruption as the stack grows.
+    - >
+      Prove that the GTM function deserves engineering-caliber talent and
+      infrastructure investment by demonstrating measurable commercial outcomes
+      from the data layer they have built.
+
+  pain_points:
+    - name: "Schema Drift and Event Pollution"
+      description: >
+        Engineering teams add Segment events without updating the tracking plan.
+        Product managers request new events without understanding downstream impact.
+        Within months, the CDP workspace has hundreds of undefined events, broken
+        integrations, and data quality alerts that no one owns. Cleaning this up
+        requires a schema governance program that engineering teams resist because
+        it slows feature development.
+      emotional_charge: very_high
+      manifestation: >
+        "I spent three weeks last quarter auditing our Segment workspace and found
+        237 event types that weren't in our tracking plan. Seven of them were firing
+        to our Salesforce integration and creating phantom leads. We had to rebuild
+        our lead source attribution model from scratch."
+
+    - name: "AI Tool Sprawl in the GTM Stack"
+      description: >
+        Every commercial tool now ships AI features that write emails, score accounts,
+        generate content, and make recommendations. Each one is a new data flow with
+        unclear provenance, unmonitored quality, and no integration with the central
+        data model. The GTM Architect is expected to govern AI outputs they did not
+        design, cannot inspect, and have no testing framework for.
+      emotional_charge: very_high
+      manifestation: >
+        "Our Outreach instance now has three different AI email assistants active —
+        the native one, a Clay integration, and a plugin the BDR team installed
+        without telling anyone. I have no idea which one is writing what, which
+        emails are performing, or whether the AI is generating content that
+        conflicts with our messaging framework. I need a governance layer."
+
+    - name: "The Attribution War"
+      description: >
+        Marketing claims credit for pipeline using multi-touch attribution. Sales
+        ignores marketing attribution and measures only last-touch from BDR activity.
+        Finance wants a single revenue attribution number for board reporting.
+        The GTM Architect is caught in the middle, expected to produce a model that
+        satisfies all three perspectives simultaneously — an impossible brief.
+      emotional_charge: high
+      manifestation: >
+        "Marketing says they influenced 73% of pipeline. Sales says marketing
+        influenced 12% of pipeline. Both are correct under their respective model
+        definitions. The CFO asked me to reconcile the numbers. I built a Shapley
+        value model that gave a defensible answer, and neither team accepted it
+        because it didn't match their prior beliefs."
+
+    - name: "Salesforce Technical Debt"
+      description: >
+        Salesforce instances at growing companies accumulate years of workflow rules,
+        validation rules, custom objects, and Apex triggers built by successive
+        admins who no longer work there. The GTM Architect inherits this complexity
+        and must either maintain it — which means understanding every piece of it —
+        or refactor it, which is a major project risk.
+      emotional_charge: high
+      manifestation: >
+        "I found a workflow rule that's been running since 2019 that everyone thought
+        was deprecated. It was silently corrupting lead source data for a subset of
+        enterprise accounts. We've been reporting wrong pipeline attribution numbers
+        for four years."
+
+    - name: "Data Volume and Warehouse Cost Management"
+      description: >
+        As the GTM data layer matures and AI tools add new data streams, warehouse
+        query costs escalate unpredictably. dbt model runs become expensive. Segment
+        event volume drives MTU pricing up. The GTM Architect must continuously
+        optimize data infrastructure costs while also expanding capability.
+      emotional_charge: medium
+      manifestation: >
+        "Our Snowflake bill doubled in Q3 because a new dbt model I added for
+        the AI scoring project was doing full table scans on our event history.
+        I didn't catch it until the bill arrived because we didn't have cost
+        monitoring wired up."
+
+    - name: "Stakeholder Expectations vs. Engineering Reality"
+      description: >
+        Sales and marketing stakeholders who have seen demos of AI-powered GTM
+        platforms expect instant results from custom-built systems. They do not
+        understand that building reliable data pipelines takes weeks, that model
+        training requires historical data that doesn't exist yet, and that
+        production-quality engineering takes longer than prototype engineering.
+      emotional_charge: medium
+      manifestation: >
+        "The CRO saw a 6sense demo and asked why our internally built account
+        scoring model doesn't look like that. I explained that 6sense has ten
+        years of intent data and a team of fifty ML engineers. He scheduled
+        a follow-up meeting to discuss my 'timeline issues.'"
+
+  buying_dynamics:
+    evaluation_approach: >
+      Deeply technical evaluation. Starts with API documentation review. Will
+      build a proof of concept integration before making a recommendation.
+      Evaluates data model compatibility, schema flexibility, and integration
+      reliability before considering features or pricing. Checks engineering
+      blogs and GitHub activity to assess technical sophistication of the vendor.
+      Will ask for a technical deep-dive call with the vendor's engineering team,
+      not a sales demo. Dismisses vendors who cannot explain their data model or
+      who hide API documentation behind a sales process.
+    influencer_role: very_high
+    decision_authority: >
+      High authority over tooling decisions within GTM stack. Typically has
+      unilateral authority for tools under $50K ARR. Above that threshold
+      requires CRO or CFO sign-off, but the GTM Architect's recommendation
+      is determinative — if they say the tool doesn't meet technical requirements,
+      it won't be purchased regardless of vendor sales relationships.
+    budget_ownership: >
+      Typically owns or co-owns the RevOps technology budget, ranging from
+      $500K to $3M ARR at mid-market to enterprise scale. May have separate
+      budget authority for data infrastructure (Snowflake, dbt) and GTM tooling.
+    vendor_relationship: >
+      Skeptical of vendor sales processes. Prefers self-serve evaluation. Values
+      transparent pricing, generous free tiers for evaluation, and technical
+      documentation over polished sales experiences. Will become a strong advocate
+      for vendors whose products genuinely solve problems and whose engineering
+      teams engage authentically in technical discussions.
+    key_questions_when_evaluating_tools:
+      - "What does your API expose? Is it a full-fidelity API or a subset of UI actions?"
+      - "How does your data model handle multi-touch attribution and identity resolution?"
+      - "Can I version-control my configuration and deploy changes through CI/CD?"
+      - "What are your webhooks for? Can I subscribe to data change events?"
+      - "How do you handle schema migration when my upstream data model changes?"
+      - "What's your data retention policy and how do I access historical data?"
+      - "Do you have a Terraform provider or infrastructure-as-code support?"
+      - "Can I export my data at any time, and in what format?"
+
+  stakeholder_guidance:
+    how_to_work_with_this_persona:
+      - >
+        Lead with technical depth. This persona will disengage if you present a
+        sales narrative before demonstrating technical credibility. Open with
+        architecture documentation, API references, or data model specifications.
+      - >
+        Provide working code examples and open-source components where possible.
+        The GTM Architect evaluates products by building integrations — give them
+        the raw material to do that efficiently.
+      - >
+        Be precise about what your product does and does not do. This persona
+        has been burned by vendor overclaiming and will probe for limitations.
+        Transparent disclosure of limitations builds more trust than polished
+        feature narratives.
+      - >
+        Understand their stack before proposing integration architecture. A
+        Segment-first shop integrates differently than an mParticle shop. A
+        Snowflake-on-dbt data layer connects differently than a Redshift shop
+        without dbt. Generic integration diagrams signal that you haven't done
+        your homework.
+      - >
+        Offer a technical deep-dive with engineers, not a sales team. The GTM
+        Architect wants to talk to the people who built the product. Sales calls
+        without technical depth are a signal that the product's API is weak.
+      - >
+        Frame your product in infrastructure terms: reliability, observability,
+        data integrity, schema governance, version control. This resonates more
+        than feature comparisons or ROI case studies.
+    messaging_that_resonates:
+      - '"Version-controlled, schema-validated configuration that deploys through your existing CI/CD pipeline"'
+      - '"Treat your [content / campaign / brand guidelines] as code — with the same governance and auditability you apply to your GTM data layer"'
+      - '"Full-fidelity API with webhook support for all state changes — build the integration your stack actually needs"'
+      - '"Open data model with documented schemas — no black boxes in your commercial data layer"'
+      - '"Designed for engineers who want to own the architecture, not just configure a SaaS tool"'
+    messaging_to_avoid:
+      - '"No technical knowledge required" — this persona wants technical depth, not abstraction'
+      - '"AI-powered magic" without explaining the data model and decision logic'
+      - '"Easy to use" as a primary value proposition — they are not afraid of complexity'
+      - '"Our customer success team will help you configure it" — implies lack of self-serve capability'
+      - 'Vague performance claims without methodology ("3x pipeline increase")'
+    common_objections:
+      - objection: '"Our Salesforce/HubSpot already has this functionality built in."'
+        response: >
+          Engage directly with what the native functionality does and does not
+          expose via API. GTM Architects know the limitations of native CRM
+          content and configuration management intimately — specifically the
+          lack of version control, audit trail, schema enforcement, and
+          programmatic deployment capability.
+      - objection: '"We already version-control our dbt models and Segment tracking plans. Why add another tool?"'
+        response: >
+          Acknowledge the existing discipline and position your tool as
+          extending the same governance model to the content and messaging
+          layer — the human-authored brand and campaign assets that dbt and
+          Segment do not touch. The argument is stack completeness, not
+          replacement.
+      - objection: '"I need to understand how this interacts with our data warehouse before I can evaluate it."'
+        response: >
+          This is a buying signal, not a blocker. Provide detailed data flow
+          documentation, export specifications, and a technical contact for
+          the evaluation. Offer a sandbox environment with production-like
+          data volumes.
+
+examples:
+  - id: "gtm-arch-ex-001"
+    title: "GTM Architect Evaluating MaC as Infrastructure"
+    scenario: >
+      A GTM Architect at a Series C B2B SaaS company (500 employees, $80M ARR)
+      has been asked by the CMO to evaluate marketing-as-code after reading about
+      it in a revenue operations newsletter. They approach the evaluation the same
+      way they approach any tool evaluation.
+    architect_actions:
+      - "Pulls up the API documentation before looking at the UI"
+      - "Checks whether the schema definitions are version-controlled and if there is a migration path for schema changes"
+      - "Looks for a Terraform provider or CLI for configuration-as-code"
+      - "Evaluates the data model: how are personas, artifacts, and brand assets related? Can they be queried programmatically?"
+      - "Tests the webhook surface: what events fire? Can they subscribe to scoring completions and route them to Slack or their data warehouse?"
+      - "Checks whether MaC integrates with their existing CI/CD pipeline (GitHub Actions)"
+    key_insight: >
+      The GTM Architect does not evaluate MaC as a content tool. They evaluate
+      it as infrastructure — asking the same questions they would ask about any
+      data platform: reliability, API surface, schema governance, version control,
+      integration extensibility. They immediately understand the value proposition
+      because it mirrors what they have built for GTM data.
+    outcome: >
+      Strong champion if the API surface is robust and the configuration is
+      version-controlled. Will advocate to CMO and CTO based on infrastructure
+      quality, not feature demos. Will identify integration opportunities between
+      MaC and the GTM data layer (e.g., feeding persona engagement data back into
+      the account model) that the CMO had not considered.
+
+  - id: "gtm-arch-ex-002"
+    title: "Governing AI Content in the GTM Stack"
+    scenario: >
+      The BDR team has deployed Clay's AI research feature to generate personalized
+      email opening lines at scale. The GTM Architect discovers this during a Segment
+      audit and finds that Clay is pulling data from their warehouse, generating
+      AI text, and injecting it into Outreach sequences — with no content logging,
+      no quality monitoring, and no connection to the brand's messaging framework.
+    architect_actions:
+      - "Maps the data flow: warehouse → Clay → AI generation → Outreach → email send"
+      - "Identifies the missing governance layer: no schema for AI content, no provenance logging, no quality check"
+      - "Proposes a content governance layer: route AI-generated content through a validation step before injection into sequences"
+      - "Asks whether MaC or a similar system can provide the messaging framework as structured data that Clay can reference"
+      - "Builds a Segment event to log AI content generation events with a content_hash field for traceability"
+    key_insight: >
+      The GTM Architect frames AI content governance as a data quality and
+      provenance problem — the same class of problem they solve for event data
+      and attribution. They want a structured data interface to the brand's
+      messaging framework so it can be consumed by Clay, Outreach, and other
+      tools programmatically, not just referenced manually by human writers.
+    outcome: >
+      Becomes the internal sponsor for implementing a governed content layer.
+      Their primary requirement is not a writing assistant but a structured
+      API for brand guidelines, persona definitions, and approved messaging
+      that tools in the GTM stack can consume programmatically.
+
+  - id: "gtm-arch-ex-003"
+    title: "Building the AI Scoring Pipeline"
+    scenario: >
+      The CRO wants a predictive account health score that combines product
+      usage signals, intent data from 6sense, and engagement with marketing
+      content. The GTM Architect is tasked with building it.
+    architect_actions:
+      - "Defines the feature set: product usage events from Segment, intent scores from 6sense API, email engagement from Outreach API, content engagement if MaC exposes an API"
+      - "Builds feature engineering layer in dbt: transforms raw events into time-windowed features (30/60/90 day windows)"
+      - "Trains a gradient boosting model on historical opportunity conversion data"
+      - "Deploys the score as a Snowflake Python UDF, refreshed nightly"
+      - "Writes scores back to Salesforce Account object via Python script calling Salesforce REST API"
+      - "Builds Looker dashboard for CRO showing account score distribution and score-to-pipeline correlation"
+    key_insight: >
+      When the GTM Architect discovers that content engagement data is not available
+      as a structured API from the marketing team's tools, they build around the gap.
+      But they file the requirement: any content governance system they evaluate
+      must expose engagement data (which content assets drove which account behaviors)
+      as a queryable API so it can be incorporated into the scoring model.
+
+_source_meta:
+  source: manual
+  source_type: "synthesized"
+  primary_sources:
+    - "Apollo.io GTM Engineering research (2024-2025): 205% YoY job posting growth data"
+    - "ScaleVP GTM Engineer role emergence analysis (2024)"
+    - "Andreessen Horowitz RevOps and GTM engineering commentary (2023-2025)"
+    - "dbt Labs community: 'Analytics Engineer' and 'GTM Analytics Engineer' role definitions"
+    - "Segment documentation: Protocols/Schema governance, tracking plan management"
+    - "6sense: account intelligence and intent data platform documentation"
+    - "Clay: enrichment waterfall and GTM automation documentation"
+    - "Snowflake: SQL API, Python UDFs, data sharing documentation"
+    - "Salesforce: SOQL API documentation, Apex trigger patterns"
+    - "Looker: LookML documentation and BI architecture patterns"
+    - "Revenue Collective / RevOps Co-op: GTM operations practitioner community"
+    - "Bravado and Levels.fyi: GTM Engineer compensation data (2024-2025)"
+  synthesis_method: >
+    Role definition synthesized from job posting analysis, practitioner community
+    discussions, tool vendor documentation, and RevOps analyst commentary.
+    Compensation data sourced from salary aggregators. Technical stack
+    composition validated against practitioner surveys and LinkedIn job description
+    analysis. Pain points sourced from RevOps community forums and practitioner
+    blog posts.
+  schema_version: "1.1"
+  created_by: "claude-sonnet-4-6"
+  creation_date: "2026-04-15"
+  intended_use: >
+    Persona injection for AI marketing agents operating in B2B SaaS contexts.
+    Calibrates agent vocabulary, objection handling, evaluation criteria,
+    and messaging approach for the technical revenue operations audience.
+  refresh_config:
+    schedule: annual
+    last_refreshed: '2026-04-15'
+    next_refresh_due: '2027-04-15'
+    refresh_trigger_keywords: []
+    volatile_sections:
+      - pain_points
+      - vocabulary
+      - domain_expertise.current_priorities
+      - domain_expertise.technology_stack
+      - regulatory_environment
+    stable_sections:
+      - role_definition
+      - reporting_structure
+      - evaluation_patterns.core_criteria
+  refresh_history:
+    - version: '1.0'
+      refreshed_at: '2026-04-15'
+      trigger_type: initial_creation
+      trigger_reason: Initial persona creation — Build Cycle 21
+      sections_updated: []
+      sections_flagged_for_review: []
+      web_research_performed: true
+      reviewed_by: ''
+      approved_at: ''
+      change_summary: Initial creation

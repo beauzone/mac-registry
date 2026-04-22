@@ -1,0 +1,196 @@
+metadata:
+  id: revenue-operations-operating-model
+  version: 1.0.0
+  display_name: Revenue Operations (RevOps) Operating Model — Revenue System Integration Architecture
+  category: operations
+  description: Designs an integrated revenue operating system aligning Marketing, Sales, Customer Success, Finance, and Product
+    around shared data, metrics, process discipline, and forecasting integrity. Built for SaaS and AI-native revenue models.
+  best_for:
+    stages:
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - ceo
+    - cro
+    - cmo
+    - cfo
+    - vp-revops
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: revenue_model
+    description: PLG, Sales-led, Hybrid, Channel mix
+    source: existing_deliverable
+  - field: tech_stack
+    description: CRM, marketing automation, product analytics, billing systems
+    source: user_input
+  - field: pipeline_metrics
+    description: Conversion rates, stage definitions, velocity
+    source: user_input
+  - field: retention_and_expansion_metrics
+    description: NRR, GRR, churn drivers
+    source: user_input
+  - field: forecasting_process
+    description: Current forecast methodology and cadence
+    source: user_input
+analysis:
+  instructions: 'This framework establishes a unified revenue operating architecture across data integrity, process discipline,
+    ownership clarity, forecasting, and performance accountability. Emphasis is placed on system coherence rather than functional
+    silos.
+
+
+    Diagnose revenue leakage, metric misalignment, and data fragmentation. Recommend RevOps org design, system integrations,
+    forecast discipline improvements, and lifecycle ownership clarity. Define 90-day RevOps stabilization plan.'
+  dimensions:
+  - id: unified-revenue-data-layer
+    name: Unified Revenue Data Layer
+    description: ''
+    prompts:
+    - Are definitions of MQL, SQL, PQL, and Opportunity standardized?
+    - Is product usage data integrated into CRM?
+    - Are billing and revenue metrics reconciled with pipeline?
+    - Are attribution models aligned to revenue reporting?
+  - id: lifecycle-process-architecture
+    name: Lifecycle Process Architecture
+    description: ''
+    prompts:
+    - Are handoffs between Marketing and Sales explicit?
+    - Is PQA routing automated?
+    - Are CS expansion plays systematized?
+    - Are churn interventions triggered by signals?
+  - id: metric-hierarchy-&-accountability
+    name: Metric Hierarchy & Accountability
+    description: ''
+    prompts:
+    - Is there a clear metric cascade from top-line to team-level KPIs?
+    - Are incentives aligned to shared revenue goals?
+    - Do teams optimize locally or system-wide?
+    - Is expansion owned clearly?
+  - id: forecasting-&-predictability
+    name: Forecasting & Predictability
+    description: ''
+    prompts:
+    - Is forecast grounded in stage conversion data?
+    - Are leading indicators monitored weekly?
+    - Is pipeline coverage ratio validated?
+    - Is forecast variance tracked and explained?
+  - id: revenue-experimentation-system
+    name: Revenue Experimentation System
+    description: ''
+    prompts:
+    - Are channel tests structured with success criteria?
+    - Is pricing experimentation measurable?
+    - Are experiments documented and learnings shared?
+    - Is experimentation tied to driver tree logic?
+output_templates:
+- id: primary
+  name: Revenue Operations Operating Model
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Data and Systems Assessment
+
+    {data_and_systems_assessment}
+
+
+    ## Lifecycle Process Alignment
+
+    {lifecycle_process_alignment}
+
+
+    ## Metric and Accountability Structure
+
+    {metric_and_accountability_structure}
+
+
+    ## Forecasting Integrity Review
+
+    {forecasting_integrity_review}
+
+
+    ## RevOps Organizational Design
+
+    {revops_organizational_design}
+
+
+    ## 90-Day Stabilization Plan
+
+    {90-day_stabilization_plan}
+
+    '
+rubric:
+  description: Evaluates data integrity, cross-functional alignment, forecasting reliability, and scalability of revenue system.
+  dimensions:
+  - name: Data Integrity
+    weight: 0.25
+    scoring:
+      1: Fragmented and inconsistent reporting.
+      3: Partial integration with gaps.
+      5: Single source of truth across lifecycle.
+    improvement_guidance: Consolidate product, CRM, and billing data.
+  - name: Process Clarity
+    weight: 0.2
+    scoring:
+      1: Undefined handoffs and ownership confusion.
+      3: Mostly clear but inconsistent enforcement.
+      5: Explicit lifecycle architecture with automation.
+    improvement_guidance: Document and automate stage transitions.
+  - name: Forecast Predictability
+    weight: 0.2
+    scoring:
+      1: High forecast variance.
+      3: Moderate reliability.
+      5: Predictable and data-backed forecasting.
+    improvement_guidance: Tie stage probability to historical conversion.
+  - name: Cross-Functional Alignment
+    weight: 0.2
+    scoring:
+      1: Functional silos optimizing locally.
+      3: Partial metric alignment.
+      5: Shared revenue accountability.
+    improvement_guidance: Align comp plans and KPIs.
+  - name: Scalability
+    weight: 0.15
+    scoring:
+      1: Manual processes limiting growth.
+      3: Semi-automated but fragile.
+      5: Systemized and automation-backed engine.
+    improvement_guidance: Invest in automation and governance cadence.
+  thresholds:
+    revise: 2.9
+    publish_ready: 3.7
+    escalate_to_user: 2.3
+anti_patterns:
+- pattern: Siloed Metrics
+  description: Marketing, Sales, and CS using conflicting KPIs.
+  mitigation: Unify under shared revenue metrics.
+- pattern: CRM as Static Database
+  description: CRM not integrated with product usage signals.
+  mitigation: Integrate product analytics into CRM workflow.
+- pattern: Forecast Optimism Bias
+  description: Probability not grounded in data.
+  mitigation: Use historical conversion rates to calibrate.
+- pattern: Manual Expansion Management
+  description: No automated triggers for upsell or churn risk.
+  mitigation: Systematize expansion and retention workflows.
+chaining:
+  after:
+  - framework_id: okrs
+    reason: ''
+  before:
+  - framework_id: gtm-motions-framework
+    reason: ''
+  - framework_id: plg-hybrid-plg-framework
+    reason: ''
+  - framework_id: sales-methodology-lens
+    reason: ''

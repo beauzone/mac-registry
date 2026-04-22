@@ -1,0 +1,129 @@
+# Persona Schema — Marketing as Code
+# Governs AI persona files in sources/audiences/personas/ (all subdirectories)
+# Personas inject role-specific domain expertise into governed AI agents.
+
+metadata:
+  id: persona-schema
+  version: "1.0.0"
+  display_name: "Persona Schema"
+  schema_version: "1.0"
+  description: "Schema for Marketing as Code persona files. Every persona YAML in sources/audiences/personas/ must conform. Personas encode role-specific expertise, pain points, vocabulary, and buying dynamics for use by governed AI agents."
+
+required_fields:
+  metadata:
+    - id              # type: string (kebab-case) — unique persona identifier
+    - version         # type: string (semver) — persona version
+    - display_name    # type: string — human-readable persona name
+    - description     # type: string — role summary for discovery
+    - schema_version  # type: string — schema version this persona conforms to
+    - authority_level # type: enum — must be tier_4_audience for persona assets
+    - org_scope       # type: enum — global, regional, or country_bu
+
+  identity:
+    - persona_summary # type: string — detailed narrative of this persona's role, priorities, and worldview
+
+  _source_meta:
+    - source          # type: enum[web_research, manual, imported] — how this persona was created
+
+optional_fields:
+  metadata:
+    - domain          # type: string — persona domain (e.g. role, industry, function)
+    - best_for        # type: object — stages and roles this persona is most useful for
+    - composable_with # type: list[string] — other persona IDs that complement this one
+    - tags            # type: list[string] — classification tags for discovery
+    - valid_from      # type: string (ISO 8601 date) — when this version became authoritative
+    - superseded_by   # type: string — id of the asset that superseded this one
+
+  identity:
+    - expertise_scope     # type: list[string] — topics and domains where this persona has deep expertise
+    - expertise_boundaries # type: list[string] — adjacent domains this persona does NOT cover
+
+  knowledge:
+    - description     # type: string — free-form or structured knowledge block; subsections vary by role
+    # Common subsections: vocabulary, pain_points, success_metrics, stakeholders,
+    # buying_dynamics, regulatory_context, domain_expertise, evaluation_patterns
+
+  calibration:
+    - description     # type: string — AI agent behavioral calibration; common subsections: analysis, strategy, content, review
+
+  examples:
+    - description     # type: string — example outputs demonstrating persona voice; fields: scenario, without_sme, with_sme, agent
+
+  stakeholder_guidance:
+    - description     # type: string — free-form engagement guidance for content authors
+
+  _source_meta:
+    - original_license      # type: string — content license
+    - import_date           # type: string (YYYY-MM-DD) — when this persona was added
+    - converter             # type: string — tool or process used to create this file
+    - refresh_config        # type: object (optional) — staleness tracking; see validation_rules
+    - refresh_history       # type: list[object] (optional) — audit trail of refresh events
+
+field_definitions:
+  metadata.authority_level:
+    type: enum
+    values: [tier_1_brand, tier_2_positioning, tier_3_functional, tier_4_audience, tier_5_artifact]
+    description: "Content authority tier. Persona assets must use tier_4_audience.
+                  Determines which role can approve and publish this asset.
+                  See config/rbac-policy.yaml content_authority_tiers for enforcement rules."
+    required: true
+
+  metadata.org_scope:
+    type: enum
+    values: [global, regional, country_bu]
+    description: "Organizational scope of this asset. Global assets are authoritative for all
+                  downstream workspaces. Regional assets apply within a region. Country/BU assets
+                  are leaf-level adaptations."
+    default: global
+    required: true
+
+  metadata.valid_from:
+    type: string
+    format: date
+    description: "Date this asset version became authoritative. ISO 8601."
+    required: false
+
+  metadata.superseded_by:
+    type: string
+    description: "ID of the asset that superseded this one, if applicable."
+    required: false
+
+validation_rules:
+  - rule: id_format
+    description: "metadata.id must be kebab-case and match the filename without .yaml extension"
+    severity: error
+
+  - rule: schema_version_present
+    description: "metadata.schema_version must be present"
+    severity: error
+
+  - rule: identity_required
+    description: "identity block must be present and contain persona_summary"
+    severity: error
+
+  - rule: source_meta_required
+    description: "_source_meta block must be present with source field"
+    severity: error
+
+  - rule: refresh_config_schedule_valid
+    description: "If refresh_config is present, schedule must be one of: quarterly, monthly, semi-annual, annual, manual"
+    severity: error
+    applies_when: "_source_meta.refresh_config is present"
+
+  - rule: refresh_config_dates_iso8601
+    description: "If refresh_config is present, last_refreshed and next_refresh_due must be valid ISO 8601 dates"
+    severity: error
+    applies_when: "_source_meta.refresh_config is present"
+
+  - rule: refresh_history_trigger_type_valid
+    description: "Each refresh_history entry trigger_type must be one of: initial_creation, scheduled, manual, news_event, source_spec_change, product_launch"
+    severity: error
+    applies_when: "_source_meta.refresh_history is present"
+
+  - rule: minimum_content_size
+    description: "Persona files should be substantive (recommended >= 20KB). Files below 5KB are likely stubs."
+    severity: warning
+
+  - rule: source_web_research
+    description: "Personas derived from web research should set _source_meta.source: web_research for provenance clarity"
+    severity: info

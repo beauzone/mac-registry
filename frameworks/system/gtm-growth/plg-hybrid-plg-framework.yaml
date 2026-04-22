@@ -1,0 +1,154 @@
+metadata:
+  id: plg-hybrid-plg-framework
+  version: 1.0.0
+  display_name: PLG / Hybrid PLG — Product-Led Revenue Orchestration Model
+  category: gtm
+  description: |-
+    Designs and operationalizes Product-Led Growth (PLG) and Hybrid PLG motions, including PQL/PQA definitions, activation triggers, expansion mechanics, and sales assist orchestration. Built for SaaS and AI-native usage-based businesses.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c
+    roles:
+    - ceo
+    - cmo
+    - cro
+    - vp-product
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: activation_definition
+    description: Core user action representing time-to-value moment
+    source: user_input
+  - field: usage_metrics
+    description: Product events tied to engagement depth
+    source: user_input
+  - field: monetization_model
+    description: Freemium, free trial, usage-based, seat-based, hybrid
+    source: user_input
+  - field: sales_model
+    description: Self-serve only or sales-assisted expansion
+    source: user_input
+  - field: target_segment_profile
+    description: SMB, mid-market, enterprise mix
+    source: skill
+analysis:
+  instructions: |-
+    This framework designs a product-led revenue system across activation, engagement, qualification, expansion, and sales intervention. Emphasis is placed on product signals driving revenue orchestration.
+
+    **Synthesis Guidance:** Define activation metric, PQL scoring model, PQA threshold, expansion triggers, and sales assist criteria. Classify motion as Pure PLG, Sales-Assist PLG, or Hybrid Enterprise PLG. Recommend resource allocation and org structure.
+  dimensions: []
+output_templates:
+- id: memo
+  name: PLG / Hybrid PLG Strategy
+  format: markdown
+  when_to_use: Primary strategic deliverable for stakeholder and executive review.
+  template: |
+    # PLG / Hybrid PLG Strategy — {company_name} — {date}
+
+    ## Executive Summary
+    {executive_summary}
+
+    ## Activation and Engagement Model
+    {activation_and_engagement_model}
+
+    ## PQL / PQA Definitions
+    {pql_pqa_definitions}
+
+    ## Expansion Mechanics
+    {expansion_mechanics}
+
+    ## Sales Assist Integration
+    {sales_assist_integration}
+
+    ## Metrics and Dashboard Design
+    {metrics_and_dashboard_design}
+rubric:
+  scoring_model: 1-5
+  dimensions:
+  - id: signal-precision
+    name: Signal Precision
+    description: Tie PQL/PQA to retention-correlated behaviors.
+    weight: 0.25
+    scores:
+      1: Vague usage signals.
+      3: Basic event tracking.
+      5: Clear predictive activation and expansion signals.
+  - id: expansion-leverage
+    name: Expansion Leverage
+    description: Align pricing tiers to usage depth.
+    weight: 0.25
+    scores:
+      1: Limited structured expansion path.
+      3: Moderate upgrade triggers.
+      5: Embedded usage-based expansion engine.
+  - id: sales-integration-discipline
+    name: Sales Integration Discipline
+    description: Automate PQA scoring and routing.
+    weight: 0.2
+    scores:
+      1: Unstructured sales outreach.
+      3: Basic PQA triggers.
+      5: Data-driven sales assist preserving PLG efficiency.
+  - id: efficiency-sustainability
+    name: Efficiency Sustainability
+    description: Monitor blended CAC by motion.
+    weight: 0.15
+    scores:
+      1: CAC inflates post-sales integration.
+      3: Moderate efficiency maintained.
+      5: Scalable growth with improving payback.
+  - id: organizational-alignment
+    name: Organizational Alignment
+    description: Align comp plans to PQL/PQA thresholds.
+    weight: 0.15
+    scores:
+      1: Product and sales misaligned.
+      3: Partial coordination.
+      5: Clear shared metrics and incentives.
+  thresholds:
+    publish_ready: 3.6
+    revise: 2.8
+    escalate_to_user: 2.2
+anti_patterns:
+- pattern: Vanity PQLs
+  description: Inflated qualification signals not tied to retention.
+  mitigation: Anchor PQL to durable engagement behaviors.
+- pattern: Sales Overreach
+  description: Premature human intervention lowering efficiency.
+  mitigation: Restrict outreach to PQA-qualified accounts.
+- pattern: Activation Blindness
+  description: Scaling traffic without activation optimization.
+  mitigation: Fix activation before increasing acquisition.
+- pattern: Pricing Misalignment
+  description: Usage growth not reflected in monetization.
+  mitigation: Align pricing to value metric.
+chaining:
+  before:
+  - framework_id: product-market-fit-diagnostic
+    reason: |-
+      PMF validates demand. PLG framework defines product-led revenue engine. GTM Motions framework determines hybrid orchestration across channels.
+  after:
+  - framework_id: gtm-motions-framework
+    reason: |-
+      PMF validates demand. PLG framework defines product-led revenue engine. GTM Motions framework determines hybrid orchestration across channels.
+  - framework_id: startup-gtm-framework
+    reason: |-
+      PMF validates demand. PLG framework defines product-led revenue engine. GTM Motions framework determines hybrid orchestration across channels.
+stakeholder_guidance: |-
+  When presenting PLG / Hybrid PLG — Product-Led Revenue Orchestration Model outputs to company stakeholders, apply constructive, forward-looking framing throughout.
+
+  **Key guidance:**
+  - Frame current-state findings as a foundation to build from, not a verdict on past decisions
+  - Present gaps as "opportunities to sharpen" rather than failures or weaknesses
+  - When analyzing key dimensions, lead with what is working before identifying where to focus next
+  - Acknowledge the strategic logic behind decisions that may be set aside
+  - Use outcome-oriented language: "this will accelerate X" rather than "Y is holding back growth"
+
+  Avoid language that implies prior decisions were wrong, ineffective, or poorly considered. See STAKEHOLDER-RELATIONS.md for detailed guidance and before/after examples.

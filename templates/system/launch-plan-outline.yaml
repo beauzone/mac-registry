@@ -1,0 +1,282 @@
+metadata:
+  id: launch-plan-outline
+  version: "1.0.0"
+  display_name: "Launch Plan Outline"
+  category: strategy
+  description: >
+    A structured launch plan document covering pre-launch, launch, and post-launch
+    phases for a product, feature, or campaign. Defines goals, audiences, channels,
+    activities, owners, and success metrics across a defined launch window.
+  output_format: document
+  typical_length: "1,200–2,000 words across 3 phases"
+  best_for:
+    agents:
+      - campaign-manager
+      - strategic-planning
+      - content-generator
+    stages:
+      - seed
+      - series-a
+      - series-b
+      - series-c
+      - enterprise
+    modes:
+      - fractional
+      - fte
+  tags:
+    - launch
+    - product-launch
+    - campaign-launch
+    - gtm
+    - planning
+    - roadmap
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: launch_name
+      description: Name of the product, feature, or campaign being launched
+      source: user_input
+    - field: launch_date
+      description: Target public launch date
+      source: user_input
+    - field: launch_goals
+      description: The 2–3 measurable goals this launch must achieve
+      source: user_input
+    - field: target_audience
+      description: Primary ICP segment and any secondary audiences
+      source: skill
+    - field: key_messages
+      description: Core messages to be communicated throughout the launch
+      source: framework_output
+  optional:
+    - field: budget
+      description: Total budget envelope for launch activities
+      source: user_input
+    - field: launch_type
+      description: Product launch, feature launch, campaign launch, partnership announcement
+      source: user_input
+    - field: existing_constraints
+      description: Known constraints — hard deadlines, resource limits, brand restrictions
+      source: user_input
+
+structure:
+  sections:
+    - id: launch-overview
+      name: Launch Overview
+      required: true
+      description: What is launching, why now, and what success looks like
+      guidance: Frame the launch in terms of the strategic opportunity — not just what it is, but why the timing matters and what changes in the market or product make this the right moment. Include the launch name, type, and date.
+      word_count: "100–150 words"
+
+    - id: launch-goals
+      name: Launch Goals
+      required: true
+      description: Measurable outcomes this launch must achieve — quantified where possible
+      guidance: Use the SMART format. Include primary KPIs with targets and measurement timelines. Distinguish between launch KPIs (awareness, pipeline) and business KPIs (revenue, retention). Avoid goals like "increase awareness" — attach a number and timeframe.
+      format_notes: >-
+        Use a goals table with columns: Goal, Metric, Target, Measurement Window
+
+    - id: target-audience
+      name: Target Audience
+      required: true
+      description: Primary ICP segment and secondary audiences — who this launch is for and why
+      guidance: Describe the primary ICP first — job title, company stage, pain point activated by this launch. List secondary audiences (influencers, analysts, partners) separately. For each audience, note the specific angle of the launch that is most relevant to them.
+      word_count: "100–150 words"
+
+    - id: key-messages
+      name: Key Messages
+      required: true
+      description: The 3–5 core messages to be delivered consistently across all launch channels
+      guidance: Messages should be audience-specific where relevant. Include the proof point or evidence for each message. Avoid feature-led messages — anchor on the outcome or the problem solved.
+      format_notes: >-
+        Use a message table: Audience | Core Message | Proof Point
+
+    - id: pre-launch
+      name: Pre-Launch Activities
+      required: true
+      description: Activities to build awareness and readiness before launch day
+      guidance: Cover the 2–4 weeks before launch date. Include awareness-building (analyst briefings, press outreach, teaser content), internal readiness (sales enablement, CS training, FAQ), and infrastructure (landing page, tracking, tooling). Assign an owner to every activity.
+      format_notes: >-
+        Use a table: Activity | Owner | Due Date | Channel/Format
+
+    - id: launch-week
+      name: Launch Day / Launch Week Activities
+      required: true
+      description: The concentrated execution window around the launch date
+      guidance: Cover launch day and the 5–7 days after. Include announcement sequence (which channel leads, what follows), executive communications, partner activation, paid amplification, and community seeding. Sequence matters — the order of activities is part of the plan.
+      format_notes: Use a timeline table or sequenced activity list with dates and owners
+
+    - id: post-launch
+      name: Post-Launch Activities
+      required: true
+      description: Follow-on activities to sustain momentum and convert interest to pipeline
+      guidance: Cover 30–60 days post-launch. Include nurture content, follow-up campaigns, sales follow-through on MQLs, PR follow-up, and iteration based on early signal. Include a retrospective checkpoint date.
+      format_notes: >-
+        Use a table: Activity | Owner | Timeline | Objective
+
+    - id: success-metrics
+      name: Success Metrics and Review Schedule
+      required: true
+      description: KPIs with targets, measurement method, and review cadence
+      guidance: Restate the launch goals as metrics. Add leading indicators for each — what signals in week 1 suggest the launch is on or off track? Include a scheduled retrospective 30 days post-launch.
+      format_notes: >-
+        Table: Metric | Target | Leading Indicator | Review Date
+
+    - id: risks
+      name: Risks and Contingencies
+      required: false
+      description: Known risks to launch success and mitigation plans
+      guidance: Include 3–5 realistic risks — not catastrophic edge cases. For each risk, include a brief mitigation plan or decision trigger. Be direct about which risks are accepted vs. actively managed.
+      word_count: "80–120 words"
+
+template: |
+  # Launch Plan: {launch_name}
+
+  **Launch Date:** {launch_date}
+  **Launch Type:** {launch_type}
+  **Prepared by:** {author}
+  **Date:** {date}
+
+  ---
+
+  ## Launch Overview
+
+  {100–150 word summary: what is launching, why now, and the strategic opportunity this launch captures.}
+
+  ---
+
+  ## Launch Goals
+
+  | Goal | Metric | Target | Measurement Window |
+  |---|---|---|---|
+  | {Goal 1} | {metric} | {quantified target} | {timeframe} |
+  | {Goal 2} | {metric} | {quantified target} | {timeframe} |
+  | {Goal 3} | {metric} | {quantified target} | {timeframe} |
+
+  ---
+
+  ## Target Audience
+
+  **Primary:** {ICP description — role, company type, pain point}
+
+  **Secondary audiences:**
+  - {Audience 2} — {relevant angle of the launch for this group}
+  - {Audience 3} — {relevant angle of the launch for this group}
+
+  ---
+
+  ## Key Messages
+
+  | Audience | Core Message | Proof Point |
+  |---|---|---|
+  | {Primary ICP} | {outcome-led message} | {evidence or proof point} |
+  | {Secondary audience} | {message} | {proof point} |
+  | {Influencer / analyst} | {message} | {proof point} |
+
+  ---
+
+  ## Pre-Launch Activities *(T-minus 2–4 weeks)*
+
+  | Activity | Owner | Due Date | Channel / Format |
+  |---|---|---|---|
+  | {analyst / press briefings} | {owner} | {date} | {format} |
+  | {teaser content or waitlist} | {owner} | {date} | {channel} |
+  | {sales enablement materials} | {owner} | {date} | {format} |
+  | {landing page live} | {owner} | {date} | {web} |
+  | {internal announcement / training} | {owner} | {date} | {channel} |
+
+  ---
+
+  ## Launch Day / Launch Week Activities
+
+  **Launch day sequence:**
+
+  | Time / Date | Activity | Owner | Channel |
+  |---|---|---|---|
+  | {Day 0 — AM} | {lead announcement — e.g., press release, email blast} | {owner} | {channel} |
+  | {Day 0 — PM} | {executive social posts} | {owner} | {LinkedIn / Twitter} |
+  | {Day 1} | {paid amplification starts} | {owner} | {paid channels} |
+  | {Day 2–3} | {partner activation} | {owner} | {channel} |
+  | {Day 4–7} | {community / forum seeding} | {owner} | {channel} |
+
+  ---
+
+  ## Post-Launch Activities *(Days 8–60)*
+
+  | Activity | Owner | Timeline | Objective |
+  |---|---|---|---|
+  | {nurture email sequence} | {owner} | {Days 8–21} | {MQL conversion} |
+  | {follow-up content / case study} | {owner} | {Day 30} | {pipeline support} |
+  | {sales follow-through on MQLs} | {owner} | {ongoing} | {pipeline} |
+  | {PR follow-up / analyst briefings} | {owner} | {Day 14} | {coverage} |
+  | {launch retrospective} | {owner} | {Day 30} | {iteration signal} |
+
+  ---
+
+  ## Success Metrics and Review Schedule
+
+  | Metric | Target | Leading Indicator | Review Date |
+  |---|---|---|---|
+  | {Metric 1} | {target} | {week-1 signal} | {date} |
+  | {Metric 2} | {target} | {week-1 signal} | {date} |
+  | {Metric 3} | {target} | {week-1 signal} | {date} |
+
+  **Retrospective checkpoint:** {Date — 30 days post-launch}
+
+  ---
+
+  ## Risks and Contingencies *(include when risk profile is material)*
+
+  | Risk | Likelihood | Impact | Mitigation |
+  |---|---|---|---|
+  | {Risk 1} | {H/M/L} | {H/M/L} | {brief mitigation plan} |
+  | {Risk 2} | {H/M/L} | {H/M/L} | {brief mitigation plan} |
+  | {Risk 3} | {H/M/L} | {H/M/L} | {brief mitigation plan} |
+
+variations:
+  - id: product-launch
+    name: Product Launch
+    description: Full product launch with heavier emphasis on analyst relations, press, and partnership activation.
+    overrides:
+      sections_add:
+        - analyst-relations-plan
+        - partner-activation-plan
+      tone: "Formal, investor-aware. Assumes a broader external audience is watching the launch."
+
+  - id: feature-announcement
+    name: Feature Announcement
+    description: Lighter version for a feature release or product update — internal-first, customer-facing second.
+    overrides:
+      sections_remove:
+        - risks
+      tone: "Efficient and product-centric. Focus on customer value and adoption, not broad market positioning."
+
+branding:
+  supports_branding: true
+  brandable_elements:
+    - element: header_logo
+      description: Company logo in document header
+    - element: color_scheme
+      description: Table header colors and section heading colors aligned to brand palette
+    - element: footer
+      description: Company name, launch code name (if applicable), and confidentiality notice in footer
+    - element: cover_page
+      description: Optional branded cover page with launch name and date
+
+quality_criteria:
+  required_elements:
+    - "Launch goals are quantified — each has a metric, target, and measurement window"
+    - "Pre-launch, launch week, and post-launch sections all present with owner assignments"
+    - "Every activity in activity tables has an owner and a date or timeframe"
+    - "Success metrics section includes a retrospective checkpoint date"
+    - "Key messages are outcome-led, not feature-led"
+  prohibited_elements:
+    - "Goals without quantified targets (e.g., 'increase awareness' with no metric)"
+    - "Activities without owners"
+    - "Launch plan with no post-launch section"
+    - "Messages that lead with product features rather than buyer outcomes"
+  length_check:
+    minimum: 800
+    maximum: 2500
+    strict: false

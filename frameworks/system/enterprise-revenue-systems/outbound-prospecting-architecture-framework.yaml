@@ -1,0 +1,192 @@
+metadata:
+  id: outbound-prospecting-architecture-framework
+  version: 1.0.0
+  display_name: Outbound Prospecting Architecture — Signal-Driven Multi-Persona Outreach System
+  category: sales
+  description: Designs structured outbound prospecting campaigns using signal-based targeting, persona-specific value hypotheses,
+    insight-led messaging, and sequenced multi-channel cadences. Built for B2B SaaS and enterprise GTM motions.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    roles:
+    - cro
+    - cmo
+    - vp-sales
+    - vp-growth
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: icp_definition
+    description: Target segment and qualification criteria
+    source: existing_deliverable
+  - field: buying_committee_map
+    description: Persona definitions (economic, technical, champion, etc.)
+    source: existing_deliverable
+  - field: trigger_signals
+    description: Funding events, hiring patterns, tech stack, regulatory shifts, etc.
+    source: user_input
+  - field: value_hypothesis
+    description: Core outcome hypothesis tied to segment pain
+    source: existing_deliverable
+  - field: proof_assets
+    description: Case studies, ROI metrics, testimonials
+    source: user_input
+analysis:
+  instructions: 'This framework structures outbound as a system: Signal → Hypothesis → Persona Mapping → Insight Message →
+    Multi-Channel Cadence → Response Branching. Emphasis is placed on relevance and credibility over volume.
+
+
+    Assess signal quality, message relevance, persona alignment, and cadence efficiency. Identify friction points. Recommend
+    segmentation refinement, trigger expansion, or cadence optimization.'
+  dimensions:
+  - id: signal-identification-layer
+    name: Signal Identification Layer
+    description: ''
+    prompts:
+    - Does this signal imply urgency?
+    - Is the signal tied to measurable business shift?
+    - Is timing appropriate?
+  - id: value-hypothesis-layer
+    name: Value Hypothesis Layer
+    description:
+    - Observed trigger
+    - Likely business challenge
+    - Quantified impact potential
+    - Relevant case proof
+    prompts: []
+  - id: persona-mapping-layer
+    name: Persona Mapping Layer
+    description: ''
+    prompts: []
+  - id: insight-led-messaging-structure
+    name: Insight-Led Messaging Structure
+    description:
+    - Context reference (trigger)
+    - Reframed insight (new perspective)
+    - Business implication
+    - Social proof
+    - Low-friction CTA
+    prompts: []
+  - id: cadence-orchestration-layer
+    name: Cadence Orchestration Layer
+    description:
+    - Day 1: Insight Email
+    - Day 3: LinkedIn engagement
+    - Day 5: Follow-up with new angle
+    - Day 8: Call attempt
+    - Day 12: Case proof asset
+    - Day 15: Objection preemption message
+    - Day 20: Break-up / value close
+    prompts: []
+  - id: multi-threading-layer
+    name: Multi-Threading Layer
+    description: ''
+    prompts: []
+output_templates:
+- id: primary
+  name: Outbound Prospecting Architecture
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## ICP and Trigger Definition
+
+    {icp_and_trigger_definition}
+
+
+    ## Persona Messaging Matrix
+
+    {persona_messaging_matrix}
+
+
+    ## Cadence Design
+
+    {cadence_design}
+
+
+    ## Multi-Thread Strategy
+
+    {multi-thread_strategy}
+
+
+    ## KPI Tracking Model
+
+    {kpi_tracking_model}
+
+    '
+rubric:
+  description: Evaluates relevance precision, persona tailoring depth, cadence logic, and opportunity conversion effectiveness.
+  dimensions:
+  - name: Signal Relevance
+    weight: 0.25
+    scoring:
+      1: Generic list-based outreach.
+      3: Some contextual triggers used.
+      5: Highly signal-driven targeting.
+    improvement_guidance: Increase specificity of trigger criteria.
+  - name: Persona Alignment
+    weight: 0.2
+    scoring:
+      1: Same message sent to all roles.
+      3: Partial persona adaptation.
+      5: Fully differentiated role-based messaging.
+    improvement_guidance: Develop persona-specific hypotheses.
+  - name: Insight Depth
+    weight: 0.2
+    scoring:
+      1: Feature-led messaging.
+      3: Benefit-led but generic.
+      5: Insight-led with quantified impact.
+    improvement_guidance: Lead with business implication, not product.
+  - name: Cadence Discipline
+    weight: 0.15
+    scoring:
+      1: Ad-hoc follow-up.
+      3: Basic structured sequence.
+      5: Intentional multi-channel branching cadence.
+    improvement_guidance: Standardize outreach sequencing.
+  - name: Conversion Effectiveness
+    weight: 0.2
+    scoring:
+      1: Low meeting creation rate.
+      3: Moderate performance.
+      5: Consistently high positive reply and meeting rates.
+    improvement_guidance: A/B test trigger and hypothesis alignment.
+  thresholds:
+    revise: 2.8
+    publish_ready: 3.6
+    escalate_to_user: 2.2
+anti_patterns:
+- pattern: Volume Over Relevance
+  description: Scaling send volume without signal targeting.
+  mitigation: Prioritize signal precision over scale.
+- pattern: Feature Pitching
+  description: Product-centric messaging.
+  mitigation: Anchor in business impact hypothesis.
+- pattern: Single-Thread Risk
+  description: Only engaging one stakeholder.
+  mitigation: Implement structured multi-thread plan.
+- pattern: CTA Friction
+  description: Aggressive scheduling requests.
+  mitigation: Use low-friction exploratory CTAs.
+chaining:
+  after:
+  - framework_id: sales-methodology-lens
+    reason: ''
+  - framework_id: revenue-operations-operating-model
+    reason: ''
+  before:
+  - framework_id: icp-framework
+    reason: ''
+  - framework_id: messaging-architecture
+    reason: ''

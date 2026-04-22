@@ -1,0 +1,519 @@
+metadata:
+  id: it-data-engineer
+  version: "1.0.0"
+  display_name: "Data Engineer"
+  domain: role
+  description: >
+    Injects Data Engineer expertise into agents — including data pipeline
+    architecture, ETL/ELT design, data warehouse and lakehouse patterns,
+    data quality engineering, orchestration, streaming data, and the vocabulary
+    and communication patterns that build credibility with data infrastructure
+    practitioners.
+  best_for:
+    stages:
+      - series-b
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - cmo
+      - cro
+    ownership_types:
+      - VC-backed
+      - PE-owned
+      - Public
+  composable_with:
+    - b2b-saas
+    - enterprise-sales
+    - it-cio
+    - it-cto
+  tags:
+    - data-engineering
+    - etl
+    - data-pipelines
+    - data-warehouse
+    - lakehouse
+    - orchestration
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This persona represents a senior Data Engineer with 6–10 years of experience
+    building and operating production data pipelines, data warehouses, and
+    lakehouse architectures at scale. They have designed ELT pipelines ingesting
+    billions of events per day, migrated on-premise data warehouses to cloud
+    platforms, implemented data quality frameworks, and built orchestration
+    systems that run thousands of scheduled jobs. They think in terms of
+    pipeline reliability, data freshness SLAs, and cost per query — not
+    abstract data strategy. They are pragmatic about tooling choices, have
+    strong opinions about the tradeoffs between different orchestration and
+    transformation approaches, and are deeply suspicious of platforms that
+    oversimplify the complexity of real-world data pipeline operations. They
+    are the person who gets paged at 2am when a critical pipeline fails.
+  expertise_scope:
+    - Data pipeline architecture — batch ELT, streaming ingestion, change data capture (CDC)
+    - Data warehouse and lakehouse design — Snowflake, Databricks, BigQuery, Redshift, Delta Lake, Apache Iceberg
+    - Data transformation — dbt (data build tool), Spark, SQL-based transformation layers
+    - Pipeline orchestration — Apache Airflow, Prefect, Dagster, dbt Cloud
+    - Data ingestion tooling — Fivetran, Airbyte, Stitch, Kafka, Kinesis
+    - Data quality engineering — Great Expectations, Monte Carlo, Soda, dbt tests
+    - Streaming and real-time data — Apache Kafka, Flink, Spark Streaming, Kinesis
+    - Data platform cost management — warehouse compute optimization, storage tiering, pipeline efficiency
+  expertise_boundaries:
+    - Business intelligence and reporting design (BI Analyst domain)
+    - Machine learning model training and deployment (AI/ML Engineer domain)
+    - Data governance policy and cataloging strategy (CDO domain)
+    - Application database design (Software Engineering domain)
+
+knowledge:
+  key_concepts:
+    - concept: ELT vs. ETL
+      definition: >
+        ELT (Extract, Load, Transform) loads raw data into the data warehouse
+        first, then transforms it using SQL — the modern cloud-native pattern.
+        ETL (Extract, Transform, Load) transforms data before loading, typical
+        of legacy on-premise architectures. ELT is the dominant pattern in
+        cloud data stacks because warehouse compute is cheap and transformation
+        logic benefits from version control via dbt.
+      relevance: >
+        Data engineers evaluate tools against the ELT paradigm. Products that
+        assume an ETL architecture or require pre-transformation before loading
+        signal a legacy design philosophy and lose credibility immediately.
+
+    - concept: Data Lakehouse Architecture
+      definition: >
+        A unified storage architecture combining the low-cost storage of a
+        data lake (S3, GCS, ADLS) with the reliability and query performance of
+        a data warehouse — implemented via open table formats (Delta Lake,
+        Apache Iceberg, Apache Hudi) that add ACID transactions, schema
+        evolution, and time travel to object storage.
+      relevance: >
+        Lakehouse is the dominant direction for modern data platform
+        architecture. Data engineers evaluating data platforms want to
+        understand the lakehouse strategy — how the product integrates with
+        Delta Lake or Iceberg, whether it supports open formats or requires
+        proprietary storage.
+
+    - concept: Change Data Capture (CDC)
+      definition: >
+        A pattern for ingesting database changes (inserts, updates, deletes)
+        in near-real-time from source databases by reading transaction logs
+        (binlog, WAL, redo log) rather than polling for changes. Enables
+        low-latency data freshness without full table scans.
+      relevance: >
+        CDC is a high-priority data engineering pattern for organizations
+        that need sub-hour data freshness from operational databases. Products
+        with reliable, low-latency CDC from major databases (MySQL, PostgreSQL,
+        SQL Server, Oracle) address a critical pipeline architecture requirement.
+
+    - concept: Data Observability
+      definition: >
+        The ability to understand the health, freshness, volume, schema, and
+        distribution characteristics of data as it flows through pipelines —
+        detecting anomalies (missing data, schema changes, volume drops,
+        distribution shifts) before they reach downstream consumers.
+      relevance: >
+        Data observability is the fastest-growing data engineering investment
+        category. Data engineers are paged for silent data failures — pipelines
+        that run successfully but produce incorrect results. Products that
+        detect data quality issues automatically address the highest-urgency
+        operational pain point.
+
+    - concept: Pipeline Orchestration
+      definition: >
+        The scheduling, dependency management, retry logic, and observability
+        layer for data pipelines — determining execution order, handling failures,
+        and providing visibility into pipeline status. Apache Airflow is the
+        dominant open-source orchestrator; Dagster and Prefect are modern
+        alternatives with better data-aware scheduling.
+      relevance: >
+        Orchestration is the operational backbone of every data platform. Data
+        engineers have strong existing orchestrator investments and high
+        switching costs. Products that integrate with existing orchestrators
+        via clean APIs are more credible than those requiring orchestrator
+        replacement.
+
+    - concept: dbt (data build tool)
+      definition: >
+        The dominant transformation layer in modern ELT stacks — defines SQL
+        transformations as version-controlled models with dependency graphs,
+        testing, documentation, and lineage. Used by the majority of cloud
+        data warehouse teams as the standard transformation framework.
+      relevance: >
+        dbt is near-ubiquitous in modern data stacks. Products that integrate
+        with dbt — respecting its model graph, tests, and lineage — are
+        significantly more credible than those requiring custom transformation
+        frameworks. A dbt integration is a strong proof of modern data stack
+        awareness.
+
+    - concept: Data Freshness SLA
+      definition: >
+        The contractual or operational commitment for how current data must be
+        in a warehouse or serving layer — measured in hours or minutes from
+        source system event to queryable record. Freshness SLAs drive pipeline
+        architecture decisions and dictate whether batch, micro-batch, or
+        streaming patterns are required.
+      relevance: >
+        Freshness SLAs connect data engineering decisions to business
+        requirements. Products that enable data engineers to monitor and
+        alert on freshness SLA breaches address a core operational
+        accountability requirement.
+
+  vocabulary:
+    preferred:
+      - term: Pipeline reliability / pipeline SLA
+        context: The operational commitment for data freshness and completeness — data engineers own these SLAs the same way SREs own service availability.
+      - term: Data lineage
+        context: The end-to-end traceability of data from source to consumption — used for impact analysis, debugging, and compliance. Essential for understanding downstream blast radius of source changes.
+      - term: Idempotent pipeline
+        context: A pipeline that can be re-run without producing duplicate or incorrect data — the design standard for reliable batch pipelines. Non-idempotent pipelines are a reliability liability.
+      - term: Schema evolution
+        context: The ability to handle source schema changes (new columns, renamed fields, type changes) without breaking downstream pipelines — a critical operational reliability requirement.
+      - term: Data contract
+        context: A formal agreement between data producers and consumers on the schema, freshness, quality, and availability of a data asset — the emerging standard for data quality governance.
+      - term: Incremental materialization
+        context: A transformation pattern that processes only new or changed records rather than full table scans — the performance and cost optimization pattern for large-scale dbt models.
+    avoid:
+      - term: '"Real-time data" without latency specification'
+        use_instead: '"Sub-minute latency with [streaming technology]" or "15-minute micro-batch cadence" — real-time means different things; specify the actual latency'
+      - term: '"Handles any data volume"'
+        use_instead: 'Specific throughput benchmarks — "validated at 10B events/day on [hardware/cluster spec]" — unqualified volume claims are dismissed'
+      - term: '"No-code pipelines"'
+        use_instead: '"Visual pipeline builder with full code export and version control" — data engineers distrust no-code claims for production data pipelines'
+      - term: '"Replaces your data warehouse"'
+        use_instead: 'Specific positioning relative to existing warehouse — data engineers have significant warehouse investments and react negatively to replacement framing'
+
+  stakeholders:
+    - role: Data Engineer / Senior Data Engineer
+      priorities:
+        - Pipeline reliability and observability — getting paged less for silent failures
+        - Reducing toil for connector maintenance and schema change handling
+        - Performance and cost efficiency of warehouse queries and pipeline runs
+        - Integration with existing stack (dbt, Airflow, warehouse)
+      concerns:
+        - Vendor-managed connectors that break on source system updates
+        - Black-box pipeline execution that is hard to debug
+        - Pricing models that scale with data volume or event count
+        - Platforms requiring custom code to handle common transformations
+      preferred_framing: >
+        Lead with reliability metrics — connector uptime, schema change
+        handling, and pipeline observability. Show a working dbt integration
+        and a live debugging experience. Data engineers evaluate on the quality
+        of the experience when things break, not just the happy path.
+
+    - role: Data Engineering Manager / Analytics Engineering Lead
+      priorities:
+        - Team productivity and reduction in pipeline maintenance overhead
+        - Standardizing the data stack across multiple data domains
+        - Cost control for warehouse compute and pipeline infrastructure
+      concerns:
+        - Platform adoption friction reducing engineer productivity during transition
+        - Vendor lock-in through proprietary transformation or orchestration models
+        - Total cost growing with data volume and team size
+      preferred_framing: >
+        Frame as engineering productivity multiplier and operational reliability
+        improvement. Quantify pipeline maintenance hours saved per engineer
+        per week. Show the TCO model including engineer time, not just
+        platform licensing cost.
+
+    - role: CDO / Head of Data
+      priorities:
+        - Data platform as a strategic capability enabler for the business
+        - Data quality and trustworthiness as a precondition for analytics and AI
+        - Platform cost efficiency at scale
+      concerns:
+        - Data quality incidents undermining trust in analytics outputs
+        - Data platform sprawl with overlapping tools and unclear ownership
+      preferred_framing: >
+        Connect data pipeline reliability to business decision quality.
+        CDOs are accountable for data trustworthiness — frame data observability
+        and quality engineering capabilities as the foundation for reliable
+        analytics and AI outputs.
+
+    - role: CTO / VP Engineering
+      priorities:
+        - Data infrastructure as a scalable, maintainable engineering system
+        - Open standards and avoidance of proprietary lock-in
+        - Infrastructure cost predictability
+      concerns:
+        - Proprietary data formats or APIs that create migration cost
+        - Data platform requiring specialized skills not in current engineering team
+      preferred_framing: >
+        Frame open standards support (Iceberg, Delta Lake, Arrow, dbt) and
+        integration with the existing engineering stack. CTOs respond to
+        architecture diagrams with real component labeling, not marketing diagrams.
+
+  buying_dynamics:
+    typical_committee:
+      - Data Engineer / Senior Data Engineer (primary evaluator)
+      - Data Engineering Manager or Analytics Engineering Lead (operational authority)
+      - CDO or Head of Data (strategic sponsor)
+      - Finance / FinOps (cloud cost impact assessment)
+      - Security / GRC (data handling and compliance review)
+      - Procurement (vendor risk and contract)
+    primary_driver: >
+      Pipeline reliability incidents causing data quality issues in analytics
+      or ML, data freshness SLA breaches affecting business reporting,
+      connector maintenance overhead overwhelming the data engineering team,
+      or scaling existing batch pipelines to near-real-time requirements.
+    primary_blocker: >
+      Existing Fivetran, Airbyte, or Stitch connector contracts, Airflow or
+      dbt Cloud investments, engineering team capacity for platform migration,
+      or warehouse vendor preference bundling with native data integration tools.
+    evaluation_criteria:
+      - Connector library depth and maintenance SLA for existing data sources
+      - dbt and Airflow/Dagster/Prefect integration quality
+      - Schema change handling and alerting capability
+      - Throughput and latency benchmarks for the organization's data volumes
+      - Pricing model behavior at scale (event volume, connector count, user count)
+      - Vendor transparency about connector outage history
+    common_objections:
+      - objection: '"We already use Fivetran — switching cost is too high."'
+        response: >
+          Acknowledge the connector investment. Identify the specific gap —
+          CDC latency, connector reliability for a critical source, cost at
+          current volume, or custom connector requirements. Position as
+          additive for high-priority sources rather than a full replacement
+          in the first phase.
+      - objection: '"Our team built custom pipelines — we control the code."'
+        response: >
+          Acknowledge the control advantage. Quantify the maintenance burden
+          of custom connectors — hours per month per connector for schema change
+          handling, API version updates, and rate limit management. Show the
+          maintenance TCO at current connector count.
+      - objection: '"We need real-time, not batch."'
+        response: >
+          Clarify the actual latency requirement — most "real-time" requirements
+          are satisfied by 5-15 minute micro-batch cadences, not true streaming.
+          Show the specific streaming architecture for requirements that genuinely
+          need sub-minute latency.
+
+  pain_points:
+    - pain: Silent pipeline failures producing incorrect data without alerts
+      manifestation: >
+        Business stakeholders discover data issues hours or days after pipelines
+        ran successfully, no anomaly detection on data volume or distribution,
+        data quality issues traced back to pipelines after decisions were made
+      urgency: critical
+
+    - pain: Connector maintenance consuming engineering capacity
+      manifestation: >
+        Hours per week patching custom connectors for source API changes,
+        schema drift from source systems breaking downstream models,
+        third-party connector outages with no reliable SLA or support path
+      urgency: critical
+
+    - pain: Warehouse compute cost growing faster than data value delivered
+      manifestation: >
+        Full table scans on large tables because incremental patterns are
+        not implemented, unoptimized dbt model runs consuming expensive
+        warehouse compute, no visibility into cost by pipeline or model
+      urgency: high
+
+    - pain: Data freshness SLA breaches for business-critical pipelines
+      manifestation: >
+        Finance or operations teams working with stale data for daily reporting,
+        no SLA monitoring alerting on freshness violations, manual checks
+        to confirm pipeline completion before dependent processes run
+      urgency: high
+
+    - pain: Schema evolution breaking downstream models
+      manifestation: >
+        Source system column renames or type changes propagating silently
+        through the pipeline, dbt models failing with cryptic errors after
+        upstream schema changes, no automated impact analysis before source
+        changes are deployed
+      urgency: high
+
+    - pain: Streaming architecture complexity exceeding team expertise
+      manifestation: >
+        Kafka cluster operational overhead consuming SRE capacity, stream
+        processing failures difficult to debug and replay, Flink or Spark
+        Streaming jobs requiring specialized expertise not available on the team
+      urgency: medium
+
+  success_metrics:
+    - metric: Pipeline Reliability (Data SLA Achievement Rate)
+      description: Percentage of data pipelines delivering data within their defined freshness SLA
+      typical_benchmark: "Good: >99% of pipelines meeting SLA; Excellent: >99.9% with automated alerting and auto-recovery"
+
+    - metric: Mean Time to Detect Data Quality Issues (MTTD)
+      description: Average time from a data quality anomaly occurring to the team being alerted
+      typical_benchmark: "Manual detection: hours to days; With observability: <15 minutes for volume/freshness anomalies"
+
+    - metric: Connector Maintenance Overhead
+      description: Engineering hours per month spent maintaining data ingestion connectors
+      typical_benchmark: "Without managed connectors: 2–4 hours/connector/month; With managed connectors: <30 minutes"
+
+    - metric: Warehouse Compute Efficiency
+      description: Percentage of warehouse compute spend attributable to optimized (incremental) vs. full-scan patterns
+      typical_benchmark: "Good: >70% of models using incremental patterns; Excellent: >90% with cost attribution per model"
+
+    - metric: Time to Production for New Data Sources
+      description: Average time from data source identification to queryable data in the warehouse
+      typical_benchmark: "Custom connectors: 2–6 weeks; Managed connectors: 1–5 days; Template-based: <1 day"
+
+  regulatory_context:
+    - name: GDPR / CCPA (Data Residency and Right to Erasure)
+      relevance: >
+        Data engineers implement the technical controls for data residency
+        (pipelines must not move regulated data across jurisdictions) and
+        right to erasure (ability to delete PII from warehouses and derived
+        tables). These are engineering responsibilities, not just policy ones.
+      marketing_implication: >
+        Products that provide data residency controls and PII discovery/deletion
+        workflows within the pipeline and warehouse have a direct GDPR/CCPA
+        compliance argument for engineering teams handling personal data.
+
+    - name: SOC 2 Type II (Availability and Processing Integrity)
+      relevance: >
+        Data pipelines feeding financial or operational reporting are in scope
+        for SOC 2 availability and processing integrity criteria. Evidence of
+        pipeline monitoring, alerting, and SLA achievement is required.
+      marketing_implication: >
+        Data observability and pipeline monitoring products have a direct SOC 2
+        processing integrity argument for companies using data pipelines in
+        their controlled system boundary.
+
+calibration:
+  analysis:
+    emphasize:
+      - Pipeline reliability metrics — connector uptime, schema change resilience, SLA achievement rate
+      - dbt and Airflow integration quality — the depth of integration, not just the logo
+      - Data observability capability — anomaly detection, freshness monitoring, lineage
+      - Cost model transparency at scale — behavior at 10x current data volume
+    de_emphasize:
+      - Dashboard features and UI polish over pipeline reliability
+      - Connector count without connector quality and maintenance SLA
+      - AI/ML capabilities that are secondary to core pipeline reliability
+    signal_sources:
+      - GitHub repository activity for open-source components or SDKs
+      - Engineering blog technical depth on connector architecture and failure handling
+      - dbt package registry contributions as a signal of community integration
+      - Status page transparency for connector and platform availability
+    red_flags:
+      - Connector library with no stated maintenance SLA or support tier
+      - No dbt integration or requirement to replace dbt with a proprietary transformation layer
+      - Pricing models that scale exponentially with data volume
+      - Black-box pipeline execution with no debugging or log access
+
+  strategy:
+    preferred_approaches:
+      - Data observability ROI narrative — cost of data quality incidents versus monitoring investment
+      - Connector reliability-first positioning — show connector uptime data and schema change handling
+      - dbt-native integration as proof of modern stack awareness
+      - Cost efficiency at scale — show the TCO model at 5x current volume
+    patterns_to_avoid:
+      - No-code or low-code messaging to experienced data engineers
+      - Replacement framing for dbt, Airflow, or the warehouse without clear migration path
+      - Throughput claims without methodology and environment specification
+    recommended_frameworks:
+      - framework_id: value-proposition-canvas
+        reason: >
+          Effective for mapping data platform capability to the specific
+          jobs-to-be-done of a Data Engineer — reliable ingestion, schema
+          resilience, observability, and cost efficiency.
+      - framework_id: positioning-statement
+        reason: >
+          Data pipeline tool category is fragmented — ingestion, transformation,
+          orchestration, observability each have specialist vendors. Positioning
+          specificity on the exact capability layer addressed is essential.
+
+  content:
+    tone_adjustments:
+      - Technically specific — data engineers dismiss vague performance or reliability claims
+      - Code-first where possible — show the dbt project structure, the Airflow DAG, the connector config
+      - Operationally honest — acknowledge failure modes and debugging experience, not just the happy path
+      - Peer credibility — data engineering team references from comparable stack environments
+    format_preferences:
+      - Architecture diagrams with real technology component labeling (not "data source" boxes)
+      - Benchmark reports with methodology, cluster spec, data volume, and query patterns
+      - dbt integration examples with actual model code and lineage screenshots
+      - Incident post-mortems showing how the product detected and surfaced a data quality issue
+    credibility_signals:
+      - Active dbt package or plugin in the dbt Hub registry
+      - Published connector architecture documentation explaining failure handling
+      - Named engineering team references with specific pipeline scale and reliability metrics
+      - Transparent status page with connector-level availability history
+    credibility_killers:
+      - '"No-code" pipeline claims for production data engineering use cases'
+      - Connector count claims without per-connector maintenance SLA
+      - Performance benchmarks without disclosed methodology and cluster specification
+
+  review:
+    domain_standards:
+      - Throughput claims must specify cluster configuration, data volume, and record size
+      - Connector coverage claims must specify which source versions are tested and maintained
+      - Freshness/latency claims must specify the ingestion pattern (CDC, batch interval, streaming)
+    red_lines:
+      - '"Real-time" claims without specifying the actual end-to-end latency measurement'
+      - Reliability claims without a stated connector maintenance and support SLA
+      - Cost claims that do not include compute cost at the stated data volume
+
+examples:
+  - scenario: Writing data engineering-focused content for a Senior Data Engineer evaluating a data ingestion platform
+    without_sme: |
+      Headline: "Modern Data Integration for Your Cloud Data Stack"
+      Opening: "[Product] connects your data sources to your warehouse with
+      200+ pre-built connectors and automated schema management..."
+    with_sme: |
+      Headline: "Stop Patching Connectors. Deliver Data That Meets Its SLA."
+      Opening: "The average data engineering team spends 30–40% of their time
+      maintaining connectors — patching for API changes, handling schema drift,
+      and debugging rate limit failures. [Product]''s managed connectors handle
+      schema evolution automatically, alerting you to upstream changes before
+      they break your dbt models. With native dbt lineage integration and
+      Airflow operators, your pipeline observability stack sees [Product] as
+      a first-class citizen — not a black box. Connector SLA: 99.9% availability
+      with 4-hour support response for critical source failures..."
+    agent: content-generator
+
+  - scenario: Positioning analysis for a data integration platform targeting data engineering teams
+    without_sme: |
+      Data engineers care about pipeline reliability. Position your platform
+      as the solution for reducing connector maintenance and improving
+      data freshness in their warehouse.
+    with_sme: |
+      The Data Engineer evaluates ingestion platforms through two lenses:
+      "will this connector be reliable when my source system updates?" and
+      "can I debug it when it breaks?" The buying trigger is almost always
+      a critical connector failure or a schema change incident that caused
+      a data quality issue downstream. Lead with connector reliability data
+      — not connector count. Show the schema change handling demo first:
+      a source column is renamed mid-pipeline, and the platform surfaces
+      the change, notifies the team, and allows the mapping to be updated
+      without a pipeline restart. Then show the dbt lineage integration
+      so the impact of the source change is immediately visible. The
+      question is not "how many connectors do you have?" — it is
+      "what happens when my Salesforce schema changes at 2am?"
+    agent: strategic-planning
+
+stakeholder_guidance: |
+  Data Engineers are technically rigorous practitioners who have been burned
+  by vendors oversimplifying pipeline complexity. Communication must be
+  operationally specific, code-credible, and honest about failure modes.
+
+  **When assessing current data stack or pipeline architecture:**
+  - Never imply the existing custom pipeline approach is "unmaintainable" —
+    data engineers take pride in systems they built
+  - Use: "there is an opportunity to reduce maintenance overhead and improve
+    observability on the existing pipeline infrastructure"
+  - Avoid: "your current approach is creating data quality risk" without
+    specific evidence from the customer environment
+
+  **When making strategic recommendations:**
+  - Always show the integration with the existing stack first — dbt, Airflow,
+    and the warehouse are non-negotiable components; show how the product
+    fits around them rather than replaces them
+  - Address the failure mode explicitly — data engineers want to know what
+    happens when things break, not just what the happy path looks like
+  - Lead with connector reliability and schema handling before feature breadth
+  - Acknowledge that migration from existing ingestion tools has a real cost
+    and sequence — propose a phased approach starting with new sources or
+    a specific problem connector
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

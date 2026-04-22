@@ -1,0 +1,314 @@
+metadata:
+  id: launching-to-leading-breakthrough-marketing
+  version: 1.0.0
+  display_name: 'Launching to Leading: Breakthrough Marketing'
+  category: gtm
+  description: Ken Rutsky's market leadership methodology that guides B2B companies from launch through breakthrough to market
+    leadership by combining Viewpoint context, Unique Value articulation, and experiential delivery to create flashmobs, marshal
+    parades, and ignite movements.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - late-stage-private
+    roles:
+    - cmo
+    - ceo
+    - cro
+    - vp-marketing
+    - vp-sales
+    - product-marketing-manager
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  source: Based on 'Launching to Leading' by Ken Rutsky
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: company_overview
+    description: Company stage, target market, product/service category, and current market position (hiding, launching, participating,
+      breakthrough, leading).
+    source: skill
+  - field: unique_capabilities
+    description: List of unique product features, capabilities, and differentiators vs. alternatives including status quo.
+    source: user_input
+  - field: customer_reality
+    description: Description of major business changes, trends, and challenges affecting target customers (STEEP factors).
+    source: research
+  - field: competitive_landscape
+    description: Key competitors and alternatives, their positioning, and market perception.
+    source: research
+  - field: customer_buying_behavior
+    description: How target customers currently research, evaluate, and purchase solutions in this category.
+    source: user_input
+  optional:
+  - field: current_messaging
+    description: Existing value propositions, positioning statements, and key messages currently in use.
+    source: existing_deliverable
+analysis:
+  instructions: 'This framework implements Ken Rutsky''s Breakthrough Marketing methodology across five stages of market leadership.
+    It guides teams through identifying their current stage, articulating Unique Value, creating a Viewpoint Story that sets
+    market context, and delivering with experience to achieve breakthrough and market leadership. The methodology recognizes
+    that in today''s information-abundant, buyer-controlled markets, companies must move beyond feature-benefit messaging
+    to own the context of the conversation.
+
+
+    After assessing the current market leadership stage and identifying gaps, synthesize findings into a clear action plan:
+    (1) Define or refine Unique Value statements that pass the ''customer will pay for it'' and ''competitors can''t match
+    it'' tests. (2) Construct a Viewpoint Story using AIM-STEEP that aligns with Unique Value and tilts the playing field.
+    (3) Determine the appropriate market leadership phase and messaging mix. (4) Identify 2-3 high-priority initiatives to
+    shift from explanatory content to experiential programs. (5) Set metrics for moving up the Market Leadership Achievement
+    Ladder (improving lead-to-revenue conversion). Frame all recommendations as ''the next phase'' that builds on current
+    foundation.'
+  dimensions:
+  - id: market-leadership-stage-assessment
+    name: Market Leadership Stage Assessment
+    description: 'Diagnose where the company currently sits on the Market Leadership Achievement Ladder: Hiding (lab stage),
+      Launching (among the many), Participating (unique value), Breakthrough (viewpoint alignment), or Leading (experiential
+      delivery).'
+    prompts:
+    - What is the current lead-to-revenue conversion rate (leads per 100 that convert to revenue)?
+    - Is messaging primarily product-focused (features/benefits), value-focused (business outcomes), or context-focused (strategic
+      viewpoint)?
+    - How well do target buyers recognize and prioritize this solution vs. alternatives in early consideration?
+    - What percentage of deals lost are ones where the company wasn't even considered (losing deals you're not in)?
+  - id: unique-value-definition
+    name: Unique Value Definition
+    description: Articulate the intersection of unique capabilities expressed as business benefits, customer willingness to
+      pay, and competitive gaps. Unique Value = (Your Business Benefits ∩ Customer Value) - Competitor Capabilities.
+    prompts:
+    - Which unique features or combinations of features drive business benefits that customers will actually pay for?
+    - How do these benefits translate from 'what' (outcome) to 'how' (mechanism) to 'why' (business impact) and 'why us' (unique
+      delivery)?
+    - Which customer value statements can competitors also credibly claim, and which are truly unique to this company?
+    - 'For each value claim: Does it reduce costs, increase revenues, improve productivity/efficiency, or reduce risk/improve
+      compliance?'
+  - id: viewpoint-story-construction
+    name: Viewpoint Story Construction
+    description: Build a four-act Viewpoint Story using the AIM-STEEP framework that creates strategic context aligning customer
+      reality with company value. Viewpoint sets the terrain before presenting Value.
+    prompts:
+    - What major business changes are impacting target customers (Social, Technological, Economic, Environmental, Political
+      trends)?
+    - Which of these changes creates both Aspiration (opportunity) and Insecurity (risk/threat) for target buyers?
+    - How does the company's unique value delivery directly address the intersection of these aspirations and insecurities?
+    - 'What is the four-act story: Act 1 (Change is happening), Act 2 (This creates urgency), Act 3 (Here''s what''s possible),
+      Act 4 (We can help you get there)?'
+  - id: viewpoint-value-alignment
+    name: Viewpoint-Value Alignment
+    description: Ensure the Viewpoint Story and Unique Value statements are tightly aligned so context naturally leads to
+      the company's differentiated solution without appearing self-serving.
+    prompts:
+    - Does the Viewpoint Story make the company's Unique Value feel strategically necessary rather than merely beneficial?
+    - When prospects embrace the Viewpoint, do they naturally conclude that this company's approach is the right one?
+    - Is the story tilting the playing field so competitors must respond on this company's terms?
+    - 'Which Viewpoint Story type fits best: Better Mousetrap (hidden value), Brave New World (future vision), or New Reality
+      (current change)?'
+  - id: experience-and-engagement-strategy
+    name: Experience and Engagement Strategy
+    description: Design high-engagement, high-experience programs that demonstrate value early and often, moving from 'tell
+      me' to 'show me' across the buying journey.
+    prompts:
+    - How can prospects experience the product value before deep sales engagement (trials, demos, interactive tools, freemium)?
+    - What content and programs score high on both engagement (interactive, participatory) and experience (hands-on, demonstrable)?
+    - Where in the current marketing mix is the company over-indexed on low-engagement explanatory content (whitepapers, webinars,
+      data sheets)?
+    - 'How can the ''Kelley No-Punt Advantage'' principle apply: putting experience front and center, early and often?'
+  - id: market-leadership-phase-strategy
+    name: Market Leadership Phase Strategy
+    description: Tailor messaging mix (Value/Viewpoint/Purpose ratios) and audience focus based on whether building a Flashmob
+      (early customers), marshaling a Parade (category leadership), or igniting a Movement (market transformation).
+    prompts:
+    - Is the current goal to attract early passionate customers (Flashmob), emerge as category leader (Parade), or transform
+      the broader market (Movement)?
+    - 'What is the appropriate messaging mix for this phase: Flashmob (70% Value, 30% Viewpoint), Parade (40% Value, 50% Viewpoint,
+      10% Purpose), or Movement (20% Value, 40% Viewpoint, 40% Purpose)?'
+    - 'Who is the primary audience: Problem Owner/Implementer (Flashmob), Functional/P&L Owner (Parade), or C-level Executive
+      (Movement)?'
+    - 'What communication objective fits: Unique Insight (Flashmob), Strategic Alignment (Parade), or Inspiration (Movement)?'
+output_templates:
+- id: primary
+  name: Breakthrough Marketing Strategy
+  format: memo
+  when_to_use: ''
+  template: '## Current State Assessment
+
+    {current_state_assessment}
+
+
+    ## Unique Value Articulation
+
+    {unique_value_articulation}
+
+
+    ## Viewpoint Story
+
+    {viewpoint_story}
+
+
+    ## Viewpoint-Value Alignment Analysis
+
+    {viewpoint-value_alignment_analysis}
+
+
+    ## Market Leadership Phase Strategy
+
+    {market_leadership_phase_strategy}
+
+
+    ## Experience Elevation Plan
+
+    {experience_elevation_plan}
+
+
+    ## The Next Phase Roadmap
+
+    {the_next_phase_roadmap}
+
+    '
+- id: alternative
+  name: Launching to Leading Workshop
+  format: deck_outline
+  when_to_use: ''
+  template: '## Market Context and Challenges
+
+    {market_context_and_challenges}
+
+
+    ## Current State and Opportunity
+
+    {current_state_and_opportunity}
+
+
+    ## Unique Value Framework
+
+    {unique_value_framework}
+
+
+    ## Viewpoint Story Development
+
+    {viewpoint_story_development}
+
+
+    ## Breakthrough Strategy
+
+    {breakthrough_strategy}
+
+
+    ## Roadmap and Metrics
+
+    {roadmap_and_metrics}
+
+    '
+rubric:
+  description: Evaluates whether the Breakthrough Marketing strategy effectively diagnoses current state, articulates differentiated
+    value, creates aligned context through Viewpoint, and provides actionable path to market leadership with appropriate experience
+    strategy.
+  dimensions:
+  - name: Unique Value Clarity and Differentiation
+    weight: 0.25
+    scoring:
+      1: Value statements are generic benefits any competitor could claim, or are feature-focused without clear business outcomes.
+      3: Value statements describe clear business outcomes but some overlap with competitor claims or lack the 'why us' differentiation.
+      5: Value statements represent true intersection of unique capabilities, customer willingness to pay, and competitive
+        gaps. Each includes what/how/why/why-us.
+    improvement_guidance: 'Test each value statement: Would a customer pay specifically for this? Can competitors credibly
+      make the same claim? If yes to competitor question, refine to capture unique delivery mechanism or outcome magnitude.'
+  - name: Viewpoint Story Power and Alignment
+    weight: 0.3
+    scoring:
+      1: No clear Viewpoint Story, or story is generic industry trends disconnected from company's Unique Value.
+      3: Viewpoint Story addresses relevant customer context but alignment with Unique Value feels forced or requires logical
+        leaps.
+      5: Four-act Viewpoint Story creates compelling context using AIM-STEEP factors that naturally leads to company's Unique
+        Value as the strategic solution. Tilts playing field.
+    improvement_guidance: Ensure the business changes identified in the Viewpoint create both aspiration and insecurity that
+      directly connect to what makes this company's value unique. The story should make competitors' approaches feel inadequate
+      or outdated.
+  - name: Market Leadership Strategy Appropriateness
+    weight: 0.2
+    scoring:
+      1: Messaging mix and audience strategy don't match actual market phase, or phase identification is unclear.
+      3: Phase identification is reasonable but messaging mix ratios or audience priorities have some misalignment.
+      5: Clear identification of Flashmob/Parade/Movement phase with appropriate messaging mix percentages, target audience
+        level, and communication objectives.
+    improvement_guidance: 'Validate phase identification against business metrics (customer count, market recognition, category
+      maturity). Adjust messaging mix to match: Flashmob favors Value, Parade needs Viewpoint emphasis, Movement requires
+      Purpose.'
+  - name: Experience Strategy and Velocity
+    weight: 0.15
+    scoring:
+      1: Strategy relies heavily on explanatory content (whitepapers, webinars) with little hands-on experience offered to
+        prospects.
+      3: Some experience elements present but gated late in sales cycle or not prioritized in marketing mix.
+      5: Clear shift toward high-engagement, high-experience programs early in buyer journey. Specific initiatives identified
+        to demonstrate value before heavy sales involvement.
+    improvement_guidance: 'Audit current content against engagement/experience matrix. Identify top 2-3 opportunities to shift
+      from ''tell me'' to ''show me'' early in buying cycle. Consider: interactive demos, trial programs, assessment tools,
+      configurators.'
+  - name: Actionability and Metrics
+    weight: 0.1
+    scoring:
+      1: Recommendations are conceptual without clear next steps, owners, or success metrics.
+      3: Some actionable initiatives identified but sequencing, ownership, or metrics are incomplete.
+      5: Clear 90-180 day roadmap with specific initiatives, owners, sequencing, and metrics tied to Market Leadership Achievement
+        Ladder progression.
+    improvement_guidance: Define 3-5 priority initiatives with owners and 30/60/90-day milestones. Set baseline for current
+      lead-to-revenue conversion and target improvement (minimum 2-3x for Breakthrough stage).
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Feature-Benefit Trap
+  description: Staying stuck in traditional feature-benefit messaging because 'it's what we've always done' or 'our sales
+    team is comfortable with it.' This keeps companies in Launch/Participate stages indefinitely.
+  mitigation: Recognize that feature-benefit worked in information-scarce markets but fails when buyers have unlimited alternatives.
+    Lead with Viewpoint to set context, then present Unique Value as the strategic solution. Sales teams will embrace this
+    when they see higher win rates.
+- pattern: Value Without Viewpoint
+  description: Articulating strong Unique Value but failing to create strategic context, resulting in being seen as 'nice
+    to have' rather than 'must have.' The solution remains a priority problem.
+  mitigation: Build the Viewpoint Story first to establish why change is necessary and urgent. Value should feel like the
+    inevitable solution to the context you've created, not a standalone claim competing for budget.
+- pattern: Viewpoint Without Unique Value
+  description: Creating compelling market context but having unclear or generic value delivery, so competitors can ride your
+    Viewpoint wave and win the deals.
+  mitigation: Ensure tight alignment between Viewpoint and Unique Value. The context you create should naturally favor your
+    specific, differentiated capabilities. If competitors can easily claim they solve the Viewpoint you've defined, refine
+    your Value or adjust your Viewpoint.
+- pattern: Explanatory Content Addiction
+  description: Over-investing in whitepapers, webinars, and other low-engagement content because it's easier to produce than
+    true experiential programs. Missing the velocity that comes from 'show don't tell.'
+  mitigation: 'Apply the Kelley No-Punt principle: put experience front and center early in the buying process. Even if imperfect,
+    a hands-on trial or interactive demo that shows 60% of value outperforms content that describes 100% of it.'
+- pattern: Wrong Messaging Mix for Phase
+  description: Using Flashmob-stage value messaging when trying to lead a Parade, or leading with Purpose when still building
+    initial Flashmob. Misalignment with market leadership phase.
+  mitigation: Honestly assess current phase based on customer count, market recognition, and category maturity. Flashmob =
+    70% Value, Parade = 50% Viewpoint, Movement = 40% Purpose. Match messaging mix to reality, not aspiration.
+- pattern: Ignoring the Playing Field Tilt
+  description: Accepting the market context as defined by incumbents or category leaders rather than creating your own context
+    that favors your differentiation.
+  mitigation: Use Viewpoint strategically to tilt the playing field. Identify which business changes and strategic priorities
+    make your unique approach the right one and competitors' approaches inadequate. Make them respond on your terms.
+chaining:
+  after:
+  - framework_id: messaging-architecture
+    reason: ''
+  - framework_id: positioning-statement
+    reason: ''
+  - framework_id: content-strategy
+    reason: ''
+  - framework_id: demand-generation-plan
+    reason: ''
+  before:
+  - framework_id: icp-buying-committee
+    reason: ''
+  - framework_id: b2b-saas-competitive-positioning
+    reason: ''
+  - framework_id: market-research-synthesis
+    reason: ''

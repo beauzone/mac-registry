@@ -1,0 +1,184 @@
+metadata:
+  id: messaging-architecture
+  version: 1.0.0
+  display_name: Messaging Architecture — Strategic Narrative System
+  category: product_pmm
+  description: Structures core messaging pillars, supporting proof, and persona adaptations to ensure consistency across marketing,
+    sales, and product communications. Adapted for AI-native, fast-moving categories.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - product-marketing-manager
+    - cmo
+    - vp-marketing
+    - cro
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: finalized_positioning_statement
+    description: Approved positioning statement and differentiation territory
+    source: existing_deliverable
+  - field: icp_and_persona_definitions
+    description: ICP definition and mapped buying committee roles
+    source: existing_deliverable
+  - field: proof_points
+    description: Quantified customer outcomes, case studies, validation signals
+    source: user_input
+  - field: competitive_contrast_summary
+    description: Clear articulation of primary competitive alternatives
+    source: skill
+analysis:
+  instructions: 'This framework translates positioning into structured messaging pillars with supporting proof and persona
+    adaptations. It enforces hierarchy, clarity, and differentiation durability. In AI-native markets, emphasis is placed
+    on outcome framing, automation leverage, and defensible assets.
+
+
+    Produce a 3–4 pillar architecture with sub-points and proof. Map persona adaptations explicitly. Conclude with channel
+    deployment guidance (website, sales deck, campaigns) and messaging guardrails.'
+  dimensions:
+  - id: core-messaging-pillars
+    name: Core Messaging Pillars
+    description: 3–4 primary narrative themes supporting positioning
+    prompts:
+    - Do pillars directly reinforce the differentiated positioning territory?
+    - Are pillars outcome-oriented rather than feature-led?
+    - Are pillars distinct from one another?
+    - Could a competitor credibly claim the same pillar?
+  - id: supporting-proof-and-evidence
+    name: Supporting Proof and Evidence
+    description: Sub-points and validation signals under each pillar
+    prompts:
+    - Does each pillar have at least 2–3 proof elements?
+    - Are proof points quantified where possible?
+    - Do proof elements tie directly to pillar claim?
+    - Are validation signals recent and segment-relevant?
+  - id: persona-adaptation-layer
+    name: Persona Adaptation Layer
+    description: Messaging nuance by buying role or segment
+    prompts:
+    - How does the economic buyer interpret each pillar?
+    - What technical proof is required for evaluators?
+    - What messaging reassures risk-averse stakeholders?
+    - Are objections preemptively addressed?
+  - id: competitive-framing-and-contrast
+    name: Competitive Framing and Contrast
+    description: Controlled narrative contrast versus alternatives
+    prompts:
+    - Is differentiation framed positively rather than reactively?
+    - Are competitor comparisons rooted in outcome gaps?
+    - Does framing avoid overclaiming?
+    - Is substitution risk acknowledged and countered?
+output_templates:
+- id: primary
+  name: Messaging Architecture
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Core Messaging Pillars
+
+    {core_messaging_pillars}
+
+
+    ## Supporting Proof Framework
+
+    {supporting_proof_framework}
+
+
+    ## Persona Adaptation Matrix
+
+    {persona_adaptation_matrix}
+
+
+    ## Competitive Framing Guidelines
+
+    {competitive_framing_guidelines}
+
+
+    ## Channel Deployment Guidance
+
+    {channel_deployment_guidance}
+
+    '
+rubric:
+  description: Evaluates consistency, hierarchy clarity, differentiation durability, persona fit, and operational readiness.
+  dimensions:
+  - name: Hierarchy and Structure
+    weight: 0.25
+    scoring:
+      1: Flat or disorganized messaging.
+      3: Moderate structure but pillar overlap.
+      5: Clear, distinct pillars with logical hierarchy.
+    improvement_guidance: Ensure each pillar supports positioning uniquely.
+  - name: Differentiation Strength
+    weight: 0.25
+    scoring:
+      1: Generic category messaging.
+      3: Some distinct elements but partially imitable.
+      5: Messaging rooted in defensible assets and outcomes.
+    improvement_guidance: Anchor pillars in assets competitors cannot replicate.
+  - name: Proof Alignment
+    weight: 0.2
+    scoring:
+      1: Claims unsupported by evidence.
+      3: Proof exists but not tightly linked.
+      5: Every pillar supported by relevant, quantified proof.
+    improvement_guidance: Attach measurable outcomes to each major claim.
+  - name: Persona Fit
+    weight: 0.15
+    scoring:
+      1: Single generic narrative for all roles.
+      3: Partial persona nuance.
+      5: Clear role-specific emphasis and objection handling.
+    improvement_guidance: Explicitly map messaging to economic buyer and evaluator concerns.
+  - name: Operational Readiness
+    weight: 0.15
+    scoring:
+      1: Conceptual only, not deployable.
+      3: Deployable with minor refinement.
+      5: Immediately usable across web, sales, and campaigns.
+    improvement_guidance: Translate architecture into channel-ready language.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Feature Stack Messaging
+  description: Organizing messaging around features rather than outcomes.
+  mitigation: Structure pillars around differentiated customer outcomes.
+- pattern: Pillar Overlap
+  description: Multiple pillars expressing similar ideas.
+  mitigation: Ensure each pillar represents a distinct value theme.
+- pattern: No Persona Layer
+  description: Failing to adapt messaging by buying role.
+  mitigation: Add explicit persona-specific nuance and objections.
+- pattern: Competitive Reactivity
+  description: Framing messaging primarily as rebuttal to competitors.
+  mitigation: Lead with differentiated strengths; contrast selectively.
+chaining:
+  after:
+  - framework_id: aida-pas-fab
+    reason: ''
+  - framework_id: campaign-brief-template
+    reason: ''
+  before:
+  - framework_id: positioning-statement
+    reason: ''
+  - framework_id: value-proposition-canvas
+    reason: ''
+  - framework_id: gartner-product-marketing-framework
+    reason: Product marketing framework outputs drive the messaging architecture hierarchy
+  - framework_id: gartner-positioning-messaging-framework
+    reason: Gartner positioning and messaging framework feeds message architecture inputs

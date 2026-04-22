@@ -1,0 +1,360 @@
+metadata:
+  id: messaging-positioning-workbook
+  version: "1.0.0"
+  display_name: "Messaging & Positioning Workbook"
+  category: strategy
+  description: >
+    A multi-sheet Excel workbook that operationalizes messaging and positioning strategy
+    into working documents. Covers pillar-based messaging, viewpoint story, company copy
+    blocks, positioning statements (classic and Moore formats), and value filtering with
+    competitive scoring. Based on Ken Rutsky's Launching to Leading methodology
+    (KJR Associates, CC BY-NC-SA 4.0).
+  output_format: spreadsheet
+  typical_length: "6-sheet Excel workbook with 50-100 structured cells per sheet"
+  best_for:
+    agents:
+      - strategic-planning
+      - content-generator
+    stages:
+      - series-a
+      - series-b
+      - series-c
+      - enterprise
+    modes:
+      - fractional
+      - fte
+  tags:
+    - messaging
+    - positioning
+    - workbook
+    - spreadsheet
+    - launching-to-leading
+    - pillars
+    - value-proposition
+    - viewpoint-story
+  source: "Ken Rutsky, Launching to Leading (KJR Associates). Licensed CC BY-NC-SA 4.0."
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: company_name
+      description: Company name for all sheet headers and positioning statements
+      source: skill
+    - field: positioning_elements
+      description: >
+        The seven positioning statement elements (For, Who Need, And Want, The, Is, That,
+        Unlike, Our Product) from Positioning Statement or April Dunford framework output
+      source: framework_output
+    - field: messaging_pillars
+      description: >
+        3-5 core messaging pillars with sub-bullets, features, pain points, and proof points
+        per pillar from Messaging Architecture framework output
+      source: framework_output
+    - field: value_chain
+      description: >
+        Features mapped to capabilities mapped to business benefits from Value Proposition
+        Canvas or Launching to Leading framework output
+      source: framework_output
+  optional:
+    - field: viewpoint_story
+      description: >
+        Four-arc narrative (Condition Changes, Expected, Unexpected, Transformed) with bullet,
+        long-form, and short-form variants
+      source: framework_output
+    - field: company_descriptions
+      description: >
+        Existing company description copy at various lengths for the About copy blocks sheet
+      source: user_input
+    - field: competitive_data
+      description: >
+        Competitive scoring data (1-5 scale) across customer segments for the Value Filtering sheet
+      source: framework_output
+    - field: customer_segments
+      description: >
+        Named customer segments for value scoring columns in the Value Filtering sheet
+      source: skill
+
+structure:
+  sections:
+    - id: key-messaging
+      name: Key Messaging
+      required: true
+      description: >
+        Pillar-based messaging matrix with rows for positioning statement, core pillars,
+        sub-bullets, full statements, key features, customer pain points, and proof points
+      guidance: >-
+        Construct a matrix where each column represents one messaging pillar (3-5 pillars).
+        Row categories are: Positioning Statement (single row spanning all pillars),
+        Core Pillar Name, Sub-bullets (2-3 per pillar), Full Statement (paragraph per pillar),
+        Key Features (3-5 per pillar), Customer Pain Points (2-3 per pillar), and
+        Proof Points (2-3 per pillar). Every cell must contain specific, evidence-backed content.
+        Do not use placeholder language. Pillars should be mutually exclusive and collectively
+        exhaustive of the core value proposition.
+      format_notes: >-
+        Multi-column spreadsheet layout. Column A contains row labels. Columns B through F
+        (or however many pillars) each represent one messaging pillar. Include the positioning
+        statement as a merged row at the top. Use cell borders to visually separate the seven
+        row categories.
+
+    - id: viewpoint-story
+      name: Viewpoint Story
+      required: true
+      description: >
+        Four-arc narrative structure capturing how the market condition has changed
+        and how the company transforms the outcome
+      guidance: >-
+        Build a four-arc narrative: (1) Condition Changes - what shift in the market or
+        technology makes the old approach insufficient, (2) Expected - what most companies
+        or buyers expect will happen as a result, (3) Unexpected - what actually happens
+        that is counterintuitive or creates a new problem, (4) Transformed - how the
+        company's approach resolves the tension and creates a better outcome. For each arc,
+        provide three variants: Bullets (3-5 key points), Long form (2-3 paragraph narrative),
+        Short form (2-3 sentence summary). The story should be specific to the company's market
+        and avoid generic technology narratives.
+      format_notes: >-
+        Layout with four row groups (one per arc). Each group has three sub-rows: Bullets,
+        Long form, Short form. Column A contains the arc name, Column B contains the variant
+        label, Column C contains the content. Use merged cells for arc headers.
+
+    - id: about-company-copy
+      name: "About {company_name} Copy Blocks"
+      required: true
+      description: >
+        Company descriptions at five standardized length tiers plus a PR boilerplate,
+        with live word count validation
+      guidance: >-
+        Write company descriptions at exactly five length tiers: 25 words, 50 words,
+        75 words, 100 words, and 140 words. Each tier must be a standalone description,
+        not a truncation of a longer one. The 25-word version should capture the core
+        positioning statement essence. The 140-word version should be comprehensive
+        enough for press releases. Also include a formal PR boilerplate (typically
+        80-120 words) in third person. Include a word count formula next to each
+        description that validates against the target length.
+      format_notes: >-
+        Column A contains the tier label (e.g., 25 Words, 50 Words). Column B contains the
+        description text. Column C contains a word count formula using
+        LEN(TRIM(Bn))-LEN(SUBSTITUTE(Bn," ",""))+1 to count words. Column D contains
+        the target word count. Column E contains a pass/fail indicator formula.
+      word_count: "25 + 50 + 75 + 100 + 140 + 80-120 (boilerplate) = ~490-510 total words"
+
+    - id: positioning-statement
+      name: Positioning Statement
+      required: true
+      description: >
+        Seven-element positioning statement with content on the left side and guidance
+        on the right side
+      guidance: >-
+        Present the positioning statement using seven elements: For (target customer),
+        Who Need (primary need), And Want (desired outcome), The (product/company name),
+        Is (category), That (key benefit), Unlike (primary alternative), Our Product
+        (key differentiator). Left columns contain the element label and the actual content.
+        Right columns contain guidance text explaining what each element should accomplish
+        and how to evaluate whether it is strong enough. Include a concatenation formula
+        that assembles the full positioning statement from the individual elements.
+      format_notes: >-
+        Four-column layout: Column A = element label (For, Who Need, etc.), Column B =
+        content, Column C = guidance header, Column D = guidance text. Include a merged
+        row at the bottom with a CONCATENATE formula that joins all elements into a
+        complete positioning statement paragraph.
+
+    - id: positioning-statement-moore
+      name: Positioning Statement (Moore)
+      required: true
+      description: >
+        Geoffrey Moore's Crossing the Chasm positioning statement format with the same
+        left-content right-guidance structure
+      guidance: >-
+        Use Geoffrey Moore's format from Crossing the Chasm: For (target customer),
+        Who (statement of need), The (product name) is a (product category), That
+        (key benefit / reason to buy), Unlike (primary competitive alternative),
+        Our product (statement of primary differentiation). This format is more concise
+        than the seven-element version and optimized for technology products crossing
+        from early adopters to mainstream market. Apply the same left-content,
+        right-guidance layout as the standard positioning statement sheet.
+      format_notes: >-
+        Same four-column layout as the standard positioning statement sheet. Include
+        a CONCATENATE formula row assembling the full Moore-format statement.
+
+    - id: value-filtering
+      name: Value Filtering
+      required: true
+      description: >
+        Features-to-capabilities-to-benefits chain with customer value scoring and
+        competitive scoring
+      guidance: >-
+        Build a three-layer value chain: Features (what the product does), Capabilities
+        (what those features enable), and Business Benefits (the measurable business
+        outcome). For each row, score customer value across named segments using H/M/L
+        (High/Medium/Low). Then score competitive differentiation on a 1-5 scale where
+        1 = competitors do this equally well and 5 = unique to us. The combination of
+        high customer value and high competitive differentiation identifies the most
+        powerful messaging themes. Include at least 8-12 feature rows.
+      format_notes: >-
+        Column A = Feature, Column B = Capability, Column C = Business Benefit.
+        Columns D through H (or as needed) = customer value score (H/M/L) per named
+        segment. Final column = competitive differentiation score (1-5). Include
+        conditional formatting guidance: H = green fill, M = yellow fill, L = red fill
+        for customer value; 4-5 = green, 2-3 = yellow, 1 = red for competitive score.
+
+template: |
+  ===== SHEET 1: Key Messaging =====
+
+  Positioning Statement: {full_positioning_statement}
+
+  | | {Pillar 1 Name} | {Pillar 2 Name} | {Pillar 3 Name} | {Pillar 4 Name} |
+  |---|---|---|---|---|
+  | Core Pillar | {pillar_1_name} | {pillar_2_name} | {pillar_3_name} | {pillar_4_name} |
+  | Sub-bullets | {pillar_1_bullets} | {pillar_2_bullets} | {pillar_3_bullets} | {pillar_4_bullets} |
+  | Full Statement | {pillar_1_statement} | {pillar_2_statement} | {pillar_3_statement} | {pillar_4_statement} |
+  | Key Features | {pillar_1_features} | {pillar_2_features} | {pillar_3_features} | {pillar_4_features} |
+  | Pain Points | {pillar_1_pain_points} | {pillar_2_pain_points} | {pillar_3_pain_points} | {pillar_4_pain_points} |
+  | Proof Points | {pillar_1_proof_points} | {pillar_2_proof_points} | {pillar_3_proof_points} | {pillar_4_proof_points} |
+
+  ===== SHEET 2: Viewpoint Story =====
+
+  ## Condition Changes
+  **Bullets:** {condition_changes_bullets}
+  **Long form:** {condition_changes_long}
+  **Short form:** {condition_changes_short}
+
+  ## Expected
+  **Bullets:** {expected_bullets}
+  **Long form:** {expected_long}
+  **Short form:** {expected_short}
+
+  ## Unexpected
+  **Bullets:** {unexpected_bullets}
+  **Long form:** {unexpected_long}
+  **Short form:** {unexpected_short}
+
+  ## Transformed
+  **Bullets:** {transformed_bullets}
+  **Long form:** {transformed_long}
+  **Short form:** {transformed_short}
+
+  ===== SHEET 3: About {company_name} Copy Blocks =====
+
+  | Length Tier | Description | Word Count | Target | Status |
+  |---|---|---|---|---|
+  | 25 Words | {description_25} | =WORDCOUNT | 25 | =PASS/FAIL |
+  | 50 Words | {description_50} | =WORDCOUNT | 50 | =PASS/FAIL |
+  | 75 Words | {description_75} | =WORDCOUNT | 75 | =PASS/FAIL |
+  | 100 Words | {description_100} | =WORDCOUNT | 100 | =PASS/FAIL |
+  | 140 Words | {description_140} | =WORDCOUNT | 140 | =PASS/FAIL |
+  | PR Boilerplate | {pr_boilerplate} | =WORDCOUNT | 80-120 | =PASS/FAIL |
+
+  Word count formula: =LEN(TRIM(Bn))-LEN(SUBSTITUTE(Bn," ",""))+1
+  Pass/fail formula: =IF(ABS(Cn-Dn)<=5,"PASS","REVISE")
+
+  ===== SHEET 4: Positioning Statement =====
+
+  | Element | Content | | Guidance |
+  |---|---|---|---|
+  | For | {target_customer} | | {guidance_for} |
+  | Who Need | {primary_need} | | {guidance_who_need} |
+  | And Want | {desired_outcome} | | {guidance_and_want} |
+  | The | {product_name} | | {guidance_the} |
+  | Is | {category} | | {guidance_is} |
+  | That | {key_benefit} | | {guidance_that} |
+  | Unlike | {primary_alternative} | | {guidance_unlike} |
+  | Our Product | {key_differentiator} | | {guidance_our_product} |
+  | **Full Statement** | =CONCATENATE("For ",B2," who need ",B3," and want ",B4,", the ",B5," is a ",B6," that ",B7,". Unlike ",B8,", our product ",B9,".") | | |
+
+  ===== SHEET 5: Positioning Statement (Moore) =====
+
+  | Element | Content | | Guidance |
+  |---|---|---|---|
+  | For | {moore_target_customer} | | {moore_guidance_for} |
+  | Who | {moore_need_statement} | | {moore_guidance_who} |
+  | The [product] is a | {moore_category} | | {moore_guidance_category} |
+  | That | {moore_key_benefit} | | {moore_guidance_that} |
+  | Unlike | {moore_alternative} | | {moore_guidance_unlike} |
+  | Our product | {moore_differentiator} | | {moore_guidance_our_product} |
+  | **Full Statement** | =CONCATENATE("For ",B2," who ",B3,", the ",B4," is a ",B5," that ",B6,". Unlike ",B7,", our product ",B8,".") | | |
+
+  ===== SHEET 6: Value Filtering =====
+
+  | Feature | Capability | Business Benefit | {Segment 1} | {Segment 2} | {Segment 3} | Competitive Score (1-5) |
+  |---|---|---|---|---|---|---|
+  | {feature_1} | {capability_1} | {benefit_1} | {H/M/L} | {H/M/L} | {H/M/L} | {1-5} |
+  | {feature_2} | {capability_2} | {benefit_2} | {H/M/L} | {H/M/L} | {H/M/L} | {1-5} |
+  | {feature_3} | {capability_3} | {benefit_3} | {H/M/L} | {H/M/L} | {H/M/L} | {1-5} |
+  | {feature_4} | {capability_4} | {benefit_4} | {H/M/L} | {H/M/L} | {H/M/L} | {1-5} |
+  | {feature_5} | {capability_5} | {benefit_5} | {H/M/L} | {H/M/L} | {H/M/L} | {1-5} |
+  | {feature_6} | {capability_6} | {benefit_6} | {H/M/L} | {H/M/L} | {H/M/L} | {1-5} |
+  | {feature_7} | {capability_7} | {benefit_7} | {H/M/L} | {H/M/L} | {H/M/L} | {1-5} |
+  | {feature_8} | {capability_8} | {benefit_8} | {H/M/L} | {H/M/L} | {H/M/L} | {1-5} |
+
+  Customer Value: H = High value for segment, M = Medium, L = Low
+  Competitive Score: 1 = competitors match us, 5 = unique to us
+  Conditional formatting: H = green, M = yellow, L = red; Score 4-5 = green, 2-3 = yellow, 1 = red
+
+variations:
+  - id: launching-to-leading
+    name: Launching to Leading Full Workbook
+    description: >
+      Complete workbook populated using Launching to Leading (#24) framework output.
+      All six sheets are populated from a single L2L analysis. Use when running the
+      full Launching to Leading methodology.
+    overrides:
+      sections_add: []
+      sections_remove: []
+      tone: >-
+        Use Launching to Leading terminology throughout. Frame pillars as
+        market-leadership themes. Viewpoint story follows the L2L narrative arc.
+
+  - id: positioning-only
+    name: Positioning Focus
+    description: >
+      Lighter version focusing on positioning statements and value filtering only.
+      Omit viewpoint story and company copy blocks when only positioning work is needed.
+    overrides:
+      sections_add: []
+      sections_remove:
+        - viewpoint-story
+        - about-company-copy
+      tone: "Positioning-centric. Skip narrative elements, focus on competitive differentiation."
+
+  - id: gartner-messaging
+    name: Gartner Messaging & Positioning
+    description: >
+      Populated using Gartner Messaging & Positioning (#49) and Gartner Product
+      Positioning (#51) framework outputs. Uses Gartner methodology terminology
+      for messaging pillars and positioning structure.
+    overrides:
+      sections_add: []
+      sections_remove: []
+      tone: >-
+        Use Gartner analyst-aligned language. Frame pillars around Gartner's
+        differentiation dimensions. Suitable for companies working with Gartner analysts.
+
+branding:
+  supports_branding: true
+  brandable_elements:
+    - element: header_row
+      description: Company name and logo in each sheet header row
+    - element: color_scheme
+      description: Header row colors, pillar column colors, and conditional formatting colors aligned to brand palette
+    - element: sheet_tabs
+      description: Sheet tab colors aligned to brand palette
+    - element: footer
+      description: Company name and confidentiality notice in sheet footers
+
+quality_criteria:
+  required_elements:
+    - "At least 3 messaging pillars with all 7 row categories populated per pillar"
+    - "All four viewpoint story arcs present with all three variants (bullets, long, short)"
+    - "Company descriptions at all 5 length tiers with word count validation formulas"
+    - "Both positioning statement formats (standard and Moore) fully populated"
+    - "Value filtering sheet has at least 8 feature-to-benefit chains with scoring"
+    - "Attribution: Ken Rutsky / KJR Associates CC BY-NC-SA 4.0 noted in workbook"
+  prohibited_elements:
+    - "Empty pillar columns or partially populated messaging rows"
+    - "Generic placeholder text in any content cell (e.g., '[insert here]')"
+    - "Company descriptions that are truncations of longer versions rather than standalone"
+    - "Value filtering rows with features but no business benefits"
+    - "Positioning statement elements that use hedge language ('one of', 'helps with')"
+  length_check:
+    minimum: 6
+    maximum: 6
+    strict: true

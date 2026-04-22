@@ -1,0 +1,279 @@
+metadata:
+  id: icp-profile
+  version: "1.0.0"
+  display_name: "ICP Profile Document"
+  category: strategy
+  description: >
+    A structured Ideal Customer Profile definition that captures the target company
+    attributes, buying committee roles, pain points, value drivers, and qualification
+    criteria. Designed to align sales, marketing, and product teams on who to target
+    and why.
+  output_format: markdown
+  typical_length: "800–1,200 words"
+  best_for:
+    agents:
+      - strategic-planning
+      - market-research
+      - campaign-manager
+    stages:
+      - seed
+      - series-a
+      - series-b
+      - series-c
+      - enterprise
+    modes:
+      - fractional
+      - fte
+      - tech_provider
+  tags:
+    - icp
+    - ideal-customer-profile
+    - targeting
+    - segmentation
+    - buying-committee
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: company_name
+      description: Your company name and what you sell
+      source: user_input
+    - field: current_customers
+      description: Description of your best current customers — who are they, why do they buy, what do they have in common
+      source: user_input
+    - field: product_value
+      description: The core value your product delivers and the primary problem it solves
+      source: user_input
+  optional:
+    - field: market_segment
+      description: The market segment or vertical this ICP targets (if creating segment-specific ICPs)
+      source: user_input
+    - field: anti_icp_signals
+      description: Characteristics of companies that are a poor fit — deals that churn or never close
+      source: user_input
+    - field: existing_data
+      description: Any existing customer data, win/loss analysis, or segmentation work
+      source: user_input
+
+structure:
+  sections:
+    - id: icp-summary
+      name: ICP Summary
+      required: true
+      description: One-paragraph summary of who the ideal customer is and why they buy
+      guidance: >-
+        Write this as a crisp paragraph that anyone in the company can read and immediately understand who you're targeting. Include the company type, the pain they feel, and the outcome they're buying. This should be quotable in a sales kickoff.
+      word_count: "60–100 words"
+
+    - id: firmographic-profile
+      name: Firmographic Profile
+      required: true
+      description: The observable company-level attributes that define the ICP
+      field_limits:
+        attribute_label: 25
+        attribute_value: 80
+      guidance: >-
+        Include: industry/vertical, company size (employees and/or revenue), geography, growth stage, technology stack indicators, and any regulatory or compliance context. Be specific — "50–500 employee B2B SaaS companies" is better than "mid-market technology companies."
+      format_notes: Key-value table format for scannability.
+
+    - id: pain-points
+      name: Pain Points & Triggers
+      required: true
+      description: The specific problems the ICP experiences and the events that trigger a buying cycle
+      guidance: >-
+        Separate pain points (ongoing problems) from trigger events (moments that create urgency). Pain points explain why they need you; triggers explain why they need you now. Lead with the pain that's hardest to ignore. Include both business pain and personal/role pain.
+      word_count: "150–250 words"
+
+    - id: buying-committee
+      name: Buying Committee
+      required: true
+      description: The roles involved in the purchase decision, their priorities, and their influence
+      field_limits:
+        role_title: 35
+        decision_type: 25
+        primary_concern: 60
+        evaluation_criteria: 80
+      guidance: >-
+        For each role, define: title, decision role (champion, economic buyer, technical evaluator, blocker), what they care about most, and how they evaluate solutions. Typically 3–6 roles. Identify who initiates, who approves budget, and who can kill the deal.
+      format_notes: >-
+        Table format: Role | Decision Type | Primary Concern | How They Evaluate
+
+    - id: value-drivers
+      name: Value Drivers
+      required: true
+      description: The specific outcomes and value propositions that resonate with this ICP
+      field_limits:
+        value_driver_label: 40
+        resonates_with: 35
+        quantified_impact: 60
+      guidance: >-
+        Map each value driver to the buying committee role it resonates with most. A CISO cares about risk reduction; a CFO cares about TCO; a CTO cares about integration and scale. Include quantified value where possible.
+      word_count: "100–200 words"
+
+    - id: qualification-criteria
+      name: Qualification Criteria
+      required: true
+      description: Scoring criteria for identifying and prioritizing ICP-fit accounts
+      field_limits:
+        criterion_label: 40
+        why_it_matters: 80
+        how_to_verify: 60
+      guidance: >-
+        Define must-have criteria (hard disqualifiers if absent) and nice-to-have criteria (improve deal quality). Use a simple scoring framework — accounts should be classifiable as Tier 1, Tier 2, or Tier 3 based on ICP fit.
+      format_notes: >-
+        Two tables: Must-Have Criteria and Nice-to-Have Criteria, each with Criterion | Why It Matters | How to Verify
+
+    - id: anti-icp
+      name: Anti-ICP Signals
+      required: false
+      description: Characteristics that indicate a company is NOT a good fit
+      guidance: >-
+        Just as important as who to target — who to disqualify. Include company attributes, behavioral signals, and deal patterns that predict churn, long sales cycles, or low LTV. Be specific and based on real patterns from past deals.
+      word_count: "80–150 words"
+
+    - id: channels
+      name: Where to Find Them
+      required: false
+      description: The channels, communities, events, and data sources where ICP accounts can be identified
+      guidance: >-
+        Include both digital channels (LinkedIn groups, industry publications, review sites) and offline channels (conferences, associations, analyst reports). Also include intent data signals and technology indicators that suggest ICP fit.
+      word_count: "80–150 words"
+
+template: |
+  # Ideal Customer Profile: {company_name}
+
+  **Segment:** {market segment or "Primary ICP"}
+  **Last updated:** {date}
+
+  ---
+
+  ## ICP Summary
+
+  {One paragraph: who is the ideal customer, what pain do they feel, what outcome are they buying, and why do they choose you}
+
+  ---
+
+  ## Firmographic Profile
+
+  | Attribute | Definition |
+  |---|---|
+  | **Industry** | {specific verticals or segments} |
+  | **Company size** | {employee count and/or ARR range} |
+  | **Geography** | {target regions} |
+  | **Growth stage** | {startup, growth, enterprise, etc.} |
+  | **Tech stack signals** | {technologies that indicate fit} |
+  | **Regulatory context** | {compliance requirements if relevant} |
+
+  ---
+
+  ## Pain Points & Triggers
+
+  **Ongoing pain points:**
+  1. {Pain point 1 — the persistent problem}
+  2. {Pain point 2}
+  3. {Pain point 3}
+
+  **Trigger events** (create urgency):
+  - {Trigger 1 — e.g., board mandate, audit finding, breach incident}
+  - {Trigger 2}
+  - {Trigger 3}
+
+  ---
+
+  ## Buying Committee
+
+  | Role | Decision Type | Primary Concern | How They Evaluate |
+  |---|---|---|---|
+  | {Title 1} | Champion | {what they care about} | {evaluation criteria} |
+  | {Title 2} | Economic Buyer | {what they care about} | {evaluation criteria} |
+  | {Title 3} | Technical Evaluator | {what they care about} | {evaluation criteria} |
+  | {Title 4} | Influencer/Blocker | {what they care about} | {evaluation criteria} |
+
+  ---
+
+  ## Value Drivers
+
+  | Value Driver | Resonates Most With | Quantified Impact |
+  |---|---|---|
+  | {Value 1} | {buying committee role} | {metric or outcome} |
+  | {Value 2} | {buying committee role} | {metric or outcome} |
+  | {Value 3} | {buying committee role} | {metric or outcome} |
+
+  ---
+
+  ## Qualification Criteria
+
+  **Must-Have (Tier 1 requirements):**
+
+  | Criterion | Why It Matters | How to Verify |
+  |---|---|---|
+  | {Criterion 1} | {rationale} | {data source or question} |
+  | {Criterion 2} | {rationale} | {data source or question} |
+
+  **Nice-to-Have (Tier 1 vs. Tier 2 differentiators):**
+
+  | Criterion | Why It Matters | How to Verify |
+  |---|---|---|
+  | {Criterion 1} | {rationale} | {data source or question} |
+  | {Criterion 2} | {rationale} | {data source or question} |
+
+  ---
+
+  ## Anti-ICP Signals
+
+  - {Signal 1 — companies with this characteristic tend to churn or never close}
+  - {Signal 2}
+  - {Signal 3}
+
+  ---
+
+  ## Where to Find Them
+
+  **Digital channels:** {LinkedIn groups, publications, review sites, communities}
+  **Events:** {conferences, associations, meetups}
+  **Intent signals:** {technology installs, job postings, funding events, regulatory changes}
+
+variations:
+  - id: segment-specific
+    name: Segment-Specific ICP
+    description: For companies with multiple ICPs by vertical or use case. Adds a segment comparison section.
+    overrides:
+      sections_add:
+        - segment-comparison
+      tone: "Precise. Emphasize what makes this segment different from other ICPs."
+
+  - id: abm-targeting
+    name: ABM Target List Version
+    description: Adds an account scoring model and named account list structure for ABM programs.
+    overrides:
+      sections_add:
+        - account-scoring-model
+        - named-account-list
+      tone: "Operational. Designed to feed directly into an ABM platform or CRM."
+
+branding:
+  supports_branding: true
+  brandable_elements:
+    - element: header_logo
+      description: Company logo in document header
+    - element: color_scheme
+      description: Tier color coding (Tier 1/2/3) aligned to brand palette
+    - element: typography
+      description: Fonts aligned to brand guidelines
+
+quality_criteria:
+  required_elements:
+    - "ICP Summary is a single paragraph anyone in the company can understand"
+    - "Firmographic profile uses specific ranges, not vague descriptors"
+    - "Buying committee includes at least 3 roles with decision types"
+    - "Pain points are separated from trigger events"
+    - "Qualification criteria distinguish must-have from nice-to-have"
+  prohibited_elements:
+    - "Vague firmographics ('mid-market companies', 'technology sector')"
+    - "Buying committee without decision type classification"
+    - "Value drivers not mapped to specific buying committee roles"
+    - "More than 8 qualification criteria (keeps it actionable)"
+  length_check:
+    minimum: 600
+    maximum: 1400
+    strict: false

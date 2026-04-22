@@ -1,0 +1,199 @@
+metadata:
+  id: corporate-narrative-master-story
+  version: 1.0.0
+  display_name: Corporate Narrative / Master Story — Strategic Coherence Model
+  category: brand
+  description: Defines the overarching corporate narrative that aligns category framing, positioning, product strategy, investor
+    thesis, and culture into a single coherent story. Designed for executive and board-level clarity.
+  best_for:
+    stages:
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - ceo
+    - cmo
+    - board
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: category_definition
+    description: Defined or proposed market category framing
+    source: existing_deliverable
+  - field: positioning_statement
+    description: Approved company positioning
+    source: existing_deliverable
+  - field: north_star_and_strategy
+    description: Core growth driver and strategic priorities
+    source: existing_deliverable
+  - field: investor_thesis
+    description: Capital markets positioning logic
+    source: existing_deliverable
+  optional:
+  - field: cultural_values
+    description: Core company operating principles
+    source: user_input
+analysis:
+  instructions: 'This framework synthesizes all strategic components into a single master narrative. It ensures alignment
+    between market framing, competitive advantage, growth mechanics, financial trajectory, and company identity. Emphasis
+    is placed on coherence, inevitability logic, and repetition discipline.
+
+
+    Produce a concise master story structured as: Market Shift → Broken Status Quo → Category Emergence → Company Role → Unique
+    Advantage → Growth Engine → Long-Term Vision. Ensure internal and external narrative consistency.'
+  dimensions:
+  - id: worldview---market-thesis
+    name: Worldview / Market Thesis
+    description: Foundational belief about how the market is changing
+    prompts:
+    - What structural shift defines this era?
+    - Why is this change inevitable?
+    - What is broken in the legacy approach?
+    - What future state is emerging?
+  - id: company-mission-in-context
+    name: Company Mission in Context
+    description: Role the company plays in shaping the future
+    prompts:
+    - What problem does the company exist to solve?
+    - How does mission tie to category framing?
+    - Is the mission economically grounded?
+    - Is it broad enough to scale but focused enough to execute?
+  - id: unique-right-to-win
+    name: Unique Right to Win
+    description: Structural and cultural advantages
+    prompts:
+    - What assets compound over time?
+    - Is there alignment between product, distribution, and brand?
+    - Does culture reinforce strategic advantage?
+    - Is the moat strengthening?
+  - id: growth-and-economic-engine
+    name: Growth and Economic Engine
+    description: Repeatable mechanism driving scale
+    prompts:
+    - What is the primary growth driver?
+    - Is expansion embedded?
+    - Is the model capital efficient?
+    - Does growth reinforce defensibility?
+  - id: long-term-vision
+    name: Long-Term Vision
+    description: Clear articulation of end-state ambition
+    prompts:
+    - What does success look like at scale?
+    - How does category leadership manifest?
+    - Is the vision measurable?
+    - Is the ambition credible?
+output_templates:
+- id: primary
+  name: Corporate Master Narrative
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Market Shift and Broken Status Quo
+
+    {market_shift_and_broken_status_quo}
+
+
+    ## Category and Company Role
+
+    {category_and_company_role}
+
+
+    ## Unique Right to Win
+
+    {unique_right_to_win}
+
+
+    ## Growth and Economic Model
+
+    {growth_and_economic_model}
+
+
+    ## Long-Term Vision
+
+    {long-term_vision}
+
+
+    ## Narrative Guardrails
+
+    {narrative_guardrails}
+
+    '
+rubric:
+  description: Board-level evaluation. High coherence and inevitability standard.
+  dimensions:
+  - name: Coherence
+    weight: 0.25
+    scoring:
+      1: Fragmented or inconsistent story.
+      3: Mostly aligned but some narrative gaps.
+      5: Fully coherent across strategy, growth, and culture.
+    improvement_guidance: Align all claims to central thesis.
+  - name: Inevitability Logic
+    weight: 0.25
+    scoring:
+      1: Weak or optional future framing.
+      3: Plausible but not compelling.
+      5: Strong inevitability of market shift and company role.
+    improvement_guidance: Strengthen structural shift evidence.
+  - name: Differentiation Strength
+    weight: 0.2
+    scoring:
+      1: Generic company narrative.
+      3: Some distinct elements.
+      5: Clear structural and cultural uniqueness.
+    improvement_guidance: Tie differentiation to compounding assets.
+  - name: Economic Credibility
+    weight: 0.15
+    scoring:
+      1: Vision disconnected from economics.
+      3: Moderate linkage.
+      5: Clear connection between narrative and financial engine.
+    improvement_guidance: Link vision to growth mechanics and margin logic.
+  - name: Repeatability
+    weight: 0.15
+    scoring:
+      1: Too complex to consistently communicate.
+      3: Moderately repeatable.
+      5: Concise and durable master narrative.
+    improvement_guidance: Simplify into core repeatable storyline.
+  thresholds:
+    revise: 3.0
+    publish_ready: 3.8
+    escalate_to_user: 2.4
+anti_patterns:
+- pattern: Mission Without Market Context
+  description: Stating purpose without structural framing.
+  mitigation: Anchor mission in market shift.
+- pattern: Vision Without Economics
+  description: Ambition disconnected from financial model.
+  mitigation: Tie narrative to growth engine.
+- pattern: Fragmented Messaging
+  description: Product, investor, and brand stories diverge.
+  mitigation: Unify under single thesis.
+- pattern: Over-Complex Story
+  description: Narrative too intricate to scale internally.
+  mitigation: Distill into simple, repeatable structure.
+chaining:
+  after:
+  - framework_id: messaging-architecture
+    reason: ''
+  - framework_id: investor-narrative-framework
+    reason: ''
+  before:
+  - framework_id: category-design-framework
+    reason: ''
+  - framework_id: positioning-statement
+    reason: ''
+  - framework_id: gartner-brand-marketing-framework
+    reason: Brand marketing framework outputs are primary inputs to the master corporate narrative
+  - framework_id: gartner-customer-proof-framework
+    reason: Customer proof assets provide the evidence base for the corporate narrative

@@ -1,0 +1,291 @@
+metadata:
+  id: consumer-persona-profile
+  version: "1.0.0"
+  display_name: "Consumer Persona Profile"
+  category: research
+  description: >
+    Structured consumer persona document capturing behavioral profile, purchase
+    psychology, media consumption, messaging guidance, and success metrics for a
+    target consumer archetype. Used for internal alignment, agency briefing, and
+    messaging calibration.
+  output_format: markdown
+  typical_length: "800–1,200 words"
+  best_for:
+    agents:
+      - market-research
+      - strategic-planning
+    stages:
+      - seed
+      - series-a
+      - series-b
+      - series-c
+      - scale
+    modes:
+      - fractional
+      - fte
+      - tech_provider
+  tags:
+    - consumer-persona
+    - buyer-profile
+    - target-consumer
+    - segmentation
+    - psychographic
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: persona_name
+      description: The name or label for this persona (e.g., "Efficient Emma" — make it specific and memorable)
+      source: user_input
+    - field: company_product
+      description: What you sell and the category (e.g., "a DTC skincare brand targeting adult women")
+      source: user_input
+    - field: target_description
+      description: Who this persona is — demographics, what they do, what life stage they're in
+      source: user_input
+  optional:
+    - field: research_data
+      description: Any existing research, survey data, or customer interviews to ground the persona
+      source: user_input
+    - field: competitor_personas
+      description: How competitors describe their target consumer — useful for differentiation
+      source: user_input
+
+structure:
+  sections:
+    - id: persona-overview
+      name: Persona Overview
+      required: true
+      description: Name, one-line description, demographic snapshot, psychographic essence, and a defining quote
+      guidance: >-
+        Open with the persona name and a single sentence that captures who they are and what makes them distinctive. Follow with a tight demographic snapshot (age range, life stage, location type, household situation). Then the psychographic essence — what fundamentally drives this person, what they want from life, and what role products in your category play in their identity. Close with a first-person quote that sounds like something this person would actually say. The quote should be specific enough that a copywriter could use it as inspiration — not generic ("I want quality products") but revealing ("I don't have time to research everything, so I trust brands my friends recommend").
+      word_count: "100–150 words"
+
+    - id: behavioral-profile
+      name: Behavioral Profile
+      required: true
+      description: How they shop, research, use social media, and make decisions from discovery through purchase
+      guidance: >-
+        Map the full discovery-to-purchase journey for this persona. Where do they first encounter new products? Who influences them? How much research do they do before buying — and what form does that research take (reviews, social, friends, editorial)? How quickly do they move from awareness to purchase, and what slows them down? Cover: primary discovery path (social scroll, search, word of mouth, in-store), research behavior (do they read reviews, watch unboxing, ask on Reddit), and the decision moment (what tips them from considering to buying). Be specific about platforms and behaviors — not "uses social media" but "discovers on TikTok, validates on Reddit, buys on brand site or Amazon."
+      word_count: "150–200 words"
+
+    - id: purchase-psychology
+      name: Purchase Psychology
+      required: true
+      description: Purchase triggers, trust signals, red flags that kill the sale, and decision speed
+      guidance: >-
+        This is the most actionable section for conversion optimization. Purchase triggers are specific circumstances or emotional states that make this persona buy NOW — not general benefits, but moments (payday, a friend's recommendation, a bad experience with a competitor, a social proof moment). Trust signals are the specific things that build confidence — UGC photos, ingredient transparency, founder story, number of reviews, press mentions. Red flags are what kills the sale — vague claims, no reviews, price mismatch with perceived quality, shipping time, or anything that feels inauthentic for this audience. Include at least 5 purchase triggers and at least 3 trust signals. Decision speed matters — is this person an impulsive buyer who decides in minutes or a researcher who takes weeks?
+      word_count: "150–200 words"
+
+    - id: media-content-habits
+      name: Media & Content Habits
+      required: true
+      description: Primary platforms, content formats preferred, trusted sources, and role of each platform in the purchase journey
+      guidance: >-
+        Map platforms to behaviors — not just which platforms they use, but what they use each for. Example: TikTok for discovery and entertainment, Instagram for aspirational inspiration, YouTube for deeper product reviews, Reddit for honest peer opinions, email for deals from brands they already trust. Include the content formats they prefer (short video, long-form review, before/after, tutorials, UGC vs. polished brand content). Name specific creators, publications, or communities they trust — the more specific, the more useful for media planning. Note what they actively skip or distrust (ads that feel too salesy, overly filtered content, brand accounts that only post product shots).
+      word_count: "100–150 words"
+
+    - id: price-sensitivity
+      name: Price Sensitivity & Value Perception
+      required: true
+      description: Their relationship with price, what justifies a premium, and how they think about value
+      guidance: >-
+        Avoid generic statements like "price-sensitive" or "willing to pay a premium." Instead, describe the specific trade-offs this persona makes. Do they spend more on some categories and less on others? What's the price ceiling where they start to hesitate, and what removes that hesitation? What makes something feel worth it — efficacy proof, brand story, ingredient quality, social currency, sustainability? Describe their typical purchase behavior: do they wait for a sale, buy full-price when motivated, use subscription savings, or stack discount codes? If they comparison-shop, what are they actually comparing (price per unit, value claims, brand trust)?
+      word_count: "100–150 words"
+
+    - id: messaging-tone-guidance
+      name: Messaging & Tone Guidance
+      required: true
+      description: What messages resonate, tone and language guidance, what to avoid, and example phrases
+      guidance: >-
+        This section must be actionable for a copywriter who has never met this persona. Lead with 2-3 core messages that genuinely land with this person — these are not your brand claims but the emotional or rational hooks that move them. Tone direction should be specific: not "friendly" but "direct and informative, like a smart friend who doesn't talk down to you." Include language this persona actually uses vs. language that feels corporate or inauthentic. Add a "what NOT to say" list — specific claims, tones, or framings that this persona will tune out or actively distrust. Close with 2-3 example phrases or headlines that would work for this persona.
+      word_count: "150–200 words"
+
+    - id: success-metrics
+      name: Success Metrics
+      required: true
+      description: How to know if you're reaching and converting this persona — KPIs and behavioral signals
+      guidance: >-
+        Define 3-5 measurable indicators that confirm this persona is engaging, converting, and returning. Include acquisition metrics (click-through rates from channels this persona uses, cost per acquisition benchmarks), conversion metrics (conversion rate, time-to-first-purchase, add-to-cart rate), and retention metrics (repeat purchase rate, subscription uptake, referral behavior). Also include leading indicators — early behavioral signals (content engagement, email open rates, review submission rate) that predict whether this persona is being reached effectively. If the persona has distinct signals that indicate brand affinity vs. just transactional purchasing, name those too.
+      word_count: "100–150 words"
+
+template: |
+  # Consumer Persona Profile: {persona_name}
+
+  **Product/Brand:** {company_product}
+  **Last updated:** {date}
+
+  ---
+
+  ## Persona Overview
+
+  **{persona_name}** — {one-sentence description of who they are and what makes them distinctive}
+
+  **Demographic snapshot:**
+  - Age range: {range}
+  - Life stage: {e.g., early career professional, new parent, empty nester}
+  - Location: {urban/suburban/rural, geography}
+  - Household: {solo, partnered, family, etc.}
+
+  **Psychographic essence:** {What fundamentally drives this person — their values, aspirations, and how your category fits their life}
+
+  **In their own words:** *"{A specific, revealing first-person quote that captures their mindset}"*
+
+  ---
+
+  ## Behavioral Profile
+
+  **How they discover new products:** {Primary discovery path — specific platforms and triggers}
+
+  **Research behavior:** {How much research, what sources, how long it takes}
+
+  **Decision journey:**
+  1. Discovery: {where and how}
+  2. Consideration: {how they evaluate}
+  3. Purchase: {what tips them to buy}
+  4. Post-purchase: {what they do after — review, share, reorder}
+
+  ---
+
+  ## Purchase Psychology
+
+  **Purchase triggers** (what makes them buy NOW):
+  1. {Trigger 1 — specific circumstance or emotional state}
+  2. {Trigger 2}
+  3. {Trigger 3}
+  4. {Trigger 4}
+  5. {Trigger 5}
+
+  **Trust signals** (what builds confidence):
+  - {Signal 1}
+  - {Signal 2}
+  - {Signal 3}
+
+  **Red flags** (what kills the sale):
+  - {Red flag 1}
+  - {Red flag 2}
+  - {Red flag 3}
+
+  **Decision speed:** {Impulsive / Considered / Research-heavy — and typical time from awareness to purchase}
+
+  ---
+
+  ## Media & Content Habits
+
+  | Platform | How They Use It | Role in Purchase Journey |
+  |---|---|---|
+  | {Platform 1} | {behavior} | {discovery / validation / purchase} |
+  | {Platform 2} | {behavior} | {role} |
+  | {Platform 3} | {behavior} | {role} |
+
+  **Trusted voices:** {Specific creators, publications, or communities they trust}
+
+  **What they skip or distrust:** {Content types, formats, or brand behaviors that turn them off}
+
+  ---
+
+  ## Price Sensitivity & Value Perception
+
+  **Price relationship:** {How they think about price in this category}
+
+  **Premium justifiers:** {What makes them pay more without hesitation}
+
+  **Purchase patterns:** {Full-price buyer / sale-waiter / subscription-saver / discount-stacker}
+
+  **Comparison behavior:** {Do they comparison shop, and if so, what are they actually comparing}
+
+  ---
+
+  ## Messaging & Tone Guidance
+
+  **Core messages that land:**
+  1. {Message 1 — emotional or rational hook, not a brand claim}
+  2. {Message 2}
+  3. {Message 3}
+
+  **Tone direction:** {Specific tone description — not just "friendly" but something a copywriter can act on}
+
+  **Language they use:** {Specific words and phrases from their vocabulary}
+
+  **Language to avoid:** {Words, tones, or framings that feel inauthentic or corporate}
+
+  **What NOT to say:**
+  - {Avoid 1}
+  - {Avoid 2}
+  - {Avoid 3}
+
+  **Example phrases that work:**
+  - "{Example headline or CTA 1}"
+  - "{Example headline or CTA 2}"
+  - "{Example headline or CTA 3}"
+
+  ---
+
+  ## Success Metrics
+
+  **Acquisition signals:**
+  - {KPI 1 with target benchmark}
+  - {KPI 2}
+
+  **Conversion signals:**
+  - {KPI 3 with target benchmark}
+  - {KPI 4}
+
+  **Retention signals:**
+  - {KPI 5 with target benchmark}
+
+  **Early indicators** (leading signals this persona is being reached):
+  - {Signal 1}
+  - {Signal 2}
+
+variations:
+  - id: dtc-physical
+    name: DTC Consumer Persona (Physical Product)
+    description: Optimized for physical product DTC brands. Adds unboxing experience, subscription behavior, replenishment triggers, and in-store vs. online purchase split.
+    overrides:
+      sections_add:
+        - unboxing-and-packaging
+        - subscription-behavior
+      tone: "Focus on tactile experience, routine integration, and repurchase triggers."
+
+  - id: consumer-saas-app
+    name: Consumer SaaS / App Persona
+    description: For digital product and app personas. Replaces physical purchase triggers with onboarding behavior, feature adoption, upgrade triggers, and churn signals.
+    overrides:
+      sections_add:
+        - onboarding-behavior
+        - upgrade-triggers
+        - churn-signals
+      tone: "Focus on habit formation, feature value, and the moment of 'aha' realization."
+
+  - id: retail-in-store
+    name: Retail / In-Store Shopper Persona
+    description: For brands selling through retail. Adds in-store behavior, shelf psychology, packaging role, and retailer-specific triggers.
+    overrides:
+      sections_add:
+        - in-store-behavior
+        - packaging-role
+        - retailer-context
+      tone: "Focus on in-aisle decision-making, packaging as first impression, and retailer loyalty dynamics."
+
+quality_criteria:
+  required_elements:
+    - "Persona name is specific and memorable — not a demographic label but a person (e.g., 'Efficient Emma', not 'The Millennial')"
+    - "All behavioral claims are grounded in specific actions, platforms, and patterns — not demographic assumptions"
+    - "At least 5 distinct purchase triggers listed"
+    - "At least 3 trust signals with enough specificity to guide creative decisions"
+    - "Messaging section includes an explicit 'what NOT to say' list"
+    - "Tone direction is specific enough for a copywriter to act on — not just 'friendly' or 'approachable'"
+    - "Success metrics include both acquisition and retention indicators"
+    - '"The profile is useful simultaneously to: a copywriter writing an email, a designer building a landing page, and a media buyer building an audience"'
+  prohibited_elements:
+    - "Demographic assumptions presented as behavioral facts (e.g., 'millennials are tech-savvy')"
+    - "Generic persona name that is just a demographic label ('The Young Mom', 'The Millennial')"
+    - "Fewer than 5 purchase triggers"
+    - "Tone guidance that only says 'friendly', 'approachable', or 'authentic' without specifics"
+    - "Messaging section that lists brand claims instead of audience-resonant hooks"
+    - "Success metrics without specific KPIs or benchmarks"
+  length_check:
+    minimum: 700
+    maximum: 1400
+    strict: false

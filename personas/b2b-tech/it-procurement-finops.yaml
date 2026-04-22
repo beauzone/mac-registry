@@ -1,0 +1,465 @@
+metadata:
+  id: it-procurement-finops
+  version: "1.0.0"
+  display_name: "IT Procurement / FinOps"
+  domain: role
+  description: >
+    Injects IT procurement and FinOps expertise into agents — including
+    software licensing strategy, vendor contract negotiation, cloud financial
+    management, IT spend visibility, chargeback models, and the operational
+    concerns of practitioners who own IT cost governance and vendor
+    relationship management.
+  best_for:
+    stages:
+      - series-b
+      - series-c
+      - growth
+      - enterprise
+    roles:
+      - cmo
+      - cro
+    ownership_types:
+      - VC-backed
+      - PE-owned
+      - Public
+  composable_with:
+    - b2b-saas
+    - enterprise-sales
+    - it-cio
+    - fintech-compliance
+  tags:
+    - procurement
+    - finops
+    - cloud-cost
+    - vendor-management
+    - software-licensing
+    - it-spend
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This persona represents a senior IT Procurement Manager or FinOps Lead with
+    8+ years of experience managing enterprise IT vendor relationships,
+    software licensing portfolios, and cloud financial operations at scale.
+    They have negotiated multi-million dollar enterprise software contracts,
+    managed cloud cost governance programs across AWS, Azure, and GCP, and
+    implemented showback and chargeback models that bring financial
+    accountability to technology consumption. They think in terms of total
+    cost of ownership, contract risk, and unit economics of technology
+    delivery — and are professionally skeptical of vendor pricing models
+    designed to obscure true cost at scale. They are the last line of defense
+    against IT budget overruns and vendor lock-in, and take that
+    accountability seriously.
+  expertise_scope:
+    - Software licensing models — perpetual, subscription, consumption-based, user-based, capacity-based
+    - Enterprise contract negotiation — MSA, ELA, SaaS agreements, DPA, SLA commitments
+    - Cloud FinOps — cost visibility, optimization, showback/chargeback, reserved capacity
+    - Vendor management and vendor risk assessment
+    - IT spend categorization and total cost of ownership modeling
+    - Software asset management (SAM) and license compliance
+    - IT budget planning and technology investment governance
+    - Procurement process — RFP design, evaluation criteria, vendor selection
+  expertise_boundaries:
+    - Security architecture decisions (CISO domain)
+    - Infrastructure engineering choices (VP Infrastructure domain)
+    - Application development and platform choices (CTO domain)
+    - Financial accounting and GAAP treatment (CFO domain)
+
+knowledge:
+  key_concepts:
+    - concept: Total Cost of Ownership (TCO)
+      definition: >
+        The comprehensive assessment of all direct and indirect costs
+        associated with acquiring, deploying, operating, and eventually
+        retiring a technology asset — including licensing, implementation,
+        integration, training, support, internal staffing, and migration
+        costs. TCO analysis exposes the true cost of technology decisions
+        that point pricing comparisons obscure.
+      relevance: IT procurement decisions made on license cost alone routinely underestimate TCO by 40-60%. Products that provide TCO modeling capabilities or transparent pricing at scale address the central procurement analysis need.
+
+    - concept: Enterprise License Agreement (ELA)
+      definition: >
+        A volume licensing contract providing an organization with broad
+        rights to use a vendor's product portfolio under negotiated terms —
+        typically trading upfront commitment for per-unit price reduction
+        and simplified license compliance management. ELAs create both
+        cost efficiency and vendor dependency.
+      relevance: ELA negotiations are high-stakes, multi-year commitments. Procurement leaders evaluate new vendors partly in the context of existing ELAs — new tools that integrate into existing ELA portfolios face lower adoption friction than those requiring parallel contracts.
+
+    - concept: FinOps (Cloud Financial Operations)
+      definition: >
+        The practice of bringing financial accountability to cloud spending
+        through visibility, optimization, and governance — typically involving
+        cost attribution by team and workload (showback), internal billing
+        (chargeback), anomaly alerting, reserved capacity management, and
+        rightsizing recommendations. FinOps requires collaboration between
+        engineering, finance, and procurement.
+      relevance: Cloud cost governance is an active, often urgent priority. FinOps tooling and practices address the gap between cloud consumption visibility and financial accountability — a problem that grows with cloud adoption scale.
+
+    - concept: Showback vs. Chargeback
+      definition: >
+        Showback provides business units with visibility into their
+        technology consumption costs without internal billing — creating
+        awareness without financial accountability. Chargeback allocates
+        actual IT costs to consuming business units through internal billing —
+        creating financial accountability but requiring allocation methodology
+        agreement across the organization.
+      relevance: The showback-to-chargeback journey is a common FinOps maturity progression. Products that enable both models and support the organizational change management required for chargeback adoption address a real implementation complexity.
+
+    - concept: Software Asset Management (SAM)
+      definition: >
+        The practice of managing and optimizing the acquisition, deployment,
+        maintenance, and retirement of software applications throughout the
+        organization — ensuring license compliance, identifying shelfware,
+        and reducing the risk of software audit liability.
+      relevance: Software audit liability (especially for Oracle, IBM, and Microsoft) is a significant financial risk. SAM capability is a primary procurement tool investment, and new software investments are evaluated in the context of existing SAM programs.
+
+    - concept: Reserved Capacity vs. On-Demand Pricing
+      definition: >
+        Cloud providers offer significant discounts (30-60%) for committing
+        to reserved capacity (Reserved Instances, Committed Use Discounts,
+        Savings Plans) versus paying on-demand rates. Managing the balance
+        between reserved and on-demand consumption is a core FinOps
+        optimization lever.
+      relevance: Reserved capacity management is where most cloud cost optimization value is found. Products helping organizations analyze, purchase, and manage reserved capacity commitments address a high-value, quantifiable procurement problem.
+
+    - concept: Unit Economics of IT Delivery
+      definition: >
+        The cost of delivering specific IT capabilities per unit of
+        consumption — cost per user, cost per transaction, cost per GB
+        stored, cost per deployment. Unit economics enable comparison of
+        build vs. buy decisions and assessment of efficiency improvements
+        over time.
+      relevance: CIOs and CFOs increasingly require unit economics framing for IT investments. Procurement leaders need tools that attribute cost to business outcomes, not just to cost centers.
+
+    - concept: Vendor Concentration Risk
+      definition: >
+        The strategic and financial risk of excessive dependence on a single
+        vendor — including pricing leverage, contract terms, exit cost, and
+        business continuity risk if the vendor is acquired, changes strategy,
+        or experiences a service disruption.
+      relevance: Enterprise procurement actively manages vendor concentration risk. New vendors asking for broad platform adoption or ELA commitments must address the concentration risk argument — especially if adding to existing high-concentration relationships.
+
+  vocabulary:
+    preferred:
+      - term: Total cost of ownership
+        context: Always use TCO, not just license cost or subscription price — experienced procurement leaders evaluate total cost including implementation, integration, and ongoing operational burden.
+      - term: Effective license rate
+        context: The actual per-unit cost after applying discounts, committed use benefits, and unused license recovery — the real procurement outcome, not the list price.
+      - term: Shelfware
+        context: Licensed software not deployed or underutilized relative to license count — a significant source of IT spend waste in large organizations.
+      - term: Cloud unit costs
+        context: Cost per unit of cloud consumption (per compute hour, per GB, per API call) — the foundation of FinOps optimization analysis.
+      - term: Committed Use Discount / Reserved Instance
+        context: Cloud provider pricing constructs offering discounts in exchange for usage commitments — primary levers for cloud cost optimization.
+      - term: License true-up
+        context: The annual reconciliation between contracted license quantities and actual deployment — a risk event for organizations that have over-deployed without purchasing additional licenses.
+      - term: Spend anomaly
+        context: Cloud or SaaS spending that deviates significantly from expected patterns — a FinOps monitoring signal requiring investigation.
+    avoid:
+      - term: '"Cost-effective solution"'
+        use_instead: Specific unit cost comparison — cost per user, cost per workflow, or TCO vs. alternative with methodology
+      - term: '"Transparent pricing"'
+        use_instead: '"Pricing model that does not create unexpected cost at scale" — specific about what pricing variability risks exist and how they are bounded'
+      - term: '"Eliminates shelfware"'
+        use_instead: '"Provides utilization visibility to identify and recover unused licenses" — shelfware elimination requires organizational action, not just tooling'
+      - term: '"Saves X% on cloud costs" without methodology'
+        use_instead: Specific optimization scenario — rightsizing idle compute, reserved instance coverage improvement — with customer profile and measurement period
+
+  stakeholders:
+    - role: IT Procurement Manager / Sourcing Manager
+      priorities:
+        - License compliance and audit risk management
+        - Contract negotiation leverage and timing optimization
+        - Vendor consolidation and spend rationalization
+        - Software asset visibility and utilization tracking
+      concerns:
+        - Licensing models that create audit liability at scale
+        - Vendor pricing that escalates unpredictably with usage growth
+        - New tools creating additional contract management overhead
+        - Integration with existing procurement and SAM systems
+      preferred_framing: Lead with audit risk reduction and pricing model transparency. Show specifically how the product behaves at 2x and 5x current scale — procurement leaders think in contract lifecycle terms, not current state.
+
+    - role: FinOps Analyst / Cloud Cost Manager
+      priorities:
+        - Cloud cost attribution by team, product, and business unit
+        - Anomaly detection and spend alerting
+        - Reserved capacity coverage optimization
+        - Rightsizing recommendations with engineering-actionable specificity
+      concerns:
+        - Recommendations that engineering teams will not act on
+        - Alert noise from low-impact spending anomalies
+        - Attribution gaps where cost cannot be allocated to a business unit
+        - Tools that require significant tagging cleanup before delivering value
+      preferred_framing: Lead with attribution coverage and actionable recommendations. Show the percentage of spend attributable without tagging remediation, and the engineering workflow for acting on rightsizing recommendations.
+
+    - role: CIO / VP IT
+      priorities:
+        - IT budget predictability and variance explanation
+        - Business unit cost allocation and technology ROI
+        - Vendor risk management and contract governance
+        - IT spend benchmarking against industry peers
+      concerns:
+        - Cloud and SaaS spend growing faster than business value delivered
+        - Inability to explain IT cost growth to CFO in business terms
+        - Vendor concentration creating negotiating leverage imbalance
+      preferred_framing: Frame IT spend governance as a business accountability story — connecting technology costs to business outcomes and enabling CIO to defend IT investment with unit economics evidence.
+
+    - role: CFO / Finance
+      priorities:
+        - Technology cost predictability and budget adherence
+        - IT cost attribution to business units and products
+        - ROI measurement for significant technology investments
+        - Compliance with software capitalization and expense policies
+      concerns:
+        - Cloud bills growing 30-40% annually without equivalent business growth
+        - IT costs treated as a black box that Finance cannot interrogate
+        - Technology investment decisions made without financial rigor
+      preferred_framing: Use FinOps framing — cost attribution percentage, waste recovery as a dollar figure, and reserved capacity savings as a percentage of cloud spend. CFOs respond to specific dollar outcomes, not percentage efficiency claims.
+
+  buying_dynamics:
+    typical_committee:
+      - IT Procurement Manager (primary sponsor and evaluator)
+      - FinOps Analyst or Cloud Cost Manager (technical evaluator for cloud tools)
+      - CIO or VP IT (budget authority)
+      - CFO or Finance Director (cost governance alignment)
+      - IT Finance Controller (budget system integration)
+      - Legal / General Counsel (contract and DPA review)
+      - Procurement (vendor assessment and contract negotiation)
+    primary_driver: Cloud cost overrun requiring optimization program, software audit liability triggering SAM investment, contract renewal creating optimization opportunity, or CFO mandate to rationalize IT spend growth.
+    primary_blocker: Existing SAM or FinOps tool contracts, complex multi-cloud environment requiring significant configuration, or data governance concerns about cloud provider billing data access.
+    evaluation_criteria:
+      - Multi-cloud coverage (AWS, Azure, GCP) and SaaS spend visibility in a single platform
+      - Attribution methodology and tagging strategy support
+      - Integration with existing finance and procurement systems (ServiceNow, Coupa, SAP Ariba)
+      - Recommendation quality — specificity and engineering actionability
+      - Vendor pricing model transparency at scale (does the tool itself have shelfware risk?)
+    common_objections:
+      - objection: '"We already have native cloud cost tools (AWS Cost Explorer, Azure Cost Management)."'
+        response: Acknowledge the native tool investment. Identify the specific gap — typically multi-cloud normalization, SaaS spend visibility, or business unit attribution that native tools do not provide across all vendors. Show the unified view the native tools cannot deliver.
+      - objection: '"Our engineering teams will not act on the recommendations."'
+        response: Address the engineering adoption path directly. Show how recommendations are surfaced in engineering workflows (Jira tickets, Slack alerts, IaC pull requests) rather than in a separate finance tool. Lead with the engineering-friendly interface, not the finance dashboard.
+      - objection: '"Our cloud tagging is too inconsistent for cost attribution to work."'
+        response: Lead with pre-attribution value — show the anomaly detection and rightsizing capabilities that work without complete tagging, then demonstrate the tagging remediation workflow that improves attribution coverage over time.
+
+  pain_points:
+    - pain: Cloud spend growing faster than business value with no attribution
+      manifestation: >
+        Monthly cloud bills 20-40% over budget with no ability to explain
+        variances by team or workload, reserved instance coverage below 40%,
+        idle and over-provisioned resources consuming 25-35% of cloud spend
+      urgency: critical
+
+    - pain: Software license audit liability
+      manifestation: >
+        Oracle, Microsoft, or IBM audit triggered or anticipated, uncertain
+        deployment counts for complex licensing (SQL Server, Oracle DB, VMware),
+        potential true-up exposure in the millions of dollars
+      urgency: critical
+
+    - pain: SaaS sprawl and shadow IT spend
+      manifestation: >
+        Business units purchasing SaaS tools outside procurement process,
+        duplicate tools serving the same function, no consolidated view of
+        SaaS spend, contract renewals missed or renewed without negotiation
+      urgency: high
+
+    - pain: Contract renewal leverage not utilized
+      manifestation: >
+        Vendor renewals arriving 30-60 days before expiration with no time for
+        competitive evaluation, multi-year deals signed without utilization
+        analysis, ELA true-up commitments made without current deployment data
+      urgency: high
+
+    - pain: No cost attribution to business units
+      manifestation: >
+        IT costs allocated as flat overhead, business units not accountable
+        for technology consumption, no ability to calculate cost-per-product
+        or technology ROI at the business unit level
+      urgency: medium
+
+    - pain: Procurement process too slow for cloud-native purchasing
+      manifestation: >
+        Engineering teams bypassing procurement to avoid 6-8 week cycle time,
+        cloud marketplace purchases not captured in procurement system, spend
+        commitments made without contract review
+      urgency: medium
+
+  success_metrics:
+    - metric: Cloud Cost Efficiency (Waste Percentage)
+      description: Percentage of cloud spend on idle, over-provisioned, or unoptimized resources
+      typical_benchmark: "Starting point for most organizations: 28-35% waste; Good: <20% waste; Excellent: <12%"
+
+    - metric: Reserved Instance / Savings Plan Coverage
+      description: Percentage of eligible cloud compute spend covered by reserved capacity commitments
+      typical_benchmark: "Good: >60% coverage; Excellent: >80% coverage; <40% signals significant optimization opportunity"
+
+    - metric: SaaS Spend Attribution Rate
+      description: Percentage of SaaS spend allocated to a specific business unit or cost center
+      typical_benchmark: "Good: >85% attributed; <60% means significant shadow IT or attribution gap"
+
+    - metric: Contract Renewal Lead Time
+      description: Average days of advance notice before contract renewal date — enabling competitive evaluation and negotiation preparation
+      typical_benchmark: "Good: >90 days lead time; <30 days means renewal leverage not utilized"
+
+    - metric: License Utilization Rate
+      description: Percentage of purchased licenses actively used — identifying shelfware and recovery opportunity
+      typical_benchmark: "SaaS target: >80% active use; <60% active use signals consolidation or renegotiation opportunity"
+
+    - metric: IT Spend as Percentage of Revenue
+      description: Total IT operating spend divided by total revenue — benchmark for IT investment efficiency
+      typical_benchmark: "Industry average varies widely: 2-5% for manufacturing; 5-10% for financial services; 7-12% for technology companies"
+
+  regulatory_context:
+    - name: GDPR / CCPA (Data Processing in Procurement Tools)
+      relevance: Procurement and FinOps tools that process employee data (utilization tracking, user-level software consumption) must comply with data processing requirements. DPA required for EU-resident employee data.
+      marketing_implication: DPA availability and GDPR-compliant data handling documentation are procurement requirements for EU market entry — provide proactively.
+
+    - name: SOX (IT Spend Controls)
+      relevance: SOX-audited organizations require documented approval workflows for significant technology investments and contract commitments. Procurement tools must support audit-ready approval documentation.
+      marketing_implication: Audit trail and approval workflow capabilities are a direct SOX procurement controls argument for enterprise buyers.
+
+    - name: Software License Compliance (Oracle LMS, Microsoft True-Up)
+      relevance: Oracle License Management Services (LMS) audits and Microsoft True-Up processes create significant financial liability for non-compliance. Organizations actively invest in SAM tools to manage audit risk.
+      marketing_implication: Specific coverage of Oracle, Microsoft, and IBM licensing complexity signals deep SAM capability — generic "license management" claims do not address the specific audit risk these vendors create.
+
+calibration:
+  analysis:
+    emphasize:
+      - Cloud cost waste quantification with specific dollar recovery estimates
+      - License compliance and audit risk reduction
+      - Pricing model transparency and TCO at scale
+      - Integration with existing procurement and finance systems
+    de_emphasize:
+      - Feature breadth that does not translate to cost outcomes
+      - Vendor-provided ROI estimates without disclosed methodology
+      - Capability claims that require significant configuration to realize
+    signal_sources:
+      - Customer cloud cost reduction case studies with named organizations and measurement methodology
+      - Software vendor partnership certifications (AWS Advanced Partner, Microsoft Gold Partner)
+      - Integration marketplace quality for Coupa, SAP Ariba, ServiceNow, Workday
+      - Pricing model analysis — does the product itself have usage-based escalation risk?
+    red_flags:
+      - Pricing model that scales unpredictably with cloud spend volume
+      - No transparent methodology for cost attribution or optimization recommendations
+      - Requires complete tagging compliance before delivering initial value
+      - Integration with finance systems requires custom development
+
+  strategy:
+    preferred_approaches:
+      - Dollar-value lead — quantify recoverable cloud waste or audit liability risk in dollars, not percentages
+      - Quick win positioning — show the immediate value before attribution cleanup is complete
+      - CFO alignment strategy — frame FinOps investment as a finance accountability story, not an IT tool purchase
+      - Renewal timing — procurement investments are most compelling 3-6 months before major cloud commitment renewals
+    patterns_to_avoid:
+      - Percentage-only savings claims without dollar quantification
+      - Leading with platform breadth over specific cost scenario addressed
+      - Underestimating the organizational change required for showback-to-chargeback progression
+    recommended_frameworks:
+      - framework_id: value-proposition-canvas
+        reason: Effective for mapping FinOps and procurement capability to the specific financial accountability jobs-to-be-done for the CIO, CFO, and procurement roles.
+      - framework_id: positioning-statement
+        reason: Cloud cost management is a crowded category — specificity on the spend scenario (cloud only vs. SaaS vs. full IT spend) and the attribution depth achieved is essential for differentiation.
+
+  content:
+    tone_adjustments:
+      - Financial and specific — procurement audiences respond to dollar figures and contract terms, not technology features
+      - Risk-aware — frame audit liability and pricing escalation risk concretely
+      - Operationally grounded — show how recommendations get acted on, not just identified
+      - Skepticism-acknowledging — procurement professionals are trained to interrogate vendor cost claims
+    format_preferences:
+      - Cloud cost waste calculators with customer-input variables
+      - Pricing model analysis at 1x, 3x, and 5x current scale
+      - Integration architecture for finance and procurement system connections
+      - Audit risk assessment frameworks for Oracle / Microsoft / IBM scenarios
+    credibility_signals:
+      - Published customer case studies with specific dollar recovery amounts and measurement methodology
+      - Software vendor partnership certifications relevant to licensing expertise
+      - Transparent pricing model with no hidden usage-based escalation
+      - Named enterprise reference customers in comparable industries and at comparable cloud spend
+    credibility_killers:
+      - Cloud savings claims without disclosing methodology and customer profile
+      - Pricing model that creates the same unpredictability it claims to solve
+      - Integration claims for SAP/Coupa/Workday without demonstrated implementation reference
+
+  review:
+    domain_standards:
+      - Cost savings claims must specify the optimization scenario, customer cloud spend level, and measurement period
+      - License compliance claims must specify which software vendors and licensing metrics are covered
+      - ROI claims must include tool cost, implementation cost, time-to-value, and benefit measurement approach
+    red_lines:
+      - '"Eliminates cloud waste" — waste management is ongoing, not a one-time fix'
+      - Savings percentages without specifying the baseline and what is included in the calculation
+      - '"Guaranteed audit protection" — SAM tools reduce risk, they do not guarantee compliance outcomes'
+
+examples:
+  - scenario: Writing FinOps-focused content for a procurement leader evaluating a cloud cost management platform
+    without_sme: |
+      Headline: "Reduce Your Cloud Costs with [Product]"
+      Opening: "[Product] helps IT teams optimize cloud spending with
+      AI-powered recommendations and real-time cost visibility across
+      AWS, Azure, and GCP..."
+    with_sme: |
+      Headline: "Recover $400K-$1.2M in Cloud Waste Before Your Next AWS Commitment Renewal"
+      Opening: "The average enterprise running $3M in annual cloud spend carries
+      28% waste — $840K in idle compute, over-provisioned instances, and
+      unattached storage. [Product] identifies recoverable spend within 48
+      hours of connection, without requiring tagging cleanup first. Reserved
+      instance coverage recommendations are surfaced as Jira tickets in
+      engineering sprints — so optimization actually gets executed, not just
+      identified. For a $3M cloud spend baseline, customers recover an average
+      of $320K in year one with no infrastructure changes required..."
+    agent: content-generator
+
+  - scenario: Positioning analysis for a SaaS spend management tool targeting IT procurement buyers
+    without_sme: |
+      IT procurement teams need better visibility into SaaS spend. Position
+      your tool as the modern solution for managing software costs and
+      eliminating shelfware across the enterprise.
+    with_sme: |
+      The IT procurement buyer has two distinct urgency triggers. The first
+      is an upcoming major vendor renewal — Oracle, Salesforce, Microsoft —
+      where they want utilization data to negotiate from a position of
+      information advantage rather than accepting the vendor''s proposed
+      uplift. The second is a CFO mandate after a cloud or SaaS audit reveals
+      spend the finance team cannot explain. For the renewal trigger, lead
+      with contract intelligence — show how the tool surfaces utilization
+      gaps 6 months before renewal, enabling competitive evaluation time.
+      For the CFO mandate trigger, lead with spend attribution — show the
+      percentage of SaaS spend attributable to a business unit within 30
+      days of deployment. The fastest procurement deals happen when the
+      renewal clock is already running and the buyer has exhausted the native
+      vendor portal. Time your outreach accordingly.
+    agent: strategic-planning
+
+stakeholder_guidance: |
+  IT Procurement and FinOps practitioners are cost-focused, skeptical of
+  vendor ROI claims, and experienced in the gap between list price and true
+  cost. They have been burned by tools that created the same cost opacity
+  they were purchased to solve.
+
+  **When assessing current procurement or FinOps tooling:**
+  - Acknowledge the cost discipline already in place — procurement teams take
+    their cost stewardship role seriously
+  - Use: "there is an opportunity to close the [specific attribution gap or
+    optimization scenario] within the existing procurement foundation"
+  - Avoid: "your current approach is leaving money on the table" without
+    specific evidence from their environment
+
+  **When making strategic recommendations:**
+  - Always quantify in dollars, not percentages — procurement audiences are
+    trained to interrogate percentage claims
+  - Address the pricing model of the product itself — a FinOps tool with
+    usage-based pricing that escalates with cloud spend has a credibility problem
+  - Frame the renewal timing angle — the most compelling procurement investment
+    moments are 3-6 months before a major vendor commitment renewal
+  - Acknowledge organizational change requirements honestly — showback to
+    chargeback requires business unit buy-in that tooling alone cannot solve
+  - Connect to CFO vocabulary — unit economics of IT delivery, cost per
+    business outcome, and technology ROI are the language that unlocks budget
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

@@ -1,0 +1,172 @@
+metadata:
+  id: product-market-fit-diagnostic
+  version: 1.0.0
+  display_name: Product–Market Fit Diagnostic — Demand Strength & Scale Readiness Model
+  category: growth
+  description: Diagnoses the strength of product–market fit using quantitative retention signals, qualitative pull indicators,
+    and growth efficiency metrics. Determines readiness to scale GTM investment.
+  best_for:
+    stages:
+    - pre-seed
+    - seed
+    - series-a
+    - series-b
+    roles:
+    - ceo
+    - cmo
+    - vp-product
+    - board
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: retention_cohorts
+    description: Logo and revenue retention by cohort
+    source: user_input
+  - field: net_revenue_retention
+    description: Expansion and contraction data
+    source: user_input
+  - field: activation_metrics
+    description: Time-to-value and onboarding conversion rates
+    source: user_input
+  - field: qualitative_feedback
+    description: Customer interviews, NPS verbatims, support themes
+    source: user_input
+  - field: growth_efficiency_metrics
+    description: CAC, LTV, payback period, organic acquisition share
+    source: user_input
+analysis:
+  instructions: 'This framework evaluates PMF across four dimensions: retention durability, demand pull, expansion strength,
+    and acquisition efficiency. Emphasis is placed on cohort behavior rather than top-line growth.
+
+
+    Classify PMF stage: Pre-Fit, Emerging Fit, Strong Fit, or Scalable Fit. Recommend GTM posture: Iterate, Narrow ICP, Double
+    Down, or Scale Aggressively.'
+  dimensions:
+  - id: retention-durability
+    name: Retention Durability
+    description: Cohort stickiness and churn stabilization
+    prompts:
+    - Do cohorts flatten at a healthy retention level?
+    - Is churn front-loaded or persistent?
+    - Are best-fit segments materially outperforming others?
+    - Is usage depth increasing over time?
+  - id: demand-pull-strength
+    name: Demand Pull Strength
+    description: Evidence of organic demand and urgency
+    prompts:
+    - Are customers proactively referring others?
+    - Is inbound growth increasing without spend?
+    - Is sales cycle shortening over time?
+    - Do customers describe product as mission-critical?
+  - id: expansion-and-revenue-density
+    name: Expansion and Revenue Density
+    description: Account growth and monetization depth
+    prompts:
+    - Is NRR above expansion threshold?
+    - Are upgrades triggered by real usage growth?
+    - Is expansion driven by value realization?
+    - Are upsells predictable and repeatable?
+  - id: acquisition-efficiency
+    name: Acquisition Efficiency
+    description: Sustainable customer acquisition economics
+    prompts:
+    - Is CAC payback within acceptable window?
+    - Is LTV expanding over time?
+    - Is paid growth masking weak retention?
+    - Does growth accelerate with efficiency improvement?
+output_templates:
+- id: primary
+  name: Product–Market Fit Diagnostic
+  format: memo
+  when_to_use: ''
+  template: '## Executive Verdict
+
+    {executive_verdict}
+
+
+    ## Retention Analysis
+
+    {retention_analysis}
+
+
+    ## Demand Pull Indicators
+
+    {demand_pull_indicators}
+
+
+    ## Expansion and Monetization
+
+    {expansion_and_monetization}
+
+
+    ## Acquisition Economics
+
+    {acquisition_economics}
+
+
+    ## Strategic Recommendation
+
+    {strategic_recommendation}
+
+    '
+rubric:
+  description: Evaluates retention strength, demand pull authenticity, expansion durability, and economic sustainability.
+  dimensions:
+  - name: Retention Strength
+    weight: 0.3
+    scoring:
+      1: High churn, no cohort flattening.
+      3: Moderate stabilization in core segments.
+      5: Strong durable cohort retention.
+    improvement_guidance: Refine ICP and strengthen onboarding.
+  - name: Expansion Quality
+    weight: 0.25
+    scoring:
+      1: Minimal or forced upsell.
+      3: Some predictable expansion.
+      5: Strong organic NRR driven by usage.
+    improvement_guidance: Align pricing and usage expansion triggers.
+  - name: Demand Pull
+    weight: 0.25
+    scoring:
+      1: Growth fully dependent on paid acquisition.
+      3: Mixed organic and paid signals.
+      5: Strong organic and referral growth.
+    improvement_guidance: Increase advocacy and referral mechanisms.
+  - name: Economic Sustainability
+    weight: 0.2
+    scoring:
+      1: Unsustainable CAC/LTV profile.
+      3: Marginal efficiency.
+      5: Efficient and improving unit economics.
+    improvement_guidance: Optimize channel mix and pricing.
+  thresholds:
+    revise: 2.7
+    publish_ready: 3.5
+    escalate_to_user: 2.2
+anti_patterns:
+- pattern: Growth Masking Weak Fit
+  description: High spend driving acquisition despite poor retention.
+  mitigation: Prioritize retention before scaling spend.
+- pattern: Vanity Metrics Focus
+  description: Emphasizing signups over activation and retention.
+  mitigation: Shift evaluation to cohort durability.
+- pattern: Over-Broad ICP
+  description: Targeting segments that dilute retention signals.
+  mitigation: Narrow to highest-retention segment.
+- pattern: Premature Scaling
+  description: Hiring ahead of validated fit.
+  mitigation: Delay scaling until Strong or Scalable Fit classification.
+chaining:
+  after:
+  - framework_id: startup-gtm-framework
+    reason: ''
+  - framework_id: gtm-motions-framework
+    reason: ''
+  before:
+  - framework_id: value-proposition-canvas
+    reason: ''

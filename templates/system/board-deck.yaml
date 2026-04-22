@@ -1,0 +1,299 @@
+metadata:
+  id: board-deck
+  version: "1.0.0"
+  display_name: "Board Deck — Marketing Update"
+  category: strategy
+  description: >
+    A slide-outline for a board or investor marketing update. Structured for
+    sophisticated, time-constrained readers who need strategic context, business
+    performance, and clear asks — not operational detail. Covers narrative,
+    metrics, strategic positioning, and decisions required.
+  output_format: slide-outline
+  typical_length: "8–12 slides (excluding appendix)"
+  best_for:
+    agents:
+      - strategic-planning
+      - chief-of-staff
+    stages:
+      - series-a
+      - series-b
+      - series-c
+      - enterprise
+    modes:
+      - fractional
+      - fte
+  tags:
+    - board
+    - investor
+    - executive
+    - strategy
+    - presentation
+    - governance
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: company_name
+      description: Company name for deck header and branding
+      source: skill
+    - field: period
+      description: The reporting period (e.g., Q1 2026, H1 2026)
+      source: user_input
+    - field: business_performance
+      description: Key business and marketing metrics for the period — actuals vs. plan
+      source: skill
+    - field: strategic_narrative
+      description: The overarching strategic story for this period — what the company is doing and why
+      source: framework_output
+    - field: decisions_required
+      description: The specific decisions or approvals required from the board
+      source: user_input
+  optional:
+    - field: investor_names
+      description: Names of board members / investors in the room — affects level of assumed context
+      source: user_input
+    - field: fundraise_status
+      description: If relevant — fundraise timeline or investor update context
+      source: user_input
+    - field: competitive_context
+      description: Any competitive developments the board should be aware of
+      source: framework_output
+
+structure:
+  sections:
+    - id: title
+      name: Title Slide
+      required: true
+      description: Company name, period, presenter, and date
+      guidance: Simple cover. Company name or logo placeholder, period ("Q1 2026 Board Update"), presenter name and role, date. Board decks open with presence, not content.
+
+    - id: agenda
+      name: Agenda
+      required: false
+      description: Deck outline — section names only
+      guidance: Optional. Include only if the deck is 10+ slides or if the board asked for a structured agenda. Keep it to 5 items or fewer.
+
+    - id: executive-summary
+      name: Executive Summary
+      required: true
+      description: The 3–5 most important things the board needs to take away from this update
+      guidance: One slide. Three to five bullet points. Each bullet is a complete strategic statement — not a slide title, not a teaser. Board members may read only this slide. State the verdict, the signal, and the ask.
+      word_count: "80–120 words"
+
+    - id: strategic-narrative
+      name: Strategic Narrative / Company Positioning
+      required: true
+      description: The overarching story — what the company is doing, why now, and how marketing supports the business thesis
+      guidance: >-
+        This is not a marketing update — it is a market positioning update. Answer: where are you winning, why are you winning there, and what changes in the next period? Board members want to know if the company is executing on the thesis they funded.
+      word_count: "100–150 words per slide"
+
+    - id: business-performance
+      name: Business Performance
+      required: true
+      description: Core business and marketing metrics for the period — actuals vs. plan with narrative interpretation
+      guidance: Lead with the most investor-relevant metrics — pipeline, ARR contribution, CAC, LTV/CAC ratio, NRR. Do not lead with channel metrics (impressions, clicks). Present actuals vs. plan. Add a brief interpretation for each key metric — not just the number, but what it signals. Green/Yellow/Red status.
+      format_notes: >-
+        Table with columns: Metric | Plan | Actual | Status | Signal. Follow with 3–4 sentence narrative verdict.
+
+    - id: strategic-update
+      name: Strategic Update — Key Priorities Progress
+      required: true
+      description: Progress on the 2–4 strategic priorities the board approved or is tracking
+      guidance: For each priority the board has previously seen, give a brief status. What was planned, what actually happened, and what changed? Be direct about delays or pivots — boards appreciate honesty over spin.
+      format_notes: >-
+        One row per priority: Priority | Status | Key Development | Next Milestone
+
+    - id: market-and-competitive
+      name: Market and Competitive Update
+      required: false
+      description: Significant market developments or competitive moves the board should know about
+      guidance: Include only if material — a major competitor launch, a market shift, or an analyst report that changes the landscape. Frame in terms of what it means for the company's positioning, not just what happened.
+      word_count: "80–120 words"
+
+    - id: financial-summary
+      name: Marketing Spend Summary
+      required: false
+      description: Budget vs. actuals with key allocation decisions and forward outlook
+      guidance: Board-level summary only — not line-item budget. Total spend vs. plan, efficiency ratios (CPL, CAC), and a sentence on the most significant reallocation made during the period. Include forward guidance if in budget planning season.
+      format_notes: Summary table + 2–3 sentence narrative
+
+    - id: decisions-required
+      name: Decisions Required
+      required: true
+      description: Specific decisions or approvals the board needs to make — the action slide
+      guidance: This slide exists to generate specific outcomes from the board meeting. State each decision clearly — not as an open question but as a recommended decision with the options. Include the consequence of not deciding (timeline slip, cost, opportunity missed).
+      format_notes: >-
+        Bulleted list. 2–4 items. Each includes: Decision, Recommended action, Consequence of delay.
+
+    - id: appendix
+      name: Appendix
+      required: false
+      description: Supporting data, channel breakdowns, or methodology detail
+      guidance: Include appendix slides for any data referenced in the main deck that a board member might want to inspect. Clearly label with A1, A2, etc. and note which main deck section they support.
+
+template: |
+  # {company_name} — {period} Board Update
+
+  *{presenter_name}, {presenter_role} | {date}*
+
+  ---
+
+  ## Slide 1: Title
+
+  **{company_name}**
+  **{period} Board Update**
+  {presenter_name} | {date}
+
+  ---
+
+  ## Slide 2: Executive Summary
+
+  **What the board needs to know:**
+
+  - {Strategic verdict — 1 sentence on overall performance vs. plan}
+  - {Key strategic development — the most important thing that happened or changed}
+  - {Market or competitive signal — if material}
+  - {The ask — the most important decision required}
+
+  *{1–2 sentence closing statement on the forward outlook and what execution success looks like.}*
+
+  ---
+
+  ## Slide 3: Strategic Narrative
+
+  **Where we are in the market:**
+
+  {2–3 sentences on the company's current market position. What are we winning? In what segment or use case are we the clear choice? What has changed since the last board update?}
+
+  **Why marketing is the lever:**
+
+  {1–2 sentences connecting marketing strategy to business thesis. Are we building brand in a crowded market? Driving efficiency in a proven channel? Expanding to a new segment?}
+
+  ---
+
+  ## Slide 4: Business Performance
+
+  | Metric | Plan | Actual | Status | Signal |
+  |---|---|---|---|---|
+  | {Pipeline generated} | {target} | {actual} | 🟢 | {what it signals} |
+  | {Marketing-sourced ARR} | {target} | {actual} | 🟡 | {what it signals} |
+  | {CAC} | {target} | {actual} | 🟢 | {what it signals} |
+  | {LTV / CAC ratio} | {target} | {actual} | 🟢 | {what it signals} |
+  | {NRR contribution} | {target} | {actual} | 🔴 | {what it signals} |
+
+  **Verdict:** {3–4 sentence narrative: what does this performance signal about the business? What are we confident in? What requires attention?}
+
+  ---
+
+  ## Slide 5: Strategic Priority Progress
+
+  | Priority | Status | Key Development | Next Milestone |
+  |---|---|---|---|
+  | {Priority 1} | 🟢 On Track | {key development this period} | {next milestone + date} |
+  | {Priority 2} | 🟡 At Risk | {key development — be direct about what changed} | {decision or action needed} |
+  | {Priority 3} | 🟢 On Track | {key development this period} | {next milestone + date} |
+
+  ---
+
+  ## Slide 6: Market and Competitive Update *(include if material)*
+
+  **What changed:**
+
+  {1–2 sentences on the market or competitive development.}
+
+  **What it means for us:**
+
+  {1–2 sentences on the positioning or strategic implication. What does it change, if anything?}
+
+  ---
+
+  ## Slide 7: Marketing Spend Summary *(include in budget review periods)*
+
+  **{period} Budget Performance:**
+
+  | | Plan | Actual | Variance |
+  |---|---|---|---|
+  | Total marketing spend | {plan} | {actual} | {+/- %} |
+  | CPL (blended) | {plan} | {actual} | {+/- %} |
+  | CAC (blended) | {plan} | {actual} | {+/- %} |
+
+  **Key allocation change:** {1–2 sentences on the most significant reallocation and why.}
+
+  **Forward guidance:** {1 sentence on Q+1 budget envelope and any planning dependencies.}
+
+  ---
+
+  ## Slide 8: Decisions Required
+
+  **The board needs to decide:**
+
+  - **{Decision 1}:** {Recommended action.} *(If not decided by {date}: {consequence}.)*
+  - **{Decision 2}:** {Recommended action.} *(If not decided by {date}: {consequence}.)*
+  - **{Decision 3}:** {Recommended action.} *(If not decided by {date}: {consequence}.)*
+
+  ---
+
+  ## Appendix
+
+  **A1: {Supporting data — e.g., Channel performance breakdown}**
+  *(Supports Slide 4: Business Performance)*
+
+  | Channel | Pipeline | Spend | CPL | vs. Prior Period |
+  |---|---|---|---|---|
+  | {Channel 1} | {$} | {$} | {$} | {+/- %} |
+  | {Channel 2} | {$} | {$} | {$} | {+/- %} |
+
+  **A2: {Additional supporting detail as needed}**
+
+variations:
+  - id: fundraise-context
+    name: Fundraise Context
+    description: Adapted for updates during a fundraise process — adds ARR trajectory, cohort retention, and GTM thesis slide. Investor diligence lens.
+    overrides:
+      sections_add:
+        - arr-trajectory
+        - cohort-retention
+        - gtm-thesis
+      tone: "Investor diligence lens. Lead with growth rate, efficiency, and market size opportunity. Every metric should connect to the business model."
+
+  - id: marketing-only-board
+    name: Marketing-Only Board Review
+    description: For a board session focused exclusively on marketing — deeper cut on strategy, channels, and roadmap. Less financial overlay.
+    overrides:
+      sections_remove:
+        - financial-summary
+      sections_add:
+        - channel-strategy
+        - brand-positioning
+      tone: "Deeper on marketing strategy. Board has allocated dedicated time for marketing — use it to go beyond metrics into strategic choices."
+
+branding:
+  supports_branding: true
+  brandable_elements:
+    - element: cover_page
+      description: Company logo with prominent placement, board-appropriate design treatment on title slide
+    - element: color_scheme
+      description: Slide headers, table accents, and status indicators aligned to brand palette
+    - element: footer
+      description: Company name, period, slide number, and confidentiality classification on each slide
+    - element: typography
+      description: Headline and body fonts matching brand guidelines; board decks should use clean, legible typography
+
+quality_criteria:
+  required_elements:
+    - "Executive summary stands alone — a board member reading only this slide knows the verdict and the ask"
+    - "Business performance metrics include actuals vs. plan (not actuals only)"
+    - "Decisions Required slide lists specific decisions with recommended actions — not open questions"
+    - "Narrative interpretation accompanies key metrics — not data tables alone"
+    - "Strategic narrative connects marketing to the company's investor thesis"
+  prohibited_elements:
+    - "Channel-level operational metrics (impressions, clicks, CTR) in the main deck without business context"
+    - "Asks buried in narrative rather than surfaced as a dedicated Decisions Required slide"
+    - "More than 4 decisions on the Decisions Required slide"
+    - "Performance data without a narrative verdict"
+    - "Spin or overly positive framing that obscures genuine performance issues"
+  length_check:
+    minimum: 6
+    maximum: 14
+    strict: false

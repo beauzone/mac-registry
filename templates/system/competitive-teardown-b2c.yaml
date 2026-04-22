@@ -1,0 +1,159 @@
+metadata:
+  id: competitive-teardown-b2c
+  version: "1.0.0"
+  display_name: "Competitive Teardown (B2C)"
+  category: research
+  description: >
+    Structured competitive analysis document for B2C consumer brands — covering positioning,
+    messaging, channel strategy, pricing, customer experience, and identified strategic gaps.
+    Produces actionable competitive intelligence for positioning, campaign, and product decisions.
+    Designed for DTC brands, consumer apps, subscription businesses, and CPG companies.
+  output_format: markdown
+  typical_length: "1,000–1,500 words"
+  best_for:
+    agents:
+      - market-research
+      - strategic-planning
+    stages:
+      - seed
+      - series-a
+      - series-b
+      - series-c
+      - scale
+    modes:
+      - fractional
+      - fte
+  tags:
+    - competitive-analysis
+    - competitive-intelligence
+    - positioning
+    - market-research
+    - b2c
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: your_brand
+      description: Your brand name, product category, and primary positioning
+      source: user_input
+    - field: competitors
+      description: "List of 2-5 competitors to analyze — names and brief descriptions"
+      source: user_input
+    - field: analysis_purpose
+      description: "What decision this analysis will inform — e.g., repositioning, pricing review, campaign strategy, product launch"
+      source: user_input
+  optional:
+    - field: specific_focus_areas
+      description: "Any specific dimensions to prioritize — e.g., pricing, messaging, social strategy"
+      source: user_input
+    - field: research_data
+      description: Any existing competitive data, customer interviews, or market research available
+      source: user_input
+    - field: target_consumer
+      description: The consumer segment both you and competitors are targeting
+      source: user_input
+
+structure:
+  sections:
+    - id: competitive_landscape_summary
+      name: Competitive Landscape Summary
+      required: true
+      description: Overview of the competitive field — who the players are and how the category is structured
+      guidance: >-
+        Open with a 3-4 sentence summary of the competitive landscape. Answer: How crowded is this
+        category? Are competitors clustered around the same positioning or is the space differentiated?
+        Who is the market leader and what do they own? What is the category's primary growth driver
+        (category expansion, competitor switching, or demographic shift)? This framing sets context
+        for everything that follows — avoid listing competitors yet; this is the structural view.
+      word_count: 150-200
+
+    - id: competitor_profiles
+      name: Competitor Profiles
+      required: true
+      description: Individual profile for each competitor covering positioning, messaging, pricing, and channels
+      guidance: >-
+        For each competitor, cover 5 dimensions: (1) Positioning — what is their claimed territory
+        and who are they trying to be for? What words or phrases do they repeat consistently?;
+        (2) Pricing — price point, tier structure, and pricing strategy signals (premium, value,
+        freemium, subscription); (3) Primary acquisition channels — where are they visibly investing?
+        (social ads, creator, organic, retail, PR); (4) Customer experience signals — what does
+        their onboarding, purchase flow, or product delivery communicate about their priorities?;
+        (5) Apparent weaknesses — what is conspicuously absent from their positioning or customer
+        experience? Where do their negative reviews cluster? Keep each profile to 150-200 words.
+      word_count: 150-200
+      field_limits:
+        per_competitor_word_count: 150-200
+
+    - id: positioning_map
+      name: Positioning Map Analysis
+      required: true
+      description: How competitors are positioned relative to each other on the dimensions that matter most
+      guidance: >-
+        Identify the 2 dimensions that most meaningfully differentiate competitors in this category —
+        these are the axes on which consumers make purchase decisions (e.g., price vs. quality perception,
+        premium vs. accessible, functional vs. emotional, specialized vs. broad). Describe where each
+        competitor sits on these dimensions in prose (not a literal visual chart — this is a written
+        document). Identify: Which positioning territory is crowded? Which is underserved? Where is
+        your brand positioned today vs. where there is whitespace? Be specific about what "whitespace"
+        would require — a different customer, a different claim, or a different experience.
+      word_count: 200-300
+
+    - id: messaging_analysis
+      name: Messaging and Claims Analysis
+      required: true
+      description: How competitors are talking to consumers — what they claim, how they prove it, and what they avoid saying
+      guidance: >-
+        Analyze the language competitors use across their websites, ads, and social content. Cover:
+        (1) Table stakes claims — what every competitor says (e.g., "sustainable," "high quality,"
+        "science-backed") — these are category entry costs, not differentiators; (2) Differentiated
+        claims — what specific claims are unique to one competitor and would be credible for you to
+        challenge or own?; (3) Consumer language — what words and phrases from customer reviews,
+        TikTok content, and Reddit appear across the category — this is the language the market uses
+        that brands should adopt; (4) Emotional territory — which competitor owns which emotional
+        space (trust, aspiration, belonging, value, etc.)?
+      word_count: 200-300
+
+    - id: strategic_gaps
+      name: Strategic Gaps and Opportunities
+      required: true
+      description: Specific opportunities your brand can exploit based on the competitive analysis
+      guidance: >-
+        Identify 3-5 specific strategic gaps — each gap should be a concrete opportunity, not a
+        vague observation. For each gap, specify: (1) What is missing in the competitive field?;
+        (2) Why is this a real gap (evidence from consumer behavior, reviews, or competitor
+        weaknesses) rather than a gap because competitors can't see it?; (3) What would your brand
+        need to credibly occupy this territory — a product claim, a channel, a customer segment, or
+        a pricing move? Connect each gap directly to the analysis purpose stated in inputs.
+      word_count: 200-300
+
+    - id: implications_and_recommendations
+      name: Implications and Recommended Actions
+      required: true
+      description: 3-5 specific, actionable recommendations based on the competitive analysis
+      guidance: >-
+        Translate the analysis into actions. For each recommendation: state what to do, why the
+        competitive analysis supports it, and what the first concrete step would be. Recommendations
+        should be specific to the analysis purpose provided — if the purpose was positioning review,
+        recommend positioning changes; if campaign strategy, recommend messaging or channel decisions.
+        Avoid generic "differentiate your brand" recommendations — every recommendation should be
+        specific enough that a marketing team could begin acting on it next week.
+      word_count: 150-250
+
+quality_criteria:
+  - criterion: Competitor profiles distinguish between table stakes claims and genuine differentiators
+  - criterion: Positioning map identifies specific whitespace, not just "be better"
+  - criterion: Strategic gaps are backed by evidence from the analysis, not assertion
+  - criterion: Recommendations are specific and connected to the stated analysis purpose
+  - criterion: Consumer language from reviews and social is incorporated into messaging analysis
+  - criterion: Analysis does not use vague language like "unique positioning" without specifics
+
+variants:
+  - name: Rapid Competitive Scan
+    description: A faster, lighter version for early-stage brands or quick decision support
+    modifications: Limit to 3 competitors; combine positioning map and messaging analysis into one section; reduce to 2-3 strategic gaps; trim word counts by 30%
+  - name: Subscription Category Teardown
+    description: For subscription businesses where retention metrics and onboarding are central
+    modifications: Add a subscription-specific section covering competitor churn rates (if public), trial mechanics, and cancellation experience analysis. Include App Store / Trustpilot review sentiment for each competitor.
+  - name: Retail Category Teardown
+    description: For brands in physical retail competing for shelf space and in-store consumer consideration
+    modifications: Add retail presence and shelf positioning section; include packaging and in-store messaging analysis; cover retailer co-marketing investments and retail exclusivities

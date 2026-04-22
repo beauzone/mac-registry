@@ -1,0 +1,165 @@
+metadata:
+  id: gtm-motions-framework
+  version: 1.0.0
+  display_name: GTM Motions — Revenue Architecture & Hybrid Orchestration Model
+  category: growth
+  description: Defines the six primary B2B SaaS GTM motions and the rules for sequencing, combining, and orchestrating hybrid
+    revenue models. Establishes architectural discipline before scaling headcount or channels.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    roles:
+    - ceo
+    - cmo
+    - cro
+    - vp-growth
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: acv_range
+    description: Average contract value by segment
+    source: user_input
+  - field: target_segments
+    description: SMB, mid-market, enterprise distribution
+    source: existing_deliverable
+  - field: product_complexity
+    description: Implementation burden and onboarding depth
+    source: user_input
+  - field: pmf_stage
+    description: Pre-Fit, Emerging, Strong, Scalable
+    source: existing_deliverable
+  - field: capital_constraints
+    description: Runway and burn tolerance
+    source: user_input
+analysis:
+  instructions: 'This framework classifies revenue architecture into six core motions and defines sequencing rules. It enforces
+    single dominant motion before layering hybrids. Emphasis is placed on ACV, product complexity, and PMF maturity alignment.
+
+
+    Identify primary dominant motion. Assess misalignment between ACV, complexity, and current motion. Define hybrid pattern
+    only if repeatability validated. Recommend hiring and resource allocation tied to dominant motion.'
+  dimensions:
+  - id: acv-motion-fit
+    name: ACV-Motion Fit
+    description: Alignment between deal size and motion cost structure
+    prompts: []
+  - id: complexity-alignment
+    name: Complexity Alignment
+    description: Motion suitability given onboarding depth
+    prompts: []
+  - id: pmf-readiness
+    name: PMF Readiness
+    description: Whether repeatability exists before scaling motion
+    prompts: []
+  - id: capital-efficiency
+    name: Capital Efficiency
+    description: CAC relative to runway constraints
+    prompts: []
+output_templates:
+- id: primary
+  name: GTM Motion Architecture
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Current Motion Assessment
+
+    {current_motion_assessment}
+
+
+    ## ACV and Complexity Alignment
+
+    {acv_and_complexity_alignment}
+
+
+    ## Hybrid Pattern Design
+
+    {hybrid_pattern_design}
+
+
+    ## Organizational Implications
+
+    {organizational_implications}
+
+
+    ## Capital and Hiring Recommendation
+
+    {capital_and_hiring_recommendation}
+
+    '
+rubric:
+  description: Evaluates motion clarity, sequencing discipline, economic alignment, and scalability.
+  dimensions:
+  - name: Dominant Motion Clarity
+    weight: 0.25
+    scoring:
+      1: Multiple competing motions.
+      3: Primary motion unclear but trending.
+      5: Clear single dominant motion.
+    improvement_guidance: Eliminate secondary distractions.
+  - name: ACV Alignment
+    weight: 0.25
+    scoring:
+      1: Motion economics incompatible with ACV.
+      3: Partial alignment.
+      5: Cost structure aligned with deal size.
+    improvement_guidance: Adjust motion to match ACV band.
+  - name: Sequencing Discipline
+    weight: 0.2
+    scoring:
+      1: Premature hybrid stacking.
+      3: Some layering without validation.
+      5: Deliberate sequencing.
+    improvement_guidance: Prove repeatability before adding motion.
+  - name: Capital Efficiency
+    weight: 0.15
+    scoring:
+      1: Burn scaling faster than retention.
+      3: Mixed efficiency signals.
+      5: Motion supports improving unit economics.
+    improvement_guidance: Model blended CAC by motion.
+  - name: Organizational Alignment
+    weight: 0.15
+    scoring:
+      1: Incentives misaligned across teams.
+      3: Partial coordination.
+      5: Comp and metrics aligned to dominant motion.
+    improvement_guidance: Align incentives to motion architecture.
+  thresholds:
+    revise: 2.8
+    publish_ready: 3.6
+    escalate_to_user: 2.2
+anti_patterns:
+- pattern: Motion Stacking Chaos
+  description: Simultaneously pursuing multiple primary motions.
+  mitigation: Select and commit to one dominant motion first.
+- pattern: ACV-Motion Mismatch
+  description: Using high-touch sales for low ACV product.
+  mitigation: Realign motion economics.
+- pattern: Channel Dependency Risk
+  description: Overreliance on single partner ecosystem.
+  mitigation: Diversify after validation.
+- pattern: Incentive Conflict
+  description: Sales and product misaligned on revenue source.
+  mitigation: Align comp plans to motion design.
+chaining:
+  after:
+  - framework_id: okrs
+    reason: ''
+  - framework_id: startup-gtm-stage-model
+    reason: ''
+  before:
+  - framework_id: plg-hybrid-plg-framework
+    reason: ''
+  - framework_id: product-market-fit-diagnostic
+    reason: ''

@@ -1,0 +1,244 @@
+metadata:
+  id: gartner-go-to-market-strategy-framework
+  version: 1.0.0
+  display_name: Gartner Go-To-Market Strategy Framework
+  category: gtm
+  description: 'Aligns growth strategy with revenue execution by designing the go-to-market operating model across target
+    market focus, buyer entry points, sales incentives, investment allocation, and voice-of-customer feedback loops.
+
+    '
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c
+    - growth
+    - enterprise
+    roles:
+    - cmo
+    - cro
+    - ceo
+    - board
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  tags:
+  - gtm
+  - revenue-strategy
+  - sales-alignment
+  - demand-generation
+  - growth-strategy
+  source: Gartner GTM Strategy Framework
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: company_description
+    description: Overview of company offering and business model
+    source: skill
+  - field: target_market_definition
+    description: Current ICP, segmentation model, and geographic scope
+    source: skill
+  - field: revenue_strategy
+    description: Current revenue growth objectives and GTM priorities
+    source: user_input
+  optional:
+  - field: sales_compensation_model
+    description: Current incentive structure for sellers
+    source: user_input
+  - field: demand_generation_channels
+    description: Current marketing and demand channels
+    source: skill
+  - field: voice_of_customer_sources
+    description: Existing VoC sources such as surveys, support tickets, win/loss analysis
+    source: skill
+analysis:
+  instructions: "Apply the Gartner Go-to-Market Strategy Framework to assess alignment between\nthe company's growth strategy\
+    \ and its revenue execution model.\n\nEvaluate each of the five GTM pillars in sequence.\n\n1. Assess Target Market Focus\n\
+    \   Determine whether the organization has clearly defined high-value customer\n   segments and whether sales capacity\
+    \ is aligned to those segments.\n\n2. Evaluate First Customer Touchpoints\n   Identify the most common entry points where\
+    \ buyers encounter the company.\n   Determine whether marketing channels and sales outreach align with buyer behavior.\n\
+    \n3. Review Sales Compensation Alignment\n   Examine whether compensation structures reinforce the desired GTM strategy.\n\
+    \   Incentives should reward behaviors aligned with strategic segments and long-term value.\n\n4. Analyze Corporate Investment\
+    \ Alignment\n   Assess whether investments in marketing, sales capacity, partnerships,\n   and enablement are concentrated\
+    \ in areas that support growth priorities.\n\n5. Examine Voice-of-Customer Feedback Loops\n   Determine whether structured\
+    \ customer insight informs strategy decisions.\n\nSynthesize findings to identify misalignment between growth strategy\
+    \ and field execution.\n"
+  dimensions:
+  - id: target-market-focus
+    name: Target Market Focus
+    description: Alignment between strategic growth segments and sales coverage
+    prompts:
+    - Are the highest-value market segments clearly defined?
+    - Does sales coverage align with the most strategic customer segments?
+    - Are resources overly spread across low-priority markets?
+  - id: customer-entry-points
+    name: First Customer Touchpoints
+    description: Where and how buyers initially discover the company
+    prompts:
+    - Which channels introduce buyers to the company first?
+    - Do demand generation channels align with buyer research behavior?
+    - Are there gaps between marketing awareness and sales engagement?
+  - id: sales-incentives
+    name: Sales Compensation Alignment
+    description: Whether compensation reinforces strategic revenue priorities
+    prompts:
+    - Do incentive plans encourage focus on strategic segments?
+    - Are sellers rewarded for long-term value creation or short-term deals?
+    - Do compensation structures support expansion or retention?
+  - id: investment-alignment
+    name: Corporate Investment Alignment
+    description: Resource allocation supporting the GTM strategy
+    prompts:
+    - Are marketing and sales investments aligned with growth priorities?
+    - Is capacity concentrated in the highest opportunity segments?
+    - Are tools and enablement investments supporting the strategy?
+  - id: voice-of-customer
+    name: Voice of the Customer
+    description: Integration of customer feedback into GTM decision making
+    prompts:
+    - Are structured VoC mechanisms in place?
+    - Do insights from customers inform positioning and product direction?
+    - Is win/loss analysis feeding strategic adjustments?
+output_templates:
+- id: gtm-strategy-memo
+  name: GTM Strategy Assessment Memo
+  format: markdown
+  when_to_use: Strategic assessment of GTM alignment for leadership or board review
+  template: '# Go-to-Market Strategy Assessment - {company_name}
+
+
+    ## Executive Summary
+
+    {summary_of_alignment_and_key_findings}
+
+
+    ## Target Market Alignment
+
+    {analysis_of_target_market_focus}
+
+
+    ## Customer Entry Points
+
+    {analysis_of_first_touchpoints}
+
+
+    ## Sales Compensation Alignment
+
+    {analysis_of_sales_incentives}
+
+
+    ## Investment Allocation
+
+    {analysis_of_corporate_investments}
+
+
+    ## Voice of Customer Integration
+
+    {analysis_of_customer_feedback_loops}
+
+
+    ## Strategic Misalignment Risks
+
+    - {risk_1}
+
+    - {risk_2}
+
+
+    ## Recommended GTM Improvements
+
+    - {recommendation_1}
+
+    - {recommendation_2}
+
+    '
+- id: gtm-diagnostic-table
+  name: GTM Diagnostic Scorecard
+  format: table
+  when_to_use: Quick diagnostic for leadership workshops
+  template: '| GTM Pillar | Current State | Strategic Alignment | Key Issue |
+
+    |-------------|--------------|--------------------|-----------|
+
+    | Target Market | {state} | {alignment_score} | {issue} |
+
+    | Customer Touchpoints | {state} | {alignment_score} | {issue} |
+
+    | Sales Incentives | {state} | {alignment_score} | {issue} |
+
+    | Investment Allocation | {state} | {alignment_score} | {issue} |
+
+    | Voice of Customer | {state} | {alignment_score} | {issue} |
+
+    '
+rubric:
+  scoring_model: 1-5
+  dimensions:
+  - id: strategic-alignment
+    name: Strategic Alignment
+    description: Degree to which GTM execution aligns with growth strategy
+    weight: 0.4
+    scores:
+      5: All GTM pillars aligned with clearly defined growth priorities
+      3: Partial alignment with some operational drift
+      1: Major disconnect between strategy and execution
+  - id: organizational-coordination
+    name: Cross-Functional Coordination
+    description: Alignment between marketing, sales, and product
+    weight: 0.3
+    scores:
+      5: High coordination and shared metrics across teams
+      3: Moderate alignment but some silos
+      1: Significant siloed decision making
+  - id: feedback-integration
+    name: Customer Feedback Integration
+    description: Use of VoC insights to adjust GTM strategy
+    weight: 0.3
+    scores:
+      5: Customer insight systematically informs GTM decisions
+      3: Feedback exists but is inconsistently used
+      1: Minimal or no structured VoC input
+  thresholds:
+    publish_ready: 4.0
+    revise: 3.0
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Segment Drift
+  description: Sales teams pursuing opportunistic deals outside strategic segments
+  mitigation: Reinforce segment focus through sales incentives and pipeline governance
+- pattern: Channel Misalignment
+  description: Marketing channels do not reflect how buyers research and discover products
+  mitigation: Map buyer journey entry points and align demand generation channels accordingly
+- pattern: Incentive Conflict
+  description: Sales compensation rewarding behavior that contradicts strategic goals
+  mitigation: Redesign compensation to reinforce strategic priorities
+chaining:
+  before:
+  - framework_id: steeple
+    reason: External environmental forces shape GTM design and segment prioritization
+  - framework_id: swot
+    reason: SWOT identifies opportunities and threats that inform GTM strategy
+  after:
+  - framework_id: gartner-customer-journey-framework
+    reason: GTM strategy defines the market context the buyer journey is mapped within
+  - framework_id: gtm-motions-framework
+    reason: Defines specific GTM motions (PLG, outbound, channel) after strategic alignment
+  - framework_id: account-based-marketing-system-framework
+    reason: ABM operationalizes the GTM strategy for enterprise segments
+stakeholder_guidance: 'When presenting GTM misalignment findings, frame insights constructively.
+
+
+  Avoid language suggesting organizational failure. Instead emphasize
+
+  opportunity for alignment improvement.
+
+
+  When highlighting compensation or resource allocation issues,
+
+  focus on strategic alignment rather than individual performance.
+
+
+  Emphasize how adjustments improve revenue predictability and growth
+
+  rather than framing the analysis as a critique of past decisions.'

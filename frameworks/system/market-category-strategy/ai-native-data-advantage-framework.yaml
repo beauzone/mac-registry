@@ -1,0 +1,190 @@
+metadata:
+  id: ai-native-data-advantage-framework
+  version: 1.0.0
+  display_name: AI-Native Data Advantage — Compounding Model & Defensibility Architecture
+  category: strategy
+  description: Designs and evaluates structural data advantages in AI-native companies, focusing on proprietary data accumulation,
+    model improvement flywheels, distribution reinforcement, and defensibility against commoditized models.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - ceo
+    - cto
+    - cmo
+    - board
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: core_model_function
+    description: Primary AI capability (prediction, generation, classification, automation, etc.)
+    source: user_input
+  - field: data_sources
+    description: First-party, second-party, third-party data streams
+    source: user_input
+  - field: user_interaction_loops
+    description: How user actions generate new data signals
+    source: user_input
+  - field: model_training_pipeline
+    description: Frequency and mechanism of model retraining
+    source: user_input
+  - field: competitive_exposure
+    description: Risk of foundation model substitution or feature replication
+    source: user_input
+analysis:
+  instructions: 'This framework evaluates whether an AI product possesses a true compounding data advantage or is vulnerable
+    to model commoditization. It maps data accumulation, feedback loops, and defensibility mechanisms.
+
+
+    Classify data advantage as: No Structural Advantage, Emerging Advantage, Compounding Advantage, or Durable Moat. Identify
+    weakest layer. Recommend structural investments (data acquisition, workflow embedding, retraining cadence, ecosystem integration).'
+  dimensions:
+  - id: data-acquisition-layer
+    name: Data Acquisition Layer
+    description: ''
+    prompts:
+    - Is data proprietary or widely available?
+    - Is data generated through product usage?
+    - Are there exclusive partnerships?
+    - Is switching away costly due to historical data accumulation?
+  - id: feedback-loop-layer
+    name: Feedback Loop Layer
+    description: ''
+    prompts:
+    - Does each user interaction improve the model?
+    - Is reinforcement automated?
+    - Is improvement measurable over time?
+    - Is loop speed high enough to compound advantage?
+  - id: model-differentiation-layer
+    name: Model Differentiation Layer
+    description: ''
+    prompts:
+    - Is proprietary fine-tuning used?
+    - Is model performance demonstrably superior in niche?
+    - Are workflows embedded beyond raw inference?
+    - Is the system more than a thin UI layer?
+  - id: distribution-reinforcement-layer
+    name: Distribution Reinforcement Layer
+    description: ''
+    prompts:
+    - Does better performance drive referrals?
+    - Does model improvement increase retention?
+    - Does output create discoverable artifacts?
+    - Is ecosystem integration deepening?
+  - id: economic-compounding-layer
+    name: Economic Compounding Layer
+    description: ''
+    prompts:
+    - Does performance improvement reduce cost-to-serve?
+    - Does differentiation justify premium pricing?
+    - Is LTV increasing with data depth?
+    - Does moat widen over time?
+output_templates:
+- id: primary
+  name: AI-Native Data Advantage Assessment
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Data Acquisition Assessment
+
+    {data_acquisition_assessment}
+
+
+    ## Feedback Loop Analysis
+
+    {feedback_loop_analysis}
+
+
+    ## Model Differentiation Review
+
+    {model_differentiation_review}
+
+
+    ## Economic Compounding Implications
+
+    {economic_compounding_implications}
+
+
+    ## Defensive Strategy Recommendations
+
+    {defensive_strategy_recommendations}
+
+    '
+rubric:
+  description: Evaluates proprietary data strength, compounding loop velocity, defensibility depth, and economic reinforcement.
+  dimensions:
+  - name: Data Exclusivity
+    weight: 0.25
+    scoring:
+      1: Public or easily replicable data.
+      3: Partial proprietary signals.
+      5: Highly exclusive first-party data accumulation.
+    improvement_guidance: Increase first-party signal generation.
+  - name: Feedback Loop Velocity
+    weight: 0.25
+    scoring:
+      1: Minimal learning reinforcement.
+      3: Periodic improvement cycles.
+      5: Continuous automated learning compounding advantage.
+    improvement_guidance: Automate retraining and feedback ingestion.
+  - name: Workflow Embedding Depth
+    weight: 0.2
+    scoring:
+      1: Thin wrapper around external model.
+      3: Moderate workflow integration.
+      5: Deeply embedded system with switching cost.
+    improvement_guidance: Increase integration into core workflows.
+  - name: Economic Reinforcement
+    weight: 0.15
+    scoring:
+      1: No pricing or margin benefit from data.
+      3: Moderate impact.
+      5: Clear pricing power and cost advantage.
+    improvement_guidance: Align data improvement with monetization model.
+  - name: Competitive Resilience
+    weight: 0.15
+    scoring:
+      1: High substitution risk.
+      3: Some insulation.
+      5: Durable moat resistant to model parity.
+    improvement_guidance: Diversify data sources and deepen workflow lock-in.
+  thresholds:
+    revise: 3.0
+    publish_ready: 3.8
+    escalate_to_user: 2.4
+anti_patterns:
+- pattern: API Wrapper Illusion
+  description: Treating model access as moat.
+  mitigation: Build proprietary data loops beyond base model.
+- pattern: Static Dataset Reliance
+  description: No continuous data ingestion.
+  mitigation: Design real-time feedback mechanisms.
+- pattern: Model Parity Blindness
+  description: Assuming competitors cannot replicate model outputs.
+  mitigation: Plan for foundation model commoditization.
+- pattern: No Economic Tie-In
+  description: Data improvement not linked to pricing or margin.
+  mitigation: Align performance gains with monetization leverage.
+chaining:
+  after:
+  - framework_id: investor-narrative-framework
+    reason: ''
+  - framework_id: competitive-strategy-deep-dive
+    reason: ''
+  before:
+  - framework_id: growth-loops-framework
+    reason: ''
+  - framework_id: category-design-framework
+    reason: ''

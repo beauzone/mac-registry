@@ -1,0 +1,451 @@
+metadata:
+  id: gtm-plan
+  version: "1.0.0"
+  display_name: "GTM Plan"
+  category: strategy
+  description: >
+    A comprehensive go-to-market plan covering market opportunity, ideal customer
+    profile, positioning, channel strategy, pricing, sales motion, launch milestones,
+    and success metrics. The flagship strategy deliverable — used for new product
+    launches, market expansions, or annual GTM planning.
+  output_format: markdown
+  typical_length: "2,500–4,000 words"
+  best_for:
+    agents:
+      - strategic-planning
+      - market-research
+      - campaign-manager
+    stages:
+      - seed
+      - series-a
+      - series-b
+      - series-c
+      - enterprise
+    modes:
+      - fractional
+      - fte
+      - tech_provider
+  tags:
+    - gtm
+    - go-to-market
+    - strategy
+    - launch
+    - planning
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: company_name
+      description: Company name and what you sell
+      source: user_input
+    - field: gtm_context
+      description: What this GTM plan is for — new product launch, market expansion, annual plan, repositioning, etc.
+      source: user_input
+    - field: market_opportunity
+      description: The market opportunity — size, growth, trends, and why now
+      source: user_input
+    - field: target_customer
+      description: Who you're targeting — ICP, segments, or verticals
+      source: user_input
+    - field: positioning
+      description: How you position your product — what category, what differentiation, why you win
+      source: user_input
+  optional:
+    - field: competitive_landscape
+      description: Key competitors and how the market is structured
+      source: user_input
+    - field: pricing_model
+      description: Pricing strategy, packaging, and typical deal economics
+      source: user_input
+    - field: existing_traction
+      description: Current traction — revenue, customers, pipeline, brand awareness
+      source: user_input
+    - field: budget_resources
+      description: Available budget, team size, and resource constraints
+      source: user_input
+    - field: timeline
+      description: Key dates, launch milestones, or planning horizon
+      source: user_input
+
+structure:
+  sections:
+    - id: executive-summary
+      name: Executive Summary
+      required: true
+      description: The entire GTM plan in one page — opportunity, approach, and expected outcome
+      guidance: >-
+        This should stand alone. A reader who only reads this page should understand: what you're launching or changing, who you're targeting, how you'll reach them, and what success looks like. Lead with the opportunity, not the product. End with the expected outcome.
+      word_count: "150–250 words"
+
+    - id: market-opportunity
+      name: Market Opportunity
+      required: true
+      description: The market size, growth dynamics, trends, and timing rationale
+      field_limits:
+        market_size_label: 10
+        market_size_value: 30
+      guidance: >-
+        Include TAM/SAM/SOM if available. More importantly, explain why NOW — what market shift, technology change, regulatory event, or buyer behavior change creates the window of opportunity. Include competitive landscape overview — who else is attacking this opportunity and how the market is structured.
+      word_count: "200–350 words"
+
+    - id: target-customer
+      name: Target Customer
+      required: true
+      description: Who you're targeting — ICP, segments, buying committee, and prioritization
+      field_limits:
+        attribute_label: 25
+        attribute_value: 80
+        role_title: 35
+        concern_copy: 60
+      guidance: >-
+        Summarize the ICP (or reference a full ICP Profile document). Define the primary segment and any secondary segments. Include: firmographic profile, pain points, trigger events, and buying committee overview. If targeting multiple segments, explain the sequencing — which segment first and why.
+      word_count: "200–350 words"
+
+    - id: positioning-messaging
+      name: Positioning & Messaging
+      required: true
+      description: How you position the product and the core messaging framework
+      char_limit: 300
+      field_limits:
+        positioning_statement: 300
+        pillar_label: 30
+        pillar_claim_and_proof: 120
+      guidance: >-
+        Include: positioning statement, category choice (existing category, subcategory, or new category), key messaging pillars, and competitive differentiation. If a full Messaging Framework document exists, summarize the key elements and reference it. Explain the positioning rationale — why this framing wins with the target buyer.
+      word_count: "200–300 words"
+
+    - id: channel-strategy
+      name: Channel & Distribution Strategy
+      required: true
+      description: How you'll reach the target customer — channels, motions, and demand generation approach
+      field_limits:
+        channel_label: 30
+        investment_value: 15
+        rationale_copy: 100
+        pipeline_target: 25
+      guidance: >-
+        Cover: primary demand generation channels (inbound, outbound, PLG, events, content, partnerships), channel mix and investment allocation, and the rationale for each channel choice based on where the ICP buyer discovers and evaluates solutions. Include both awareness/top-of-funnel and pipeline/bottom-of-funnel tactics.
+      word_count: "200–350 words"
+
+    - id: sales-motion
+      name: Sales Motion & Revenue Model
+      required: true
+      description: How deals close — sales model, motion, team structure, and deal economics
+      field_limits:
+        metric_label: 25
+        metric_value: 25
+      guidance: >-
+        Define: the primary sales motion (enterprise, mid-market, self-serve, channel), the sales process overview, target deal economics (ACV, cycle length, win rate), and the team structure needed. Include any PLG or freemium components. If the motion is evolving (e.g., moving upmarket), explain the transition.
+      word_count: "150–250 words"
+
+    - id: pricing
+      name: Pricing & Packaging
+      required: true
+      description: Pricing strategy, packaging tiers, and deal structure
+      field_limits:
+        tier_name: 25
+        tier_includes: 80
+        tier_price: 20
+        tier_segment: 40
+      guidance: >-
+        Include: pricing model (subscription, usage, hybrid), packaging tiers and what each includes, pricing rationale (value-based, competitive, cost-plus), and any launch-specific pricing (introductory rates, early adopter programs). If pricing is still being validated, state the hypothesis and the validation plan.
+      word_count: "100–200 words"
+
+    - id: launch-plan
+      name: Launch Plan & Milestones
+      required: true
+      description: The phased execution plan with key milestones, owners, and dates
+      field_limits:
+        milestone_label: 50
+        owner_field: 25
+        dependency_label: 60
+      guidance: >-
+        Break into phases (pre-launch, launch, post-launch / scale). For each phase, define: key activities, milestones with dates, owners, and dependencies. Include both internal milestones (team readiness, content assets, tooling) and external milestones (launch events, campaigns, PR). Be specific about sequencing — what must happen before what.
+      format_notes: >-
+        Table format per phase: Milestone | Owner | Target Date | Dependencies
+      word_count: "200–350 words"
+
+    - id: success-metrics
+      name: Success Metrics & OKRs
+      required: true
+      description: How you'll measure success — leading indicators, lagging indicators, and OKRs
+      field_limits:
+        metric_label: 30
+        target_value: 25
+        leading_indicator: 80
+      guidance: >-
+        Define: 3–5 primary success metrics with targets and timeframes, leading indicators (early signals that the plan is working), lagging indicators (ultimate outcomes), and the review cadence. Include both revenue metrics (pipeline, ARR, win rate) and market metrics (awareness, share of voice, category position). If using OKRs, structure as Objective + 3–4 Key Results.
+      word_count: "150–250 words"
+
+    - id: risks
+      name: Risks & Mitigation
+      required: false
+      description: Key risks to the GTM plan and contingency plans
+      field_limits:
+        risk_label: 50
+        likelihood_rating: 10
+        mitigation_copy: 100
+      guidance: >-
+        Identify the top 3–5 risks: market risks (timing, competition), execution risks (team capacity, readiness), and assumption risks (ICP hypothesis, pricing validation). For each risk, define: likelihood, impact, and mitigation plan. Be honest — a GTM plan without acknowledged risks lacks credibility.
+      format_notes: >-
+        Table format: Risk | Likelihood | Impact | Mitigation
+      word_count: "100–200 words"
+
+    - id: budget
+      name: Budget & Resource Requirements
+      required: false
+      description: Investment required to execute the plan — headcount, programs, tools, and spend
+      field_limits:
+        category_label: 25
+        spend_value: 15
+      guidance: >-
+        Break down by category: people (headcount and roles), programs (campaigns, events, content), tools (tech stack, data), and agency/contractor spend. Include quarterly or monthly breakdown if the plan spans multiple quarters. Tie spend to expected pipeline or revenue generation.
+      format_notes: >-
+        Table format: Category | Q1 | Q2 | Q3 | Q4 | Total
+      word_count: "100–200 words"
+
+template: |
+  # Go-to-Market Plan: {company_name}
+
+  **Context:** {New product launch / Market expansion / Annual GTM plan / etc.}
+  **Planning horizon:** {timeframe}
+  **Last updated:** {date}
+
+  ---
+
+  ## Executive Summary
+
+  {150–250 words: the opportunity, the approach, and the expected outcome. This page should stand alone.}
+
+  ---
+
+  ## Market Opportunity
+
+  ### Market Size
+  - **TAM:** {total addressable market}
+  - **SAM:** {serviceable addressable market}
+  - **SOM:** {serviceable obtainable market — realistic near-term target}
+
+  ### Why Now
+  {Market shift, technology change, or regulatory event creating the window}
+
+  ### Competitive Landscape
+  {How the market is structured, who the key players are, and where the whitespace exists}
+
+  ---
+
+  ## Target Customer
+
+  ### Primary Segment
+  {ICP summary — who they are, what they feel, why they buy}
+
+  **Firmographic profile:**
+
+  | Attribute | Definition |
+  |---|---|
+  | Industry | {verticals} |
+  | Company size | {range} |
+  | Geography | {regions} |
+  | Tech stack | {indicators} |
+
+  ### Buying Committee
+  | Role | Decision Type | Primary Concern |
+  |---|---|---|
+  | {Role 1} | {Champion/Buyer/Evaluator} | {what they care about} |
+  | {Role 2} | {type} | {concern} |
+  | {Role 3} | {type} | {concern} |
+
+  ### Segment Sequencing
+  {Which segment first and why — then where to expand}
+
+  ---
+
+  ## Positioning & Messaging
+
+  **Positioning statement:**
+  For {target audience} who {need}, {company} is a {category} that {benefit}. Unlike {alternatives}, we {differentiator}.
+
+  **Messaging pillars:**
+  1. **{Pillar 1}** — {claim + proof}
+  2. **{Pillar 2}** — {claim + proof}
+  3. **{Pillar 3}** — {claim + proof}
+
+  **Competitive differentiation:** {How you win against the top 2–3 alternatives}
+
+  ---
+
+  ## Channel & Distribution Strategy
+
+  ### Demand Generation Mix
+
+  | Channel | Investment | Rationale | Expected Pipeline |
+  |---|---|---|---|
+  | {Channel 1} | {% of budget} | {why this channel for this ICP} | {pipeline target} |
+  | {Channel 2} | {%} | {rationale} | {target} |
+  | {Channel 3} | {%} | {rationale} | {target} |
+
+  ### Top of Funnel
+  {Awareness and lead generation tactics}
+
+  ### Bottom of Funnel
+  {Pipeline acceleration and conversion tactics}
+
+  ---
+
+  ## Sales Motion & Revenue Model
+
+  **Sales motion:** {enterprise / mid-market / self-serve / channel / hybrid}
+  **Target deal economics:**
+
+  | Metric | Target |
+  |---|---|
+  | ACV | {target} |
+  | Sales cycle | {duration} |
+  | Win rate | {target %} |
+  | LTV:CAC | {target ratio} |
+
+  **Team structure:** {roles needed and capacity model}
+
+  ---
+
+  ## Pricing & Packaging
+
+  | Tier | Includes | Price | Target Segment |
+  |---|---|---|---|
+  | {Tier 1} | {capabilities} | {price} | {who it's for} |
+  | {Tier 2} | {capabilities} | {price} | {who it's for} |
+  | {Tier 3} | {capabilities} | {price} | {who it's for} |
+
+  **Pricing rationale:** {value-based / competitive / cost-plus — and why}
+
+  ---
+
+  ## Launch Plan & Milestones
+
+  ### Phase 1: Pre-Launch ({dates})
+
+  | Milestone | Owner | Target Date | Dependencies |
+  |---|---|---|---|
+  | {Milestone 1} | {owner} | {date} | {dependencies} |
+  | {Milestone 2} | {owner} | {date} | {dependencies} |
+
+  ### Phase 2: Launch ({dates})
+
+  | Milestone | Owner | Target Date | Dependencies |
+  |---|---|---|---|
+  | {Milestone 1} | {owner} | {date} | {dependencies} |
+  | {Milestone 2} | {owner} | {date} | {dependencies} |
+
+  ### Phase 3: Scale ({dates})
+
+  | Milestone | Owner | Target Date | Dependencies |
+  |---|---|---|---|
+  | {Milestone 1} | {owner} | {date} | {dependencies} |
+  | {Milestone 2} | {owner} | {date} | {dependencies} |
+
+  ---
+
+  ## Success Metrics
+
+  ### Primary KPIs
+
+  | Metric | 90-Day Target | 6-Month Target | 12-Month Target |
+  |---|---|---|---|
+  | {Revenue metric} | {target} | {target} | {target} |
+  | {Pipeline metric} | {target} | {target} | {target} |
+  | {Market metric} | {target} | {target} | {target} |
+
+  ### Leading Indicators
+  - {Early signal 1 — measurable within 30 days}
+  - {Early signal 2}
+
+  ### Review Cadence
+  {How often the plan is reviewed and by whom}
+
+  ---
+
+  ## Risks & Mitigation
+
+  | Risk | Likelihood | Impact | Mitigation |
+  |---|---|---|---|
+  | {Market risk} | {H/M/L} | {H/M/L} | {contingency plan} |
+  | {Execution risk} | {H/M/L} | {H/M/L} | {contingency plan} |
+  | {Assumption risk} | {H/M/L} | {H/M/L} | {validation plan} |
+
+  ---
+
+  ## Budget & Resource Requirements
+
+  | Category | Q1 | Q2 | Q3 | Q4 | Total |
+  |---|---|---|---|---|---|
+  | People | {spend} | {spend} | {spend} | {spend} | {total} |
+  | Programs | {spend} | {spend} | {spend} | {spend} | {total} |
+  | Tools | {spend} | {spend} | {spend} | {spend} | {total} |
+  | Agency | {spend} | {spend} | {spend} | {spend} | {total} |
+  | **Total** | **{total}** | **{total}** | **{total}** | **{total}** | **{grand total}** |
+
+  **Expected ROI:** {pipeline or revenue generated per dollar invested}
+
+variations:
+  - id: new-product
+    name: New Product Launch GTM
+    description: Focused on launching a new product into an existing or new market. Adds product readiness, beta program, and launch event planning.
+    overrides:
+      sections_add:
+        - product-readiness
+        - beta-program
+        - launch-event
+      tone: "Launch-focused. Emphasize timing, readiness gates, and coordinated execution."
+
+  - id: market-expansion
+    name: Market Expansion GTM
+    description: For entering a new geography, vertical, or segment. Adds market entry assessment, localization, and partnership strategy.
+    overrides:
+      sections_add:
+        - market-entry-assessment
+        - localization-plan
+        - partnership-strategy
+      tone: "Expansion-focused. Emphasize what's different about this market and what needs to be adapted."
+
+  - id: investor-facing
+    name: Investor-Facing GTM Summary
+    description: Condensed version designed for investor decks and board presentations. Removes tactical details, emphasizes market opportunity and unit economics.
+    overrides:
+      sections_remove:
+        - launch-plan
+        - risks
+      tone: "Strategic and confident. Lead with market opportunity and unit economics. Minimize tactical detail."
+      word_count: "1,000–1,500 words total"
+
+branding:
+  supports_branding: true
+  brandable_elements:
+    - element: header_logo
+      description: Company logo in document header
+    - element: color_scheme
+      description: Phase and priority color coding aligned to brand palette
+    - element: typography
+      description: Fonts aligned to brand guidelines
+    - element: footer
+      description: Confidentiality notice and document classification
+
+quality_criteria:
+  required_elements:
+    - "Executive summary stands alone as a complete plan overview"
+    - "Market opportunity explains why NOW, not just why"
+    - "ICP is specific enough to guide targeting decisions"
+    - "Channel strategy ties channel choices to buyer behavior"
+    - "Launch plan has owners and dates for every milestone"
+    - "Success metrics include both leading and lagging indicators"
+    - "Positioning is structured (For/Who/Is/That/Unlike format)"
+  prohibited_elements:
+    - "Market size without SAM/SOM (TAM alone is meaningless)"
+    - "Channel strategy without rationale for each channel"
+    - "Launch plan without owners or dates"
+    - "Success metrics without specific targets and timeframes"
+    - "Pricing section that only lists prices without rationale"
+    - "Risk section that's empty or says 'no significant risks'"
+  length_check:
+    minimum: 2000
+    maximum: 4500
+    strict: false

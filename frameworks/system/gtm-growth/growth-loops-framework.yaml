@@ -1,0 +1,167 @@
+metadata:
+  id: growth-loops-framework
+  version: 1.0.0
+  display_name: Growth Loops — Self-Reinforcing Acquisition & Expansion Engine Model
+  category: growth
+  description: Designs and optimizes self-reinforcing growth loops that compound over time, replacing linear funnel thinking
+    with system-level acquisition, engagement, and expansion mechanics. Built for SaaS and AI-native platforms.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    roles:
+    - ceo
+    - cmo
+    - vp-growth
+    - vp-product
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: core_user_action
+    description: Primary value-generating user behavior
+    source: user_input
+  - field: acquisition_channels
+    description: Organic, paid, referral, community, partner sources
+    source: user_input
+  - field: retention_metrics
+    description: Cohort durability and usage frequency
+    source: user_input
+  - field: monetization_model
+    description: Pricing and expansion mechanics
+    source: user_input
+  optional:
+  - field: network_or_data_effects
+    description: Whether usage improves product or distribution
+    source: user_input
+analysis:
+  instructions: 'This framework models growth as interconnected loops rather than linear stages. Each loop includes input
+    → user action → output → reinvestment into acquisition or engagement. Emphasis is placed on compounding dynamics and marginal
+    cost efficiency.
+
+
+    Map primary growth loop(s). Identify broken loop segments. Quantify loop velocity and retention multiplier. Recommend
+    2–3 loop optimization experiments. Distinguish between linear funnel dependencies and compounding loop mechanics.'
+  dimensions:
+  - id: loop-closure-integrity
+    name: Loop Closure Integrity
+    description: Whether loop output truly feeds new acquisition or retention
+    prompts: []
+  - id: retention-multiplier-strength
+    name: Retention Multiplier Strength
+    description: Cohort durability amplifying loop impact
+    prompts: []
+  - id: distribution-efficiency
+    name: Distribution Efficiency
+    description: Organic contribution relative to paid input
+    prompts: []
+  - id: reinvestment-velocity
+    name: Reinvestment Velocity
+    description: Speed at which revenue fuels further growth
+    prompts: []
+output_templates:
+- id: primary
+  name: Growth Loop Architecture
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Loop Mapping
+
+    {loop_mapping}
+
+
+    ## Retention Multiplier Analysis
+
+    {retention_multiplier_analysis}
+
+
+    ## Distribution & Reinvestment Review
+
+    {distribution_&_reinvestment_review}
+
+
+    ## Loop Optimization Experiments
+
+    {loop_optimization_experiments}
+
+
+    ## Structural Risks
+
+    {structural_risks}
+
+    '
+rubric:
+  description: Evaluates loop closure strength, compounding dynamics, retention multiplier impact, and scalability.
+  dimensions:
+  - name: Loop Closure Strength
+    weight: 0.25
+    scoring:
+      1: Linear funnel dependency.
+      3: Partial loop with weak feedback.
+      5: Fully closed compounding loop.
+    improvement_guidance: Ensure output feeds acquisition or retention.
+  - name: Retention Multiplier
+    weight: 0.25
+    scoring:
+      1: High churn eroding loop gains.
+      3: Moderate retention stability.
+      5: Strong durable cohort retention.
+    improvement_guidance: Improve onboarding and usage depth.
+  - name: Organic Contribution
+    weight: 0.2
+    scoring:
+      1: Fully paid-dependent growth.
+      3: Mixed organic and paid inputs.
+      5: Significant organic distribution embedded.
+    improvement_guidance: Increase referral and UGC mechanisms.
+  - name: Economic Reinforcement
+    weight: 0.15
+    scoring:
+      1: Revenue not reinvested strategically.
+      3: Some reinvestment discipline.
+      5: Structured reinvestment into loop acceleration.
+    improvement_guidance: Tie budget to loop ROI metrics.
+  - name: AI/Data Advantage (if applicable)
+    weight: 0.15
+    scoring:
+      1: No data compounding.
+      3: Basic personalization improvement.
+      5: Clear defensible AI flywheel.
+    improvement_guidance: Leverage usage data to strengthen product performance.
+  thresholds:
+    revise: 2.8
+    publish_ready: 3.6
+    escalate_to_user: 2.2
+anti_patterns:
+- pattern: Funnel Fixation
+  description: Optimizing conversion rates without loop design.
+  mitigation: Shift focus to compounding mechanisms.
+- pattern: Paid Dependency Trap
+  description: Growth reliant solely on paid acquisition.
+  mitigation: Design organic reinforcement loop.
+- pattern: Weak Retention Multiplier
+  description: Churn undermining loop gains.
+  mitigation: Prioritize retention before acquisition scale.
+- pattern: No Reinvestment Discipline
+  description: Revenue not allocated to loop acceleration.
+  mitigation: Tie growth budget to measurable loop ROI.
+chaining:
+  after:
+  - framework_id: plg-hybrid-plg-framework
+    reason: ''
+  - framework_id: gtm-motions-framework
+    reason: ''
+  before:
+  - framework_id: product-market-fit-diagnostic
+    reason: ''
+  - framework_id: marketing-revenue-funnel-model
+    reason: ''

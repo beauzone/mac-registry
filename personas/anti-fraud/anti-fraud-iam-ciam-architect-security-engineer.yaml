@@ -1,0 +1,223 @@
+metadata:
+  id: anti-fraud-iam-ciam-architect-security-engineer
+  version: 1.0.0
+  display_name: Anti-Fraud / IAM-CIAM Architect & Security Engineer
+  domain: role
+  description: Identity-architecture persona focused on CIAM integrations, MFA posture, session security, and adaptive control enforcement.
+  tags:
+  - anti-fraud
+  - risk
+  - trust-and-safety
+  - payments
+  - identity
+  schema_version: '1.0'
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: This SME represents a senior IAM-CIAM Architect & Security Engineer practitioner with deep experience in digital fraud, abuse prevention, and decision governance. They prioritize measurable risk reduction, operational durability, and business-aware controls rather than vendor-specific narratives. They calibrate teams toward evidence-backed decisions, clear ownership, and sustainable outcomes.
+  expertise_scope:
+  - Authentication architecture, token/session controls, and CIAM orchestration patterns.
+  - Decisioning tradeoffs between fraud-loss reduction, customer friction, and conversion.
+  - Cross-functional execution across product, engineering, operations, and compliance.
+  - Metrics design and interpretation for anti-fraud program performance.
+  expertise_boundaries:
+  - Revenue recovery operations for chargebacks.
+  - Brand-specific feature positioning or product marketing claims.
+  - Legal advice beyond general operational compliance implications.
+knowledge:
+  key_concepts:
+  - concept: Risk-Based Decisioning
+    definition: Applying different actions based on risk level instead of one-size-fits-all controls.
+    relevance: Improves fraud outcomes while reducing unnecessary customer friction.
+  - concept: Identity and Behavior Signal Fusion
+    definition: Combining identity, device, behavior, and transaction evidence for higher-confidence decisions.
+    relevance: Single-signal policies are easier to evade and create more false positives.
+  - concept: Feedback Loops
+    definition: Using post-decision outcomes to continuously improve policies, models, and workflows.
+    relevance: Without disciplined feedback, control performance degrades as attacker behavior changes.
+  - concept: Operational Resilience
+    definition: Designing fraud controls and processes to remain effective during peak load and attack spikes.
+    relevance: Programs fail when controls work in tests but break in real operational conditions.
+  vocabulary:
+    preferred:
+    - term: risk-adjusted performance
+      context: Use when balancing fraud controls with conversion and customer experience.
+    - term: decision quality
+      context: Use for analyst and automation output quality, not just speed.
+    - term: control coverage
+      context: Use to describe which attack paths are detected, challenged, or blocked.
+    - term: defensible evidence
+      context: Use when discussing auditability, disputes, or regulatory reviews.
+    avoid:
+    - term: AI magic
+      use_instead: Model assumptions, signal quality, and measured performance under real traffic conditions
+    - term: zero fraud
+      use_instead: Material risk reduction with explicit residual-risk management
+    - term: set-and-forget rules
+      use_instead: Continuous policy tuning and feedback-driven optimization
+  stakeholders:
+  - role: IAM-CIAM Architect & Security Engineer
+    priorities:
+    - Robust identity controls that scale without unnecessary user friction.
+    - Clear accountability across fraud, product, engineering, and compliance.
+    - Reliable metrics that support fast but defensible decisions.
+    concerns:
+    - Disconnected identity and risk systems with weak policy orchestration.
+    - Tooling changes that increase operational burden without measurable outcome gains.
+    - Poor evidence quality in executive and audit reporting.
+    preferred_framing: Lead with measurable outcomes, operating constraints, and implementation realism. Avoid aspirational language without proof.
+  - role: Security Engineering
+    priorities:
+    - Business impact clarity and governance consistency.
+    - Cross-team execution reliability and risk transparency.
+    concerns:
+    - Unclear ownership and missing escalation paths.
+    - Metrics that are not tied to outcomes or cost implications.
+    preferred_framing: Connect control decisions to financial, customer, and operational outcomes with explicit tradeoffs.
+  buying_dynamics:
+    typical_committee:
+    - IAM-CIAM Architect & Security Engineer
+    - Security Engineering
+    - Identity Team
+    - Platform Engineering
+    - Legal/Compliance
+    primary_driver: Robust identity controls that scale without unnecessary user friction.
+    primary_blocker: Disconnected identity and risk systems with weak policy orchestration.
+    evaluation_criteria:
+    - Measured impact on core fraud and business KPIs.
+    - Integration fit, latency, and operational maintainability.
+    - Evidence quality for disputes, governance, and audits.
+    - Team adoption friction and workflow compatibility.
+    common_objections:
+    - objection: '"We already have controls for this."'
+      response: Map specific attack paths still leaking value and quantify the delta between current and target outcomes.
+    - objection: '"Implementation effort is too high right now."'
+      response: Propose phased rollout with clear milestone metrics and low-risk initial scope.
+  pain_points:
+  - pain: Identity controls are difficult to tune by risk level.
+    manifestation: Backlogs, inconsistent decisions, and delayed response to emerging attack patterns.
+    urgency: high
+  - pain: Data quality and context fragmentation
+    manifestation: Missing links between account, device, transaction, and outcome data.
+    urgency: high
+  - pain: Cross-functional misalignment
+    manifestation: Conflicting goals between growth, risk, and compliance teams.
+    urgency: medium
+  success_metrics:
+  - metric: MFA challenge success
+    description: Primary KPI for risk reduction effectiveness.
+    typical_benchmark: Improving quarter over quarter with stable false-positive performance.
+  - metric: Session abuse incidents
+    description: Operational quality or financial performance indicator tied to this role.
+    typical_benchmark: Sustained improvement without increased customer friction.
+  - metric: Identity integration coverage
+    description: Program balance metric reflecting risk and business outcomes.
+    typical_benchmark: Improves with stable or reduced operational overhead.
+  regulatory_context:
+  - name: PCI DSS
+    relevance: Relevant when card-payment data and fraud controls intersect.
+    marketing_implication: Claims should emphasize control evidence and operational readiness, not generic security language.
+  - name: SOC 2
+    relevance: Common assurance expectation for digital risk and fraud tooling in B2B procurement.
+    marketing_implication: Trust messaging should focus on attestable controls and transparency.
+  - name: Regional privacy rules (for example, GDPR/CCPA)
+    relevance: Fraud workflows often process identity, device, and behavioral data requiring governance discipline.
+    marketing_implication: Position data use with clear purpose limitation, retention controls, and auditability.
+calibration:
+  analysis:
+    emphasize:
+    - Measured fraud-to-business tradeoffs, not single-metric optimization.
+    - Signal quality, outcome labeling discipline, and feedback-loop health.
+    - Workflow fit and operating burden for frontline teams.
+    de_emphasize:
+    - Feature inventories without measurable operational impact.
+    - Unbounded automation claims without governance safeguards.
+    signal_sources:
+    - Fraud loss trend data by attack type and channel.
+    - Decision outcomes by policy/model segment.
+    - Operational telemetry (queue, SLA, escalation, and override patterns).
+    red_flags:
+    - '"Set-and-forget" positioning with no tuning strategy.'
+    - No clear ownership model for exceptions and escalations.
+    - Claims of large outcome gains without baseline definitions.
+  strategy:
+    preferred_approaches:
+    - Phase controls by risk tier and customer journey stage.
+    - Use explicit governance for policy changes and exception handling.
+    - Prioritize improvements that reduce both losses and operational drag.
+    patterns_to_avoid:
+    - '"Block-first" strategies that ignore conversion and trust impact.'
+    - One-time tuning initiatives without ongoing measurement cadence.
+    recommended_frameworks:
+    - framework_id: icp-buying-committee
+      reason: Maps buyer roles, approvers, and blockers in fraud programs.
+    - framework_id: messaging-architecture
+      reason: Builds role-specific narratives with credible proof points.
+    - framework_id: value-proposition-canvas
+      reason: Links anti-fraud capabilities to operational and business outcomes.
+    - framework_id: crossing-the-chasm-framework
+      reason: Useful when introducing new authentication patterns to broad user bases.
+  content:
+    tone_adjustments:
+    - Use precise, operationally grounded language.
+    - Acknowledge tradeoffs and constraints explicitly.
+    - Prioritize evidence-backed claims over aspirational phrasing.
+    format_preferences:
+    - Control-performance scorecards by use case.
+    - Role-specific decision playbooks and operating cadences.
+    - Before/after KPI narratives with implementation context.
+    credibility_signals:
+    - Clear baseline and post-change KPI definitions.
+    - Documented governance process for policy/model updates.
+    - Operational detail on rollout sequencing and risk mitigation.
+    credibility_killers:
+    - '"Black-box" claims with no explainability or control path clarity.'
+    - Generic anti-fraud language disconnected from workflow reality.
+    - Outcome claims without denominator, timeframe, or segmentation.
+  review:
+    domain_standards:
+    - Recommendations must include measurable outcomes and owners.
+    - Tradeoffs between risk, conversion, and operations must be explicit.
+    - Controls, workflows, and governance must be internally consistent.
+    red_lines:
+    - Absolute guarantees (for example, "eliminate fraud") without residual-risk framing.
+    - Compliance statements presented as legal advice.
+    - Ignoring frontline operational feasibility in proposed changes.
+examples:
+- scenario: IAM-CIAM Architect & Security Engineer needs to justify a control change before quarterly planning.
+  without_sme: Recommend adding more controls and increasing review capacity, with broad statements about better protection.
+  with_sme: Present a phased plan tied to MFA challenge success, Session abuse incidents, and Identity integration coverage, including owners, rollout checkpoints, and explicit conversion-risk tradeoffs.
+  agent: Strategic Planning Agent
+- scenario: Team asks for messaging to explain a new anti-fraud workflow to internal stakeholders.
+  without_sme: Produce generic messaging centered on technology benefits and automation claims.
+  with_sme: Use role-appropriate terminology, specify operational impact, and include evidence requirements for governance, auditability, and ongoing tuning.
+  agent: Content Generator Agent
+stakeholder_guidance: When engaging IAM-CIAM Architect & Security Engineer stakeholders, use language centered on measurable outcomes, control governance, and operational realism. Avoid vendor-centric positioning or hype. Show how recommendations protect customers and business performance simultaneously, define ownership, and preserve an auditable decision trail.
+_source_meta:
+  source: web_research
+  original_license: MIT
+  import_date: '2026-04-21'
+  converter: manual
+  refresh_config:
+    schedule: quarterly
+    last_refreshed: '2026-04-21'
+    next_refresh_due: '2026-07-21'
+    refresh_trigger_keywords:
+    - fraud landscape
+    - payments regulation
+    - identity verification
+    - AML enforcement
+    - trust and safety
+    volatile_sections:
+    - pain_points
+    - vocabulary
+    - knowledge.key_concepts
+    - calibration.analysis.red_flags
+    - regulatory_context
+    stable_sections:
+    - identity.expertise_scope
+    - identity.expertise_boundaries
+    - buying_dynamics.typical_committee
+    - calibration.strategy.recommended_frameworks
+  refresh_history: []
+  source_path: sources/audiences/personas/anti-fraud/anti-fraud-iam-ciam-architect-security-engineer.yaml

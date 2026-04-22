@@ -1,0 +1,192 @@
+metadata:
+  id: aarrr-pirate-metrics
+  version: 1.0.0
+  display_name: AARRR (Pirate Metrics) — AI-Native Growth Diagnostics
+  category: gtm
+  description: Diagnoses growth performance across Acquisition, Activation, Retention, Revenue, and Referral. Adapted for
+    AI-native, product-led, and hybrid GTM models with experimentation rigor and instrumentation focus.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - cmo
+    - vp-marketing
+    - vp-product
+    - cro
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: funnel_stage_definitions
+    description: Clear definitions for Acquisition, Activation, Retention, Revenue, Referral
+    source: user_input
+  - field: current_funnel_metrics
+    description: Conversion rates, time-to-stage, cohort retention, expansion metrics
+    source: user_input
+  - field: acquisition_channels
+    description: Paid, organic, outbound, partner, product-led sources
+    source: user_input
+  - field: pricing_and_monetization_model
+    description: Subscription, usage-based, freemium, enterprise motion
+    source: skill
+  optional:
+  - field: instrumentation_overview
+    description: Data sources, tracking reliability, attribution model
+    source: user_input
+analysis:
+  instructions: 'This framework evaluates performance across the five growth stages and identifies the primary constraint
+    limiting scalable growth. In AI-native environments, it emphasizes automation leverage, onboarding velocity, expansion
+    mechanics, and experimentation loops.
+
+
+    Identify the primary growth constraint stage. Rank stages by impact leverage. Produce 3–5 experiment hypotheses targeting
+    the highest-leverage constraint. Conclude with instrumentation gaps and operating cadence recommendations.'
+  dimensions:
+  - id: acquisition
+    name: Acquisition
+    description: Efficiency and scalability of top-of-funnel sourcing
+    prompts:
+    - Which channels produce highest-quality users or accounts?
+    - Is CAC sustainable relative to LTV?
+    - Is acquisition diversified or over-concentrated?
+    - Does AI tooling improve targeting efficiency?
+  - id: activation
+    name: Activation
+    description: Speed and success of initial value realization
+    prompts:
+    - How quickly do new users reach first value milestone?
+    - Is onboarding friction measurable and reducible?
+    - Are activation metrics clearly defined and instrumented?
+    - Does automation accelerate time-to-value?
+  - id: retention
+    name: Retention
+    description: Ongoing usage and churn dynamics
+    prompts:
+    - What is cohort-based retention trend over time?
+    - Which segments churn fastest and why?
+    - Are product usage signals predictive of churn?
+    - Does value compound over time?
+  - id: revenue
+    name: Revenue
+    description: Monetization efficiency and expansion dynamics
+    prompts:
+    - Is ARPU growing or declining?
+    - Are upsell or cross-sell motions effective?
+    - Does pricing align with value delivered?
+    - Is revenue expansion product-led or sales-driven?
+  - id: referral
+    name: Referral
+    description: Organic growth and advocacy loops
+    prompts:
+    - Do satisfied customers refer others?
+    - Is there measurable viral coefficient?
+    - Are referral incentives structured effectively?
+    - Is brand trust reinforcing acquisition efficiency?
+output_templates:
+- id: primary
+  name: AARRR Growth Diagnostic
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Funnel Definitions and Baseline Metrics
+
+    {funnel_definitions_and_baseline_metrics}
+
+
+    ## Stage-by-Stage Analysis
+
+    {stage-by-stage_analysis}
+
+
+    ## Primary Constraint and Leverage Point
+
+    {primary_constraint_and_leverage_point}
+
+
+    ## Experiment Roadmap
+
+    {experiment_roadmap}
+
+
+    ## Instrumentation and Data Gaps
+
+    {instrumentation_and_data_gaps}
+
+    '
+rubric:
+  description: Evaluates metric clarity, constraint identification accuracy, experiment quality, and operational readiness.
+  dimensions:
+  - name: Metric Definition Quality
+    weight: 0.2
+    scoring:
+      1: Stages loosely defined or inconsistent.
+      3: Mostly defined but minor ambiguity.
+      5: Clear, precise, and measurable stage definitions.
+    improvement_guidance: Define explicit entry and exit criteria per stage.
+  - name: Constraint Identification
+    weight: 0.3
+    scoring:
+      1: No clear primary constraint identified.
+      3: Constraint suggested but not strongly justified.
+      5: Constraint clearly supported by quantitative data.
+    improvement_guidance: Compare stage drop-offs and revenue impact to isolate constraint.
+  - name: Experiment Quality
+    weight: 0.25
+    scoring:
+      1: Vague experiment ideas.
+      3: Moderately structured hypotheses.
+      5: Clear hypotheses with measurable success criteria.
+    improvement_guidance: Structure experiments with hypothesis, metric, and timeline.
+  - name: Strategic Alignment
+    weight: 0.15
+    scoring:
+      1: Experiments disconnected from strategy.
+      3: Some alignment but not explicit.
+      5: Experiments reinforce positioning and ICP focus.
+    improvement_guidance: Validate experiment alignment with STP and ICP frameworks.
+  - name: Operational Readiness
+    weight: 0.1
+    scoring:
+      1: No clear execution path.
+      3: Moderately actionable.
+      5: Clear next steps and cadence integration.
+    improvement_guidance: Assign ownership and review cadence.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Vanity Metrics Focus
+  description: Optimizing traffic without revenue linkage.
+  mitigation: Tie each stage metric to revenue impact.
+- pattern: Simultaneous Optimization
+  description: Attempting to improve all stages at once.
+  mitigation: Focus on the primary constraint first.
+- pattern: No Cohort Analysis
+  description: Relying on blended averages.
+  mitigation: Use cohort-based retention and revenue tracking.
+- pattern: Experiment Without Instrumentation
+  description: Running growth tests without measurement clarity.
+  mitigation: Define metric and tracking before launch.
+chaining:
+  after:
+  - framework_id: okrs
+    reason: ''
+  - framework_id: north-star-metric-driver-tree
+    reason: ''
+  before:
+  - framework_id: stp-segmentation-targeting-positioning
+    reason: ''
+  - framework_id: icp-buying-committee
+    reason: ''

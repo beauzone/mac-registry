@@ -1,6 +1,13 @@
-# Writer Profile Schema -- Marketing as Code
+# Writer Profile Schema — Marketing as Code
 # Version: 1.0.0
-# Distributed via mac-registry. Authoritative copy in beauzone/marketing-as-code.
+# Three profile types: individual, archetype, use_case
+# Three scopes: system, company, user
+#
+# individual  — extracted from a real person's writing. Always private (company/user scope).
+# archetype   — style inspired by a tradition or approach. Not a living individual.
+#               system-level profiles sync to mac-registry.
+# use_case    — purpose-built for a specific content context.
+#               system-level profiles sync to mac-registry.
 
 metadata:
   id: writer-profile-schema
@@ -9,43 +16,103 @@ metadata:
   schema_version: "1.0"
   description: >
     Schema for writer profile source assets. Captures voice, syntax, diction,
-    and anti-patterns for individuals, archetypes, or content use cases.
+    and anti-patterns for individuals, archetypes, or content use cases,
+    enabling AI agents to generate content that matches a defined style.
 
 required_fields:
-  metadata: [id, version, display_name, schema_version, profile_type, scope]
-  identity: [profile_purpose]
-  voice: [persona, register, stance]
-  syntax: [sentence_length, punctuation_habits]
-  anti_patterns: [prohibited_words, stylistic_aversions]
+  metadata:
+    - id
+    - version
+    - display_name
+    - schema_version
+    - profile_type    # enum[individual, archetype, use_case]
+    - scope           # enum[system, company, user]
+  identity:
+    - profile_purpose
+  voice:
+    - persona
+    - register        # enum[formal, professional, conversational, casual]
+    - stance          # enum[authoritative, collaborative, provocative, reflective, instructional]
+  syntax:
+    - sentence_length
+    - punctuation_habits
+  anti_patterns:
+    - prohibited_words
+    - stylistic_aversions
 
 optional_fields:
-  metadata: [description, tags, category]
-  identity: [full_name, title, organization, authorship_model]
-  archetype_config: [inspiration_source, public_figure_ref]
-  use_case_config: [content_contexts, audience_context]
-  voice: [emotional_range, humor]
-  syntax: [paragraph_structure, rhetorical_devices, structural_patterns]
-  diction: [complexity, jargon_tolerance, formality_markers, signature_phrases, preferred_vocabulary, metaphor_sources]
-  anti_patterns: [prohibited_constructions]
+  metadata:
+    - description
+    - tags
+    - category
+  identity:
+    - full_name
+    - title
+    - organization
+    - authorship_model
+  archetype_config:
+    - inspiration_source  # describes style without naming living individuals
+    - public_figure_ref   # optional; deceased=true required for named historical figures
+  use_case_config:
+    - content_contexts    # list[enum]: social-media, internal-memo, investor-relations,
+                          #   events-promotion, press-release, thought-leadership,
+                          #   product-announcement, blog-post, email-nurture,
+                          #   sales-collateral, customer-success
+    - audience_context
+  voice:
+    - emotional_range
+    - humor
+  syntax:
+    - paragraph_structure
+    - rhetorical_devices
+    - structural_patterns
+  diction:
+    - complexity            # enum[simple, moderate, sophisticated, variable]
+    - jargon_tolerance      # enum[none, minimal, moderate, heavy]
+    - formality_markers
+    - signature_phrases
+    - preferred_vocabulary
+    - metaphor_sources
+  anti_patterns:
+    - prohibited_constructions
   context_modulations: []
-  sample_provenance: [samples_analyzed, total_samples, total_word_count, content_type_coverage, extraction_method]
-  calibration_history: [entries]
-  _source_meta: [source, last_verified, confidence, review_status, notes]
+  sample_provenance:
+    - samples_analyzed
+    - total_samples
+    - total_word_count
+    - content_type_coverage
+    - extraction_method     # enum[ai-claude, manual, stub]
+  calibration_history:
+    - entries
+  _source_meta:
+    - source          # enum[ai_extracted, manually_authored, adapted_from_system]
+    - last_verified
+    - confidence      # enum[confirmed, provisional, unverified]
+    - review_status   # enum[draft, reviewed, approved]
+    - notes
 
 field_definitions:
   metadata.profile_type:
-    enum: [individual, archetype, use_case]
-    notes: "individual = real person (always private). archetype = style tradition. use_case = content context."
+    type: enum
+    values: [individual, archetype, use_case]
+    description: >
+      individual = extracted from a real named person's writing. Always private.
+      archetype  = style inspired by a writing tradition. Not a living individual.
+      use_case   = purpose-built for a specific content context.
   metadata.scope:
-    enum: [system, company, user]
-    notes: "system = mac-registry (read-only). company = private repo. user = local brand pack."
-  use_case_config.content_contexts:
-    enum: [social-media, internal-memo, investor-relations, events-promotion, press-release,
-           thought-leadership, product-announcement, blog-post, email-nurture, sales-collateral, customer-success]
+    type: enum
+    values: [system, company, user]
+    description: >
+      system  = ships with MaC, syncs to mac-registry, read-only.
+                Archetype and use_case only. Never individual.
+      company = private company MaC repo. HITL review required. Never synced.
+      user    = local brand pack. Created by individual user.
 
 validation_rules:
   - "profile_type = individual requires scope = company or user (never system)"
   - "archetype_config only valid when profile_type = archetype"
   - "use_case_config only valid when profile_type = use_case"
+  - "full_name, title, organization only valid when profile_type = individual"
   - "public_figure_ref.deceased must be true for named historical figures in system archetypes"
-  - "system scope profiles are read-only -- require PR to mac-registry to modify"
+  - "signature_phrases must appear verbatim in sample_provenance.samples_analyzed"
+  - "system scope profiles require PR to mac-registry to modify"

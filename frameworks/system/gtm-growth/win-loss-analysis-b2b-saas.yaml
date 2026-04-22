@@ -1,0 +1,207 @@
+metadata:
+  id: win-loss-analysis-b2b-saas
+  version: 1.0.0
+  display_name: B2B Win/Loss Analysis
+  category: sales
+  description: Provides a structured approach to understand why deals are won, lost, or end in no decision, and to translate
+    patterns into improvements across targeting, messaging, product, and sales execution.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - late-stage-private
+    - public
+    roles:
+    - cmo
+    - cro
+    - vp-sales
+    - vp-marketing
+    - product-marketing-manager
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: analysis_scope
+    description: Definition of which deals are in scope (product/segment/region, timeframe, deal size).
+    source: user_input
+  - field: crm_deal_export
+    description: Structured data for in-scope opportunities, including outcome, amount, stage exited, primary competitor,
+      and key fields.
+    source: existing_deliverable
+  optional:
+  - field: interview_summaries
+    description: Summaries or transcripts of recent win, loss, and no-decision interviews with buyers where available.
+    source: existing_deliverable
+  - field: sales_feedback
+    description: Qualitative feedback from AEs/SEs on perceived win/loss drivers.
+    source: user_input
+  - field: competitive_landscape_snapshot
+    description: Short summary of key competitors in scope and known differentiators.
+    source: existing_deliverable
+analysis:
+  instructions: 'This framework structures win/loss analysis into clarification of scope and objectives, taxonomy and coding
+    of reasons, pattern analysis across segments and competitors, and synthesis into targeted action tracks for GTM, product,
+    and sales enablement.
+
+
+    Synthesis should produce a concise narrative of why the company wins, why it loses, and why deals stall, broken down by
+    segment and competitor. From there, define a focused set of action tracks for GTM, product, and sales, each with clear
+    owners and next steps that build on what is already working.'
+  dimensions:
+  - id: objectives-and-scope
+    name: Objectives and Scope
+    description: Clarifies which deals and questions the analysis will address.
+    prompts:
+    - What decisions should this win/loss analysis inform (e.g., messaging, qualification, pricing, roadmap)?
+    - Which products, segments, and time period are in scope, and what outcomes (win, loss, no-decision) are included?
+    - What specific metrics (win rate, discount levels, cycle time, stage conversion) are most important to this review?
+  - id: taxonomy-and-coding
+    name: Taxonomy and Coding
+    description: Establishes a stable set of reason codes and themes for structured analysis.
+    prompts:
+    - What standardized reason codes (e.g., price, product gaps, integration risk, timing, competitor fit, internal alignment)
+      will be used?
+    - How will deals be coded consistently across CRM data, interviews, and seller feedback?
+    - Where is there an opportunity to refine existing CRM fields to better capture reasons over time?
+  - id: pattern-analysis
+    name: Pattern Analysis
+    description: Identifies patterns by segment, competitor, deal size, and stage.
+    prompts:
+    - Which 3-5 themes most strongly differentiate wins from losses and no-decisions?
+    - How do win/loss drivers vary by ICP segment, deal size, region, or product line?
+    - At which stages do opportunities most often stall or exit, and what themes are associated with those points?
+  - id: competitive-dynamics
+    name: Competitive Dynamics
+    description: Examines how specific competitors influence outcomes and why.
+    prompts:
+    - Which competitors win most often in the scoped deals, and what reasons do buyers and sellers cite?
+    - Where is the company especially strong versus certain competitors, and how can this strength be amplified?
+    - Where do competitor claims or proof points consistently resonate with buyers, and how can the company respond?
+  - id: action-tracks
+    name: Action Tracks
+    description: Converts findings into clear workstreams for GTM, product, and sales.
+    prompts:
+    - What specific changes to targeting, qualification, and pipeline management could improve win rates?
+    - Which messaging, proof points, or enablement assets would help sellers address the most common objections?
+    - Which product or packaging themes show up often enough to warrant roadmap review or pricing adjustments?
+output_templates:
+- id: primary
+  name: Win/Loss Analysis -- company_name -- date
+  format: memo
+  when_to_use: ''
+  template: '## Scope and Data Set
+
+    {scope_and_data_set}
+
+
+    ## Overall Outcomes
+
+    {overall_outcomes}
+
+
+    ## Why We Win
+
+    {why_we_win}
+
+
+    ## Why We Lose
+
+    {why_we_lose}
+
+
+    ## Why Deals Stall or No-Decision
+
+    {why_deals_stall_or_no-decision}
+
+
+    ## Competitive Insights
+
+    {competitive_insights}
+
+
+    ## Action Tracks and Next Steps
+
+    {action_tracks_and_next_steps}
+
+    '
+- id: alternative
+  name: Win/Loss Drivers Scorecard -- company_name
+  format: scorecard
+  when_to_use: ''
+  template: '## Driver Impact Scores
+
+    {driver_impact_scores}
+
+
+    ## Priority Initiatives
+
+    {priority_initiatives}
+
+    '
+rubric:
+  description: Evaluates whether the win/loss analysis delivers clear, evidence-based insight into deal outcomes and translates
+    them into practical improvements.
+  dimensions:
+  - name: Data Coverage and Rigor
+    weight: 0.25
+    scoring:
+      1: Scope is unclear or based on very limited data; methods are not described.
+      3: Scope and methods are described; data volume is reasonable though some gaps remain.
+      5: Scope is clearly defined, data sources are transparent, and limitations are acknowledged.
+    improvement_guidance: Clarify which deals were included, which sources were used, and how any gaps might affect conclusions.
+  - name: Pattern Clarity
+    weight: 0.3
+    scoring:
+      1: Findings are mostly anecdotal; it is hard to see consistent patterns.
+      3: Several patterns are visible, though some remain general or unquantified.
+      5: A small set of strong, clearly articulated patterns explains most outcomes.
+    improvement_guidance: Highlight the few patterns that explain the majority of outcomes and illustrate them with data and
+      examples.
+  - name: Competitive Insight
+    weight: 0.2
+    scoring:
+      1: Competitors are mentioned but not analyzed in a structured way.
+      3: Some competitor-specific insights are present but incomplete.
+      5: Key competitors are each described in terms of when they win, when they lose, and why.
+    improvement_guidance: For each major competitor, summarize what they tend to win on and where the company holds advantages.
+  - name: Actionability and Ownership
+    weight: 0.25
+    scoring:
+      1: Few or no concrete actions are identified; ownership is unclear.
+      3: Several actions are identified but may not be prioritized or assigned.
+      5: Actions are prioritized, mapped to owners, and sequenced into a realistic next phase.
+    improvement_guidance: Convert insights into a small number of concrete, owned initiatives with suggested timing.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Seller-Only Perspective
+  description: Relying solely on internal views from Sales without buyer input.
+  mitigation: Incorporate buyer interviews or surveys where possible, and clearly distinguish buyer vs. seller perspectives.
+- pattern: Blame-Oriented Reporting
+  description: Using win/loss to criticize individuals or teams rather than focus on systems and strategy.
+  mitigation: Frame findings in terms of processes, enablement, and strategy, and emphasize how improvements help everyone
+    succeed.
+- pattern: Overgeneralization
+  description: Applying a single narrative to all segments or products.
+  mitigation: Break out findings by relevant segments (e.g., SMB vs. enterprise) where patterns differ.
+- pattern: One-Time Study
+  description: Treating win/loss as a one-off project instead of an ongoing learning loop.
+  mitigation: Propose a recurring cadence and simple governance model so insights compound over time.
+chaining:
+  after:
+  - framework_id: b2b-saas-competitive-positioning
+    reason: ''
+  - framework_id: messaging-architecture
+    reason: ''
+  - framework_id: sales-enablement-plan
+    reason: ''
+  before:
+  - framework_id: pipeline-and-crm-audit
+    reason: ''

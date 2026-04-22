@@ -1,0 +1,138 @@
+# Framework Schema — Section 8 (Skills, Workflows & Frameworks)
+# Governs analytical framework YAML files stored in frameworks/system/,
+# frameworks/approved/, and frameworks/quarantine/.
+# Derived from FRAMEWORK-FORMAT.md in Beau-s-Dev-Org/CMO-Agent-Team.
+#
+# PROHIBITED fields (cause validation failure):
+#   metadata.scope          — scope is controlled by install directory, not metadata
+#   metadata.author         — not in spec
+#   metadata.created_date   — not in spec
+#   metadata.last_updated   — not in spec
+#   analysis_module         — wrong key; use analysis
+#   required_inputs         — wrong key; use inputs.required
+#   applicability           — wrong key; use metadata.best_for
+#   installation            — not in spec
+#
+# PROHIBITED field aliases (wrong names for correct concepts):
+#   metadata.framework_id       -> use metadata.id
+#   analysis.dimensions[].prompts aliases:
+#     guiding_questions, questions, key_questions  -> use prompts
+#   anti_patterns[].correction/fix/remedy          -> use mitigation
+#   rubric.thresholds.approve/pass                 -> use publish_ready
+#   rubric.thresholds.escalate/flag/reject         -> use escalate_to_user
+#   chaining.precedes/followed_by/enables/unlocks  -> use chaining.after
+#   chaining.follows/preceded_by/requires          -> use chaining.before
+#   output_templates as dict with primary: key     -> must be a YAML list
+
+metadata:
+  id: framework-schema
+  version: "1.0.0"
+  schema_version: "1.0"
+  display_name: "Framework Schema"
+  description: >
+    Schema for analytical framework YAML files stored in frameworks/system/,
+    frameworks/approved/, and frameworks/quarantine/. Derived from
+    FRAMEWORK-FORMAT.md in Beau-s-Dev-Org/CMO-Agent-Team.
+
+required_fields:
+  metadata:
+    - id              # type: string (kebab-case) — unique identifier, matches filename
+    - version         # type: string (semver, quoted) — e.g. "1.0.0"
+    - display_name    # type: string — human-readable name shown in UI
+    - category        # type: enum[strategy, gtm, product, sales, operations, finance, research, growth, product_pmm]
+    - description     # type: string — 1-2 sentences describing what this framework analyzes
+    - schema_version  # type: string — always "1.0" for v1 frameworks, must be quoted
+    - invocation_modes  # type: list[explicit, recommended, free_form] — at least one required
+
+  inputs:
+    - required        # type: list — at least one required input must be defined
+
+  analysis:
+    - instructions    # type: string — markdown directives for agent execution (block scalar preferred)
+    - dimensions      # type: list — named components of this framework's analysis (min 1)
+
+  output_templates:
+    - id              # type: string — e.g. memo, scorecard, deck-outline, table
+    - name            # type: string — human-readable template name
+    - format          # type: enum[markdown, table, structured-list, deck-outline]
+    - when_to_use     # type: string — guidance on when to use this template
+    - template        # type: string — template body with {placeholder} syntax
+
+  rubric:
+    - scoring_model   # type: enum["1-5", pass-fail] — scoring approach
+    - dimensions      # type: list — rubric dimensions with score anchors
+    - thresholds      # type: object — publish_ready, revise, escalate_to_user thresholds
+
+  anti_patterns:
+    - pattern         # type: string — name of the anti-pattern
+    - description     # type: string — explanation of the anti-pattern
+    - mitigation      # type: string — corrective guidance (use mitigation, NOT correction/fix/remedy)
+
+optional_fields:
+  metadata:
+    - best_for        # type: object — stages, roles, ownership_types (omit if stage/role agnostic)
+    - tags            # type: list[string] — classification tags
+    - source          # type: string — attribution to original author or methodology source
+
+  chaining:
+    - before          # type: list — frameworks that feed inputs into this one
+    - after           # type: list — frameworks this one feeds outputs into
+
+  stakeholder_guidance: []  # type: string — required for frameworks producing company-facing output
+
+field_definitions:
+  metadata.category:
+    type: enum
+    values: [strategy, gtm, product, sales, operations, finance, research, growth, product_pmm]
+    description: "Broad category for framework classification and discovery."
+
+  metadata.invocation_modes:
+    type: list
+    values: [explicit, recommended, free_form]
+    description: "explicit = user explicitly requests this framework. recommended = agent recommends it. free_form = agent applies it without being asked."
+
+  output_templates.format:
+    type: enum
+    values: [markdown, table, structured-list, deck-outline]
+    description: "Output format for the template."
+
+  rubric.scoring_model:
+    type: enum
+    values: ["1-5", pass-fail]
+    description: "1-5 = five-point scale with anchors at 1, 3, 5. pass-fail = binary."
+
+  rubric.thresholds.publish_ready:
+    type: float
+    description: "Minimum score to approve output as-is. Use publish_ready, NOT approve/pass/green."
+
+  rubric.thresholds.revise:
+    type: float
+    description: "Score requiring revision before approval."
+
+  rubric.thresholds.escalate_to_user:
+    type: float
+    description: "Score below which agent surfaces to user. Use escalate_to_user, NOT escalate/flag/reject/red."
+
+validation_rules:
+  - "metadata.id must be kebab-case and match filename without .yaml extension"
+  - "metadata.version must be a quoted semver string, e.g. \"1.0.0\""
+  - "metadata.schema_version must be \"1.0\""
+  - "metadata.category must be one of the allowed enum values"
+  - "metadata.invocation_modes must contain at least one entry"
+  - "inputs.required must have at least one entry"
+  - "analysis.dimensions must have at least one entry"
+  - "Every analysis.dimension must have at least two prompts (use key: prompts, NOT guiding_questions/questions)"
+  - "output_templates must be a YAML list (- id: ...) NOT a dict with primary: key"
+  - "output_templates must have at least one entry"
+  - "Each output_template.template must be non-empty and contain at least one {placeholder}"
+  - "rubric.scoring_model and rubric.dimensions must be present"
+  - "If any rubric dimension has weight, all must, and sum must equal 1.0 (plus or minus 0.01)"
+  - "rubric.thresholds must define publish_ready, revise, and escalate_to_user"
+  - "Threshold ordering must be: escalate_to_user < revise < publish_ready"
+  - "anti_patterns must have at least two entries"
+  - "anti_patterns[].mitigation is required (NOT correction/fix/remedy/resolution/corrective_action)"
+  - "chaining.before[].framework_id must reference a valid framework in frameworks/"
+  - "chaining.after[].framework_id must reference a valid framework in frameworks/"
+  - "Framework files must not contain company_id references or actual company data"
+  - "Frameworks in frameworks/quarantine/ must have scan_status: pending (if review block present)"
+  - "scope is determined by directory, not metadata — do NOT include metadata.scope"

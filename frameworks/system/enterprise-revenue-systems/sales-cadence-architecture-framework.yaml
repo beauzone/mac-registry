@@ -1,0 +1,179 @@
+metadata:
+  id: sales-cadence-architecture-framework
+  version: 1.0.0
+  display_name: Sales Cadence Architecture — Multi-Channel Sequencing & Response Branching Model
+  category: sales
+  description: Designs structured outbound and expansion cadences across email, phone, social, and content touches. Optimizes
+    timing, channel mix, and response branching to maximize meeting creation and opportunity conversion while minimizing fatigue
+    and brand damage.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    roles:
+    - cro
+    - vp-sales
+    - vp-growth
+    - revops
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: target_segment
+    description: ICP and persona mapping
+    source: existing_deliverable
+  - field: average_sales_cycle_length
+    description: Typical cycle duration by segment
+    source: user_input
+  - field: primary_motion
+    description: Sales-led, hybrid, PLG-assisted, etc.
+    source: existing_deliverable
+  - field: historical_conversion_metrics
+    description: Reply, meeting, opportunity, close rates
+    source: user_input
+  - field: channel_capabilities
+    description: Email, phone, LinkedIn, events, direct mail, etc.
+    source: user_input
+analysis:
+  instructions: 'This framework designs disciplined outreach cadences with defined channel sequencing, message evolution,
+    persona variation, and response branching logic. It replaces ad-hoc follow-ups with measurable campaign architecture.
+
+
+    Evaluate cadence effectiveness, fatigue risk, channel ROI, and response branching discipline. Recommend timing adjustments,
+    channel mix changes, and persona escalation improvements.'
+  dimensions:
+  - id: cadence-objective-layer
+    name: Cadence Objective Layer
+    description: ''
+    prompts:
+    - Is the goal meeting creation or opportunity advancement?
+    - Is this new logo or expansion motion?
+    - What conversion threshold defines success?
+  - id: channel-mix-design
+    name: Channel Mix Design
+    description: ''
+    prompts: []
+  - id: touch-sequencing-logic
+    name: Touch Sequencing Logic
+    description: ''
+    prompts: []
+  - id: message-evolution-layer
+    name: Message Evolution Layer
+    description: ''
+    prompts: []
+  - id: response-branching-logic
+    name: Response Branching Logic
+    description: ''
+    prompts: []
+  - id: multi-thread-escalation
+    name: Multi-Thread Escalation
+    description: ''
+    prompts: []
+  - id: fatigue-&-brand-risk-controls
+    name: Fatigue & Brand Risk Controls
+    description: ''
+    prompts: []
+output_templates:
+- id: primary
+  name: Sales Cadence Architecture
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Segment & Persona Alignment
+
+    {segment_&_persona_alignment}
+
+
+    ## Channel Mix Rationale
+
+    {channel_mix_rationale}
+
+
+    ## Sequencing Blueprint
+
+    {sequencing_blueprint}
+
+
+    ## Branching & Escalation Logic
+
+    {branching_&_escalation_logic}
+
+
+    ## KPI & Testing Plan
+
+    {kpi_&_testing_plan}
+
+    '
+rubric:
+  description: Evaluates cadence discipline, channel optimization, fatigue management, and conversion performance.
+  dimensions:
+  - name: Sequencing Discipline
+    weight: 0.25
+    scoring:
+      1: Ad-hoc outreach.
+      3: Basic structured sequence.
+      5: Optimized multi-stage architecture.
+    improvement_guidance: Standardize sequencing templates.
+  - name: Channel Optimization
+    weight: 0.2
+    scoring:
+      1: Single-channel dependency.
+      3: Limited multi-channel usage.
+      5: Data-informed channel mix.
+    improvement_guidance: Analyze channel ROI by persona.
+  - name: Response Branching Logic
+    weight: 0.2
+    scoring:
+      1: No structured response handling.
+      3: Manual branching.
+      5: Automated and disciplined branching system.
+    improvement_guidance: Integrate cadence tool automation.
+  - name: Fatigue Management
+    weight: 0.15
+    scoring:
+      1: High unsubscribe or complaint rate.
+      3: Moderate fatigue risk.
+      5: Controlled and monitored contact limits.
+    improvement_guidance: Implement suppression logic.
+  - name: Conversion Efficiency
+    weight: 0.2
+    scoring:
+      1: Low meeting creation rate.
+      3: Moderate performance.
+      5: High meeting and opportunity yield.
+    improvement_guidance: Optimize early-touch messaging.
+  thresholds:
+    revise: 2.8
+    publish_ready: 3.6
+    escalate_to_user: 2.2
+anti_patterns:
+- pattern: Spray-and-Pray Sequencing
+  description: High-volume low-personalization outreach.
+  mitigation: Prioritize relevance over frequency.
+- pattern: Repetitive Messaging
+  description: Same value proposition repeated across touches.
+  mitigation: Introduce new angles each 2–3 touches.
+- pattern: No Escalation Logic
+  description: Single-thread outreach only.
+  mitigation: Design persona escalation triggers.
+- pattern: Over-Contact Risk
+  description: Excessive touches harming brand.
+  mitigation: Enforce fatigue caps and suppression rules.
+chaining:
+  after:
+  - framework_id: revenue-operations-operating-model
+    reason: ''
+  before:
+  - framework_id: outbound-prospecting-architecture-framework
+    reason: ''
+  - framework_id: icp-framework
+    reason: ''

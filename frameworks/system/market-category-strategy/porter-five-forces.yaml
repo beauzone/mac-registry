@@ -1,0 +1,199 @@
+metadata:
+  id: porter-five-forces
+  version: 1.0.0
+  display_name: Porter’s Five Forces — AI-Native Market Structure Analysis
+  category: strategy
+  description: Analyzes industry structure and structural profit potential, modernized for AI-native, data-driven, and platform-centric
+    markets. Produces strategic implications and defensible positioning choices.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - ceo
+    - cmo
+    - cpo
+    - cro
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: company_overview
+    description: Company name, category definition, primary offering, monetization model
+    source: skill
+  - field: target_customer_segments
+    description: Defined ICP segments and buyer types
+    source: skill
+  - field: known_competitors
+    description: Direct competitors, adjacent alternatives, and status quo substitutes
+    source: user_input
+  - field: distribution_model
+    description: Sales model (PLG, enterprise sales, channel, marketplace, API-first, etc.)
+    source: skill
+  optional:
+  - field: cost_structure_high_level
+    description: Major cost drivers (infrastructure, CAC, R&D, partnerships)
+    source: user_input
+analysis:
+  instructions: 'This framework evaluates structural forces shaping long-term profitability. In AI-native markets, this includes
+    data network effects, switching friction, API ecosystems, and capital velocity dynamics. Each force is analyzed for intensity,
+    trajectory, and strategic leverage points.
+
+
+    Score each force on intensity (Low/Moderate/High) and trajectory (Weakening/Stable/Strengthening). Identify: (1) structural
+    attractiveness of the category, (2) two structural risks requiring mitigation, and (3) one leverage point the company
+    can strengthen to improve defensibility. Conclude with 3 strategic options and a recommended path.'
+  dimensions:
+  - id: competitive-rivalry
+    name: Competitive Rivalry
+    description: Intensity of direct competition and differentiation durability
+    prompts:
+    - How many credible competitors target the same ICP and use case?
+    - Is differentiation capability-based, data-based, ecosystem-based, or primarily messaging-driven?
+    - How quickly can competitors replicate product advances using AI tools?
+    - Is competition shifting toward platform bundling or price compression?
+  - id: threat-of-new-entrants
+    name: Threat of New Entrants
+    description: Ease with which new players can enter and scale
+    prompts:
+    - How defensible are proprietary data, models, distribution channels, or ecosystem integrations?
+    - What capital is required to reach category credibility?
+    - Does AI tooling reduce development barriers meaningfully?
+    - Are switching costs high enough to slow adoption of new entrants?
+  - id: buyer-power
+    name: Buyer Power
+    description: Degree to which customers can negotiate price or switch vendors
+    prompts:
+    - How concentrated are buyers within the category?
+    - How price-sensitive is the ICP relative to outcome delivered?
+    - How easily can buyers multi-vendor or revert to internal builds?
+    - Does the buyer have strong alternatives or credible substitutes?
+  - id: supplier-power
+    name: Supplier Power
+    description: Influence of upstream providers on margin and flexibility
+    prompts:
+    - Is the company dependent on cloud providers, model providers, or data vendors?
+    - How concentrated are these suppliers?
+    - Are there realistic alternatives or multi-cloud strategies?
+    - Could upstream pricing shifts materially compress margins?
+  - id: threat-of-substitutes
+    name: Threat of Substitutes
+    description: Risk of alternative solutions solving the same core job
+    prompts:
+    - What non-obvious substitutes address the same customer outcome?
+    - Could internal tools or AI copilots replace this category entirely?
+    - Are adjacent platforms expanding into this territory?
+    - Is the category expanding, fragmenting, or consolidating?
+output_templates:
+- id: primary
+  name: Industry Structure Analysis
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Industry Definition and Boundaries
+
+    {industry_definition_and_boundaries}
+
+
+    ## Five Forces Assessment
+
+    {five_forces_assessment}
+
+
+    ## Structural Risks and Opportunities
+
+    {structural_risks_and_opportunities}
+
+
+    ## Strategic Options
+
+    {strategic_options}
+
+
+    ## Recommended Strategic Direction
+
+    {recommended_strategic_direction}
+
+
+    ## Board Discussion Questions
+
+    {board_discussion_questions}
+
+    '
+rubric:
+  description: Evaluates structural rigor, evidence quality, strategic insight, and board readiness. Designed for executive
+    and board-facing delivery.
+  dimensions:
+  - name: Structural Clarity
+    weight: 0.25
+    scoring:
+      1: Category boundaries unclear. Forces described generically.
+      3: Industry structure mostly clear but some assumptions implicit.
+      5: Industry boundaries precisely defined. Force dynamics explicitly linked to profit mechanics.
+    improvement_guidance: Define category edges and substitutes explicitly. Clarify how each force affects margin or growth.
+  - name: Evidence and Realism
+    weight: 0.2
+    scoring:
+      1: Claims are speculative with no supporting reasoning.
+      3: Moderate supporting logic but limited concrete examples.
+      5: Assertions supported with specific competitive patterns, pricing realities, or structural facts.
+    improvement_guidance: 'Anchor each force in observable behaviors: pricing moves, bundling, hiring trends, ecosystem shifts.'
+  - name: Strategic Insight
+    weight: 0.3
+    scoring:
+      1: Analysis descriptive only. No clear strategic implications.
+      3: Implications identified but not prioritized.
+      5: Clear structural leverage points identified. Trade-offs explicit.
+    improvement_guidance: Translate each force into a choice. Identify what the company should strengthen or avoid.
+  - name: Actionability
+    weight: 0.15
+    scoring:
+      1: No clear next steps.
+      3: General strategic ideas without sequencing.
+      5: Concrete options with sequencing and risk assessment.
+    improvement_guidance: Convert structural insight into a near-term initiative and long-term positioning shift.
+  - name: Board Readiness
+    weight: 0.1
+    scoring:
+      1: Not suitable for executive discussion.
+      3: Understandable but lacks sharp conclusion.
+      5: Clear verdict, crisp options, anticipates pushback.
+    improvement_guidance: State a verdict. Frame risks and trade-offs explicitly.
+  thresholds:
+    revise: 2.7
+    publish_ready: 3.7
+    escalate_to_user: 2.2
+anti_patterns:
+- pattern: Surface-Level Rivalry Analysis
+  description: Listing competitors without analyzing structural profit drivers.
+  mitigation: Evaluate pricing power, switching friction, and defensibility — not just competitor count.
+- pattern: Ignoring AI Acceleration Effects
+  description: Treating entry barriers as static despite AI-driven build velocity.
+  mitigation: Explicitly evaluate how AI tools reduce product development friction.
+- pattern: Over-Optimistic Market Attractiveness
+  description: Assuming category growth guarantees profit potential.
+  mitigation: Separate market growth from structural margin pressure.
+- pattern: Force Isolation
+  description: Evaluating each force independently without synthesis.
+  mitigation: Identify interaction effects (e.g., strong buyer power + low switching costs).
+chaining:
+  after:
+  - framework_id: stp-segmentation-targeting-positioning
+    reason: ''
+  - framework_id: positioning-statement
+    reason: ''
+  - framework_id: okrs
+    reason: ''
+  before:
+  - framework_id: tam-sam-som
+    reason: ''

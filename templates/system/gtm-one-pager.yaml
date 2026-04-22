@@ -1,0 +1,252 @@
+metadata:
+  id: gtm-one-pager
+  version: "1.0.0"
+  display_name: "GTM One-Pager"
+  category: sales
+  description: >
+    A concise, single-page go-to-market summary synthesizing the company's market
+    opportunity, target customer, differentiated value, GTM motion, and immediate
+    priorities. Used for investor conversations, partnership discussions, sales
+    onboarding, and internal alignment. Designed to convey the entire GTM thesis
+    in 60 seconds.
+  output_format: markdown
+  typical_length: "400–700 words"
+  best_for:
+    agents:
+      - strategic-planning
+      - partner
+      - campaign-manager
+      - market-research
+    stages:
+      - seed
+      - series-a
+      - series-b
+    modes:
+      - fractional
+      - fte
+      - tech_provider
+  tags:
+    - gtm
+    - one-pager
+    - strategy
+    - positioning
+    - sales-enablement
+    - investor
+    - partnership
+  schema_version: "1.0"
+
+inputs:
+  required:
+    - field: company_name
+      description: Company name
+      source: skill
+    - field: market_opportunity
+      description: The market problem, size, and why now — the business opportunity being pursued
+      source: framework_output
+    - field: target_customer
+      description: Precise ICP description — who the company sells to and why they buy
+      source: framework_output
+    - field: value_proposition
+      description: The core value delivered — specific, differentiated, and outcome-led
+      source: framework_output
+    - field: gtm_motion
+      description: How the company goes to market — primary motion (PLG, sales-led, partner-led, etc.) and key channels
+      source: framework_output
+  optional:
+    - field: competitive_differentiation
+      description: How the company is differentiated from the primary alternatives
+      source: framework_output
+    - field: traction
+      description: Key proof points — ARR, customer count, growth rate, notable logos
+      source: skill
+    - field: priorities
+      description: The 2–3 most important GTM initiatives for the current period
+      source: user_input
+    - field: audience_context
+      description: Who this one-pager is for — investor, partner, new hire, analyst
+      source: user_input
+
+structure:
+  sections:
+    - id: headline
+      name: Headline / Positioning Statement
+      required: true
+      description: The company's positioning in one or two sentences — what it does, for whom, and why it matters
+      guidance: >-
+        This is the lede. It must be specific enough to exclude companies this is not for, and compelling enough to make the reader want to know more. Avoid category jargon ("AI-powered platform") without specifics. Answer: "We help {specific buyer} achieve {specific outcome} by {unique mechanism}."
+      word_count: "20–40 words"
+
+    - id: market-opportunity
+      name: Market Opportunity
+      required: true
+      description: The problem in the market, why it's significant, and why now is the right time
+      guidance: Focus on the buyer's pain, not the product's features. State the market size briefly (TAM/SAM) if it is large and credible — avoid inflated numbers. The "why now" is critical — what changes in the market, regulation, or technology make this the right moment?
+      word_count: "60–100 words"
+
+    - id: target-customer
+      name: Target Customer
+      required: true
+      description: Precise ICP description — who buys, what they care about, and the specific job-to-be-done
+      guidance: Be specific enough to be useful. "Mid-market SaaS companies" is not a target customer. "Series B B2B SaaS companies (50–250 employees) where the VP of Marketing owns pipeline targets but lacks a dedicated ops function" is. Include the economic buyer and the champion if they differ.
+      word_count: "60–100 words"
+
+    - id: value-proposition
+      name: Value Proposition
+      required: true
+      description: What the company delivers — specific, differentiated, and expressed in terms of the customer's outcome
+      guidance: Lead with the outcome, not the mechanism. Quantify where possible. Avoid "we make X easier" — instead say "we reduce X from {baseline} to {target}." If there are two or three distinct value pillars, list them as bullets — but never more than three.
+      word_count: "60–100 words"
+
+    - id: competitive-differentiation
+      name: Why Us / Competitive Differentiation
+      required: false
+      description: The company's differentiated position versus primary alternatives
+      guidance: >-
+        State the alternatives honestly (competitors, status quo, internal builds) and then explain the specific advantage. Avoid "we're the only ones who…" claims unless rigorously defensible. Strong differentiation is often structural: data advantage, network effect, proprietary approach, or unique expertise.
+      word_count: "50–80 words"
+
+    - id: gtm-motion
+      name: GTM Motion
+      required: true
+      description: How the company acquires and retains customers — primary motion and key channels
+      guidance: Describe the primary motion first (PLG, sales-led, partner-led, community-led). Then list the 2–3 channels that drive the most pipeline. Include the typical sales cycle length and deal size if known — this gives readers context on the business model. Avoid listing every channel — focus on where the business actually wins.
+      word_count: "60–100 words"
+
+    - id: traction
+      name: Traction
+      required: false
+      description: Key proof points demonstrating the GTM is working — ARR, growth rate, logos, retention
+      guidance: Investors and partners look at this section first after the headline. Include the most compelling and credible numbers. If ARR is early, use customer count, growth rate, or notable logos. Do not include projections here — traction is what has actually happened.
+      format_notes: 3–5 bullet points or key-value pairs. Quantified. No fluffy claims.
+
+    - id: priorities
+      name: Current Priorities
+      required: false
+      description: The 2–3 most important GTM initiatives in the current period
+      guidance: Include this section when the one-pager is used for internal alignment or partnership conversations. Investors typically want the overall GTM thesis, not the quarterly plan. Keep it to 2–3 bullets — the things that will move the needle most in the next 90 days.
+      word_count: "40–60 words"
+
+template: |
+  # {company_name}
+
+  **{Positioning statement: We help {specific buyer} achieve {specific outcome} by {unique mechanism}.}**
+
+  ---
+
+  ## Market Opportunity
+
+  {60–100 word statement of the market problem, significance, and why now. Include market size briefly if large and credible.}
+
+  ---
+
+  ## Target Customer
+
+  **Who we serve:** {Precise ICP — role, company type, stage, the specific job-to-be-done}
+
+  **Economic buyer:** {role}
+  **Champion:** {role, if different from buyer}
+
+  ---
+
+  ## Value Proposition
+
+  {Outcome-led statement of what we deliver. Quantified where possible.}
+
+  - {Value pillar 1 — outcome in customer terms}
+  - {Value pillar 2 — outcome in customer terms}
+  - {Value pillar 3 — outcome in customer terms, if distinct}
+
+  ---
+
+  ## Why Us
+
+  **vs. {Primary alternative / competitor}:** {Specific, defensible differentiation — 1–2 sentences}
+
+  **vs. {Status quo / do-nothing}:** {Why change is worth the investment — 1 sentence}
+
+  ---
+
+  ## GTM Motion
+
+  **Primary motion:** {PLG / sales-led / partner-led / community-led}
+
+  **Key channels:** {Channel 1} · {Channel 2} · {Channel 3}
+
+  **Typical deal:** {ACV range} | {Sales cycle length} | {Buyer type}
+
+  ---
+
+  ## Traction *(include when credible proof points exist)*
+
+  - {ARR or revenue milestone}
+  - {Customer count or growth rate}
+  - {Notable logo or reference customer — with permission}
+  - {Retention rate or NRR — if strong}
+
+  ---
+
+  ## Current Priorities *(include for internal or partnership use)*
+
+  1. {GTM priority 1 — what and why}
+  2. {GTM priority 2 — what and why}
+  3. {GTM priority 3 — what and why, optional}
+
+variations:
+  - id: investor-version
+    name: Investor Version
+    description: Optimized for investor conversations during fundraise or update meetings. Emphasizes market size, traction, and GTM thesis. Remove current priorities; add fundraise use of proceeds.
+    overrides:
+      sections_add:
+        - use-of-proceeds
+      sections_remove:
+        - priorities
+      tone: "Confident and evidence-led. Investors pattern-match quickly — surface the most compelling proof first. No hedging."
+
+  - id: partner-version
+    name: Partner Version
+    description: Adapted for partnership conversations. Emphasize the ICP overlap, co-sell motion, and what the partner gains. Add a mutual fit section.
+    overrides:
+      sections_add:
+        - partner-fit
+        - co-sell-motion
+      tone: "Collaborative. Frame the value proposition in terms of what it means for the partner's customers, not just the vendor's thesis."
+
+  - id: sales-onboarding
+    name: Sales Onboarding Version
+    description: For new hire onboarding. More detail on ICP, value prop, and competitive differentiation. Less on traction and priorities.
+    overrides:
+      sections_add:
+        - common-objections
+      tone: "Educational. Help new reps build confidence in the positioning. Include the 'why we win' story."
+
+branding:
+  supports_branding: true
+  brandable_elements:
+    - element: header_logo
+      description: Company logo prominent in header — this is a brand-forward document
+    - element: color_scheme
+      description: Section dividers, heading colors, and highlight treatments aligned to brand palette
+    - element: footer
+      description: Website URL, CTA, and company tagline in footer
+    - element: typography
+      description: Headline and body fonts aligned to brand guidelines
+    - element: cover_treatment
+      description: Optional visual treatment — brand background color or hero image behind headline
+
+quality_criteria:
+  required_elements:
+    - "Headline / positioning statement is specific — names the buyer, the outcome, and the mechanism"
+    - "Target Customer section is precise enough to exclude companies that are not a fit"
+    - "Value Proposition leads with outcomes, not features"
+    - "GTM Motion names the primary motion and the 2–3 key channels"
+    - "Total length does not exceed one page in standard document format"
+  prohibited_elements:
+    - "Category jargon in headline without specifics ('AI-powered platform for B2B companies')"
+    - "Value proposition that leads with product features rather than buyer outcomes"
+    - "Traction section with projections rather than actuals"
+    - "More than 3 value pillars (dilutes impact)"
+    - "Vague competitive differentiation ('we're the best' or 'we're the only ones')"
+  length_check:
+    minimum: 300
+    maximum: 750
+    strict: true

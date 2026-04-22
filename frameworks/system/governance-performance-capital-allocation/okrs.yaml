@@ -1,0 +1,173 @@
+metadata:
+  id: okrs
+  version: 1.0.0
+  display_name: OKRs — Strategy-to-Execution Alignment
+  category: operations
+  description: Translates strategic priorities into measurable Objectives and Key Results with ownership, cadence, and cross-functional
+    alignment. Adapted for AI-native, fast-scaling organizations.
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c-plus
+    - public
+    roles:
+    - ceo
+    - cmo
+    - cro
+    - vp-marketing
+    - vp-product
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: strategic_priorities
+    description: 6–12 month company or functional strategic themes
+    source: existing_deliverable
+  - field: baseline_metrics
+    description: Current performance metrics relevant to priorities
+    source: user_input
+  - field: resource_constraints
+    description: Budget, headcount, and capacity limits
+    source: user_input
+  optional:
+  - field: north_star_metric_and_drivers
+    description: Approved NSM and driver tree (if available)
+    source: existing_deliverable
+analysis:
+  instructions: 'This framework converts strategic priorities into 3–5 Objectives with measurable Key Results. It enforces
+    focus, measurable impact, and explicit trade-offs. In AI-native organizations, emphasis is placed on leading indicators,
+    experimentation loops, and cross-functional driver ownership.
+
+
+    Produce 3–5 Objectives with 2–4 Key Results each. Include baseline and target metrics. Explicitly document deprioritized
+    initiatives. Conclude with ownership assignments and quarterly review cadence.'
+  dimensions:
+  - id: objective-clarity
+    name: Objective Clarity
+    description: High-level qualitative goal aligned to strategy
+    prompts:
+    - Does the objective clearly reflect a strategic priority?
+    - Is the objective outcome-oriented rather than task-oriented?
+    - Is the objective ambitious but realistic?
+    - Does the objective avoid vague language?
+  - id: key-result-measurability
+    name: Key Result Measurability
+    description: Quantitative indicators defining success
+    prompts:
+    - Are key results measurable and time-bound?
+    - Do key results reflect outcome metrics rather than activities?
+    - Are baseline values and target values specified?
+    - Are leading indicators included where appropriate?
+  - id: alignment-and-trade-offs
+    name: Alignment and Trade-offs
+    description: Ensuring focus and cross-functional coherence
+    prompts:
+    - Are there too many objectives diluting focus?
+    - Do OKRs align across marketing, sales, and product?
+    - Are trade-offs explicit?
+    - Are conflicting incentives resolved?
+  - id: ownership-and-cadence
+    name: Ownership and Cadence
+    description: Accountability and review structure
+    prompts:
+    - Is each objective assigned a single accountable owner?
+    - Is there a defined weekly or monthly review cadence?
+    - Are progress updates standardized?
+    - Are corrective actions defined if off-track?
+output_templates:
+- id: primary
+  name: Quarterly OKRs
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary
+
+    {executive_summary}
+
+
+    ## Objectives and Key Results
+
+    {objectives_and_key_results}
+
+
+    ## Alignment Notes
+
+    {alignment_notes}
+
+
+    ## Ownership and Review Cadence
+
+    {ownership_and_review_cadence}
+
+
+    ## Deprioritized Initiatives
+
+    {deprioritized_initiatives}
+
+    '
+rubric:
+  description: Evaluates alignment to strategy, measurability, focus discipline, and operational clarity.
+  dimensions:
+  - name: Strategic Alignment
+    weight: 0.25
+    scoring:
+      1: Objectives loosely connected to strategy.
+      3: Mostly aligned but some ambiguity.
+      5: Directly tied to defined strategic priorities.
+    improvement_guidance: Validate each objective against 6–12 month strategic themes.
+  - name: Measurability
+    weight: 0.25
+    scoring:
+      1: Key results vague or activity-based.
+      3: Some measurable results but inconsistent targets.
+      5: Clear baseline, target, and timeline for every key result.
+    improvement_guidance: Convert activities into measurable outcomes.
+  - name: Focus Discipline
+    weight: 0.2
+    scoring:
+      1: Too many objectives or key results.
+      3: Moderate focus but minor sprawl.
+      5: Tight set of high-impact objectives only.
+    improvement_guidance: Limit objectives to 3–5 maximum.
+  - name: Ownership Clarity
+    weight: 0.15
+    scoring:
+      1: Shared or unclear accountability.
+      3: Owners defined but cadence unclear.
+      5: Single accountable owner with defined review rhythm.
+    improvement_guidance: Assign one accountable owner per objective.
+  - name: Execution Readiness
+    weight: 0.15
+    scoring:
+      1: No integration into operating cadence.
+      3: Partially embedded in reporting.
+      5: Fully integrated into weekly/monthly operating reviews.
+    improvement_guidance: Embed OKR review into leadership meeting agenda.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Activity-Based OKRs
+  description: Framing key results as tasks instead of outcomes.
+  mitigation: Rewrite key results to reflect measurable impact.
+- pattern: Objective Sprawl
+  description: Too many objectives reducing focus.
+  mitigation: Limit to highest-impact strategic themes.
+- pattern: No Baseline Metrics
+  description: Setting targets without current performance context.
+  mitigation: Include baseline values for every key result.
+- pattern: Shared Ownership
+  description: Assigning multiple accountable owners.
+  mitigation: Define one accountable owner per objective.
+chaining:
+  after: []
+  before:
+  - framework_id: north-star-metric-driver-tree
+    reason: ''
+  - framework_id: swot
+    reason: ''

@@ -1,0 +1,255 @@
+metadata:
+  id: gartner-product-positioning-framework
+  version: 1.0.0
+  display_name: Gartner Product Positioning Framework
+  category: product
+  description: 'A structured methodology for defining a product''s differentiated value relative to alternatives in the market.
+    The framework aligns product, marketing, and sales teams around a clear positioning statement that motivates buyers and
+    enables revenue teams to consistently communicate the product story.
+
+    '
+  best_for:
+    stages:
+    - seed
+    - series-a
+    - series-b
+    - series-c
+    - growth
+    - enterprise
+    roles:
+    - cmo
+    - vp-marketing
+    - vp-product
+    - product-marketing
+    - ceo
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  tags:
+  - product-positioning
+  - product-marketing
+  - differentiation
+  - messaging
+  - gartner
+  source: Gartner Product Positioning Research
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: product_description
+    description: Description of the product, solution, or offering
+    source: skill
+  - field: target_buyers
+    description: Primary buyer personas or segments
+    source: skill
+  - field: competitive_alternatives
+    description: Main competitors or substitute solutions
+    source: skill
+  optional:
+  - field: customer_needs
+    description: Key problems the target buyer is trying to solve
+    source: user_input
+  - field: product_capabilities
+    description: Core capabilities or differentiating features
+    source: skill
+analysis:
+  instructions: 'Apply the Gartner Product Positioning Framework to define a
+
+    differentiated product position that resonates with buyers
+
+    and enables revenue teams.
+
+
+    Step 1: Understand the Target Buyer
+
+    Identify the target audience and the business problems they
+
+    are trying to solve.
+
+
+    Step 2: Analyze Customer Needs
+
+    Determine the most critical needs, pains, or outcomes buyers
+
+    expect from solutions in this category.
+
+
+    Step 3: Evaluate Competitive Alternatives
+
+    Identify competing solutions and how they address the same
+
+    problems.
+
+
+    Step 4: Define Differentiated Value
+
+    Determine what unique capabilities or benefits distinguish
+
+    the product from alternatives.
+
+
+    Step 5: Craft the Positioning Statement
+
+    Translate the differentiation into a concise internal
+
+    positioning statement that aligns marketing, sales, and
+
+    product teams.
+
+    '
+  dimensions:
+  - id: buyer-understanding
+    name: Buyer Understanding
+    description: Depth of insight into target buyer needs
+    prompts:
+    - Who is the primary buyer persona?
+    - What business problem are they trying to solve?
+    - What outcomes matter most to them?
+  - id: problem-definition
+    name: Problem Definition
+    description: Clarity of the core problem the product solves
+    prompts:
+    - Is the problem clearly defined?
+    - Is the problem urgent or strategically important?
+  - id: competitive-context
+    name: Competitive Context
+    description: Understanding of competing alternatives
+    prompts:
+    - What alternatives do buyers consider?
+    - How do competitors position themselves?
+  - id: differentiated-value
+    name: Differentiated Value
+    description: Unique capabilities or benefits
+    prompts:
+    - What makes this product meaningfully different?
+    - Why should buyers choose it over alternatives?
+  - id: positioning-clarity
+    name: Positioning Clarity
+    description: Strength and clarity of the positioning statement
+    prompts:
+    - Is the positioning statement concise and compelling?
+    - Can revenue teams easily communicate the value story?
+output_templates:
+- id: positioning-statement
+  name: Product Positioning Statement
+  format: markdown
+  template: '# Product Positioning Statement
+
+
+    **Target Buyer**
+
+    {target_buyer_description}
+
+
+    **Buyer Problem**
+
+    {problem_statement}
+
+
+    **Product Category**
+
+    {category_definition}
+
+
+    **Key Differentiation**
+
+    {differentiated_capability}
+
+
+    **Primary Value Delivered**
+
+    {core_value_proposition}
+
+    '
+  when_to_use: Use for product positioning statement deliverables.
+- id: positioning-canvas
+  name: Product Positioning Canvas
+  format: table
+  template: '| Element | Description |
+
+    |--------|-------------|
+
+    | Target Buyer | {buyer} |
+
+    | Core Problem | {problem} |
+
+    | Competitive Alternatives | {alternatives} |
+
+    | Unique Differentiation | {differentiation} |
+
+    | Value Proposition | {value} |
+
+    '
+  when_to_use: Use for product positioning canvas deliverables.
+rubric:
+  scoring_model: 1-5
+  dimensions:
+  - id: buyer-insight
+    name: Buyer Insight
+    weight: 0.25
+    scores:
+      5: Deep understanding of buyer needs and motivations
+      3: Moderate insight
+      1: Limited understanding of buyer needs
+    description: Quality of buyer insight.
+  - id: differentiation
+    name: Differentiation Strength
+    weight: 0.35
+    scores:
+      5: Clear and compelling competitive advantage
+      3: Moderate differentiation
+      1: Little meaningful differentiation
+    description: Quality of differentiation strength.
+  - id: narrative-clarity
+    name: Narrative Clarity
+    weight: 0.2
+    scores:
+      5: Clear and easily communicated positioning
+      3: Somewhat clear
+      1: Confusing or vague
+    description: Quality of narrative clarity.
+  - id: revenue-enablement
+    name: Revenue Enablement
+    weight: 0.2
+    scores:
+      5: Positioning strongly supports sales and marketing
+      3: Moderate support
+      1: Positioning not useful for revenue teams
+    description: Quality of revenue enablement.
+  thresholds:
+    publish_ready: 4.0
+    revise: 3.0
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Technology-First Positioning
+  description: Positioning focuses on features rather than buyer problems
+  mitigation: Anchor positioning in customer outcomes
+- pattern: Generic Audience Definition
+  description: Product described as serving everyone
+  mitigation: Narrow positioning to specific segments
+- pattern: Weak Differentiation
+  description: Positioning mirrors competitor messaging
+  mitigation: Identify unique strengths or category angle
+chaining:
+  before:
+  - framework_id: steeple
+    reason: Macro environment analysis informs competitive positioning context
+  - framework_id: icp-buying-committee
+    reason: Buyer committee structure and purchase criteria define who positioning must convince
+  after:
+  - framework_id: gartner-positioning-messaging-framework
+    reason: Product positioning is the primary input to developing differentiated messaging
+  - framework_id: gartner-brand-marketing-framework
+    reason: Positioning clarity enables brand marketing to reinforce the defined competitive context
+stakeholder_guidance: 'Product positioning should be treated as a strategic internal
+
+  statement rather than external messaging. The goal is to align
+
+  product, marketing, and sales teams around a shared understanding
+
+  of the product''s differentiated value.
+
+
+  When presenting positioning, focus on buyer outcomes and
+
+  competitive advantage rather than product features.'
