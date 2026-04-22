@@ -1,6 +1,6 @@
 ---
 name: b2b-gtm-strategist
-version: 2.0.0
+version: 2.1.0
 description: >
   A structured B2B marketing and go-to-market strategy skill backed by analytical
   frameworks, SME buyer personas (cybersecurity, IT, anti-fraud, marketing practitioners,
@@ -15,7 +15,7 @@ description: >
 ---
 
 <!--
-SKILL_VERSION: 1.1.1
+SKILL_VERSION: 2.1.0
 SKILL_UPDATED: 2026-04-22
 -->
 
