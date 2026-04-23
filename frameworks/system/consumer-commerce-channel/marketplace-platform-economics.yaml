@@ -1,0 +1,149 @@
+metadata:
+  id: marketplace-platform-economics
+  version: 1.0.0
+  display_name: Marketplace / Platform Economics Framework
+  category: strategy
+  description: Analyzes the economics and strategy for brands operating on Amazon, DTC marketplaces, or platform ecosystems — covering fee structure, buy box dynamics, ad-to-organic mix, review strategy, and brand protection — to optimize marketplace performance while managing platform dependency risk.
+  best_for:
+    stages:
+    - growth
+    - scale
+    roles:
+    - cmo
+    - head-of-growth
+    - retail-omnichannel-manager
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: marketplace_platforms
+    description: Which marketplace(s) the brand is operating on or evaluating (Amazon, Walmart, Etsy, Target+, app stores, etc.)
+    source: user_input
+  - field: product_category
+    description: Product category and any category-specific marketplace dynamics or fee structures
+    source: user_input
+  - field: current_marketplace_performance
+    description: Current marketplace revenue, unit volume, BSR or ranking, review count and rating, and ad spend
+    source: user_input
+  optional:
+  - field: marketplace_p_and_l
+    description: Current marketplace P&L including fees, ad spend, and net margin
+    source: user_input
+  - field: dtc_comparison_data
+    description: DTC channel economics for direct comparison to marketplace economics
+    source: user_input
+  - field: competitive_marketplace_presence
+    description: How key competitors are positioned on the same marketplaces
+    source: user_input
+analysis:
+  instructions: 'Analyze the marketplace strategy across six dimensions. First, map the fee structure: for Amazon this includes referral fee (category-dependent, typically 8–15%), FBA fulfillment fee (weight and dimension-dependent), storage fees (monthly and long-term), advertising costs, and any subscription program costs. Net marketplace margin after all fees is the starting point for viability assessment. Second, analyze the buy box and discoverability dynamics: what drives ranking and buy box ownership on this platform, and how is the brand performing on each dimension (price competitiveness, inventory availability, fulfillment speed, seller rating, review velocity)? Third, model the ad-to-organic economics: what is the Tacos (Total Advertising Cost of Sales) rate, and what organic BSR momentum does advertising investment generate? Fourth, design the review strategy: how does the brand systematically generate reviews within platform policies, and what is the target review count and rating needed to win in this category? Fifth, analyze brand protection: is the brand vulnerable to counterfeit listings, unauthorized resellers, or MAP (Minimum Advertised Price) violations, and what is the brand registry strategy? Sixth, compare marketplace vs. DTC economics and recommend the optimal channel allocation.'
+  dimensions:
+  - id: platform-fee-structure
+    name: Platform Fee Structure Analysis
+    description: Maps all platform fees and calculates the true net margin available after fees
+    prompts:
+    - What is the total effective fee burden as a percentage of gross revenue on this marketplace, including all referral, fulfillment, storage, and subscription fees?
+    - How does the fee structure change as the brand scales volume — are there volume-based fee reductions available?
+    - What is the minimum contribution margin required before marketplace fees to ensure a viable net margin?
+    - What product or packaging changes would reduce the per-unit fee burden (weight, dimensions, ASIN consolidation)?
+  - id: listing-optimization-strategy
+    name: Listing Optimization & Discoverability Strategy
+    description: Defines the listing strategy to maximize organic discoverability and conversion rate
+    prompts:
+    - What is the current BSR (Best Seller Rank) or category ranking, and what is the target ranking for viable organic traffic?
+    - Which keyword strategy (broad brand terms, specific use-case terms, competitor conquest) has the highest potential for organic ranking improvement?
+    - How does the listing content (title, bullets, A+ content, images, video) compare to top-ranking competitors in the category?
+    - What is the listing's conversion rate, and what content or asset changes would most improve it?
+  - id: ad-to-organic-economics
+    name: Ad-to-Organic Economics
+    description: Models the advertising investment required to build organic momentum and achieve sustainable TACOS
+    prompts:
+    - What is the current TACOS rate, and what is the target TACOS for a mature, organically strong listing?
+    - How much of the current revenue is driven by advertising vs. organic search and category browse?
+    - What is the trajectory of organic share over time — is advertising investment building organic momentum or is the brand stuck in an advertising dependency loop?
+    - At what BSR does organic traffic become sufficient to sustain growth with a meaningful reduction in ad spend?
+  - id: review-rating-strategy
+    name: Review & Rating Strategy
+    description: Designs the systematic approach to building review volume and maintaining rating quality
+    prompts:
+    - What is the minimum review count and average rating required to be competitive in this category, and how does the brand currently compare?
+    - What compliant review solicitation programs (Amazon Vine, Request a Review button, email follow-up within TOS) are available and being used?
+    - What is the brand's review velocity — new reviews per week — and is it sufficient to maintain a competitive review position?
+    - How does the brand respond to negative reviews, and is the response strategy improving or damaging the brand's perception?
+  - id: brand-protection-playbook
+    name: Brand Protection Playbook
+    description: Defines the strategy to protect the brand from unauthorized sellers, counterfeits, and MAP violations
+    prompts:
+    - Is the brand enrolled in the relevant brand registry program, and are all available brand protection tools activated?
+    - Are there unauthorized sellers on the brand's listings, and what is the strategy to identify and remove them?
+    - Are MAP violations occurring on the marketplace, and is there a monitoring and enforcement process?
+    - Is the brand vulnerable to counterfeit product listings, and if so, what proactive monitoring and takedown process is in place?
+  - id: platform-vs-dtc-economics
+    name: Platform vs. DTC Economics Comparison
+    description: Compares marketplace economics to DTC to inform the optimal channel allocation
+    prompts:
+    - What is the net margin per unit on the marketplace vs. the DTC channel after all fees and variable costs?
+    - What is the LTV difference between a marketplace customer (no direct relationship, no email, anonymous) and a DTC customer?
+    - What percentage of revenue should come from each channel to optimize for both growth (marketplace volume) and profitability (DTC margin)?
+    - At what point does marketplace dependency become a strategic risk — when does the platform's fee increases or algorithm changes threaten the business model?
+output_templates:
+- id: primary
+  name: Marketplace Strategy & Economics Analysis
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary\n\n{executive_summary}\n\n## Fee Structure Analysis\n\n{fee_structure_analysis}\n\n## Listing & Discoverability Strategy\n\n{listing_optimization}\n\n## Ad-to-Organic Economics\n\n{ad_organic_economics}\n\n## Review Strategy\n\n{review_strategy}\n\n## Brand Protection Plan\n\n{brand_protection}\n\n## Platform vs. DTC Comparison\n\n{platform_dtc_comparison}\n\n## Recommended Channel Allocation\n\n{channel_allocation}\n\n'
+rubric:
+  description: Evaluates the economic rigor and strategic depth of the marketplace analysis.
+  dimensions:
+  - name: Fee Model Completeness
+    weight: 0.25
+    scoring:
+      1: Fee analysis includes only the primary referral fee without modeling FBA, storage, advertising, and return processing costs.
+      3: Fee model is reasonably complete but some variable costs (long-term storage, return processing) are estimated rather than calculated from actual data.
+      5: Full fee model includes all variable costs at current and projected volume, enabling a precise net margin calculation for business case decisions.
+    improvement_guidance: Pull the actual fee breakdown from the marketplace seller dashboard for the past three months. Use actual fees per unit by ASIN rather than category averages.
+  - name: TACOS and Organic Analysis
+    weight: 0.30
+    scoring:
+      1: Advertising analysis reports ACOS (Advertising Cost of Sales) without calculating TACOS or analyzing the organic:paid revenue split.
+      3: TACOS is calculated but the trend and the organic revenue trajectory are not analyzed.
+      5: TACOS trend is analyzed alongside the organic share trajectory, producing a clear view of whether advertising is building organic momentum or creating long-term dependency.
+    improvement_guidance: Track TACOS and organic revenue share monthly for at least six months. A declining TACOS with rising organic share indicates that advertising investment is converting into organic ranking.
+  - name: Strategic Risk Assessment
+    weight: 0.25
+    scoring:
+      1: Marketplace strategy does not address platform concentration risk or the implications of algorithm changes or fee increases.
+      3: Platform dependency risk is acknowledged but no mitigation strategy is defined.
+      5: Platform risk is quantified — what percentage of revenue would be at risk from a fee increase or algorithm change — and a mitigation strategy with a DTC transition plan is defined.
+    improvement_guidance: Model the impact of a 3-percentage-point referral fee increase on marketplace net margin. If the business model breaks, the brand is over-concentrated in the marketplace.
+  - name: Brand Protection Completeness
+    weight: 0.20
+    scoring:
+      1: Brand protection is not addressed; unauthorized sellers and counterfeit risks are not assessed.
+      3: Brand registry enrollment is confirmed but active monitoring and enforcement processes are not defined.
+      5: Brand protection program is fully designed with automated monitoring for unauthorized sellers and counterfeits, a documented removal process, and a MAP enforcement policy.
+    improvement_guidance: Conduct a monthly unauthorized seller audit. The presence of unauthorized sellers depresses the buy box win rate, reduces brand control, and often leads to MAP violations that train consumers to expect discounts.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: ACOS Optimization Without TACOS Awareness
+  description: Optimizing advertising for a low ACOS (Advertising Cost of Sales as a percentage of ad-attributed revenue) without tracking TACOS (total advertising cost as a percentage of total revenue), which hides whether advertising investment is generating organic lift or merely recirculating existing organic revenue through paid attribution.
+  mitigation: Report TACOS as the primary advertising efficiency metric. Track the organic revenue share monthly. If TACOS is flat or declining but organic share is rising, advertising is working well. If TACOS is declining only because ad spend was cut, the business may be losing ranking.
+- pattern: Customer Data Abandonment
+  description: Building marketplace revenue without any strategy to capture customer relationship data, resulting in 100% platform-dependent revenue with no CRM asset, no ability to remarket, and no protection against platform fee increases.
+  mitigation: Build a DTC channel in parallel with marketplace presence. Include product packaging inserts that offer value (extended warranty, content, community access) in exchange for direct registration. Even capturing 10% of marketplace buyers into a DRM creates a valuable safety net.
+- pattern: Review Velocity Complacency
+  description: Allowing review velocity to decline as the product matures, leading to a static review count while competitors with newer listings generate review momentum and close the gap.
+  mitigation: Maintain an active review solicitation program continuously, not just at launch. Set a target weekly review velocity and monitor it as a leading indicator of future BSR performance.
+chaining:
+  after:
+  - framework_id: b2c-gtm-motions
+    reason: B2C GTM motion selection determines whether the marketplace is a primary or supplementary channel; marketplace economics analysis validates that choice.
+  before:
+  - framework_id: dtc-economics-model
+    reason: Marketplace and DTC economics must be compared side by side to determine the optimal channel allocation and identify where investment generates the highest return.

@@ -1,9 +1,9 @@
-name: Sync and auto-bump skill version
+name: Sync GTM Strategist skill version
 
 on:
   push:
     paths:
-      - 'skills/user/b2b-gtm-strategist/SKILL.md'
+      - 'skills/user/gtm-strategist/SKILL.md'
     branches:
       - main
 
@@ -25,7 +25,7 @@ jobs:
       - name: Get previous SKILL_VERSION
         id: prev
         run: |
-          PREV=$(git show HEAD~1:skills/user/b2b-gtm-strategist/SKILL.md \
+          PREV=$(git show HEAD~1:skills/user/gtm-strategist/SKILL.md \
             | grep 'SKILL_VERSION:' \
             | sed 's/.*SKILL_VERSION: //' \
             | tr -d ' -->') || PREV="0.0.0"
@@ -35,11 +35,11 @@ jobs:
       - name: Get current SKILL_VERSION
         id: current
         run: |
-          CURR=$(grep 'SKILL_VERSION:' skills/user/b2b-gtm-strategist/SKILL.md \
+          CURR=$(grep 'SKILL_VERSION:' skills/user/gtm-strategist/SKILL.md \
             | sed 's/.*SKILL_VERSION: //' \
             | sed 's/[[:space:]]*-->[[:space:]]*//' \
             | xargs)
-          DATE=$(grep 'SKILL_UPDATED:' skills/user/b2b-gtm-strategist/SKILL.md \
+          DATE=$(grep 'SKILL_UPDATED:' skills/user/gtm-strategist/SKILL.md \
             | sed 's/.*SKILL_UPDATED: //' \
             | sed 's/[[:space:]]*-->[[:space:]]*//' \
             | xargs) || DATE=$(date +%Y-%m-%d)
@@ -58,7 +58,7 @@ jobs:
           curr = "${{ steps.current.outputs.version }}"
           today = "$(date +%Y-%m-%d)"
 
-          skill_path = Path('skills/user/b2b-gtm-strategist/SKILL.md')
+          skill_path = Path('skills/user/gtm-strategist/SKILL.md')
           content = skill_path.read_text()
 
           if prev == curr:
@@ -117,7 +117,7 @@ jobs:
       - name: Update manifest skill version
         run: |
           python3 scripts/update-skill-version.py \
-            --skill b2b_gtm_strategist \
+            --skill gtm_strategist \
             --version "${{ steps.resolved.outputs.version }}" \
             --date "${{ steps.resolved.outputs.date }}"
 
@@ -125,12 +125,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add skills/user/b2b-gtm-strategist/SKILL.md
+          git add skills/user/gtm-strategist/SKILL.md
           git add config/registry-manifest.yaml
           if git diff --staged --quiet; then
             echo "Nothing to commit — all files already in sync."
           else
             git pull --rebase origin main
-            git commit -m "chore: sync skill version to ${{ steps.resolved.outputs.version }} [skip ci]"
+            git commit -m "chore: sync gtm-strategist to ${{ steps.resolved.outputs.version }} [skip ci]"
             git push
           fi

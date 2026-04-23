@@ -1,0 +1,141 @@
+metadata:
+  id: hook-model
+  version: 1.0.0
+  display_name: Hook Model (Nir Eyal)
+  category: product_pmm
+  description: Four-phase behavior loop — Trigger, Action, Variable Reward, Investment — mapping how consumer products build automatic habits and drive repeat engagement without relying on paid acquisition for every session.
+  best_for:
+    stages:
+    - growth
+    - scale
+    roles:
+    - cmo
+    - head-of-growth
+    - consumer-product-manager
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: product_description
+    description: What the product does and the core behavior it wants users to perform repeatedly
+    source: user_input
+  - field: target_user_behavior
+    description: The specific habitual action the product is designed to create (e.g., daily app open, weekly repurchase)
+    source: user_input
+  - field: current_engagement_data
+    description: Frequency of use, session length, and return rate metrics for the current product
+    source: user_input
+  optional:
+  - field: user_pain_point
+    description: The underlying itch, anxiety, or desire that the product scratches
+    source: user_input
+  - field: competitor_hook_analysis
+    description: How competitors are running their own Hook loops and where they are winning on habit formation
+    source: user_input
+  - field: ethical_constraints
+    description: Any ethical guardrails the brand has defined around engagement and persuasion
+    source: user_input
+analysis:
+  instructions: 'Walk through each of the four Hook Model phases for this product. Phase 1 — Trigger: identify the external triggers (notifications, ads, email, social) and the internal triggers (boredom, anxiety, desire for connection, FOMO) that prompt the user to open or use the product. Phase 2 — Action: apply Fogg''s Behavior Model (Motivation × Ability) to assess whether the desired action is simple enough and motivating enough to be completed. Identify the three highest-friction points in the action step. Phase 3 — Variable Reward: map which of the three reward types the product delivers (Rewards of the Tribe — social validation; Rewards of the Hunt — search/discovery; Rewards of the Self — mastery/completion) and evaluate whether the variability is sufficient to maintain curiosity. Phase 4 — Investment: identify what users invest (time, data, social capital, content, money) that increases the product''s future value to them and makes switching more costly. Conclude with a Hook cycle frequency target and a gap analysis against best-in-class habit-forming products in adjacent categories.'
+  dimensions:
+  - id: trigger-design
+    name: Trigger Design
+    description: Evaluates the quality and relevance of the external and internal triggers prompting product use
+    prompts:
+    - What internal emotional state (loneliness, boredom, anxiety, curiosity) does this product address, and how reliably does that state occur in the target user's daily life?
+    - What external triggers (push notifications, email, physical cues, social prompts) are currently deployed, and at what frequency?
+    - Are the external triggers perceived as helpful and timely, or as intrusive and annoying?
+    - What is the shortest credible trigger-to-action time, and what removes friction from that path?
+  - id: friction-reduction
+    name: Action Friction Reduction
+    description: Assesses how simple and low-friction the desired behavior is to perform
+    prompts:
+    - Can the desired action be completed in under 30 seconds with minimal cognitive load?
+    - What are the top three points of friction in the action step, and what would it take to remove each one?
+    - Is the product accessible in the context where the trigger fires (mobile-first if trigger is on-the-go)?
+    - How does this product's action complexity compare to the competing behavior (e.g., the alternative the user would do instead)?
+  - id: reward-variability
+    name: Variable Reward Design
+    description: Maps the reward type and evaluates whether variability is sufficient to maintain ongoing motivation
+    prompts:
+    - Which reward type does this product primarily deliver — Tribe (social), Hunt (discovery/search), or Self (mastery)?
+    - Is the reward sufficiently variable to maintain curiosity and prevent habituation?
+    - How quickly do users reach a point of reward saturation where each additional use feels less rewarding?
+    - What could introduce more novelty or unpredictability into the reward without undermining user trust?
+  - id: investment-mechanics
+    name: Investment & Stored Value Mechanics
+    description: Identifies what users invest that increases the product's value and raises switching costs
+    prompts:
+    - What does the user put into the product (content, preferences, social connections, history) that makes the product more valuable over time?
+    - How does this investment make switching to a competitor more costly?
+    - Is the investment loading natural (it happens as part of normal use) or does it require conscious effort that creates friction?
+    - What new triggers are generated by the user's investment that pull them back into the Hook loop?
+  - id: habit-formation-metrics
+    name: Habit Formation Metrics
+    description: Defines and measures the indicators that signal a habit has formed
+    prompts:
+    - What is the target habit frequency (daily, weekly, monthly), and what percentage of users currently achieve it?
+    - What is the retention rate at 7, 30, and 90 days, and how does it compare to habit-forming product benchmarks?
+    - What is the ratio of internally-triggered to externally-triggered sessions, and how is it trending?
+    - At what session count or usage duration does the product show a step-change improvement in long-term retention?
+output_templates:
+- id: primary
+  name: Hook Model Analysis
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary\n\n{executive_summary}\n\n## Phase 1: Trigger Analysis\n\n{trigger_analysis}\n\n## Phase 2: Action Friction Assessment\n\n{action_friction_analysis}\n\n## Phase 3: Variable Reward Design\n\n{reward_design_analysis}\n\n## Phase 4: Investment Mechanics\n\n{investment_mechanics_analysis}\n\n## Habit Formation Metrics\n\n{habit_metrics}\n\n## Hook Cycle Gap Analysis\n\n{gap_analysis}\n\n## Priority Improvements\n\n{priority_improvements}\n\n'
+rubric:
+  description: Evaluates the completeness and insight quality of the Hook Model analysis.
+  dimensions:
+  - name: Internal Trigger Clarity
+    weight: 0.25
+    scoring:
+      1: Analysis only identifies external triggers; the internal emotional state driving use is not identified.
+      3: Internal trigger is identified but is generic (e.g., "boredom") rather than specific to this user segment's emotional context.
+      5: Internal trigger is precisely identified, validated against user research, and tied to a specific recurring life situation for the target user.
+    improvement_guidance: Conduct user interviews focused on "what were you feeling just before you opened the app" to identify the specific internal trigger.
+  - name: Reward Variability Assessment
+    weight: 0.25
+    scoring:
+      1: Reward type is labeled but not analyzed for sufficiency or variability.
+      3: Reward type and variability are analyzed but the analysis relies on assumption rather than behavioral data.
+      5: Reward type is identified, variability is assessed against session-level engagement data, and specific interventions to increase variability are proposed.
+    improvement_guidance: A/B test reward variability by introducing randomized elements (new content, surprise features) and measuring impact on return rate.
+  - name: Investment Depth
+    weight: 0.25
+    scoring:
+      1: Investment phase is superficial or confused with the action phase.
+      3: Investment types are identified but the mechanism by which they increase future value is not clearly articulated.
+      5: Investment types are identified, the stored-value mechanism is clearly described, and the new triggers generated by investment are mapped.
+    improvement_guidance: Map every piece of data or content the user contributes and show explicitly how each increases product value and creates a re-engagement trigger.
+  - name: Ethical Assessment
+    weight: 0.25
+    scoring:
+      1: No consideration of whether the habit being formed serves or exploits the user.
+      3: Ethical considerations are mentioned but not systematically evaluated against the brand's stated values.
+      5: Each phase is evaluated against both user benefit and potential for manipulation, with clear ethical guardrails defined.
+    improvement_guidance: Apply Nir Eyal's Manipulation Matrix: if the product's creators would use it themselves AND they believe it materially improves users' lives, the hook is ethical. Define explicit limits on trigger frequency and reward mechanics.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: External Trigger Dependency
+  description: Relying entirely on external triggers (push notifications, emails) to drive engagement, which indicates that no genuine internal trigger habit has formed and creates churn risk when notification permissions are revoked.
+  mitigation: Track the ratio of externally-triggered to internally-triggered sessions. Set a goal to increase internally-triggered sessions to at least 40% of total within 90 days post-onboarding.
+- pattern: Manipulation Without Value
+  description: Designing variable reward mechanics that keep users engaged without delivering genuine value, creating a dark-pattern engagement loop that maximizes session time at the expense of user wellbeing.
+  mitigation: Apply the Manipulation Matrix test: Would the founders use this product? Does it materially improve users' lives? If the answer to either is no, redesign the reward mechanic.
+- pattern: Investment Overload
+  description: Requiring too much user investment too early in the relationship, before sufficient reward value has been demonstrated, causing abandonment before the hook is set.
+  mitigation: Sequence investment loading to occur after the first rewarding experience. Use progressive disclosure to introduce investment opportunities as the user builds trust in the product's value.
+chaining:
+  after:
+  - framework_id: product-market-fit-diagnostic
+    reason: PMF must be established before investing in habit formation mechanics — building a hook on a product that doesn't solve a real problem amplifies the wrong behavior.
+  before:
+  - framework_id: growth-loops-framework
+    reason: Hook Model establishes the individual habit loop; Growth Loops scale that habit into a systemic acquisition and retention engine.

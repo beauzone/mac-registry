@@ -1,0 +1,143 @@
+metadata:
+  id: consumer-acquisition-funnel
+  version: 1.0.0
+  display_name: Consumer Acquisition Funnel Model
+  category: growth
+  description: Full-funnel consumer acquisition model from awareness through first purchase. Maps conversion rates, drop-off points, and cost-per-acquisition by channel to identify the highest-leverage optimization opportunities.
+  best_for:
+    stages:
+    - growth
+    - scale
+    roles:
+    - cmo
+    - head-of-growth
+    - paid-media-manager
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: channel_mix
+    description: Active acquisition channels (paid social, search, influencer, organic, referral, etc.)
+    source: user_input
+  - field: funnel_metrics
+    description: Current impressions, clicks, sessions, sign-ups, and purchases with conversion rates at each stage
+    source: user_input
+  - field: cac_by_channel
+    description: Current or estimated customer acquisition cost for each active channel
+    source: user_input
+  optional:
+  - field: target_cac
+    description: Target CAC based on LTV model and payback period requirements
+    source: user_input
+  - field: creative_performance_data
+    description: CTR and conversion rate data by creative type or message
+    source: user_input
+  - field: cohort_ltv
+    description: LTV by acquisition cohort and channel source for ROI validation
+    source: user_input
+analysis:
+  instructions: 'Map the full consumer acquisition funnel across five stages: awareness reach (impressions, reach, share of voice), consideration engagement (CTR, landing page visits, content engagement), trial conversion (sign-up, free trial, app install, email capture), first purchase activation (checkout initiation, purchase completion, average order value), and CAC by channel. For each stage, calculate the conversion rate, identify the primary drop-off point, and quantify the revenue impact of a 10% improvement at that stage. Compare CAC across channels against the LTV model to identify which channels are operating within acceptable payback bounds. Prioritize optimization opportunities by impact and effort. Produce a funnel waterfall visualization data set and a ranked list of high-leverage optimization tests.'
+  dimensions:
+  - id: awareness-reach
+    name: Awareness & Reach
+    description: Measures the efficiency of top-of-funnel consumer reach across channels
+    prompts:
+    - What is the total addressable reach of current awareness channels relative to the target segment size?
+    - Which channels deliver the highest reach efficiency (CPM) among the target demographic?
+    - What is the brand's current share of voice in the category, and which channels drive the most awareness lift?
+    - How does organic vs. paid awareness split, and is the brand investing appropriately in earned awareness?
+  - id: consideration-engagement
+    name: Consideration & Engagement
+    description: Evaluates the quality of mid-funnel engagement and intent signals
+    prompts:
+    - What is the click-through rate and landing page engagement rate by channel, and how do they compare to category benchmarks?
+    - Which creative formats and messages drive the strongest consideration engagement?
+    - Where are consumers spending the most time before converting, and does that content match their decision criteria?
+    - What is the consideration-to-trial conversion rate, and what barriers are preventing consumers from moving forward?
+  - id: trial-conversion
+    name: Trial & First Interaction Conversion
+    description: Measures conversion from consideration to first meaningful product interaction
+    prompts:
+    - What is the conversion rate from landing page visit to trial, sign-up, or email capture?
+    - What friction points in the trial or sign-up flow have the highest abandonment rates?
+    - How does the trial conversion rate vary by acquisition channel, and what does that reveal about audience quality?
+    - What offers or incentives most effectively drive trial conversion without degrading downstream LTV?
+  - id: first-purchase-activation
+    name: First Purchase Activation
+    description: Tracks the conversion from trial or consideration to first revenue-generating purchase
+    prompts:
+    - What percentage of trial or sign-up users convert to a first purchase within 7, 14, and 30 days?
+    - What are the top three barriers to first purchase (price, friction, uncertainty, alternatives)?
+    - How does first-purchase conversion rate differ by traffic source, and does that correlate with long-term LTV?
+    - What activation nudges (email, retargeting, incentive) have the strongest impact on first purchase conversion?
+  - id: cac-by-channel
+    name: CAC by Channel Analysis
+    description: Compares customer acquisition cost against LTV and payback requirements by channel
+    prompts:
+    - What is the blended CAC, and how does it decompose by channel?
+    - Which channels have a CAC below the 12-month LTV payback threshold?
+    - How is CAC trending over time by channel — rising, stable, or declining?
+    - What is the marginal CAC at current spend levels, and at what spend level does each channel show diminishing returns?
+output_templates:
+- id: primary
+  name: Consumer Acquisition Funnel Audit
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary\n\n{executive_summary}\n\n## Funnel Waterfall\n\n{funnel_waterfall_data}\n\n## Stage-by-Stage Conversion Analysis\n\n{conversion_analysis}\n\n## CAC by Channel\n\n{cac_by_channel_analysis}\n\n## Top Drop-Off Points\n\n{drop_off_analysis}\n\n## Optimization Priority Stack\n\n{optimization_priorities}\n\n## Recommended Tests\n\n{recommended_tests}\n\n'
+rubric:
+  description: Evaluates the rigor and actionability of the consumer acquisition funnel analysis.
+  dimensions:
+  - name: Data Coverage
+    weight: 0.30
+    scoring:
+      1: Analysis relies on partial funnel data; major stages are missing or estimated without basis.
+      3: Most funnel stages are covered with real data but some transitions rely on industry benchmarks without brand-specific validation.
+      5: All five funnel stages are covered with brand-specific data, and benchmark comparisons are used to contextualize performance gaps.
+    improvement_guidance: Instrument every funnel stage with analytics tracking before running this framework. Identify and close data gaps before drawing optimization conclusions.
+  - name: Drop-Off Prioritization
+    weight: 0.25
+    scoring:
+      1: Drop-off points are listed but not quantified in terms of revenue impact.
+      3: Drop-off points are quantified but the prioritization logic is not clearly articulated.
+      5: Drop-off points are ranked by revenue impact of a marginal improvement, producing a clear optimization priority stack.
+    improvement_guidance: Calculate the revenue impact of a 10% improvement at each drop-off point to produce a value-ranked optimization list.
+  - name: CAC-LTV Linkage
+    weight: 0.25
+    scoring:
+      1: CAC is reported but not compared against LTV or payback requirements.
+      3: CAC-LTV comparison is included but uses blended averages rather than channel-level breakdowns.
+      5: CAC is decomposed by channel and compared against channel-specific LTV and payback period targets.
+    improvement_guidance: Build a channel-level cohort LTV model to enable true channel-level ROI comparison.
+  - name: Actionability
+    weight: 0.20
+    scoring:
+      1: Analysis produces observations but no specific tests or interventions are recommended.
+      3: Tests are recommended but lack hypotheses, success metrics, or prioritization rationale.
+      5: Recommended tests are specific, have clear hypotheses, defined success metrics, and are prioritized by expected impact.
+    improvement_guidance: For each recommended test, define the hypothesis, primary metric, sample size requirement, and minimum detectable effect.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Blended CAC Reporting
+  description: Reporting a single blended CAC across all channels obscures the fact that some channels are profitable and others are destroying value.
+  mitigation: Always decompose CAC by channel and compare each channel's CAC against the channel-specific LTV cohort, not a blended average.
+- pattern: Optimizing the Wrong Stage
+  description: Focusing optimization effort on the awareness stage when the biggest drop-off is at the consideration-to-trial or trial-to-purchase transition.
+  mitigation: Calculate the revenue impact of a 10% improvement at each funnel stage before allocating optimization resources. Optimize highest-impact stages first.
+- pattern: Ignoring Cohort Quality
+  description: Optimizing for volume of first purchases without tracking whether high-volume channels produce consumers with acceptable LTV.
+  mitigation: Build cohort LTV tracking by acquisition channel and set minimum LTV thresholds below which channel spend should be reduced regardless of volume.
+chaining:
+  after:
+  - framework_id: gtm-motions-framework
+    reason: GTM motion selection determines which channels are in scope for funnel analysis.
+  - framework_id: b2c-gtm-motions
+    reason: B2C channel selection determines the funnel stages and channels to instrument.
+  before:
+  - framework_id: aarrr-pirate-metrics
+    reason: The acquisition funnel feeds directly into AARRR, providing the A (Acquisition) layer with channel-level detail.

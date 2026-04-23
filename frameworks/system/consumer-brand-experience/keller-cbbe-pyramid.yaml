@@ -1,0 +1,150 @@
+metadata:
+  id: keller-cbbe-pyramid
+  version: 1.0.0
+  display_name: "Keller's Consumer-Based Brand Equity (CBBE) Pyramid"
+  category: strategy
+  description: Four-level brand equity model mapping the consumer's relationship with the brand from Salience through Performance/Imagery through Judgments/Feelings to Resonance. Identifies gaps in brand equity and prioritizes investment to build stronger consumer-brand bonds.
+  best_for:
+    stages:
+    - growth
+    - scale
+    - mature
+    roles:
+    - cmo
+    - head-of-brand
+    - vp-marketing
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: brand_description
+    description: Brand name, category, core product offering, and positioning statement
+    source: user_input
+  - field: consumer_research_data
+    description: Any brand tracking, awareness surveys, NPS, or customer interview data available
+    source: user_input
+  - field: target_consumer_segment
+    description: Primary consumer segment the brand equity analysis should focus on
+    source: user_input
+  optional:
+  - field: competitive_brand_equity
+    description: Comparative brand equity data for key competitors in the category
+    source: user_input
+  - field: brand_investment_history
+    description: Recent marketing and brand investment history — channels, campaigns, and their focus areas
+    source: user_input
+  - field: brand_aspiration
+    description: The brand equity position the brand aspires to reach and the timeline for doing so
+    source: user_input
+analysis:
+  instructions: 'Evaluate the brand against Keller''s six brand equity building blocks organized across four pyramid levels. Level 1 — Brand Salience: Does the consumer know this brand exists? Does the brand come to mind in the right purchase situations (breadth of awareness) and at the top of the consideration set (depth of awareness)? Level 2 — Brand Performance and Brand Imagery: On the Performance side, how well does the product deliver on its functional promises across reliability, durability, serviceability, style, and price? On the Imagery side, what user profile and usage imagery does the brand evoke, and does it match the target consumer''s self-image? Level 3 — Consumer Judgments and Consumer Feelings: Judgments cover quality perception, credibility, consideration, and superiority vs. alternatives. Feelings cover warmth, fun, excitement, security, social approval, and self-respect responses the brand generates. Level 4 — Brand Resonance: The peak of the pyramid, representing behavioral loyalty, attitudinal attachment, sense of community, and active engagement. Score each building block on a 1–5 scale using available data, identify the weakest building block as the primary constraint on equity growth, and recommend the investment priority to close the equity gap. Conclude with an equity gap map and a 12-month brand equity investment thesis.'
+  dimensions:
+  - id: brand-salience
+    name: Brand Salience
+    description: Measures the depth and breadth of brand awareness in the consumer's consideration set
+    prompts:
+    - What percentage of the target segment can spontaneously name this brand when the product category is mentioned (unaided awareness)?
+    - Does the brand come to mind at the right moment — in the specific purchase situation and need state it is designed to serve?
+    - How does brand salience compare to category leaders, and what is the gap in unaided awareness?
+    - What consumer associations trigger recall of this brand — are they the right associations for the brand's positioning?
+  - id: brand-performance
+    name: Brand Performance
+    description: Evaluates how well the product delivers on its functional promises from the consumer's perspective
+    prompts:
+    - How do consumers rate product quality, reliability, and consistency compared to alternatives?
+    - Does the brand deliver the performance attributes most important to the target consumer in this category?
+    - How does the product's price-to-performance ratio compare to competitive alternatives in the consumer's perception?
+    - What service, support, and post-purchase experience attributes reinforce or undermine brand performance perceptions?
+  - id: brand-imagery
+    name: Brand Imagery
+    description: Assesses the intangible associations and aspirational identity the brand evokes
+    prompts:
+    - What user profile does the brand evoke — does that profile match the identity the target consumer aspires to?
+    - What purchase and usage situations (occasions, settings, contexts) is the brand associated with?
+    - What personality traits does the brand convey, and are they differentiated from direct competitors?
+    - What heritage, values, and history does the brand carry, and are those associations assets or liabilities with the target segment?
+  - id: consumer-judgments
+    name: Consumer Judgments
+    description: Maps consumers' rational evaluations of the brand's quality, credibility, and consideration
+    prompts:
+    - How does the target consumer rate this brand's overall quality relative to alternatives?
+    - Is the brand perceived as credible — expert, trustworthy, and likeable in the category?
+    - Is the brand in the active consideration set when the target consumer makes a purchase decision in this category?
+    - Does the target consumer perceive this brand as superior to alternatives, and on which specific dimensions?
+  - id: consumer-feelings
+    name: Consumer Feelings
+    description: Maps the emotional responses and social associations the brand generates
+    prompts:
+    - What emotional response does interacting with this brand generate — warmth, excitement, security, social approval?
+    - Does the brand make consumers feel better about themselves or their social identity?
+    - How do brand feelings differ across consumer segments, and are there segments with strong negative emotional associations?
+    - What brand experiences (packaging, retail, customer service, community) generate the strongest positive emotional response?
+  - id: brand-resonance
+    name: Brand Resonance
+    description: Evaluates the depth of loyalty, attachment, community, and active engagement with the brand
+    prompts:
+    - What percentage of consumers are behaviorally loyal (repeat purchase) vs. merely habitual buyers who would switch easily?
+    - Do consumers have strong attitudinal attachment to the brand — would they genuinely miss it if it disappeared?
+    - Is there a brand community forming organically, and are consumers actively recruiting others to the brand?
+    - What active engagement behaviors (user-generated content, brand advocacy, product co-creation participation) does the brand generate?
+output_templates:
+- id: primary
+  name: CBBE Brand Equity Assessment
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary\n\n{executive_summary}\n\n## Brand Equity Pyramid Scorecard\n\n{equity_pyramid_scorecard}\n\n## Brand Salience Analysis\n\n{salience_analysis}\n\n## Brand Performance & Imagery\n\n{performance_imagery_analysis}\n\n## Consumer Judgments & Feelings\n\n{judgments_feelings_analysis}\n\n## Brand Resonance Assessment\n\n{resonance_assessment}\n\n## Equity Gap Map\n\n{equity_gap_map}\n\n## 12-Month Brand Equity Investment Thesis\n\n{investment_thesis}\n\n'
+rubric:
+  description: Evaluates the rigor and data-grounding of the CBBE brand equity assessment.
+  dimensions:
+  - name: Data-Grounding
+    weight: 0.30
+    scoring:
+      1: Assessment is based entirely on internal assumptions with no consumer research or market data.
+      3: Assessment uses some consumer data but key building blocks rely on proxy measures or anecdotal evidence.
+      5: Each building block is scored using specific consumer research data — tracking studies, NPS, qualitative interviews, or behavioral purchase data.
+    improvement_guidance: Commission a brand tracking survey measuring unaided awareness, consideration, preference, and NPS by target segment before running this framework.
+  - name: Constraint Identification
+    weight: 0.25
+    scoring:
+      1: All building blocks are evaluated but the weakest constraint on equity growth is not identified.
+      3: The weakest building block is identified but the causal relationship to business outcomes is not established.
+      5: The primary equity constraint is identified, its causal relationship to business outcomes (CAC, retention, price premium) is established, and eliminating it is the investment priority.
+    improvement_guidance: Map each building block score to a business outcome metric (awareness → CAC, resonance → LTV, judgment → conversion rate) to identify the equity gap with the highest commercial impact.
+  - name: Competitive Benchmarking
+    weight: 0.25
+    scoring:
+      1: Brand equity is assessed in isolation without comparison to competitive brands.
+      3: Competitive comparison is included but based on assumption rather than research data.
+      5: Each building block is benchmarked against two or three direct competitors using comparable consumer research data.
+    improvement_guidance: Include at least two direct competitors in the brand tracking survey to enable apples-to-apples equity comparison by building block.
+  - name: Investment Prioritization
+    weight: 0.20
+    scoring:
+      1: Investment recommendations are generic brand-building advice not connected to the equity gap analysis.
+      3: Investment priorities address the equity gap but budget allocation is not specified.
+      5: Investment priorities are tied to specific equity building block gaps, with budget allocation and expected equity impact defined for each priority.
+    improvement_guidance: Build an equity investment model that shows the expected change in each building block score given different investment levels and program types.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Skipping the Foundation
+  description: Investing in Resonance-level programs (loyalty, community, advocacy) before the Level 1 foundation (Brand Salience) is established, resulting in high investment in a brand consumers do not know exists.
+  mitigation: Confirm that unaided category awareness has reached at least 20–30% of the target segment before investing significantly in brand deepening programs. Solve awareness before depth.
+- pattern: Performance Without Imagery
+  description: Building a brand purely on functional product performance claims without investing in brand imagery, making the brand vulnerable to commoditization when a competitor matches the product on specs.
+  mitigation: Ensure both Performance and Imagery building blocks are developed in parallel. Assign dedicated brand investment to imagery-building that is not contingent on product performance communication.
+- pattern: Resonance Without Judgment
+  description: Attempting to build brand community and advocacy before consumers have formed strong quality judgments and credibility perceptions, resulting in a community of uncertain or ambivalent brand relationships.
+  mitigation: Use brand tracking data to confirm that quality perception and credibility scores meet minimum thresholds before investing in resonance programs.
+chaining:
+  after:
+  - framework_id: stp-segmentation-targeting-positioning
+    reason: STP defines the target segment and desired positioning; CBBE measures how effectively that positioning has been internalized by consumers.
+  before:
+  - framework_id: messaging-architecture
+    reason: CBBE gaps identify which equity building blocks need reinforcement, directly informing which messages to prioritize in the messaging architecture.

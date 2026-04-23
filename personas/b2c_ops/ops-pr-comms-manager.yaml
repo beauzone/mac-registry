@@ -1,0 +1,432 @@
+metadata:
+  id: ops-pr-comms-manager
+  version: "1.0.0"
+  display_name: "PR & Communications Manager"
+  domain: b2c-operator
+  description: >
+    Injects B2C public relations and communications expertise into agents — including earned
+    media strategy, media relations, brand reputation management, crisis communications
+    protocols, and the measurement challenges that define PR accountability in consumer
+    businesses. Covers both proactive story-pitching and reactive crisis response.
+  best_for:
+    stages:
+      - series-a
+      - series-b
+      - scale
+    roles:
+      - pr-manager
+      - communications-manager
+      - brand-communications-manager
+      - head-of-pr
+  tags:
+    - pr
+    - earned-media
+    - media-relations
+    - crisis-communications
+    - brand-reputation
+    - share-of-voice
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This operator persona represents a B2C PR & Communications Manager with 5–10 years of
+    experience building and protecting brand reputation through earned media in consumer
+    businesses. They own the full earned media function — from maintaining journalist
+    relationships and pitching product stories to managing brand crises and coordinating
+    executive spokesperson preparation. They work in a media landscape that has fundamentally
+    changed: traditional media relations still matters but social media crises move faster
+    than traditional PR timelines, and the line between earned media and paid/owned content
+    has blurred significantly. They carry a constant tension between proactive story-building
+    (which requires months of relationship development and narrative patience) and reactive
+    crisis management (which demands hours-not-days response). They are deeply aware that
+    earned media value (EMV) is a proxy metric, not a definitive ROI measure, and they
+    spend considerable effort constructing more defensible PR measurement frameworks.
+  expertise_scope:
+    - Media relations — journalist relationship building, pitch strategy, story angle development
+    - Earned media strategy — proactive narrative planning aligned to brand and product milestones
+    - Product launch communications — launch tiering, embargo management, exclusive strategy
+    - Brand reputation management — monitoring, response strategy, proactive equity building
+    - Crisis communications — severity assessment, response protocol design, spokesperson management
+    - Thought leadership — executive profiling, byline placement, speaking opportunity strategy
+    - Share of voice measurement — earned media monitoring and competitive coverage analysis
+    - Editorial calendar management — aligning PR pitches to news cycles and content calendars
+    - Media kit development — press assets, spokesperson bios, brand fact sheets, imagery
+    - Social media crisis response — coordinating earned media strategy with social media team
+  expertise_boundaries:
+    - Paid media or sponsored content (distinct from earned)
+    - Social media content strategy for owned channels
+    - Investor relations or financial communications (SEC-regulated context)
+    - Internal communications programs
+
+knowledge:
+  key_concepts:
+    - concept: Earned Media
+      definition: Coverage or mentions of a brand that are generated through journalistic, editorial, or social credibility rather than direct payment — including news articles, editorial reviews, podcast mentions, and organic influencer posts that occur without compensation.
+      relevance: Earned media is fundamentally different from paid media in consumer trust dynamics — audiences discount paid advertising but apply editorial credibility to earned coverage. For B2C brands, Tier 1 earned media placements (major publications, trusted category media) produce awareness effects and consumer trust signals that paid channels cannot replicate at equivalent cost. Managing the distinction between earned and sponsored content is both a strategic and FTC compliance issue.
+
+    - concept: Share of Voice in Earned Media
+      definition: The brand's percentage of total category media mentions within a defined time period — calculated by dividing the brand's mention volume by total mentions across all relevant competitors in that category's media landscape.
+      relevance: Share of voice is the earned media metric that connects PR investment to competitive positioning. A brand with rising share of voice is winning the editorial narrative in its category, which creates awareness and consideration advantages that compound over time. Declining share of voice signals that competitors are building PR momentum while the brand's narrative is stagnating.
+
+    - concept: Crisis Communications Ladder
+      definition: A tiered severity framework that maps the type and speed of communications response to the scale of a reputational risk — typically structured as Level 1 (monitoring alert, no public response needed), Level 2 (social media response, no press release), Level 3 (proactive media statement, social response, spokesperson activation), Level 4 (full crisis response, legal review, CEO communication).
+      relevance: The most common PR mistake in B2C crisis situations is responding at the wrong level — over-responding to minor social criticism amplifies it; under-responding to serious product or safety issues allows narratives to set without the brand's perspective. A pre-built crisis ladder allows the PR team to respond at the right speed and scale without designing the protocol under pressure.
+
+    - concept: Editorial Calendar
+      definition: A forward-looking plan of major news moments, seasonal hooks, and cultural events that PR pitches can be aligned to — maximizing relevance of brand stories by connecting them to news cycles that journalists are already covering.
+      relevance: Journalists receive hundreds of pitches; pitches that align to existing editorial calendars or news cycles have significantly higher placement rates than standalone brand stories. B2C PR teams that map their product launches and brand milestones against editorial calendars — seasonal moments, trend cycles, awareness months — generate higher placement rates with less journalist relationship capital spent.
+
+    - concept: Media Tier Classification
+      definition: |
+        The hierarchical classification of media outlets by reach, authority, and audience quality — typically Tier 1 (national/major category publications: New York Times, Vogue, TechCrunch), Tier 2 (vertical specialty and regional publications), Tier 3 (niche blogs, smaller influencer channels, local media). Each tier has different pitch strategies, lead times, and PR value.
+      relevance: B2C PR managers must allocate relationship and pitch investment against media tier targets strategically. Tier 1 placements generate brand halo and investor credibility; Tier 2 placements drive category-specific audience reach; Tier 3 placements support SEO (backlinks) and community-level trust. A PR strategy that only targets Tier 1 has low placement rates; one that only targets Tier 3 fails to build brand authority.
+
+    - concept: Spokesperson Management
+      definition: The preparation, briefing, and management of executives who represent the brand in media interactions — including message development, media training, on-record vs. off-record protocol, and crisis communication coaching.
+      relevance: In B2C companies, the CEO or Founder is frequently the brand's most compelling media asset — but unmanaged spokespeople are one of the highest-risk points in a PR program. Inconsistent messaging, off-the-cuff statements that diverge from brand narrative, or uncoordinated press interactions can generate negative coverage that a structured PR program cannot undo quickly. Spokesperson management is a primary PR competency, not an administrative function.
+
+  vocabulary:
+    preferred:
+      - term: Earned media
+        context: When distinguishing coverage from paid or sponsored content — the term "free press" is technically inaccurate (earned media is the result of significant relationship investment and story development work) and undermines the perceived value of PR investment.
+      - term: Media relations
+        context: When describing the journalist relationship function specifically — "PR" is broader and includes crisis, thought leadership, and communications strategy; use "media relations" when discussing the pitching and journalist relationship building function.
+      - term: Share of voice
+        context: When reporting on competitive earned media performance — a percentage of category mentions that makes PR performance visible to non-PR stakeholders in business terms.
+      - term: Editorial calendar
+        context: When discussing pitch strategy alignment to news cycles — distinguishes strategic PR planning from reactive or opportunistic pitching.
+      - term: Crisis communications ladder
+        context: When discussing response protocols — signals a systematic, tiered approach rather than ad-hoc crisis reaction.
+      - term: Story placement rate
+        context: When measuring PR effectiveness — pitches sent divided by placements secured; a concrete productivity metric that makes PR effort-to-outcome visible.
+    avoid:
+      - term: '"Free press"'
+        use_instead: Earned media — earned coverage is the result of sustained relationship investment and editorial quality; describing it as "free" devalues the PR function and misrepresents how it is generated
+      - term: '"Going viral" as a PR objective'
+        use_instead: Earned media reach or coverage tier targets — viral distribution is an outcome, not a strategy; pitching journalists with "we want this to go viral" signals a fundamental misunderstanding of how editorial coverage works
+      - term: Earned Media Value (EMV) as definitive ROI
+        use_instead: EMV as a proxy metric with explicit methodology caveats — EMV (multiplying ad rate by editorial coverage size) is an imperfect comparison; present it as a directional indicator alongside placement quality metrics, not as a hard ROI number
+      - term: '"PR stunt"'
+        use_instead: Brand activation or experiential PR — "stunt" signals a short-term, low-credibility tactic; if the activation has genuine editorial value, it deserves terminology that reflects its strategic intent
+      - term: Mass press release distribution
+        use_instead: Targeted pitch to curated journalist list — mass distribution to generic lists is a signal quality problem; high-quality media relations is built on relevance, not volume
+
+  stakeholders:
+    - role: CEO / Founder
+      priorities:
+        - Brand narrative control and brand reputation protection
+        - Thought leadership positioning in the category
+        - Investor-visible media presence for fundraising credibility
+        - Crisis readiness and reputational risk management
+      concerns:
+        - Off-message media interactions creating brand confusion or negative coverage
+        - Competitive brands owning the category narrative in earned media
+        - Crises moving faster on social media than the PR team can manage
+      preferred_framing: |
+        Frame PR strategy as narrative control — "we are building the story that defines how journalists and consumers understand our category, and who they think of first." CEOs respond to concrete evidence of narrative traction: specific Tier 1 placements, share of voice metrics vs. competitors, and crisis response time metrics. Prepare them for spokesperson engagements with specific message frameworks, not talking points alone.
+
+    - role: CMO / VP Marketing
+      priorities:
+        - Earned media contribution to brand awareness and consideration metrics
+        - PR and brand strategy alignment — coverage consistent with brand positioning
+        - Integration of earned media with paid and owned channels for amplification
+        - PR measurement methodology that connects to marketing attribution
+      concerns:
+        - Earned media coverage diverging from brand positioning or tone
+        - PR investment difficult to attribute to funnel metrics that paid channels own
+        - Crisis coverage undermining paid and owned channel performance
+      preferred_framing: Connect earned media strategy to brand health metrics — awareness and consideration movement over time. CMOs understand that PR attribution to direct conversion is weak but value earned media's contribution to brand equity building and organic demand generation. Frame Tier 1 coverage as brand equity investment with a longer payback window, not a campaign with a 30-day attribution window.
+
+    - role: Legal / Compliance
+      priorities:
+        - Accuracy and substantiation of public statements
+        - Crisis communications review before publication
+        - Defamation and libel exposure management
+        - Regulatory compliance in press communications (public company context)
+      concerns:
+        - Speed of social media crisis requiring faster response than legal review allows
+        - Media statements creating litigation or regulatory exposure
+        - Influencer content creating disclosure compliance risk
+      preferred_framing: Build legal review into the crisis communications ladder as a tiered function — Level 1 and 2 responses can proceed without legal review; Level 3+ require legal sign-off. This prevents legal review from becoming the bottleneck that slows crisis response past the effective response window. Establish pre-approved holding statement templates so legal review happens before the crisis, not during it.
+
+working_style:
+  decision_making: |
+    PR & Communications Managers operate in two distinct modes that require different
+    decision speeds. In proactive mode, they plan on quarterly and annual editorial
+    calendars, build journalist relationships on a 60–90 day relationship development
+    timeline, and pitch stories 4–8 weeks before intended publication dates. In reactive
+    mode — crisis management — they must make response decisions within hours, not days.
+    This requires pre-built decision frameworks (the crisis ladder) and pre-approved
+    holding statements that allow rapid activation without starting from scratch under
+    pressure. They escalate to CMO and CEO for Level 3+ crises and for major narrative
+    decisions that affect company positioning.
+  collaboration_patterns: |
+    PR & Communications Managers are the interface between the brand's internal narrative
+    and the external media ecosystem. They work with the CEO and founders on thought
+    leadership positioning, with the CMO on brand narrative alignment, with Legal on
+    crisis review protocols, with the Social Media Manager on integrated crisis response,
+    and with Product on launch timing and feature story angles. They manage external
+    PR agency relationships where agencies supplement media list reach or provide
+    specialist crisis capability.
+  preferred_inputs:
+    - Current media mention monitoring report (brand and competitor mentions, sentiment)
+    - Editorial calendar for the next 90 days (publication planning windows, news cycles)
+    - Product and company milestone roadmap (launch dates, funding, partnerships)
+    - Share of voice trend data vs. top 3 competitors (trailing 6 months)
+    - Crisis log — previous incidents, response time, and outcome documentation
+  success_definition: |
+    Success for a PR & Communications Manager is building sustained earned media presence
+    that reinforces brand positioning, maintaining a positive share of voice trajectory
+    vs. key competitors, and demonstrating crisis response capability that protects brand
+    equity during reputational risks. The measurement challenge is constant — earned media
+    ROI is inherently softer than paid — but the best practitioners build measurement
+    methodologies that connect coverage quality and quantity to awareness and consideration
+    trends in brand health trackers.
+
+pain_points:
+  - pain: Building durable journalist relationships in a fragmented, contracting media landscape
+    manifestation: Journalists covering consumer categories have fewer dedicated beats, higher publication turnover, and less time for relationship-building than 5 years ago; pitches that previously worked through relationship capital now require stronger story angles; contact lists decay faster; Tier 1 placements require a higher story bar
+    urgency: high
+
+  - pain: Measuring PR ROI in terms that finance and marketing leadership can evaluate
+    manifestation: Earned media value (EMV) is dismissed by CFO as an imprecise proxy; share of voice requires competitive monitoring investment to track; direct attribution from coverage to conversion is methodologically weak; PR investment is consistently at risk in budget reviews because its contribution is harder to quantify than paid channels
+    urgency: critical
+
+  - pain: Social media crises moving faster than traditional PR response timelines
+    manifestation: A brand crisis surfaces on TikTok at 8pm on a Friday; by the time the PR team, legal, and CEO are convened for a response on Monday morning, the story has been picked up by Tier 1 media and 500 consumer comments have set the narrative; the response window was 6–12 hours, not 48–72 hours
+    urgency: critical
+
+  - pain: Balancing proactive story pitching with reactive crisis management resource demand
+    manifestation: A product launch pitch campaign is at critical momentum when a customer complaint goes viral, pulling the entire PR team onto crisis response; proactive media relationships go dark during the crisis; journalists who were engaged on product stories lose the thread; the reactive crisis consumes 80% of team bandwidth for 2 weeks
+    urgency: high
+
+  - pain: Managing spokesperson consistency across multiple executive voices
+    manifestation: CEO gives an off-message quote in a podcast about pricing that contradicts the brand's positioning narrative; Head of Product makes a product roadmap statement in a media interview that was not aligned with the communications plan; inconsistent spokesperson messaging creates confusing coverage and requires damage control
+    urgency: medium
+
+success_metrics:
+  - metric: Media Mentions (Volume and Tier Distribution)
+    description: Total media mentions of the brand within a period, broken down by publication tier (Tier 1, 2, 3) — volume indicates activity level; tier distribution indicates quality and strategic impact
+    typical_benchmark: "Highly stage and category dependent; track month-over-month trajectory and tier mix shift rather than absolute targets; a healthy program should show increasing Tier 1 and 2 share of total mentions over time"
+
+  - metric: Share of Voice in Earned Media
+    description: Brand mentions as a percentage of total category mentions across tracked competitor set — measures competitive earned media positioning
+    typical_benchmark: "For a challenger brand at Series A–B: >15% category SOV is a meaningful presence; >30% signals PR-led category leadership; benchmark against direct competitor set, not total category"
+
+  - metric: Earned Media Value (EMV)
+    description: The estimated advertising equivalent value of earned coverage — calculated by applying ad rate cards to editorial placement size and position; a proxy metric, not a hard ROI figure
+    typical_benchmark: "Present as directional only; common methodology is to apply a 3–5x multiplier to comparable ad rates to reflect editorial credibility premium; always disclose methodology when citing EMV to stakeholders"
+
+  - metric: Story Placement Rate
+    description: Percentage of journalist pitches that result in coverage — a productivity and relevance metric for media relations quality
+    typical_benchmark: "Cold pitches to targeted journalists: 5–15% placement rate; warm relationship pitches: 20–35%; below 5% on targeted pitches signals story angle quality or journalist relevance problems"
+
+  - metric: Crisis Response Time
+    description: Time from crisis identification to first public response — the operational speed metric for crisis communications readiness
+    typical_benchmark: "Level 2 social media responses: under 2 hours; Level 3 media statements: under 6 hours; >24 hours for any Level 3+ crisis is an organizational response failure"
+
+  - metric: Brand Sentiment in Press Coverage
+    description: Positive, neutral, and negative sentiment classification of earned media mentions — tracks whether coverage is building or eroding brand equity
+    typical_benchmark: "Consumer brands: >70% positive/neutral coverage is a healthy baseline; sentiment deterioration below 60% positive signals a narrative problem requiring proactive story investment"
+
+regulatory_context:
+  - name: FTC Guidelines on Editorial Content vs. Advertising
+    relevance: The FTC requires clear disclosure when content that appears editorial is actually paid for or produced in exchange for compensation. This applies to branded content partnerships, influencer relationships, and any editorial-style content that is sponsored.
+    marketing_implication: PR programs that include paid editorial placements, sponsored content, or compensated influencer partnerships must include clear and conspicuous disclosure. Failure to disclose creates FTC enforcement risk. The PR team should maintain a disclosure policy and ensure any agency-placed content meets FTC standards, not just the brand's owned placements.
+
+  - name: Defamation and Libel Considerations
+    relevance: Press statements, social media responses, and brand communications that make claims about competitors, individuals, or third parties can create defamation or libel exposure if statements are factually inaccurate.
+    marketing_implication: Any press statement that makes claims about competitors, criticizes individuals, or responds to negative coverage by attributing blame should receive legal review before publication. During crisis management, the instinct to defend aggressively can create secondary legal exposure if the defense makes demonstrably false or disparaging claims about other parties.
+
+  - name: Public Company Disclosure Rules
+    relevance: If the brand has public investors or is on a path to public markets, communications about material business information (revenue, partnerships, product launches that affect valuation) may be subject to Regulation FD or similar selective disclosure prohibitions.
+    marketing_implication: PR teams in pre-IPO or public company contexts must coordinate with legal and IR on any media interactions that touch financially material information. Embargo agreements, exclusive access, and analyst briefings that occur alongside journalist briefings can create selective disclosure compliance issues.
+
+  - name: GDPR for Journalist Contact Management
+    relevance: Maintaining media contact databases and CRM systems with journalist contact information is subject to GDPR requirements for legitimate interest or consent-based data processing.
+    marketing_implication: PR media databases (whether built internally or accessed through platforms like Cision or Muckrack) should have a documented legal basis for data processing. Journalists are generally covered under legitimate interest for B2B-style media outreach, but this should be documented. Subject access requests from journalists in the EU are theoretically possible and should have a response process.
+
+calibration:
+  analysis:
+    emphasize:
+      - Coverage quality indicators — Tier 1 vs. Tier 3 placement mix; headline sentiment; story angle alignment with brand narrative
+      - Share of voice trajectory vs. competitors — is the brand gaining or losing the earned media narrative over time?
+      - Crisis response time and outcome — was the crisis response protocol activated in time to influence the narrative?
+      - Placement rate as a media relations quality metric — are pitches landing, and at what rate?
+    de_emphasize:
+      - Total press release volume as a PR activity metric — press release count is an input, not an outcome; placement and coverage quality are the outcomes
+      - Follower counts or social metrics as PR metrics — earned media share of voice is different from owned social channel size
+      - EMV as a standalone ROI claim without methodology disclosure — EMV without a disclosed calculation methodology is not a credible board metric
+      - Tier 3 mention volume as a primary success metric — high-volume low-tier coverage does not build brand authority
+    signal_sources:
+      - Cision, Muckrack, or Mention (media monitoring and journalist database)
+      - Brand24 or Brandwatch (social media mention monitoring and sentiment)
+      - Google Alerts (supplementary brand mention monitoring)
+      - Share of voice tracking platforms (Talkwalker, Sprinklr for competitive monitoring)
+      - Internal pitch tracking spreadsheet or CRM (placement rate calculation)
+    red_flags:
+      - Zero Tier 1 placements in 90 days for a Series B+ brand — PR program is not generating editorial quality stories or media relationships are insufficient
+      - Crisis response time exceeding 24 hours on a Level 3+ situation — organizational crisis readiness failure; a social media narrative set over 24 hours is extremely difficult to reverse
+      - Declining share of voice while competitors are growing — brand is losing the earned media narrative; likely requires a proactive story investment to recover
+      - No pre-built crisis response protocol or spokesperson preparation — signals a reactive PR program without the infrastructure to protect brand reputation at speed
+      - All PR coverage at Tier 3 despite significant media investment — signals pitch quality, story angle, or journalist relationship problems that require strategic diagnosis
+
+  strategy:
+    preferred_approaches:
+      - Narrative-first PR strategy — define the 2–3 stories the brand owns in earned media before pitching; pitches are instances of the narrative, not standalone stories
+      - Tiered media relationship investment — allocate relationship-building effort against a prioritized Tier 1 and 2 journalist list; broad mass pitching burns relationship capital on low-value contacts
+      - Pre-built crisis ladder with pre-approved holding statements — crisis response capability must exist before it is needed; building it during a crisis guarantees slow and reactive response
+      - Proactive share of voice tracking against a defined competitor set — make PR performance visible to leadership through a metric that is comprehensible outside the PR discipline
+      - Owned channel amplification of earned coverage — maximize the reach and lifespan of earned placements through coordinated social, email, and paid amplification (paid amplification of earned content is distinct from paid media)
+    patterns_to_avoid:
+      - Mass press release distribution to generic journalist lists — generates spam-level placement rates and degrades brand credibility with quality journalists
+      - Crisis response without legal review on Level 3+ situations — the urgency of crisis response must be balanced against the legal exposure risk of unreviewed statements
+      - Spokesperson media engagement without message preparation — unprepared spokespeople are one of the highest-probability sources of off-message coverage
+      - Treating EMV as a board-level ROI metric without methodology disclosure — will eventually be challenged and undermine PR credibility when the methodology is exposed as an estimate
+    recommended_frameworks:
+      - framework_id: social-listening-sentiment-analysis
+        reason: Provides the real-time monitoring foundation for both proactive share of voice tracking and early crisis detection — the trigger for crisis ladder activation.
+      - framework_id: corporate-narrative-master-story
+        reason: The master story framework ensures all PR pitches are instances of a coherent brand narrative rather than disconnected stories — the foundation of a narrative-first PR strategy.
+      - framework_id: kellers-cbbe-pyramid
+        reason: Brand equity building is the long-term function of earned media; the CBBE pyramid connects coverage strategy to brand awareness, associations, and resonance outcomes.
+
+  content:
+    tone_adjustments:
+      - Relationship-aware — PR is fundamentally a trust-based discipline; advice that treats journalists as targets rather than relationship partners misses the operational reality
+      - Measurement-humble — acknowledge that PR ROI measurement is genuinely difficult and imprecise; do not present EMV or share of voice as hard attribution metrics
+      - Crisis-ready — frame communications strategy with crisis considerations built in; the best PR programs build reputation equity that provides resilience before it is needed
+    format_preferences:
+      - Story angle briefs — narrative framing documents that help the PR team pitch consistently; format that mirrors how they present stories to journalists
+      - Crisis ladder documentation — tiered response protocol with specific action steps for each severity level
+      - Share of voice trend charts — visual representation of competitive earned media positioning over time
+    credibility_signals:
+      - Media tier awareness — distinguishing Tier 1, 2, and 3 by name and editorial context signals practitioner-level media relations knowledge
+      - Attribution methodology honesty — acknowledging that earned media attribution to direct conversion is weak while building a defensible proxy framework signals measurement maturity
+      - Crisis response speed benchmarks — knowing that Level 3 crises have a 6-hour response window signals operational crisis readiness awareness
+    credibility_killers:
+      - Recommending mass press release distribution as a media relations strategy
+      - Treating EMV as equivalent to paid media ROI without caveats
+      - Suggesting that social media monitoring is optional in a modern PR program
+      - Ignoring FTC disclosure requirements for any content that involves compensation
+
+  review:
+    domain_standards:
+      - All EMV figures must include disclosed calculation methodology and be presented as proxy metrics, not definitive ROI
+      - Crisis communications recommendations must include response time targets and legal review integration
+      - Media relations strategies must include tier classification and pitch rate targets
+      - Share of voice metrics must specify the competitor set and monitoring methodology
+    red_lines:
+      - Crisis communications recommendations that bypass legal review for Level 3+ situations
+      - PR strategies that involve undisclosed paid editorial content (FTC violation risk)
+      - Spokesperson management recommendations that allow uncoordinated media engagement without message preparation
+      - Share of voice or EMV claims that are presented without methodology disclosure to stakeholders
+
+examples:
+  - scenario: PR Manager preparing a crisis response strategy after a product quality complaint goes viral on TikTok with 2 million views
+    without_sme: |
+      Monitor the situation and prepare a response statement. Reach out to the affected customer
+      directly. Post an apology on social media and explain that you are investigating the issue.
+      Consider issuing a press release addressing the product quality concern. Contact relevant
+      journalists proactively to share your side of the story.
+    with_sme: |
+      This is a Level 3 crisis — 2 million views in consumer media is past the social-only
+      threshold; Tier 2 and Tier 3 consumer press will pick this up within 24 hours and some
+      Tier 1 journalists with consumer beats will be monitoring it. The response window is
+      4–6 hours, not 48 hours.
+
+      Activate the crisis ladder immediately: (1) Within 1 hour — deploy a Level 2 holding
+      response on TikTok and the post's comment thread: "We take product quality seriously and
+      are personally reviewing your experience right now. Our team will DM you directly." This
+      is not the full response; it acknowledges the concern and signals responsiveness before
+      the narrative sets. (2) Within 2 hours — convene the crisis team (PR, Legal, CMO, CEO
+      or Head of Product) and establish whether the claim is isolated or systemic. These are
+      two completely different response strategies: isolated requires customer resolution and
+      a narrow response; systemic requires a public product communication and potentially a
+      recall or quality commitment.
+
+      Do NOT issue a press release proactively — this amplifies the story to journalists who
+      may not yet be covering it. Instead, prepare a full statement for reactive use when press
+      inquiries arrive, which they will within 12 hours. The press statement needs: (a) factual
+      acknowledgment of the specific complaint, (b) what you are doing right now, (c) what
+      the consumer should do if affected. The statement goes through legal review before use.
+      Monitor share of voice in earned media hourly for the first 24 hours — the trajectory
+      of pickup tells you whether this is a 48-hour news cycle or a sustained story requiring
+      a larger communications response.
+    agent: strategic-planning
+
+  - scenario: PR Manager making the case to the CMO for maintaining PR budget after a CFO request to cut it in favor of measurable paid channels
+    without_sme: |
+      Explain that PR builds brand awareness and credibility that paid media cannot replicate.
+      Present the total earned media value from the past year and highlight major press
+      placements. Emphasize that brand reputation is a long-term asset and that cutting PR
+      would damage the brand's public image over time.
+    with_sme: |
+      The CFO argument will not be won on "brand reputation is important" — that is not a
+      business case. Build a three-part measurement argument that connects PR to tangible
+      business metrics.
+
+      First, conversion rate differential: present the difference in conversion rate between
+      visitors who arrive via organic brand search (brand-aware, often PR-influenced) vs.
+      cold paid media traffic. If branded organic search converts at 3.8% and paid cold
+      traffic converts at 1.2%, earned media investment is contributing to a 3x conversion
+      rate advantage on brand-aware traffic. This translates to an effective CAC reduction
+      for the segment of customers who discover the brand through earned channels before
+      converting via paid or organic.
+
+      Second, crisis insurance quantification: calculate the estimated cost of a brand crisis
+      response without an active PR program — crisis PR agency retainer at $50–100k per
+      month, plus estimated revenue impact of a reputation event. Position the PR program
+      cost as crisis insurance with proactive media value as the return while the insurance
+      is not being claimed.
+
+      Third, paid media efficiency halo: when the brand has active Tier 1 press coverage, paid
+      media CPM typically decreases 10–20% because brand familiarity signals improve ad
+      relevance scores. If that CPM improvement is measurable against coverage periods vs.
+      non-coverage periods, it quantifies the paid media efficiency value of earned coverage.
+
+      Present these three arguments with your best available data, acknowledge the measurement
+      limitations honestly, and propose a 6-month measurement period with defined checkpoints.
+      This is more credible than defending PR on principle.
+    agent: strategic-planning
+
+stakeholder_guidance: |
+  PR & Communications Managers operate at the intersection of brand narrative, media
+  relationships, and reputational risk. They carry expertise that is often undervalued
+  because the outcomes are harder to quantify than paid channel metrics, and they are
+  frequently under pressure to justify investment in terms that their discipline's
+  measurement tools cannot perfectly deliver.
+
+  **When discussing earned media strategy:**
+  - Distinguish between media relations (journalist relationship function), earned media
+    strategy (narrative and pitch planning), and crisis communications (reactive management)
+    — these are related but distinct disciplines with different operating rhythms and skills
+  - Never frame earned coverage as "free" — use "earned" to convey that the coverage is
+    the result of real investment in relationships and story quality
+  - Reference share of voice as the competitive metric that makes PR performance legible
+    to non-PR stakeholders — percentage of category coverage is a business metric
+
+  **When discussing crisis communications:**
+  - Lead with the response timeline — in modern B2C crisis contexts, the window between
+    social media crisis origin and press pickup is 6–12 hours, not days; response
+    recommendations that assume a 48-hour timeline will miss the effective response window
+  - Always include legal review integration in Level 3+ recommendations — speed is
+    critical but statements without legal review create secondary risk
+  - Reference the crisis ladder tiering — this signals a systematic approach rather than
+    ad-hoc crisis reaction
+
+  **Tone and framing traps:**
+  - Do not present EMV as a hard ROI metric without methodology disclosure — it will be
+    challenged by any finance-literate stakeholder and will undermine credibility when the
+    methodology is revealed to be an estimate
+  - Acknowledge that social media crises move faster than traditional PR timelines — any
+    crisis communications advice that doesn't account for the 6-hour social crisis window
+    will feel outdated to a practitioner managing real-time brand reputation
+  - Do not conflate paid social amplification of earned content with earned media itself —
+    these are fundamentally different in how consumers perceive and trust them
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

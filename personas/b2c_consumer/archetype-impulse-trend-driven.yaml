@@ -1,0 +1,238 @@
+metadata:
+  id: archetype-impulse-trend-driven
+  version: "1.0.0"
+  display_name: "Impulse / Trend-Driven Buyer"
+  domain: consumer-archetype
+  archetype_type: generic
+  description: >
+    The Impulse/Trend-Driven Buyer is a social-commerce native whose purchase journey often
+    begins and ends within a single social media session. Viral content, influencer authenticity,
+    and FOMO are the primary purchase triggers — rational evaluation is largely absent. Load
+    this archetype when targeting Gen Z or younger Millennial consumers, when social commerce
+    and TikTok Shop are material distribution channels, or when developing creative, influencer,
+    and live-stream commerce strategy. Also relevant for brands experiencing high acquisition
+    but poor retention — this archetype requires specific strategies to convert one-time buyers.
+  tags:
+    - impulse-buyer
+    - FOMO
+    - trend-driven
+    - social-commerce
+    - TikTok-buyer
+    - influencer-driven
+    - Gen-Z
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    The Impulse/Trend-Driven Buyer's purchase journey is largely driven by their social feed.
+    When a product appears in a TikTok or Reel that feels authentic — not polished, not
+    obviously sponsored — it can move from unknown to purchased within minutes if checkout
+    is frictionless. FOMO is the core emotional engine: fear of missing a trend, missing
+    limited stock, or missing the moment when "everyone" is talking about something. Brand
+    loyalty is nearly nonexistent; novelty and social currency are the primary repeat drivers.
+  archetype_summary: |
+    The Impulse/Trend-Driven Buyer's purchase journey is largely driven by their social feed.
+    When a product appears in a TikTok or Reel that feels authentic — not polished, not
+    obviously sponsored — it can move from unknown to purchased within minutes if checkout
+    is frictionless. FOMO is the core emotional engine: fear of missing a trend, missing
+    limited stock, or missing the moment when "everyone" is talking about something. Brand
+    loyalty is nearly nonexistent; novelty and social currency are the primary repeat drivers.
+  behavioral_description: |
+    This consumer spends 2+ hours daily on TikTok and Instagram, encountering constant
+    purchase moments as content and commerce blur together. They follow creators primarily,
+    not brands — and trust creators more than ads by a significant margin. The phrase
+    "TikTok Made Me Buy It" is a genuine self-description, not an exaggeration. They
+    have used in-app shopping features, participated in live-stream commerce events, and
+    shared product purchases in their own content. Purchase decisions happen in seconds
+    when a product "feels" right and checkout is easy; they abandon the moment friction
+    appears. Approximately 60% trust brands more after hearing about them from influencers
+    than from direct advertising. They treat subscriptions like impulse purchases — in for
+    a trending item or deal, out when novelty fades.
+
+purchase_behavior:
+  purchase_triggers:
+    - Viral product moment in TikTok or Instagram feed from a creator they follow
+    - Seeing multiple creators post about the same product independently (organic pile-on)
+    - '"Everyone has this now" social signal — friends or aspirational peers using the product'
+    - Limited quantity or trending status signals in-platform ("selling fast," "#1 trending")
+    - Live-stream commerce event creating real-time purchase energy
+    - A specific use-case or "hack" demonstrated in short-form video that feels immediately relevant
+    - Flash discount tied to a viral moment or creator collaboration
+  trust_signals:
+    - Creator authenticity — creator appears to genuinely use and like the product
+    - Organic-looking UGC from peers (not obviously produced brand content)
+    - Viral social proof — visible likes, comments, shares, and "I got this too" responses
+    - Seamless in-app checkout (TikTok Shop, Instagram Shopping — no redirect friction)
+    - Peer reviews in comment sections of creator posts
+    - Clear, fast shipping with real-time tracking
+  red_flags:
+    - Overly polished, scripted influencer content that feels like a traditional ad
+    - Too many paid posts from the same creator in a short period
+    - Complicated or multi-step checkout that breaks the impulse moment
+    - Redirect to external site required — kills the in-feed purchase flow
+    - Hidden subscription or recurring charge after initial purchase
+    - Slow shipping with no tracking — kills the excitement window
+  decision_speed: fast
+  decision_speed_notes: |
+    For impulse buys under $50 with frictionless social checkout, decisions can happen in
+    under 2 minutes. For $50-$150 purchases, they may leave the feed, see it again 1-2
+    times in re-targeting or organic content, and convert within 24-48 hours. Above $150,
+    decision speed slows significantly — this archetype is less reliable at higher price
+    points unless the brand has strong aspirational social currency. Speed is entirely
+    dependent on checkout friction: every extra step exponentially increases abandonment.
+
+media_consumption:
+  primary_channels:
+    - channel: TikTok
+      role: Primary discovery and impulse purchase channel; the social feed IS the storefront
+    - channel: Instagram Reels and Stories
+      role: Secondary discovery and visual validation; in-app shopping reduces friction
+    - channel: YouTube Shorts
+      role: Product demonstrations and "haul" content; slightly longer consideration than TikTok
+    - channel: Live-stream commerce (TikTok Live, Instagram Live)
+      role: Real-time purchase events with social energy and limited-availability pressure
+    - channel: Peer group chat (WhatsApp, iMessage, Discord)
+      role: High-trust product sharing — a recommendation in a group chat has outsized purchase influence
+    - channel: Pinterest
+      role: Aspirational browsing that surfaces products during planning or gifting moments
+  discovery_path: |
+    Discovery is almost entirely algorithm-mediated. A product enters this consumer's world
+    through a creator's organic-looking content on TikTok or Instagram — not through brand
+    advertising. The more the content looks like personal recommendation rather than promotion,
+    the higher the conversion potential. Virality compounds discovery: once 3-5 creators they
+    follow post about the same product, the social proof threshold triggers purchase consideration.
+  research_behavior: |
+    Research is shallow and social. Before purchasing, they may check the comments section of
+    the influencer post for peer validation, do a quick TikTok search for "[product name] review"
+    to find additional creator perspectives, and scan the brand's Instagram grid for aesthetic
+    consistency. They rarely read long-form reviews, visit comparison sites, or scrutinize
+    pricing. The research phase, when it happens, takes minutes rather than hours.
+
+price_sensitivity:
+  level: moderate
+  notes: |
+    Price sensitivity is contextual, not absolute. For a viral product under $30, this archetype
+    barely registers price — the social energy of the moment overwhelms price consideration. Above
+    $100, resistance increases meaningfully and social proof requirements rise accordingly.
+    They are not actively seeking deals, but they respond to "limited time" pricing tied to a
+    specific moment or creator launch because it aligns with their FOMO orientation rather than
+    their value orientation.
+  premium_justifiers:
+    - Aspirational social currency — a product that signals belonging to a cultural moment
+    - Creator-exclusive or launch-exclusive pricing that feels like insider access
+    - Strong viral social proof at higher price points (everyone buying it validates the spend)
+    - Trendy aesthetic that photographs well and generates shareable content
+    - Gifting context where the social signal matters more than the personal cost
+
+loyalty_patterns:
+  brand_loyalty: very_low
+  platform_loyalty: low
+  loyalty_drivers:
+    - Brand continues to produce novel, trend-relevant products consistently
+    - Brand aesthetic or cultural alignment that maintains ongoing identity relevance
+    - Creator community that the consumer wants to remain part of
+    - Subscription structured as an ongoing "discovery" or "surprise" experience (novelty is the value)
+  switching_triggers:
+    - The brand stops appearing in the feed (organic presence decays)
+    - A competitor captures the trend moment they missed
+    - Product experience disappoints — UGC showing negative experience can kill a brand overnight
+    - Brand feels overexposed or ubiquitous — "everyone has it now" can reduce social currency
+    - A new creator they love moves to a competitor brand
+
+calibration:
+  messaging:
+    resonate_with:
+      - FOMO framing — "everyone's talking about this," "trending right now"
+      - Social proof that is immediate and visible ("500K TikToks made with this")
+      - Limited availability language that is credible and consistent with product reality
+      - Creator-voice authenticity — sounds like a friend recommending, not a brand advertising
+      - Cultural moment relevance — tied to a trend, season, or shared cultural experience
+      - '"You need to try this" framing rather than "buy this product"'
+    avoid:
+      - Polished, high-production brand advertising — feels inauthentic in social feeds
+      - Rational feature/benefit copy — this consumer does not read product specifications
+      - Price comparison or value framing — not the primary purchase driver
+      - Countdown timers that are clearly fake — they have seen through these
+      - Brand voice that sounds like a corporation, not a person
+    tone: peer-level and authentic — sounds like a creator, not a brand
+
+  conversion:
+    high_impact_tactics:
+      - In-app native checkout (TikTok Shop, Instagram Shopping) — eliminates redirect friction
+      - Creator-led live-stream commerce with limited-quantity drops during the event
+      - UGC repurposing as paid social — authentic creator content outperforms brand-produced ads
+      - '"Shop the look" or immediate shoppable links in content'
+      - Post-purchase social sharing prompt — "show everyone you got it" turns buyers into creators
+      - Fast shipping with proactive tracking updates — maintains excitement through delivery
+    friction_points:
+      - Any redirect away from the social platform to complete purchase
+      - Account creation requirement before checkout
+      - Shipping estimates over 7 days — impulse cools before the product arrives
+      - Complex size, variant, or configuration choices at point of impulse
+      - Long or text-heavy checkout process
+    urgency_triggers:
+      - Live-stream quantity countdown ("only 47 left at this price")
+      - Trending status signal visible at point of purchase
+      - Creator-exclusive window before general availability
+      - Real-time social activity showing others buying simultaneously
+
+  content:
+    preferred_formats:
+      - Raw, authentic short-form video (15-60 seconds) with a strong visual hook in the first 2 seconds
+      - '"TikTok made me buy it" organic-style haul or unboxing content'
+      - Before/after transformation content with immediate visual payoff
+      - Live-stream commerce with real-time interaction and Q&A
+      - Duet and stitch formats that generate creator engagement and compound reach
+      - Comment-section engagement that surfaces real peer reactions
+    credibility_signals:
+      - Creator authenticity — appears to be a genuine user, not a paid spokesperson
+      - Organic pile-on (multiple unsponsored creators posting about the same thing)
+      - Engagement quality — comments that show real emotional reactions, not "great product!"
+      - Real-time social proof (view counts, comment volume visible at purchase moment)
+      - UGC from buyers that appears unprompted and genuine
+    credibility_killers:
+      - Scripted or clearly storyboarded influencer content
+      - Brand-produced video using obvious studio production quality
+      - Disclosure-heavy sponsored content that front-loads "#ad" without authentic recommendation
+      - Comments that are obviously fake or brand-moderated to remove criticism
+      - Creator who is posting for 5+ brands per week — authenticity collapses
+
+examples:
+  - scenario: Planning a product launch for a new beauty brand targeting Gen Z consumers
+    without_archetype: |
+      Launch campaign: produce high-quality hero video ad. Seed product to 5-10 mid-tier
+      influencers with a structured brief. Run paid social with the hero creative. Coordinate
+      a PR push for launch week. Drive traffic to the product page.
+    with_archetype: |
+      The hero ad and structured influencer brief will produce content that feels like an ad —
+      which is exactly what this archetype tunes out. Instead: seed product to 40-60 micro and
+      nano creators (10K-100K followers) in the target aesthetic community with minimal
+      direction — let them create in their voice. Budget for 1-2 creators to go unscripted live
+      with the product at launch. Set up TikTok Shop before launch week so in-feed discovery
+      converts without leaving the app. Monitor comment sections in real time and reshare the
+      most authentic UGC as paid ads — creator-organic content outperforms brand-produced
+      creative by 2-4x in this feed environment. Brief: send the product, share two sentences
+      on what it does, and let the creator decide if it's worth their audience's time.
+
+  - scenario: Designing a post-purchase retention strategy for an impulse-purchase fashion brand with 85% one-time buyers
+    without_archetype: |
+      Send a thank-you email after purchase. Follow up at day 14 with a 10% discount on
+      the next order. Add the customer to a general newsletter. Build a loyalty points program.
+    with_archetype: |
+      Generic email retention will underperform severely here because the purchase was
+      social-driven, not brand-relationship-driven. The retention strategy needs to be in
+      the same channel as the discovery: social. Post-purchase, immediately prompt the
+      customer to create their own content with the product ("tag us and we'll share the
+      best ones"). This turns the buyer into a creator, which extends their personal
+      investment in the brand and gives the brand UGC for future acquisition. For email:
+      day 3 email is not a discount — it is "here's how people are styling yours" with
+      embedded UGC and a shoppable look. Day 21 is a new drop alert framed as insider
+      access: '"Something new just dropped — here before anyone else." Discounts at day 14'
+      train this archetype to wait for a coupon rather than buy at impulse — the exact
+      behavior you're trying to prevent.
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

@@ -1,0 +1,152 @@
+metadata:
+  id: conjoint-analysis-wtp
+  version: 1.0.0
+  display_name: Conjoint Analysis & Willingness-to-Pay Research
+  category: research
+  description: Structures conjoint analysis research to determine consumer willingness-to-pay (WTP), feature preference trade-offs, and optimal product-price combinations — translating research into actionable pricing strategy and product configuration decisions.
+  best_for:
+    stages:
+    - pre-launch
+    - launch
+    - growth
+    roles:
+    - consumer-product-manager
+    - consumer-analytics-manager
+    - cmo
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: product_attributes
+    description: The key product attributes to test (features, quality levels, price points, brand, packaging, warranty)
+    source: user_input
+  - field: price_range
+    description: The price range to test — minimum, maximum, and intermediate price points
+    source: user_input
+  - field: target_consumer_segment
+    description: The consumer segment to survey — their profile, size, and how they will be recruited
+    source: user_input
+  optional:
+  - field: competitive_products
+    description: Competitor products and their attribute-price combinations, to include as comparison profiles
+    source: user_input
+  - field: current_pricing
+    description: Current product price and any prior price sensitivity data from A/B tests or van Westendorp surveys
+    source: user_input
+  - field: research_budget
+    description: Available budget for the research program — determines sample size and methodology choice
+    source: user_input
+analysis:
+  instructions: 'Design the conjoint analysis research program across six dimensions. First, determine the research design type: choice-based conjoint (CBC — most realistic, asks respondents to choose between full product profiles) is the gold standard for pricing decisions; adaptive CBC is appropriate when the attribute space is large; MaxDiff works for prioritizing features without the price sensitivity element. For pricing decisions, always use CBC with price as an explicit attribute. Second, select the attributes and levels: typically four to six attributes with two to four levels each. Price should have five levels spanning a range wider than the expected decision space. Third, design the survey instrument: profile generation, survey logic, warm-up questions, and screener design. Fourth, design the WTP analysis: use part-worth utilities from the conjoint model to calculate willingness-to-pay for each attribute and the overall product, and construct demand curves at different price points. Fifth, design the product configuration analysis: use the conjoint model to simulate market share and revenue under different attribute combinations, identifying the configuration that maximizes revenue or margin. Sixth, translate findings into specific pricing strategy and product roadmap decisions. Conclude with the research plan, sample size calculation, and analysis approach.'
+  dimensions:
+  - id: research-design
+    name: Research Design Selection
+    description: Selects the appropriate conjoint methodology based on the business question and research budget
+    prompts:
+    - Is the primary question about overall WTP (favors CBC with price attribute) or relative feature preference (favors MaxDiff)?
+    - How many attributes need to be tested, and does the attribute count support a full-profile CBC or require an adaptive/partial-profile design?
+    - What sample size is required for statistically significant results at the segment level, and what is the budget implication?
+    - Should the research include competitive product profiles to measure share-of-preference in a simulated market, or focus purely on the brand''s own product configuration space?
+  - id: attribute-selection
+    name: Attribute & Level Selection
+    description: Selects the attributes and levels to test in the conjoint design
+    prompts:
+    - Which product attributes are most likely to influence purchase decisions for this consumer segment — which features create genuine differentiation?
+    - Are the proposed attribute levels realistic and distinguishable — can consumers meaningfully evaluate the difference between each level?
+    - Is price positioned as an attribute at appropriate levels, spanning a range that captures both the maximum WTP and the lower threshold of acceptable quality?
+    - Are there attributes that are table stakes (must-haves) that should be held constant rather than varied in the conjoint design?
+  - id: survey-structure
+    name: Survey Structure & Instrument Design
+    description: Designs the survey instrument to maximize data quality and response validity
+    prompts:
+    - What is the screener design to ensure respondents are genuine category buyers or considerers for this product type?
+    - How many choice tasks will each respondent complete — typically 12–16 for CBC — and is that burden appropriate for the target segment?
+    - What warm-up tasks (product category familiarity, prior purchase behavior) provide context and screening data without priming respondents?
+    - How is the survey optimized for mobile-first completion given that a significant portion of responses will come from mobile devices?
+  - id: wtp-modeling
+    name: WTP Modeling & Demand Curve Construction
+    description: Translates conjoint utilities into WTP estimates and demand curves
+    prompts:
+    - What is the mean WTP and its confidence interval for the current or proposed product configuration?
+    - How does WTP vary by consumer segment, and are the segment-level WTP differences large enough to justify tiered pricing?
+    - What is the demand curve at each price point tested — at what price does demand fall off significantly?
+    - What is the maximum revenue price point — the price that maximizes total revenue after accounting for the demand elasticity?
+  - id: feature-trade-off-analysis
+    name: Feature Trade-Off Analysis
+    description: Identifies which product attributes have the highest utility and where consumers are willing to trade off quality for price
+    prompts:
+    - Which product attributes have the highest part-worth utility — the features consumers value most and that drive the largest share of purchase preference?
+    - Where are consumers willing to accept a lower attribute level in exchange for a lower price, and at what quality-price trade-off point?
+    - Are there attributes that consumers claim to value highly in surveys but show low utility in the conjoint — revealing a stated vs. revealed preference gap?
+    - What is the minimum viable product configuration that meets the majority of the target segment''s needs at the lowest viable price point?
+  - id: pricing-strategy-translation
+    name: Pricing Strategy Translation
+    description: Translates conjoint findings into specific pricing and product configuration recommendations
+    prompts:
+    - What does the demand curve and WTP analysis imply for the optimal price point for the primary consumer segment?
+    - What product configuration maximizes revenue per unit, and how does it compare to the current or planned product spec?
+    - What pricing tier structure (Good/Better/Best) does the WTP distribution support, and where should the tier breakpoints be set?
+    - Which findings from the conjoint are most likely to change the current pricing or product roadmap decisions, and what is the recommended implementation timeline?
+output_templates:
+- id: primary
+  name: Conjoint Analysis & WTP Research Report
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary\n\n{executive_summary}\n\n## Research Design Summary\n\n{research_design}\n\n## Attribute Importance & Part-Worth Utilities\n\n{attribute_utilities}\n\n## Willingness-to-Pay Analysis\n\n{wtp_analysis}\n\n## Demand Curve\n\n{demand_curve}\n\n## Feature Trade-Off Findings\n\n{feature_trade_offs}\n\n## Product Configuration Simulation\n\n{product_simulation}\n\n## Pricing Strategy Recommendations\n\n{pricing_recommendations}\n\n'
+rubric:
+  description: Evaluates the methodological rigor and decision relevance of the conjoint research.
+  dimensions:
+  - name: Methodological Appropriateness
+    weight: 0.30
+    scoring:
+      1: Wrong methodology selected for the business question (e.g., using MaxDiff when WTP pricing is the primary question).
+      3: Correct methodology selected but design details (number of tasks, attribute levels, price range) are not optimized for the specific product and segment.
+      5: Methodology is correctly selected and all design parameters are optimized — attribute count, level count, price range, task count, and sample size are all specified with rationale.
+    improvement_guidance: Validate the research design with a conjoint specialist before fielding. Common mistakes — too few price levels, unrealistic attribute levels, or insufficient sample size per segment — are correctable before the research is run but not after.
+  - name: Sample Quality
+    weight: 0.25
+    scoring:
+      1: Sample is convenience-recruited without screener questions ensuring category relevance.
+      3: Screener ensures category awareness but does not validate that respondents are genuine purchase considerers.
+      5: Sample is fully screened for category purchase intent and recency, segment characteristics, and platform (mobile vs. desktop) — producing high-validity data.
+    improvement_guidance: Include a behavioral screener question asking about actual purchase behavior in the category in the past 12 months. Self-reported category interest overestimates engagement relative to actual purchase behavior.
+  - name: WTP Translation Quality
+    weight: 0.25
+    scoring:
+      1: Conjoint utilities are reported but not translated into WTP dollar values or demand curves.
+      3: WTP is calculated but presented only at the mean level without segmentation or confidence intervals.
+      5: WTP is calculated at the segment level with confidence intervals, a demand curve is constructed at five or more price points, and the revenue-maximizing price is identified.
+    improvement_guidance: Present the demand curve as a visualization showing unit volume and total revenue at each tested price point. The revenue-maximizing price is often not the price with the highest volume.
+  - name: Decision Integration
+    weight: 0.20
+    scoring:
+      1: Research findings are presented as data without explicit recommendations for pricing or product decisions.
+      3: Recommendations are made but they are not connected to the specific business decisions that motivated the research.
+      5: Each research finding is directly mapped to a specific business decision — pricing, product configuration, or tier structure — with a clear implementation recommendation and risk assessment.
+    improvement_guidance: For each key finding, write a one-paragraph decision brief in the format: "The finding is X. This implies the recommended decision is Y. The risk of this recommendation is Z."
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Van Westendorp as a Substitute for Conjoint
+  description: Using the van Westendorp Price Sensitivity Meter (four price questions) as a substitute for conjoint analysis, which produces a WTP range but cannot model trade-offs between product attributes or simulate market share under different configurations.
+  mitigation: Use van Westendorp for a quick initial price range assessment, but invest in a full CBC conjoint study for any significant pricing decision. Van Westendorp cannot answer "what features justify what price" — conjoint can.
+- pattern: Stated Preference Acceptance
+  description: Accepting that consumers will pay the price they state in a survey without testing actual purchase behavior, resulting in overestimated WTP that leads to pricing above what the market will actually support.
+  mitigation: Apply a WTP discount factor of 20–30% to conjoint-derived WTP estimates before using them in pricing decisions. Stated WTP consistently overpredicts actual purchase behavior. Validate conjoint results with a real-world A/B price test.
+- pattern: Attribute Level Extremism
+  description: Including attribute levels that are either implausibly good or bad, which anchors respondents' utility estimates and produces artificially wide utility ranges that make features appear more or less important than they are in a realistic market context.
+  mitigation: Use only attribute levels that represent realistic options in the current or near-future product roadmap. If an attribute level is not a genuine option, do not include it in the conjoint design.
+chaining:
+  after:
+  - framework_id: consumer-segmentation
+    reason: Segmentation identifies which consumer groups to study; conjoint research provides the WTP and feature preference data for those segments.
+  before:
+  - framework_id: pricing-strategy
+    reason: Conjoint WTP findings feed directly into the pricing strategy as the empirical foundation for price point decisions.
+  - framework_id: consumer-pricing-psychology
+    reason: Conjoint establishes the fundamental WTP ceiling; pricing psychology optimizes the presentation and architecture within that ceiling.

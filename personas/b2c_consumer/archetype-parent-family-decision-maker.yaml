@@ -1,0 +1,242 @@
+metadata:
+  id: archetype-parent-family-decision-maker
+  version: "1.0.0"
+  display_name: "Parent / Family Decision-Maker"
+  domain: consumer-archetype
+  archetype_type: dtc-ecommerce
+  description: >
+    Load when targeting parents making purchases for children or the household.
+    Calibrates for the complex multi-stakeholder decision unit where the adult
+    is the buyer but the child is both end user and influencer. Adjusts messaging
+    toward safety, trust, and time-saving convenience over novelty or price alone.
+  tags:
+    - parent
+    - family
+    - household-decision-maker
+    - safety-conscious
+    - convenience-seeker
+    - value-calculator
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    The Parent / Family Decision-Maker is simultaneously a sole purchaser and
+    a proxy buyer serving an entire household. Their decisions carry higher
+    emotional and practical stakes than most consumer purchases — especially for
+    products used by or around children, where safety concerns can override all
+    other factors. They are time-constrained, research-heavy for safety-relevant
+    categories, and deeply influenced by their parenting peer network. They make
+    the transaction but rarely make the decision entirely alone.
+  archetype_summary: |
+    The Parent / Family Decision-Maker is simultaneously a sole purchaser and
+    a proxy buyer serving an entire household. Their decisions carry higher
+    emotional and practical stakes than most consumer purchases — especially for
+    products used by or around children, where safety concerns can override all
+    other factors. They are time-constrained, research-heavy for safety-relevant
+    categories, and deeply influenced by their parenting peer network. They make
+    the transaction but rarely make the decision entirely alone.
+  behavioral_description: |
+    48% of parents say their children directly influence purchases made for them;
+    71% say kids influence restaurant choices; 80% involve children in purchase
+    decisions more than their own parents did. This makes the parent a buyer
+    navigating a dual mandate: satisfy their own quality and safety standards
+    while accommodating a child who has strong opinions and significant lobbying
+    power.
+
+    Time is the scarcest resource. Convenience and reliability often outweigh
+    marginal price differences. Risk aversion is elevated for anything that
+    touches children — safety certifications are minimum qualifiers, not bonus
+    features. Brand loyalty is moderate-to-high in trusted categories because
+    switching feels risky when something is already proven safe and reliable.
+    Word-of-mouth from school parents, pediatricians, and parenting communities
+    carries extraordinary weight — these sources represent trusted social proof
+    from people with identical stakes.
+
+purchase_behavior:
+  purchase_triggers:
+    - Child explicitly requests or strongly prefers the product
+    - Pediatrician or trusted medical professional recommends it
+    - Parenting community consensus (school parents, Facebook group) validates it
+    - Safety certification visible at point of consideration
+    - Competing product previously failed — safety incident, poor durability, recall
+    - Convenience feature solves a specific time pain (auto-refill, fast delivery)
+    - Child's developmental stage creates a clear need (new age range, new activity)
+    - Subscribe-and-save significantly reduces ongoing mental load
+  trust_signals:
+    - Recognized safety certifications prominently displayed (ASTM, CPSC, UL, OEKO-TEX)
+    - High-volume parent reviews with specific detail about real-use durability
+    - Pediatrician or child development expert recommendations
+    - Transparent ingredient or material disclosure for food, skincare, and toys
+    - Clear age-appropriateness labeling with developmental rationale
+    - Established brand with track record and no recall history
+  red_flags:
+    - Ambiguous or unverified safety claims ("natural," "non-toxic" without certification)
+    - Hidden allergens or missing ingredient transparency for children's products
+    - Misleading age-appropriateness claims that oversell developmental readiness
+    - Marketing that directly targets children with manipulative persuasion tactics
+    - Poor durability signaled in reviews ("broke after two uses")
+    - Product recall history with minimal brand acknowledgment
+  decision_speed: slow
+  decision_speed_notes: |
+    Decision speed varies dramatically by category and safety stakes. Low-stakes
+    repurchases (snacks, wipes, consumables) are very fast — often auto-reordered.
+    High-stakes first-time purchases (car seats, cribs, strollers, allergen-relevant
+    foods) trigger multi-week research phases. The child's direct influence can
+    accelerate decisions for entertainment and toy categories where the child
+    applies persistent pressure.
+
+media_consumption:
+  primary_channels:
+    - channel: Amazon
+      role: Primary research and purchase for most household and children's product categories
+    - channel: Facebook Groups (parenting communities)
+      role: High-trust peer recommendation; direct Q&A with parents in same situation
+    - channel: Instagram (parent influencers)
+      role: Product discovery and lifestyle inspiration; lower trust than peer communities
+    - channel: Parenting blogs and forums (BabyCenter, What to Expect, Scary Mommy)
+      role: Category research and milestone-specific guidance
+    - channel: YouTube
+      role: Product comparison and unboxing for high-consideration items
+    - channel: Pediatrician / school community (offline)
+      role: Highest-trust endorsement channel; drives brand switching in safety categories
+  discovery_path: |
+    Discovery most commonly originates with a peer recommendation — a school
+    parent mentions a product in passing, a Facebook group post gets traction,
+    or a parenting blogger includes it in a round-up. For recurring household
+    needs, Amazon search is the primary discovery mechanism. Pediatrician mentions
+    create immediate high-priority consideration for health and wellness products.
+  research_behavior: |
+    For high-stakes categories, research is thorough: they read full review threads
+    on Amazon (specifically filtering for 1–3 star reviews to understand failure modes),
+    cross-check in parenting forums, and often post their own question asking for
+    direct peer experience. For lower-stakes repurchases, research is minimal —
+    a known brand with strong prior experience gets reordered without evaluation.
+    They respond strongly to comparison content that does the research legwork for them.
+
+price_sensitivity:
+  level: moderate
+  notes: |
+    Price sensitivity is highly category-dependent. For safety-relevant categories
+    (car seats, sleep products, allergen foods) it drops to low — they will pay
+    whatever the well-reviewed safe option costs. For commoditized categories
+    (cleaning supplies, basic clothing, snacks) it rises to high. The heuristic
+    is: the closer the product is to the child's body or safety, the more willing
+    they are to pay a premium for proven quality.
+  premium_justifiers:
+    - Verified safety certifications that competitors lack
+    - Substantially better durability documented in reviews (cost-per-use math)
+    - Time-saving convenience that meaningfully reduces parental load
+    - Subscribe-and-save reliability for recurring household needs
+    - Pediatric or developmental professional endorsement
+
+loyalty_patterns:
+  brand_loyalty: high
+  platform_loyalty: high
+  loyalty_drivers:
+    - Product proven safe and functional over repeated use
+    - Brand has never had a recall or safety issue that reached their awareness
+    - Subscribe-and-save creates auto-replenishment that removes re-evaluation
+    - Parenting community consistently recommends the same brand
+  switching_triggers:
+    - Product recall or safety incident — immediate and permanent exit
+    - Significant quality degradation in a subsequent product batch
+    - Child ages out of the relevant product category
+    - Dramatically superior alternative reaches their parenting community with consensus
+
+calibration:
+  messaging:
+    resonate_with:
+      - Safety and trust as non-negotiable foundations, not upsells
+      - '"Recommended by parents like you" — peer validation framing'
+      - Time-saving and convenience benefits that respect how busy they are
+      - Age-appropriate framing that maps to child developmental stages
+      - Transparency about ingredients, materials, and certifications
+    avoid:
+      - Marketing that talks over the parent directly to the child to create pester power
+      - Vague safety language without certification backing
+      - Overstating developmental benefits without research support
+      - Urgency tactics on safety-relevant products — feels predatory
+      - Complexity that requires extra effort to evaluate
+    tone: Warm, reassuring, practical, and peer-level. Speaks to them as an intelligent adult making considered decisions for their family — not as an anxious parent who needs to be managed.
+
+  conversion:
+    high_impact_tactics:
+      - Safety certifications displayed at the product hero level, not buried in specs
+      - Parent testimonials that reference real-use durability and specific child reactions
+      - Subscribe-and-save framing that leads with convenience, not just discount
+      - Easy returns policy prominently stated for size and fit categories
+      - '"Frequently bought together" bundles that reduce total decision load'
+    friction_points:
+      - No certification information visible without clicking through to a FAQ
+      - Reviews that are generic and do not address durability or safety in practice
+      - Checkout process requiring account creation for first purchase
+      - Unclear or complicated return process for size/age-fit issues
+    urgency_triggers:
+      - Limited seasonal availability for holiday and birthday gift cycles
+      - Child's developmental milestone creating a genuine time window ("best for 6–18 months")
+      - Back-to-school or camp enrollment deadlines creating category urgency
+
+  content:
+    preferred_formats:
+      - Parent review videos showing realistic use with real children
+      - Comparison roundups that pre-do the research work ("best [category] for X age")
+      - Before/after or day-in-the-life content from relatable parents
+      - Expert explainers from pediatricians or developmental specialists
+      - Safety certification explainer content (what does ASTM F963 actually mean)
+    credibility_signals:
+      - Specific review details ("survived 2 years, two kids, dishwasher daily")
+      - Pediatrician or child safety organization partnerships
+      - Transparent recall history page showing no incidents or explaining past actions
+      - Parent community awards or "editor's pick" from parenting publications
+    credibility_killers:
+      - Testimonials that sound like brand copy rather than real parents
+      - Safety claims without linked certification documentation
+      - Marketing that idealizes parenting perfection — feels alienating not aspirational
+      - No negative reviews visible — triggers fake review suspicion
+
+examples:
+  - scenario: Launching a new line of BPA-free sippy cups at a $22 price point
+    without_archetype: |
+      Highlight the premium materials, bright colors, and leak-proof design.
+      Target parents of toddlers on Instagram and Facebook. Offer a 10% off
+      first-order discount. Feature lifestyle photos of happy toddlers using
+      the product.
+    with_archetype: |
+      The $22 price point sits in a category where parents tolerate no ambiguity
+      on safety. Lead every touchpoint — Instagram ad, PDP hero, Amazon listing —
+      with the BPA-free, BPS-free, phthalate-free certification, linked to the
+      testing lab report. Do not bury it in product specs. The lifestyle photos
+      of happy toddlers matter less than the photo showing the certification badge
+      and a parent reading the label with confidence.
+      In Facebook parent group ads, use testimonial creative where a real parent
+      describes surviving a dishwasher-daily test for 18 months — not a staged
+      smiling baby photo. For Amazon, ensure your Q&A section proactively answers
+      "Is this safe for a 9-month-old?" before the question is even asked.
+      Price the subscribe-and-save option at 15% and frame it as never running
+      out during busy weeks, not just saving money.
+
+  - scenario: Email campaign for a children's educational subscription box targeting parents
+    without_archetype: |
+      Write a subject line about how your box makes learning fun. Highlight the
+      activities, age range, and monthly themes. Offer a free first box trial.
+      Use playful imagery and bright colors. Add a countdown timer to create urgency.
+    with_archetype: |
+      The primary buyer (parent) and the primary influencer (child) are both in
+      the decision. The email subject line should speak to the parent's goal, not
+      the child's fun: "Skills your 6-year-old will actually use" outperforms
+      "Fun learning delivered monthly." Inside, lead with developmental rationale
+      in plain language (what this teaches and why it matters at this age) before
+      describing activity themes.
+      For the free trial, remove credit card friction entirely — parents are
+      suspicious that a "free" box with a card on file is a subscription trap.
+      State the cancellation policy in the email itself, not just on the landing
+      page. The countdown timer is likely to backfire in an educational category —
+      parents who feel rushed make no decision rather than a fast one. Replace
+      urgency with social proof: "Recommended by 12,400 parents" with a link to
+      verified reviews creates conversion pull without pressure.
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

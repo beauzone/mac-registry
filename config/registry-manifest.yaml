@@ -17,23 +17,48 @@
 # =============================================================================
 # Registry Manifest
 manifest:
-  version: "0.2.0"
-  last_updated: "2026-04-22"
+  version: "0.4.0"
+  last_updated: "2026-04-23"
   versioning: "per-asset"
 
-skill:
-  id: b2b-gtm-strategist
-  path: skills/user/b2b-gtm-strategist/SKILL.md
-  version: "2.2.0"
-  updated_at: "2026-04-23"
-  raw_url: https://raw.githubusercontent.com/beauzone/mac-registry/main/skills/user/b2b-gtm-strategist/SKILL.md
-  changelog:
-    - version: "2.2.0"
-      date: "2026-04-23"
-      notes: "Added §2 brand pack creation flow with browser tool detection and no-approximation policy. Added §2B brand pack portability (pack export/import/list/status commands). Added §2C company-configured skill distribution (skill export command, INSTALL.md generation, team distribution guidelines)."
-    - version: "1.0.0"
-      date: "2026-04-22"
-      notes: "Initial versioned release. Added §17 offline sync and self-update support."
+skills:
+  gtm_strategist:
+    id: gtm-strategist
+    path: skills/user/gtm-strategist/SKILL.md
+    version: "2.0.0"
+    updated_at: "2026-04-23"
+    raw_url: https://raw.githubusercontent.com/beauzone/mac-registry/main/skills/user/gtm-strategist/SKILL.md
+    changelog:
+      - version: "2.0.0"
+        date: "2026-04-23"
+        notes: "Unified B2B+B2C skill. Remote-first via mac-registry. Adds 29 B2C frameworks, 30 B2C personas (13 consumer archetypes + 17 operator roles), 8 B2C templates. Three-type persona system. Dual-track stage awareness."
+    references:
+      - path: skills/user/gtm-strategist/references/frameworks-catalog.md
+      - path: skills/user/gtm-strategist/references/auto-select-logic.md
+      - path: skills/user/gtm-strategist/references/smes-index.md
+      - path: skills/user/gtm-strategist/references/templates-index.md
+      - path: skills/user/gtm-strategist/references/output-format.md
+      - path: skills/user/gtm-strategist/references/stakeholder-rules.md
+      - path: skills/user/gtm-strategist/references/artifact-creation-guide.md
+  b2b_gtm_strategist:
+    id: b2b-gtm-strategist
+    path: skills/user/b2b-gtm-strategist/SKILL.md
+    version: "2.3.0"
+    updated_at: "2026-04-23"
+    deprecated: true
+    deprecated_since: "2026-04-23"
+    superseded_by: gtm-strategist
+    raw_url: https://raw.githubusercontent.com/beauzone/mac-registry/main/skills/user/b2b-gtm-strategist/SKILL.md
+    changelog:
+      - version: "2.3.0"
+        date: "2026-04-23"
+        notes: "DEPRECATED — consolidated into unified GTM Strategist (v2.0.0) which covers B2B and B2C. Migrate brand packs: cp -r ~/.claude/skills/b2b-gtm-strategist/companies/ ~/.claude/skills/gtm-strategist/companies/"
+      - version: "2.2.0"
+        date: "2026-04-23"
+        notes: "Added §2 brand pack creation flow with browser tool detection and no-approximation policy. Added §2B brand pack portability. Added §2C company-configured skill distribution."
+      - version: "1.0.0"
+        date: "2026-04-22"
+        notes: "Initial versioned release. Added §17 offline sync and self-update support."
 
 sources:
   brand: []
@@ -51,92 +76,92 @@ personas:
     count: 18
     files:
       - id: anti-fraud-director-fraud-operations
-        path: anti-fraud/anti-fraud-director-fraud-operations.yaml
+        path: personas/anti-fraud/anti-fraud-director-fraud-operations.yaml
         display_name: Anti-Fraud / Director of Fraud Operations
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-dispute-chargeback-analyst
-        path: anti-fraud/anti-fraud-dispute-chargeback-analyst.yaml
+        path: personas/anti-fraud/anti-fraud-dispute-chargeback-analyst.yaml
         display_name: Anti-Fraud / Dispute & Chargeback Analyst
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-disputes-chargebacks-manager
-        path: anti-fraud/anti-fraud-disputes-chargebacks-manager.yaml
+        path: personas/anti-fraud/anti-fraud-disputes-chargebacks-manager.yaml
         display_name: Anti-Fraud / Disputes & Chargebacks Manager
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-financial-crime-aml-compliance-lead
-        path: anti-fraud/anti-fraud-financial-crime-aml-compliance-lead.yaml
+        path: personas/anti-fraud/anti-fraud-financial-crime-aml-compliance-lead.yaml
         display_name: Anti-Fraud / Financial Crime & AML Compliance Lead
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-fintech-money-movement-fraud-manager
-        path: anti-fraud/anti-fraud-fintech-money-movement-fraud-manager.yaml
+        path: personas/anti-fraud/anti-fraud-fintech-money-movement-fraud-manager.yaml
         display_name: Anti-Fraud / Fintech Money Movement Fraud Manager
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-fraud-analytics-manager
-        path: anti-fraud/anti-fraud-fraud-analytics-manager.yaml
+        path: personas/anti-fraud/anti-fraud-fraud-analytics-manager.yaml
         display_name: Anti-Fraud / Fraud Analytics Manager
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-fraud-data-scientist-ml-risk-modeler
-        path: anti-fraud/anti-fraud-fraud-data-scientist-ml-risk-modeler.yaml
+        path: personas/anti-fraud/anti-fraud-fraud-data-scientist-ml-risk-modeler.yaml
         display_name: Anti-Fraud / Fraud Data Scientist & ML Risk Modeler
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-fraud-investigation-lead
-        path: anti-fraud/anti-fraud-fraud-investigation-lead.yaml
+        path: personas/anti-fraud/anti-fraud-fraud-investigation-lead.yaml
         display_name: Anti-Fraud / Fraud Investigation Lead
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-fraud-platform-integration-engineer
-        path: anti-fraud/anti-fraud-fraud-platform-integration-engineer.yaml
+        path: personas/anti-fraud/anti-fraud-fraud-platform-integration-engineer.yaml
         display_name: Anti-Fraud / Fraud Platform Integration Engineer
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-fraud-risk-analyst
-        path: anti-fraud/anti-fraud-fraud-risk-analyst.yaml
+        path: personas/anti-fraud/anti-fraud-fraud-risk-analyst.yaml
         display_name: Anti-Fraud / Fraud & Risk Analyst
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-fraud-strategy-controls-manager
-        path: anti-fraud/anti-fraud-fraud-strategy-controls-manager.yaml
+        path: personas/anti-fraud/anti-fraud-fraud-strategy-controls-manager.yaml
         display_name: Anti-Fraud / Fraud Strategy & Controls Manager
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-head-of-fraud-risk
-        path: anti-fraud/anti-fraud-head-of-fraud-risk.yaml
+        path: personas/anti-fraud/anti-fraud-head-of-fraud-risk.yaml
         display_name: Anti-Fraud / Head of Fraud & Risk
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-iam-ciam-architect-security-engineer
-        path: anti-fraud/anti-fraud-iam-ciam-architect-security-engineer.yaml
+        path: personas/anti-fraud/anti-fraud-iam-ciam-architect-security-engineer.yaml
         display_name: Anti-Fraud / IAM-CIAM Architect & Security Engineer
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-identity-authentication-product-owner
-        path: anti-fraud/anti-fraud-identity-authentication-product-owner.yaml
+        path: personas/anti-fraud/anti-fraud-identity-authentication-product-owner.yaml
         display_name: Anti-Fraud / Identity & Authentication Product Owner
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-payments-compliance-regulation-lead
-        path: anti-fraud/anti-fraud-payments-compliance-regulation-lead.yaml
+        path: personas/anti-fraud/anti-fraud-payments-compliance-regulation-lead.yaml
         display_name: Anti-Fraud / Payments Compliance & Regulation Lead
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-payments-risk-fraud-manager
-        path: anti-fraud/anti-fraud-payments-risk-fraud-manager.yaml
+        path: personas/anti-fraud/anti-fraud-payments-risk-fraud-manager.yaml
         display_name: Anti-Fraud / Payments Risk & Fraud Manager
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-trust-safety-operations-leader
-        path: anti-fraud/anti-fraud-trust-safety-operations-leader.yaml
+        path: personas/anti-fraud/anti-fraud-trust-safety-operations-leader.yaml
         display_name: Anti-Fraud / Trust & Safety Operations Leader
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: anti-fraud-trust-safety-policy-lead
-        path: anti-fraud/anti-fraud-trust-safety-policy-lead.yaml
+        path: personas/anti-fraud/anti-fraud-trust-safety-policy-lead.yaml
         display_name: Anti-Fraud / Trust & Safety Policy Lead
         version: "1.0.0"
         updated_at: "2026-04-22"
@@ -149,222 +174,222 @@ personas:
     description: Cybersecurity, IT, and B2B tech industry/role personas (includes GTM Architect and AI Architect added in Cycle 21)
     files:
       - id: b2b-saas
-        path: b2b-tech/b2b-saas.yaml
+        path: personas/b2b-tech/b2b-saas.yaml
         display_name: B2B SaaS
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-application-security-engineer
-        path: b2b-tech/cybersecurity-application-security-engineer.yaml
+        path: personas/b2b-tech/cybersecurity-application-security-engineer.yaml
         display_name: Application Security Engineer
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-ciso
-        path: b2b-tech/cybersecurity-ciso.yaml
+        path: personas/b2b-tech/cybersecurity-ciso.yaml
         display_name: Cybersecurity / CISO
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-cloud-security
-        path: b2b-tech/cybersecurity-cloud-security.yaml
+        path: personas/b2b-tech/cybersecurity-cloud-security.yaml
         display_name: Cybersecurity / Cloud Security
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-data-security
-        path: b2b-tech/cybersecurity-data-security.yaml
+        path: personas/b2b-tech/cybersecurity-data-security.yaml
         display_name: Cybersecurity / Data Security
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-devsecops
-        path: b2b-tech/cybersecurity-devsecops.yaml
+        path: personas/b2b-tech/cybersecurity-devsecops.yaml
         display_name: DevSecOps / Security Automation Engineer
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-endpoint-security
-        path: b2b-tech/cybersecurity-endpoint-security.yaml
+        path: personas/b2b-tech/cybersecurity-endpoint-security.yaml
         display_name: Cybersecurity / Endpoint Security
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-grc-lead
-        path: b2b-tech/cybersecurity-grc-lead.yaml
+        path: personas/b2b-tech/cybersecurity-grc-lead.yaml
         display_name: Cybersecurity / GRC Lead
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-iam-pam
-        path: b2b-tech/cybersecurity-iam-pam.yaml
+        path: personas/b2b-tech/cybersecurity-iam-pam.yaml
         display_name: Cybersecurity / IAM-PAM
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-incident-response-dfir
-        path: b2b-tech/cybersecurity-incident-response-dfir.yaml
+        path: personas/b2b-tech/cybersecurity-incident-response-dfir.yaml
         display_name: Incident Response / DFIR Lead
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-network-security
-        path: b2b-tech/cybersecurity-network-security.yaml
+        path: personas/b2b-tech/cybersecurity-network-security.yaml
         display_name: Cybersecurity / Network Security
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-penetration-tester
-        path: b2b-tech/cybersecurity-penetration-tester.yaml
+        path: personas/b2b-tech/cybersecurity-penetration-tester.yaml
         display_name: Penetration Tester / Red Teamer
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-security-architect
-        path: b2b-tech/cybersecurity-security-architect.yaml
+        path: personas/b2b-tech/cybersecurity-security-architect.yaml
         display_name: Cybersecurity / Security Architect
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-security-awareness
-        path: b2b-tech/cybersecurity-security-awareness.yaml
+        path: personas/b2b-tech/cybersecurity-security-awareness.yaml
         display_name: Security Awareness & Human Risk
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-security-control-assessor
-        path: b2b-tech/cybersecurity-security-control-assessor.yaml
+        path: personas/b2b-tech/cybersecurity-security-control-assessor.yaml
         display_name: Security Control Assessor / Audit
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-security-program-manager
-        path: b2b-tech/cybersecurity-security-program-manager.yaml
+        path: personas/b2b-tech/cybersecurity-security-program-manager.yaml
         display_name: Cybersecurity / Security Program Manager
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-soc-analyst
-        path: b2b-tech/cybersecurity-soc-analyst.yaml
+        path: personas/b2b-tech/cybersecurity-soc-analyst.yaml
         display_name: Cybersecurity / SOC Analyst & SecOps
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-third-party-risk
-        path: b2b-tech/cybersecurity-third-party-risk.yaml
+        path: personas/b2b-tech/cybersecurity-third-party-risk.yaml
         display_name: Third-Party Risk / Supply Chain
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-threat-hunter
-        path: b2b-tech/cybersecurity-threat-hunter.yaml
+        path: personas/b2b-tech/cybersecurity-threat-hunter.yaml
         display_name: Cybersecurity / Threat Hunter
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-threat-intelligence-analyst
-        path: b2b-tech/cybersecurity-threat-intelligence-analyst.yaml
+        path: personas/b2b-tech/cybersecurity-threat-intelligence-analyst.yaml
         display_name: Threat Intelligence Analyst
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: cybersecurity-vulnerability-management
-        path: b2b-tech/cybersecurity-vulnerability-management.yaml
+        path: personas/b2b-tech/cybersecurity-vulnerability-management.yaml
         display_name: Vulnerability Management
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: enterprise-sales
-        path: b2b-tech/enterprise-sales.yaml
+        path: personas/b2b-tech/enterprise-sales.yaml
         display_name: Enterprise Sales Leader (VP Sales / CRO)
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: fintech-compliance
-        path: b2b-tech/fintech-compliance.yaml
+        path: personas/b2b-tech/fintech-compliance.yaml
         display_name: Fintech Compliance & Risk (Compliance Officer / Risk Lead)
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-ai-architect
-        path: b2b-tech/it-ai-architect.yaml
+        path: personas/b2b-tech/it-ai-architect.yaml
         display_name: AI Architect / AI Systems Architect
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-ai-ml-engineer
-        path: b2b-tech/it-ai-ml-engineer.yaml
+        path: personas/b2b-tech/it-ai-ml-engineer.yaml
         display_name: AI/ML Engineer
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-bi-analyst
-        path: b2b-tech/it-bi-analyst.yaml
+        path: personas/b2b-tech/it-bi-analyst.yaml
         display_name: BI Analyst
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-cdo
-        path: b2b-tech/it-cdo.yaml
+        path: personas/b2b-tech/it-cdo.yaml
         display_name: Chief Data Officer (CDO)
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-cio
-        path: b2b-tech/it-cio.yaml
+        path: personas/b2b-tech/it-cio.yaml
         display_name: IT / CIO
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-cloud-architect
-        path: b2b-tech/it-cloud-architect.yaml
+        path: personas/b2b-tech/it-cloud-architect.yaml
         display_name: Cloud Architect
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-cto
-        path: b2b-tech/it-cto.yaml
+        path: personas/b2b-tech/it-cto.yaml
         display_name: Chief Technology Officer (IT)
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-cybersecurity-analyst
-        path: b2b-tech/it-cybersecurity-analyst.yaml
+        path: personas/b2b-tech/it-cybersecurity-analyst.yaml
         display_name: Cybersecurity Analyst
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-data-engineer
-        path: b2b-tech/it-data-engineer.yaml
+        path: personas/b2b-tech/it-data-engineer.yaml
         display_name: Data Engineer
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-devops-engineer
-        path: b2b-tech/it-devops-engineer.yaml
+        path: personas/b2b-tech/it-devops-engineer.yaml
         display_name: DevOps Engineer
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-enterprise-architect
-        path: b2b-tech/it-enterprise-architect.yaml
+        path: personas/b2b-tech/it-enterprise-architect.yaml
         display_name: Enterprise Architect
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-grc-specialist
-        path: b2b-tech/it-grc-specialist.yaml
+        path: personas/b2b-tech/it-grc-specialist.yaml
         display_name: GRC Specialist
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-gtm-architect
-        path: b2b-tech/it-gtm-architect.yaml
+        path: personas/b2b-tech/it-gtm-architect.yaml
         display_name: GTM Architect / GTM Engineer
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-iam-specialist
-        path: b2b-tech/it-iam-specialist.yaml
+        path: personas/b2b-tech/it-iam-specialist.yaml
         display_name: IAM Specialist
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-it-director
-        path: b2b-tech/it-it-director.yaml
+        path: personas/b2b-tech/it-it-director.yaml
         display_name: IT Director
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-itsm-service-manager
-        path: b2b-tech/it-itsm-service-manager.yaml
+        path: personas/b2b-tech/it-itsm-service-manager.yaml
         display_name: ITSM / IT Service Manager
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-platform-engineer
-        path: b2b-tech/it-platform-engineer.yaml
+        path: personas/b2b-tech/it-platform-engineer.yaml
         display_name: Platform Engineer
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-pmo-project-manager
-        path: b2b-tech/it-pmo-project-manager.yaml
+        path: personas/b2b-tech/it-pmo-project-manager.yaml
         display_name: PMO / IT Project Manager
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-procurement-finops
-        path: b2b-tech/it-procurement-finops.yaml
+        path: personas/b2b-tech/it-procurement-finops.yaml
         display_name: IT Procurement / FinOps
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-sre
-        path: b2b-tech/it-sre.yaml
+        path: personas/b2b-tech/it-sre.yaml
         display_name: Site Reliability Engineer (SRE)
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: it-vp-infrastructure
-        path: b2b-tech/it-vp-infrastructure.yaml
+        path: personas/b2b-tech/it-vp-infrastructure.yaml
         display_name: VP of Infrastructure
         version: "1.0.0"
         updated_at: "2026-04-22"
@@ -372,160 +397,168 @@ personas:
     scope: system
     category: personas
     subcategory: b2c-consumer
-    path: sources/audiences/personas/b2c-consumer/
-    count: 30
-    description: Consumer archetypes, B2C operator roles, DTC personas
+    path: personas/b2c_consumer/
+    count: 13
+    description: B2C consumer archetypes and eCommerce DTC personas
     files:
       - id: archetype-brand-loyal-premium
-        path: b2c-consumer/archetype-brand-loyal-premium.yaml
-        display_name: Brand-Loyal Premium Buyer
+        path: personas/b2c_consumer/archetype-brand-loyal-premium.yaml
+        display_name: Brand-Loyal Premium Consumer
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: archetype-convenience-first-subscriber
-        path: b2c-consumer/archetype-convenience-first-subscriber.yaml
+        path: personas/b2c_consumer/archetype-convenience-first-subscriber.yaml
         display_name: Convenience-First Subscriber
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: archetype-freemium-app-evaluator
-        path: b2c-consumer/archetype-freemium-app-evaluator.yaml
+        path: personas/b2c_consumer/archetype-freemium-app-evaluator.yaml
         display_name: Freemium App Evaluator
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: archetype-gen-z-digital-native
-        path: b2c-consumer/archetype-gen-z-digital-native.yaml
+        path: personas/b2c_consumer/archetype-gen-z-digital-native.yaml
         display_name: Gen Z Digital Native
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: archetype-health-wellness-conscious
-        path: b2c-consumer/archetype-health-wellness-conscious.yaml
+        path: personas/b2c_consumer/archetype-health-wellness-conscious.yaml
         display_name: Health & Wellness Conscious Consumer
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: archetype-impulse-trend-driven
-        path: b2c-consumer/archetype-impulse-trend-driven.yaml
-        display_name: Impulse / Trend-Driven Buyer
+        path: personas/b2c_consumer/archetype-impulse-trend-driven.yaml
+        display_name: Impulse & Trend-Driven Buyer
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: archetype-marketplace-power-buyer
-        path: b2c-consumer/archetype-marketplace-power-buyer.yaml
+        path: personas/b2c_consumer/archetype-marketplace-power-buyer.yaml
         display_name: Marketplace Power Buyer
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: archetype-parent-family-decision-maker
-        path: b2c-consumer/archetype-parent-family-decision-maker.yaml
-        display_name: Parent / Family Decision-Maker
+        path: personas/b2c_consumer/archetype-parent-family-decision-maker.yaml
+        display_name: Parent & Family Decision-Maker
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: archetype-price-sensitive-shopper
-        path: b2c-consumer/archetype-price-sensitive-shopper.yaml
-        display_name: Price-Sensitive Comparison Shopper
+        path: personas/b2c_consumer/archetype-price-sensitive-shopper.yaml
+        display_name: Price-Sensitive Shopper
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: archetype-privacy-conscious
-        path: b2c-consumer/archetype-privacy-conscious.yaml
-        display_name: Privacy-Conscious Digital Consumer
+        path: personas/b2c_consumer/archetype-privacy-conscious.yaml
+        display_name: Privacy-Conscious Consumer
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: archetype-social-proof-driven
-        path: b2c-consumer/archetype-social-proof-driven.yaml
+        path: personas/b2c_consumer/archetype-social-proof-driven.yaml
         display_name: Social-Proof-Driven Buyer
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: archetype-subscription-fatigued
-        path: b2c-consumer/archetype-subscription-fatigued.yaml
+        path: personas/b2c_consumer/archetype-subscription-fatigued.yaml
         display_name: Subscription-Fatigued Consumer
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: ecommerce-dtc
-        path: b2c-consumer/ecommerce-dtc.yaml
-        display_name: eCommerce / Direct-to-Consumer
+        path: personas/b2c_consumer/ecommerce-dtc.yaml
+        display_name: eCommerce DTC Operator
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
+  b2c_ops:
+    scope: system
+    category: personas
+    subcategory: b2c-ops
+    path: personas/b2c_ops/
+    count: 17
+    description: B2C marketing operator personas — who you advise in consumer brand strategy
+    files:
       - id: ops-cmo-vp-marketing
-        path: b2c-consumer/ops-cmo-vp-marketing.yaml
+        path: personas/b2c_ops/ops-cmo-vp-marketing.yaml
         display_name: B2C CMO / VP Marketing
         version: "1.0.0"
-        updated_at: "2026-04-22"
-      - id: ops-consumer-analytics-manager
-        path: b2c-consumer/ops-consumer-analytics-manager.yaml
-        display_name: Consumer Analytics & Insights Manager
-        version: "1.0.0"
-        updated_at: "2026-04-22"
-      - id: ops-consumer-product-manager
-        path: b2c-consumer/ops-consumer-product-manager.yaml
-        display_name: Consumer Product Manager
-        version: "1.0.0"
-        updated_at: "2026-04-22"
-      - id: ops-crm-email-sms-manager
-        path: b2c-consumer/ops-crm-email-sms-manager.yaml
-        display_name: CRM / Email & SMS Marketing Manager
-        version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: ops-head-of-brand
-        path: b2c-consumer/ops-head-of-brand.yaml
+        path: personas/b2c_ops/ops-head-of-brand.yaml
         display_name: Head of Brand Marketing
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: ops-head-of-growth
-        path: b2c-consumer/ops-head-of-growth.yaml
+        path: personas/b2c_ops/ops-head-of-growth.yaml
         display_name: Head of Growth
         version: "1.0.0"
-        updated_at: "2026-04-22"
-      - id: ops-head-of-loyalty
-        path: b2c-consumer/ops-head-of-loyalty.yaml
-        display_name: Head of Customer Success / Loyalty
+        updated_at: "2026-04-23"
+      - id: ops-crm-email-sms-manager
+        path: personas/b2c_ops/ops-crm-email-sms-manager.yaml
+        display_name: CRM / Email & SMS Marketing Manager
         version: "1.0.0"
-        updated_at: "2026-04-22"
-      - id: ops-head-of-performance
-        path: b2c-consumer/ops-head-of-performance.yaml
-        display_name: Head of Performance Marketing
+        updated_at: "2026-04-23"
+      - id: ops-consumer-analytics-manager
+        path: personas/b2c_ops/ops-consumer-analytics-manager.yaml
+        display_name: Consumer Analytics & Insights Manager
         version: "1.0.0"
-        updated_at: "2026-04-22"
-      - id: ops-influencer-creator-manager
-        path: b2c-consumer/ops-influencer-creator-manager.yaml
-        display_name: Influencer & Creator Marketing Manager
+        updated_at: "2026-04-23"
+      - id: ops-consumer-product-manager
+        path: personas/b2c_ops/ops-consumer-product-manager.yaml
+        display_name: Consumer Product Manager
         version: "1.0.0"
-        updated_at: "2026-04-22"
-      - id: ops-marketplace-operator
-        path: b2c-consumer/ops-marketplace-operator.yaml
-        display_name: Marketplace / Platform Operator
-        version: "1.0.0"
-        updated_at: "2026-04-22"
-      - id: ops-mobile-app-growth-manager
-        path: b2c-consumer/ops-mobile-app-growth-manager.yaml
-        display_name: Mobile App Growth Manager
-        version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: ops-paid-media-manager
-        path: b2c-consumer/ops-paid-media-manager.yaml
+        path: personas/b2c_ops/ops-paid-media-manager.yaml
         display_name: Paid Media Manager
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
+      - id: ops-influencer-creator-manager
+        path: personas/b2c_ops/ops-influencer-creator-manager.yaml
+        display_name: Influencer & Creator Marketing Manager
+        version: "1.0.0"
+        updated_at: "2026-04-23"
+      - id: ops-head-of-performance
+        path: personas/b2c_ops/ops-head-of-performance.yaml
+        display_name: Head of Performance Marketing
+        version: "1.0.0"
+        updated_at: "2026-04-23"
+      - id: ops-social-community-manager
+        path: personas/b2c_ops/ops-social-community-manager.yaml
+        display_name: Social Media & Community Manager
+        version: "1.0.0"
+        updated_at: "2026-04-23"
       - id: ops-partnerships-affiliate-manager
-        path: b2c-consumer/ops-partnerships-affiliate-manager.yaml
-        display_name: Partnerships / Affiliate Marketing Manager
+        path: personas/b2c_ops/ops-partnerships-affiliate-manager.yaml
+        display_name: Partnerships & Affiliate Marketing Manager
         version: "1.0.0"
-        updated_at: "2026-04-22"
-      - id: ops-pr-comms-manager
-        path: b2c-consumer/ops-pr-comms-manager.yaml
-        display_name: PR & Communications Manager
-        version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: ops-retail-omnichannel-manager
-        path: b2c-consumer/ops-retail-omnichannel-manager.yaml
+        path: personas/b2c_ops/ops-retail-omnichannel-manager.yaml
         display_name: Retail & Omnichannel Manager
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
       - id: ops-seo-content-manager
-        path: b2c-consumer/ops-seo-content-manager.yaml
-        display_name: SEO / Content Marketing Manager
+        path: personas/b2c_ops/ops-seo-content-manager.yaml
+        display_name: SEO & Content Marketing Manager
         version: "1.0.0"
-        updated_at: "2026-04-22"
-      - id: ops-social-community-manager
-        path: b2c-consumer/ops-social-community-manager.yaml
-        display_name: Social Media / Community Manager
+        updated_at: "2026-04-23"
+      - id: ops-head-of-loyalty
+        path: personas/b2c_ops/ops-head-of-loyalty.yaml
+        display_name: Head of Customer Loyalty
         version: "1.0.0"
-        updated_at: "2026-04-22"
+        updated_at: "2026-04-23"
+      - id: ops-mobile-app-growth-manager
+        path: personas/b2c_ops/ops-mobile-app-growth-manager.yaml
+        display_name: Mobile App Growth Manager
+        version: "1.0.0"
+        updated_at: "2026-04-23"
+      - id: ops-marketplace-operator
+        path: personas/b2c_ops/ops-marketplace-operator.yaml
+        display_name: Marketplace & Platform Operator
+        version: "1.0.0"
+        updated_at: "2026-04-23"
+      - id: ops-pr-comms-manager
+        path: personas/b2c_ops/ops-pr-comms-manager.yaml
+        display_name: PR & Communications Manager
+        version: "1.0.0"
+        updated_at: "2026-04-23"
   governance_audit:
     scope: system
     category: personas
@@ -534,47 +567,47 @@ personas:
     count: 9
     files:
       - id: audit-ai-ethics-specialist
-        path: governance-audit/audit-ai-ethics-specialist.yaml
+        path: personas/governance-audit/audit-ai-ethics-specialist.yaml
         display_name: AI Ethics Officer / Algorithmic Auditor
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: audit-board-audit-chair
-        path: governance-audit/audit-board-audit-chair.yaml
+        path: personas/governance-audit/audit-board-audit-chair.yaml
         display_name: Board Audit Committee Chair
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: audit-board-risk-chair
-        path: governance-audit/audit-board-risk-chair.yaml
+        path: personas/governance-audit/audit-board-risk-chair.yaml
         display_name: Board Risk Committee Chair
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: audit-external-big4
-        path: governance-audit/audit-external-big4.yaml
+        path: personas/governance-audit/audit-external-big4.yaml
         display_name: Big 4 AI Assurance Partner / AI Audit Director
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: audit-internal-ai-auditor
-        path: governance-audit/audit-internal-ai-auditor.yaml
+        path: personas/governance-audit/audit-internal-ai-auditor.yaml
         display_name: Internal AI Audit Manager / Senior AI Auditor
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: audit-internal-cae
-        path: governance-audit/audit-internal-cae.yaml
+        path: personas/governance-audit/audit-internal-cae.yaml
         display_name: Chief Audit Executive (CAE) / Chief Internal Auditor
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: audit-iso42001-lead-auditor
-        path: governance-audit/audit-iso42001-lead-auditor.yaml
+        path: personas/governance-audit/audit-iso42001-lead-auditor.yaml
         display_name: ISO/IEC 42001 Lead Auditor — AI Management System
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: audit-procurement-cpo
-        path: governance-audit/audit-procurement-cpo.yaml
+        path: personas/governance-audit/audit-procurement-cpo.yaml
         display_name: Chief Procurement Officer (CPO) — AI Governance Gatekeeper
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: audit-vendor-risk-manager
-        path: governance-audit/audit-vendor-risk-manager.yaml
+        path: personas/governance-audit/audit-vendor-risk-manager.yaml
         display_name: Vendor / Third-Party Risk Manager — AI Systems
         version: "1.0.0"
         updated_at: "2026-04-22"
@@ -586,47 +619,47 @@ personas:
     count: 9
     files:
       - id: governance-caio
-        path: governance-legal/governance-caio.yaml
+        path: personas/governance-legal/governance-caio.yaml
         display_name: Chief AI Officer (CAIO)
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: governance-cco-customer
-        path: governance-legal/governance-cco-customer.yaml
+        path: personas/governance-legal/governance-cco-customer.yaml
         display_name: Chief Customer Officer / Chief Experience Officer
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: governance-cco
-        path: governance-legal/governance-cco.yaml
+        path: personas/governance-legal/governance-cco.yaml
         display_name: Chief Compliance Officer (CCO)
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: governance-ceo-enterprise
-        path: governance-legal/governance-ceo-enterprise.yaml
+        path: personas/governance-legal/governance-ceo-enterprise.yaml
         display_name: CEO — Mid-Market & Enterprise (Regulated Industry)
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: governance-clo
-        path: governance-legal/governance-clo.yaml
+        path: personas/governance-legal/governance-clo.yaml
         display_name: Chief Legal Officer / General Counsel
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: governance-cpo-privacy
-        path: governance-legal/governance-cpo-privacy.yaml
+        path: personas/governance-legal/governance-cpo-privacy.yaml
         display_name: Chief Privacy Officer / Data Protection Officer
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: governance-cro-enterprise
-        path: governance-legal/governance-cro-enterprise.yaml
+        path: personas/governance-legal/governance-cro-enterprise.yaml
         display_name: Chief Risk Officer — Enterprise (Risk Management, Not Revenue)
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: governance-dir-compliance
-        path: governance-legal/governance-dir-compliance.yaml
+        path: personas/governance-legal/governance-dir-compliance.yaml
         display_name: Director of Marketing Compliance / Regulatory Affairs
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: governance-privacy-manager
-        path: governance-legal/governance-privacy-manager.yaml
+        path: personas/governance-legal/governance-privacy-manager.yaml
         display_name: Privacy Manager / Privacy Counsel
         version: "1.0.0"
         updated_at: "2026-04-22"
@@ -640,42 +673,42 @@ personas:
     added_in_cycle: 20
     files:
       - id: marketing-agency-account-director
-        path: marketing-agency/marketing-agency-account-director.yaml
+        path: personas/marketing-agency/marketing-agency-account-director.yaml
         display_name: "Account Director"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-agency-content-director
-        path: marketing-agency/marketing-agency-content-director.yaml
+        path: personas/marketing-agency/marketing-agency-content-director.yaml
         display_name: "Director of Content Services"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-agency-creative-director
-        path: marketing-agency/marketing-agency-creative-director.yaml
+        path: personas/marketing-agency/marketing-agency-creative-director.yaml
         display_name: "Creative Director"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-agency-martech-consultant
-        path: marketing-agency/marketing-agency-martech-consultant.yaml
+        path: personas/marketing-agency/marketing-agency-martech-consultant.yaml
         display_name: "Marketing Technology Consultant"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-agency-media-director
-        path: marketing-agency/marketing-agency-media-director.yaml
+        path: personas/marketing-agency/marketing-agency-media-director.yaml
         display_name: "Media Director"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-agency-ops-director
-        path: marketing-agency/marketing-agency-ops-director.yaml
+        path: personas/marketing-agency/marketing-agency-ops-director.yaml
         display_name: "Director of Agency Operations"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-agency-principal
-        path: marketing-agency/marketing-agency-principal.yaml
+        path: personas/marketing-agency/marketing-agency-principal.yaml
         display_name: "Agency Founder/Principal/CEO"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-agency-strategy-director
-        path: marketing-agency/marketing-agency-strategy-director.yaml
+        path: personas/marketing-agency/marketing-agency-strategy-director.yaml
         display_name: "Strategy Director"
         version: "1.0.0"
         updated_at: "2026-04-22"
@@ -689,112 +722,112 @@ personas:
     added_in_cycle: 20
     files:
       - id: marketing-b2b-campaign-manager
-        path: marketing-b2b/marketing-b2b-campaign-manager.yaml
+        path: personas/marketing-b2b/marketing-b2b-campaign-manager.yaml
         display_name: "Campaign Manager"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-cmo
-        path: marketing-b2b/marketing-b2b-cmo.yaml
+        path: personas/marketing-b2b/marketing-b2b-cmo.yaml
         display_name: "Chief Marketing Officer (B2B)"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-content-strategist
-        path: marketing-b2b/marketing-b2b-content-strategist.yaml
+        path: personas/marketing-b2b/marketing-b2b-content-strategist.yaml
         display_name: "Content Strategist"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-dir-analyst-relations
-        path: marketing-b2b/marketing-b2b-dir-analyst-relations.yaml
+        path: personas/marketing-b2b/marketing-b2b-dir-analyst-relations.yaml
         display_name: "Director of Analyst & Media Relations"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-dir-brand
-        path: marketing-b2b/marketing-b2b-dir-brand.yaml
+        path: personas/marketing-b2b/marketing-b2b-dir-brand.yaml
         display_name: "Director of Brand"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-dir-content
-        path: marketing-b2b/marketing-b2b-dir-content.yaml
+        path: personas/marketing-b2b/marketing-b2b-dir-content.yaml
         display_name: "Director of Content Marketing"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-dir-customer-marketing
-        path: marketing-b2b/marketing-b2b-dir-customer-marketing.yaml
+        path: personas/marketing-b2b/marketing-b2b-dir-customer-marketing.yaml
         display_name: "Director of Customer Marketing & Advocacy"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-dir-demand-gen
-        path: marketing-b2b/marketing-b2b-dir-demand-gen.yaml
+        path: personas/marketing-b2b/marketing-b2b-dir-demand-gen.yaml
         display_name: "Director of Demand Generation"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-dir-field-marketing
-        path: marketing-b2b/marketing-b2b-dir-field-marketing.yaml
+        path: personas/marketing-b2b/marketing-b2b-dir-field-marketing.yaml
         display_name: "Director of Field & Event Marketing"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-dir-marketing-ops
-        path: marketing-b2b/marketing-b2b-dir-marketing-ops.yaml
+        path: personas/marketing-b2b/marketing-b2b-dir-marketing-ops.yaml
         display_name: "Director of Marketing Operations"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-dir-partner-marketing
-        path: marketing-b2b/marketing-b2b-dir-partner-marketing.yaml
+        path: personas/marketing-b2b/marketing-b2b-dir-partner-marketing.yaml
         display_name: "Director of Partner & Channel Marketing"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-dir-product-marketing
-        path: marketing-b2b/marketing-b2b-dir-product-marketing.yaml
+        path: personas/marketing-b2b/marketing-b2b-dir-product-marketing.yaml
         display_name: "Director of Product Marketing"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-marketing-analyst
-        path: marketing-b2b/marketing-b2b-marketing-analyst.yaml
+        path: personas/marketing-b2b/marketing-b2b-marketing-analyst.yaml
         display_name: "Marketing Data Analyst"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-marketing-ops-manager
-        path: marketing-b2b/marketing-b2b-marketing-ops-manager.yaml
+        path: personas/marketing-b2b/marketing-b2b-marketing-ops-manager.yaml
         display_name: "Marketing Operations Manager"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-martech-manager
-        path: marketing-b2b/marketing-b2b-martech-manager.yaml
+        path: personas/marketing-b2b/marketing-b2b-martech-manager.yaml
         display_name: "Marketing Technology Manager"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-paid-media-manager
-        path: marketing-b2b/marketing-b2b-paid-media-manager.yaml
+        path: personas/marketing-b2b/marketing-b2b-paid-media-manager.yaml
         display_name: "Paid Media Manager"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-seo-manager
-        path: marketing-b2b/marketing-b2b-seo-manager.yaml
+        path: personas/marketing-b2b/marketing-b2b-seo-manager.yaml
         display_name: "SEO & Organic Growth Manager"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-vp-brand
-        path: marketing-b2b/marketing-b2b-vp-brand.yaml
+        path: personas/marketing-b2b/marketing-b2b-vp-brand.yaml
         display_name: "VP Brand & Communications"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-vp-demand-gen
-        path: marketing-b2b/marketing-b2b-vp-demand-gen.yaml
+        path: personas/marketing-b2b/marketing-b2b-vp-demand-gen.yaml
         display_name: "VP Demand Generation"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-vp-marketing-ops
-        path: marketing-b2b/marketing-b2b-vp-marketing-ops.yaml
+        path: personas/marketing-b2b/marketing-b2b-vp-marketing-ops.yaml
         display_name: "VP Marketing Operations"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-vp-marketing
-        path: marketing-b2b/marketing-b2b-vp-marketing.yaml
+        path: personas/marketing-b2b/marketing-b2b-vp-marketing.yaml
         display_name: "VP Marketing"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2b-vp-product-marketing
-        path: marketing-b2b/marketing-b2b-vp-product-marketing.yaml
+        path: personas/marketing-b2b/marketing-b2b-vp-product-marketing.yaml
         display_name: "VP Product Marketing"
         version: "1.0.0"
         updated_at: "2026-04-22"
@@ -808,62 +841,62 @@ personas:
     added_in_cycle: 20
     files:
       - id: marketing-b2c-cmo
-        path: marketing-b2c/marketing-b2c-cmo.yaml
+        path: personas/marketing-b2c/marketing-b2c-cmo.yaml
         display_name: "Chief Marketing Officer (B2C)"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2c-dir-consumer-insights
-        path: marketing-b2c/marketing-b2c-dir-consumer-insights.yaml
+        path: personas/marketing-b2c/marketing-b2c-dir-consumer-insights.yaml
         display_name: "Director of Consumer Insights"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2c-dir-dtc
-        path: marketing-b2c/marketing-b2c-dir-dtc.yaml
+        path: personas/marketing-b2c/marketing-b2c-dir-dtc.yaml
         display_name: "Director of DTC Marketing"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2c-dir-influencer
-        path: marketing-b2c/marketing-b2c-dir-influencer.yaml
+        path: personas/marketing-b2c/marketing-b2c-dir-influencer.yaml
         display_name: "Director of Influencer & Creator Partnerships"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2c-dir-lifecycle
-        path: marketing-b2c/marketing-b2c-dir-lifecycle.yaml
+        path: personas/marketing-b2c/marketing-b2c-dir-lifecycle.yaml
         display_name: "Director of Lifecycle & Retention"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2c-dir-social-community
-        path: marketing-b2c/marketing-b2c-dir-social-community.yaml
+        path: personas/marketing-b2c/marketing-b2c-dir-social-community.yaml
         display_name: "Director of Social Media & Community"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2c-email-crm-manager
-        path: marketing-b2c/marketing-b2c-email-crm-manager.yaml
+        path: personas/marketing-b2c/marketing-b2c-email-crm-manager.yaml
         display_name: "Email & CRM Marketing Manager"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2c-growth-manager
-        path: marketing-b2c/marketing-b2c-growth-manager.yaml
+        path: personas/marketing-b2c/marketing-b2c-growth-manager.yaml
         display_name: "Growth Marketing Manager"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2c-social-media-manager
-        path: marketing-b2c/marketing-b2c-social-media-manager.yaml
+        path: personas/marketing-b2c/marketing-b2c-social-media-manager.yaml
         display_name: "Social Media Manager"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2c-vp-brand
-        path: marketing-b2c/marketing-b2c-vp-brand.yaml
+        path: personas/marketing-b2c/marketing-b2c-vp-brand.yaml
         display_name: "VP Brand (Consumer)"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2c-vp-consumer-marketing
-        path: marketing-b2c/marketing-b2c-vp-consumer-marketing.yaml
+        path: personas/marketing-b2c/marketing-b2c-vp-consumer-marketing.yaml
         display_name: "VP Consumer Marketing"
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: marketing-b2c-vp-growth
-        path: marketing-b2c/marketing-b2c-vp-growth.yaml
+        path: personas/marketing-b2c/marketing-b2c-vp-growth.yaml
         display_name: "VP Growth Marketing (DTC)"
         version: "1.0.0"
         updated_at: "2026-04-22"
@@ -875,52 +908,52 @@ personas:
     count: 10
     files:
       - id: regindustry-cannabis-compliance
-        path: regulated-industries/regindustry-cannabis-compliance.yaml
+        path: personas/regulated-industries/regindustry-cannabis-compliance.yaml
         display_name: Cannabis Marketing Compliance Officer
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: regindustry-finra-principal
-        path: regulated-industries/regindustry-finra-principal.yaml
+        path: personas/regulated-industries/regindustry-finra-principal.yaml
         display_name: FINRA Registered Principal (Series 24)
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: regindustry-healthcare-hipaa-marketing
-        path: regulated-industries/regindustry-healthcare-hipaa-marketing.yaml
+        path: personas/regulated-industries/regindustry-healthcare-hipaa-marketing.yaml
         display_name: Healthcare Marketing Compliance Manager / HIPAA Privacy Officer
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: regindustry-insurance-market-conduct
-        path: regulated-industries/regindustry-insurance-market-conduct.yaml
+        path: personas/regulated-industries/regindustry-insurance-market-conduct.yaml
         display_name: Insurance Market Conduct Compliance Officer
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: regindustry-insurance-medicare
-        path: regulated-industries/regindustry-insurance-medicare.yaml
+        path: personas/regulated-industries/regindustry-insurance-medicare.yaml
         display_name: Medicare/Medicaid Marketing Compliance Specialist
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: regindustry-mortgage-compliance
-        path: regulated-industries/regindustry-mortgage-compliance.yaml
+        path: personas/regulated-industries/regindustry-mortgage-compliance.yaml
         display_name: Mortgage Advertising Compliance Officer
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: regindustry-pharma-claims-manager
-        path: regulated-industries/regindustry-pharma-claims-manager.yaml
+        path: personas/regulated-industries/regindustry-pharma-claims-manager.yaml
         display_name: Clinical Claims Specialist / Claims Library Manager
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: regindustry-pharma-medical-director
-        path: regulated-industries/regindustry-pharma-medical-director.yaml
+        path: personas/regulated-industries/regindustry-pharma-medical-director.yaml
         display_name: Pharma Medical Reviewer / Medical Director (MLR)
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: regindustry-pharma-regulatory-reviewer
-        path: regulated-industries/regindustry-pharma-regulatory-reviewer.yaml
+        path: personas/regulated-industries/regindustry-pharma-regulatory-reviewer.yaml
         display_name: Pharmaceutical Regulatory Affairs Reviewer (MLR)
         version: "1.0.0"
         updated_at: "2026-04-22"
       - id: regindustry-sec-marketing-cco
-        path: regulated-industries/regindustry-sec-marketing-cco.yaml
+        path: personas/regulated-industries/regindustry-sec-marketing-cco.yaml
         display_name: SEC Marketing Rule Compliance Officer (RIA CCO)
         version: "1.0.0"
         updated_at: "2026-04-22"
@@ -1157,6 +1190,210 @@ frameworks:
       scope: system
       version: "1.0.0"
       updated_at: "2026-04-22"
+
+    - id: b2c-gtm-motions
+      path: frameworks/system/gtm-growth/b2c-gtm-motions.yaml
+      description: Helps consumer brands choose their primary route-to-market motion — DTC, marketplace, retail, subscription, app store, or hybrid. Maps channel selection to company stage, consumer behavior, and margin requirements.
+      category: gtm-growth
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: b2c-stage-model
+      path: frameworks/system/gtm-growth/b2c-stage-model.yaml
+      description: Stage-gate framework for consumer brands mapping from pre-launch validation through retail distribution and brand maturity. Defines stage-appropriate priorities, investment allocation, and success metrics to prevent prem...
+      category: gtm-growth
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: consumer-acquisition-funnel
+      path: frameworks/system/gtm-growth/consumer-acquisition-funnel.yaml
+      description: Full-funnel consumer acquisition model from awareness through first purchase. Maps conversion rates, drop-off points, and cost-per-acquisition by channel to identify the highest-leverage optimization opportunities.
+      category: gtm-growth
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: community-led-growth
+      path: frameworks/system/consumer-acquisition/community-led-growth.yaml
+      description: Designs and measures community-driven consumer acquisition and retention by mapping platform strategy, community loops, member lifecycle, and the community-to-product feedback flywheel that turns engaged members into adv...
+      category: consumer-acquisition
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: hook-model
+      path: frameworks/system/consumer-acquisition/hook-model.yaml
+      description: Four-phase behavior loop — Trigger, Action, Variable Reward, Investment — mapping how consumer products build automatic habits and drive repeat engagement without relying on paid acquisition for every session.
+      category: consumer-acquisition
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: influencer-creator-marketing-strategy
+      path: frameworks/system/consumer-acquisition/influencer-creator-marketing-strategy.yaml
+      description: Structures creator marketing programs across tier strategy, creator-brand fit scoring, content brief design, performance measurement, and ROI modeling to build influencer as a scalable, repeatable acquisition and brand-b...
+      category: consumer-acquisition
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: paid-media-mix-model
+      path: frameworks/system/consumer-acquisition/paid-media-mix-model.yaml
+      description: Builds the consumer brand paid media investment model across channel allocation, audience segmentation by channel, creative-to-channel fit, budget optimization, and attribution linkage to maximize return on paid acquisit...
+      category: consumer-acquisition
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: referral-program-design
+      path: frameworks/system/consumer-acquisition/referral-program-design.yaml
+      description: Structures consumer referral programs by designing incentive mechanics, double-sided vs. one-sided reward structures, referral attribution systems, unit economics validation, and anti-gaming controls that make referral a...
+      category: consumer-acquisition
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: viral-loop-k-factor
+      path: frameworks/system/consumer-acquisition/viral-loop-k-factor.yaml
+      description: Measures the viral coefficient (K-factor) of consumer products and maps the mechanics driving organic sharing, referral, and word-of-mouth growth to identify whether the product has a self-sustaining viral engine.
+      category: consumer-acquisition
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: brand-loyalty-ladder
+      path: frameworks/system/consumer-brand-experience/brand-loyalty-ladder.yaml
+      description: Maps consumers across six loyalty stages from Suspect to Partner, designs stage-appropriate engagement programs and upgrade mechanics, and models the loyalty economics that justify investment in moving consumers up the l...
+      category: consumer-brand-experience
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: consumer-decision-journey
+      path: frameworks/system/consumer-brand-experience/consumer-decision-journey.yaml
+      description: Maps the non-linear consumer path from initial consideration through purchase, post-purchase loyalty loop, and advocacy. Identifies the most influential touchpoints and moments of truth to focus brand and marketing inves...
+      category: consumer-brand-experience
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: consumer-persona-purchase-influence-map
+      path: frameworks/system/consumer-brand-experience/consumer-persona-purchase-influence-map.yaml
+      description: Synthesizes consumer archetype profiles with behavioral purchase influence mapping — media consumption, trust signals, social proof requirements, price sensitivity triggers, and decision barriers — to produce actionable...
+      category: consumer-brand-experience
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: customer-experience-mapping
+      path: frameworks/system/consumer-brand-experience/customer-experience-mapping.yaml
+      description: Comprehensive mapping of the consumer experience across all brand touchpoints from first awareness through post-purchase. Identifies friction points, emotional highs and lows, and prioritizes experience improvement oppor...
+      category: consumer-brand-experience
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: keller-cbbe-pyramid
+      path: frameworks/system/consumer-brand-experience/keller-cbbe-pyramid.yaml
+      description: Four-level brand equity model mapping the consumer's relationship with the brand from Salience through Performance/Imagery through Judgments/Feelings to Resonance. Identifies gaps in brand equity and prioritizes investme...
+      category: consumer-brand-experience
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: nps-csat-ces-strategy
+      path: frameworks/system/consumer-brand-experience/nps-csat-ces-strategy.yaml
+      description: Designs the consumer satisfaction measurement framework including metric selection, survey design, segmentation strategy, response rate optimization, closed-loop action plans, and correlation to business outcomes includi...
+      category: consumer-brand-experience
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: consumer-pricing-psychology
+      path: frameworks/system/consumer-commerce-channel/consumer-pricing-psychology.yaml
+      description: Applies behavioral economics principles to consumer pricing strategy — anchoring, decoy pricing, bundle design, price presentation, and the psychological triggers that drive purchase decisions — to maximize conversion an...
+      category: consumer-commerce-channel
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: dtc-economics-model
+      path: frameworks/system/consumer-commerce-channel/dtc-economics-model.yaml
+      description: Models the unit economics of direct-to-consumer brands — CAC by channel, LTV by cohort, contribution margin per order, and the path to DTC profitability — to determine whether the DTC model is viable and identify the lev...
+      category: consumer-commerce-channel
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: marketplace-platform-economics
+      path: frameworks/system/consumer-commerce-channel/marketplace-platform-economics.yaml
+      description: Analyzes the economics and strategy for brands operating on Amazon, DTC marketplaces, or platform ecosystems — covering fee structure, buy box dynamics, ad-to-organic mix, review strategy, and brand protection — to optim...
+      category: consumer-commerce-channel
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: omnichannel-strategy
+      path: frameworks/system/consumer-commerce-channel/omnichannel-strategy.yaml
+      description: Designs the integrated consumer brand strategy across DTC, retail, marketplace, and digital channels — ensuring consistent brand experience, optimized channel economics, unified data strategy, and a defensible approach t...
+      category: consumer-commerce-channel
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: retail-distribution-strategy
+      path: frameworks/system/consumer-commerce-channel/retail-distribution-strategy.yaml
+      description: Designs the brick-and-mortar and retail channel strategy including retailer selection, shelf strategy, trade marketing investment, category captain positioning, and retail activation plan to build a profitable and brand-...
+      category: consumer-commerce-channel
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: conjoint-analysis-wtp
+      path: frameworks/system/consumer-insights/conjoint-analysis-wtp.yaml
+      description: Structures conjoint analysis research to determine consumer willingness-to-pay (WTP), feature preference trade-offs, and optimal product-price combinations — translating research into actionable pricing strategy and prod...
+      category: consumer-insights
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: consumer-segmentation
+      path: frameworks/system/consumer-insights/consumer-segmentation.yaml
+      description: Full consumer segmentation analysis across demographic, psychographic, behavioral, and occasion-based dimensions to map segment size, accessibility, conversion potential, and strategic fit — identifying the priority cons...
+      category: consumer-insights
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: social-listening-sentiment-analysis
+      path: frameworks/system/consumer-insights/social-listening-sentiment-analysis.yaml
+      description: Structures the social listening program to extract brand health signals, competitive intelligence, consumer trend detection, and crisis early warning from social media and online communities — and defines the insight-to-...
+      category: consumer-insights
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: churn-diagnosis-prevention
+      path: frameworks/system/retention-lifecycle/churn-diagnosis-prevention.yaml
+      description: Systematically diagnoses why consumers are churning across product, price, experience, and competition dimensions, then maps early warning signals, intervention design, and rescue program mechanics to reduce preventable...
+      category: retention-lifecycle
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: cohort-retention-analysis
+      path: frameworks/system/retention-lifecycle/cohort-retention-analysis.yaml
+      description: Analyzes retention curves by acquisition cohort to identify retention patterns, churn acceleration points, and LTV trajectory — distinguishing natural category churn from structural product or experience failures that ca...
+      category: retention-lifecycle
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: customer-lifecycle-marketing
+      path: frameworks/system/retention-lifecycle/customer-lifecycle-marketing.yaml
+      description: Maps the full consumer lifecycle from acquisition through advocacy and designs the marketing program for each stage — onboarding, engagement, retention, reactivation, and loyalty — with differentiated messaging, channel...
+      category: retention-lifecycle
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: rfm-analysis
+      path: frameworks/system/retention-lifecycle/rfm-analysis.yaml
+      description: Segments consumer customers by Recency of last purchase, Frequency of purchases, and Monetary value to drive targeted retention, reactivation, and upsell campaigns for each RFM segment with differentiated investment leve...
+      category: retention-lifecycle
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: subscription-economics
+      path: frameworks/system/retention-lifecycle/subscription-economics.yaml
+      description: Models the unit economics of subscription businesses — MRR/ARR build, churn vs. expansion revenue dynamics, LTV:CAC ratio, payback period, and growth efficiency ratio — to determine whether the subscription model is fina...
+      category: retention-lifecycle
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
+    - id: trial-to-premium-upsell-path
+      path: frameworks/system/retention-lifecycle/trial-to-premium-upsell-path.yaml
+      description: Maps the conversion pathway from free trial or entry product to premium tiers by identifying the activation moment, closing the value gap, and designing optimal upgrade trigger points that convert without heavy-handed pr...
+      category: retention-lifecycle
+      scope: system
+      version: "1.0.0"
+      updated_at: "2026-04-23"
     - id: ai-native-data-advantage-framework
       path: frameworks/system/market-category-strategy/ai-native-data-advantage-framework.yaml
       description: Designs and evaluates structural data advantages in AI-native companies, focusing on proprietary data accumulation, model improvement flywheels, distribution reinforcement, and defensibility against commoditized models.

@@ -1,0 +1,152 @@
+metadata:
+  id: dtc-economics-model
+  version: 1.0.0
+  display_name: DTC Economics Model
+  category: finance
+  description: Models the unit economics of direct-to-consumer brands — CAC by channel, LTV by cohort, contribution margin per order, and the path to DTC profitability — to determine whether the DTC model is viable and identify the levers that drive it to positive economics.
+  best_for:
+    stages:
+    - launch
+    - growth
+    - scale
+    roles:
+    - cmo
+    - cfo
+    - head-of-growth
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: revenue_and_cost_data
+    description: Gross revenue, COGS, fulfillment cost, return rate, and payment processing fees for at least 3 months
+    source: user_input
+  - field: cac_by_channel
+    description: Customer acquisition cost by marketing channel
+    source: user_input
+  - field: product_pricing
+    description: Average order value, product price points, and any subscription or bundle pricing structure
+    source: user_input
+  optional:
+  - field: cohort_ltv_data
+    description: Repeat purchase rates and LTV by acquisition cohort, if available
+    source: user_input
+  - field: operational_cost_structure
+    description: Warehouse, 3PL, customer service, and platform technology costs by unit or fixed
+    source: user_input
+  - field: growth_targets
+    description: Revenue growth targets for the next 12–24 months
+    source: user_input
+analysis:
+  instructions: 'Build the DTC unit economics model across six dimensions. First, model contribution margin per order: gross revenue minus COGS minus outbound shipping minus returns processing cost minus payment processing fees equals contribution margin. This is the cash generated before marketing spend and fixed overhead. A healthy DTC brand typically targets 40–60% contribution margin before marketing. Second, model CAC by channel and identify which channels are operating within acceptable payback bounds. Third, model LTV using cohort data — what percentage of first-time buyers make a second purchase (typically 20–40% for DTC), third purchase, and so on. LTV compounds with each repurchase cohort. Fourth, calculate the critical unit economics ratios: LTV:CAC (target 3:1+), contribution margin after first-order marketing (the first order often breaks even or loses money — that is acceptable if LTV is sufficient), and payback period. Fifth, model the path to DTC profitability: at what revenue scale and repeat purchase rate does the DTC model generate positive EBITDA? Sixth, build scenario models showing the sensitivity to the three most impactful variables.'
+  dimensions:
+  - id: cac-by-channel
+    name: CAC by Channel Analysis
+    description: Calculates and benchmarks customer acquisition cost by marketing channel
+    prompts:
+    - What is the all-in CAC by channel including agency fees, creative production, and platform costs?
+    - Which channels are operating below the contribution-margin-adjusted CAC threshold (contribution margin × acceptable payback months)?
+    - How is CAC trending over time per channel — rising with audience saturation or stable with creative optimization?
+    - Which channels have the lowest CAC for the highest-LTV customer segments?
+  - id: contribution-margin-model
+    name: Contribution Margin Model
+    description: Calculates the per-order contribution margin after all variable costs
+    prompts:
+    - What is the gross margin on the product (revenue minus COGS), and how does it compare to DTC category benchmarks?
+    - What are the fulfillment costs (pick, pack, ship) as a percentage of AOV, and how do they scale with volume?
+    - What is the return rate and average cost to process a return, and how does it vary by product and channel?
+    - What is the net contribution margin per order after COGS, fulfillment, returns, and payment processing — is it above 40%?
+  - id: ltv-cohort-analysis
+    name: LTV Cohort Analysis
+    description: Builds the LTV model from observed cohort repeat purchase behavior
+    prompts:
+    - What is the 30-day second-purchase rate for first-time buyers — the most important leading indicator of LTV?
+    - How does LTV compound over purchase 1, 2, 3, and 4, and what is the cumulative 12-month LTV?
+    - How does LTV vary by acquisition channel — does paid social produce lower-LTV customers than organic or referral?
+    - At what purchase number does the customer become LTV-positive after accounting for first-order CAC?
+  - id: payback-period
+    name: CAC Payback Period
+    description: Calculates how many months of customer revenue are required to recover the acquisition cost
+    prompts:
+    - Given CAC and monthly contribution margin, what is the payback period in months?
+    - Does the payback period meet the business's working capital requirements given current inventory and cash cycle?
+    - How does payback period differ across acquisition channels, and which channels have payback within the target window?
+    - What improvement in repeat purchase rate or AOV would reduce payback period below the target threshold?
+  - id: cac-ltv-ratio
+    name: LTV:CAC Ratio Analysis
+    description: Evaluates the LTV:CAC ratio by channel and segment to determine business model health
+    prompts:
+    - What is the current LTV:CAC ratio at the blended level and by channel?
+    - Is the LTV:CAC ratio above 3:1 — the minimum threshold for a sustainable DTC acquisition model?
+    - Which channels have LTV:CAC ratios below 2:1 and should be reduced or optimized before additional spend is added?
+    - What is the marginal LTV:CAC ratio — is the ratio improving or deteriorating as the brand scales spend?
+  - id: profitability-path-model
+    name: Path to DTC Profitability Model
+    description: Models the revenue scale and operational improvements required to reach positive EBITDA
+    prompts:
+    - At what monthly revenue level does the DTC model reach contribution margin positive after marketing spend?
+    - At what scale does fixed overhead (warehouse, tech, team) become a small enough percentage of revenue to enable EBITDA positivity?
+    - What improvement in contribution margin (product cost reduction, AOV increase) most accelerates the path to profitability?
+    - What is the risk to profitability if CAC increases by 30% — is the model still viable, and what is the mitigation?
+output_templates:
+- id: primary
+  name: DTC Economics Model
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary\n\n{executive_summary}\n\n## Contribution Margin Model\n\n{contribution_margin_model}\n\n## CAC by Channel\n\n{cac_by_channel}\n\n## LTV Cohort Analysis\n\n{ltv_cohort_analysis}\n\n## LTV:CAC Ratio Analysis\n\n{ltv_cac_analysis}\n\n## Payback Period\n\n{payback_period}\n\n## Path to Profitability Model\n\n{profitability_path}\n\n## Scenario Analysis\n\n{scenario_analysis}\n\n'
+rubric:
+  description: Evaluates the accuracy and completeness of the DTC economics model.
+  dimensions:
+  - name: Contribution Margin Accuracy
+    weight: 0.30
+    scoring:
+      1: Contribution margin is calculated from gross revenue minus COGS only, ignoring fulfillment, returns, and payment processing costs.
+      3: Contribution margin includes most variable costs but return cost modeling is simplified or missing.
+      5: Contribution margin calculation includes all variable costs — COGS, outbound shipping, inbound returns, return processing, payment fees, and any variable platform costs.
+    improvement_guidance: Audit every line item that varies with order volume and include it in the contribution margin calculation. DTC brands frequently undercount fulfillment and return costs.
+  - name: LTV Model Validity
+    weight: 0.30
+    scoring:
+      1: LTV is estimated using a simple formula without cohort data validation.
+      3: LTV uses cohort data but the oldest cohort is less than 6 months, limiting confidence in the long-term LTV projection.
+      5: LTV is built from observed cohort repeat purchase behavior across at least 12 months of customer history, with the projected portion clearly identified separately from observed.
+    improvement_guidance: Never present projected LTV beyond twice the age of the oldest cohort without a confidence range. A 6-month-old cohort can support a 12-month LTV projection, not a 36-month one.
+  - name: Channel Economics Differentiation
+    weight: 0.25
+    scoring:
+      1: All channels use a blended CAC without differentiation, hiding channels that are destroying value.
+      3: CAC is differentiated by channel but LTV is still blended, preventing true channel-level ROI comparison.
+      5: Both CAC and LTV are differentiated by acquisition channel, enabling true channel-level LTV:CAC and payback period comparison.
+    improvement_guidance: Build cohort retention curves segmented by acquisition channel. The LTV difference between channels is often as large as the CAC difference.
+  - name: Profitability Path Credibility
+    weight: 0.15
+    scoring:
+      1: Profitability path is presented without modeling the required assumptions or the risk that those assumptions may not hold.
+      3: Profitability path is modeled but relies on optimistic assumptions about CAC trajectory and repeat purchase rates.
+      5: Profitability path models base case, upside, and downside scenarios, and identifies the key assumptions that most impact the path to profitability.
+    improvement_guidance: Present three profitability scenarios: base (current trajectory), improvement (achievable with specific initiatives), and stress (CAC rises 30%, LTV declines 10%). This stress test determines whether the business model is fundamentally sound.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Gross Margin Confusion
+  description: Confusing gross margin (revenue minus COGS) with contribution margin (revenue minus all variable costs), which overstates the business's per-unit economics and understates the CAC budget that can be justified.
+  mitigation: Always present contribution margin as the denominator in payback period calculations, not gross margin. The difference can be 15–20 percentage points for DTC brands with high fulfillment and return costs.
+- pattern: First-Order Profitability Obsession
+  description: Optimizing for first-order profitability to the detriment of growth, when the economics of DTC brands with strong LTV support acquiring customers at a first-order loss.
+  mitigation: Calculate the maximum acceptable first-order loss based on LTV and target payback period. A brand with a 12-month LTV of $200 and a 6-month payback target can spend up to $100 CAC even if the first-order contribution margin is only $40.
+- pattern: CAC Trend Denial
+  description: Building a long-term profitability model that assumes CAC will remain stable or decline as the brand scales, ignoring the well-documented pattern of rising CAC as audience saturation increases on paid channels.
+  mitigation: Apply a CAC inflation assumption of 15–25% per year in the profitability model to stress-test the path. If the model breaks under realistic CAC escalation, the brand must build organic and retention channels before scaling paid acquisition.
+chaining:
+  after:
+  - framework_id: consumer-acquisition-funnel
+    reason: Acquisition funnel analysis produces the channel-level conversion data that feeds CAC calculations.
+  before:
+  - framework_id: subscription-economics
+    reason: For DTC brands with a subscription component, the DTC first-order economics feed into the subscription LTV model.
+  - framework_id: okrs
+    reason: DTC economics define the unit economic targets that should be translated into marketing and growth OKRs.

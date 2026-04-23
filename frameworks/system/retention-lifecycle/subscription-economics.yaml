@@ -1,0 +1,152 @@
+metadata:
+  id: subscription-economics
+  version: 1.0.0
+  display_name: Subscription Economics Model
+  category: finance
+  description: Models the unit economics of subscription businesses — MRR/ARR build, churn vs. expansion revenue dynamics, LTV:CAC ratio, payback period, and growth efficiency ratio — to determine whether the subscription model is financially viable and identify the key levers.
+  best_for:
+    stages:
+    - growth
+    - scale
+    - optimization
+    roles:
+    - cmo
+    - cfo
+    - head-of-growth
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: revenue_data
+    description: Monthly recurring revenue (MRR), new MRR from new subscribers, churned MRR, and expansion MRR for at least 6 months
+    source: user_input
+  - field: cost_data
+    description: Customer acquisition cost (CAC) by channel, and customer success/support cost per customer per month
+    source: user_input
+  - field: pricing_structure
+    description: Subscription tier structure, pricing, and upgrade/downgrade history
+    source: user_input
+  optional:
+  - field: cohort_data
+    description: Retention data by acquisition cohort to enable LTV calculation from observed rather than projected data
+    source: user_input
+  - field: expansion_revenue_data
+    description: Upgrade and cross-sell revenue by cohort and trigger
+    source: user_input
+  - field: investor_benchmarks
+    description: Target LTV:CAC ratio, payback period, and growth efficiency ratio for the business's funding stage
+    source: user_input
+analysis:
+  instructions: 'Build the subscription economics model across six dimensions. First, model the MRR/ARR waterfall: decompose MRR growth into new MRR (new subscribers), expansion MRR (upgrades, upsells), churned MRR (cancellations), and contraction MRR (downgrades). A healthy subscription business has expansion MRR growing relative to churned MRR — ideally achieving Net Revenue Retention (NRR) above 100%, meaning existing customers grow their spend faster than churned customers reduce it. Second, calculate gross and net churn rates at both customer and revenue levels, and identify whether churn is improving or deteriorating. Third, calculate LTV using the formula LTV = ARPU ÷ Monthly Churn Rate for simple models, or using the discounted cash flow of expected future revenue for more sophisticated models. Fourth, calculate the LTV:CAC ratio. A ratio above 3:1 indicates a healthy business; below 1:1 means the business is destroying value at every acquisition. Fifth, calculate CAC payback period. Most subscription businesses should target under 12 months; DTC subscription businesses often target 6–9 months. Sixth, calculate the growth efficiency ratio (new ARR added per dollar of sales and marketing spend). Model scenarios showing the path to improved efficiency.'
+  dimensions:
+  - id: revenue-model-structure
+    name: MRR/ARR Waterfall Analysis
+    description: Decomposes MRR growth into its constituent components to identify the health of the revenue engine
+    prompts:
+    - What is the MRR waterfall: new MRR, expansion MRR, churned MRR, and net new MRR for each of the past six months?
+    - What is the Net Revenue Retention (NRR) rate — are existing customers growing their spend faster than churned customers reduce revenue?
+    - Is expansion MRR growing as a percentage of total MRR, indicating that the upsell motion is maturing?
+    - What percentage of new MRR comes from channels with a payback period under the target threshold?
+  - id: churn-expansion-analysis
+    name: Churn & Expansion Rate Analysis
+    description: Measures both gross and net churn and maps the relationship between expansion and churn
+    prompts:
+    - What is the monthly gross subscriber churn rate, and is it trending up or down over the past 12 months?
+    - What is the monthly gross revenue churn rate, and how does it compare to the subscriber churn rate — does this business have higher churn in low-value customers (good) or high-value customers (bad)?
+    - What is the expansion MRR rate (additional revenue from existing customers as a percentage of starting MRR)?
+    - At what expansion rate would the business achieve NRR above 100%, effectively making churn neutral from a revenue perspective?
+  - id: ltv-calculation
+    name: LTV Calculation & Validation
+    description: Calculates customer lifetime value and validates it against observed cohort behavior
+    prompts:
+    - What is the simple LTV calculation (ARPU ÷ monthly churn rate) and how does it compare to observed LTV from the oldest cohorts?
+    - Does the LTV calculation include expansion revenue from upgrades and cross-sells, or is it based only on initial subscription revenue?
+    - How does LTV differ by acquisition channel, plan tier, or customer segment — and does the LTV variation justify differentiated CAC targets by segment?
+    - What is the confidence interval on the LTV estimate given the business's current cohort maturity — how much of the LTV is observed vs. projected?
+  - id: cac-payback-model
+    name: CAC Payback Period Model
+    description: Calculates the payback period and evaluates it against working capital and fundraising requirements
+    prompts:
+    - What is the all-in CAC including all sales, marketing, and onboarding costs per acquired subscriber?
+    - What is the monthly gross margin contribution per subscriber (ARPU minus direct cost of service)?
+    - What is the resulting CAC payback period in months, and does it meet the target for this business's stage and capital situation?
+    - How does CAC payback period vary by acquisition channel, and which channels meet the payback target?
+  - id: growth-efficiency-ratio
+    name: Growth Efficiency Ratio
+    description: Measures how much new ARR the business adds per dollar of sales and marketing investment
+    prompts:
+    - What is the growth efficiency ratio (new ARR added in the period ÷ sales and marketing spend in the prior period)?
+    - How does the current efficiency ratio compare to SaaS or subscription industry benchmarks for this stage?
+    - What is the marginal efficiency ratio — at the margin, how much new ARR is each additional dollar of marketing spend generating?
+    - At what growth rate and efficiency ratio combination would this business be attractive to its next fundraising round?
+  - id: scenario-modeling
+    name: Scenario Modeling
+    description: Models the economics under different growth, churn, and expansion assumptions
+    prompts:
+    - What is the path to NRR above 100%, and what combination of churn reduction and expansion revenue growth achieves it?
+    - What is the revenue impact of reducing monthly churn from the current rate to 2%? To 1%?
+    - What is the impact on LTV:CAC ratio if CAC is held constant but the trial-to-paid conversion rate improves by 5 percentage points?
+    - At what MRR and efficiency ratio does this business reach rule-of-40 compliance (growth rate + profit margin ≥ 40)?
+output_templates:
+- id: primary
+  name: Subscription Economics Model
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary\n\n{executive_summary}\n\n## MRR Waterfall\n\n{mrr_waterfall}\n\n## Churn & Expansion Analysis\n\n{churn_expansion_analysis}\n\n## LTV Calculation\n\n{ltv_calculation}\n\n## CAC Payback Model\n\n{cac_payback_model}\n\n## Growth Efficiency Analysis\n\n{growth_efficiency}\n\n## Scenario Models\n\n{scenario_models}\n\n## Improvement Priorities\n\n{improvement_priorities}\n\n'
+rubric:
+  description: Evaluates the accuracy and decision-relevance of the subscription economics model.
+  dimensions:
+  - name: Data Accuracy
+    weight: 0.30
+    scoring:
+      1: Model uses estimated or average inputs rather than actual revenue and cohort data, producing misleading conclusions.
+      3: Model uses real data for most inputs but some calculations rely on assumptions rather than observed business performance.
+      5: All model inputs are derived from actual business data — actual MRR waterfall, actual CAC by channel, actual cohort retention — producing a model that reflects reality.
+    improvement_guidance: Before presenting the model, audit every input against the source data. Clearly label any inputs that are estimates with the basis for the estimate and the range of uncertainty.
+  - name: LTV:CAC Rigor
+    weight: 0.25
+    scoring:
+      1: LTV:CAC ratio is calculated with blended CAC and a simple LTV estimate that does not account for expansion revenue or cohort behavior.
+      3: LTV:CAC is calculated with channel-level CAC but LTV is based on simple churn formula rather than observed cohort LTV.
+      5: LTV:CAC is calculated with channel-level CAC and cohort-observed LTV including expansion revenue, providing a true picture of channel-level economics.
+    improvement_guidance: Build an LTV model from observed cohort data — the LTV implied by actual retention curves of the oldest cohorts is far more reliable than the theoretical LTV from the churn rate formula.
+  - name: Scenario Model Usefulness
+    weight: 0.25
+    scoring:
+      1: Scenarios are presented as outputs but the inputs are not adjustable, making the model a static document rather than a decision tool.
+      3: Scenarios are modeled but the range of inputs tested does not cover the decision space the leadership team needs to explore.
+      5: Scenario model covers the key decision variables (churn, expansion, CAC, conversion rate) with a range that brackets realistic improvement and downside cases.
+    improvement_guidance: Build the scenario model in a spreadsheet with cell-level inputs for churn rate, expansion rate, CAC, and conversion rate. Present it as an interactive tool rather than a static output.
+  - name: Improvement Prioritization
+    weight: 0.20
+    scoring:
+      1: Model identifies economic problems but does not prioritize improvement levers by impact.
+      3: Improvement levers are identified but not ranked by expected impact on the key metric (LTV:CAC, payback period, or NRR).
+      5: Improvement levers are ranked by their expected impact on the primary economic metric, with specific actions, owners, and timelines defined for the top three levers.
+    improvement_guidance: For each improvement lever, calculate the change in LTV:CAC ratio or payback period if the lever is improved by a realistic amount. Present the top three levers in impact order with an implementation plan.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Theoretical LTV Overconfidence
+  description: Using the simple LTV formula (ARPU ÷ churn rate) to justify high CAC spending before the business has enough cohort history to validate whether long-term retention actually matches the implied model.
+  mitigation: Apply a confidence haircut to theoretical LTV based on cohort maturity. If the oldest cohort is only 12 months old, use only the observed 12-month LTV and apply a conservative projection factor for months 13–36.
+- pattern: Gross Churn Tunnel Vision
+  description: Focusing exclusively on reducing subscriber churn while ignoring expansion revenue as a path to improving NRR, missing the fact that a business with 5% monthly gross churn and 6% expansion MRR has better economics than one with 2% gross churn and no expansion.
+  mitigation: Always model Net Revenue Retention alongside gross churn. Prioritize expansion revenue programs if the expansion rate is more than 2 percentage points below the gross churn rate.
+- pattern: Blended CAC Decision Making
+  description: Making channel investment decisions based on blended CAC, which hides the fact that some channels are far above the LTV:CAC threshold while others are highly efficient.
+  mitigation: Calculate CAC and LTV:CAC ratio separately for every acquisition channel. Cut spend on any channel where the LTV:CAC ratio is below 2:1 and reallocate to channels above 3:1.
+chaining:
+  after:
+  - framework_id: aarrr-pirate-metrics
+    reason: AARRR provides the activation and retention metrics that subscription economics depends on for MRR modeling.
+  before:
+  - framework_id: okrs
+    reason: Subscription economics defines the financial targets (LTV:CAC, NRR, payback period) that should feed into the company's OKR framework.
+  - framework_id: north-star-metric-driver-tree
+    reason: Subscription economics identifies which drivers (churn, expansion, conversion) have the greatest impact on the North Star metric.

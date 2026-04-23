@@ -1,0 +1,252 @@
+metadata:
+  id: archetype-social-proof-driven
+  version: "1.0.0"
+  display_name: "Social-Proof-Driven Buyer"
+  domain: consumer-archetype
+  archetype_type: generic
+  description: >
+    Load when targeting consumers whose primary purchase decision mechanism is
+    external validation — reviews, ratings, UGC, and peer testimony. This
+    archetype applies broadly across DTC, marketplace, and consumer app contexts.
+    Calibrates review strategy, social proof architecture, UGC programs, and
+    the sequencing of evidence throughout the conversion funnel.
+  tags:
+    - review-reader
+    - social-proof-seeker
+    - UGC-influenced
+    - risk-averse
+    - validation-needed
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    The Social-Proof-Driven Buyer experiences genuine psychological risk when
+    making purchase decisions and resolves that risk by outsourcing part of
+    the judgment to others. They do not distrust their own tastes — they distrust
+    their information. Reviews, ratings, and peer experience function as
+    distributed due diligence. This archetype is not passive or unintelligent;
+    they are applying a rational heuristic: if thousands of people made this
+    choice and reported back positively, the probability that I will regret it
+    is lower.
+  archetype_summary: |
+    The Social-Proof-Driven Buyer experiences genuine psychological risk when
+    making purchase decisions and resolves that risk by outsourcing part of
+    the judgment to others. They do not distrust their own tastes — they distrust
+    their information. Reviews, ratings, and peer experience function as
+    distributed due diligence. This archetype is not passive or unintelligent;
+    they are applying a rational heuristic: if thousands of people made this
+    choice and reported back positively, the probability that I will regret it
+    is lower.
+  behavioral_description: |
+    93% of consumers report online reviews impact their purchase decisions.
+    Displaying 5 or more reviews increases conversion by up to 270%. They are
+    2.4x more likely to trust UGC over brand-created content; 87% say user
+    reviews represent the most authentic brand interaction they can have.
+
+    They read reviews with intent: they are looking for someone who shares
+    their specific situation, use case, or concern. A review from a person
+    who describes the same hesitation they had — and reports it resolved —
+    is worth more than 50 generic five-star ratings. They are also sophisticated
+    about social proof quality: a product with only 5-star reviews is more
+    suspicious than one with a realistic distribution. Review recency matters;
+    a product with 200 reviews, all from 3 years ago, raises questions about
+    whether the product has changed.
+
+    Age differences apply: buyers 18–34 rely heavily on visual UGC (photos,
+    videos, before/after); buyers 55+ prioritize written reviews and aggregate
+    star ratings. But the underlying need — external validation before committing
+    — is shared across the age spectrum.
+
+purchase_behavior:
+  purchase_triggers:
+    - Review volume crosses a personal threshold (typically 50+ reviews minimum)
+    - A review describes a situation closely matching their own use case
+    - Visual UGC (photos or video) shows the product working in a realistic context
+    - Bestseller or "most popular" badge signals peer consensus at scale
+    - '"X people bought this in the last 30 days" creates recency-validated social proof'
+    - A trusted editorial source (Wirecutter, Consumer Reports) selects the product
+    - A direct peer recommendation from someone with identical context
+  trust_signals:
+    - Review volume with a realistic rating distribution (some critical reviews visible)
+    - Real user photos showing actual product in realistic conditions
+    - Verified purchase labels confirming reviews are from real buyers
+    - Recent reviews showing the product is still actively purchased and performing
+    - Brand that responds constructively to negative reviews
+    - '"Bestseller" or "most popular in [category]" indicators'
+    - UGC showing specific outcomes: before/after, side-by-side comparisons
+  red_flags:
+    - Fewer than 10 reviews for a product competing in an established category
+    - All 5-star reviews with no 1- or 2-star reviews present
+    - Reviews that all use similar phrasing or arrive in an implausibly short time window
+    - No user-uploaded photos — text-only reviews feel less credible
+    - Brand responds to negative reviews defensively or dismissively
+    - Review dates all clustered around a single promotion period with no organic follow-up
+  decision_speed: slow
+  decision_speed_notes: |
+    Decision speed is directly correlated with review volume. A product with
+    500+ highly credible reviews converts this archetype faster than a product
+    with 50, regardless of which is objectively better. For a first purchase
+    from an unfamiliar brand, they will spend significant time in the review
+    ecosystem before committing. For repurchases of a proven product, speed
+    increases significantly — past personal experience supersedes peer experience.
+
+media_consumption:
+  primary_channels:
+    - channel: Amazon reviews
+      role: Primary research for physical products; filter for most critical reviews first
+    - channel: Google reviews / Maps
+      role: Service and local business validation
+    - channel: YouTube (product review channels)
+      role: In-depth review content with demonstrated use for high-consideration categories
+    - channel: Reddit (product recommendation threads)
+      role: Unfiltered honest discussion; very high credibility due to community policing
+    - channel: TikTok (product review videos)
+      role: Visual UGC and trending product discovery, especially 18–34
+    - channel: Wirecutter / The Verge / Consumer Reports
+      role: Expert editorial validation that functions as trusted aggregated social proof
+    - channel: Word-of-mouth
+      role: Highest-trust source; a known-contact recommendation short-circuits all other research
+  discovery_path: |
+    Discovery frequently begins with a need state rather than a brand. They
+    search Google or Amazon for a category ("best [product] for [situation]")
+    and land on review aggregators, comparison articles, or marketplace results.
+    Social discovery via TikTok or YouTube review content is increasingly
+    common for the 18–34 segment. Word-of-mouth from a direct contact bypasses
+    the entire research process if trust in the recommender is high.
+  research_behavior: |
+    They do not read reviews sequentially — they search within reviews for their
+    specific concern. They filter for "most critical" to understand failure modes
+    before reading what went well. They look for reviews from people who describe
+    a similar situation ("I was skeptical because...", "I bought this for my
+    elderly mother who..."). Visual proof in reviews (user photos, before/after)
+    carries disproportionate weight. They are comfortable spending 20–30 minutes
+    in review research before a $40 purchase if the category is unfamiliar.
+
+price_sensitivity:
+  level: moderate
+  notes: |
+    Well-reviewed products command a meaningful price premium from this archetype
+    because strong reviews function as risk reduction, and risk reduction has
+    real value. They will pay 15–25% more for a product with 500 credible reviews
+    over a comparable product with 20 reviews. The calculation is: price premium
+    plus lower probability of a bad experience equals acceptable total cost.
+  premium_justifiers:
+    - Review count and rating substantially better than lower-priced alternatives
+    - Editorial selection from a trusted source (Wirecutter pick = premium justified)
+    - UGC showing consistent outcomes across diverse buyer types
+    - Brand's demonstrated responsiveness to problems in the review record
+    - Specific reviews addressing their exact hesitation and resolving it
+
+loyalty_patterns:
+  brand_loyalty: moderate
+  platform_loyalty: moderate
+  loyalty_drivers:
+    - Own positive experience becomes personal social proof that supersedes peer research
+    - Brand continues to accumulate high-quality reviews confirming ongoing quality
+    - Brand responds well to the community — reviews show problems solved
+    - Product consistency means no reason to re-evaluate
+  switching_triggers:
+    - Personal negative experience — their own experience now overrides peer reviews
+    - A competitor achieves substantially better review quality at a comparable price
+    - Emerging negative review trend that suggests quality change in recent production
+    - Category expert source (Wirecutter) switches its recommendation to a competitor
+
+calibration:
+  messaging:
+    resonate_with:
+      - Lead with social proof quantity and quality — not brand story
+      - '"Join [X number of] customers who..." framing that makes peer scale tangible'
+      - Specific customer outcomes in testimonials ("I was skeptical, but after 3 months...")
+      - Before/after evidence that shows the transformation, not just the claim
+      - '"As seen in" or "editors'' choice" markers from credible third-party sources'
+    avoid:
+      - Brand-only claims without external validation
+      - Generic testimonials without specific details or outcomes
+      - Showing only perfect reviews — breaks credibility with this archetype
+      - Hiding the number of reviews or burying them below the fold
+      - '"Trust us" messaging without any external proof structure'
+    tone: Evidence-led, transparent, and peer-validation forward. Let the proof do the persuading. Brand voice supports the social evidence without overpowering it.
+
+  conversion:
+    high_impact_tactics:
+      - Progressive proof disclosure — one compelling review upfront, then "read 847 more"
+      - Visual review galleries with real user photos visible before brand photos
+      - Review widget on PDP showing total count, distribution, and most recent reviews
+      - Q&A section that proactively addresses the most common hesitations
+      - Third-party editorial mentions displayed as credibility anchors near the CTA
+    friction_points:
+      - Reviews hidden below extensive product description copy
+      - Only star rating visible without review count or individual review access
+      - User photo upload disabled or not prominently surfaced in review section
+      - No review recency visible — old reviews without recent activity create doubt
+    urgency_triggers:
+      - '"X people bought this in the last 30 days" showing active peer purchase behavior'
+      - Limited edition or seasonal product with strong social proof from prior run
+      - Trending indicator driven by genuine social media engagement volume
+
+  content:
+    preferred_formats:
+      - User-generated photo and video galleries with realistic use context
+      - Before/after comparison content driven by real customer experiences
+      - '"Top review" callouts featuring the most helpful critical-positive reviews'
+      - Third-party editorial roundup inclusions featured prominently
+      - Side-by-side comparison tables that include review-data columns
+    credibility_signals:
+      - Review count prominently displayed near price — visible without scrolling
+      - Real photos from customers in diverse settings showing varied use cases
+      - Editorial badges from recognizable sources (Wirecutter, Good Housekeeping)
+      - Transparent rating distribution histogram showing realistic variance
+    credibility_killers:
+      - Review display that shows only 5-star excerpts selected by the brand
+      - Testimonials without specificity, name, or attribution
+      - Staged or obviously directed UGC that lacks the imperfection of real use
+      - Review section that has not been updated with recent purchases
+
+examples:
+  - scenario: Optimizing the product detail page of a DTC skincare product with 40 reviews
+    without_archetype: |
+      Focus the PDP on your ingredient story, clinical efficacy claims, and
+      a strong hero image. Add a testimonials module with curated quotes from
+      your best reviews. Consider adding a before/after section with professional
+      photos. A trust badge section with certifications will reinforce quality.
+    with_archetype: |
+      40 reviews is below the threshold where this archetype converts confidently.
+      Before investing in PDP copy optimization, prioritize review acquisition:
+      a post-purchase email sequence requesting an honest review (with a real
+      user photo if they have one) should be running within 24 hours of delivery.
+      On the current PDP, do not curate only the best quotes — show the full
+      review widget with rating distribution. This archetype is suspicious of
+      curated-only displays. Surface the 2 most helpful reviews that include
+      specific before/after language — not the most effusive ones. Move the
+      reviews module above the ingredient story: they want peer proof before
+      they want brand explanation. If you have any before/after user-submitted
+      photos (not professional), feature those ahead of any studio photography.
+      A real, imperfect before/after from a customer converts better than a
+      perfectly lit brand shoot for this buyer.
+
+  - scenario: Building a review acquisition program for a new consumer app
+    without_archetype: |
+      Add an in-app prompt asking users to rate the app. Send a push notification
+      after 7 days asking for a review. Feature positive reviews on your landing
+      page. Respond to all App Store reviews publicly.
+    with_archetype: |
+      Generic "rate our app" prompts convert poorly with this archetype because
+      they interrupt without triggering the specific emotional state that produces
+      a useful review. Instead, time the review request to a peak-value moment:
+      the moment just after a user achieves a meaningful outcome in the app (a
+      task completed, a goal reached, a streak milestone hit). The prompt should
+      name what they just did: "You just completed your 10th session — how would
+      you rate the app?" This produces a higher opt-in rate AND a more specific,
+      useful review that other Social-Proof-Driven Buyers will find credible.
+      On the App Store listing, respond to every review under 4 stars within
+      48 hours — this archetype reads brand responses to critical reviews as a
+      proxy for product quality and customer care. A thoughtful response to a
+      3-star review can be more persuasive than ten 5-star reviews. Feature
+      the response pattern ("developer responds to all reviews") in your
+      acquisition landing page copy.
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

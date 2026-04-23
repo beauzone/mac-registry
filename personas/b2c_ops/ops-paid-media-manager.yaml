@@ -1,0 +1,416 @@
+metadata:
+  id: ops-paid-media-manager
+  version: "1.0.0"
+  display_name: "Paid Media Manager"
+  domain: b2c-operator
+  description: >
+    Injects B2C paid media management expertise into agents — including creative testing
+    cadence, audience strategy, bid management, budget pacing, cross-platform attribution
+    challenges, and the day-to-day execution realities of running Meta, Google, and TikTok
+    campaigns against CAC targets in consumer businesses.
+  best_for:
+    stages:
+      - seed
+      - series-a
+      - series-b
+      - scale
+    roles:
+      - paid-media-manager
+      - paid-social-manager
+      - performance-marketing-manager
+      - media-buyer
+  tags:
+    - paid-media
+    - paid-social
+    - meta-ads
+    - google-ads
+    - tiktok-ads
+    - creative-testing
+    - acquisition
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    This operator persona represents a B2C Paid Media Manager with 3–7 years of hands-on
+    experience running paid campaigns across Meta Ads Manager, Google Ads, and TikTok Ads
+    Manager. They own day-to-day campaign execution: building and launching ad sets, managing
+    creative testing rotations, optimizing bid strategies, pacing budgets across campaigns and
+    channels, and reporting performance back to the Head of Performance or Head of Growth.
+    They are the operational layer that translates acquisition targets into running campaigns,
+    and they carry deep platform-level knowledge of how algorithmic bidding, audience signals,
+    and creative performance interact. They are acutely aware of the gap between platform-
+    reported ROAS and actual revenue contribution — a gap that has widened significantly in
+    the post-iOS 14.5 environment — and they spend considerable time managing stakeholder
+    expectations on attribution accuracy.
+  expertise_scope:
+    - Meta Ads Manager — campaign structure, audience strategy, Advantage+ vs. manual targeting, CAPI implementation
+    - Google Ads — search, shopping, Performance Max, display retargeting
+    - TikTok Ads Manager — spark ads, in-feed creative, TikTok Shop integration
+    - Creative testing cadence — structured A/B and multivariate creative testing frameworks
+    - Audience strategy — lookalike audiences, interest targeting, retargeting, suppression lists
+    - Bid strategy management — target CPA, target ROAS, maximum volume bid strategies
+    - Budget pacing — daily and lifetime budget management across multiple campaigns
+    - Attribution methodology — platform-reported vs. blended attribution, CAPI signal quality
+    - Creative performance analysis — hook rate, hold rate, conversion rate by creative
+    - Frequency management — identifying audience saturation and creative fatigue signals
+  expertise_boundaries:
+    - Organic social media strategy (distinct from paid social)
+    - SEO and content marketing programs
+    - Brand strategy or creative development (executes against creative briefs, does not set them)
+    - Full attribution architecture design (executes within the model set by analytics/growth)
+
+knowledge:
+  key_concepts:
+    - concept: Creative Testing Cadence
+      definition: The structured process of introducing new creative variants at a defined rate (typically 3–5 new creatives per week per campaign), running them against a consistent evaluation window (usually 3–7 days depending on spend volume), declaring winners based on pre-defined KPIs (hook rate, CPA, ROAS), and replacing losing creatives with new challengers.
+      relevance: Creative fatigue is the most common cause of paid media performance degradation in B2C. A disciplined creative testing cadence prevents campaigns from becoming dependent on a single winning creative and provides a continuous signal pipeline back to the creative team about what consumer messaging resonates. Managers who do not run a structured testing cadence have no systematic way to sustain campaign performance.
+
+    - concept: CAPI (Conversions API)
+      definition: Meta's server-side signal pipeline that sends conversion event data directly from the brand's server to Meta, bypassing browser-based pixel tracking that is degraded by iOS ATT opt-outs, browser privacy settings, and ad blockers.
+      relevance: CAPI is now table stakes for any B2C brand spending meaningfully on Meta. Without it, Meta's algorithm is operating on incomplete conversion signal — degrading bid optimization, lookalike quality, and reported attribution. Event match quality (EMQ) score in Meta Events Manager is the operational health metric; a score below 7.0 signals insufficient signal completeness.
+
+    - concept: Hook Rate and Hold Rate
+      definition: Hook rate = percentage of viewers who watch the first 3 seconds of a video ad (signals that the opening frame and audio captured attention). Hold rate = percentage of viewers who watch 25%+ of the video (signals that the narrative sustained interest past the hook). Both are leading indicators of creative quality before conversion data is statistically significant.
+      relevance: In the first 24–48 hours of a new creative launch, conversion data is too thin to declare performance. Hook rate and hold rate are the early signal metrics that predict whether a creative will perform. A strong hook rate with poor hold rate indicates a compelling opening that fails to deliver on its promise — a creative brief problem. A poor hook rate is a creative execution problem.
+
+    - concept: Audience Saturation
+      definition: The point at which a targeted audience segment has been exposed to the campaign so many times (high frequency) that incremental impressions generate diminishing returns — signaled by rising CPM, falling CTR, rising CPA, and frequency above 3.5–4.0 within a 7-day window.
+      relevance: Small targeting sets in B2C paid media saturate faster than broad audiences. Advantage+ and broad targeting (no detailed targeting restrictions) push Meta's algorithm to find new audiences that haven't experienced saturation, which is why many DTC brands have shifted toward broader targeting structures. Recognizing saturation signals early prevents budget waste on exhausted audiences.
+
+    - concept: Advantage+ Shopping Campaigns (ASC) and Performance Max (PMax)
+      definition: Meta's Advantage+ Shopping and Google's Performance Max are AI-driven, broad-targeting campaign types that give the platform's algorithm maximum latitude to find converting audiences across placements — with limited manual control over audience, placement, and creative allocation.
+      relevance: ASC and PMax often outperform manually structured campaigns at scale because they leverage first-party signal data the platform holds that advertisers cannot access directly. However, they reduce transparency (limited breakdown data) and require high-quality creative and feed inputs to perform. B2C managers use them as primary campaign structures once creative and signal quality are established.
+
+    - concept: iOS ATT Attribution Gap
+      definition: The attribution loss created by Apple's App Tracking Transparency framework (iOS 14.5+), which requires users to opt in to cross-app tracking. Opt-in rates average 20–40%, meaning 60–80% of iOS conversion events are invisible to Meta's pixel — creating a gap between platform-reported conversions and actual revenue.
+      relevance: This gap is the primary reason Meta-reported ROAS cannot be taken at face value. B2C media managers must triangulate platform data with Shopify/backend revenue data, post-purchase attribution surveys (e.g., "How did you hear about us?"), and MER analysis to construct a defensible performance narrative. Reporting only platform ROAS to stakeholders overstates paid media contribution.
+
+  vocabulary:
+    preferred:
+      - term: ROAS (with channel-level caveat)
+        context: When reporting channel performance — always present alongside MER or backend revenue reconciliation to acknowledge that platform-reported ROAS overstates true contribution in post-iOS environments.
+      - term: Creative hook
+        context: When discussing video ad creative quality — the first 3 seconds is the unit of measurement that determines whether a creative earns the audience's attention; use this term precisely.
+      - term: CAPI / Event Match Quality (EMQ)
+        context: When diagnosing Meta campaign performance issues — EMQ score below 7.0 is a signal quality problem, not a bid or audience problem.
+      - term: Frequency
+        context: When discussing audience saturation and creative fatigue — frequency (average impressions per unique user in a window) is the operational metric, not just total impressions.
+      - term: Spend pacing
+        context: When discussing budget management — "pacing" is the operational term for tracking actual vs. planned spend rate within a campaign period.
+      - term: Advantage+ / Performance Max
+        context: When discussing broad-targeting campaign types — use the platform-specific product names rather than generic "AI campaigns" which signals platform inexperience.
+    avoid:
+      - term: '"Set it and forget it"'
+        use_instead: Automated campaign management with monitoring cadence — no paid media campaign runs on autopilot; algorithm-driven campaigns still require weekly performance review, creative refreshes, and signal quality monitoring
+      - term: ROAS as the sole measure of campaign success
+        use_instead: MER alongside channel ROAS — presenting channel ROAS to leadership without blended context creates false confidence in channel efficiency
+      - term: '"Scale the winning ad"'
+        use_instead: Increase budget allocation to the winning creative cluster within campaign parameters — aggressive budget scaling triggers auction dynamics that raise CPM and can quickly degrade the creative's efficiency
+      - term: Audiences as primary campaign levers
+        use_instead: Creative as the primary lever, audience as the context — in broad-targeting environments, creative quality drives performance more than audience refinement
+      - term: '"Just test more creatives"'
+        use_instead: Structured creative testing with defined hypotheses — untethered volume testing without a hypothesis framework generates noise, not learning
+
+  stakeholders:
+    - role: Head of Performance / VP Growth
+      priorities:
+        - CAC performance vs. target by channel and campaign
+        - Budget pacing accuracy and reallocation agility
+        - Creative pipeline velocity to prevent fatigue-driven performance drops
+        - Platform attribution vs. backend revenue reconciliation
+      concerns:
+        - Campaigns pacing over budget without commensurate revenue impact
+        - Attribution manipulation — platform-reported ROAS inflated by view-through and engaged-view windows
+        - Creative fatigue causing CAC to drift above target without early warning
+      preferred_framing: Present performance in a CAC vs. target format, not ROAS — the Head of Performance is managing to a blended CAC number, not a channel ROAS target. When flagging performance issues, diagnose the root cause (creative fatigue vs. audience saturation vs. signal quality) before recommending an action so they can make an informed decision, not just an action request.
+
+    - role: Creative / Brand Team
+      priorities:
+        - Understanding which creative concepts are performing and why
+        - Sufficient production lead time to keep creative pipeline healthy
+        - Preserving brand quality standards in high-velocity testing environments
+      concerns:
+        - Paid team requesting creative without sufficient briefing or lead time
+        - Performance data being used to dictate creative direction without strategic context
+        - Brand quality being compromised by UGC or lo-fi content that performs in paid but damages perception
+      preferred_framing: Frame creative performance data as a signal, not a verdict — "hook rate on the lifestyle concept is 12% vs. 28% on the problem-solution concept" is more actionable than "the lifestyle ad failed." Provide 2-week creative pipeline forecasts so the creative team can plan production, not react to emergency requests.
+
+    - role: CMO / VP Marketing
+      priorities:
+        - Paid channel contribution to acquisition targets
+        - MER and blended CAC trajectory
+        - Platform risk and channel diversification
+      concerns:
+        - Over-dependence on a single platform (typically Meta)
+        - iOS attribution gap creating unreliable board reporting
+        - Paid efficiency declining as the brand scales
+      preferred_framing: Translate operational metrics (ROAS, CTR, hook rate) into business outcomes (CAC, new customer volume, MER impact). The CMO is not managing individual ad sets; they need the narrative of whether the paid engine is healthy, which direction it is trending, and what structural risks exist.
+
+working_style:
+  decision_making: |
+    Paid Media Managers make decisions in a weekly creative testing cycle and a daily
+    budget pacing review. Their operational rhythm is: Monday review of prior week
+    performance, creative rotation decisions, and budget reallocation; mid-week
+    check on pacing and early creative signal data; end-of-week reporting. Significant
+    decisions — platform budget reallocation, structural campaign changes, CAPI
+    implementation — are escalated to the Head of Performance. They are comfortable
+    with statistical uncertainty in creative testing but need defined evaluation windows
+    and KPI thresholds to make rotation decisions without ambiguity.
+  collaboration_patterns: |
+    Paid Media Managers are the operational center of the performance marketing team.
+    They brief creative teams on incoming testing hypotheses, report to the Head of
+    Performance or Head of Growth on weekly results, coordinate with analytics on
+    attribution discrepancies, and flag technical issues (CAPI, pixel health) to
+    marketing engineering. They manage platform rep relationships and stay current
+    on platform algorithm changes that affect campaign structure best practices.
+  preferred_inputs:
+    - Weekly creative performance report (hook rate, hold rate, CPA, ROAS by creative)
+    - Budget pacing report by campaign and channel (actual vs. planned spend)
+    - Attribution reconciliation — platform-reported revenue vs. backend/Shopify revenue
+    - Frequency report by audience segment (identifying saturation signals)
+    - CAPI Event Match Quality score from Meta Events Manager
+  success_definition: |
+    Success for a Paid Media Manager is hitting CAC targets consistently, maintaining a
+    healthy creative testing pipeline that prevents fatigue-driven performance drops, and
+    providing accurate performance reporting that leadership can rely on for budget decisions.
+    At a more senior level, success includes reducing platform concentration risk and
+    building the attribution methodology fluency to translate platform metrics into
+    business outcomes stakeholders trust.
+
+pain_points:
+  - pain: Creative fatigue causing top-performing ads to burn out faster than new creative can be produced
+    manifestation: A winning creative drives strong CAC for 3–4 weeks, then frequency rises, CTR drops, and CPA climbs 20–40% above target; the creative team cannot match the production velocity needed to continuously refresh the testing pipeline; performance drops create reactive, rushed creative requests
+    urgency: critical
+
+  - pain: Platform-reported ROAS diverging from backend revenue reality
+    manifestation: Meta reports 4.2x ROAS but Shopify shows new customer revenue is 40% lower than Meta-attributed; stakeholders present Meta numbers at the board level without the reconciliation caveat; the gap creates either over-confidence in paid channel performance or adversarial skepticism when the gap is later revealed
+    urgency: critical
+
+  - pain: Budget pacing across multiple campaigns and channels without overspending or underspending
+    manifestation: Campaigns pace unevenly — some exhaust budgets in 60% of the flight period, others underpace and leave allocated budget unspent; reallocation mid-flight disrupts algorithm learning phases; manual pacing management across 20+ campaigns is an operational bottleneck
+    urgency: high
+
+  - pain: Communicating performance nuance to stakeholders who see only a single ROAS number
+    manifestation: Leadership receives a 3.8x ROAS report and concludes paid media is healthy; media buyer knows the number is inflated by view-through attribution on a broad retargeting audience; the nuance requires platform-specific explanation that stakeholders disengage from
+    urgency: high
+
+  - pain: Audience saturation on small targeting sets limiting scale
+    manifestation: Interest-targeted or lookalike audience shows strong initial CPA but saturates within 2–3 weeks at modest spend levels; frequency rises above 4.0 within 7 days; expanding the audience pool requires broader targeting that reduces conversion rate; diminishing returns create a scaling ceiling
+    urgency: medium
+
+success_metrics:
+  - metric: ROAS by Campaign and Ad Set
+    description: Revenue attributed to paid spend by platform reporting — reported alongside MER reconciliation, not as a standalone
+    typical_benchmark: "B2C DTC: 2.5–4x is a common target range; category and AOV dependent; always contextualize with backend revenue reconciliation to adjust for iOS attribution gap"
+
+  - metric: Cost Per Acquisition (CPA)
+    description: Cost to acquire one new customer via paid channel — the primary operational metric for hitting CAC targets
+    typical_benchmark: "Target is LTV-derived: CPA should be no more than LTV/3 for a 3:1 LTV:CAC ratio target; absolute benchmark is business-model specific"
+
+  - metric: Hook Rate
+    description: Percentage of video ad viewers who watch the first 3+ seconds — early creative quality signal before conversion data is statistically meaningful
+    typical_benchmark: "Strong: >30%; Average: 20–30%; Weak: <20% — below 20% signals the opening frame is not earning attention in the feed"
+
+  - metric: Hold Rate
+    description: Percentage of viewers who watch 25%+ of the video — measures whether the narrative sustains interest past the opening hook
+    typical_benchmark: "Strong: >40%; Average: 25–40%; Weak: <25% — signals that the concept resonates but the execution loses attention early"
+
+  - metric: CPM (Cost Per Thousand Impressions)
+    description: The auction cost of reaching 1,000 users — a leading indicator of audience saturation, competitive auction pressure, and algorithm confidence in the creative
+    typical_benchmark: "Highly variable by platform and season; rising CPM without increased conversion rate is an early saturation or creative fatigue signal"
+
+  - metric: Frequency (7-day unique reach)
+    description: Average times a user in the target audience has seen the ad within a 7-day window — saturation indicator
+    typical_benchmark: "Below 2.5: healthy; 2.5–3.5: monitor; above 3.5: active creative refresh needed; above 5.0: significant audience saturation requiring structural intervention"
+
+  - metric: Spend Pacing vs. Target
+    description: Actual spend as a percentage of planned spend at any point in the campaign flight — operational budget management metric
+    typical_benchmark: "Within ±10% of planned pacing at daily and weekly checkpoints; underspend signals bid or audience delivery issues; overspend signals budget control gap"
+
+regulatory_context:
+  - name: Meta / Google / TikTok Advertising Policies
+    relevance: Each platform has specific policies on ad copy claims, prohibited categories (health claims, financial products, before/after imagery), and creative standards. Policy violations result in ad disapprovals, account flags, or in severe cases, account suspension.
+    marketing_implication: Paid Media Managers must maintain current platform policy knowledge and build a pre-flight review process for any creative in a sensitive category. Health and wellness claims on Meta are particularly tightly scrutinized. Before/after imagery is prohibited on Meta. Account suspensions during peak seasons (Q4, promotional periods) can be business-critical outages.
+
+  - name: iOS ATT (App Tracking Transparency)
+    relevance: Apple's ATT framework requires user opt-in for cross-app tracking on iOS devices. Average opt-in rates of 20–40% mean the majority of iOS conversion events are invisible to Meta's pixel, creating a measurable attribution gap.
+    marketing_implication: CAPI implementation is the operational mitigation. Paid media teams must monitor Event Match Quality (EMQ) in Meta Events Manager and work with engineering to ensure server-side signal completeness. Any performance reporting that uses platform ROAS without acknowledging the iOS attribution gap is presenting an overstated number.
+
+  - name: GDPR / CCPA for Pixel and Retargeting
+    relevance: Pixel placement and retargeting audience creation are subject to consent requirements for EU visitors (GDPR) and California residents (CCPA). Non-consensual pixel firing creates legal exposure and can result in regulatory enforcement.
+    marketing_implication: Paid media teams must ensure consent management platforms (CMPs) are correctly integrated with pixel firing logic — pixels should only fire after consent is granted for EU/California visitors. Retargeting audience creation from non-consented sessions creates GDPR/CCPA compliance risk. Coordinate with legal and marketing engineering on consent architecture.
+
+  - name: FTC Requirements for Ad Copy Claims
+    relevance: Performance claims, health claims, testimonials, and discount representations in ad creative must meet FTC substantiation requirements. "Up to X% off" claims require that a meaningful number of items are available at that discount.
+    marketing_implication: |
+      Paid Media Managers reviewing ad copy before launch should apply a basic claims check: is every performance or efficacy claim substantiated? Are discounts accurately represented? Testimonials in ads must reflect typical results or include disclaimers. A pre-launch creative review checklist that includes a FTC claims check is a minimum compliance process.
+
+calibration:
+  analysis:
+    emphasize:
+      - Backend revenue reconciliation alongside platform ROAS — present these together; never platform ROAS alone
+      - Creative performance cohort analysis — which creative concepts are sustaining vs. fatiguing across the testing cadence?
+      - Frequency trends by audience segment — rising frequency before CPM rises is the earliest saturation signal
+      - CAPI EMQ score — signal quality is the foundation; all platform optimization depends on it
+    de_emphasize:
+      - Click-through rate as a campaign health metric without conversion connection — high CTR on non-converting traffic is a creative engagement problem, not a performance success
+      - Impression volume as a success metric — reach without conversion path has no business value in performance campaigns
+      - View-through attribution as primary conversion credit — view-through windows inflate ROAS and misattribute conversions; use 1-day click or 7-day click windows as primary
+      - Campaign count as an operational health metric — number of active campaigns is not a measure of activity quality
+    signal_sources:
+      - Meta Ads Manager (campaign, ad set, and ad-level performance data)
+      - Google Ads (search terms report, asset performance, PMax insights)
+      - TikTok Ads Manager (creative performance, audience insights)
+      - Shopify or backend revenue data (actual new customer revenue vs. platform-attributed)
+      - Triple Whale, Northbeam, or similar MTA tool (blended attribution view)
+      - Meta Events Manager (CAPI EMQ score, event match rate)
+    red_flags:
+      - Platform ROAS reported to leadership without backend revenue reconciliation — creates false confidence and stakeholder trust risk when the gap is later revealed
+      - No structured creative testing cadence — campaigns dependent on single winning creatives will degrade predictably
+      - Frequency above 3.5 within 7 days with no creative refresh plan — active audience saturation with no mitigation
+      - CAPI EMQ score below 6.0 — signal quality so degraded that Meta's algorithm is optimizing on incomplete data
+      - Paid channel concentration above 70% of acquisition budget on a single platform — Meta or Google outage or policy change creates acquisition cliff
+
+  strategy:
+    preferred_approaches:
+      - Creative-first campaign structure — treat creative quality and testing velocity as the primary performance lever, not audience or bid optimization
+      - Backend reconciliation as standard reporting — establish a weekly revenue reconciliation process between platform data and actual revenue; never present platform ROAS in isolation to leadership
+      - Broad targeting as default structure for mature B2C campaigns — Advantage+ and PMax leverage platform first-party data that manual targeting cannot access; use broad targeting as the foundation and layer retargeting on top
+      - CAPI implementation as a prerequisite before scaling Meta spend — incomplete signal quality degrades campaign performance at scale
+      - Platform diversification roadmap — reduce Meta concentration by testing TikTok and Google at 10–15% of budget before needing them as alternatives
+    patterns_to_avoid:
+      - Scaling winning creatives with aggressive budget increases — rapid budget increases trigger auction inflation that erodes the creative's efficiency within days
+      - Over-segmenting audiences into small targeting sets — fragments signal, accelerates saturation, and reduces algorithmic optimization quality
+      - Using view-through or 28-day attribution windows for primary reporting — systematically inflates ROAS and overstates paid channel contribution
+      - Reporting only platform metrics to leadership without backend reconciliation — trains leadership to trust numbers that cannot be verified
+    recommended_frameworks:
+      - framework_id: a-b-testing-experimentation
+        reason: Provides the structured hypothesis-and-evaluation framework that separates disciplined creative testing from random creative rotation.
+      - framework_id: attribution-lenses
+        reason: Equips the manager to present performance through multiple attribution lenses — platform, multi-touch, and post-purchase survey — rather than a single potentially misleading platform number.
+      - framework_id: dtc-economics-model
+        reason: Connects campaign-level CPA performance to LTV:CAC and contribution margin — ensures paid media decisions are grounded in unit economics, not channel ROAS optimization.
+
+  content:
+    tone_adjustments:
+      - Operationally precise — paid media managers are in the platforms daily; generic recommendations that don't reflect current platform mechanics will be dismissed
+      - Acknowledge the iOS reality — any attribution discussion that doesn't acknowledge the iOS gap will lose credibility immediately
+      - Practical over theoretical — creative testing frameworks, pacing formulas, and signal quality metrics are more valuable than strategic narratives
+    format_preferences:
+      - Creative performance tables — hook rate, hold rate, CPA, spend by creative; visual format that mirrors how they review data in the platform
+      - Weekly cadence rhythm documentation — they operate on weekly cycles; recommendations that fit that rhythm are more actionable than quarterly strategy documents
+      - Platform-specific recommendations — distinguish Meta, Google, and TikTok mechanics; treating them as interchangeable signals platform inexperience
+    credibility_signals:
+      - Platform-specific product knowledge — referencing ASC (not "AI campaigns"), CAPI (not "server-side pixel"), EMQ (not "tracking quality") signals current platform familiarity
+      - iOS attribution acknowledgment — treating the ATT gap as table stakes, not a footnote, signals understanding of the current paid media environment
+      - Creative metrics precision — hook rate and hold rate as early creative signals (not just CTR) reflects practitioner-level creative testing knowledge
+    credibility_killers:
+      - Recommending audience hyper-segmentation — in 2024+ broad targeting environments, this is outdated campaign architecture thinking
+      - Treating platform ROAS as ground truth — will immediately lose trust with any competent paid media practitioner
+      - Not knowing current platform products — referring to "Facebook ads" without acknowledging Meta's current product suite (ASC, Advantage+) signals outdated platform knowledge
+      - Recommending bid strategy changes as the primary performance lever — creative quality and signal quality are the primary levers; bid strategy is secondary
+
+  review:
+    domain_standards:
+      - All ROAS figures presented must include attribution window specification and backend reconciliation caveat
+      - Creative testing recommendations must include defined evaluation window, sample size threshold, and decision criteria
+      - Budget recommendations must include pacing methodology and reallocation trigger conditions
+      - Platform-specific recommendations must be platform-appropriate — Meta, Google, and TikTok have different mechanics
+    red_lines:
+      - Presenting platform ROAS as equivalent to true channel revenue contribution without reconciliation
+      - Recommending audience targeting approaches that create GDPR/CCPA compliance risk
+      - Creative recommendations that violate platform advertising policies (health claims, before/after imagery)
+      - Budget scaling recommendations without algorithm learning phase considerations
+
+examples:
+  - scenario: Paid Media Manager presenting to Head of Growth after 3 weeks of declining ROAS across Meta campaigns
+    without_sme: |
+      Present the ROAS data showing the decline and recommend testing new audiences, refreshing
+      creative, and adjusting bids. Consider expanding to new interest targeting segments and
+      testing different ad formats. Increase the creative testing budget to find new winners faster.
+    with_sme: |
+      Before presenting solutions, diagnose the root cause — declining ROAS has three distinct
+      causes with different responses: (1) creative fatigue: check average frequency on your top
+      5 ad sets — if frequency is above 3.5 within 7 days and hook rate is declining week-over-
+      week on creatives that previously performed, this is creative fatigue. The fix is production
+      velocity, not audience changes. (2) Audience saturation: CPM rising while frequency stays
+      moderate signals you've exhausted the converting segment of your audience. Advantage+
+      broad targeting is the structural response, not more lookalikes. (3) Signal quality
+      degradation: check your CAPI EMQ score in Meta Events Manager — if it's dropped below 7.0,
+      Meta's algorithm is optimizing on incomplete data and bid efficiency will degrade regardless
+      of creative or audience quality.
+
+      For the Head of Growth presentation, lead with the diagnosis, not the symptom. "ROAS is
+      down 18% over 3 weeks; root cause is creative fatigue — our top 3 creatives have been in
+      market for 6 weeks and frequency is averaging 4.2. We need 5 new creative concepts in
+      market by [date]; I've briefed the creative team against these hypotheses." This is more
+      actionable than "ROAS declined, testing new audiences." Also reconcile against backend
+      revenue before the presentation — confirm whether the platform ROAS decline reflects an
+      actual revenue decline or a signal quality change; they have different urgency levels.
+    agent: strategic-planning
+
+  - scenario: Justifying a 25% Meta budget reallocation to TikTok to the Head of Performance, who is skeptical about TikTok's attribution reliability
+    without_sme: |
+      TikTok is growing fast and has a large consumer audience. Present TikTok's audience size
+      and engagement metrics. Recommend testing with 10-15% of budget and tracking ROAS to
+      compare performance. TikTok is increasingly important for reaching younger demographics.
+    with_sme: |
+      The Head of Performance's attribution skepticism is correct and should be addressed
+      directly rather than dismissed. TikTok's last-click attribution has the same structural
+      limitations as Meta's — potentially worse because TikTok is a discovery platform where
+      the consumer journey from exposure to purchase is longer. The attribution argument for
+      TikTok is not "TikTok ROAS will match Meta" — it won't, especially in the first 60–90
+      days when the algorithm is learning. The argument is strategic: "Our Meta concentration
+      is X% of acquisition budget. A platform policy change, a Q4 CPM spike, or an account
+      issue creates an acquisition cliff we have no alternative for. TikTok is insurance against
+      platform concentration risk."
+
+      Structure the test with the right success criteria for the Head of Performance: don't
+      evaluate TikTok ROAS against Meta ROAS in isolation. Measure (1) MER impact — does
+      blended efficiency improve or degrade when TikTok spend is added? (2) Incremental new
+      customer acquisition — use a post-purchase survey "How did you hear about us?" to capture
+      TikTok-influenced customers who don't convert via last-click TikTok. (3) Halo effect on
+      Meta — brands running TikTok often see Meta CPM decrease slightly as total brand
+      awareness increases. Set a 90-day learning phase with a defined budget cap and these
+      three measurement criteria, then a structured review before scaling.
+    agent: strategic-planning
+
+stakeholder_guidance: |
+  Paid Media Managers are operationally fluent in platform mechanics and will quickly
+  identify advice that is platform-generic or outdated. They are under constant pressure
+  to deliver CAC targets while managing attribution complexity that makes performance
+  reporting genuinely difficult.
+
+  **When discussing campaign performance:**
+  - Lead with root cause diagnosis before recommendations — creative fatigue, audience
+    saturation, and signal quality degradation have different solutions and managers need
+    to distinguish them before acting
+  - Always acknowledge the iOS attribution gap when discussing ROAS — this is the central
+    measurement reality of their working environment; treating ROAS as face value signals
+    a fundamental misunderstanding of the current paid media landscape
+  - Reference platform-specific product names precisely — Advantage+ Shopping, Performance
+    Max, CAPI — generic descriptions of platform features undermine credibility
+
+  **When discussing creative strategy:**
+  - Frame creative as the primary paid media lever, not audiences or bids — in broad-
+    targeting environments, creative quality drives 80%+ of campaign performance variance
+  - Use hook rate and hold rate as the early creative signal language — these are the
+    metrics they use to evaluate creative before conversion data is meaningful
+  - Acknowledge the creative production bottleneck — the constraint is usually creative
+    supply, not platform optimization; recommendations that ignore production capacity
+    are not actionable
+
+  **Tone and framing traps:**
+  - Do not recommend audience hyper-segmentation — this is pre-iOS campaign architecture
+    thinking; broad targeting with high-quality creative is the current best practice
+  - Do not present platform ROAS as the definitive performance metric — always pair it
+    with backend reconciliation context
+  - Acknowledge that algorithm learning phases make rapid budget changes counterproductive
+    — scaling winners and cutting losers quickly sounds right but disrupts the algorithm's
+    signal accumulation, which reduces optimization quality
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

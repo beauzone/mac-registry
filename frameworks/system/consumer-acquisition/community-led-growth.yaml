@@ -1,0 +1,149 @@
+metadata:
+  id: community-led-growth
+  version: 1.0.0
+  display_name: Community-Led Growth (CLG)
+  category: growth
+  description: Designs and measures community-driven consumer acquisition and retention by mapping platform strategy, community loops, member lifecycle, and the community-to-product feedback flywheel that turns engaged members into advocates and product co-creators.
+  best_for:
+    stages:
+    - growth
+    - scale
+    roles:
+    - cmo
+    - head-of-growth
+    - social-community-manager
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: brand_identity
+    description: Brand mission, values, and the consumer identity or lifestyle the brand represents
+    source: user_input
+  - field: target_community_member
+    description: Who the ideal community member is — their interests, shared identity, and why they would gather around this brand
+    source: user_input
+  - field: community_objective
+    description: Primary role of community in the business model (acquisition, retention, product feedback, advocacy, or UGC content)
+    source: user_input
+  optional:
+  - field: existing_community_data
+    description: Current community platform, member count, engagement rate, and content volume
+    source: user_input
+  - field: competitive_community_landscape
+    description: Whether competitors have communities and how they are positioned
+    source: user_input
+  - field: community_budget
+    description: Budget available for community platform, management, and content investment
+    source: user_input
+analysis:
+  instructions: 'Design the complete community-led growth system across six dimensions. First, determine the community platform strategy: where does this consumer segment naturally gather (owned community app, Slack/Discord, Facebook Group, Reddit, SubReddit, TikTok comment ecosystem) and what level of brand control is required? Second, design the member acquisition loop: how do new members find and join the community, and what is the conversion pathway from casual discovery to active membership? Third, design the engagement loop: what content, rituals, challenges, and experiences keep members returning, contributing, and recruiting others? Fourth, design the content flywheel: how does community-generated content (UGC) flow back into brand marketing assets, social proof, and product development input? Fifth, map the member lifecycle: lurker → participant → contributor → advocate → moderator, and design the upgrade mechanics at each stage transition. Sixth, define community health metrics that distinguish vibrant communities from managed ghost towns. Conclude with a community playbook and the first 30-60-90 day activation plan.'
+  dimensions:
+  - id: community-platform-strategy
+    name: Community Platform Strategy
+    description: Selects the optimal community platform and defines the ownership and control model
+    prompts:
+    - Where does this consumer segment currently self-organize online, and what does that reveal about their preferred community format?
+    - What level of brand control is required given brand safety, content moderation, and data ownership needs?
+    - What is the long-term risk of building the community on a rented platform (Facebook Group, Reddit) vs. an owned platform (Circle, Discord, native app)?
+    - What platform features (content formats, discovery mechanisms, moderation tools) are non-negotiable for this community's intended use case?
+  - id: member-acquisition
+    name: Member Acquisition Loop
+    description: Maps how new members discover, join, and activate within the community
+    prompts:
+    - What is the primary discovery pathway for new community members (social media, product onboarding, search, word-of-mouth)?
+    - What is the joining value proposition — what does a new member immediately get for joining that they cannot get elsewhere?
+    - How long does it take from joining to first meaningful participation, and what is the activation drop-off rate in that window?
+    - What is the community's network effect — does the community become more valuable as it grows, and is that growth self-reinforcing?
+  - id: engagement-loops
+    name: Engagement Loop Design
+    description: Designs the rituals, content formats, and social mechanics that drive sustained member engagement
+    prompts:
+    - What weekly or monthly rituals (challenges, Q&As, community spotlights, themed discussions) create recurring reasons to return?
+    - Which content formats drive the most member-to-member engagement rather than member-to-brand interactions?
+    - How are member contributions recognized and rewarded to build status and identity within the community?
+    - What is the right posting cadence from the brand to add value without drowning out member voice?
+  - id: content-flywheel
+    name: UGC & Content Flywheel
+    description: Maps how community-generated content is captured, curated, and recycled into brand marketing and product development
+    prompts:
+    - What UGC content formats (reviews, photos, tutorials, use cases, testimonials) are most valuable for marketing reuse?
+    - What is the consent and permission process for converting member UGC into paid marketing assets?
+    - How does community feedback systematically reach the product team, and what is the evidence that community input has shaped product decisions?
+    - What community insights (trending topics, shared frustrations, emerging use cases) are surfaced regularly for the marketing and product teams?
+  - id: member-lifecycle
+    name: Member Lifecycle & Upgrade Mechanics
+    description: Maps the member journey from passive lurker to active advocate and designs stage-appropriate engagement
+    prompts:
+    - What percentage of members are lurkers vs. passive consumers vs. active contributors vs. advocates?
+    - What event or experience reliably converts a lurker into a first-time contributor?
+    - What status, recognition, or exclusive access mechanic motivates the top 5% of contributors to become community advocates or moderators?
+    - How are at-risk members (declining engagement) identified and re-engaged before they go fully dormant?
+  - id: health-metrics
+    name: Community Health Metrics
+    description: Defines the metrics that measure genuine community vitality vs. vanity growth
+    prompts:
+    - What is the member-generated content-to-brand content ratio, and is it trending toward more member contribution over time?
+    - What is the 30-day active member rate, and how does it compare to total membership?
+    - What is the community's net promoter score — would active members recommend the community to others?
+    - What is the correlation between community engagement and downstream commercial outcomes (purchase rate, retention rate, LTV)?
+output_templates:
+- id: primary
+  name: Community-Led Growth Strategy
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary\n\n{executive_summary}\n\n## Community Platform Strategy\n\n{platform_strategy}\n\n## Member Acquisition Loop\n\n{member_acquisition_loop}\n\n## Engagement Loop Design\n\n{engagement_loop_design}\n\n## UGC & Content Flywheel\n\n{content_flywheel}\n\n## Member Lifecycle Map\n\n{member_lifecycle_map}\n\n## Community Health Dashboard\n\n{health_metrics}\n\n## 30-60-90 Day Launch Plan\n\n{launch_plan}\n\n'
+rubric:
+  description: Evaluates the strategic depth and operational readiness of the community-led growth plan.
+  dimensions:
+  - name: Platform Rationale
+    weight: 0.20
+    scoring:
+      1: Platform selected without analysis of where the target segment already gathers or what features are required.
+      3: Platform is rationally selected but the owned vs. rented platform risk is not addressed.
+      5: Platform selection is grounded in target segment behavior data, feature requirements are defined, and the owned vs. rented risk is explicitly weighed with a migration contingency.
+    improvement_guidance: Survey 50+ target consumers about their current online community participation before committing to a platform.
+  - name: Engagement Loop Quality
+    weight: 0.25
+    scoring:
+      1: Engagement plan consists only of brand content posting with no member-driven ritual or social mechanic.
+      3: Engagement rituals are defined but rely heavily on brand-sourced content rather than member-generated dynamics.
+      5: Engagement loops are primarily member-driven with brand serving as facilitator, creating self-sustaining content and social dynamics that persist without heavy brand investment.
+    improvement_guidance: Design at least three engagement rituals that can continue without brand participation — these prove the community is self-sustaining rather than brand-dependent.
+  - name: Commercial Linkage
+    weight: 0.30
+    scoring:
+      1: Community strategy does not define how community membership translates into commercial outcomes.
+      3: Commercial linkage is asserted but not measured with specific metrics connecting community engagement to purchase behavior.
+      5: Specific metrics link community membership and engagement levels to measurable differences in purchase rate, LTV, and referral behavior.
+    improvement_guidance: Build a community member cohort analysis comparing purchase rate and LTV of community members vs. non-members to quantify the commercial value of community.
+  - name: Health Metric Definition
+    weight: 0.25
+    scoring:
+      1: Success is measured by total member count, which is a vanity metric that does not reflect community health.
+      3: Engagement metrics are tracked but not benchmarked against community health norms for the platform.
+      5: Health metrics are multi-dimensional (active member rate, content ratio, NPS, commercial correlation) and benchmarked against category community norms.
+    improvement_guidance: Replace total member count as the primary KPI with 30-day active member rate and member-generated content-to-total-content ratio.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Brand-Broadcasting Community
+  description: Using a community platform as a one-way broadcast channel for brand content rather than a two-way member interaction space, resulting in high membership but near-zero genuine engagement.
+  mitigation: Set a rule that brand-sourced content should account for no more than 20% of total community content. Invest in seeding member conversations and recognizing member contributions.
+- pattern: Premature Scale
+  description: Opening community enrollment broadly before the community culture, rituals, and moderation framework are established, resulting in low-quality early members who set negative community norms.
+  mitigation: Launch in private beta with 50–200 hand-selected founding members. Define and embed community norms with this group before opening enrollment.
+- pattern: Vanity Membership Growth
+  description: Optimizing for total member count rather than active engagement rate, producing a large community with 95% dormant accounts and declining brand reputation for the "dead" community.
+  mitigation: Gate membership growth behind engagement capacity. Only grow enrollment at a pace the community management team can support with quality onboarding and activation.
+chaining:
+  after:
+  - framework_id: growth-loops-framework
+    reason: Growth loops define the systemic acquisition and retention architecture; community-led growth implements the community loop within that system.
+  before:
+  - framework_id: aarrr-pirate-metrics
+    reason: Community engagement impacts the Retention and Referral metrics in AARRR and should feed into how those targets are set.

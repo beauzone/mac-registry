@@ -1,0 +1,150 @@
+metadata:
+  id: nps-csat-ces-strategy
+  version: 1.0.0
+  display_name: NPS / CSAT / CES Strategy
+  category: operations
+  description: Designs the consumer satisfaction measurement framework including metric selection, survey design, segmentation strategy, response rate optimization, closed-loop action plans, and correlation to business outcomes including retention and LTV.
+  best_for:
+    stages:
+    - growth
+    - scale
+    - optimization
+    roles:
+    - cmo
+    - consumer-analytics-manager
+    - head-of-loyalty
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: business_objective
+    description: Primary business goal for the measurement program (reduce churn, improve retention, validate NPS as a leading indicator, identify advocacy triggers)
+    source: user_input
+  - field: customer_journey_touchpoints
+    description: Key touchpoints where consumer feedback would be most actionable (post-purchase, post-support, product milestone, quarterly relationship)
+    source: user_input
+  - field: current_measurement_gaps
+    description: What is currently unknown about consumer satisfaction and the decisions that lack data
+    source: user_input
+  optional:
+  - field: existing_survey_data
+    description: Any current NPS, CSAT, or satisfaction data including scores, response rates, and verbatim themes
+    source: user_input
+  - field: customer_database_size
+    description: Total addressable survey population size and any segmentation data available
+    source: user_input
+  - field: tech_stack
+    description: Survey platform, CRM, and data warehouse available for survey deployment and analysis
+    source: user_input
+analysis:
+  instructions: 'Design the satisfaction measurement strategy across six dimensions. First, select the right metric for each measurement context: NPS (Net Promoter Score) measures long-term relationship sentiment and loyalty likelihood — best for relationship surveys and churn prediction. CSAT (Customer Satisfaction Score) measures transactional satisfaction at a specific touchpoint — best for post-purchase and post-support measurement. CES (Customer Effort Score) measures how easy the brand made it to get help or complete a task — best for support and onboarding friction detection. Second, design surveys for each metric: question wording, scale, follow-up verbatim question, and survey length (maximum five questions for transactional surveys, ten for relationship surveys). Third, define the segmentation strategy: which consumer segments require separate measurement programs and separate benchmarks? Fourth, design for response rate: when to send (timing relative to the trigger event), which channel (email, in-app, SMS), and what the follow-up cadence looks like. Fifth, design the closed-loop action plan: who receives alerts for detractor/low scores, what the response SLA is, and how recurring themes are escalated to product and marketing. Sixth, build the business outcome correlation model: how does each metric correlate with 90-day churn, LTV, second purchase rate, and advocacy behavior? Conclude with a measurement calendar and a 12-month program roadmap.'
+  dimensions:
+  - id: metric-selection
+    name: Metric Selection
+    description: Selects the appropriate satisfaction metric for each measurement context and business question
+    prompts:
+    - Is the primary measurement objective to predict churn (NPS), measure transactional satisfaction (CSAT), or detect friction in the service experience (CES)?
+    - Which metric has the strongest empirical correlation to the key business outcome this program is designed to influence?
+    - How will multiple metrics be reported without creating confusion — is there a single primary metric with supporting metrics?
+    - What is the industry benchmark for each metric in this consumer category, and is a comparison to benchmark meaningful given segment differences?
+  - id: survey-design
+    name: Survey Design
+    description: Designs the survey instrument for each metric to maximize data quality and response rate
+    prompts:
+    - Is the survey question wording standardized to enable benchmark comparison, or has it been customized in a way that breaks comparability?
+    - How many additional questions follow the primary rating question — is the survey short enough to maintain response rates above 20%?
+    - Is the verbatim follow-up question open-ended and neutral, or does it lead respondents toward specific answer types?
+    - How is the survey tested for mobile-first rendering given that the majority of responses will come from mobile devices?
+  - id: segmentation-strategy
+    name: Segmentation Strategy
+    description: Defines how satisfaction measurement is segmented to enable actionable insights by consumer type
+    prompts:
+    - Which consumer segments require separate NPS/CSAT benchmarks because their satisfaction expectations differ fundamentally?
+    - How will first-time purchasers, repeat purchasers, and at-risk customers be surveyed differently?
+    - What acquisition channel or persona segment data can be appended to satisfaction responses to identify segment-specific experience gaps?
+    - At what sample size does each segment have statistically significant measurement, and how long will it take to reach that threshold?
+  - id: response-rate-optimization
+    name: Response Rate Optimization
+    description: Designs the survey deployment to maximize valid response rates
+    prompts:
+    - What is the optimal send time relative to the trigger event — immediate, 24 hours, 72 hours, or 7 days post-event?
+    - Which delivery channel (email, in-app notification, SMS) generates the highest response rate for this consumer segment?
+    - What subject line, sender name, and email design characteristics maximize open and completion rates?
+    - What is the follow-up cadence for non-responders, and at what point does follow-up become counterproductive?
+  - id: closed-loop-action
+    name: Closed-Loop Action System
+    description: Designs the operational process for responding to negative feedback and escalating systemic issues
+    prompts:
+    - What is the detractor alert threshold (e.g., NPS score of 0–6, CSAT score of 1–2) that triggers an immediate closed-loop response?
+    - Who receives the alert, what is the response SLA, and what is the expected outcome of the closed-loop interaction?
+    - How are verbatim responses analyzed for recurring themes and escalated to product, marketing, and operations teams?
+    - What is the evidence that the closed-loop program is improving satisfaction scores over time — is there a recovery score metric?
+  - id: business-outcome-linkage
+    name: Business Outcome Correlation
+    description: Builds the model linking satisfaction metrics to commercial outcomes including churn, LTV, and advocacy
+    prompts:
+    - What is the correlation between NPS score band (Promoter/Passive/Detractor) and 90-day churn rate?
+    - Do Promoters generate measurably more referrals than Passives or Detractors, and is that referral behavior trackable?
+    - What LTV difference exists between consumers with CSAT scores of 4–5 vs. 1–3?
+    - What is the leading indicator relationship between satisfaction metrics and commercial outcomes — how many weeks ahead does NPS predict churn?
+output_templates:
+- id: primary
+  name: Consumer Satisfaction Measurement Strategy
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary\n\n{executive_summary}\n\n## Metric Selection Rationale\n\n{metric_selection}\n\n## Survey Design Specifications\n\n{survey_design}\n\n## Segmentation Strategy\n\n{segmentation_strategy}\n\n## Response Rate Plan\n\n{response_rate_plan}\n\n## Closed-Loop Action Protocol\n\n{closed_loop_protocol}\n\n## Business Outcome Linkage Model\n\n{business_outcome_model}\n\n## Measurement Calendar\n\n{measurement_calendar}\n\n'
+rubric:
+  description: Evaluates the rigor and business relevance of the consumer satisfaction measurement strategy.
+  dimensions:
+  - name: Metric-Objective Alignment
+    weight: 0.25
+    scoring:
+      1: Metric is selected by convention (everyone uses NPS) rather than alignment to the specific business question being answered.
+      3: Metric selection is justified but the correlation to the specific business outcome has not been validated.
+      5: Metric selection is justified based on empirical evidence of its correlation to the specific business outcome, with data from comparable brands or prior internal analysis.
+    improvement_guidance: Before committing to a metric, run a pilot measurement program and calculate the correlation between the metric and 90-day churn or second-purchase rate.
+  - name: Survey Design Quality
+    weight: 0.25
+    scoring:
+      1: Survey instrument has more than ten questions, uses leading language, or has not been tested on mobile devices.
+      3: Survey is well-designed but response rate targets have not been defined and no A/B testing of design elements is planned.
+      5: Survey design follows best practices (standardized question, under five questions, mobile-first, neutral verbatim prompt), response rate targets are defined, and key design variables will be A/B tested.
+    improvement_guidance: A/B test two versions of the survey: one with an immediate send and one with a 48-hour delay. Use whichever produces higher response rates and more positive score distributions.
+  - name: Closed-Loop Completeness
+    weight: 0.30
+    scoring:
+      1: No closed-loop process is defined; survey data is collected and reported but does not generate action.
+      3: Detractor alerts are defined but the response SLA, escalation path, and recovery tracking are not specified.
+      5: Complete closed-loop system is designed with alert thresholds, response SLA, escalation path, recovery score tracking, and a systemic issue escalation protocol.
+    improvement_guidance: Measure the closed-loop recovery rate — what percentage of detractors who receive a response subsequently improve their score. This is the single most important operational metric for the CX team.
+  - name: Business Outcome Model
+    weight: 0.20
+    scoring:
+      1: Satisfaction metrics are reported in isolation with no connection to commercial outcomes.
+      3: A connection between satisfaction and business outcomes is asserted but not modeled with data.
+      5: The correlation between satisfaction metric bands and churn, LTV, and advocacy behaviors is modeled with actual customer cohort data.
+    improvement_guidance: Build a cohort model segmenting customers by NPS band (Promoter/Passive/Detractor) and tracking 12-month churn rate, LTV, and referral rate for each band.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: NPS as a Vanity Metric
+  description: Reporting NPS as a top-line metric without a closed-loop action system or correlation to commercial outcomes, making it a feel-good number that does not drive improvement.
+  mitigation: Require every NPS report to include the closed-loop response rate, the detractor-to-promoter recovery rate, and the correlation between NPS band and 90-day churn before the score itself.
+- pattern: Over-Surveying
+  description: Sending satisfaction surveys at every touchpoint without considering the cumulative survey fatigue effect on response rates and consumer experience.
+  mitigation: Implement a survey suppression policy: no consumer receives more than one survey in any 90-day period. Prioritize the most commercially important touchpoint for each consumer's survey allocation.
+- pattern: Segment Blindness
+  description: Reporting satisfaction as a single aggregate score that masks segment-level differences, leading to organization-wide improvement programs that address the wrong consumer group's problems.
+  mitigation: Always break satisfaction scores by consumer segment, acquisition channel, and tenure before reporting. A single aggregate score that looks acceptable may hide a critical satisfaction problem in a high-value segment.
+chaining:
+  after:
+  - framework_id: customer-experience-mapping
+    reason: CX mapping identifies where experience failures occur; NPS/CSAT/CES designs the measurement system to validate and track improvement.
+  before:
+  - framework_id: okrs
+    reason: Satisfaction metrics provide the consumer health input to OKR setting — retention and NPS targets should flow into the company-level OKR framework.

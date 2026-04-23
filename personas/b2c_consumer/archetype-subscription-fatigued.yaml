@@ -1,0 +1,240 @@
+metadata:
+  id: archetype-subscription-fatigued
+  version: "1.0.0"
+  display_name: "Subscription-Fatigued Consumer"
+  domain: consumer-archetype
+  archetype_type: generic
+  description: >
+    The Subscription-Fatigued Consumer has been burned by recurring payments they forgot
+    about, services they stopped using, and cancellation flows designed to trap them. They
+    approach any subscription with skepticism and conduct regular audits of their recurring
+    charges. Load this archetype when designing or optimizing subscription models, pricing
+    pages, trial-to-paid conversion flows, churn reduction programs, or re-engagement campaigns.
+    Critical context for any SaaS consumer app, streaming service, meal kit, beauty box,
+    or membership product. The barriers to subscribe are high; the barriers to cancel are low.
+  tags:
+    - subscription-fatigue
+    - churn-risk
+    - value-skeptic
+    - anti-commitment
+    - price-sensitive
+    - cancel-anytime
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    The Subscription-Fatigued Consumer has been trained by bad experiences to distrust
+    recurring billing. They calculate per-use value constantly, conduct periodic "subscription
+    audits" where they cancel anything underutilized, and are acutely aware of how many
+    subscriptions they are carrying at any moment. Streaming churn runs 37% annually; meal
+    kit churn exceeds 60% within 6 months — this archetype is the behavioral driver behind
+    those numbers. They can be won over, but only by demonstrating unambiguous value before
+    asking for commitment and eliminating every barrier to exit.
+  archetype_summary: |
+    The Subscription-Fatigued Consumer has been trained by bad experiences to distrust
+    recurring billing. They calculate per-use value constantly, conduct periodic "subscription
+    audits" where they cancel anything underutilized, and are acutely aware of how many
+    subscriptions they are carrying at any moment. Streaming churn runs 37% annually; meal
+    kit churn exceeds 60% within 6 months — this archetype is the behavioral driver behind
+    those numbers. They can be won over, but only by demonstrating unambiguous value before
+    asking for commitment and eliminating every barrier to exit.
+  behavioral_description: |
+    This consumer has a running mental tally of their monthly recurring charges. They use
+    apps like Truebill or Rocket Money to track and cancel subscriptions. They have been
+    hit with a charge they forgot about at least once and the experience left a lasting
+    impression. Before subscribing to anything, they specifically look for: how easy it
+    is to cancel, whether there is a genuine free trial (not a credit card required "free"
+    trial), and what happens at the end of a promotional period. They share cancellation
+    dark patterns with their social network. Over 60% of streaming consumers self-report
+    subscription fatigue. They rotate services — subscribing to Netflix for a month, then
+    canceling and switching to HBO Max, then returning. Their default mental state when
+    seeing a subscription offer is skepticism.
+
+purchase_behavior:
+  purchase_triggers:
+    - Genuine free trial with full feature access and no credit card required
+    - Clear and demonstrated ongoing value before any commitment is asked for
+    - Flexible plan options — monthly over annual, pause over cancel, skip over commit
+    - A specific use case or content need that only this service satisfies right now
+    - Founding member or introductory pricing that is visibly and genuinely time-limited
+    - A trusted peer recommendation with specific "I've used it for X months and here's why"
+    - Clear cancellation is prominently visible before they subscribe
+  trust_signals:
+    - '"Cancel anytime" prominently displayed — paradoxically, easy exit builds subscribe confidence'
+    - No credit card required for free trial
+    - Pause or skip option visible in account settings
+    - Transparent pricing with no promotional period cliff — exact price after trial explicitly stated
+    - Regular "here's what you used this month" value summary communications
+    - Quick, frictionless cancellation if tested
+  red_flags:
+    - Credit card required for a "free" trial
+    - Annual plan pushed before monthly trust is established
+    - Cancellation buried in account settings or requiring a phone call
+    - Price increase announced without clear added value explanation
+    - Features removed or degraded after subscription begins
+    - Dark patterns on the cancellation flow (guilt-tripping, confusing options, "pausing is not canceling" traps)
+    - Promotional rate that jumps significantly after the introductory period without clear upfront disclosure
+  decision_speed: slow
+  decision_speed_notes: |
+    Subscription decisions are slower than equivalent one-time purchase decisions because
+    the perceived ongoing commitment raises the psychological stakes. Even a $9.99/month
+    subscription requires more deliberation than a $15 one-time purchase because the
+    consumer is mentally calculating total projected cost and probability of canceling in time.
+    Free trials with no credit card required significantly accelerate trial initiation —
+    the decision feels reversible and therefore lower-stakes. The hardest decision is not
+    the first month; it is the moment the trial ends and active re-confirmation is required.
+
+media_consumption:
+  primary_channels:
+    - channel: Reddit (service-specific subreddits and r/personalfinance, r/frugal)
+      role: Research before subscribing — reads existing subscriber and ex-subscriber experiences
+    - channel: YouTube (comparison and review content)
+      role: '"Is this worth it?" decision support — specifically looks for content comparing alternatives'
+    - channel: Email
+      role: Re-engagement if they've previously subscribed; value summary emails that demonstrate ROI
+    - channel: App store reviews
+      role: Reads recent reviews to identify if quality has declined or pricing has changed
+    - channel: Twitter/X and Threads
+      role: Cancellation dark pattern complaints surface here — actively avoids services with visible complaints
+  discovery_path: |
+    Discovery typically comes through peer recommendation with specific usage context, or
+    through a content recommendation that requires the subscription service to access. They
+    do not respond to generic subscription advertising — the category has burned their trust.
+    Discovery through a trusted source who can speak to value retention over time is far
+    more effective than any paid acquisition channel.
+  research_behavior: |
+    Before subscribing, researches cancellation procedure explicitly — may Google "[service]
+    how to cancel" before signing up. Reads Reddit threads about the service's billing
+    practices, whether the free trial actually requires a card, and how quickly the
+    cancellation takes effect. Checks the pricing page carefully for any mention of
+    promotional periods expiring. Looks specifically for reviews from people who canceled
+    and why. This consumer will test the cancellation flow at the start of a free trial.
+
+price_sensitivity:
+  level: high
+  notes: |
+    Price sensitivity is amplified by the recurring nature of the charge — $15/month is
+    perceived as $180/year, not $15, when this archetype is in analytical mode. Any price
+    increase, even small, triggers a full subscription audit. The price increase risk is
+    less about the absolute dollar amount and more about the signal it sends: the service
+    is prioritizing extraction over value delivery. Premium justification must be grounded
+    in demonstrable, personal usage value — not general capability claims.
+  premium_justifiers:
+    - Demonstrated personal usage value calculated per session or use ("you used this 18 times last month")
+    - Unique capability unavailable elsewhere that they actively use
+    - Time savings quantified in a way that makes the price feel like a bargain
+    - Annual plan savings are substantial and trust has been established through monthly experience
+    - Price increase coincides with a feature addition that is immediately relevant to their usage
+
+loyalty_patterns:
+  brand_loyalty: low
+  platform_loyalty: moderate
+  loyalty_drivers:
+    - Consistent, reliable delivery of the core value proposition month over month
+    - Regular communication that demonstrates usage and value ("you saved X hours this month")
+    - Flexible plan management — ability to pause, downgrade, or skip without penalty
+    - Price predictability — no surprise charges or promotional cliff drops
+    - Strong customer service that resolves issues quickly without friction
+  switching_triggers:
+    - Any price increase — triggers immediate cost-benefit re-evaluation
+    - Feature removal or quality decline
+    - Discovery of a comparable alternative at lower cost
+    - A dark pattern encountered during a pause or downgrade attempt
+    - Monthly "am I using this enough?" audit returns a negative answer
+    - A friend cancels and reports no regret
+
+calibration:
+  messaging:
+    resonate_with:
+      - Lead with value per use, not total subscription cost ("Less than a coffee per week")
+      - Flexibility framing — "cancel, pause, or skip anytime — no questions, no friction"
+      - Specific, personal value delivery — "Based on your usage, you've [saved X / done Y / accessed Z]"
+      - Transparent pricing with exact post-trial costs prominently disclosed upfront
+      - '"Here''s what you''d lose" framing tied to actual usage — not hypothetical value'
+      - Founding member or early-adopter pricing that is time-limited and clearly ends
+    avoid:
+      - Annual plan push before trust is established through monthly experience
+      - FOMO subscription triggers — "join now before prices go up" lands as a red flag
+      - Lock-in language — "commit to a year" is the opposite of what builds trust
+      - Value claims based on features they haven't used ("unlimited access to X")
+      - Price anchoring against theoretical savings on products they don't buy
+    tone: transparent and direct — no salesmanship, just honest value accounting
+
+  conversion:
+    high_impact_tactics:
+      - Free trial with no credit card required — removes the single largest barrier
+      - Pause option visible in the subscription flow before checkout (builds trust)
+      - Exact post-trial pricing displayed prominently on the trial sign-up page
+      - Onboarding that drives immediate first-use value within 24 hours of trial start
+      - Trial end reminder 3 days before charge with clear opt-out instructions
+      - Monthly usage summary email that makes the value concrete and personal
+    friction_points:
+      - Credit card required for trial sign-up
+      - Annual plan as the default or primary option before monthly trust is built
+      - Cancellation flow with multiple friction steps or retention offers that feel manipulative
+      - Unclear total cost — promotional pricing that requires fine print to understand
+      - Slow or inaccessible customer support when billing questions arise
+    urgency_triggers:
+      - Founding member pricing with a clear and genuine seat or cohort limit
+      - Demonstrated value during trial that would disappear on cancellation ("you've built X in your account")
+      - Price lock guarantee — "lock in current pricing before our rate review in [date]" with credible history
+
+  content:
+    preferred_formats:
+      - Usage-based value reports (monthly emails showing personal ROI)
+      - Transparent pricing comparison content showing full cost including post-promotional pricing
+      - '"How easy is it to cancel?" content that preemptively addresses the primary concern'
+      - Testimonials that specifically address the transition from skeptic to believer
+      - Feature walkthroughs showing the specific value they would use, not the full feature set
+    credibility_signals:
+      - Independent reviews from users who describe long-term retention and why they stayed
+      - Transparent public pricing page with no hidden tiers or call-to-pricing for standard plans
+      - BBB or consumer trust ratings that show low complaint rates
+      - Publicly visible cancellation policy with no fine print
+      - Community of users who actively recommend the service (not incentivized referrals)
+    credibility_killers:
+      - Any evidence of dark pattern cancellation (forum posts, Trustpilot reviews mentioning it)
+      - Promotional pricing that requires fine print to understand the actual ongoing cost
+      - '"Free trial" requiring payment information upfront'
+      - Overly complex plan tiers designed to obscure the true cost
+      - Testimonials that only speak to features, not to ongoing value and retention
+
+examples:
+  - scenario: Designing the trial-to-paid conversion flow for a consumer productivity app at $12.99/month
+    without_archetype: |
+      Offer a 14-day free trial requiring a credit card. At trial end, auto-convert to paid.
+      Send a reminder at day 12 encouraging them to stay. Offer an annual plan at a discount
+      to lock in revenue. Show a feature summary of everything available in the paid plan.
+    with_archetype: |
+      Requiring a credit card for a trial is the single largest conversion barrier for
+      this archetype — it triggers the "I'll forget and get charged" fear before they've
+      experienced any value. Recommendation: no-credit-card trial with explicit trial end
+      reminder at day 11 (3 days out) that includes the exact date, the exact charge
+      amount, a one-click cancellation link, AND the user's personal usage stats from
+      the trial ("You've completed 7 tasks and saved an estimated 2.3 hours. Here's what
+      that looks like in month two..."). The trial end reminder should feel like a
+      transparent handoff, not a retention tactic — this archetype rewards honesty with
+      trust. Annual plan offer comes 30 days after successful paid conversion, not before.
+
+  - scenario: Reducing churn for a meal kit subscription with 60%+ six-month cancellation rate
+    without_archetype: |
+      Improve the product. Add more recipe variety. Offer a loyalty discount after
+      6 months. Send win-back emails with a promotional offer to lapsed subscribers.
+      Tighten the cancellation flow to reduce casual churn.
+    with_archetype: |
+      Tightening the cancellation flow is the fastest way to destroy this brand with
+      subscription-fatigued consumers — dark patterns spread on Reddit and social media
+      within days and permanently cap acquisition. The churn driver is the "am I actually
+      using this enough?" calculation, not product quality. Intervention: at week 3 of
+      month 2 (when churn intent typically forms), send a proactive email — not a retention
+      offer, but a "customize your plan" prompt: skip next week, reduce to 2 meals instead
+      of 4, or pause for a month. Give them control before they decide to cancel. Subscribers
+      who pause are 3x more likely to reactivate than subscribers who cancel. The cancellation
+      flow should make pausing the most prominent option — not as a dark pattern, but because
+      it is genuinely the right option for someone who cooked 2 of 4 meals last week.
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

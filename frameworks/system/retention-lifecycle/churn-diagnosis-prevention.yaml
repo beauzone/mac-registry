@@ -1,0 +1,152 @@
+metadata:
+  id: churn-diagnosis-prevention
+  version: 1.0.0
+  display_name: Churn Diagnosis & Prevention Framework
+  category: operations
+  description: Systematically diagnoses why consumers are churning across product, price, experience, and competition dimensions, then maps early warning signals, intervention design, and rescue program mechanics to reduce preventable churn.
+  best_for:
+    stages:
+    - growth
+    - scale
+    - optimization
+    roles:
+    - crm-manager
+    - consumer-analytics-manager
+    - head-of-loyalty
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: churn_rate_data
+    description: Current churn rate (monthly and annual) and trend over the past 12 months
+    source: user_input
+  - field: exit_survey_or_cancellation_data
+    description: Any data collected at cancellation — exit survey responses, stated cancellation reasons, or support ticket content from churning customers
+    source: user_input
+  - field: churned_customer_profile
+    description: Behavioral characteristics of churned customers — tenure, usage pattern, purchase frequency, and support history before churn
+    source: user_input
+  optional:
+  - field: churn_segment_data
+    description: Churn rate broken down by customer segment, acquisition channel, plan tier, or tenure cohort
+    source: user_input
+  - field: product_usage_data
+    description: Feature usage data for churned customers in the 30 days before cancellation
+    source: user_input
+  - field: competitive_context
+    description: Competitive launches, pricing changes, or marketing campaigns that may have influenced churn timing
+    source: user_input
+analysis:
+  instructions: 'Build the churn diagnosis across six dimensions, moving from symptoms to root causes to interventions. First, segment churn by type: voluntary churn (customer chooses to leave — most actionable), involuntary churn (failed payment — highly recoverable), and natural attrition (consumer has fully satisfied their need — least actionable). Second, diagnose root causes across four categories: Product failure (the product is not delivering its core promise or has significant gaps vs. alternatives); Price-value misalignment (the customer does not perceive sufficient value to justify the cost); Experience failure (poor customer service, friction, communication issues, or onboarding gaps); Competitive loss (a competitor has offered a compelling alternative). Third, identify early warning signals: the behavioral patterns that precede churn by 14–30 days and can trigger proactive intervention. Fourth, design the intervention playbook for each churn root cause. Fifth, design rescue mechanics: for customers who have submitted a cancellation request, what is the save offer and process? Sixth, design the churn prediction model inputs that feed into an at-risk customer identification system. Conclude with the prevention investment prioritization and expected churn rate impact.'
+  dimensions:
+  - id: churn-signal-identification
+    name: Churn Signal Identification
+    description: Maps the behavioral signals that precede churn and enables proactive intervention
+    prompts:
+    - What behavioral signals (declining email open rate, reduced purchase frequency, support ticket submission, skipped renewal) appear in the 30 days before a customer churns?
+    - Which signals have the strongest predictive value for imminent churn — high signal specificity with low false positive rate?
+    - How far in advance of churn do these signals appear, and does that window allow for an effective intervention?
+    - Are there signals specific to high-value customer segments that warrant a dedicated early warning system?
+  - id: root-cause-segmentation
+    name: Churn Root Cause Segmentation
+    description: Diagnoses the primary reason for churn across product, price, experience, and competitive dimensions
+    prompts:
+    - What do exit surveys or cancellation reason data reveal as the stated reason for churn — and how much do stated reasons differ from behavioral data signals?
+    - What percentage of churn is driven by each root cause category (product, price, experience, competition, natural attrition)?
+    - Are there specific customer segments (tenure, tier, acquisition channel) that churn disproportionately for specific reasons?
+    - What is the evidence that identified root causes are real and not rationalization — are they consistent across the churned customer sample?
+  - id: intervention-design
+    name: Proactive Intervention Design
+    description: Designs targeted interventions for each churn root cause triggered by early warning signals
+    prompts:
+    - For product-driven churn — what product improvement, education, or feature unlock intervention most effectively retains at-risk customers?
+    - For price-value-driven churn — what reframing, usage review, or plan adjustment most effectively demonstrates value before the customer decides to cancel?
+    - For experience-driven churn — what proactive service recovery or friction elimination most effectively restores the customer relationship?
+    - What is the response time requirement for each intervention type — within 24 hours for urgent signals, within 7 days for trend signals?
+  - id: rescue-program-mechanics
+    name: Rescue Program (Save) Mechanics
+    description: Designs the cancellation flow and save offer for customers who have initiated churn
+    prompts:
+    - What is the cancellation flow — is there a pause, downgrade, or winback offer presented before cancellation is finalized?
+    - What save offer (discount, plan change, feature unlock, human outreach) has the highest acceptance rate and the best LTV for saved customers?
+    - Are saved customers retained or do they eventually churn at higher rates — what is the LTV of a saved customer vs. an organic retainer?
+    - What is the exit experience for customers who do cancel — is it frictionless and respectful, or does it create negative brand sentiment that prevents future reactivation?
+  - id: win-back-strategy
+    name: Win-Back Strategy
+    description: Designs the reactivation program for customers who have fully churned
+    prompts:
+    - At what point post-churn is a win-back campaign most likely to succeed — immediately, at 30 days, at 90 days, or at a lifecycle event?
+    - What message framing performs best for win-back — acknowledging the relationship ("we''d love to have you back"), leading with what''s new, or leading with an offer?
+    - What is the win-back conversion rate, and at what offer level does the campaign become economically worthwhile given expected reactivated customer LTV?
+    - Is there a segment of churned customers that should never receive a win-back offer due to negative service history or fraud risk?
+  - id: churn-prediction-model
+    name: Churn Prediction Model Design
+    description: Defines the inputs and scoring approach for an automated churn risk identification system
+    prompts:
+    - What behavioral inputs (recency, frequency, engagement, support tickets, session depth) should feed into the churn risk score?
+    - At what churn risk score threshold should automated intervention be triggered vs. flagged for human review?
+    - How frequently should the churn risk score be recalculated — daily, weekly, or event-triggered?
+    - What is the precision-recall trade-off the business is comfortable with — is it worse to miss high-risk customers (low recall) or to over-flag low-risk customers (low precision)?
+output_templates:
+- id: primary
+  name: Churn Diagnosis & Prevention Playbook
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary\n\n{executive_summary}\n\n## Churn Signal Map\n\n{churn_signal_map}\n\n## Root Cause Segmentation\n\n{root_cause_segmentation}\n\n## Proactive Intervention Playbook\n\n{intervention_playbook}\n\n## Rescue Program Design\n\n{rescue_program}\n\n## Win-Back Strategy\n\n{win_back_strategy}\n\n## Churn Prediction Model Specification\n\n{prediction_model_spec}\n\n## Expected Churn Rate Impact\n\n{churn_impact_model}\n\n'
+rubric:
+  description: Evaluates the diagnostic rigor and intervention quality of the churn prevention framework.
+  dimensions:
+  - name: Root Cause Rigor
+    weight: 0.30
+    scoring:
+      1: Root cause analysis relies entirely on stated cancellation reasons without triangulating against behavioral data.
+      3: Root cause analysis uses both stated reasons and behavioral data but does not quantify the relative size of each churn driver.
+      5: Root cause analysis quantifies the percentage of churn attributable to each driver using triangulated data sources — exit surveys, behavioral patterns, and support ticket analysis.
+    improvement_guidance: Never accept a single data source for root cause analysis. Stated reasons underreport product issues (customers don't want to criticize) and overreport price (easier to say than "I didn't see the value").
+  - name: Signal Predictive Validity
+    weight: 0.25
+    scoring:
+      1: Churn signals are identified intuitively without validation against actual churned customer behavior data.
+      3: Signals are validated against historical churn data but the predictive window and false positive rate are not measured.
+      5: Each signal's predictive validity is measured — days prior to churn it appears, percentage of true positives at the threshold, and false positive rate.
+    improvement_guidance: Build a retrospective signal analysis: take the past six months of churned customers and measure when each candidate signal appeared before their churn date. Signals that appear 14–30 days before churn are actionable.
+  - name: Intervention Specificity
+    weight: 0.25
+    scoring:
+      1: Intervention playbook is generic without differentiation by churn root cause or customer segment.
+      3: Interventions are differentiated by root cause but lack specific message designs, offer parameters, and channel specifications.
+      5: Each root cause has a specific intervention with defined trigger, message, offer (if applicable), channel, timing, and success metric.
+    improvement_guidance: Write intervention briefs as if briefing a CRM developer — include the exact trigger condition, message copy direction, offer parameters, channel, and the metric that will measure effectiveness.
+  - name: Rescue Program Economics
+    weight: 0.20
+    scoring:
+      1: Rescue program exists but save offers are not modeled for ROI and are not calibrated to the at-risk customer's LTV.
+      3: Rescue program economics are estimated but saved customers'' actual LTV is not tracked separately from organic retainers.
+      5: Rescue economics are fully modeled — save rate, saved customer LTV vs. organic retainer LTV, offer cost, and net ROI of the program are all measured.
+    improvement_guidance: Track saved customers as a separate cohort and measure their 6-month and 12-month retention rate. This tells you whether save offers genuinely retain customers or merely delay churn.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Symptom Treatment Without Diagnosis
+  description: Defaulting to discount-based save offers for all churning customers without diagnosing the root cause, which is effective for price-driven churn but wastes money on customers churning for product or experience reasons that a discount will not fix.
+  mitigation: Diagnose root cause before presenting any save offer. A customer churning because the product doesn't meet their needs will accept a discount and churn again in 90 days. Solve the actual problem.
+- pattern: Ignoring Involuntary Churn
+  description: Focusing all churn prevention investment on voluntary churn while ignoring the 20–40% of churn that comes from failed payments, which is the most recoverable type of churn with the right dunning process.
+  mitigation: Implement a proactive card updater service and a dunning sequence (retry logic plus customer communication) before involuntary churn is finalized. A 60% recovery rate on involuntary churn is achievable with the right process.
+- pattern: Exit Survey Bias Acceptance
+  description: Treating exit survey data as a reliable reflection of churn reasons when surveys are completed only by cooperative customers who may rationalize rather than disclose the real reason for leaving.
+  mitigation: Supplement exit surveys with behavioral analysis of the 30 days before churn. The combination of stated reason and behavioral signal produces a more accurate diagnosis than either alone.
+chaining:
+  after:
+  - framework_id: cohort-retention-analysis
+    reason: Cohort analysis identifies when churn is occurring; churn diagnosis explains why it is occurring and designs targeted prevention.
+  - framework_id: aarrr-pirate-metrics
+    reason: AARRR provides the retention rate context; churn diagnosis zooms into the mechanism driving the retention metric.
+  before:
+  - framework_id: customer-lifecycle-marketing
+    reason: Churn diagnosis informs which lifecycle stages and triggers need the most intensive retention investment in the lifecycle marketing program.

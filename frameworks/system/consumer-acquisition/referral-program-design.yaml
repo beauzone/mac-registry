@@ -1,0 +1,142 @@
+metadata:
+  id: referral-program-design
+  version: 1.0.0
+  display_name: Referral Program Design Framework
+  category: growth
+  description: Structures consumer referral programs by designing incentive mechanics, double-sided vs. one-sided reward structures, referral attribution systems, unit economics validation, and anti-gaming controls that make referral a reliable acquisition channel.
+  best_for:
+    stages:
+    - growth
+    - scale
+    roles:
+    - head-of-growth
+    - cmo
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: product_ltv
+    description: Customer lifetime value (LTV) or estimated LTV by segment
+    source: user_input
+  - field: current_cac
+    description: Current blended and channel-level customer acquisition cost
+    source: user_input
+  - field: referral_goal
+    description: Primary goal of the referral program (volume growth, LTV-qualified acquisition, specific segment acquisition)
+    source: user_input
+  optional:
+  - field: existing_referral_data
+    description: Any data from previous referral experiments — referral rate, conversion rate, referred user LTV vs. organic
+    source: user_input
+  - field: competitive_referral_programs
+    description: Description of referral programs run by category competitors
+    source: user_input
+  - field: tech_stack_constraints
+    description: Referral tracking and attribution technology currently available
+    source: user_input
+analysis:
+  instructions: 'Design a complete consumer referral program across five dimensions. First, determine the incentive structure: establish the maximum referral reward budget as a percentage of LTV, then model one-sided (reward the referrer only) vs. double-sided (reward both referrer and referred friend) economics. Double-sided programs consistently outperform but require a higher budget. Second, design the referral mechanics: how does the referral happen (unique link, code, native share), what is the referral trigger moment (immediately post-purchase, post-activation, at the moment of delight), and how is the reward delivered (instant vs. milestone-based, cash vs. credit vs. product). Third, design the attribution system: how is the referral tracked across devices and time windows, and what is the attribution window (same session, 7-day, 30-day). Fourth, validate unit economics: the referral CAC must be below the organic CAC with the referred-user LTV uplift (referred users typically have 15–25% higher LTV) factored in. Fifth, design anti-gaming controls: minimum usage requirements before reward, fraud detection signals, and program caps. Conclude with a program launch plan and the three highest-priority A/B tests.'
+  dimensions:
+  - id: incentive-structure
+    name: Incentive Structure Design
+    description: Designs the reward type, amount, and structure for referrer and referred user
+    prompts:
+    - What percentage of expected LTV can the business afford to spend on referral rewards while maintaining a CAC below the organic benchmark?
+    - Should the program be one-sided (referrer only) or double-sided (both parties rewarded), and what is the economic case for each?
+    - What reward format (cash, store credit, product, discount, premium feature) will be most motivating for this consumer segment?
+    - Should rewards be front-loaded (immediate on referral) or milestone-based (on referred user's first purchase or retention event)?
+  - id: referral-mechanics
+    name: Referral Mechanics Design
+    description: Defines the mechanism through which referrals are made and tracked
+    prompts:
+    - What is the highest-converting referral trigger moment in the user journey (post-purchase, post-activation, at social share moment)?
+    - Which sharing mechanism (unique link, promo code, native OS share sheet, embedded widget) generates the highest referral conversion rate for this audience?
+    - How frictionless is the referral action — can it be completed in under 15 seconds with no additional account creation required?
+    - What is the referral message or creative brief, and how does it convey the value proposition for both the referrer and the referred friend?
+  - id: attribution-tracking
+    name: Attribution & Tracking Design
+    description: Defines how referrals are tracked, attributed, and validated
+    prompts:
+    - What attribution window (7-day, 14-day, 30-day) is appropriate for this product's purchase cycle?
+    - How will referrals be tracked across devices and browsers to prevent attribution loss?
+    - What is the single source of truth for referral attribution when multiple channels overlap?
+    - How will the program distinguish between genuine referrals and self-referral fraud?
+  - id: unit-economics
+    name: Referral Program Unit Economics
+    description: Validates that the referral program generates a positive ROI relative to alternative acquisition channels
+    prompts:
+    - What is the all-in referral CAC including reward cost, program overhead, and fraud loss?
+    - What is the LTV uplift of referred users relative to organic or paid acquisition cohorts?
+    - At what referral volume does the program begin to have a material impact on blended CAC?
+    - What is the payback period for the referral reward given the expected LTV trajectory of referred users?
+  - id: anti-gaming-controls
+    name: Anti-Gaming & Fraud Controls
+    description: Designs the controls that prevent reward abuse without adding friction for legitimate referrers
+    prompts:
+    - What minimum usage or retention milestone must the referred user hit before the reward is released?
+    - What signals indicate self-referral or coordinated fraud (same IP, same device, same payment method)?
+    - What is the program cap per referrer per time period, and is it necessary to prevent abuse?
+    - How will disputed referral attributions be resolved, and what is the customer support escalation process?
+output_templates:
+- id: primary
+  name: Referral Program Design Document
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary\n\n{executive_summary}\n\n## Incentive Structure\n\n{incentive_structure}\n\n## Referral Mechanics\n\n{referral_mechanics}\n\n## Attribution & Tracking Design\n\n{attribution_design}\n\n## Unit Economics Model\n\n{unit_economics_model}\n\n## Anti-Gaming Controls\n\n{anti_gaming_controls}\n\n## Launch Plan\n\n{launch_plan}\n\n## Priority A/B Tests\n\n{ab_test_plan}\n\n'
+rubric:
+  description: Evaluates the quality and economic soundness of the referral program design.
+  dimensions:
+  - name: Incentive Economics Rigor
+    weight: 0.30
+    scoring:
+      1: Incentive amount is chosen arbitrarily without modeling the LTV and CAC implications.
+      3: Incentive economics are modeled but use blended LTV rather than cohort-specific referred-user LTV data.
+      5: Incentive economics are fully modeled with referred-user LTV uplift, fraud loss rate, and program overhead factored into the referral CAC calculation.
+    improvement_guidance: Build a referral economics model that shows the all-in referral CAC at various reward levels and referral conversion rates.
+  - name: Mechanics Specificity
+    weight: 0.25
+    scoring:
+      1: Referral mechanics are described in concept but the trigger moment, sharing format, and user experience are not defined.
+      3: Mechanics are defined but the sharing format and creative brief are not specified.
+      5: The full referral user journey is mapped from trigger moment through share action through referred friend conversion, with specific UX designs and copy.
+    improvement_guidance: Create a step-by-step UX flow for the referral action and validate it with usability testing before launch.
+  - name: Attribution Design Completeness
+    weight: 0.25
+    scoring:
+      1: Attribution design is not addressed or relies on a single-session last-click model that will miss many valid referrals.
+      3: Attribution design covers the primary case but does not address cross-device or cross-session referral paths.
+      5: Attribution design handles cross-device, cross-session, and multi-touch scenarios with a clear conflict resolution rule.
+    improvement_guidance: Map all referral attribution edge cases (user clicks link on mobile, purchases on desktop three days later) and define explicit rules for each.
+  - name: Anti-Gaming Robustness
+    weight: 0.20
+    scoring:
+      1: Anti-gaming controls are absent or limited to a single rule that is easy to circumvent.
+      3: Anti-gaming controls cover the obvious fraud vectors but lack automated detection.
+      5: Anti-gaming controls are multi-layered, include automated fraud signals, and are calibrated to block fraud without creating false positives for legitimate users.
+    improvement_guidance: Build a fraud detection scorecard that combines behavioral signals (device, IP, payment, usage pattern) to flag suspicious referrals for manual review before reward release.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: One-Sided Reward Stinginess
+  description: Running a one-sided referral program (reward for referrer only) with a small reward, which fails to create sufficient motivation for users to actively share and results in a program with no measurable impact.
+  mitigation: Test double-sided rewards with a minimum referred-friend discount of 15–20% off first purchase before concluding that referral is not a viable channel for this product.
+- pattern: Wrong Trigger Moment
+  description: Asking for referrals immediately after sign-up before the user has experienced the product value, resulting in referrals from users who have no genuine enthusiasm to transmit.
+  mitigation: Define a "moment of delight" — the event that signals the user has received genuine value — and time the referral ask to occur within 24 hours of that event.
+- pattern: Uncapped Fraud Exposure
+  description: Launching a referral program without fraud controls, allowing coordinated self-referral fraud to drain the reward budget before the program generates meaningful organic acquisition.
+  mitigation: Implement a minimum retention milestone (e.g., second purchase, 14-day active usage) before any referral reward is released. Cap rewards per user per 30 days during the initial launch period.
+chaining:
+  after:
+  - framework_id: growth-loops-framework
+    reason: Growth loops framework provides the structural context; referral program design implements the referral-driven loop mechanics.
+  - framework_id: viral-loop-k-factor
+    reason: K-factor analysis quantifies the current viral coefficient; referral program design is the intervention to improve it.
+  before:
+  - framework_id: aarrr-pirate-metrics
+    reason: Referral program directly impacts the Referral (R) metric in AARRR and reduces blended CAC in the Acquisition (A) metric.

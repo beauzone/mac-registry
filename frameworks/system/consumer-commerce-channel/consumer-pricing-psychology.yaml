@@ -1,0 +1,149 @@
+metadata:
+  id: consumer-pricing-psychology
+  version: 1.0.0
+  display_name: Consumer Pricing Psychology Framework
+  category: strategy
+  description: Applies behavioral economics principles to consumer pricing strategy — anchoring, decoy pricing, bundle design, price presentation, and the psychological triggers that drive purchase decisions — to maximize conversion and revenue without sacrificing brand equity.
+  best_for:
+    stages:
+    - growth
+    - scale
+    roles:
+    - cmo
+    - consumer-product-manager
+    - head-of-performance
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: product_pricing_structure
+    description: Current price points, SKU assortment, and any tier or bundle pricing in place
+    source: user_input
+  - field: target_consumer_segment
+    description: Primary consumer segment — their income level, price sensitivity, and relationship with the product category
+    source: user_input
+  - field: pricing_objective
+    description: Primary pricing goal — maximize conversion rate, maximize revenue per transaction, improve premium tier uptake, or defend against competitive price pressure
+    source: user_input
+  optional:
+  - field: conversion_data
+    description: Current checkout conversion rate, cart abandonment rate, and any price sensitivity data from A/B tests
+    source: user_input
+  - field: competitive_pricing
+    description: Competitor price points and how consumers compare pricing in this category
+    source: user_input
+  - field: margin_constraints
+    description: Minimum margin requirements that constrain pricing decisions
+    source: user_input
+analysis:
+  instructions: 'Apply behavioral economics principles to the pricing architecture across six dimensions. First, design price anchor mechanics: consumers evaluate prices relative to a reference point. The highest price option anchors perception of value for all other options. When the premium SKU is presented first, the standard SKU feels like a bargain. When the cheapest option is listed first, all prices feel expensive. Second, design decoy pricing: the classic three-tier structure (Good/Better/Best) where the middle tier is priced to make the premium tier feel like obvious value. The decoy (middle option) should be priced at 70–80% of the premium price while delivering 50–60% of the premium value — making the premium tier feel like a steal. Third, design bundle structures that increase AOV while creating a perception of savings that drives bundle conversion. Fourth, optimize price presentation: how a price is displayed (installments vs. lump sum, $99.99 vs. $100, per-unit vs. per-month) affects perceived expensiveness without changing the actual economics. Fifth, model segment price sensitivity: different consumer segments have fundamentally different willingness to pay, and the pricing architecture should serve multiple segments without alienating any. Sixth, design promotional psychology: when, how, and to whom discounts are offered, and how they are framed to maximize conversion without training consumers to wait for sales.'
+  dimensions:
+  - id: price-anchor-design
+    name: Price Anchor Design
+    description: Designs the pricing sequence and presentation to establish a favorable price perception anchor
+    prompts:
+    - What is the optimal order to present price options — premium first to anchor high, or entry first to establish accessibility?
+    - What is the price anchor for this category — what do consumers expect to pay, and how does this product''s price relate to that anchor?
+    - Are there external anchors (competitor prices, industry-standard rates, MSRP vs. sale price) that can be used to frame the brand''s pricing favorably?
+    - How does the product''s packaging or presentation establish or undermine its price anchor — does the experience match the price expectation?
+  - id: decoy-pricing-mechanics
+    name: Decoy Pricing Mechanics
+    description: Designs the three-tier pricing structure where the middle option drives premium tier conversion
+    prompts:
+    - Is the current pricing structure designed with a deliberate decoy — a middle option that makes the premium option feel like outstanding value?
+    - What is the current ratio of features to price across tiers, and does the math favor the premium tier?
+    - How many consumers are currently choosing each pricing tier, and does the distribution suggest the decoy is working?
+    - What would change in tier conversion rates if the middle tier''s price were adjusted to 75% of the premium tier?
+  - id: bundle-structure
+    name: Bundle Structure Design
+    description: Designs product bundles that increase AOV while creating genuine perceived value
+    prompts:
+    - What product combinations have natural complementary demand that consumers would buy together anyway?
+    - What is the optimal bundle discount level — enough savings to motivate the bundle purchase without signaling that individual products are overpriced?
+    - How is the bundle discount presented — percentage savings, dollar savings, or "free" secondary product — to maximize perceived value?
+    - What is the incremental margin on a bundle transaction vs. individual SKU purchase, given the volume uplift?
+  - id: price-presentation-strategy
+    name: Price Presentation Strategy
+    description: Optimizes how prices are displayed to minimize perceived cost and maximize conversion
+    prompts:
+    - Does price presentation use charm pricing ($9.99 vs. $10.00), and is the effect meaningful for this price range and consumer segment?
+    - For subscription products, does monthly pricing presentation ($/month) vs. annual pricing presentation affect conversion rates?
+    - For high-ticket products, does installment payment presentation increase conversion, and what is the marginal interest cost vs. incremental conversion benefit?
+    - Are prices displayed in a context that makes them feel large (isolated, prominent) or small (in the context of daily equivalents, competitor comparisons)?
+  - id: segment-price-sensitivity
+    name: Segment Price Sensitivity Model
+    description: Maps willingness to pay by consumer segment and designs pricing to serve multiple segments
+    prompts:
+    - What is the maximum willingness to pay for each primary consumer segment, and how does it vary by usage intensity or product category engagement?
+    - Are there consumer segments whose willingness to pay is significantly higher than the current price point, suggesting untapped premium pricing opportunity?
+    - How does price sensitivity shift between first purchase (high sensitivity, unknown value) and repeat purchase (lower sensitivity, established value)?
+    - What pricing mechanisms (loyalty pricing, bundle-only access, premium tier features) serve high-willingness-to-pay segments without alienating price-sensitive segments?
+  - id: promotional-psychology
+    name: Promotional Pricing Psychology
+    description: Designs the discount and promotion strategy to maximize conversion without training consumers to wait for sales
+    prompts:
+    - What is the minimum discount level that drives meaningfully higher conversion for this consumer segment?
+    - How frequently should promotions run — and what is the maximum frequency before consumers learn to wait for the sale?
+    - Is the promotional offer framed as scarcity (limited time), social proof (most popular), or value (save X%), and which framing performs best?
+    - What is the promotional strategy to convert first-time buyers at a discount without creating a segment of permanently discount-conditioned consumers?
+output_templates:
+- id: primary
+  name: Consumer Pricing Psychology Analysis
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary\n\n{executive_summary}\n\n## Price Anchor Analysis\n\n{price_anchor_analysis}\n\n## Decoy Pricing Structure\n\n{decoy_pricing_structure}\n\n## Bundle Design\n\n{bundle_design}\n\n## Price Presentation Recommendations\n\n{price_presentation}\n\n## Segment Price Sensitivity\n\n{segment_price_sensitivity}\n\n## Promotional Strategy\n\n{promotional_strategy}\n\n## Priority A/B Tests\n\n{ab_tests}\n\n'
+rubric:
+  description: Evaluates the behavioral economics rigor and commercial impact of the pricing psychology analysis.
+  dimensions:
+  - name: Behavioral Economics Application
+    weight: 0.30
+    scoring:
+      1: Pricing recommendations are based on cost-plus or competitive matching without applying behavioral economics principles.
+      3: Behavioral economics principles are cited but not applied to the specific pricing architecture with evidence of how each principle should change current pricing decisions.
+      5: Behavioral economics principles are applied systematically to the current pricing architecture, with specific changes recommended for each principle and the expected conversion impact of each change.
+    improvement_guidance: For each behavioral economics principle applied, calculate the expected conversion lift from A/B test data in comparable categories and use it to size the commercial opportunity.
+  - name: Decoy Structure Assessment
+    weight: 0.25
+    scoring:
+      1: Current pricing has only one or two tiers, with no deliberate decoy architecture.
+      3: Three-tier structure exists but the middle tier pricing ratio does not create a compelling case for the premium option.
+      5: Three-tier structure is specifically designed with the middle tier at the optimal price-to-value ratio to drive premium tier conversion, validated by current tier conversion data.
+    improvement_guidance: Calculate the current premium tier uptake rate. If it is below 25% of total sales, the decoy is not working — either the price ratio or the feature-to-price ratio needs adjustment.
+  - name: Test Design Specificity
+    weight: 0.25
+    scoring:
+      1: No A/B tests are proposed; recommendations are implemented without a plan to validate their impact.
+      3: Tests are proposed but lack specific hypotheses, success metrics, or sample size calculations.
+      5: Each pricing psychology recommendation comes with a specific A/B test design including hypothesis, primary metric, minimum sample size, and expected effect size.
+    improvement_guidance: Prioritize pricing A/B tests by expected revenue impact. A 5-percentage-point improvement in premium tier uptake often has a larger revenue impact than a 2-percentage-point improvement in overall conversion rate.
+  - name: Brand Equity Protection
+    weight: 0.20
+    scoring:
+      1: Pricing psychology recommendations optimize conversion without considering the impact on brand perception and price equity.
+      3: Brand equity considerations are mentioned but not integrated into the specific pricing recommendations.
+      5: Every pricing psychology tactic is evaluated against brand equity implications — discounting strategies are designed to protect the brand''s price position rather than erode it.
+    improvement_guidance: Set a maximum discount threshold for all promotional pricing based on the brand''s desired price positioning relative to competitors. Never offer discounts that drop the effective price below the category''s mid-market level if the brand is positioned as premium.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: Race-to-Bottom Discounting
+  description: Defaulting to increasing discount depth or frequency whenever conversion declines, training consumers to wait for promotions and eroding the brand's price positioning over time.
+  mitigation: Set a promotional calendar limit (maximum four promotional events per year) and a minimum promotional price floor that preserves the brand's price equity. Use non-price levers (free gift with purchase, free shipping, bonus content) before reaching for deeper discounts.
+- pattern: Single-Price Offer
+  description: Offering only one price option, eliminating the anchoring and decoy effects that drive consumers to the most profitable option and preventing segmentation by willingness to pay.
+  mitigation: Always present at least three price options for products above $20. The three-tier structure consistently outperforms single-price offers in both conversion rate and average revenue per buyer.
+- pattern: Price Anchoring Through Fake MSRP
+  description: Displaying an inflated "original price" or "MSRP" that does not reflect a price the product has actually sold at, creating an anchor that consumers recognize as false and that damages brand credibility.
+  mitigation: Only use price anchoring with reference prices that reflect genuine market prices. Reference the real competitor price, the real non-promotional price, or the real MSRP from a channel where the product is sold at that price.
+chaining:
+  after:
+  - framework_id: pricing-strategy
+    reason: Pricing strategy sets the fundamental price positioning; this framework applies behavioral economics to optimize the presentation and architecture within that positioning.
+  before:
+  - framework_id: value-proposition-canvas
+    reason: Pricing psychology analysis reveals where the brand''s value proposition must be strengthened to justify the target price point in consumer perception.

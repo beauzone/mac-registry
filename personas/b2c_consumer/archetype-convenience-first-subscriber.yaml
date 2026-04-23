@@ -1,0 +1,222 @@
+metadata:
+  id: archetype-convenience-first-subscriber
+  version: "1.0.0"
+  display_name: "Convenience-First Subscriber"
+  domain: consumer-archetype
+  archetype_type: consumer-saas-apps
+  description: >
+    The Convenience-First Subscriber values time and cognitive ease above almost everything else.
+    They subscribe to services specifically to remove friction, decision fatigue, and effort from
+    recurring activities. They are willing to pay a premium for "set it and forget it" experiences
+    and are tolerant of subscriptions as long as the convenience benefit is real. Load this archetype
+    when optimizing subscription onboarding, auto-replenishment products, recurring service UX,
+    or retention programs for consumer services that compete on saving time and effort.
+  tags:
+    - convenience-driven
+    - time-poor
+    - frictionless-experience
+    - subscription-positive
+    - auto-replenishment
+  schema_version: "1.0"
+
+  authority_level: tier_4_audience
+  org_scope: global
+identity:
+  persona_summary: |
+    The Convenience-First Subscriber is time-poor and trades money for effort reduction without
+    guilt. They are positively disposed toward subscriptions because subscriptions solve their
+    core problem: eliminating repetitive decisions. They cancel when the convenience benefit
+    disappears — when the product becomes more hassle than it saves, requires regular management,
+    or disrupts the routine it was supposed to simplify. Reliability and consistency matter
+    more to them than price optimization.
+  archetype_summary: |
+    The Convenience-First Subscriber is time-poor and trades money for effort reduction without
+    guilt. They are positively disposed toward subscriptions because subscriptions solve their
+    core problem: eliminating repetitive decisions. They cancel when the convenience benefit
+    disappears — when the product becomes more hassle than it saves, requires regular management,
+    or disrupts the routine it was supposed to simplify. Reliability and consistency matter
+    more to them than price optimization.
+  behavioral_description: |
+    This consumer is typically dual-income, has significant work or family demands, and actively
+    manages cognitive load by delegating recurring tasks to services. They use Amazon Subscribe &
+    Save, grocery delivery apps, streaming bundles, and auto-refill pharmacy services. They rarely
+    read promotional emails — the subscription is already on autopilot. They will not switch
+    providers for a 10% savings if switching requires effort. They discover new services when a
+    recommendation solves a specific friction point. Onboarding must be fast (under 5 minutes)
+    and deliver an immediate relief signal — if they have to "work" to get value, the subscription
+    has already failed its core promise.
+
+purchase_behavior:
+  purchase_triggers:
+    - A specific recurring friction point they are experiencing right now
+    - Word-of-mouth recommendation from a peer with similar life demands
+    - Bundled offer that consolidates multiple efforts into one subscription
+    - Fast onboarding — can be set up and running in under 5 minutes
+    - '"Set and forget" framing that credibly promises no ongoing management'
+    - First experience delivers immediate, tangible time or effort savings
+    - Integration with existing tools they already use (calendar, Alexa, existing apps)
+  trust_signals:
+    - Reliable delivery or service consistency track record
+    - Easy modification — skip, reschedule, or adjust without calling customer service
+    - Setup time clearly stated and genuinely short
+    - Testimonials from users with similar lifestyles mentioning time saved
+    - Integration with services they already use
+    - Transparent auto-renewal terms upfront
+  red_flags:
+    - Onboarding requiring more than 5-7 minutes or significant decision-making
+    - Reliability problems — late deliveries, service outages, wrong items
+    - Changes that require active management or new preference prompts
+    - Customer service requiring phone calls or long wait times for simple changes
+    - Subscription that requires regular attention to maintain value
+    - Price increases without notice or explanation
+  decision_speed: fast
+  decision_speed_notes: |
+    Decisions are fast when the problem is real and the solution is clearly frictionless.
+    If they can see the setup process is quick and the relief is immediate, they will
+    subscribe within hours of discovery. The main bottleneck is the recommendation or
+    discovery moment — once they find the product, conversion is high if onboarding
+    is genuinely fast.
+
+media_consumption:
+  primary_channels:
+    - channel: Word-of-mouth / messaging apps
+      role: Primary discovery — peer recommendations from people with similar life situations
+    - channel: Instagram and Facebook (targeted ads)
+      role: Re-discovery — will recognize a service they've heard about if the ad shows a clear convenience use case
+    - channel: Amazon
+      role: Default shopping and auto-replenishment platform; high conversion if the product is available here
+    - channel: Podcasts (mid-roll ads)
+      role: Passive discovery during commute — audio-first convenience-oriented ad copy lands well
+    - channel: Email (operational only)
+      role: Uses email for order confirmations and account updates only — promotional emails are ignored
+  discovery_path: |
+    Most commonly through a peer recommendation triggered by a specific pain point. Targeted
+    social ads can work if they visually demonstrate the convenience scenario in the first 3
+    seconds. Podcast mid-roll placements with a specific offer code outperform display for
+    this archetype.
+  research_behavior: |
+    Research is minimal — they are not comparison shoppers. If the recommendation is credible
+    and the onboarding looks fast, they will try it. They check setup time and read one or two
+    reviews to confirm reliability, then sign up. They do not price-compare extensively unless
+    the price is obviously unreasonable.
+
+price_sensitivity:
+  level: low
+  notes: |
+    Price sensitivity is low relative to convenience value. They will pay a meaningful premium
+    for a subscription that reliably eliminates a recurring friction — the calculation is
+    "is this worth less than X hours of my time per month?" not "is this cheaper than the
+    alternative?" They will cancel if they perceive they are paying for a benefit they are
+    not actually receiving, but they rarely cancel to save money alone.
+  premium_justifiers:
+    - Genuine, measurable time savings on a recurring activity
+    - Reliability that eliminates the need to monitor or check the service
+    - Bundles that reduce the number of separate subscriptions they manage
+    - Setup that takes minutes, not hours
+    - No ongoing management required to maintain full value
+
+loyalty_patterns:
+  brand_loyalty: high
+  platform_loyalty: high
+  loyalty_drivers:
+    - Invisible reliability — the service works every time without their attention
+    - Habit integration — the subscription is embedded in routine and removing it would require effort
+    - Minimal management burden — no prompts, no re-authorization required
+    - Consistent quality without surprises
+    - Easy service modifications that don't require customer service contact
+  switching_triggers:
+    - Reliability failure — missed delivery, service outage, wrong product
+    - Required active management — any change that makes the subscription high-maintenance
+    - Forced interface changes that require re-learning a system they had on autopilot
+    - A peer recommendation for a clearly better convenience solution
+    - Price increase large enough to trigger conscious re-evaluation of value
+
+calibration:
+  messaging:
+    resonate_with:
+      - Specific time saved quantified — "saves 2 hours per month on average"
+      - '"Set it once" or "we handle the rest" positioning'
+      - Reliability proof — delivery accuracy rates, uptime statistics, service guarantees
+      - '"Works with [existing tool]" integration messaging'
+      - Social proof from users with similar time-constraint profiles
+      - Frictionless setup demonstration — "up and running in 4 minutes"
+    avoid:
+      - Messaging that implies ongoing management or regular decision-making
+      - Price comparison as a primary value driver — not how they evaluate
+      - Feature complexity — they want one clear benefit, not a feature list
+      - FOMO tactics — they are not trend-driven
+      - Long-form content requiring significant reading time
+    tone: efficient and reassuring
+
+  conversion:
+    high_impact_tactics:
+      - Minimize onboarding steps — each additional step is an abandonment risk
+      - Show setup time estimate upfront ("Get set up in 3 minutes")
+      - Surface reliability statistics (on-time delivery rate, customer satisfaction score)
+      - Offer a bundle or all-in-one option that reduces subscription count
+      - Enable one-click reorder and skip/pause from SMS or app notification
+      - Show delivery schedule clearly so they can plan without thinking about it
+    friction_points:
+      - Multi-step preference surveys during onboarding
+      - Complex plan selection requiring comparison and decision-making
+      - Account creation before seeing how the product works
+      - Delivery scheduling that requires manual input each cycle
+      - Customer service accessible only by phone or chat (vs. self-serve)
+    urgency_triggers:
+      - A specific recurring pain point they mentioned (personalized to their situation)
+      - A peer recommendation with a personal referral link
+      - A bundle offer that consolidates something they already manage separately
+
+  content:
+    preferred_formats:
+      - Short-form video showing the before/after convenience scenario (15-30 seconds)
+      - Simple "how it works in 3 steps" landing page layouts
+      - Reliability and trust statistics (delivery accuracy, customer ratings)
+      - Testimonials focused on time saved and effort eliminated, not product features
+      - Operational emails and confirmations (they read these; they ignore promotions)
+    credibility_signals:
+      - High on-time delivery or service reliability rates
+      - Integration with established platforms (Amazon, Google Home, Apple Health)
+      - Peer recommendations from trusted contacts
+      - Guarantee of easy modification without customer service contact
+      - Clear, prominent skip, pause, and cancel controls in the app
+    credibility_killers:
+      - Reliability problems flagged in reviews
+      - Onboarding that takes longer than advertised
+      - Customer service reviews mentioning long wait times
+      - App or service that requires regular attention to function correctly
+      - Pricing that requires a calculator to understand
+
+examples:
+  - scenario: Writing acquisition copy for a household essentials auto-delivery subscription
+    without_archetype: |
+      Subject: Never Run Out of Your Favorite Essentials!
+      Body: Subscribe and save on all your household staples. Choose from hundreds of products,
+      set your delivery frequency, and get 15% off every order plus free shipping. Join over
+      50,000 happy subscribers today!
+    with_archetype: |
+      Subject: Set it once. We handle the rest.
+      Body: Pick what you need. Tell us how often. We deliver it — on time, every time.
+      No reminders. No running out. No last-minute store runs.
+      Average setup: 4 minutes. Average order accuracy: 99.2%. Skip or change anytime
+      in 30 seconds from the app. [Set up my first delivery]
+      Note: The archetype-informed version leads with effort elimination, quantifies reliability
+      and setup time, and removes all decision burden from the copy.
+
+  - scenario: Diagnosing why a grocery delivery subscription has 40% 90-day churn
+    without_archetype: |
+      Improve the product selection, add more promotional offers, and send re-engagement
+      emails with discount codes to churned subscribers.
+    with_archetype: |
+      For a convenience-first subscriber, 40% 90-day churn is almost never about product
+      selection — it is about a reliability or management burden failure. Run a post-cancel
+      survey and look for: (1) delivery reliability issues in the first 3 orders; (2) any
+      onboarding requirement that felt like work rather than setup; (3) any moment where
+      they had to actively manage the subscription rather than it running on autopilot.
+      The convenience promise breaks the moment they have to call customer service or deal
+      with a missed delivery. Discount codes will not re-engage an archetype that left
+      because the service became high-maintenance — fix reliability first.
+_source_meta:
+  source: manual
+  import_date: '2026-04-19'
+  converter: persona_backfill_bucket1.py

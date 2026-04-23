@@ -1,0 +1,140 @@
+metadata:
+  id: viral-loop-k-factor
+  version: 1.0.0
+  display_name: Viral Loop & K-Factor Analysis
+  category: growth
+  description: Measures the viral coefficient (K-factor) of consumer products and maps the mechanics driving organic sharing, referral, and word-of-mouth growth to identify whether the product has a self-sustaining viral engine.
+  best_for:
+    stages:
+    - growth
+    - scale
+    roles:
+    - head-of-growth
+    - paid-media-manager
+  invocation_modes:
+  - explicit
+  - recommended
+  - free_form
+  schema_version: '1.0'
+inputs:
+  required:
+  - field: sharing_data
+    description: Current invite/share/referral rate — how many new users each existing user generates on average
+    source: user_input
+  - field: conversion_rate
+    description: Percentage of invited or referred users who sign up or make a purchase
+    source: user_input
+  - field: viral_loop_description
+    description: Description of the current sharing or referral mechanism in the product
+    source: user_input
+  optional:
+  - field: loop_cycle_time
+    description: Average time from a user joining to them generating their first referral
+    source: user_input
+  - field: channel_breakdown
+    description: Breakdown of sharing behavior by channel (social, direct link, word-of-mouth, embed, etc.)
+    source: user_input
+  - field: incentive_structure
+    description: Current incentives for sharing, if any, and their redemption rates
+    source: user_input
+analysis:
+  instructions: 'Calculate the K-factor using the formula K = i × c, where i is the average number of invites or shares each user sends and c is the conversion rate of invitees into users. A K-factor above 1.0 means viral growth (each user generates more than one new user); between 0.5 and 1.0 means meaningful viral assist; below 0.5 means the viral loop is not significant and paid acquisition must carry the load. Decompose the K-factor into its components and identify which variable — invitation rate or conversion rate — offers the most leverage for improvement. Map the full viral loop: what triggers a share, what content or context is shared, how the invite is delivered, and what the recipient experiences. Model the compounding impact of improving K from current level to 0.5, 0.75, and 1.0 using realistic adoption curves. Identify the viral loop type (word-of-mouth, product virality, incentivized referral, social proof, content sharing) and recommend the highest-leverage interventions.'
+  dimensions:
+  - id: k-factor-calculation
+    name: K-Factor Calculation & Diagnosis
+    description: Calculates the current K-factor and interprets its implications for growth
+    prompts:
+    - What is the current invitation rate (invites sent per user) and conversion rate (invitees who convert)?
+    - What is the resulting K-factor, and how does it compare to category benchmarks?
+    - Is the K-factor stable, rising, or declining, and what trend is driving the change?
+    - At the current K-factor, how much does each dollar of paid acquisition compound into organic growth?
+  - id: sharing-triggers
+    name: Sharing Trigger Analysis
+    description: Maps when and why users share, and what content or context they share
+    prompts:
+    - What event or moment in the user journey most commonly precedes a share or referral?
+    - Is sharing driven by genuine enthusiasm for the product, social signaling, or financial incentive?
+    - What content format (link, image, video, quote, achievement badge) generates the highest share rate?
+    - How does the context of sharing (social platform, messaging app, email, in-person) affect conversion rates of invitees?
+  - id: loop-velocity
+    name: Viral Loop Velocity
+    description: Measures how quickly the viral loop cycles and how that affects compounding growth
+    prompts:
+    - What is the average time from a user joining to their first share or referral action?
+    - How does loop cycle time affect the compounding effect of a given K-factor over 30, 60, and 90 days?
+    - What product or UX changes could accelerate the loop cycle time without degrading share quality?
+    - How does loop velocity compare across user segments, and which segment has the fastest viral loop?
+  - id: compounding-model
+    name: Viral Compounding Model
+    description: Projects the growth impact of improving the K-factor under different scenarios
+    prompts:
+    - What is the projected organic user growth at current K-factor over 6 and 12 months?
+    - What is the incremental growth impact of increasing K from its current level to 0.5, 0.75, and 1.0?
+    - At what K-factor does the organic channel reduce blended CAC by a meaningful amount (e.g., 20%+)?
+    - How does K-factor sensitivity differ when the improvement comes from invitation rate vs. conversion rate?
+  - id: viral-channel-mix
+    name: Viral Channel Mix
+    description: Identifies the channels through which virality flows and their relative performance
+    prompts:
+    - Which sharing channel (social post, direct message, email, embed, content) generates the highest K-factor contribution?
+    - Where is there a mismatch between where users share and where invitees convert?
+    - Which viral channel is underinvested relative to its conversion rate potential?
+    - Are there new sharing contexts or platforms where the target user segment has high engagement that the product has not yet activated?
+output_templates:
+- id: primary
+  name: Viral Loop & K-Factor Analysis Report
+  format: memo
+  when_to_use: ''
+  template: '## Executive Summary\n\n{executive_summary}\n\n## K-Factor Calculation\n\n{k_factor_calculation}\n\n## Viral Loop Map\n\n{viral_loop_map}\n\n## Sharing Trigger Analysis\n\n{sharing_trigger_analysis}\n\n## Compounding Growth Scenarios\n\n{compounding_growth_model}\n\n## Channel Mix Performance\n\n{viral_channel_mix}\n\n## Priority Interventions\n\n{priority_interventions}\n\n'
+rubric:
+  description: Evaluates the rigor and actionability of the K-factor and viral loop analysis.
+  dimensions:
+  - name: Calculation Accuracy
+    weight: 0.30
+    scoring:
+      1: K-factor is estimated without real data on invitation rate and conversion rate.
+      3: K-factor is calculated but based on blended averages that mask variation across user segments and channels.
+      5: K-factor is calculated from real data, decomposed by user segment and channel, and validated against cohort-level sharing behavior.
+    improvement_guidance: Instrument the viral loop end-to-end with event tracking before running this framework. Measure invitation rate and conversion rate separately for each sharing channel.
+  - name: Loop Mechanics Clarity
+    weight: 0.25
+    scoring:
+      1: The viral loop mechanism is described in vague terms without a clear trigger-to-conversion flow map.
+      3: The loop is mapped but some steps are assumed rather than observed in user behavior data.
+      5: The complete viral loop is mapped from trigger event through share action through recipient conversion, validated with funnel data at each step.
+    improvement_guidance: Build a step-by-step funnel for the viral loop with drop-off rates at each step. The highest-drop-off step is the highest-leverage intervention point.
+  - name: Compounding Model Quality
+    weight: 0.25
+    scoring:
+      1: No growth projection model; the report is descriptive without forward-looking analysis.
+      3: Growth projections are included but use overly simplistic assumptions without sensitivity testing.
+      5: Growth projections show multiple K-factor scenarios with realistic adoption curves, loop velocity assumptions, and sensitivity to key variables.
+    improvement_guidance: Build the compounding model in a spreadsheet with adjustable K-factor and loop cycle time inputs to enable real-time scenario analysis.
+  - name: Intervention Specificity
+    weight: 0.20
+    scoring:
+      1: Recommendations are generic (improve the referral program) without specific mechanics or test designs.
+      3: Interventions are specific but not prioritized by expected impact on K-factor.
+      5: Interventions are specific, prioritized by expected K-factor lift, and include test designs with success metrics.
+    improvement_guidance: For each proposed intervention, calculate the expected change in invitation rate or conversion rate and the resulting K-factor lift.
+  thresholds:
+    revise: 2.5
+    publish_ready: 3.5
+    escalate_to_user: 2.0
+anti_patterns:
+- pattern: K-Factor Theater
+  description: Reporting a high K-factor that is artificially inflated by spam-like invite mechanics that generate invitations but very low conversion, creating a false sense of viral health.
+  mitigation: Track both the raw invitation rate and the conversion rate of invitees. A high invitation rate with a sub-2% conversion rate indicates a broken loop, not a viral product.
+- pattern: Ignoring Loop Cycle Time
+  description: Focusing only on the K-factor magnitude without considering loop velocity — a K of 0.8 with a 3-day cycle compounds far faster than a K of 0.9 with a 30-day cycle.
+  mitigation: Always model K-factor alongside loop cycle time. For products with slow cycles, invest in accelerating the trigger-to-share time before trying to improve the K coefficient.
+- pattern: Incentive-Dependent Virality
+  description: Achieving a K-factor above 1.0 only when financial incentives are offered, which means the viral engine will collapse if incentives are ever reduced.
+  mitigation: Measure K-factor with and without incentives. Invest in product virality (sharing as a natural byproduct of use) so that at least 50% of the K-factor comes from non-incentivized sharing.
+chaining:
+  after:
+  - framework_id: growth-loops-framework
+    reason: Growth loops provide the structural framework; K-factor analysis quantifies the viral coefficient of a specific loop.
+  before:
+  - framework_id: aarrr-pirate-metrics
+    reason: K-factor directly impacts the Acquisition and Referral metrics in AARRR and should inform how those targets are set.
