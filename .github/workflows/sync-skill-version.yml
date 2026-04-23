@@ -68,12 +68,22 @@ jobs:
               skill_path = Path('skills/user/b2b-gtm-strategist/SKILL.md')
               content = skill_path.read_text()
 
+              # Update SKILL_VERSION comment
               content = content.replace(
                   f'SKILL_VERSION: {curr}',
                   f'SKILL_VERSION: {new_version}'
               )
 
+              # Update front matter version: field to match
               import re as _re
+              content = _re.sub(
+                  r'^version: [\"\']?' + re.escape(curr) + r'[\"\']?',
+                  f'version: {new_version}',
+                  content,
+                  flags=_re.MULTILINE
+              )
+
+              # Update SKILL_UPDATED date
               content = _re.sub(
                   r'SKILL_UPDATED: \d{4}-\d{2}-\d{2}',
                   f'SKILL_UPDATED: {today}',
@@ -88,11 +98,34 @@ jobs:
                   f.write(f"date={today}\n")
                   f.write("bumped=true\n")
           else:
-              print(f"Version already bumped: {prev} → {curr}. No auto-bump needed.")
-              with open("$GITHUB_OUTPUT", "a") as f:
-                  f.write(f"version={curr}\n")
-                  f.write(f"date=${{ steps.current.outputs.date }}\n")
-                  f.write("bumped=false\n")
+              print(f"Version already bumped: {prev} → {curr}. Syncing front matter.")
+
+              # Sync front matter version to match SKILL_VERSION comment
+              skill_path = Path('skills/user/b2b-gtm-strategist/SKILL.md')
+              content = skill_path.read_text()
+
+              import re as _re
+              updated = _re.sub(
+                  r'^version: [\"\']?.*?[\"\']?$',
+                  f'version: {curr}',
+                  content,
+                  flags=_re.MULTILINE,
+                  count=1
+              )
+
+              if updated != content:
+                  skill_path.write_text(updated)
+                  print(f"Front matter synced to {curr}")
+                  with open("$GITHUB_OUTPUT", "a") as f:
+                      f.write(f"version={curr}\n")
+                      f.write(f"date=${{ steps.current.outputs.date }}\n")
+                      f.write("bumped=true\n")  # treat as bumped so commit fires
+              else:
+                  print("Front matter already in sync.")
+                  with open("$GITHUB_OUTPUT", "a") as f:
+                      f.write(f"version={curr}\n")
+                      f.write(f"date=${{ steps.current.outputs.date }}\n")
+                      f.write("bumped=false\n")
           EOF
 
       - name: Commit auto-bump if applied
