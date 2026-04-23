@@ -7,7 +7,6 @@ on:
     branches:
       - main
 
-# Fix: grant write permission so the bot can commit back to the repo
 permissions:
   contents: write
 
@@ -15,14 +14,13 @@ jobs:
   sync-skill-version:
     runs-on: ubuntu-latest
 
-    # Prevent loop: skip if this is an auto-bump commit from the Action itself
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4  # Fix: use latest v4 (Node.js 24 compatible)
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 2  # Need previous commit to compare versions
+          fetch-depth: 2
 
       - name: Get previous SKILL_VERSION
         id: prev
@@ -49,7 +47,7 @@ jobs:
           echo "date=$DATE" >> $GITHUB_OUTPUT
           echo "Current version: $CURR"
 
-      - name: Auto-bump patch if version unchanged
+      - name: Resolve final version and update files
         id: resolved
         run: |
           python3 - <<EOF
@@ -60,82 +58,61 @@ jobs:
           curr = "${{ steps.current.outputs.version }}"
           today = "$(date +%Y-%m-%d)"
 
+          skill_path = Path('skills/user/b2b-gtm-strategist/SKILL.md')
+          content = skill_path.read_text()
+
           if prev == curr:
+              # Version not manually bumped — auto-bump patch
               parts = curr.split('.')
               parts[2] = str(int(parts[2]) + 1)
               new_version = '.'.join(parts)
 
-              skill_path = Path('skills/user/b2b-gtm-strategist/SKILL.md')
-              content = skill_path.read_text()
-
-              # Update SKILL_VERSION comment
               content = content.replace(
                   f'SKILL_VERSION: {curr}',
                   f'SKILL_VERSION: {new_version}'
               )
-
-              # Update front matter version: field to match
-              import re as _re
-              content = _re.sub(
-                  r'^version: [\"\']?[\d\.]+[\"\']?',
-                  f'version: {new_version}',
+              content = re.sub(
+                  r'^version: [\"\'']?[\d\.]+[\"\'']?',
+                  f'version: "{new_version}"',
                   content,
-                  flags=_re.MULTILINE
+                  flags=re.MULTILINE,
+                  count=1
               )
-
-              # Update SKILL_UPDATED date
-              content = _re.sub(
+              content = re.sub(
                   r'SKILL_UPDATED: \d{4}-\d{2}-\d{2}',
                   f'SKILL_UPDATED: {today}',
                   content
               )
-
               skill_path.write_text(content)
-              print(f"AUTO-BUMP: {curr} → {new_version}")
+              print(f"AUTO-BUMP: {curr} -> {new_version}")
 
               with open("$GITHUB_OUTPUT", "a") as f:
                   f.write(f"version={new_version}\n")
                   f.write(f"date={today}\n")
-                  f.write("bumped=true\n")
+                  f.write("changed=true\n")
           else:
-              print(f"Version already bumped: {prev} → {curr}. Syncing front matter.")
-
-              # Sync front matter version to match SKILL_VERSION comment
-              skill_path = Path('skills/user/b2b-gtm-strategist/SKILL.md')
-              content = skill_path.read_text()
-
-              import re as _re
-              updated = _re.sub(
-                  r'^version: [\"\']?[\d\.]+[\"\']?',
-                  f'version: {curr}',
+              # Version manually bumped — sync front matter only if needed
+              new_version = curr
+              updated = re.sub(
+                  r'^version: [\"\'']?[\d\.]+[\"\'']?',
+                  f'version: "{new_version}"',
                   content,
-                  flags=_re.MULTILINE,
+                  flags=re.MULTILINE,
                   count=1
               )
-
               if updated != content:
                   skill_path.write_text(updated)
-                  print(f"Front matter synced to {curr}")
-                  with open("$GITHUB_OUTPUT", "a") as f:
-                      f.write(f"version={curr}\n")
-                      f.write(f"date=${{ steps.current.outputs.date }}\n")
-                      f.write("bumped=true\n")  # treat as bumped so commit fires
+                  print(f"Front matter synced to {new_version}")
+                  changed = "true"
               else:
-                  print("Front matter already in sync.")
-                  with open("$GITHUB_OUTPUT", "a") as f:
-                      f.write(f"version={curr}\n")
-                      f.write(f"date=${{ steps.current.outputs.date }}\n")
-                      f.write("bumped=false\n")
-          EOF
+                  print("Front matter already in sync. No SKILL.md changes needed.")
+                  changed = "false"
 
-      - name: Commit auto-bump if applied
-        if: steps.resolved.outputs.bumped == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add skills/user/b2b-gtm-strategist/SKILL.md
-          git commit -m "chore: auto-bump SKILL_VERSION to ${{ steps.resolved.outputs.version }} [skip ci]"
-          git push
+              with open("$GITHUB_OUTPUT", "a") as f:
+                  f.write(f"version={new_version}\n")
+                  f.write(f"date=${{ steps.current.outputs.date }}\n")
+                  f.write(f"changed={changed}\n")
+          EOF
 
       - name: Update manifest skill version
         run: |
@@ -143,11 +120,16 @@ jobs:
             --version "${{ steps.resolved.outputs.version }}" \
             --date "${{ steps.resolved.outputs.date }}"
 
-      - name: Commit manifest update
+      - name: Commit and push all changes in one shot
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add skills/user/b2b-gtm-strategist/SKILL.md
           git add config/registry-manifest.yaml
-          git diff --staged --quiet || git commit -m \
-            "chore: sync skill version to ${{ steps.resolved.outputs.version }} [skip ci]"
-          git push
+          if git diff --staged --quiet; then
+            echo "Nothing to commit — all files already in sync."
+          else
+            git pull --rebase origin main
+            git commit -m "chore: sync skill version to ${{ steps.resolved.outputs.version }} [skip ci]"
+            git push
+          fi
