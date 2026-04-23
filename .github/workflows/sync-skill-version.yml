@@ -77,7 +77,7 @@ jobs:
               # Update front matter version: field to match
               import re as _re
               content = _re.sub(
-                  r'^version: [\"\']?' + re.escape(curr) + r'[\"\']?',
+                  r'^version: [\"\']?[\d\.]+[\"\']?',
                   f'version: {new_version}',
                   content,
                   flags=_re.MULTILINE
@@ -106,7 +106,7 @@ jobs:
 
               import re as _re
               updated = _re.sub(
-                  r'^version: [\"\']?.*?[\"\']?$',
+                  r'^version: [\"\']?[\d\.]+[\"\']?',
                   f'version: {curr}',
                   content,
                   flags=_re.MULTILINE,
