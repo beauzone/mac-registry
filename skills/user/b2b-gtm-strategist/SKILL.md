@@ -1,6 +1,6 @@
 ---
 name: b2b-gtm-strategist
-version: 2.1.4
+version: "2.2.0"
 description: >
   A structured B2B marketing and go-to-market strategy skill backed by analytical
   frameworks, SME buyer personas (cybersecurity, IT, anti-fraud, marketing practitioners,
@@ -11,11 +11,14 @@ description: >
   sales motion design, category creation, pricing strategy, content creation, or any
   other B2B marketing strategy topic — even if they don't explicitly mention a framework.
   If the user describes a business challenge or strategic decision in a B2B context,
-  use this skill. Do not wait for the user to ask by name.
+  use this skill. Do not wait for the user to ask by name. Also handles brand pack
+  management: creating, importing, exporting, and distributing company brand packs
+  (colors, typography, logos, voice, personas, templates) as portable ZIP files.
+  Commands: pack export, pack import, pack list, pack status, skill export.
 ---
 
 <!--
-SKILL_VERSION: 2.1.4
+SKILL_VERSION: 2.2.0
 SKILL_UPDATED: 2026-04-23
 -->
 
@@ -155,18 +158,17 @@ A brand pack is a named company context bundle. Packs are stored at:
 ```
 companies/
 └── {company_id}/
-    ├── pack.yaml       — name, url, created_at, notes
-    ├── sources/        — ingested brand, messaging, ICP files
-    ├── personas/       — custom personas created for this company
-    ├── frameworks/     — company-specific framework customizations
-    └── templates/      — company-specific template customizations
+    ├── pack.yaml                    — name, url, created_at, completeness_status
+    ├── sources/
+    │   ├── brand-context.yaml       — positioning, voice, products, proof points
+    │   ├── brand-guidelines.yaml    — colors, typography, logos, shape system
+    │   └── logos/
+    │       ├── svg/                 — SVG logo variants
+    │       └── png/                 — PNG logo variants
+    ├── personas/                    — custom personas for this company
+    ├── frameworks/                  — company-specific framework customizations
+    └── templates/                   — company-specific document templates
 ```
-
-**Creating a new pack:**
-1. Collect company name → derive `company_id` as kebab-case slug
-2. Ask for website URL and/or documents to ingest as brand context
-3. Write `pack.yaml`, create directory structure
-4. Ingest provided materials into `sources/`
 
 **Multiple packs** are supported for agencies and contractors working across clients.
 List all installed packs at startup (Step 2) and let the user select one per session.
@@ -176,6 +178,820 @@ List all installed packs at startup (Step 2) and let the user select one per ses
 - `approved` — user-created or customized artifacts (company or user directories)
 
 ---
+
+### Brand Pack Creation Flow
+
+Brand pack creation is a two-track process: **automated web extraction** and **user-provided
+assets**. Run both tracks. Never skip the automated track because you assume the user has
+documents, and never skip asking for documents because web extraction succeeded partially.
+
+The goal is a complete, verified pack. Partial data must be flagged explicitly — never
+silently filled with estimates.
+
+---
+
+#### Track 1 — Automated Web Extraction
+
+**Step 1.1 — Detect available browser tools**
+
+Before attempting any web extraction, check what tools are available:
+
+| Tool | How to detect | Capability |
+|---|---|---|
+| Claude in Chrome | Check for tools: `navigate`, `get_page_content`, `execute_javascript` | Full browser — JS rendering, DOM access, computed styles |
+| Playwright MCP | Check for tools: `playwright_navigate`, `playwright_evaluate`, `playwright_screenshot` | Full browser — JS rendering, automation, style extraction |
+| `curl` / `bash_tool` | Always available | Dumb HTTP only — no JS, fails Cloudflare/SPA sites |
+
+Announce detected capability before starting:
+> "I have [Claude in Chrome / a Playwright MCP / HTTP fetch only] available for web
+> extraction. [Browser tool: I'll use it to render JavaScript and extract brand assets
+> directly from the DOM.] [HTTP only: I can fetch static HTML but will likely be blocked
+> by Cloudflare on protected sites and cannot render JavaScript-driven content.]"
+
+**Step 1.2 — Attempt homepage and brand center extraction**
+
+Priority URL targets (attempt in order):
+1. `{url}/brand` or `{url}/brand-center` or `{url}/company/brand-center`
+2. `{url}/press` or `{url}/media` or `{url}/media-kit`
+3. Homepage `{url}/`
+
+**If browser tool is available (Claude in Chrome or Playwright):**
+
+Navigate to each URL and extract:
+
+```
+Colors:
+  - Execute: document.querySelectorAll('[style*="color"], [style*="background"]')
+  - Execute: getComputedStyle(document.body).getPropertyValue('--primary-color') (and other CSS vars)
+  - Screenshot the color palette section if visible; read hex values directly
+  - Look for: hex codes in page source, CSS custom properties (--color-*), Tailwind classes
+
+Typography:
+  - Execute: getComputedStyle(document.body).fontFamily
+  - Look for: Google Fonts link tags, @font-face declarations, font CDN references
+  - Read any type scale displayed on the page
+
+Logos:
+  - Locate: <img> tags with "logo" in src/alt/class, SVG elements in header
+  - Download: any SVG logos found (preferred) or PNG fallbacks
+  - Check: /brand, /press, /media-kit pages for downloadable logo packages
+
+Brand guidelines document:
+  - Look for: download links, PDF links, "Brand Guidelines", "Press Kit", "Media Kit"
+  - Download any linked PDF or ZIP that contains brand assets
+```
+
+**If only HTTP/curl is available:**
+
+Attempt fetch but warn immediately:
+> "⚠️ No browser tool detected. Attempting HTTP fetch — this will likely fail on
+> Cloudflare-protected sites and cannot render JavaScript. Proceeding, but expect
+> partial results."
+
+Parse any successfully retrieved static HTML for:
+- `<meta>` theme-color tags
+- Inline `style` attributes with color values
+- `<link rel="stylesheet">` hrefs (fetch CSS, extract custom properties)
+- Image src attributes for logos
+
+**Step 1.3 — Extraction result classification**
+
+After attempting extraction, classify each asset category:
+
+| Category | Status options |
+|---|---|
+| Primary brand color | ✅ Confirmed (from source) / ❌ Not found |
+| Secondary/accent colors | ✅ Confirmed / ⚠️ Partial / ❌ Not found |
+| Typography (primary font) | ✅ Confirmed / ❌ Not found |
+| Typography (accent font) | ✅ Confirmed / ❌ Not found |
+| Type scale | ✅ Confirmed / ❌ Not found |
+| Logo files | ✅ Downloaded / ⚠️ URL only / ❌ Not found |
+| Brand guidelines document | ✅ Downloaded / ❌ Not found |
+
+**CRITICAL — No approximations without approval:**
+
+If a value could not be confirmed from source, it MUST be left blank or flagged — never
+filled with an estimated or approximate value. Do not write `hex: "#FF0000" # approximate`
+or similar. The field stays empty and is listed in the gap report (Step 1.4).
+
+Only exception: if the user explicitly approves estimation after being informed:
+> "I was unable to extract [specific values] from the web. Would you like me to:
+>
+> **A)** Leave these blank until you provide the confirmed values
+> **B)** Enter approximate values based on visual observation, clearly flagged as
+>        unverified — you can correct them later
+>
+> Reply A or B."
+
+If the user selects B, write all estimated values with an `estimated: true` flag and
+`note: "Unverified — extracted by visual observation. Replace with confirmed values."`.
+
+**Step 1.4 — Announce extraction results and gaps**
+
+After Track 1 completes, report what was found and what is missing:
+
+> "Web extraction complete. Here's what I found:
+>
+> ✅ Confirmed: [list confirmed assets]
+> ❌ Not found: [list gaps]
+>
+> I'll now ask you for the missing pieces."
+
+---
+
+#### Track 2 — User-Provided Assets
+
+Always run Track 2 regardless of Track 1 results. Even a complete web extraction benefits
+from official brand documents.
+
+**Step 2.1 — Request brand guidelines document**
+
+Always ask explicitly:
+> "Do you have a copy of the company's official brand guidelines document?
+> (This is typically a PDF titled 'Brand Guidelines', 'Brand Book', 'Visual Identity
+> Guide', or similar — sometimes available on the brand/press page, or from the
+> marketing team.)
+>
+> If yes, please upload it now — it will give me exact color values, typography specs,
+> logo usage rules, and more, and will override anything I extracted from the web."
+
+If the user provides a brand guidelines PDF:
+- Read it fully before writing any brand-guidelines.yaml values
+- Values from the official document take precedence over web extraction
+- Mark all values from this source as `source: brand-guidelines-document`
+
+**Step 2.2 — Request logo package**
+
+If logos were not fully retrieved in Track 1:
+> "Do you have a logo package (typically a ZIP containing SVG and PNG variants)?
+> Logo packages are usually available from the brand/press page or from the
+> marketing team. Please upload it if you have it."
+
+Accept: ZIP files, individual SVG/PNG files, or a URL to a downloadable package.
+
+**Step 2.3 — Request supplementary materials**
+
+Ask for any additional materials that strengthen brand context:
+> "Any of the following would help me build a more complete brand pack — share
+> whatever you have:
+>
+> - Product one-pagers or datasheets (reveal layout patterns and copy voice)
+> - Sales decks or pitch decks (reveal messaging hierarchy and proof points)
+> - Website screenshots of key pages (homepage, product, pricing)
+> - Competitor positioning you're differentiated against
+>
+> These are optional — share whatever is available."
+
+---
+
+#### Track 3 — Completeness Audit & Pack Finalization
+
+After both tracks complete, audit the pack against the completeness checklist and
+write the final files.
+
+**Completeness checklist:**
+
+```
+Brand Identity (Visual)
+  [ ] Primary brand color — confirmed hex, RGB, CMYK
+  [ ] Secondary/accent colors — confirmed hex, RGB, CMYK for each
+  [ ] Neutral colors (backgrounds, grays) — confirmed hex
+  [ ] Primary typeface — confirmed name, weights, fallback
+  [ ] Accent/display typeface (if applicable) — confirmed name
+  [ ] Type scale — confirmed sizes, weights, line heights
+  [ ] Logo variants — SVG and PNG for: color/light, color/dark, mark-only, wordmark-only, B&W variants
+  [ ] Logo usage rules (clear space, don'ts)
+  [ ] Brand shape / graphic system (if applicable)
+  [ ] Photography style guidelines (if applicable)
+  [ ] Iconography style (if applicable)
+
+Brand Strategy (Contextual)
+  [ ] One-liner / positioning statement
+  [ ] Category definition
+  [ ] Core differentiators (3–5)
+  [ ] Brand voice and tone rules
+  [ ] Power phrases and vocabulary
+  [ ] Things to avoid in copy
+  [ ] Product/solution portfolio
+  [ ] Key proof points (scale, customers, analyst recognition)
+  [ ] Market context (macro trends, competitive landscape)
+  [ ] Target buyer roles and industries
+  [ ] Notable customer logos
+
+Document Templates
+  [ ] At least one document template extracted from provided materials
+```
+
+**Pack completeness status** — write to `pack.yaml`:
+
+```yaml
+completeness:
+  visual_identity: complete | partial | missing
+  brand_strategy: complete | partial | missing
+  logos: complete | partial | missing
+  templates: complete | partial | missing
+  missing_items:
+    - [list any incomplete items]
+  last_updated: "YYYY-MM-DD"
+```
+
+**Writing the files:**
+
+1. Write `sources/brand-context.yaml` — positioning, voice, products, proof points
+2. Write `sources/brand-guidelines.yaml` — colors, typography, logos, shape system
+3. Copy logo files to `sources/logos/svg/` and `sources/logos/png/`
+4. Write any extracted document templates to `templates/`
+5. Update `pack.yaml` with completeness status
+
+**Final announcement:**
+
+> "Brand pack for [Company] is ready. Completeness status:
+>
+> ✅ Complete: [categories]
+> ⚠️ Partial: [categories + what's missing]
+> ❌ Missing: [categories + recommended next step]
+>
+> [If gaps exist:] To complete the pack, you can provide: [specific items].
+> The pack is usable now — missing items will be flagged when relevant."
+
+---
+
+#### Brand Pack Update
+
+To update an existing pack with new information:
+
+1. Load the existing pack (`pack.yaml` + all `sources/`)
+2. Run only the tracks relevant to what's being updated
+3. Merge new confirmed values — never overwrite confirmed values with estimated ones
+4. Update `completeness` block in `pack.yaml`
+5. Announce what changed
+
+---
+
+## 2B. Brand Pack Portability
+
+Brand packs are designed to be portable. Once created, a pack should be shareable across
+computers, AI coding agents, team members, and environments — eliminating duplicative
+research and ensuring brand consistency across all tools and users.
+
+**Context precedence (always enforced):**
+```
+MaC MCP server (live) > local brand pack file > web extraction fallback
+```
+If a MaC MCP server is connected and provides brand context for the active company, it
+always supersedes the local pack. The local pack is the offline/portable fallback.
+
+---
+
+### Commands
+
+**`pack export [company_id]`** — Export a brand pack as a portable ZIP file.
+**`pack import`** — Install a brand pack ZIP into the correct local directory.
+**`pack list`** — List all installed brand packs and their completeness status.
+**`pack status [company_id]`** — Show completeness report for a specific pack.
+
+---
+
+### `pack export` — Exporting a Brand Pack
+
+Triggered when the user says: "export the brand pack", "give me a zip of the brand pack",
+"I want to share this brand pack", "download the [company] brand pack", or similar.
+
+**Step 1 — Resolve company**
+
+If a `company_id` is specified, use it. If not and a pack is active in the current session,
+use that. If ambiguous and multiple packs are installed, ask:
+> "Which brand pack would you like to export? Installed packs: [list]"
+
+**Step 2 — Pre-export validation**
+
+Read the pack's `pack.yaml` completeness block. If the pack has gaps, warn before exporting:
+> "⚠️ This pack has incomplete sections: [list missing items].
+>
+> The pack is still exportable and usable — missing items will be flagged when relevant.
+> Export anyway? Y/N"
+
+**Step 3 — Build the ZIP**
+
+ZIP file naming convention:
+```
+{company_name_kebab}_brand-pack_v{version}_{YYYY-MM-DD}.zip
+```
+Examples:
+- `sift_brand-pack_v1.0_2026-04-23.zip`
+- `acme-corp_brand-pack_v1.2_2026-04-23.zip`
+
+Use `company_id` (already kebab-case) as the company name slug.
+`version` comes from `pack.yaml version` field (increment patch on each export).
+
+ZIP internal structure mirrors the pack directory exactly:
+```
+{company_id}_brand-pack/
+├── pack.yaml
+├── sources/
+│   ├── brand-context.yaml
+│   ├── brand-guidelines.yaml
+│   └── logos/
+│       ├── svg/        (all SVG logo variants)
+│       └── png/        (all PNG logo variants)
+├── personas/           (all company persona YAML files)
+├── frameworks/         (all company framework customizations)
+└── templates/          (all company template YAML files)
+```
+
+Exclude: `.DS_Store`, `__MACOSX`, any OS metadata files, any file matching `*.tmp`.
+
+**Step 4 — Write and present**
+
+Write the ZIP to `/mnt/user-data/outputs/{zip_filename}` and present it to the user.
+
+Announce:
+> "Brand pack exported: `{zip_filename}`
+>
+> **Contents:** [N] source files, [N] personas, [N] templates, [N] logo files
+> **Completeness:** [status from pack.yaml]
+>
+> To install on another machine: upload this ZIP and say 'install brand pack' or
+> 'pack import'. To share with a colleague: send them this ZIP and the
+> b2b-gtm-strategist skill."
+
+**Step 5 — Increment version in pack.yaml**
+
+After a successful export, increment the patch version in `pack.yaml`:
+```yaml
+version: "1.0.1"   # was 1.0.0
+last_exported: "YYYY-MM-DD"
+```
+
+---
+
+### `pack import` — Installing a Brand Pack
+
+Triggered when the user:
+- Uploads a file matching `*_brand-pack*.zip`
+- Says "install brand pack", "import brand pack", "load this brand pack"
+- Uploads a ZIP and asks to "set up" or "install" it
+
+**Step 1 — Detect and validate the ZIP**
+
+```python
+# Validate structure
+required_files = ["pack.yaml"]
+required_dirs  = ["sources/"]
+
+# Read pack.yaml from ZIP without fully extracting
+# Confirm: company_id, name, version fields present
+```
+
+If the ZIP does not contain `pack.yaml` or does not match the expected structure:
+> "This doesn't look like a valid brand pack ZIP. A valid pack must contain `pack.yaml`
+> at its root. Please check the file and try again."
+
+**Step 2 — Check for existing pack**
+
+Check whether a pack already exists at:
+`~/.claude/skills/b2b-gtm-strategist/companies/{company_id}/`
+
+If a pack exists:
+> "A brand pack for **[Company Name]** (v[version], last updated [date]) is already
+> installed. The ZIP you've provided is v[zip_version] from [zip_date].
+>
+> **A)** Replace — overwrite the installed pack with this ZIP
+> **B)** Merge — keep existing files, only add files present in ZIP but missing locally
+> **C)** Cancel
+>
+> Reply A, B, or C."
+
+Merge logic (option B): for each file in the ZIP, only write it if the file does not
+already exist locally. Never overwrite an existing confirmed file with an imported one
+during a merge — the locally-built pack takes precedence on conflicts.
+
+If no pack exists: proceed directly to Step 3.
+
+**Step 3 — Install**
+
+Extract the ZIP to:
+`~/.claude/skills/b2b-gtm-strategist/companies/{company_id}/`
+
+After extraction:
+- Read `pack.yaml` completeness block
+- Read `sources/brand-guidelines.yaml` to confirm colors, fonts
+- Read `sources/brand-context.yaml` to confirm positioning and voice
+- Count personas, templates, logo files
+
+**Step 4 — Announce and activate**
+
+> "Brand pack installed: **[Company Name]** v[version]
+>
+> ✅ [list confirmed assets: colors, fonts, logos, personas, templates]
+> ⚠️ [list any incomplete sections]
+>
+> This pack is now active for the session. All outputs will apply [Company]'s
+> brand context, voice, and color system automatically."
+
+Automatically set the installed pack as the active pack for the current session.
+
+---
+
+### `pack list` — List Installed Packs
+
+Scan `~/.claude/skills/b2b-gtm-strategist/companies/` for all directories containing
+a valid `pack.yaml`. For each, read: name, version, last_updated, completeness status.
+
+Output format:
+```
+Installed brand packs:
+
+  sift                  Sift                    v1.0  2026-04-23  ✅ Complete
+  acme-corp             Acme Corp               v0.3  2026-03-15  ⚠️ Partial (missing: colors, fonts)
+  startup-x             Startup X               v0.1  2026-01-10  ❌ Minimal (brand-context only)
+
+Type 'pack export [id]' to export, or 'pack status [id]' for details.
+```
+
+---
+
+### `pack status [company_id]` — Completeness Report
+
+Read the pack's `pack.yaml` completeness block and `sources/` files and produce a
+detailed status report:
+
+```
+Brand Pack Status: Sift (v1.0 · 2026-04-23)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Visual Identity
+  ✅ Primary color       #2E69FF (Sift Blue) — confirmed
+  ✅ Secondary colors    5 confirmed (Uplift Pink, Value Gold, Excellence Mint, Light Blue, Light Gray)
+  ✅ Typography          Inter (primary) · Caveat (accent) — confirmed
+  ✅ Type scale          6 styles confirmed
+  ✅ Logo files          12 files (6 SVG, 6 PNG)
+  ✅ Brand shape system  Documented
+
+Brand Strategy
+  ✅ Positioning         One-liner, category, differentiators
+  ✅ Voice & tone        Rules, power phrases, avoid list
+  ✅ Product portfolio   4 solutions + API
+  ✅ Proof points        Scale, customers, analyst recognition
+  ✅ Market context      Macro trends, competitive framing
+
+Personas (10)
+  ✅ anti-fraud-head-of-fraud-risk
+  ✅ anti-fraud-trust-safety-operations-leader
+  ... [etc]
+
+Templates (2)
+  ✅ sift-technical-ebook
+  ✅ sift-product-one-pager
+
+Overall: ✅ Complete
+```
+
+---
+
+### Sharing Brand Packs — Team Guidelines
+
+When exporting a pack for team distribution, announce these guidelines:
+
+> **To share this brand pack with your team:**
+>
+> 1. Send them `{zip_filename}`
+> 2. They need the **b2b-gtm-strategist** skill installed
+> 3. They upload the ZIP and say "install brand pack"
+>
+> **Consistency guarantee:** Anyone using the same pack gets the same colors, fonts,
+> voice rules, personas, and templates — no manual setup required.
+>
+> **Keeping packs in sync:** When the pack is updated, export a new version and
+> redistribute. Team members run "pack import" and choose "Replace" to update.
+>
+> **MaC MCP server (advanced):** If your company connects a MaC MCP server, it
+> automatically supersedes all local packs — no ZIP distribution needed. The MCP
+> server becomes the single source of truth for the entire team.
+
+---
+
+### Context Precedence — Full Resolution Order
+
+When brand context is needed for any operation, resolve in this order:
+
+```
+1. MaC MCP server (if connected and has data for this company)
+   → Use live server data. Do not load local pack.
+   → Announce: "Using live MaC MCP server for [Company] brand context."
+
+2. Local brand pack (if installed at companies/{company_id}/)
+   → Load pack.yaml + sources/brand-guidelines.yaml + sources/brand-context.yaml
+   → Announce: "Using installed brand pack for [Company] (v[version])."
+
+3. Session-provided context (if user uploaded documents this session)
+   → Use documents provided. Offer to save as a new brand pack.
+   → Announce: "Using session-provided documents. No brand pack installed."
+
+4. Web extraction (fallback — see §2 Track 1)
+   → Extract from website. Offer to save as a new brand pack afterward.
+   → Announce: "No brand context found. Extracting from [url]..."
+
+5. No context
+   → Proceed without brand context. Flag in all outputs.
+   → Announce: "No brand context available. Outputs will not be brand-calibrated."
+```
+
+This order is enforced for every operation — persona selection, template application,
+content generation, and document output.
+
+---
+
+## 2C. Company-Configured Skill Distribution
+
+A company-configured skill ZIP bundles the complete b2b-gtm-strategist skill — including
+the SKILL.md, all cached MaC assets, and the company's brand pack — into a single
+distributable file. Recipients install one ZIP and are immediately operational with no
+setup, no syncing, and no administrative overhead.
+
+This is the highest-consistency distribution method for teams. It is the recommended
+approach when a company has completed brand pack setup and wants to roll the skill out
+to employees at scale.
+
+**When to use company-configured skill export vs. brand pack export:**
+
+| Situation | Use |
+|---|---|
+| Recipient already has the skill installed | `pack export` (§2B) — brand pack only |
+| Recipient is setting up from scratch | `skill export` (§2C) — everything in one ZIP |
+| Distributing to a large team with no IT overhead | `skill export` (§2C) |
+| Updating brand context only (skill already deployed) | `pack export` (§2B) |
+
+---
+
+### Command
+
+**`skill export [company_id]`** — Export a company-configured skill ZIP.
+
+Triggered when the user says: "export the configured skill", "create a company skill zip",
+"package the skill for distribution", "I want to share the full skill setup", or similar.
+
+---
+
+### `skill export` — Build and Download
+
+**Step 1 — Resolve company**
+
+If `company_id` is specified, use it. If a pack is active in the session, use that.
+If ambiguous, ask:
+> "Which company configuration would you like to bundle? Installed packs: [list]"
+
+**Step 2 — Pre-export checks**
+
+Run two checks before building:
+
+*Check A — Skill version*
+Read `SKILL_VERSION` from the top of this SKILL.md. This becomes the version stamp in
+the filename. If unreadable, stop and warn:
+> "Unable to read skill version from SKILL.md. Cannot build a versioned export.
+> Please ensure SKILL.md is accessible and try again."
+
+*Check B — Brand pack completeness*
+Read `pack.yaml` completeness block for the target company. If the pack has gaps:
+> "⚠️ The **[Company]** brand pack is incomplete: [list missing items].
+>
+> The skill ZIP will still be fully functional — missing brand items will be flagged
+> to recipients when relevant. Export anyway? Y/N"
+
+**Step 3 — Collect assets**
+
+Gather all files to be bundled from three sources:
+
+```
+Source 1 — SKILL.md (the skill definition itself)
+  /mnt/skills/user/b2b-gtm-strategist/SKILL.md
+
+Source 2 — Cached MaC assets (local cache)
+  ~/.claude/skills/b2b-gtm-strategist/.cache/
+    manifest.yaml
+    frameworks/      (all cached framework YAML files)
+    personas/        (all cached persona YAML files — ALL families, not just company ones)
+    templates/       (all cached template YAML files)
+    writer-profiles/ (all cached writer profile YAML files)
+    rubrics/         (all cached rubric YAML files)
+    sync-index.yaml
+
+Source 3 — Company brand pack
+  ~/.claude/skills/b2b-gtm-strategist/companies/{company_id}/
+    (full pack directory — all sources, personas, templates, logos)
+```
+
+**Step 4 — Build the ZIP**
+
+**Naming convention:**
+```
+{company_id}_b2b-gtm-strategist_v{SKILL_VERSION}.zip
+```
+
+Examples:
+- `sift_b2b-gtm-strategist_v2.2.0.zip`
+- `acme-corp_b2b-gtm-strategist_v2.2.0.zip`
+
+The skill version number is taken verbatim from `SKILL_VERSION` in SKILL.md.
+The company ID is the kebab-case slug from `pack.yaml`.
+
+**ZIP internal structure:**
+```
+{company_id}_b2b-gtm-strategist/
+├── SKILL.md                           ← skill definition
+├── INSTALL.md                         ← installation instructions (auto-generated)
+├── .cache/
+│   ├── manifest.yaml
+│   ├── sync-index.yaml
+│   ├── frameworks/
+│   │   └── *.yaml                    ← all cached framework files
+│   ├── personas/
+│   │   └── *.yaml                    ← all cached persona files (all families)
+│   ├── templates/
+│   │   └── *.yaml                    ← all cached template files
+│   ├── writer-profiles/
+│   │   └── *.yaml
+│   └── rubrics/
+│       └── *.yaml
+└── companies/
+    └── {company_id}/
+        ├── pack.yaml
+        ├── sources/
+        │   ├── brand-context.yaml
+        │   ├── brand-guidelines.yaml
+        │   └── logos/
+        │       ├── svg/
+        │       └── png/
+        ├── personas/
+        │   └── *.yaml                ← company-specific personas
+        ├── frameworks/
+        │   └── *.yaml                ← company framework customizations
+        └── templates/
+            └── *.yaml                ← company document templates
+```
+
+Exclude: `.DS_Store`, `__MACOSX`, `*.tmp`, any file matching `*.pyc`.
+
+**Step 5 — Generate INSTALL.md**
+
+Auto-generate an `INSTALL.md` inside the ZIP with the following template
+(fill all `{placeholders}` with real values at export time):
+
+```markdown
+# {Company Name} — B2B GTM Strategist (v{SKILL_VERSION})
+
+Pre-configured by {Company Name} for internal use.
+Includes brand pack, personas, templates, and all MaC framework assets.
+
+## Installation
+
+### Claude Desktop / Claude.ai
+1. Locate your skills directory:
+   - macOS/Linux: `~/.claude/skills/`
+   - Windows: `%USERPROFILE%\.claude\skills\`
+2. Extract this ZIP into your skills directory.
+3. The extracted folder should be named: `{company_id}_b2b-gtm-strategist`
+4. In your next Claude session, the skill will be available automatically.
+5. Your brand pack for **{Company Name}** will load on startup.
+
+### Cursor / VS Code (Claude extension)
+1. Extract this ZIP to your project's `.agents/skills/` directory, or
+   to `~/.claude/skills/` for global availability.
+2. Restart the extension. The skill will be detected automatically.
+
+### Verification
+After installation, start a session and type:
+  `pack status {company_id}`
+
+You should see the full brand pack completeness report for {Company Name}.
+
+## Contents
+- Skill version: {SKILL_VERSION}
+- Brand pack: {Company Name} v{pack_version} ({pack_date})
+- MaC assets: {N} frameworks, {N} personas, {N} templates, {N} writer profiles, {N} rubrics
+- Company personas: {N}
+- Company templates: {N}
+- Logo files: {N}
+
+## Updates
+- **Skill updates:** Replace SKILL.md with the latest version from the MaC registry.
+- **Brand pack updates:** Your admin will distribute an updated ZIP when the brand
+  pack changes. Run the installer again and choose "Replace" when prompted.
+- **MaC asset updates:** Run `refresh` inside any session to pull the latest
+  frameworks, personas, and templates from the remote registry.
+
+## Support
+Contact your marketing or brand team for brand pack questions.
+For skill issues, refer to the MaC registry documentation.
+
+---
+Packaged: {YYYY-MM-DD}
+Skill: b2b-gtm-strategist v{SKILL_VERSION}
+Brand pack: {company_id} v{pack_version}
+```
+
+**Step 6 — Write and present**
+
+Write the ZIP to `/mnt/user-data/outputs/{zip_filename}` and present it to the user.
+
+Announce:
+> "Company-configured skill exported: `{zip_filename}`
+>
+> **Skill version:** v{SKILL_VERSION}
+> **Brand pack:** {Company Name} v{pack_version} ({completeness_status})
+> **MaC assets bundled:** {N} frameworks · {N} personas · {N} templates · {N} writer profiles · {N} rubrics
+> **Company assets:** {N} personas · {N} templates · {N} logo files
+>
+> **To distribute:** Send this ZIP to team members. They extract it to their
+> `~/.claude/skills/` directory and are immediately operational — no additional
+> setup required. Full instructions are in the included `INSTALL.md`."
+
+---
+
+### Installing a Company-Configured Skill ZIP
+
+When a user uploads a ZIP matching `*_b2b-gtm-strategist*.zip` or says "install this
+skill" / "set up the skill from this file":
+
+**Step 1 — Detect and validate**
+
+Confirm the ZIP contains:
+- `SKILL.md` at root (or in a single top-level subdirectory)
+- `.cache/manifest.yaml`
+- `companies/{company_id}/pack.yaml`
+
+If structure is invalid:
+> "This doesn't look like a valid company-configured skill ZIP. Expected to find
+> SKILL.md, .cache/manifest.yaml, and a companies/ directory. Please check the
+> file and try again."
+
+**Step 2 — Read metadata before installing**
+
+Extract and read (without fully installing):
+- `SKILL_VERSION` from SKILL.md
+- Company name and version from `companies/{company_id}/pack.yaml`
+- Asset counts from `.cache/sync-index.yaml`
+
+Announce what will be installed:
+> "Ready to install: **{Company Name}** — B2B GTM Strategist v{SKILL_VERSION}
+>
+> This will install:
+> - The skill (SKILL.md) → `~/.claude/skills/b2b-gtm-strategist/`
+> - Brand pack ({Company Name} v{pack_version}) → `companies/{company_id}/`
+> - {N} MaC assets (frameworks, personas, templates) → `.cache/`
+>
+> **⚠️ Existing files:** [If any exist, list which will be overwritten]
+>
+> Proceed? Y/N"
+
+**Step 3 — Install**
+
+Extract to the correct locations:
+```
+SKILL.md     → ~/.claude/skills/b2b-gtm-strategist/SKILL.md
+.cache/      → ~/.claude/skills/b2b-gtm-strategist/.cache/
+companies/   → ~/.claude/skills/b2b-gtm-strategist/companies/
+```
+
+For `.cache/` and `companies/`: use merge behavior by default (don't overwrite files
+that are newer locally). If the user confirmed overwrite in Step 2, replace all.
+
+**Step 4 — Verify and activate**
+
+After installation, run `pack status {company_id}` and display results.
+Activate the company pack for the current session.
+
+Announce:
+> "Installation complete. **{Company Name}** brand pack is active.
+>
+> [completeness report]
+>
+> You're ready to go. All outputs this session will apply {Company Name}'s
+> brand context, voice, personas, and templates automatically."
+
+---
+
+### Version Management for Distributed Skills
+
+**For skill administrators:**
+
+| When to re-export | Result |
+|---|---|
+| Brand pack updated (colors, logos, copy) | New ZIP, same skill version in filename |
+| Skill updated (new SKILL.md from registry) | New ZIP, new skill version in filename |
+| Both updated | New ZIP, new skill version in filename |
+
+The filename version always reflects the **skill version**, not the brand pack version.
+Both versions are recorded in `INSTALL.md` inside the ZIP for reference.
+
+**For recipients:**
+
+- Re-installing the same skill version is safe — merge behavior protects local work
+- Installing a newer skill version upgrades SKILL.md and refreshes cached MaC assets
+- Brand pack always updates to the version in the new ZIP (admin-controlled)
+
+---
+
 
 ## 3. Operating Modes
 
