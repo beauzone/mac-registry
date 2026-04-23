@@ -24,10 +24,13 @@ manifest:
 skill:
   id: b2b-gtm-strategist
   path: skills/user/b2b-gtm-strategist/SKILL.md
-  version: "2.1.4"
+  version: "2.2.0"
   updated_at: "2026-04-23"
   raw_url: https://raw.githubusercontent.com/beauzone/mac-registry/main/skills/user/b2b-gtm-strategist/SKILL.md
   changelog:
+    - version: "2.2.0"
+      date: "2026-04-23"
+      notes: "Added §2 brand pack creation flow with browser tool detection and no-approximation policy. Added §2B brand pack portability (pack export/import/list/status commands). Added §2C company-configured skill distribution (skill export command, INSTALL.md generation, team distribution guidelines)."
     - version: "1.0.0"
       date: "2026-04-22"
       notes: "Initial versioned release. Added §17 offline sync and self-update support."
