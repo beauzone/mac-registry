@@ -15,8 +15,8 @@ description: >
 ---
 
 <!--
-SKILL_VERSION: 2.1.2
-SKILL_UPDATED: 2026-04-22
+SKILL_VERSION: 2.1.3
+SKILL_UPDATED: 2026-04-23
 -->
 
 # B2B GTM Strategist
