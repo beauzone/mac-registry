@@ -59,6 +59,20 @@ skills:
       - version: "1.0.0"
         date: "2026-04-22"
         notes: "Initial versioned release. Added §17 offline sync and self-update support."
+  mac_company_manager:
+    id: mac-company-manager
+    path: skills/user/mac-company-manager/SKILL.md
+    version: "1.0.0"
+    updated_at: "2026-04-25"
+    raw_url: https://raw.githubusercontent.com/beauzone/mac-registry/main/skills/user/mac-company-manager/SKILL.md
+    changelog:
+      - version: "1.0.0"
+        date: "2026-04-25"
+        notes: "Initial release. Company pack creation, brand setup, audience management, template conversion from PPTX/PDF, writer profile creation, legacy migration, .zip export."
+    references:
+      - path: skills/user/mac-company-manager/references/schema-summary.md
+      - path: skills/user/mac-company-manager/scripts/extract_pptx_template.py
+      - path: skills/user/mac-company-manager/scripts/extract_brand_from_pdf.py
   mac_content_creator:
     id: mac-content-creator
     path: skills/user/mac-content-creator/SKILL.md
