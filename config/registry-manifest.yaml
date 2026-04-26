@@ -17,8 +17,8 @@
 # =============================================================================
 # Registry Manifest
 manifest:
-  version: "0.4.0"
-  last_updated: "2026-04-23"
+  version: "0.5.0"
+  last_updated: "2026-04-25"
   versioning: "per-asset"
 
 skills:
@@ -59,6 +59,29 @@ skills:
       - version: "1.0.0"
         date: "2026-04-22"
         notes: "Initial versioned release. Added §17 offline sync and self-update support."
+  mac_content_creator:
+    id: mac-content-creator
+    path: skills/user/mac-content-creator/SKILL.md
+    version: "2.0.0"
+    updated_at: "2026-04-25"
+    raw_url: https://raw.githubusercontent.com/beauzone/mac-registry/main/skills/user/mac-content-creator/SKILL.md
+    changelog:
+      - version: "2.0.0"
+        date: "2026-04-25"
+        notes: "Upgraded from document-creator v1.5.0. Shared company pack path (~/.claude/mac/companies/). MaC MCP detection. Registry self-update. Full MaC schema consumption (company.yaml + brand specs). Writer profile application. Legacy brand-pack.yaml backward compatible."
+  document_creator:
+    id: document-creator
+    path: skills/user/document-creator/SKILL.md
+    version: "1.5.1"
+    updated_at: "2026-04-25"
+    deprecated: true
+    deprecated_since: "2026-04-25"
+    superseded_by: mac-content-creator
+    raw_url: https://raw.githubusercontent.com/beauzone/mac-registry/main/skills/user/document-creator/SKILL.md
+    changelog:
+      - version: "1.5.1"
+        date: "2026-04-25"
+        notes: "DEPRECATED — renamed and upgraded to mac-content-creator v2.0.0. Migrate: cp -r ~/.claude/skills/document-creator/companies/ ~/.claude/mac/companies/"
 
 sources:
   brand: []
