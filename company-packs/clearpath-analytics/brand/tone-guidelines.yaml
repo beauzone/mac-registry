@@ -1,0 +1,76 @@
+metadata:
+  id: clearpath-tone-guidelines
+  version: "1.0.0"
+  schema_version: "1.0"
+
+tone_guidelines:
+  overview: >
+    Clearpath Predict adapts its tone to the audience without changing its core voice.
+    We are always data-driven, direct, and confident — but how we express that changes
+    depending on who we're talking to and what they need to hear.
+
+  audiences:
+    technical:
+      label: Technical Buyers (Data Engineers, Architects, IT)
+      tone: Precise, peer-to-peer, no hand-holding
+      principles:
+        - Lead with architecture and data flow, not features
+        - Use correct technical terminology without over-explaining
+        - Reference standards and certifications (SOC 2, ISO 27001)
+        - Show the code or the schema — don't just describe it
+      do:
+        - "Our ingestion layer handles up to 500K events/day via Kafka or direct API push."
+        - "SOC 2 Type II certified. Encryption at rest (AES-256) and in transit (TLS 1.3)."
+        - "The model retrain pipeline runs on a 24h cadence, triggered by data drift detection."
+      dont:
+        - "Our state-of-the-art AI seamlessly processes your data."
+        - "We take security seriously."
+        - "Easy to integrate with your existing tools."
+
+    executive:
+      label: Executive Buyers (CEO, CFO, CRO)
+      tone: Outcomes-first, board-ready, financially grounded
+      principles:
+        - Open with business impact, not product features
+        - Quantify ROI in dollar terms when possible
+        - Acknowledge that they don't care about the tech stack
+        - Position Clearpath as a strategic competitive advantage
+      do:
+        - "Companies using Clearpath reduce missed forecast by 3.2 pipeline turns per year."
+        - "Average customer sees payback in 4.5 months based on rep productivity gains."
+        - "Your CFO will care about one number: revenue at risk per forecasting error."
+      dont:
+        - "Our ML pipeline ingests signals from 47 data sources."
+        - "The onboarding wizard makes setup fast and simple."
+        - "We offer a variety of pricing tiers to fit your needs."
+
+    partner:
+      label: Partners and Resellers
+      tone: Collaborative, business-aligned, margin-aware
+      principles:
+        - Emphasize the joint value proposition and partner economics
+        - Make it easy to explain Clearpath to their customers
+        - Show how Clearpath makes partners look good
+        - Be specific about co-sell motion and referral economics
+      do:
+        - "Partners close 2.3x more deals when Clearpath is part of the solution stack."
+        - "Our co-sell team is available for any deal over $50K ARR."
+        - "We provide white-labeled sales decks and co-branded case studies."
+      dont:
+        - "Just point customers to our website and we'll handle the rest."
+        - "Our product is self-explanatory."
+        - "We prefer direct sales for enterprise deals."
+
+  writing_rules:
+    active_voice: Always use active voice. "Clearpath syncs data" not "data is synced by Clearpath."
+    sentence_length: Short sentences for key claims. Complex sentences for nuance and context.
+    numbers: Always use numerals for stats (40%, not "forty percent"). Round only when appropriate.
+    oxford_comma: Always use the Oxford comma.
+    em_dashes: Use em dashes for emphasis — not parentheses — when introducing a key qualifier.
+    exclamation_points: Never. Not for marketing copy, never for technical docs.
+    hedging_language: Avoid "may," "might," "could help," "can potentially." If you're not sure, don't say it.
+
+_source_meta:
+  created_by: mac-client-seed
+  created_at: "2026-04-25"
+  classification: demo

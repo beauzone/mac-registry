@@ -1,17 +1,18 @@
 ---
 name: mac-company-manager
-version: 1.0.0
+version: 1.1.0
 description: >
   Creates, updates, and distributes company packs and brand packs for the
   Marketing as Code ecosystem. Runs a comprehensive onboarding interview,
   crawls company URLs, ingests uploaded documents (PDFs, PPTXs, brand
   guidelines), and produces a complete company pack consumed by the GTM
-  Strategist and MaC Content Creator skills.
+  Strategist and MaC Content Creator skills. Admin users can publish packs
+  to the beauzone/mac-registry for team distribution.
 ---
 
 <!--
-SKILL_VERSION: 1.0.0
-SKILL_UPDATED: 2026-04-25
+SKILL_VERSION: 1.1.0
+SKILL_UPDATED: 2026-04-27
 -->
 
 # MaC Company Manager
@@ -150,6 +151,8 @@ CACHE_TTL       : 24 hours
 | `sync` | Download schemas from registry |
 | `refresh` | Check for schema updates |
 | `offline` | Use cached schemas only |
+| `publish {company-id}` | Publish a company pack to the MaC registry (admin only) |
+| `publish-update {company-id}` | Push an updated version of an existing registry pack (admin only) |
 
 ---
 
@@ -840,3 +843,150 @@ python scripts/validate_schema.py
 ```
 
 Zero conversion required — all files are schema-compliant on creation.
+
+---
+
+## 13. Registry Publishing (Admin Only)
+
+This section is for the MaC administrator (Beau). It requires a GitHub PAT
+with **Contents write** permission on `beauzone/mac-registry` — distinct from
+the read-only tester token.
+
+### Token Setup
+
+The admin token is stored separately from the reader token:
+```
+~/.claude/mac/registry-admin-token
+```
+
+If this file is absent when a publish command is run:
+> "Publishing to the registry requires an admin token with Contents write
+> access to beauzone/mac-registry.
+>
+> Paste your admin token here: [_______________________]
+>
+> (Stored at `~/.claude/mac/registry-admin-token`. Never shared with users.)"
+
+Validate: `GET https://api.github.com/repos/beauzone/mac-registry` with the
+admin token and confirm write access is present.
+
+### `publish {company-id}` — New Pack
+
+Publishes a locally installed company pack to the registry for the first time.
+
+**Pre-flight checks:**
+1. Verify the pack exists at `~/.claude/mac/companies/{company-id}/`
+2. Run `validate {company-id}` — require 100% required files (company.yaml + at
+   least one brand with voice.yaml). Recommended files can be incomplete; report gaps.
+3. Confirm with the admin:
+   > "About to publish **[name]** to beauzone/mac-registry/company-packs/[id]/.
+   >
+   > Pack validation: [pass/partial — list any missing recommended files]
+   >
+   > **Registry entry to be added to company-packs/manifest.yaml:**
+   > - id: [id]
+   > - name: [name]
+   > - version: 1.0.0
+   > - status: active
+   > - industry: [from company.yaml]
+   > - description: [from company.yaml]
+   > - includes: [auto-detected from which files are present]
+   >
+   > Proceed? (Yes / Cancel)"
+
+**Upload flow:**
+
+The registry pack format is a flattened layout. Map from the Company Manager
+canonical format to the registry layout before uploading:
+
+| Source (local) | Registry target |
+|---|---|
+| `company.yaml` | `company.yaml` |
+| `brands/{brand-id}/voice.yaml` | `brand/voice.yaml` |
+| `brands/{brand-id}/tone-guidelines.yaml` | `brand/tone-guidelines.yaml` |
+| `brands/{brand-id}/terminology.yaml` | `brand/terminology.yaml` |
+| `brands/{brand-id}/visual-identity.yaml` | `brand/visual-identity.yaml` |
+| `brands/{brand-id}/writer-profiles/` | `brand/writer-profiles/` |
+| `brands/{brand-id}/messaging/*.yaml` | `messaging/*.yaml` |
+| `audiences/icps/*.yaml` | `audiences/icps/*.yaml` |
+| `audiences/personas/*.yaml` | `audiences/personas/*.yaml` |
+| `audiences/segments/*.yaml` | `audiences/segments/*.yaml` |
+| `research/competitive-intel/*.yaml` | `research/competitive-intel/*.yaml` |
+| `strategy/*.yaml` | `strategy/*.yaml` |
+| `brands/{brand-id}/brand-pack/` | `brand-pack/` |
+| `templates/` | `templates/` |
+
+Upload each file via the GitHub Contents API:
+```
+PUT https://api.github.com/repos/beauzone/mac-registry/contents/company-packs/{id}/{path}
+Authorization: Bearer {admin-token}
+Content-Type: application/json
+
+{
+  "message": "feat(company-packs): add {company-name} v1.0.0",
+  "content": "{base64-encoded file content}"
+}
+```
+
+After all files are uploaded, update `company-packs/manifest.yaml`:
+1. Fetch the current manifest.
+2. Append a new entry under `company_packs:`.
+3. Update `manifest.last_updated` to today's date.
+4. PUT the updated manifest back.
+
+Also update `config/registry-manifest.yaml`:
+1. Fetch current registry-manifest.yaml.
+2. Increment `company_packs.count` by 1.
+3. Update `company_packs.last_updated`.
+4. PUT the updated file back.
+
+On success:
+> "✓ Published **[name]** v1.0.0 to the MaC registry.
+>
+> Registry path: `beauzone/mac-registry/company-packs/[id]/`
+> Manifest updated: `company-packs/manifest.yaml`
+>
+> Users can now install this pack with:
+> `Install company pack: [name]` (in GTM Strategist or MaC Content Creator)"
+
+### `publish-update {company-id}` — Update Existing Pack
+
+Updates an already-published pack with new local changes.
+
+**Pre-flight checks:**
+1. Fetch the current registry manifest entry for `{company-id}`.
+2. Show the admin what changed (diff of local vs registry versions).
+3. Determine the new version number:
+   - Auto-suggest: MINOR bump for new or changed sections, PATCH for copy fixes.
+   - Let the admin confirm or override.
+4. Confirm:
+   > "Updating **[name]** from v[old] → v[new] in the registry.
+   > Changed files: [list]
+   > Proceed? (Yes / Cancel)"
+
+**Upload flow:**
+- For each changed file: PUT to the registry path (same mapping as above).
+  Include the file's current `sha` (required by GitHub Contents API for updates):
+  ```
+  GET https://api.github.com/repos/beauzone/mac-registry/contents/{path}
+  ```
+  Extract `sha` from the response, then PUT with the new content and that sha.
+- Update `company-packs/manifest.yaml` entry (version, updated_at).
+- Update `config/registry-manifest.yaml` (last_updated).
+
+On success:
+> "✓ Updated **[name]** to v[new] in the registry.
+>
+> Users will be notified of the update on next skill startup (24h check interval)."
+
+### What NOT to Publish
+
+Before publishing, confirm there is no sensitive data in the pack:
+- No real customer names, real deal values, or proprietary pipeline data
+- No personal emails, phone numbers, or individual employee data
+- No API keys, tokens, or credentials anywhere in the YAML files
+- Demo/reference data only (or confirm admin has approval for production data)
+
+If any of these are detected, stop and report:
+> "⚠️ The following files may contain sensitive data and should be reviewed
+> before publishing: [list]"

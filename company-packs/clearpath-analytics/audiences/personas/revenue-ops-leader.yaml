@@ -1,0 +1,54 @@
+metadata:
+  id: revenue-ops-leader
+  version: "1.0.0"
+  schema_version: "1.0"
+
+persona:
+  name: "The Revenue Ops Leader"
+  archetype: VP Revenue Operations
+  seniority: VP / Director
+  company_profile:
+    size: mid-market
+    arr_range: $20M–$150M
+    industry: B2B SaaS
+    crm: Salesforce or HubSpot
+
+  demographics:
+    age_range: 32–48
+    background: Mix of sales ops, finance, and analytics backgrounds
+    education: Business, finance, or CS degree; often MBA
+
+  goals:
+    - Deliver a forecast the CEO and board actually trust
+    - Reduce time spent manually reconciling pipeline in spreadsheets
+    - Give reps and managers visibility into deal health without asking
+    - Connect GTM data silos (CRM, marketing automation, product signals)
+
+  pain_points:
+    - Forecast process is still a weekly spreadsheet rodeo
+    - CRM data hygiene is terrible; no one trusts the numbers
+    - BI tools take months to set up and require data engineering support
+    - Board asks for forecast confidence; can only give a range plus gut feel
+
+  buying_triggers:
+    - Missed a quarterly forecast by >10%; CEO is asking hard questions
+    - New CRO just joined and wants a data-driven forecast process from day one
+    - Company is scaling from 50 to 150 reps; manual process is breaking
+
+  objections:
+    - "We already have Salesforce reports — why do we need another tool?"
+    - "We tried a BI tool before and it took 6 months to get value."
+    - "Our CRM data is too messy for this to work."
+
+  messaging_priorities:
+    primary: Speed to value — works with messy CRM data, first forecast in a day
+    secondary: Accuracy — board-credible numbers, not just a range
+    tertiary: No data science team required
+
+  preferred_channels: [LinkedIn, direct email from peer, G2 reviews, Salesforce AppExchange]
+  content_preferences: [ROI calculators, customer case studies, product demos, technical docs]
+
+_source_meta:
+  created_by: mac-client-seed
+  created_at: "2026-04-25"
+  classification: demo

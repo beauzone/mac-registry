@@ -1,0 +1,130 @@
+metadata:
+  id: clearpath-gtm-plan
+  version: "2.0.0"
+  schema_version: "1.0"
+
+gtm_plan:
+  title: "Clearpath Predict: Go-to-Market Plan FY2026"
+  fiscal_year: "2026"
+  target_arr_end_of_year: "$28M"
+  starting_arr: "$18M"
+  net_new_arr_target: "$10M"
+
+  strategic_themes:
+    - "Win mid-market first, use as proof points for enterprise upmarket motion"
+    - "Make RevOps leaders the champion — they buy, they implement, they advocate"
+    - "Content-led pipeline generation: thought leadership that positions us as the category experts"
+    - "Partner-sourced deals reach 25% of pipeline by Q4"
+
+  segments:
+    primary:
+      name: "Mid-Market SaaS"
+      arr_range: "$20M–$100M ARR"
+      deal_size_target: "$40K–$80K ARR"
+      sales_cycle: "30–60 days"
+      quota_per_rep: "$1.2M ARR"
+      headcount_plan:
+        q1: 4
+        q2: 6
+        q3: 8
+        q4: 8
+
+    secondary:
+      name: "Enterprise SaaS (upmarket expansion)"
+      arr_range: "$100M–$500M ARR"
+      deal_size_target: "$80K–$250K ARR"
+      sales_cycle: "60–120 days"
+      quota_per_rep: "$2M ARR"
+      headcount_plan:
+        q1: 1
+        q2: 2
+        q3: 2
+        q4: 3
+
+  channels:
+    outbound:
+      owner: "SDR team"
+      target: "RevOps leaders at target accounts (ICP match score 7+)"
+      sequence: "8-touch 21-day sequence, personalized first touch"
+      expected_conversion: "1.8% meeting rate"
+      pipeline_contribution: "40%"
+
+    content_inbound:
+      owner: "Marketing"
+      assets:
+        - "Forecast Accuracy Benchmark Report (Q1 annual publish)"
+        - "CFO ROI Calculator (gated, lead gen)"
+        - "RevOps Maturity Assessment (interactive tool)"
+        - "Weekly 'Revenue Signal' newsletter (3,200 subscribers)"
+      expected_mqls_per_month: 45
+      pipeline_contribution: "30%"
+
+    partner:
+      owner: "Partnerships"
+      partners:
+        - name: "Salesforce ISV Partner Program"
+          type: "Technology Partner"
+          expected_referrals: "2-3 per month by Q4"
+        - name: "RevOps agencies (3 signed, 5 target)"
+          type: "Referral Partner"
+          economics: "15% first-year ARR referral fee"
+      pipeline_contribution: "25%"
+
+    events:
+      owner: "Marketing"
+      key_events:
+        - name: "SaaStr Annual"
+          date: "2026-09"
+          objective: "Brand awareness + 30 SQLs"
+          budget: "$85,000"
+        - name: "Gartner CSO Summit"
+          date: "2026-05"
+          objective: "Enterprise pipeline + analyst relations"
+          budget: "$45,000"
+        - name: "Clearpath Revenue Roundtable (hosted)"
+          frequency: "Quarterly"
+          objective: "Community + customer advocacy"
+          budget: "$20,000/event"
+      pipeline_contribution: "5%"
+
+  pricing:
+    model: "Per seat, annual subscription"
+    tiers:
+      starter:
+        price: "$90/seat/year"
+        minimum: "$18,000/year (200 seat minimum)"
+        features: ["Salesforce integration", "Base forecast model", "5 dashboards"]
+      growth:
+        price: "$140/seat/year"
+        minimum: "$42,000/year (300 seat minimum)"
+        features: ["All Starter", "Custom signal weights", "Multi-product forecasting", "API access"]
+      enterprise:
+        price: "Custom"
+        minimum: "$80,000/year"
+        features: ["All Growth", "Multi-CRM", "SSO", "Dedicated CSM", "Custom model training"]
+    discounting_policy:
+      max_discount: "20% without VP approval, 35% with VP approval"
+      multi_year_incentive: "10% discount for 2-year, 15% for 3-year"
+      pilot_to_paid: "Pilots convert to full contract — no 'free forever' tier"
+
+  success_metrics:
+    quarterly:
+      - "New logos: 12 per quarter by Q4"
+      - "Pipeline coverage: 4x quota"
+      - "Win rate: 28%+ vs. primary competitors"
+      - "Time to first value: <21 days"
+    annual:
+      - "$28M ARR (56% growth)"
+      - "Net Revenue Retention: 118%+"
+      - "CAC payback: <14 months"
+      - "Logo churn: <8%"
+
+_source_meta:
+  created_by: mac-client-seed
+  created_at: "2026-04-25"
+  classification: demo
+  derived_from:
+    - sources/messaging/positioning-framework.yaml
+    - sources/audiences/icps/mid-market-saas.yaml
+    - sources/audiences/icps/enterprise-saas.yaml
+    - sources/audiences/segments/revenue-teams.yaml

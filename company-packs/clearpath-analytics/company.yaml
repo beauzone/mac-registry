@@ -1,0 +1,44 @@
+metadata:
+  id: clearpath-analytics-company
+  version: "1.0.0"
+  schema_version: "1.0"
+
+company:
+  name: Clearpath Analytics
+  legal_name: Clearpath Analytics, Inc.
+  founded: 2022
+  stage: Series A
+  employees: 45
+  headquarters:
+    city: San Francisco
+    state: CA
+    country: US
+  website: https://clearpath.io
+  description: >
+    Clearpath Analytics is the predictive analytics platform built for mid-market revenue teams.
+    We help sales, marketing, and revenue operations leaders forecast with confidence, detect buyer
+    intent early, and take the next best action — without needing a data science team.
+
+products:
+  - id: clearpath-predict
+    name: Clearpath Predict
+    tagline: Revenue forecasting you can trust
+    description: >
+      AI-powered revenue forecasting that learns from your CRM data and delivers accurate
+      pipeline predictions. Reduces forecast error by 40% on average within 90 days of deployment.
+    target_buyer: VP Sales, CRO
+    primary_use_case: quarterly forecast accuracy
+
+  - id: clearpath-signals
+    name: Clearpath Signals
+    tagline: Know which accounts are ready before your reps do
+    description: >
+      Buyer intent detection that surfaces high-propensity accounts from first-party engagement
+      data and third-party intent signals. Delivered directly into Salesforce and HubSpot.
+    target_buyer: VP Marketing, Demand Generation Lead
+    primary_use_case: pipeline sourcing and prioritization
+
+_source_meta:
+  created_by: mac-client-seed
+  created_at: "2026-04-25"
+  classification: demo

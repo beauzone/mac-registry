@@ -1,0 +1,53 @@
+metadata:
+  id: clearpath-positioning-framework
+  version: "1.0.0"
+  schema_version: "1.0"
+
+positioning:
+  statement: >
+    Clearpath Analytics is the predictive analytics platform that helps mid-market revenue teams
+    forecast with confidence, detect buyer intent early, and take the next best action — without
+    needing a data science team.
+
+  category: Predictive Analytics for Revenue Teams
+  target_market: Mid-market B2B SaaS companies ($10M–$200M ARR) with 50–500 employees
+  primary_differentiator: Accuracy you can act on — not just scores, but recommended next steps
+
+pillars:
+  - id: accuracy
+    name: Accuracy
+    headline: "94% forecast accuracy, median across all customers"
+    description: >
+      Built on your CRM data, not generic benchmarks. Clearpath Predict learns your specific
+      pipeline patterns and delivers forecasts that hold up at the board level.
+    proof:
+      - "94% forecast accuracy median, Q1 2025 customer cohort"
+      - "Average forecast error reduction: 40% in first 90 days"
+      - "3 out of 4 customers hit quarterly forecast within 5% of Clearpath's prediction"
+
+  - id: speed
+    name: Speed
+    headline: "Revenue intelligence in minutes, not months"
+    description: >
+      No data science team required. No 6-month implementation. Connect Salesforce or HubSpot,
+      map your stage taxonomy in 20 minutes, and get your first forecast by end of day.
+    proof:
+      - "20-minute average time to first forecast after CRM connection"
+      - "Zero data engineering required"
+      - "Same-day value for 89% of new customers"
+
+  - id: actionability
+    name: Actionability
+    headline: "Not just predictions — recommended next-best-actions"
+    description: >
+      Every forecast includes Clearpath Signals recommendations: which deals to accelerate,
+      which accounts to re-engage, which reps need coaching. Revenue intelligence you can act on.
+    proof:
+      - "Pipeline influenced by Signals recommendations closes at 2.3x the base rate"
+      - "Average rep pipeline coverage improvement: +28% in first quarter"
+      - "Integrated directly into Salesforce and HubSpot workflow"
+
+_source_meta:
+  created_by: mac-client-seed
+  created_at: "2026-04-25"
+  classification: demo

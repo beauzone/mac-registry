@@ -1,6 +1,6 @@
 ---
 name: gtm-strategist
-version: 2.0.0
+version: 2.1.0
 description: >
   A structured B2B and B2C marketing and go-to-market strategy skill backed by
   analytical frameworks, SME buyer personas, B2C operator personas, consumer
@@ -16,8 +16,8 @@ description: >
 ---
 
 <!--
-SKILL_VERSION: 2.0.0
-SKILL_UPDATED: 2026-04-23
+SKILL_VERSION: 2.1.0
+SKILL_UPDATED: 2026-04-27
 -->
 
 # GTM Strategist
@@ -83,38 +83,59 @@ any registered MCP server whose command or URL references `marketing-as-code` or
 
 - **If no server is found:** Proceed to Step 2.
 
-### Step 2 — Local Brand Pack Detection
-Check for existing brand packs at:
-`~/.claude/skills/gtm-strategist/companies/`
+### Step 2 — Company Pack Detection
 
-- **If packs exist:** List them by company name and ask which to activate:
-  > "I found these brand packs: [list]. Which would you like to use for this session,
+Check for installed company packs in this order:
+
+**Path 1 — Shared MaC path (primary):** `~/.claude/mac/companies/`
+**Path 2 — Skill-specific path (legacy):** `~/.claude/skills/gtm-strategist/companies/`
+**Path 3 — Old B2B skill path (legacy):** `~/.claude/skills/b2b-gtm-strategist/companies/`
+
+- **If packs exist at the shared MaC path:** List them by company name and ask which to activate:
+  > "I found these company packs: [list]. Which would you like to use for this session,
   > or type 'none' to proceed without brand context."
 
-- **If no packs at the primary path:** Check the fallback path:
-  `~/.claude/skills/b2b-gtm-strategist/companies/`
+  For each pack, also check for `~/.claude/mac/companies/{id}/.registry-meta.yaml`.
+  If found and `last_update_check` is more than 24 hours ago, run the update check
+  (§18) silently after activating.
 
-  - **If packs found at fallback:** Announce them:
-    > "I found brand packs from the previous B2B GTM Strategist install:
-    > [list]. Would you like to use one of these for this session?
-    >
-    > **Note:** These packs can be migrated to the new location with:
-    > `cp -r ~/.claude/skills/b2b-gtm-strategist/companies/ ~/.claude/skills/gtm-strategist/companies/`
-    >
-    > Reply with a pack name to use it now, or 'migrate' to copy all packs first,
-    > or 'none' to proceed without brand context."
+- **If packs exist only at a legacy path:** Announce them:
+  > "I found company packs from an older install at `[path]`: [list].
+  > Would you like to use one of these? To migrate to the shared path:
+  > `cp -r [legacy-path] ~/.claude/mac/companies/`
+  > Reply with a pack name or 'migrate'."
 
-- **If no packs found at either path:** Proceed to Step 3.
+- **If no packs found at any path:** Proceed to Step 3.
 
 ### Step 3 — Context Configuration Offer
-> "No brand context is loaded. Would you like to:
+
+> "No company context is loaded. Would you like to:
 >
-> **A)** Set up a brand/company pack — give it a name and I'll ask for your website
-> URL and any relevant documents.
+> **A)** Install a company pack from the MaC registry — if your administrator has
+> set one up, I can download it for you.
 >
-> **B)** Proceed without pre-loaded brand context — I'll collect what I need as we go.
+> **B)** Build a company context from scratch — give me your company name and I'll
+> ask for your website and any relevant documents.
 >
-> Reply A or B."
+> **C)** Proceed without pre-loaded brand context — I'll collect what I need as we go.
+>
+> Reply A, B, or C."
+
+**If user chooses A (registry install):**
+
+1. "What is the company name?" → fuzzy-search the registry manifest (§18)
+2. If found → show pack details, confirm install → run registry download flow (§18)
+3. If not found:
+   > "That company isn't in the MaC registry yet. Would you like to build one from
+   > scratch instead? (Yes / No)"
+   - Yes → proceed as option B
+   - No → proceed as option C
+
+**If user chooses B (build from scratch):**
+Give it a name, ask for website URL and/or documents, capture `business_model` and
+`stage`, write a minimal pack to `~/.claude/mac/companies/{id}/`, then proceed.
+
+**If user chooses C:** Proceed without brand context.
 
 ### Step 4 — Remote Asset Sync
 After Steps 1–3, check whether the local manifest cache is current (see §1).
@@ -173,18 +194,45 @@ These belong to the MaC platform and are not part of this skill's operation.
 
 ## 2. Brand Pack Management
 
-A brand pack is a named company context bundle. Packs are stored at:
-`~/.claude/skills/gtm-strategist/companies/{company_id}/`
+A brand pack is a named company context bundle. The canonical install location
+(shared across all MaC skills) is:
 
-**Pack structure:**
 ```
-companies/
-└── {company_id}/
-    ├── pack.yaml       — name, url, created_at, business_model, stage, notes
-    ├── sources/        — ingested brand, messaging, ICP files
-    ├── personas/       — custom personas created for this company
-    ├── frameworks/     — company-specific framework customizations
-    └── templates/      — company-specific template customizations
+~/.claude/mac/companies/{company_id}/
+```
+
+**Artifact Scope Resolution (in priority order):**
+
+1. **Shared MaC path** → `~/.claude/mac/companies/{active_company}/{type}/`
+2. **Company scope** → `{artifacts_dir}/companies/{active_company}/{type}/`
+3. **User scope** → `{artifacts_dir}/user/{type}/`
+4. **System scope** → `${CLAUDE_SKILL_DIR}/{type}/`
+
+Where `{type}` is the content category: `brand`, `messaging`, `audiences`,
+`research`, `strategy`.
+
+**Registry-installed pack structure (from §18 download):**
+```
+~/.claude/mac/companies/{company_id}/
+    .registry-meta.yaml   — source, installed version, last update check
+    company.yaml          — company identity, products, key facts
+    brand/                — voice, tone, terminology, visual identity
+    messaging/            — positioning, value props, proof points, pillars
+    audiences/            — icps/, personas/, segments/
+    research/             — competitive-intel/, market-landscape
+    strategy/             — gtm-plan, content-strategy
+    brand-pack/           — visual rendering config (brand-pack.yaml + assets/)
+    templates/            — company-specific document templates
+```
+
+**Self-created pack structure (from interview flow):**
+```
+~/.claude/mac/companies/{company_id}/
+    pack.yaml             — metadata (name, url, business_model, stage)
+    sources/              — ingested brand, messaging, ICP files
+    personas/             — custom personas
+    frameworks/           — company-specific customizations
+    templates/            — company-specific template customizations
 ```
 
 **pack.yaml includes:**
@@ -193,27 +241,25 @@ companies/
 - `created_at` — ISO date
 - `business_model` — B2B SaaS / Enterprise / B2C DTC / Consumer App / Marketplace / Hybrid
 - `stage` — Pre-seed / Seed / Series A / Series B / Series C / Growth / Scale / Public
-  (or for consumer: Pre-Launch / Launch / Growth / Scale / Mature)
-- `notes` — any context on why this pack was created
+- `notes` — context on why this pack was created
 
-**Creating a new pack:**
+**Creating a new pack (when user chooses to build from scratch):**
 1. Collect company name → derive `company_id` as kebab-case slug
 2. Ask for website URL and/or documents to ingest as brand context
-3. Capture `business_model` and `stage` — these drive which persona families and
-   stage model the skill uses by default
-4. Write `pack.yaml`, create directory structure
+3. Capture `business_model` and `stage`
+4. Write `pack.yaml`, create directory structure at `~/.claude/mac/companies/{id}/`
 5. Ingest provided materials into `sources/`
 
-**Multiple packs** are supported for agencies and contractors working across clients.
-List all installed packs at startup (Step 2) and let the user select one per session.
+**Multiple packs** are supported for agencies. List all installed packs at startup
+(Step 2) and let the user select one per session.
 
 **Pack portability commands:**
 
 | Command | Action |
 |---|---|
-| `pack list` | List all installed brand packs with summary |
-| `pack status [company]` | Show contents and last-updated date for a pack |
-| `pack export [company]` | Zip a pack for sharing with a team member |
+| `pack list` | List all installed company packs with summary |
+| `pack status [company]` | Show contents and last-updated date |
+| `pack export [company]` | Zip a pack for sharing |
 | `pack import [file.zip]` | Import a pack from a zip export |
 
 **Storage scope precedence:** `company > user > system`
@@ -641,9 +687,13 @@ framework, or template for reuse.
 | Scope | Location | Contents |
 |---|---|---|
 | `system` | Remote mac-registry (read-only) | All MaC-sourced frameworks, personas, templates |
-| `approved` | `companies/{company_id}/` or `user/` | User-created or customized artifacts |
+| `approved` | `~/.claude/mac/companies/{id}/` or skill `user/` dir | User-created or customized artifacts |
 
 **Resolution precedence:** `company > user > system`
+
+When resolving a company-scoped asset, check both the shared MaC path
+(`~/.claude/mac/companies/{id}/`) and the legacy skill-specific path
+(`companies/{id}/`) — prefer the shared path.
 
 ### Authority specs (schemas in mac-registry)
 - Personas: `schemas/persona.schema.yaml`
@@ -936,3 +986,90 @@ Compare using standard semver precedence:
 
 If a remote asset has no `version` field (legacy entry), treat it as
 `"0.0.0"` and always download.
+
+---
+
+## 18. Company Pack Registry
+
+### Registry Access
+
+The MaC registry hosts company packs at `beauzone/mac-registry/company-packs/`.
+Access requires a read-only PAT scoped to that repo. The token is stored at:
+`~/.claude/mac/registry-token`
+
+**Token provisioning (first registry access):**
+
+If no token file exists:
+> "To download company packs from the registry, I need a one-time access token.
+>
+> Your MaC administrator should have provided you with a registry token.
+> Please paste it here: [_______________________]
+>
+> (Stored locally at `~/.claude/mac/registry-token`. Only used to authenticate
+> with the GitHub API to download your company pack.)"
+
+After receiving the token:
+1. Validate: `GET https://api.github.com/repos/beauzone/mac-registry` with the token.
+2. If valid (HTTP 200): write to `~/.claude/mac/registry-token`, `chmod 600`.
+3. If invalid (HTTP 401/403/404): report error and ask to retry.
+
+### Registry Lookup
+
+When the user provides a company name:
+
+1. Fetch the manifest:
+   ```
+   GET https://api.github.com/repos/beauzone/mac-registry/contents/company-packs/manifest.yaml
+   Authorization: Bearer {token}
+   Accept: application/vnd.github.raw
+   ```
+2. Parse YAML, search `company_packs[]` for a case-insensitive match on `name`.
+3. **If found:**
+   > "Found: **[name]** (v[version], [status])
+   > [description]
+   > Includes: [list what's in the pack]
+   >
+   > Install to `~/.claude/mac/companies/[id]/`? (Yes / No)"
+4. **If not found:**
+   > "No pack found for '[query]' in the MaC registry.
+   > Would you like to build a company pack from scratch instead?"
+
+### Registry Download
+
+When the user confirms install:
+
+1. Run the download script:
+   ```bash
+   ~/.claude/mac/scripts/download-company-pack.sh {company-id}
+   ```
+   If the script is not installed:
+   - Fetch it from `beauzone/mac-registry/scripts/download-company-pack.sh`
+   - Write to `~/.claude/mac/scripts/download-company-pack.sh`
+   - `chmod +x ~/.claude/mac/scripts/download-company-pack.sh`
+   - Then run it.
+
+2. After successful download:
+   - Set as the active company for this session
+   - Run pre-flight check (load company.yaml, brand/, messaging/, audiences/)
+   - Announce:
+     > "✓ Company pack installed: **[name]** v[version]
+     > Brand context loaded — I'm ready to work with [name]'s data."
+
+### Update Checking
+
+On skill startup, if the active company has `~/.claude/mac/companies/{id}/.registry-meta.yaml`:
+
+1. Read `last_update_check` from the meta file.
+2. If the timestamp is more than 24 hours ago:
+   a. Fetch the registry manifest (using stored token).
+   b. Compare `company_packs[id].version` against `installed_version` in meta.
+   c. **If same version:** update `last_update_check` timestamp and continue.
+   d. **If newer version available:**
+      > "Your company pack for **[name]** has been updated (v[old] → v[new]).
+      > Would you like to install the latest version?
+      > [Yes — update now] [Skip for now] [Don't ask for v[new]]"
+      - **Yes:** re-run download, overwrite pack, update meta.
+      - **Skip:** update `last_update_check` only, continue.
+      - **Don't ask:** write `skipped_version: "[new]"` to meta file.
+   e. **If manifest unreachable:** silently skip the check, update `last_update_check`.
+3. If `last_update_check` is less than 24 hours ago: skip check entirely.

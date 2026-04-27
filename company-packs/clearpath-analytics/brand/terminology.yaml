@@ -1,0 +1,52 @@
+metadata:
+  id: clearpath-terminology
+  version: "1.0.0"
+  schema_version: "1.0"
+
+terminology:
+  preferred:
+    - term: predictive analytics
+      avoid: ["AI predictions", "machine learning predictions", "ML-powered forecasting"]
+      reason: Customers understand and trust "predictive analytics"; "AI predictions" sounds speculative.
+
+    - term: revenue intelligence
+      avoid: ["sales analytics", "sales AI", "sales intelligence platform"]
+      reason: Positions us at the revenue layer, not just sales. Aligns with RevOps buyer.
+
+    - term: buyer signals
+      avoid: ["intent data", "intent signals", "buying signals"]
+      reason: '"Buyer signals" is proprietary framing; "intent data" is a commodity category term.'
+
+    - term: forecast accuracy
+      avoid: ["forecast precision", "prediction accuracy"]
+      reason: Industry-standard term used by analysts and buyers.
+
+    - term: revenue team
+      avoid: ["sales team", "go-to-market team"]
+      reason: Inclusive of sales, marketing ops, and RevOps — our three buying personas.
+
+  prohibited:
+    - term: guaranteed
+      reason: Creates legal liability. Use "94% median accuracy across customers" instead.
+      severity: blocking
+
+    - term: never fails
+      reason: Overpromise. Use specific SLA language instead.
+      severity: blocking
+
+    - term: best in class
+      reason: Unsubstantiated superlative. Use third-party validation or customer quotes.
+      severity: error
+
+    - term: disruptive
+      reason: Overused tech cliché. Say what we actually do differently.
+      severity: warning
+
+    - term: revolutionary
+      reason: Overhyped. Stick to concrete differentiation.
+      severity: warning
+
+_source_meta:
+  created_by: mac-client-seed
+  created_at: "2026-04-25"
+  classification: demo

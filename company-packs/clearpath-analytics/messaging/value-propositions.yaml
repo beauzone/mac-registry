@@ -1,0 +1,65 @@
+metadata:
+  id: clearpath-value-propositions
+  version: "1.0.0"
+  schema_version: "1.0"
+
+value_propositions:
+  primary: >
+    Clearpath Predict gives revenue teams forecast accuracy they can stake a board meeting on —
+    94% accuracy, median across all customers, verified by independent audit.
+
+  by_audience:
+    revenue_operations:
+      headline: "Stop explaining why the forecast was wrong. Start being right."
+      subheadline: >
+        Clearpath Predict aggregates 47+ signals — CRM hygiene, engagement patterns,
+        rep activity, deal velocity — and tells you what's actually going to close,
+        not what reps think will close.
+      proof_points:
+        - "40% reduction in forecast error within the first quarter"
+        - "3 hours saved per rep per week on pipeline review"
+        - "Single source of truth for all forecast conversations"
+      call_to_action: "See your forecast accuracy baseline"
+
+    cfo_economic_buyer:
+      headline: "Every 1% improvement in forecast accuracy is worth $280K in avoided pipeline risk."
+      subheadline: >
+        CFOs lose sleep over revenue variance. Clearpath Predict gives you a number you
+        can put in the board deck — with the methodology to back it up.
+      proof_points:
+        - "Average payback period: 4.5 months"
+        - "Typical customer reduces at-risk pipeline identification time by 60%"
+        - "$1.2M average annual value of closed pipeline that was previously untracked"
+      call_to_action: "Calculate your revenue risk exposure"
+
+    sales_executive:
+      headline: "Your reps aren't lying. They just don't know what they don't know."
+      subheadline: >
+        Clearpath surfaces the deals that are silently dying — no executive sponsor, no
+        multi-thread, no recent engagement. Fix them before they fall out of the quarter.
+      proof_points:
+        - "Identify at-risk deals 3 weeks earlier than manual review"
+        - "23% increase in win rate on deals with active Clearpath coaching"
+        - "Rep adoption rate: 91% weekly active in first 60 days"
+      call_to_action: "See which deals in your pipeline are at risk right now"
+
+  differentiation:
+    vs_spreadsheets: >
+      Manual forecasting takes 6+ hours per week from your best people and is wrong 42%
+      of the time (IDC, 2024). Clearpath automates the work and delivers accuracy that
+      holds up to CFO scrutiny.
+    vs_crm_native: >
+      CRM-native forecasting only knows what reps enter. Clearpath knows what they don't
+      enter — email silence, champion job changes, competitor research signals — and
+      factors it all in automatically.
+    vs_legacy_bi: >
+      Legacy BI shows you what happened last quarter. Clearpath tells you what's going
+      to happen this quarter, with enough lead time to do something about it.
+
+_source_meta:
+  created_by: mac-client-seed
+  created_at: "2026-04-25"
+  classification: demo
+  derived_from:
+    - sources/messaging/positioning-framework.yaml
+    - sources/audiences/personas/revenue-ops-leader.yaml

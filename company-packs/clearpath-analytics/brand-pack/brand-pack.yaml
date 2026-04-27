@@ -1,0 +1,65 @@
+# Clearpath Analytics — Brand Pack
+# Compatible with MaC Content Creator and GTM Strategist document assembly.
+
+company_id: clearpath-analytics
+brand_id: clearpath-analytics
+version: "1.0.0"
+
+colors:
+  primary: "#1B4FD8"
+  secondary: "#0D2A6B"
+  accent: "#3ECFCF"
+  background: "#FFFFFF"
+  background_dark: "#0D2A6B"
+  foreground: "#1A1A2E"
+  muted: "#6B7280"
+
+ui_theme:
+  primary: "#1B4FD8"
+  background: "#0D2A6B"
+  foreground: "#FFFFFF"
+
+typography:
+  heading:
+    family: "Inter"
+    weight: 700
+    size_h1_pt: 36
+    size_h2_pt: 28
+    size_h3_pt: 22
+  body:
+    family: "Inter"
+    weight: 400
+    size_pt: 11
+  mono:
+    family: "JetBrains Mono"
+    weight: 400
+    size_pt: 10
+
+logo:
+  placement: top_left
+  paths:
+    dir: "brand-pack/assets/logos/"
+    primary: "clearpath-logo-primary.png"
+    white: "clearpath-logo-white.png"
+    dark: "clearpath-logo-dark.png"
+    icon: "clearpath-icon.png"
+
+icons:
+  source: material-symbols
+  catalog: assets/material-symbols-catalog.txt
+  style: outlined
+  weight: 200
+  default_color: "#1B4FD8"
+  dark_bg_color: "#FFFFFF"
+  review_mode: auto
+
+pptx:
+  slide_width_in: 13.333
+  slide_height_in: 7.5
+  templates: {}
+
+xlsx:
+  header_style:
+    background: "#1B4FD8"
+    font_color: "#FFFFFF"
+    font_weight: bold

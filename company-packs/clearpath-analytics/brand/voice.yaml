@@ -1,0 +1,42 @@
+metadata:
+  id: clearpath-brand-voice
+  version: "1.0.0"
+  schema_version: "1.0"
+
+brand_voice:
+  overall_character: >
+    Authoritative but approachable. We speak with the confidence of a data scientist and the
+    clarity of a great sales leader. We never hide behind jargon — we explain complex ideas
+    with concrete examples and real numbers.
+
+  core_traits:
+    - trait: Data-driven
+      description: Ground every claim in evidence. Use specific metrics, not vague superlatives.
+      example_do: "Customers reduce forecast error by 40% in their first quarter."
+      example_dont: "Our AI is incredibly accurate."
+
+    - trait: Direct
+      description: Say what you mean. No corporate padding, no weasel words.
+      example_do: "Clearpath Predict connects to Salesforce in 20 minutes."
+      example_dont: "Our seamless integration capabilities enable rapid time-to-value."
+
+    - trait: Confident without arrogance
+      description: We know our product works. We don't need to attack competitors or oversell.
+      example_do: "94% forecast accuracy, median across all customers in Q1 2025."
+      example_dont: "Unlike legacy solutions, we actually deliver results."
+
+  tone_by_audience:
+    technical_buyers:
+      description: Precise and specific. Show the architecture, the data flows, the security model.
+      tone: Technical precision, peer-to-peer
+    executive_buyers:
+      description: Outcomes-first. Board-ready metrics and business impact.
+      tone: Strategic, outcome-focused
+    revenue_operations:
+      description: Practical and workflow-oriented. How does this slot into their existing stack?
+      tone: Pragmatic, efficiency-focused
+
+_source_meta:
+  created_by: mac-client-seed
+  created_at: "2026-04-25"
+  classification: demo

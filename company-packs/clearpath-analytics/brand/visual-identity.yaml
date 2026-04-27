@@ -1,0 +1,50 @@
+metadata:
+  id: clearpath-visual-identity
+  version: "1.0.0"
+  schema_version: "1.0"
+
+colors:
+  primary: "#1B4FD8"         # Clearpath Blue — primary CTAs, headings, links
+  secondary: "#0D2A6B"       # Deep Navy — dark backgrounds, footers
+  accent: "#3ECFCF"          # Teal — highlights, data callouts, success states
+  background: "#FFFFFF"      # White
+  background_dark: "#0D2A6B" # Deep Navy for dark-mode / slide backgrounds
+  foreground: "#1A1A2E"      # Near-black body text
+  muted: "#6B7280"           # Secondary text, captions
+  success: "#22C55E"         # Positive trend indicators
+  warning: "#F59E0B"         # At-risk indicators
+  error: "#EF4444"           # Negative signals
+
+ui_theme:
+  primary: "#1B4FD8"
+  background: "#0D2A6B"
+  foreground: "#FFFFFF"
+  accent: "#3ECFCF"
+
+typography:
+  heading_font: "Inter"
+  body_font: "Inter"
+  mono_font: "JetBrains Mono"
+  heading_weight: 700
+  body_weight: 400
+
+logos:
+  primary: "assets/logos/clearpath-logo-primary.png"
+  white: "assets/logos/clearpath-logo-white.png"
+  dark: "assets/logos/clearpath-logo-dark.png"
+  icon: "assets/logos/clearpath-icon.png"
+
+usage_rules:
+  minimum_size_px: 120
+  clear_space: "Equal to the height of the 'C' in Clearpath"
+  prohibited:
+    - Do not recolor the logo
+    - Do not apply drop shadows
+    - Do not stretch or distort
+    - Do not place on a background that reduces contrast below AA standard
+  placement: top_left
+
+_source_meta:
+  created_by: mac-company-registry
+  created_at: "2026-04-27"
+  classification: demo

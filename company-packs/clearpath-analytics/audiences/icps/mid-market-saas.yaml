@@ -1,0 +1,46 @@
+metadata:
+  id: mid-market-saas-icp
+  version: "1.0.0"
+  schema_version: "1.0"
+
+icp:
+  name: Mid-Market B2B SaaS
+  description: >
+    B2B SaaS companies in the growth phase: past initial product-market fit, actively scaling
+    their go-to-market motion, but not yet at enterprise scale where a full data science team
+    is justified.
+
+  firmographics:
+    arr_range: $10M–$200M
+    employee_range: 50–500
+    industry: B2B SaaS
+    geography: North America (primary), UK and DACH (secondary)
+    funding_stage: [Series A, Series B, Series C]
+
+  technographics:
+    crm: [Salesforce, HubSpot]
+    required: true
+    marketing_automation: [Marketo, HubSpot, Pardot]
+    data_warehouse: [Snowflake, BigQuery, Redshift]
+
+  buying_committee:
+    primary_buyer: VP Revenue Operations
+    executive_sponsor: CRO or VP Sales
+    technical_evaluator: Head of Sales Operations or Salesforce Admin
+    finance_influence: CFO (for deals over $50K ARR)
+
+  disqualifiers:
+    - No Salesforce or HubSpot CRM (required for data ingestion)
+    - Pre-revenue or pre-product-market fit stage
+    - Enterprise (>2000 employees) — different competitive set and procurement process
+    - SMB (<$5M ARR) — ROI threshold not met
+
+  deal_characteristics:
+    avg_contract_value: $24K–$72K ARR
+    sales_cycle: 30–90 days
+    expansion_motion: Land with one product (Predict or Signals), expand to both
+
+_source_meta:
+  created_by: mac-client-seed
+  created_at: "2026-04-25"
+  classification: demo

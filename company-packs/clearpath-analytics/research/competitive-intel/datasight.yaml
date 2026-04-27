@@ -1,0 +1,97 @@
+metadata:
+  id: clearpath-competitive-intel-datasight
+  version: "1.0.0"
+  schema_version: "1.0"
+
+competitive_profile:
+  company: DataSight
+  website: "datasight.io"
+  founded: 2015
+  headquarters: "New York, NY"
+  employees: ~780
+  funding:
+    total: "$185M"
+    last_round: "Series E, $80M, November 2022"
+    investors: ["Tiger Global", "Andreessen Horowitz", "Salesforce Ventures", "Snowflake Ventures"]
+  estimated_arr: "$120M"
+  growth_rate: "~18% YoY (slowing — post-2022 correction)"
+
+  positioning:
+    tagline: "The revenue analytics platform for enterprise"
+    key_messages:
+      - "One platform for all your revenue analytics"
+      - "Powered by your data warehouse"
+      - "Built for the modern data stack"
+    target_segment: "Fortune 500 and large enterprise, data-warehouse-centric"
+
+  product:
+    core_capability: "Comprehensive revenue analytics and BI built on top of Snowflake/BigQuery/Redshift"
+    differentiators_claimed:
+      - "Native data warehouse integration — no data movement"
+      - "Fully customizable models and dashboards"
+      - "Gartner Magic Quadrant Leader (Revenue Performance Management)"
+      - "Multi-product and multi-region enterprise support"
+    known_limitations:
+      - "9-12 month average implementation time — requires data engineering team"
+      - "Forecasting is a module, not the core competency — accuracy lags specialized tools"
+      - "Complex licensing with significant overage risk (data volume, seat, and API limits)"
+      - "Requires ongoing BI/data engineering maintenance — not a RevOps-owned tool"
+      - "UI is designed for analysts, not sales leaders — adoption lag among field sales"
+    pricing:
+      model: "Platform fee + per-seat + data volume"
+      estimated_range: "$200,000–$1,200,000+ per year (total contract)"
+      minimum_deal_size: "$150,000 ARR"
+      enterprise_custom: true
+
+  win_loss:
+    we_win_when:
+      - "Prospect is mid-market ($20M–$200M ARR) — DataSight is oversized and overpriced"
+      - "Prospect needs to be live in under 60 days"
+      - "Prospect does not have a data engineering team"
+      - "Prospect's core need is forecast accuracy, not full revenue analytics"
+      - "Prospect has received a DataSight quote and experienced sticker shock"
+    they_win_when:
+      - "Prospect is Fortune 500 with existing Snowflake investment and data team"
+      - "Procurement requires Gartner Magic Quadrant coverage"
+      - "Prospect needs custom BI dashboards beyond forecasting"
+      - "IT security requires vendor with established enterprise compliance portfolio"
+    competitive_traps:
+      - "DataSight will invoke Gartner MQ Leader status — counter with domain specificity (revenue analytics vs. forecasting accuracy)"
+      - "They will propose a 'proof of concept' that takes 3 months — use this as a selling point for Clearpath speed"
+      - "Their AE will bundle in BI capabilities you don't need — refocus the conversation on forecast accuracy"
+
+  recent_activity:
+    product_launches:
+      - "Launched DataSight AI Assistant Q2 2024 — natural language query layer on top of existing BI"
+      - "Released DataSight Mobile Q3 2024 — addressed gap vs. AcmePredict but limited functionality"
+      - "Announced partnership with Workday for ERP integration Q4 2024"
+    analyst_coverage:
+      - "Gartner Magic Quadrant: Leader (Revenue Performance Management, 2024)"
+      - "Forrester Wave: Leader (Revenue Operations and Intelligence, Q3 2024)"
+    notable_customers: ["Adobe", "Workday", "Palo Alto Networks", "Splunk", "Okta", "MongoDB"]
+
+  strategic_outlook:
+    risks_to_their_business:
+      - "Snowflake and Salesforce are both building native analytics that compete with DataSight's data warehouse layer"
+      - "Implementation complexity is a structural churn risk — customers who can't adopt, cancel"
+      - "Pricing model is vulnerable to economic pressure; enterprise budget freezes hurt them disproportionately"
+    opportunities_for_clearpath:
+      - "Mid-market companies that received DataSight quotes and need something right-sized"
+      - "DataSight customers in year 1-2 who are struggling with adoption"
+      - "Companies where DataSight is up for renewal after a rocky implementation"
+
+  intelligence_sources:
+    - G2 and TrustRadius reviews (aggregated Q4 2024)
+    - Gartner Peer Insights (17 enterprise reviews reviewed)
+    - Win/loss interviews from 14 competitive deals (CY2024)
+    - LinkedIn job postings and engineering blog
+    - Conference session recordings (SaaStr Annual 2024)
+  intelligence_confidence: high
+  last_updated: "2026-01-15"
+
+_source_meta:
+  created_by: mac-client-seed
+  created_at: "2026-04-25"
+  classification: demo
+  derived_from:
+    - sources/messaging/competitive-positioning.yaml

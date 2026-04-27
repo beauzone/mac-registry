@@ -17,18 +17,26 @@
 # =============================================================================
 # Registry Manifest
 manifest:
-  version: "0.5.0"
-  last_updated: "2026-04-25"
+  version: "0.6.0"
+  last_updated: "2026-04-27"
   versioning: "per-asset"
+
+company_packs:
+  manifest_path: company-packs/manifest.yaml
+  count: 1
+  last_updated: "2026-04-27"
 
 skills:
   gtm_strategist:
     id: gtm-strategist
     path: skills/user/gtm-strategist/SKILL.md
-    version: "2.0.0"
-    updated_at: "2026-04-23"
+    version: "2.1.0"
+    updated_at: "2026-04-27"
     raw_url: https://raw.githubusercontent.com/beauzone/mac-registry/main/skills/user/gtm-strategist/SKILL.md
     changelog:
+      - version: "2.1.0"
+        date: "2026-04-27"
+        notes: "Company pack registry integration. Step 2 checks ~/.claude/mac/companies/ (shared MaC path) and offers registry install. Adds §18 registry access, token provisioning, lookup, download, and 24h update checking. Updated path resolution order in §2 and §10."
       - version: "2.0.0"
         date: "2026-04-23"
         notes: "Unified B2B+B2C skill. Remote-first via mac-registry. Adds 29 B2C frameworks, 30 B2C personas (13 consumer archetypes + 17 operator roles), 8 B2C templates. Three-type persona system. Dual-track stage awareness."
@@ -62,10 +70,13 @@ skills:
   mac_company_manager:
     id: mac-company-manager
     path: skills/user/mac-company-manager/SKILL.md
-    version: "1.0.0"
-    updated_at: "2026-04-25"
+    version: "1.1.0"
+    updated_at: "2026-04-27"
     raw_url: https://raw.githubusercontent.com/beauzone/mac-registry/main/skills/user/mac-company-manager/SKILL.md
     changelog:
+      - version: "1.1.0"
+        date: "2026-04-27"
+        notes: "Adds §13 Registry Publishing (admin only). New commands: publish {id} and publish-update {id}. Admin token stored at ~/.claude/mac/registry-admin-token. Flattened layout mapping for registry format. Sensitive data pre-flight check before publishing."
       - version: "1.0.0"
         date: "2026-04-25"
         notes: "Initial release. Company pack creation, brand setup, audience management, template conversion from PPTX/PDF, writer profile creation, legacy migration, .zip export."
@@ -76,10 +87,13 @@ skills:
   mac_content_creator:
     id: mac-content-creator
     path: skills/user/mac-content-creator/SKILL.md
-    version: "2.0.0"
-    updated_at: "2026-04-25"
+    version: "2.1.0"
+    updated_at: "2026-04-27"
     raw_url: https://raw.githubusercontent.com/beauzone/mac-registry/main/skills/user/mac-content-creator/SKILL.md
     changelog:
+      - version: "2.1.0"
+        date: "2026-04-27"
+        notes: "Company pack registry integration. Step 3 now offers registry install as option A. Adds §11 registry access, token provisioning, lookup, download, brand-pack resolution from registry packs, and 24h update checking. Resolution order updated for flat registry pack layout."
       - version: "2.0.0"
         date: "2026-04-25"
         notes: "Upgraded from document-creator v1.5.0. Shared company pack path (~/.claude/mac/companies/). MaC MCP detection. Registry self-update. Full MaC schema consumption (company.yaml + brand specs). Writer profile application. Legacy brand-pack.yaml backward compatible."

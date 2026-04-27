@@ -1,0 +1,118 @@
+metadata:
+  id: clearpath-content-strategy
+  version: "1.0.0"
+  schema_version: "1.0"
+
+content_strategy:
+  title: "Clearpath Predict Content Strategy FY2026"
+  objective: >
+    Own the "revenue forecast accuracy" category in B2B SaaS. Become the default
+    resource that RevOps leaders, CROs, and CFOs turn to when they want to understand
+    and improve their forecast. Pipeline is a downstream outcome — thought leadership
+    is the mechanism.
+
+  pillars:
+    - id: pillar-authority
+      name: "Category Authority"
+      goal: "Position Clearpath as the benchmark-setting voice in forecast accuracy"
+      formats:
+        - "Annual Forecast Accuracy Benchmark Report (flagship, downloadable)"
+        - "Quarterly data releases and trend commentary"
+        - "Contributed articles to SaaStr, RevOps Co-op, CFO Magazine"
+      cadence: "Quarterly major releases, monthly blog cadence"
+      kpis:
+        - "Benchmark Report downloads: 2,000+ in Q1"
+        - "Backlinks from industry publications: 50+ by EOY"
+        - "Newsletter subscribers: 5,000 by Q4"
+
+    - id: pillar-practitioner
+      name: "Practitioner Enablement"
+      goal: "Help RevOps leaders do their job better — with and without Clearpath"
+      formats:
+        - "How-to guides (forecasting methodology, CRM hygiene, QBR prep)"
+        - "Templates (QBR slide deck, forecast accuracy tracker, CFO one-pager)"
+        - "Video series: 'Revenue Signal' (weekly 5-minute episodes)"
+        - "Webinars: monthly with guest practitioners"
+      cadence: "2 posts/week, monthly webinar"
+      kpis:
+        - "Organic traffic: 25,000 monthly sessions by Q4"
+        - "Template downloads: 500/month by Q3"
+        - "Webinar attendance: 200+ per event"
+
+    - id: pillar-customer-evidence
+      name: "Customer Evidence"
+      goal: "Make Clearpath's claims undeniable through real customer stories"
+      formats:
+        - "Long-form case studies (1,500-2,000 words, video optional)"
+        - "Video testimonials (90 seconds, 3 per quarter)"
+        - "ROI one-pagers (one per industry vertical)"
+        - "Reference program (10 referenceable customers by EOY)"
+      cadence: "1 case study per 6 weeks, 1 testimonial per month"
+      kpis:
+        - "Case studies published: 8 by EOY"
+        - "Video testimonials: 12 by EOY"
+        - "Reference call requests fulfilled: 40+"
+
+  editorial_calendar:
+    q1:
+      anchor: "Annual Forecast Accuracy Benchmark Report (launch February)"
+      supporting:
+        - "Blog: '2026 State of Revenue Forecasting' (companion post)"
+        - "Template: CFO ROI Calculator"
+        - "Case study: Mid-market SaaS customer (RevOps persona)"
+        - "Webinar: 'How to Build a Forecast Your CFO Will Believe'"
+
+    q2:
+      anchor: "RevOps Maturity Assessment (launch May)"
+      supporting:
+        - "Blog series: 3-part 'CRM Hygiene for Forecast Accuracy'"
+        - "Case study: Enterprise customer (CFO persona)"
+        - "Template: QBR Slide Deck"
+        - "Webinar: 'Competitive Win Strategies for RevOps' (with Gong partnership)"
+
+    q3:
+      anchor: "Mid-Year Forecast Accuracy Pulse (data release)"
+      supporting:
+        - "Blog: 'Why Your Forecast Changes on the Last Day of the Quarter'"
+        - "Video testimonial series: 3 customers in 6 weeks"
+        - "Template: Sales Rep Quick-Start Guide"
+        - "SaaStr Annual content (live session recap, 3 posts)"
+
+    q4:
+      anchor: "Year-End Planning Season Campaign"
+      supporting:
+        - "Blog: '2027 Revenue Planning Checklist for RevOps'"
+        - "Case study: Partner-sourced deal success story"
+        - "Webinar: 'Close 2026 Strong: Q4 Pipeline Integrity'"
+        - "Template: 2027 Budget Request Template for Forecasting Tools"
+
+  distribution:
+    owned:
+      - "Revenue Signal newsletter (primary)"
+      - "Blog (SEO + nurture)"
+      - "LinkedIn company page"
+    earned:
+      - "Guest posts in RevOps Co-op, SaaStr Blog, CFO Magazine"
+      - "Podcast appearances: RevOps FM, Revenue Builders"
+      - "Speaker slots at SaaStr, Gartner CSO Summit"
+    partner_amplification:
+      - "Co-marketed webinars with Gong, Salesforce ISV program"
+      - "RevOps agency newsletter sponsorships"
+
+  content_governance:
+    review_required_for:
+      - "Competitor mentions or comparisons"
+      - "Data claims and statistics"
+      - "Customer references and case studies (customer approval required)"
+      - "Pricing references"
+    review_process: "Draft → Marketing review → Legal review (if competitor or data claim) → Publish"
+    style_guide: "sources/brand/voice.yaml + sources/brand/tone-guidelines.yaml"
+
+_source_meta:
+  created_by: mac-client-seed
+  created_at: "2026-04-25"
+  classification: demo
+  derived_from:
+    - sources/messaging/messaging-pillars.yaml
+    - sources/audiences/segments/revenue-teams.yaml
+    - sources/strategy/gtm-plan.yaml

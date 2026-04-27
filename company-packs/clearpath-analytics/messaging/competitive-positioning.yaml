@@ -1,0 +1,81 @@
+metadata:
+  id: clearpath-competitive-positioning
+  version: "1.0.0"
+  schema_version: "1.0"
+
+competitive_positioning:
+  summary: >
+    Clearpath wins on accuracy and transparency. We don't have the biggest marketing budget
+    or the most features — we have 94% verified forecast accuracy and a methodology that
+    survives CFO scrutiny. Our positioning exploits two structural weaknesses in the market:
+    AcmePredict's black-box model and DataSight's complexity tax.
+
+  competitors:
+    acme_predict:
+      name: AcmePredict
+      founded: 2018
+      positioning: "AI-first revenue intelligence"
+      estimated_arr: "$45M"
+      strengths:
+        - Strong brand recognition and marketing spend
+        - Large enterprise customer base (200+ companies over $500M ARR)
+        - Native Salesforce app with AppExchange distribution
+      weaknesses:
+        - Black-box AI — customers cannot audit or explain the model outputs
+        - High false positive rate on "at-risk" signals leads to alert fatigue
+        - 18-month average implementation time for enterprise customers
+        - No multi-CRM support (Salesforce-only)
+      our_counter: >
+        "AcmePredict's model is a black box. When your CFO asks why the forecast changed,
+        the answer can't be 'the AI said so.' Clearpath shows you every signal, every weight,
+        every factor. You can explain it to your board in plain English."
+      landmines:
+        - "Ask them to explain the last time their forecast changed unexpectedly."
+        - "Ask about Salesforce-only lock-in and their roadmap for HubSpot/Dynamics."
+        - "Ask for their accuracy methodology — how do they define a 'correct' forecast?"
+
+    datasight:
+      name: DataSight
+      founded: 2015
+      positioning: "Revenue analytics platform for enterprise"
+      estimated_arr: "$120M"
+      strengths:
+        - Comprehensive BI and analytics capabilities beyond forecasting
+        - Deep integrations with data warehouse tools (Snowflake, BigQuery, Redshift)
+        - Established in Fortune 500 accounts
+        - Strong analyst relationships (Gartner MQ Leader)
+      weaknesses:
+        - 9-12 month average implementation time
+        - Requires dedicated BI/analytics staff to maintain
+        - Forecasting is a module, not the core product — accuracy lags specialists
+        - Complex licensing creates unpredictable total cost of ownership
+      our_counter: >
+        "DataSight is a great analytics platform if you have a team of data engineers to run it.
+        Clearpath is built for revenue teams, not BI teams. We're running in 3 weeks, not 9 months,
+        and every insight is designed to be acted on by a sales leader, not a data scientist."
+      landmines:
+        - "Ask about their average time to first forecast insight."
+        - "Ask how many FTEs other customers dedicate to running DataSight."
+        - "Ask for a reference from a mid-market customer (under $200M ARR)."
+
+  positioning_map:
+    x_axis: "Implementation speed (fast → slow)"
+    y_axis: "Forecast accuracy (low → high)"
+    clearpath: {x: 9, y: 9, note: "Fast and accurate — our core claim"}
+    acme_predict: {x: 5, y: 6, note: "Moderate speed, moderate accuracy, high noise"}
+    datasight: {x: 2, y: 7, note: "High accuracy but very slow and expensive"}
+    spreadsheets: {x: 10, y: 2, note: "Fast but unreliable"}
+
+  safe_harbor_claims:
+    - "94% forecast accuracy is the median across all Clearpath customers, Q1 2025, verified by independent third-party audit (Deloitte)."
+    - "Implementation time refers to time from contract signing to first live forecast."
+    - "Competitor claims are based on publicly available information, customer interviews, and third-party analyst reports."
+
+_source_meta:
+  created_by: mac-client-seed
+  created_at: "2026-04-25"
+  classification: demo
+  derived_from:
+    - sources/messaging/positioning-framework.yaml
+    - sources/research/competitive-intel/acme-predict.yaml
+    - sources/research/competitive-intel/datasight.yaml

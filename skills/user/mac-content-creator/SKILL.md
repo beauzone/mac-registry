@@ -1,12 +1,12 @@
 ---
 name: mac-content-creator
-version: 2.0.0
+version: 2.1.0
 description: "create, edit, and export branded marketing documents and media across formats (pptx, docx, xlsx, pdf, markdown, text, rtf, and remotion video). reads company/brand context from the shared MaC company pack path or MCP server. writes copy AND assembles finished documents in a single pass — datasheets, case studies, one-pagers, blog posts, email copy, social content, branded presentations, and videos. applies brand voice, terminology, messaging pillars, proof points, and visual identity from the company pack. supports writer profile voice calibration. auto-synced from mac-registry."
 ---
 
 <!--
-SKILL_VERSION: 2.0.0
-SKILL_UPDATED: 2026-04-25
+SKILL_VERSION: 2.1.0
+SKILL_UPDATED: 2026-04-27
 -->
 
 # MaC Content Creator
@@ -68,12 +68,12 @@ for any registered MCP server whose command or URL references `marketing-as-code
 
 ### Step 2 — Company Pack Detection
 
-Check for company packs at the shared MaC path and legacy path:
+Check for company packs in this order:
 
-**Primary path:** `~/.claude/mac/companies/`
-**Legacy path:** `~/.claude/skills/document-creator/companies/`
+**Path 1 — Shared MaC path (primary):** `~/.claude/mac/companies/`
+**Path 2 — Legacy document-creator path:** `~/.claude/skills/document-creator/companies/`
 
-- **If packs exist at the primary path:** List each by company name with its available
+- **If packs exist at the shared MaC path:** List each by company name with available
   brands and template count:
   > "I found these company packs:
   > - **[company name]** — brands: [list] | templates: [N pptx]
@@ -82,7 +82,11 @@ Check for company packs at the shared MaC path and legacy path:
   > Which company would you like to work with? Or type 'none' to proceed without
   > brand context."
 
-- **If no packs at primary path, but packs found at legacy path:** Announce them:
+  After activating a pack, check for `~/.claude/mac/companies/{id}/.registry-meta.yaml`.
+  If found and `last_update_check` is more than 24 hours ago, run the update check
+  (§11) silently.
+
+- **If no packs at primary path, but packs at legacy path:** Announce them:
   > "I found company packs from the previous document-creator install at:
   > `~/.claude/skills/document-creator/companies/`
   >
@@ -94,7 +98,7 @@ Check for company packs at the shared MaC path and legacy path:
   > ```
   >
   > I can use these packs from the legacy path now. Which company would you like,
-  > or type 'migrate' to copy them to the shared path first, or 'none' to skip."
+  > or type 'migrate' to copy them first, or 'none' to skip."
 
 - **If no packs found at either path:** Proceed to Step 3.
 
@@ -104,15 +108,30 @@ If no MCP server was found and no company pack was activated:
 
 > "No brand context is loaded. I can create documents using system defaults, or you can:
 >
-> **A)** Provide brand context now — share your company name, website, brand guidelines,
+> **A)** Install a company pack from the MaC registry — if your administrator has
+> set one up, I can download it for you.
+>
+> **B)** Provide brand context now — share your company name, website, brand guidelines,
 > or any relevant materials and I'll use them for this session.
 >
-> **B)** Create a full company pack — install MaC Company Manager and run `/mac-company-manager`
-> to set up a persistent pack.
+> **C)** Create a full company pack — install MaC Company Manager and run
+> `/mac-company-manager` to set up a persistent pack.
 >
-> **C)** Proceed without brand context — I'll use system defaults for formatting.
+> **D)** Proceed without brand context — I'll use system defaults for formatting.
 >
-> Reply A, B, or C."
+> Reply A, B, C, or D."
+
+**If user chooses A (registry install):**
+
+1. "What is the company name?" → check registry manifest
+2. If found → confirm details → run registry download (§11)
+3. If not found:
+   > "That company isn't in the MaC registry yet. Would you like to build a pack
+   > using `/mac-company-manager`, or proceed without brand context?"
+
+**If user chooses B:** collect name/URL/docs and use as session-only context.
+**If user chooses C:** redirect to MaC Company Manager.
+**If user chooses D:** use system defaults.
 
 ### Step 4 — Remote Asset Sync Check
 
@@ -159,9 +178,15 @@ These belong to other skills and are not part of this skill's operation.
 When loading brand and company context, resolve in this order:
 
 1. **MaC MCP server** (if detected in Step 1) — full governed context via MCP tools
-2. **Shared path** — `~/.claude/mac/companies/{company_id}/` (MaC Company Manager output)
+2. **Shared path** — `~/.claude/mac/companies/{company_id}/` (Company Manager or registry-installed)
 3. **Legacy path** — `~/.claude/skills/document-creator/companies/{company_id}/` (migration fallback)
 4. **System defaults** — `~/.claude/skills/mac-content-creator/system/brand-pack/brand-pack.yaml`
+
+Registry-installed packs at the shared path use a flat layout (`brand/`, `messaging/`
+at top level). When loading from a registry pack:
+- `brand/voice.yaml` instead of `brands/{id}/voice.yaml`
+- `messaging/*.yaml` at top level instead of `brands/{id}/messaging/`
+- `brand-pack/brand-pack.yaml` for visual rendering config (if present)
 
 ### Full MaC schema set (when created by Company Manager)
 
@@ -806,3 +831,68 @@ Versions follow semantic versioning (`MAJOR.MINOR.PATCH`).
 
 If a remote asset has no `version` field (legacy entry), treat as `"0.0.0"` and
 always download.
+
+---
+
+## 11. Company Pack Registry
+
+### Registry Access
+
+The MaC registry hosts company packs at `beauzone/mac-registry/company-packs/`.
+Access requires a read-only PAT stored at `~/.claude/mac/registry-token`.
+
+**Token provisioning (first registry access):**
+
+If no token file exists:
+> "To download from the MaC company pack registry, I need a one-time access token.
+>
+> Your MaC administrator should have provided you with a registry token.
+> Please paste it here: [_______________________]
+>
+> (Stored at `~/.claude/mac/registry-token`. Only used to authenticate with
+> the GitHub API.)"
+
+Validate the token: `GET https://api.github.com/repos/beauzone/mac-registry`
+- HTTP 200 → write token to file, `chmod 600`
+- HTTP 4xx → report error, ask to retry
+
+### Registry Lookup & Download
+
+When the user provides a company name:
+1. Fetch `company-packs/manifest.yaml` from the registry (raw content via API).
+2. Search `company_packs[]` for a case-insensitive match on `name`.
+3. **If found:**
+   > "Found: **[name]** (v[version]) — [description]
+   > Includes: [list included sections]
+   >
+   > Install to `~/.claude/mac/companies/[id]/`? (Yes / No)"
+4. **If not found:**
+   > "No pack found for '[query]'. Your administrator may need to set one up."
+
+On confirm, run:
+```bash
+~/.claude/mac/scripts/download-company-pack.sh {company-id}
+```
+Install the script from `beauzone/mac-registry/scripts/download-company-pack.sh`
+if not present, then execute it.
+
+After install: load the pack and announce:
+> "✓ Company pack installed: **[name]** v[version]. Brand context is loaded."
+
+### Brand Pack Resolution from Registry Pack
+
+When a registry-installed pack includes a `brand-pack/` directory:
+1. Check for `brand-pack/brand-pack.yaml` and use it as the visual rendering config.
+2. Check for `brand-pack/assets/logos/` and use logo paths from `brand-pack.yaml`.
+3. Fallback: derive visual config from `brand/visual-identity.yaml` if present.
+
+### Update Checking
+
+On skill startup, if the active company has `.registry-meta.yaml`:
+1. Read `last_update_check`. If more than 24 hours ago:
+   a. Fetch registry manifest, compare versions.
+   b. **If newer version:**
+      > "**[name]** company pack updated (v[old] → v[new]). Install now? (Yes / Skip / Don't ask for v[new])"
+   c. **If same version:** update `last_update_check` and continue.
+   d. **If unreachable:** silently continue.
+2. If less than 24 hours ago: skip entirely.

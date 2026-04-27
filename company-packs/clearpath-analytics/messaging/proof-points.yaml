@@ -1,0 +1,42 @@
+metadata:
+  id: clearpath-proof-points
+  version: "1.0.0"
+  schema_version: "1.0"
+
+proof_points:
+  - id: forecast-accuracy-q1-2025
+    claim: "94% forecast accuracy, median across all customers"
+    evidence: Internal customer analytics, Q1 2025 cohort (n=47 customers)
+    confidence: high
+    use_in: [positioning, sales-decks, website, case-studies]
+    notes: Report quarterly; use "Q1 2025" until Q2 data is validated.
+
+  - id: forecast-error-reduction
+    claim: "40% average reduction in forecast error within 90 days"
+    evidence: Onboarding cohort analysis, 2024 full year (n=112 customers)
+    confidence: high
+    use_in: [positioning, sales-decks, email]
+
+  - id: time-to-first-forecast
+    claim: "20-minute average time from CRM connection to first forecast"
+    evidence: Product telemetry, median across all new accounts 2024
+    confidence: high
+    use_in: [competitive, objection-handling, website]
+
+  - id: signals-close-rate
+    claim: "Pipeline influenced by Signals recommendations closes at 2.3x the base rate"
+    evidence: Customer A/B analysis across 8 enterprise customers, 2024
+    confidence: medium
+    use_in: [case-studies, sales-decks]
+    notes: Disclose methodology when used in formal materials.
+
+  - id: rep-pipeline-coverage
+    claim: "+28% average improvement in rep pipeline coverage in first quarter"
+    evidence: Customer success analysis, 2024 cohort (n=31 customers with full quarter data)
+    confidence: medium
+    use_in: [email, case-studies]
+
+_source_meta:
+  created_by: mac-client-seed
+  created_at: "2026-04-25"
+  classification: demo

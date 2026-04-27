@@ -1,0 +1,32 @@
+# Company Pack Registry Manifest
+# Access requires a read-only PAT for the beauzone/mac-registry repo
+
+manifest:
+  version: "1.0.0"
+  last_updated: "2026-04-27"
+  repo: "beauzone/mac-registry"
+  base_path: "company-packs"
+
+company_packs:
+  - id: clearpath-analytics
+    name: "Clearpath Analytics"
+    version: "1.0.0"
+    updated_at: "2026-04-27"
+    status: demo                    # demo | active | archived
+    industry: "B2B SaaS"
+    category: "Predictive Analytics"
+    stage: "Series A"
+    description: "Demo company — predictive analytics for mid-market revenue teams"
+    pack_type: full                 # full | strategy-only | brand-only
+    includes:
+      company_spec: true
+      brand: true
+      messaging: true
+      audiences: true
+      competitive_intel: true
+      strategy: true
+      brand_pack: true              # document-creator/content-creator visual assets
+      templates: false
+      writer_profiles: false
+    file_count: 16
+    total_size_kb: 120

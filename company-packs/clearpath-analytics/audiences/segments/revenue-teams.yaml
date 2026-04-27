@@ -1,0 +1,86 @@
+metadata:
+  id: clearpath-segment-revenue-teams
+  version: "1.0.0"
+  schema_version: "1.0"
+
+segment:
+  id: revenue-teams
+  name: "Revenue Teams at B2B SaaS Companies"
+  description: >
+    The primary market segment for Clearpath Predict: the collective of revenue operations,
+    sales leadership, and finance professionals at B2B SaaS companies who are responsible
+    for the accuracy and reliability of the revenue forecast.
+
+  segment_size:
+    tam: "$4.2B — Total addressable market for predictive sales analytics (IDC, 2024)"
+    sam: "$890M — US B2B SaaS companies with $20M–$1B ARR and enterprise sales motions"
+    som: "$45M — Realistically capturable over 3 years given current go-to-market capacity"
+
+  personas_included:
+    - revenue-ops-leader (champion, primary user)
+    - cfo-buyer (economic buyer, final approver)
+    - sales-rep-user (end user, adoption driver)
+
+  segment_characteristics:
+    company_profile:
+      - B2B SaaS business model
+      - $20M–$1B ARR
+      - Enterprise or mid-market sales motion (average deal size $15K+ ARR)
+      - 10+ account executives or sales reps
+    buying_triggers:
+      - Recent forecast miss (>5% variance from actual)
+      - CRO or VP Sales change
+      - Pre-IPO or fundraise requiring board-grade revenue predictability
+      - Current forecasting tool contract renewal approaching
+    disqualifiers:
+      - Consumer companies (B2C, marketplace models)
+      - Transactional/PLG businesses where sales-led motion is minor
+      - Companies with fewer than 5 AEs (not enough pipeline volume for statistical significance)
+      - Non-subscription models where forecasting dynamics differ significantly
+
+  market_trends:
+    driving_adoption:
+      - "Revenue predictability is now a board-level KPI in most Series B+ companies"
+      - "CFO involvement in CRO budget decisions has increased 40% since 2022 (Forrester)"
+      - "Post-2022 funding environment created intense focus on capital efficiency and forecasting accuracy"
+      - "RevOps as a function has grown 300% in headcount over 3 years — buyers now exist who can champion the purchase"
+    headwinds:
+      - "Consolidation pressure: buyers prefer fewer tools, not more"
+      - "Economic uncertainty creating longer evaluation cycles"
+      - "AI skepticism from buyers burned by over-promised solutions"
+
+  messaging_priorities_by_persona:
+    revenue_ops:
+      priority: 1
+      angle: "Single source of truth, fewer fire drills, more strategic credibility"
+    cfo_buyer:
+      priority: 2
+      angle: "Revenue risk reduction, board-grade accuracy, ROI in under 6 months"
+    sales_rep:
+      priority: 3
+      angle: "Less admin, better deal visibility, protect your quarter"
+
+  channel_strategy:
+    primary:
+      - Direct outbound to RevOps leaders (LinkedIn, email sequences)
+      - Content marketing (benchmark reports, ROI calculators)
+      - Partner channel through Salesforce ISV ecosystem
+    secondary:
+      - CFO-targeted content (board deck templates, ROI frameworks)
+      - AE community (Pavilion, Revenue Collective, RepVue)
+    events:
+      - Gartner CSO & Sales Leader Conference
+      - SaaStr Annual
+      - Revenue Collective Summit
+      - Dreamforce (Salesforce ISV partner presence)
+
+_source_meta:
+  created_by: mac-client-seed
+  created_at: "2026-04-25"
+  classification: demo
+  derived_from:
+    - sources/audiences/personas/revenue-ops-leader.yaml
+    - sources/audiences/personas/cfo-buyer.yaml
+    - sources/audiences/personas/sales-rep-user.yaml
+    - sources/audiences/icps/mid-market-saas.yaml
+    - sources/audiences/icps/enterprise-saas.yaml

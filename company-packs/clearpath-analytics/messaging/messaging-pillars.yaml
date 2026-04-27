@@ -1,0 +1,90 @@
+metadata:
+  id: clearpath-messaging-pillars
+  version: "1.0.0"
+  schema_version: "1.0"
+
+messaging_pillars:
+  overview: >
+    Three pillars support all Clearpath Predict messaging. Every piece of content —
+    from a tweet to a board deck — should reinforce at least one pillar. The pillars
+    are ordered by priority: accuracy first, then speed, then transparency.
+
+  pillars:
+    - id: pillar-1
+      name: "Accuracy You Can Stake a Board Meeting On"
+      priority: 1
+      headline: "94% forecast accuracy. Verified. Audited. Explainable."
+      supporting_claims:
+        - "Median 94% accuracy across all customers, Q1 2025 (Deloitte-verified)"
+        - "40% reduction in forecast error in the first quarter of deployment"
+        - "Every signal, every weight, every factor shown in plain English"
+      proof_points:
+        - claim: "94% median forecast accuracy"
+          source: "Independent audit by Deloitte, Q1 2025"
+          type: third_party_verified
+        - claim: "40% reduction in forecast error"
+          source: "Aggregate customer data, 89 customers, 4-quarter study"
+          type: customer_data
+        - claim: "3.2 fewer pipeline turns needed per quarter"
+          source: "Customer survey, n=134, Q4 2024"
+          type: customer_survey
+      tone_guidance: >
+        Lead with the number. Be specific about the methodology. Never say "our AI."
+        Say "our model" or "our forecasting engine." Let the auditor credentials do the work.
+
+    - id: pillar-2
+      name: "Live in Three Weeks, Not Nine Months"
+      priority: 2
+      headline: "First live forecast in 21 days. Guaranteed."
+      supporting_claims:
+        - "Average time to first live forecast: 18 days"
+        - "Pre-built connectors for Salesforce, HubSpot, and Dynamics 365"
+        - "No data engineering team required — RevOps runs it"
+        - "Dedicated implementation engineer assigned day one"
+      proof_points:
+        - claim: "18-day average implementation time"
+          source: "Implementation data across 134 customers"
+          type: customer_data
+        - claim: "Zero data engineering headcount required"
+          source: "Customer survey, n=89"
+          type: customer_survey
+      tone_guidance: >
+        Contrast with the 9-12 month enterprise analytics implementations buyers have
+        experienced. "Live in 3 weeks" is a commitment, not a claim — back it up with
+        the guarantee language.
+
+    - id: pillar-3
+      name: "Transparent Models, Not Black Boxes"
+      priority: 3
+      headline: "Every forecast explained in plain English."
+      supporting_claims:
+        - "See exactly which signals drove every forecast change"
+        - "Custom signal weights configurable by RevOps without code"
+        - "Full audit trail for every model update and configuration change"
+        - "Export-ready methodology reports for board and audit committee review"
+      proof_points:
+        - claim: "91% of customers report being able to explain their Clearpath forecast to their CFO"
+          source: "NPS survey Q1 2025, n=134"
+          type: customer_survey
+        - claim: "Configurable signal weights, no coding required"
+          source: "Product capability — GA as of version 2.3"
+          type: product
+      tone_guidance: >
+        The black-box problem is the #1 objection from economic buyers. Position transparency
+        as a CFO-facing feature, not a technical one. "Your auditors can review it" is more
+        powerful than "it's explainable AI."
+
+  usage_guidelines:
+    single_asset: "Every piece of content must reinforce at least one pillar."
+    all_three: "Full presentations (sales deck, website homepage) should hit all three pillars."
+    ordering: "Lead with Pillar 1 (accuracy) unless the audience has made it clear they care most about speed or transparency."
+    avoiding_drift: "When updating content, run it against all three pillars before publishing. If a claim doesn't support a pillar, cut it."
+
+_source_meta:
+  created_by: mac-client-seed
+  created_at: "2026-04-25"
+  classification: demo
+  derived_from:
+    - sources/messaging/positioning-framework.yaml
+    - sources/messaging/value-propositions.yaml
+    - sources/messaging/proof-points.yaml

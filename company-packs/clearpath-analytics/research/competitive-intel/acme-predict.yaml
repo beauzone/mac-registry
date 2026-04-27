@@ -1,0 +1,83 @@
+metadata:
+  id: clearpath-competitive-intel-acme-predict
+  version: "1.0.0"
+  schema_version: "1.0"
+
+competitive_profile:
+  company: AcmePredict
+  website: "acmepredict.com"
+  founded: 2018
+  headquarters: "San Francisco, CA"
+  employees: ~320
+  funding:
+    total: "$78M"
+    last_round: "Series C, $40M, March 2023"
+    investors: ["Sequoia Capital", "Insight Partners", "Salesforce Ventures"]
+  estimated_arr: "$45M"
+  growth_rate: "~35% YoY (estimated)"
+
+  positioning:
+    tagline: "Revenue intelligence powered by AI"
+    key_messages:
+      - "AI-first revenue intelligence platform"
+      - "Native Salesforce integration"
+      - "Forecast in minutes, not spreadsheets"
+    target_segment: "Enterprise ($500M+ ARR), Salesforce-centric"
+
+  product:
+    core_capability: "AI-powered sales forecasting with Salesforce native app"
+    differentiators_claimed:
+      - "Native Salesforce AppExchange app — no separate login"
+      - "AI model trained on $2T in pipeline data"
+      - "Mobile-first field sales experience"
+    known_limitations:
+      - "Salesforce-only: no HubSpot, Dynamics, or Pipedrive support"
+      - "Black-box model — outputs are not auditable or explainable"
+      - "High false positive rate on 'at-risk' deal alerts (reported by customers)"
+      - "Implementation requires dedicated CS team; 18-month average time to full adoption"
+      - "No multi-currency support (critical gap for international enterprise)"
+    pricing:
+      model: "Per seat per year"
+      estimated_range: "$120–$200 per seat per year"
+      minimum_deal_size: "$50,000 ARR"
+      enterprise_custom: true
+
+  win_loss:
+    we_win_when:
+      - "Prospect is not Salesforce-only (HubSpot, Dynamics)"
+      - "Prospect's CFO is in the room and wants model transparency"
+      - "Prospect has been burned by AcmePredict alert fatigue"
+      - "Prospect needs implementation in under 90 days"
+    they_win_when:
+      - "Prospect is deeply Salesforce-native and values AppExchange integration"
+      - "Prospect's CRO already has a relationship with AcmePredict"
+      - "Budget was pre-approved for 'Salesforce add-ons'"
+    competitive_traps:
+      - "AcmePredict sales will emphasize AppExchange as a distribution moat — counter with multi-CRM flexibility"
+      - "They will quote implementation simplicity — counter with their 18-month average and customer references"
+      - "They may claim our accuracy numbers are not comparable — have Deloitte audit summary ready"
+
+  recent_activity:
+    product_launches:
+      - "Launched 'AcmePredict Intelligence Hub' Q3 2024 — BI dashboard layer, still in beta"
+      - "Acquired TalentScope (call analytics startup) Q1 2024 — limited integration to date"
+    analyst_coverage:
+      - "Gartner Magic Quadrant: Niche Player (Revenue Performance Management, 2024)"
+      - "Forrester Wave: Strong Performer (B2B Revenue Execution, Q2 2024)"
+    notable_customers: ["Zendesk", "Cloudflare", "PagerDuty", "HashiCorp"]
+
+  intelligence_sources:
+    - G2 and TrustRadius customer reviews (aggregated Q4 2024)
+    - LinkedIn job postings (indicators of product investment areas)
+    - Public customer success stories and case studies
+    - Win/loss interview data from 23 competitive deals (CY2024)
+    - Gartner Peer Insights reviews
+  intelligence_confidence: medium
+  last_updated: "2026-01-15"
+
+_source_meta:
+  created_by: mac-client-seed
+  created_at: "2026-04-25"
+  classification: demo
+  derived_from:
+    - sources/messaging/competitive-positioning.yaml
